@@ -79,7 +79,7 @@ window.A365 = {
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;0,6..72,700;1,6..72,400&amp;family=Public+Sans:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500&amp;family=Caveat:wght@500;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;0,6..72,700;1,6..72,400&amp;family=Public+Sans:wght@400;500;600;700;800;900&amp;family=JetBrains+Mono:wght@400;500;600&amp;display=swap" rel="stylesheet">
 
 <style>
 /* === TOKENS === */
@@ -130,7 +130,7 @@ window.A365 = {
 
 /* === BASE === */
 *,*::before,*::after{box-sizing:border-box}
-html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;scroll-padding-top:5.5rem}
+html{scroll-behavior:auto;-webkit-text-size-adjust:100%;scroll-padding-top:5.5rem}
 body{
   margin:0;background:var(--paper);color:var(--ink);
   font-family:var(--sans);font-size:clamp(.98rem,.93rem + .25vw,1.08rem);line-height:1.6;
@@ -391,6 +391,162 @@ svg .red{stroke:var(--road);fill:none;stroke-width:2.2;stroke-linecap:round}
 .timeline svg text{font-size:11px}
 @media (prefers-reduced-motion: reduce){.stepper [data-step]{transition:none}.term .l{transition:none}}
 
+/* === ROUTED FIELD MANUAL === */
+:root{
+  --paper:#f4ecd8;--paper-2:#fffaf0;--paper-3:#e9ddc3;
+  --ink:#171713;--ink-2:#48473f;--ink-3:#777163;--rule:#c7b996;
+  --accent:#1949c6;--accent-2:#0f318d;--accent-soft:#dfe6fa;
+  --signal:#ef5a31;--observe:#2467d6;--govern:#e05d34;--secure:#28775a;
+  --ga:#286e50;--ga-bg:#dbe9dc;--pre:#8a5700;--pre-bg:#f6dfaa;
+  --fro:#64328f;--fro-bg:#eadcf1;--road:#8b3434;--road-bg:#efd8d2;
+  --code-bg:#e9dfc9;--shadow:none;--hand:var(--sans);--header-h:5rem;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --paper:#171713;--paper-2:#222119;--paper-3:#302e24;--ink:#f5eedc;
+    --ink-2:#d0c7b4;--ink-3:#9b927f;--rule:#534d3e;--accent:#7fa1ff;
+    --accent-2:#b4c4ff;--accent-soft:#202c51;--signal:#ff7953;
+    --observe:#7fa1ff;--govern:#ff7953;--secure:#6fc49b;--code-bg:#28261e;
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#171713;--paper-2:#222119;--paper-3:#302e24;--ink:#f5eedc;
+  --ink-2:#d0c7b4;--ink-3:#9b927f;--rule:#534d3e;--accent:#7fa1ff;
+  --accent-2:#b4c4ff;--accent-soft:#202c51;--signal:#ff7953;
+  --observe:#7fa1ff;--govern:#ff7953;--secure:#6fc49b;--code-bg:#28261e;
+}
+
+body{
+  background-color:var(--paper);
+  background-image:linear-gradient(to bottom,transparent 31px,color-mix(in srgb,var(--rule) 22%,transparent) 32px);
+  background-size:100% 32px;background-position:0 5rem;
+}
+html{scroll-padding-top:calc(var(--header-h) + 1rem)}
+html.no-smooth{scroll-behavior:auto}
+article section{scroll-margin-top:0}
+:root[data-theme="dark"] body{background-image:linear-gradient(to bottom,transparent 31px,color-mix(in srgb,var(--rule) 24%,transparent) 32px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) body{background-image:linear-gradient(to bottom,transparent 31px,color-mix(in srgb,var(--rule) 24%,transparent) 32px)}}
+
+a{text-decoration-thickness:1.5px;text-decoration-color:color-mix(in srgb,var(--accent) 60%,transparent)}
+.topbar{background:color-mix(in srgb,var(--paper-2) 94%,transparent);border-block-end:2px solid var(--ink);backdrop-filter:none;-webkit-backdrop-filter:none}
+.topbar .in{max-width:1520px;padding:.65rem clamp(1rem,3vw,2.25rem);gap:.8rem}
+.brand{font-family:var(--mono);font-size:.78rem;text-transform:uppercase;letter-spacing:.08em}
+.field-id{font:600 .7rem var(--mono);color:var(--ink-3);text-transform:uppercase;letter-spacing:.08em;white-space:nowrap}
+.search input,.theme-btn{border-color:var(--ink);border-radius:0;background-color:var(--paper-2)}
+.search .hint{border-radius:0;border-color:var(--ink)}
+.toggle input{border-radius:0;border-color:var(--ink);background:var(--paper-3)}
+.toggle input::after{border-radius:0;background:var(--ink)}
+.theme-btn{min-height:36px}
+
+.shell{grid-template-columns:245px minmax(0,1fr);max-width:1520px;gap:clamp(2rem,5vw,5rem);padding-inline:clamp(1rem,3vw,2.25rem)}
+.toc{top:var(--header-h);max-height:calc(100vh - var(--header-h) - 1rem);padding:1.8rem 0 2rem .8rem;background-image:linear-gradient(var(--observe),var(--observe)),linear-gradient(var(--govern),var(--govern)),linear-gradient(var(--secure),var(--secure));background-size:2px 100%,2px 100%,2px 100%;background-position:0 0,4px 0,8px 0;background-repeat:no-repeat}
+.toc .k{color:var(--ink);font-family:var(--mono)}
+.toc a{border-radius:0;padding-block:.34rem}
+.toc a[aria-current="true"]{background:var(--paper-2);box-shadow:3px 3px 0 var(--ink);border-color:var(--accent)}
+main{max-width:1080px;padding-block:2.25rem 6rem}
+
+section.top{padding:clamp(1.5rem,4vw,4rem) 0 3.5rem;border-block-end:3px solid var(--ink);margin-block-end:4rem}
+section.top > *{animation:none}
+.hero-layout{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(340px,.95fr);gap:clamp(2rem,5vw,5rem);align-items:center}
+.hero-copy{min-width:0}
+.eyebrow{font-family:var(--mono);font-size:.68rem;color:var(--accent);letter-spacing:.12em;margin-block-end:1rem}
+.hero-title{font-family:var(--sans);font-size:clamp(3.35rem,2rem + 4.8vw,6.4rem);line-height:.84;letter-spacing:-.072em;text-wrap:balance}
+.hero-title .product{display:block;color:var(--paper);-webkit-text-stroke:clamp(1.2px,.03em,2.4px) var(--ink);paint-order:stroke fill;text-shadow:4px 4px 0 var(--signal);text-transform:uppercase;font-weight:900;letter-spacing:-.085em}
+.hero-title .claim{display:block;font-family:var(--serif);font-weight:500;font-size:.54em;line-height:1.02;letter-spacing:-.035em;margin-block-start:.24em;max-width:12ch}
+.lede{font-family:var(--sans);font-size:clamp(1.08rem,.98rem + .45vw,1.35rem);line-height:1.5;color:var(--ink);margin-block:1.4rem 0;max-width:54ch}
+.hero-actions{display:flex;gap:.7rem;flex-wrap:wrap;margin-block-start:1.6rem}
+.hero-actions a{display:inline-flex;align-items:center;min-height:44px;padding:.55rem .85rem;border:2px solid var(--ink);background:var(--ink);color:var(--paper-2);font:700 .78rem var(--mono);text-transform:uppercase;letter-spacing:.04em;text-decoration:none;box-shadow:4px 4px 0 var(--signal)}
+.hero-actions a + a{background:var(--paper-2);color:var(--ink);box-shadow:4px 4px 0 var(--accent)}
+.hero-actions a:hover{transform:translate(-1px,-1px);box-shadow:6px 6px 0 var(--signal)}
+.hero-actions a + a:hover{box-shadow:6px 6px 0 var(--accent)}
+
+.route-plate{margin:0;max-width:none;align-self:stretch}
+.route-plate .plate{height:auto;min-height:0;aspect-ratio:560/500;border:2px solid var(--ink);background:#171713;box-shadow:8px 8px 0 var(--signal);overflow:hidden}
+.route-plate svg{display:block;width:100%;height:100%;min-height:0}
+.route-plate text{font-family:var(--sans);fill:#fffaf0}
+.route-plate .route-display{font-weight:900;letter-spacing:-.08em;fill:transparent;stroke:#fffaf0;stroke-width:1.4px}
+.route-plate .route-small{font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;fill:#c9c0ae}
+.route-plate .route-label{font-family:var(--mono);font-size:13px;font-weight:600}
+.route-line{fill:none;stroke-width:9;stroke-linecap:square;stroke-linejoin:round;stroke-dasharray:720;stroke-dashoffset:720;animation:route-draw 1.4s cubic-bezier(.3,.7,.2,1) forwards}
+.route-line.observe{stroke:var(--observe);animation-delay:.15s}.route-line.govern{stroke:var(--govern);animation-delay:.35s}.route-line.secure{stroke:var(--secure);animation-delay:.55s}
+.route-node{fill:var(--ink);stroke-width:3}.route-node.observe{stroke:var(--observe)}.route-node.govern{stroke:var(--govern)}.route-node.secure{stroke:var(--secure)}
+.route-runner{fill:#fffaf0;filter:drop-shadow(0 0 5px #fffaf0)}
+@keyframes route-draw{to{stroke-dashoffset:0}}
+.route-plate figcaption{border:0;padding:1rem 0 0;font-family:var(--mono);font-size:.72rem;color:var(--ink-2)}
+
+.field-stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border:2px solid var(--ink);margin-block-start:2.5rem;background:var(--paper-2)}
+.field-stats span{display:flex;flex-direction:column;padding:.8rem 1rem;border-inline-end:1px solid var(--ink);font:500 .68rem var(--mono);text-transform:uppercase;letter-spacing:.05em;color:var(--ink-2)}
+.field-stats span:last-child{border:0}.field-stats b{font:800 1.4rem var(--sans);letter-spacing:-.03em;color:var(--ink);text-transform:none}
+.guide-notes{border-block-end:1px solid var(--rule);padding:.8rem 0;margin-block-start:.8rem;max-width:100%}
+.guide-notes summary{cursor:pointer;font:600 .72rem var(--mono);text-transform:uppercase;letter-spacing:.06em;color:var(--ink-2)}
+.guide-notes .legend{margin-block-start:1rem}.guide-notes .source-note{margin-block:.8rem 0;max-width:80ch}
+
+.block{position:relative;padding-block:1rem 4.5rem;border-block-end:2px solid var(--ink);margin-block-end:4rem}
+.shead{grid-template-columns:4rem minmax(0,1fr);gap:1.25rem;align-items:start;margin-block-end:1.8rem}
+.shead .n{font-family:var(--mono);font-size:clamp(2rem,1.5rem + 2vw,3.2rem);font-weight:500;color:var(--accent);line-height:1;border-block-start:5px solid currentColor;padding-block-start:.35rem}
+.shead h2{font-family:var(--sans);font-size:clamp(2.15rem,1.35rem + 2.2vw,3.7rem);font-weight:800;letter-spacing:-.055em;line-height:.98;max-width:19ch;text-wrap:balance}
+.chapter-mark{font:700 .68rem var(--mono);letter-spacing:.14em;text-transform:uppercase;margin:0 0 .55rem;color:var(--ink-2)}
+#s5 .shead .n,#s5 .chapter-mark{color:var(--observe)}#s6 .shead .n,#s6 .chapter-mark{color:var(--govern)}#s7 .shead .n,#s7 .chapter-mark{color:var(--secure)}
+#s5,#s6,#s7{border-block-start:10px solid var(--ink);padding-block-start:2rem}#s5{border-block-start-color:var(--observe)}#s6{border-block-start-color:var(--govern)}#s7{border-block-start-color:var(--secure)}
+h3{font-family:var(--sans);font-weight:750;letter-spacing:-.025em;line-height:1.12;margin-block:3rem .8rem;max-width:28ch}
+h4{font-family:var(--mono);font-size:.78rem;text-transform:uppercase;letter-spacing:.08em}
+
+.operator-note{position:relative;margin:2rem 0;max-width:var(--measure);padding:1.1rem 1.2rem 1rem 1.5rem;border:2px solid var(--ink);background:var(--paper-2);box-shadow:6px 6px 0 var(--signal);transform:rotate(-.3deg)}
+.operator-note::before{content:"";position:absolute;width:2.5rem;height:.65rem;top:-.45rem;left:2rem;background:color-mix(in srgb,var(--accent) 55%,transparent);transform:rotate(-4deg)}
+.operator-note .label{display:block;font:600 .66rem var(--mono);letter-spacing:.09em;text-transform:uppercase;color:var(--signal);margin-block-end:.35rem}
+.operator-note strong{display:block;font-family:var(--serif);font-size:1.45rem;line-height:1.1;margin-block-end:.4rem}
+
+.badge{border:1px solid currentColor;border-radius:0;background:transparent;box-shadow:2px 2px 0 currentColor;font-family:var(--mono);letter-spacing:.04em}
+.st{border-radius:0;border-block-end:2px solid currentColor;background:transparent}
+.tbl{position:relative;border:2px solid var(--ink);border-radius:0;background:var(--paper-2);box-shadow:6px 6px 0 var(--ink)}
+th{font-family:var(--mono);background:var(--ink);color:var(--paper-2)}
+figure .frame{border:2px solid var(--ink);border-radius:0;background:var(--paper-2);box-shadow:6px 6px 0 color-mix(in srgb,var(--ink) 22%,transparent)}
+figcaption{font-family:var(--mono);font-size:.75rem;line-height:1.55;border-color:var(--signal)}
+.note{border:2px solid var(--ink);border-inline-start:8px solid var(--accent);border-radius:0;background:var(--paper-2);box-shadow:4px 4px 0 var(--accent)}
+.check li::before{font-family:var(--mono);color:var(--signal)}
+
+.sbtn,.pat button,.plan button,.tscen button,.chapters button{border:1.5px solid var(--ink);border-radius:0;background:var(--paper-2);box-shadow:2px 2px 0 var(--ink)}
+.sbtn:active,.pat button:active,.plan button:active,.tscen button:active,.chapters button:active{transform:translate(2px,2px);box-shadow:none}
+.pat button[aria-pressed=true],.plan button[aria-pressed=true],.tscen button[aria-pressed=true]{background:var(--ink);border-color:var(--ink);color:var(--paper-2)}
+.stepper>.frame,.ca>.frame,.mcp>.frame{box-shadow:7px 7px 0 var(--accent)}
+.ca .capanel div{border-radius:0;border:1.5px solid var(--ink);background:var(--paper-2)}
+.term{border:2px solid var(--ink);border-radius:0;box-shadow:7px 7px 0 var(--signal)}
+
+.yt{position:relative;grid-template-columns:minmax(0,1.25fr) minmax(260px,.75fr);gap:0;border:2px solid var(--ink);border-radius:0;background:var(--ink);color:#fffaf0;padding:0;box-shadow:8px 8px 0 var(--signal)}
+.yt::before{content:"WATCH / REFERENCE VIDEO";position:absolute;z-index:2;top:0;left:0;padding:.35rem .55rem;background:var(--signal);color:#fff;font:600 .62rem var(--mono);letter-spacing:.08em}
+.yt .ytframe{border-radius:0}.ytmeta{padding:1rem 1rem 1.1rem}.ytt{font-family:var(--serif);font-size:1.2rem;line-height:1.05;color:#fffaf0}
+.yt .muted{color:#bfb8aa}.chapters button{background:#23231e;color:#fffaf0;border-color:#777064;box-shadow:none;min-height:38px}.chapters button:hover{border-color:var(--signal);color:#fffaf0}
+.watchlink{display:inline-flex;align-items:center;min-height:36px;margin-block-start:.35rem;color:#fffaf0;font:600 .7rem var(--mono);text-transform:uppercase;letter-spacing:.05em;text-decoration-color:var(--signal)}
+.sketch .frame{background-color:var(--paper-2);background-image:linear-gradient(to bottom,transparent 19px,color-mix(in srgb,var(--rule) 30%,transparent) 20px);background-size:100% 20px}
+svg .hand{font-family:var(--sans);font-style:italic;font-weight:650;letter-spacing:-.02em}
+
+footer{border-block-start:8px solid var(--ink);background:var(--paper-2)}
+
+@media (max-width:1100px){
+  .hero-layout{grid-template-columns:1fr}.field-stats{grid-template-columns:repeat(2,1fr)}.field-stats span:nth-child(2){border-inline-end:0}.field-stats span:nth-child(-n+2){border-block-end:1px solid var(--ink)}
+}
+@media (max-width:960px){
+  .topbar .in{display:grid;grid-template-columns:minmax(0,1fr) auto auto;gap:.55rem .6rem}
+  .brand{grid-column:1}.field-id,.count{display:none}.toc-toggle{display:inline-flex;align-items:center;justify-content:center;grid-column:2;grid-row:1;width:auto;min-height:38px;margin:0;padding:.38rem .6rem;border:1.5px solid var(--ink);border-radius:0;background:var(--paper-2);font:700 .68rem var(--mono);text-transform:uppercase;letter-spacing:.04em}
+  .theme-btn{grid-column:3;grid-row:1;min-width:38px;font-size:0;padding:.3rem}.theme-btn::after{content:"◐";font-size:1rem}
+  .search{grid-column:1/3;grid-row:2;order:initial;max-width:none;flex-basis:auto;margin:0}.toggle{grid-column:3;grid-row:2;font-size:.7rem;justify-self:end}.search input{min-height:42px}
+  .shell,footer .in{grid-template-columns:1fr}
+  .toc{position:fixed;inset:var(--header-h) .7rem .7rem .7rem;z-index:30;max-height:none;margin:0;padding:1.2rem 1rem 2rem 1.8rem;border:2px solid var(--ink);border-radius:0;background-color:var(--paper-2);box-shadow:8px 8px 0 var(--signal);overflow-y:auto}
+  .toc a{min-height:40px;display:flex;align-items:center}.toc[hidden]{display:none}
+  main{padding-block-start:1.4rem}.hero-layout{gap:2.2rem}.route-plate{max-width:680px}.hero-title{font-size:clamp(3.35rem,14vw,5.8rem)}
+}
+@media (max-width:620px){
+  .hero-title{font-size:clamp(3rem,18vw,4.4rem)}.hero-title .claim{font-size:.5em;max-width:11ch}.field-stats{grid-template-columns:1fr 1fr}.field-stats span{padding:.7rem}.field-stats b{font-size:1.15rem}
+  .shead{grid-template-columns:2.7rem 1fr;gap:.75rem}.shead .n{font-size:1.55rem}.shead h2{font-size:clamp(1.9rem,9vw,2.7rem)}.block{padding-block-end:3.5rem;margin-block-end:3rem}
+  .yt{grid-template-columns:1fr}.ytmeta{padding:1rem}.chapters button{min-height:44px}.hero-actions a{flex:1 1 100%;justify-content:center}
+  .tbl{box-shadow:4px 4px 0 var(--ink)}
+  .sketch .frame{overflow-x:auto;overflow-y:hidden;overscroll-behavior-inline:contain;scrollbar-width:thin}
+  .sketch svg{width:700px;max-width:none}
+  .sketch figcaption::before{content:"Swipe drawing to follow the scene →";display:block;margin-block-end:.45rem;color:var(--signal);font:700 .64rem var(--mono);letter-spacing:.06em;text-transform:uppercase}
+}
+@media (pointer:coarse){button,.sbtn,.pat button,.plan button,.tscen button,.chapters button{min-height:44px}}
+@media (prefers-reduced-motion:reduce){.route-line{animation:none;stroke-dashoffset:0}.route-runner{display:none}.hero-actions a{transition:none}}
+
 </style>
 </head>
 <body>
@@ -398,6 +554,7 @@ svg .red{stroke:var(--road);fill:none;stroke-width:2.2;stroke-linecap:round}
 <header class="topbar">
   <div class="in">
     <a class="brand" href="#top">rodney<span>.</span>mhungu</a>
+    <span class="field-id">Agent control atlas · Field edition 01</span>
     <div class="search" role="search">
       <input id="q" type="search" placeholder="Search the guide" aria-label="Search the guide" autocomplete="off">
       <span class="hint" aria-hidden="true">/</span>
@@ -405,11 +562,11 @@ svg .red{stroke:var(--road);fill:none;stroke-width:2.2;stroke-linecap:round}
     <span class="count" id="count" aria-live="polite"></span>
     <label class="toggle"><input type="checkbox" id="ga-only"> GA only</label>
     <button class="theme-btn" id="theme" type="button" aria-label="Toggle colour theme">Theme</button>
+    <button class="toc-toggle" id="toc-toggle" type="button" aria-expanded="false" aria-controls="toc">Sections</button>
   </div>
 </header>
 
 <div class="shell">
-<button class="toc-toggle" id="toc-toggle" type="button" aria-expanded="true" aria-controls="toc">Contents</button>
 <nav class="toc" id="toc" aria-label="Contents">
   <p class="k">Contents</p>
   <ol id="toc-list"></ol>
@@ -419,34 +576,80 @@ svg .red{stroke:var(--road);fill:none;stroke-width:2.2;stroke-linecap:round}
 <article>
 
 <section class="top" id="s0">
-  <p class="eyebrow">How-to guide · Microsoft Agent 365</p>
-  <h1>Agent 365 for security and compliance engineers</h1>
-  <p class="lede">What it enforces, where, under which licence, and what is still in preview. Every factual claim links to Microsoft Learn; capabilities found only in field material are left out.</p>
-  <div class="meta">
-    <span>Reviewed <b data-val="reviewed"></b></span>
-    <span>Product GA <b data-val="gaDate"></b></span>
-    <span>Assembled by <b>Rodney Mhungu</b></span>
+  <div class="hero-layout">
+    <div class="hero-copy">
+      <p class="eyebrow">Field guide 01 · Microsoft Agent 365</p>
+      <h1 class="hero-title"><span class="product">Agent 365</span><span class="claim">mapped for defenders</span></h1>
+      <p class="lede">Agent 365 is the inventory and policy plane. Entra, Purview, Defender, Intune and Global Secure Access still do the enforcing. This guide maps every control to its enforcing product and marks what is ready now.</p>
+      <div class="hero-actions" aria-label="Start exploring">
+        <a href="#s4">Trace a request <span aria-hidden="true">→</span></a>
+        <a href="#s2-1">Check your licence <span aria-hidden="true">↓</span></a>
+      </div>
+    </div>
+    <figure class="route-plate">
+      <div class="plate">
+        <svg viewBox="0 0 560 500" role="img" aria-labelledby="route-title route-desc">
+          <title id="route-title">One agent request moving through Observe, Govern and Secure</title>
+          <desc id="route-desc">Three coloured paths leave Agent 365. Observe finds the request, Govern assigns its identity and policy boundary, and Secure can stop an unsafe action.</desc>
+          <text x="32" y="84" class="route-display" font-size="78">AGENT</text>
+          <text x="34" y="159" class="route-display" font-size="88">365</text>
+          <text x="37" y="192" class="route-small">one request · three control routes</text>
+
+          <path class="route-line observe" d="M38 245 H188 V225 H320 V265 H518"/>
+          <path class="route-line govern" d="M38 302 H148 V330 H350 V305 H518"/>
+          <path class="route-line secure" d="M38 359 H220 V390 H405 V350 H518"/>
+
+          <circle class="route-node observe" cx="188" cy="225" r="13"/>
+          <circle class="route-node govern" cx="350" cy="305" r="13"/>
+          <circle class="route-node secure" cx="405" cy="350" r="13"/>
+          <circle class="route-runner" r="5">
+            <animateMotion dur="4.8s" repeatCount="indefinite" path="M38 359 H220 V390 H405 V350 H518"/>
+          </circle>
+
+          <text x="39" y="231" class="route-label">OBSERVE</text>
+          <text x="39" y="289" class="route-label">GOVERN</text>
+          <text x="39" y="346" class="route-label">SECURE</text>
+          <text x="171" y="211" class="route-small">find it</text>
+          <text x="329" y="291" class="route-small">own it</text>
+          <text x="382" y="336" class="route-small">stop it</text>
+          <path d="M455 336 l18 28 M473 336 l-18 28" stroke="var(--signal)" stroke-width="6"/>
+          <text x="36" y="455" class="route-small">the control plane coordinates.</text>
+          <text x="36" y="473" class="route-small">the products underneath enforce.</text>
+        </svg>
+      </div>
+      <figcaption>One request, three routes. Observe finds it. Govern gives it a boundary. Secure stops the unsafe action.</figcaption>
+    </figure>
   </div>
-  <div class="legend" aria-label="Status legend">
-    <span><span class="badge t-ga">GA</span>generally available</span>
-    <span><span class="badge t-preview">Preview</span>public preview</span>
-    <span><span class="badge t-frontier">Frontier preview</span>needs Frontier enrolment</span>
-    <span><span class="badge t-roadmap">Early preview</span>not in Learn docs</span>
+  <div class="field-stats" aria-label="Guide summary">
+    <span><b data-summary="capabilities"></b> controls tracked</span>
+    <span><b data-summary="previews"></b> pre-GA controls</span>
+    <span><b data-val="reviewed"></b> last reviewed</span>
+    <span><b>Rodney Mhungu</b> field notes by</span>
   </div>
-  <p class="muted small" style="margin-block-start:.8rem">Screenshots come from Microsoft Learn (CC BY 4.0) and from the September 2026 workshop deck, which shows demo-tenant data approved for publication. Every image is listed with its source in <a href="images/README.md">images/README.md</a>.</p>
+  <details class="guide-notes">
+    <summary>Guide status, legend and provenance</summary>
+    <div class="legend" aria-label="Status legend">
+      <span><span class="badge t-ga">GA</span>generally available</span>
+      <span><span class="badge t-preview">Preview</span>public preview</span>
+      <span><span class="badge t-frontier">Frontier preview</span>needs Frontier enrolment</span>
+      <span><span class="badge t-roadmap">Early preview</span>not in Learn docs</span>
+    </div>
+    <p class="muted small source-note">Product GA <b data-val="gaDate"></b>. Screenshots come from Microsoft Learn (CC BY 4.0) and from the September 2026 workshop deck, which shows demo-tenant data approved for publication. Every image is listed with its source in <a href="images/README.md">the image manifest</a>.</p>
+  </details>
 </section>
 
 <!-- ============================ 1 ============================ -->
 <section class="block" id="s1" data-search>
-  <div class="shead"><span class="n">01</span><h2>What Agent 365 is, and what it is not</h2></div>
+  <div class="shead"><span class="n">01</span><h2>The control plane does not enforce anything</h2></div>
   <p>Agent 365 is a control plane, not an enforcement engine. It inventories every agent in the tenant, approves and retires them, and attaches policies to them. Enforcement happens in products you already run: <a href="https://learn.microsoft.com/en-us/microsoft-agent-365/admin/capabilities-entra" target="_blank" rel="noopener">Microsoft Entra</a> for identity, <a href="https://learn.microsoft.com/en-us/purview/ai-agent-365" target="_blank" rel="noopener">Microsoft Purview</a> for data and compliance, <a href="https://learn.microsoft.com/en-us/defender-xdr/security-for-ai/defender-security-for-ai" target="_blank" rel="noopener">Microsoft Defender</a> for threats, Microsoft Intune for device posture, and the <a href="https://learn.microsoft.com/en-us/microsoft-365/admin/manage/agent-365-overview" target="_blank" rel="noopener">Microsoft 365 admin centre</a> for lifecycle and availability.</p>
   <p>The product reached general availability on <span data-val="gaDate"></span>, licensed per user. The <a href="https://learn.microsoft.com/en-us/microsoft-agent-365/overview" target="_blank" rel="noopener">overview</a> states it works best with Microsoft 365 E5 and needs at least one user with a qualifying licence. Agents themselves need no licence at GA: every agent owned or managed by a licensed user is covered. The exception is the <a href="https://learn.microsoft.com/en-us/microsoft-agent-365/frontier" target="_blank" rel="noopener">Frontier preview programme</a>, which licenses per agent instance.</p>
   <p>Microsoft's three pillars are Observe, Govern and Secure. This guide follows that order because each pillar depends on the one before it.</p>
+  <aside class="operator-note"><span class="label">Rodney's field note 01</span><strong>Inventory is not containment.</strong>A clean registry can still hide an unprotected runtime. Test the enforcing product.</aside>
 </section>
 
 <!-- ============================ 2 ============================ -->
 <section class="block" id="s2">
-  <div class="shead"><span class="n">02</span><h2>Before you start: licences, roles and the July 2026 transition</h2></div>
+  <div class="shead"><span class="n">02</span><h2>What you need before the controls appear</h2></div>
 
   <section id="s2-1" data-search>
   <h3>2.1 What the licence unlocks</h3>
@@ -514,10 +717,10 @@ svg .red{stroke:var(--road);fill:none;stroke-width:2.2;stroke-linecap:round}
 
 <!-- ============================ 3 ============================ -->
 <section class="block" id="s3" data-search>
-  <div class="shead"><span class="n">03</span><h2>Why agents break existing controls</h2></div>
+  <div class="shead"><span class="n">03</span><h2>Agents do not behave like applications</h2></div>
   <p>An agent, in the <a href="https://learn.microsoft.com/en-us/entra/agent-id/what-are-agent-identities" target="_blank" rel="noopener">Entra definition</a>, is an application that pursues a goal by understanding its context, deciding, and acting autonomously with tools. Structurally it is a model, an orchestration loop, memory and tools. Inputs arrive as user messages, system events or messages from other agents. Outputs go to people, to other agents, or out through tool calls that retrieve, act and write memory. Every hop is an observation point and an attack surface.</p>
   <p>Autonomy is the property that matters. Given the same goal twice, an agent may take a different path, because its reasoning is probabilistic. Identity controls assume the opposite: users authenticate, applications have fixed permissions, actions are predictable. So identity must enforce boundaries, not reasoning. A guard checks whether you are authorised, not why you want to enter.</p>
-  <figure class="sketch">
+  <figure class="sketch" id="fig-guard">
     <div class="frame">
     <svg viewBox="0 0 900 300" role="img" aria-labelledby="fgt">
       <title id="fgt">A hand-drawn scene: an agent at a door offers a long explanation of why it needs to enter; the guard asks only whether it is on the list</title>
@@ -530,11 +733,11 @@ svg .red{stroke:var(--road);fill:none;stroke-width:2.2;stroke-linecap:round}
         <circle cx="520" cy="118" r="18" class="ink"/><path d="M500 106 q20 -14 40 0" class="ink"/><path d="M520 136 v70" class="ink"/><path d="M520 150 l-28 30 M520 150 l30 22" class="ink"/><path d="M520 206 l-20 46 M520 206 l20 46" class="ink"/>
         <path d="M548 172 h60" class="inkthin"/><path d="M596 172 v-30" class="inkthin"/><rect x="580" y="120" width="32" height="26" rx="2" class="inkthin"/><text x="596" y="138" text-anchor="middle" class="hand" font-size="12">list</text>
         <!-- agent -->
-        <rect x="292" y="102" width="46" height="40" rx="6" class="ink"/><circle cx="308" cy="120" r="4" class="ink"/><circle cx="324" cy="120" r="4" class="ink"/><path d="M304 133 h24" class="inkthin"/><path d="M315 102 v-16 m-4 0 h8" class="ink"/>
-        <path d="M315 142 v62" class="ink"/><path d="M315 156 l-26 26 M315 156 l26 20" class="ink"/><path d="M315 204 l-18 46 M315 204 l18 46" class="ink"/>
+        <rect x="347" y="102" width="46" height="40" rx="6" class="ink"/><circle cx="363" cy="120" r="4" class="ink"/><circle cx="379" cy="120" r="4" class="ink"/><path d="M359 133 h24" class="inkthin"/><path d="M370 102 v-16 m-4 0 h8" class="ink"/>
+        <path d="M370 142 v62" class="ink"/><path d="M370 156 l-26 26 M370 156 l26 20" class="ink"/><path d="M370 204 l-18 46 M370 204 l18 46" class="ink"/>
         <!-- agent speech (long) -->
-        <path d="M70 42 h230 a10 10 0 0 1 10 10 v96 a10 10 0 0 1 -10 10 h-130 l-20 22 v-22 h-80 a10 10 0 0 1 -10 -10 v-96 a10 10 0 0 1 10 -10 z" class="inkthin"/>
-        <text class="hand" font-size="15"><tspan x="82" y="66">I need the Q3 forecast because</tspan><tspan x="82" y="86">the board deck is due, and the</tspan><tspan x="82" y="106">supplier data cross-references it,</tspan><tspan x="82" y="126">and my instructions say to be</tspan><tspan x="82" y="146">thorough, and honestly it would</tspan></text>
+        <path d="M70 42 h230 a10 10 0 0 1 10 10 v96 a10 10 0 0 1 -10 10 h-50 l88 -35 l-63 35 h-205 a10 10 0 0 1 -10 -10 v-96 a10 10 0 0 1 10 -10 z" class="inkthin"/>
+        <text class="hand" font-size="14"><tspan x="78" y="66">I need the Q3 forecast because</tspan><tspan x="78" y="86">the board deck is due, the supplier</tspan><tspan x="78" y="106">data cross-references it, and my</tspan><tspan x="78" y="126">instructions say to be thorough.</tspan><tspan x="78" y="146">Honestly, it would really help.</tspan></text>
         <!-- guard speech (short) -->
         <path d="M430 30 h150 a8 8 0 0 1 8 8 v40 a8 8 0 0 1 -8 8 h-40 l-18 18 v-18 h-92 a8 8 0 0 1 -8 -8 v-40 a8 8 0 0 1 8 -8 z" class="inkthin"/>
         <text x="505" y="62" text-anchor="middle" class="hand" font-size="18" font-weight="700">Are you on the list?</text>
@@ -577,8 +780,8 @@ svg .red{stroke:var(--road);fill:none;stroke-width:2.2;stroke-linecap:round}
 
 <!-- ============================ 4 ============================ -->
 <section class="block" id="s4" data-search>
-  <div class="shead"><span class="n">04</span><h2>Where enforcement happens</h2></div>
-  <p>Microsoft describes Observe as real-time visibility into the agent estate, Govern as guardrails across the agent lifecycle, and Secure as extending existing identity, data and threat protection to agents. The useful framing for an engineer is which product enforces each capability and who owns it. Every row is a product you already administer.</p>
+  <div class="shead"><span class="n">04</span><h2>Five products share the enforcement path</h2></div>
+  <p>Microsoft describes Observe as real-time visibility into the agent estate, Govern as guardrails across the agent lifecycle, and Secure as extending existing identity, data and threat protection to agents. Engineers need two answers: which product enforces the control, and who owns it. Every row is a product you already administer.</p>
   <div class="tbl"><table>
     <thead><tr><th>Pillar</th><th>Capability</th><th>Enforced in</th><th>Owned by</th></tr></thead>
     <tbody>
@@ -594,7 +797,7 @@ svg .red{stroke:var(--road);fill:none;stroke-width:2.2;stroke-linecap:round}
     <tr><td>Secure</td><td>Web, prompt, MCP and file controls on agent traffic</td><td>Entra Global Secure Access</td><td>Network and identity administrators</td></tr>
     </tbody>
   </table></div>
-  <p>Your existing tenant-wide policies are the starting point; policy templates connect them to agents at onboarding. The personas do not change either. A responsibility matrix for users is most of one for agents.</p>
+  <p>Your existing tenant-wide policies are the starting point; policy templates connect them to agents at onboarding. The personas do not change either. Most user-control owners keep the same job when the subject becomes an agent.</p>
 
   <figure class="cp">
     <div class="frame">
@@ -628,20 +831,20 @@ svg .red{stroke:var(--road);fill:none;stroke-width:2.2;stroke-linecap:round}
 
 <!-- ============================ 5 ============================ -->
 <section class="block" id="s5">
-  <div class="shead"><span class="n">05</span><h2>Observe</h2></div>
+  <div class="shead"><span class="n">05</span><div><p class="chapter-mark">Observe</p><h2>First, find what is running</h2></div></div>
 
   <section id="s5-1" data-search>
   <h3>5.1 The registry and the overview page <span class="badge" data-badge="registry"></span></h3>
   <p>The <a href="https://learn.microsoft.com/en-us/microsoft-365/admin/manage/agent-registry" target="_blank" rel="noopener">registry</a> is the inventory. Open Agents, All agents, Registry in the admin centre. Agents fall into four types: Microsoft agents, external partner-built agents, agents published by your organisation, and agents shared by their creator. Summary cards show total agents, agents without owners, and unmanaged agents, meaning agents created outside Agent 365 without its risk protection or observability.</p>
   <figure class="shot ">
-    <div class="frame"><div class="imgwrap"><img src="images/learn-mac-registry.png" alt="Agent registry list in the Microsoft 365 admin centre" loading="lazy"><span class="co" style="left:22%;top:15%">1</span><span class="co" style="left:45%;top:15%">2</span><span class="co" style="left:68%;top:15%">3</span></div></div>
+    <div class="frame"><div class="imgwrap"><img src="images/learn-mac-registry.png" width="1600" height="796" alt="Agent registry list in the Microsoft 365 admin centre" loading="lazy"><span class="co" style="left:22%;top:15%">1</span><span class="co" style="left:45%;top:15%">2</span><span class="co" style="left:68%;top:15%">3</span></div></div>
     <figcaption><b class="fn"></b> The registry. The three cards above the list are the ones to read first. <span class="colist"><b>1</b> Total agents <b>2</b> Agents without owners <b>3</b> Unmanaged agents</span> <span class="src">Source: <a href="https://learn.microsoft.com/en-us/microsoft-365/admin/manage/agent-registry" target="_blank" rel="noopener">Microsoft Learn, Agent registry</a>, CC BY 4.0. Asset <code>learn-mac-registry</code>.</span></figcaption>
   </figure>
   <p>Filters cover status, publisher type, channel, platform and data source. Use the data source filter on day one: it isolates agents with embedded knowledge, meaning maker-uploaded files, and agents on fine-tuned models. Both carry data handling implications the rest of the inventory does not.</p>
   <p>Export to CSV gives more than thirty attributes per agent, including owner, platform, version and instructions. Export on day one of an evaluation to get a baseline to diff against. A custom agent can be uploaded as a zip through the same wizard described in section 6.1. <span data-tier="graph-api">Microsoft Graph access is <span class="st" data-st="graph-api"></span>: the package management APIs list all agents and return per-agent detail under the AI Administrator role.</span></p>
   <p>The <a href="https://learn.microsoft.com/en-us/microsoft-365/admin/manage/agent-365-overview" target="_blank" rel="noopener">overview page</a> at Agents, Overview shows a thirty-day snapshot: total agents, active users, agent run-time in hours, and which external platforms registry sync has scanned. Four action cards link to prefiltered views: pending requests, agents without owners, agents at risk, and agents with exceptions. Activity metrics start only when licences are activated, so the first month is partial. The overview shows the top five platforms only. Draft agents are visible only for Copilot Studio.</p>
   <figure class="shot ">
-    <div class="frame"><div class="imgwrap"><img src="images/learn-mac-overview.png" alt="Agent overview dashboard in the Microsoft 365 admin centre" loading="lazy"></div></div>
+    <div class="frame"><div class="imgwrap"><img src="images/learn-mac-overview.png" width="1600" height="881" alt="Agent overview dashboard in the Microsoft 365 admin centre" loading="lazy"></div></div>
     <figcaption><b class="fn"></b> The overview page: thirty-day metrics on top, governance action cards beneath. <span class="src">Source: <a href="https://learn.microsoft.com/en-us/microsoft-365/admin/manage/agent-365-overview" target="_blank" rel="noopener">Microsoft Learn, Agent overview</a>, CC BY 4.0. Asset <code>learn-mac-overview</code>.</span></figcaption>
   </figure>
   </section>
@@ -650,11 +853,11 @@ svg .red{stroke:var(--road);fill:none;stroke-width:2.2;stroke-linecap:round}
   <h3>5.2 The agent map <span class="badge" data-badge="agent-map"></span></h3>
   <p>The <a href="https://learn.microsoft.com/en-us/microsoft-365/admin/manage/agent-map" target="_blank" rel="noopener">agent map</a> at Agents, All agents, Map is <span class="st" data-st="agent-map"></span> and needs Global Administrator or AI Administrator plus an E7 or Agent 365 licence. It clusters agents by the platform that built them: Agent Builder, Copilot Studio and its legacy version, the Microsoft 365 Agents Toolkit, SharePoint, Azure AI Foundry, Amazon Bedrock, Google Vertex AI, Microsoft first-party, external partners, and Others. Usage filters such as active users, sessions, exception rate and security alerts are limited to tenants below a threshold of four thousand.</p>
   <figure class="shot ">
-    <div class="frame"><div class="imgwrap"><img src="images/learn-mac-map.png" alt="Agent map clustering agents by platform" loading="lazy"></div></div>
+    <div class="frame"><div class="imgwrap"><img src="images/learn-mac-map.png" width="1600" height="1345" alt="Agent map clustering agents by platform" loading="lazy"></div></div>
     <figcaption><b class="fn"></b> The agent map groups a large estate by the platform that built each agent. <span class="src">Source: <a href="https://learn.microsoft.com/en-us/microsoft-365/admin/manage/agent-map" target="_blank" rel="noopener">Microsoft Learn, Use Agent Map</a>, CC BY 4.0. Asset <code>learn-mac-map</code>.</span></figcaption>
   </figure>
   <div class="yt" data-id="yWwYLbMvc3s" data-start="498">
-    <div class="ytframe"><img src="https://i.ytimg.com/vi/yWwYLbMvc3s/hqdefault.jpg" alt="" loading="lazy"><button type="button" class="ytplay" aria-label="Play video: How Microsoft Agent 365 works"><span></span></button></div>
+    <div class="ytframe"><img src="https://i.ytimg.com/vi/yWwYLbMvc3s/hqdefault.jpg" alt="" width="480" height="360" loading="lazy"><button type="button" class="ytplay" aria-label="Play video: How Microsoft Agent 365 works"><span></span></button></div>
     <div class="ytmeta"><p class="ytt">How Microsoft Agent 365 works</p><div class="chapters"><button type="button" data-t="203">03:23 How it works</button><button type="button" data-t="288">04:48 The control plane</button><button type="button" data-t="451">07:31 Zero in on risks</button><button type="button" data-t="498">08:18 Agent map</button></div><p class="muted small">Microsoft Mechanics on YouTube. Nothing loads until you press play.</p></div>
   </div>
   <p data-tier="single-agent-map">Single Agent Map is <span class="st" data-st="single-agent-map"></span>. It draws one agent with its top fifty users and top fifty tools over seven or thirty days, weights lines by volume, and highlights any tool with an exception rate above one percent. It works only for agents that emit observability data: Microsoft-built agents, Copilot Studio agents, and SDK-integrated agents.</p>
@@ -679,7 +882,7 @@ svg .red{stroke:var(--road);fill:none;stroke-width:2.2;stroke-linecap:round}
     </tbody>
   </table></div>
   <figure class="shot ">
-    <div class="frame"><div class="imgwrap"><img src="images/learn-mac-risks-card.png" alt="Agents at risk card on the admin centre overview" loading="lazy"></div></div>
+    <div class="frame"><div class="imgwrap"><img src="images/learn-mac-risks-card.png" width="1600" height="834" alt="Agents at risk card on the admin centre overview" loading="lazy"></div></div>
     <figcaption><b class="fn"></b> The Agents at risk card surfaces the three highest-risk agents and links to the prefiltered registry. <span class="src">Source: <a href="https://learn.microsoft.com/en-us/microsoft-365/admin/manage/agent-registry" target="_blank" rel="noopener">Microsoft Learn, Agent registry, agents at risk</a>, CC BY 4.0. Asset <code>learn-mac-risks-card</code>.</span></figcaption>
   </figure>
   </section>
@@ -688,12 +891,12 @@ svg .red{stroke:var(--road);fill:none;stroke-width:2.2;stroke-linecap:round}
   <h3>5.4 Connecting external platforms <span class="badge" data-badge="registry-sync"></span></h3>
   <p><a href="https://learn.microsoft.com/en-us/microsoft-agent-365/admin/connected-platforms" target="_blank" rel="noopener">Registry sync</a>, under Agents, All agents, Connected platforms, brings agents from Amazon Bedrock, Google Vertex AI, Salesforce Agentforce, Databricks Genie, Anthropic Claude Managed Agents and Oracle Generative AI Agents into the same inventory. <span data-tier="registry-sync-anthropic">The Anthropic connection is <span class="st" data-st="registry-sync-anthropic"></span> because its API is in beta.</span> Each connection needs platform credentials; the page gives exact least-privilege permission sets, and for Oracle a read-plus-delete policy in place of full management. Sync is manual today, with scheduling promised. Delete actions pass through to the source platform, which is why the credential lists include delete rights.</p>
   <figure class="shot ">
-    <div class="frame"><div class="imgwrap"><img src="images/learn-a365-registry-sync.png" alt="Connected platforms page with a Google Cloud connection and synced agents" loading="lazy"></div></div>
+    <div class="frame"><div class="imgwrap"><img src="images/learn-a365-registry-sync.png" width="1600" height="750" alt="Connected platforms page with a Google Cloud connection and synced agents" loading="lazy"></div></div>
     <figcaption><b class="fn"></b> Registry sync: one connection per external platform, with sync status and the agents it imported. <span class="src">Source: <a href="https://learn.microsoft.com/en-us/microsoft-agent-365/admin/connected-platforms" target="_blank" rel="noopener">Microsoft Learn, Connected platforms</a>, CC BY 4.0. Asset <code>learn-a365-registry-sync</code>.</span></figcaption>
   </figure>
   <p>For agents built outside Microsoft platforms that need more than inventory, the <a href="https://learn.microsoft.com/en-us/microsoft-agent-365/developer/agent-365-sdk" target="_blank" rel="noopener">Agent 365 SDK</a> adds four capabilities to an agent you already run: an Entra-backed identity, OpenTelemetry observability, governed access to Work IQ MCP tools, and notifications. It does not build, host or orchestrate. Packages exist for Python, JavaScript and .NET with extensions for LangChain, Semantic Kernel, the OpenAI Agents SDK, the Microsoft Agent Framework and the Claude Agent SDK. Notifications, and agents needing their own user account, are Frontier only.</p>
   <figure class="shot ">
-    <div class="frame"><div class="imgwrap"><img src="images/learn-a365-sdk-integration.png" alt="Diagram of built-in integrations, registry sync and SDK-integrated agents" loading="lazy"></div></div>
+    <div class="frame"><div class="imgwrap"><img src="images/learn-a365-sdk-integration.png" width="1600" height="589" alt="Diagram of built-in integrations, registry sync and SDK-integrated agents" loading="lazy"></div></div>
     <figcaption><b class="fn"></b> Where the SDK fits: platforms with built-in integration and synced platforms already appear in the inventory; the SDK is for capabilities you must configure in code. <span class="src">Source: <a href="https://learn.microsoft.com/en-us/microsoft-agent-365/developer/agent-365-sdk" target="_blank" rel="noopener">Microsoft Learn, Agent 365 SDK overview</a>, CC BY 4.0. Asset <code>learn-a365-sdk-integration</code>.</span></figcaption>
   </figure>
   <p>Copilot Studio, Foundry and Agent Builder agents integrate automatically and send observability data by default once a licence or trial is active.</p>
@@ -701,21 +904,30 @@ svg .red{stroke:var(--road);fill:none;stroke-width:2.2;stroke-linecap:round}
 
   <section id="s5-5" data-search data-tier="mde-discovery">
   <h3>5.5 Shadow AI and local agents on endpoints <span class="badge" data-badge="shadow-ai-page"></span></h3>
-  <p>Preview labels cluster here.</p>
+  <aside class="operator-note"><span class="label">Rodney's field note 02</span><strong>Three inventories can all be right and still disagree.</strong>Agent 365, Defender and Global Secure Access observe different surfaces. Compare scope before you compare counts.</aside>
+  <div class="tbl"><table>
+    <thead><tr><th>Surface</th><th>What it sees</th><th>Its boundary</th></tr></thead>
+    <tbody>
+      <tr><td>Agent 365 · Shadow AI</td><td>Consumer AI applications and standalone agents on managed Windows devices</td><td>Only OpenClaw can currently be blocked from this page</td></tr>
+      <tr><td>Agent 365 · Local agents</td><td>Developer tools deliberately installed on Intune-enrolled Windows devices</td><td>A focused developer-tool inventory, separate from unmanaged Shadow AI</td></tr>
+      <tr><td>Defender for Endpoint</td><td>A broader Windows and macOS inventory, MCP configuration and exposure paths</td><td>Endpoint discovery; it does not replace network traffic visibility</td></tr>
+      <tr><td>Global Secure Access</td><td>Internet traffic attributed to agent, user, device and process</td><td>Requires traffic forwarding; prompt and MCP detail usually require TLS inspection</td></tr>
+    </tbody>
+  </table></div>
   <p data-tier="shadow-ai-page">The <a href="https://learn.microsoft.com/en-us/microsoft-365/admin/manage/agent-shadow-ai" target="_blank" rel="noopener">Shadow AI page</a> at Agents, Shadow AI is <span class="st" data-st="shadow-ai-page"></span>. It lists consumer AI applications and standalone agents found on managed Windows devices. Prerequisites: Frontier opt-in, Defender for Endpoint, Microsoft 365 E5, Intune enrolment, and optionally Global Secure Access for traffic metadata. It detects OpenClaw, ChatGPT Desktop, Ollama Desktop, Poe Desktop, Claw and ZeroClaw, OpenCode and Claude Desktop. Blocking is available only for OpenClaw. It creates an Intune policy named A365 - Block OpenClaw that reaches all enrolled Windows devices in fifteen minutes to eight hours and can be edited in Intune.</p>
   <figure class="shot " data-tier="shadow-ai-page">
-    <div class="frame"><div class="imgwrap"><img src="images/deck-s055.png" alt="Shadow AI (Frontier) page listing OpenClaw, ChatGPT Desktop, Claude Desktop and others" loading="lazy"></div></div>
+    <div class="frame"><div class="imgwrap"><img src="images/deck-s055.png" width="1600" height="936" alt="Shadow AI (Frontier) page listing OpenClaw, ChatGPT Desktop, Claude Desktop and others" loading="lazy"></div></div>
     <figcaption><b class="fn"></b> The Shadow AI page. OpenClaw carries the red icon because it is the one agent that can be blocked from here. <span class="src">Source: workshop deck, slide 55, demo tenant. Asset <code>deck-s055</code>.</span></figcaption>
   </figure>
   <p data-tier="local-agents-page">The <a href="https://learn.microsoft.com/en-us/microsoft-365/admin/manage/agent-local" target="_blank" rel="noopener">Local agents page</a> at All agents, Local agents (Frontier) is also <span class="st" data-st="local-agents-page"></span> and deliberately separate. Shadow AI covers unmanaged autonomous applications; local agents are developer tools chosen on purpose: OpenClaw, Claude Code, Gemini CLI, GitHub Copilot CLI, and the Claude Code, Cline, Codex, Gemini Code Assist and Roo Code extensions for Visual Studio Code. Viewing needs Microsoft 365 E3 and Intune enrolment. Both pages show first access, last activity, device and user counts, and with Global Secure Access, endpoints, requests and bytes per agent, plus a per-device list with Defender last-seen timestamps.</p>
   <p data-tier="mde-discovery">Underneath sits <a href="https://learn.microsoft.com/en-us/defender-endpoint/local-agent-discovery-overview" target="_blank" rel="noopener">Defender for Endpoint local agent discovery</a>, <span class="st" data-st="mde-discovery"></span>, covering Windows and macOS and a wider set: command-line agents such as Claude Code, Codex CLI, Gemini CLI, GitHub Copilot CLI and Warp; desktop apps such as ChatGPT, Claude, Goose, Ollama and Perplexity; agentic IDEs such as Cursor and Kiro; the VS Code extensions; and claw-based agents such as OpenClaw and Clawpilot. An agent is one user, one device, one agent type, so a developer running Claude Code in fifteen folders is one entry. Discovery captures local and remote MCP server configurations, feeds an exposure map from agent to device to identity to reachable resources, and populates advanced hunting.</p>
   <div class="strip c2">
   <figure class="shot " data-tier="mde-discovery">
-    <div class="frame"><div class="imgwrap"><img src="images/deck-s056.png" alt="Defender AI Assets local agents inventory with device, user and MCP server details" loading="lazy"></div></div>
+    <div class="frame"><div class="imgwrap"><img src="images/deck-s056.png" width="1600" height="898" alt="Defender AI Assets local agents inventory with device, user and MCP server details" loading="lazy"></div></div>
     <figcaption><b class="fn"></b> Defender's local agent inventory: one row per user, device and agent type, with the MCP servers configured for each. <span class="src">Source: workshop deck, slide 56, demo tenant. Asset <code>deck-s056</code>.</span></figcaption>
   </figure>
   <figure class="shot " data-tier="mde-discovery">
-    <div class="frame"><div class="imgwrap"><img src="images/deck-s057.png" alt="Exposure map from ChatGPT Desktop through a device and identity to AWS resources" loading="lazy"></div></div>
+    <div class="frame"><div class="imgwrap"><img src="images/deck-s057.png" width="1600" height="843" alt="Exposure map from ChatGPT Desktop through a device and identity to AWS resources" loading="lazy"></div></div>
     <figcaption><b class="fn"></b> The exposure map: a local agent, the identity it runs under, and everything that identity can reach. <span class="src">Source: workshop deck, slide 57, demo tenant. Asset <code>deck-s057</code>.</span></figcaption>
   </figure>
   </div>
@@ -730,7 +942,7 @@ svg .red{stroke:var(--road);fill:none;stroke-width:2.2;stroke-linecap:round}
 
 <!-- ============================ 6 ============================ -->
 <section class="block" id="s6">
-  <div class="shead"><span class="n">06</span><h2>Govern</h2></div>
+  <div class="shead"><span class="n">06</span><div><p class="chapter-mark">Govern</p><h2>Then give every agent an owner</h2></div></div>
 
   <section id="s6-1" data-search>
   <h3>6.1 Onboarding through one IT-controlled flow</h3>
@@ -760,11 +972,11 @@ svg .red{stroke:var(--road);fill:none;stroke-width:2.2;stroke-linecap:round}
   </figure>
   <div class="strip c2">
   <figure class="shot ">
-    <div class="frame"><div class="imgwrap"><img src="images/learn-mac-requests.png" alt="Requests tab listing agents pending review" loading="lazy"></div></div>
+    <div class="frame"><div class="imgwrap"><img src="images/learn-mac-requests.png" width="1600" height="1400" alt="Requests tab listing agents pending review" loading="lazy"></div></div>
     <figcaption><b class="fn"></b> Requests: what the wizard starts from. <span class="src">Source: <a href="https://learn.microsoft.com/en-us/microsoft-365/admin/manage/agent-requests" target="_blank" rel="noopener">Microsoft Learn, Agent requests</a>, CC BY 4.0. Asset <code>learn-mac-requests</code>.</span></figcaption>
   </figure>
   <figure class="shot ">
-    <div class="frame"><div class="imgwrap"><img src="images/learn-mac-upload-template.png" alt="Apply security template step of the publish wizard" loading="lazy"></div></div>
+    <div class="frame"><div class="imgwrap"><img src="images/learn-mac-upload-template.png" width="1600" height="1037" alt="Apply security template step of the publish wizard" loading="lazy"></div></div>
     <figcaption><b class="fn"></b> The template step: default or custom policy bundle chosen before permissions. <span class="src">Source: <a href="https://learn.microsoft.com/en-us/microsoft-365/admin/manage/agent-registry" target="_blank" rel="noopener">Microsoft Learn, Upload custom agent</a>, CC BY 4.0. Asset <code>learn-mac-upload-template</code>.</span></figcaption>
   </figure>
   </div>
@@ -773,10 +985,16 @@ svg .red{stroke:var(--road);fill:none;stroke-width:2.2;stroke-linecap:round}
   <section id="s6-2" data-search>
   <h3>6.2 Policy templates</h3>
   <p>A <a href="https://learn.microsoft.com/en-us/microsoft-agent-365/admin/policy-template" target="_blank" rel="noopener">policy template</a> bundles predefined policies from Entra, Purview, SharePoint Online and Defender and applies them at onboarding. Every tenant has default policies for all agents, some enabled automatically and some needing configuration in the source product.</p>
-  <p>The defaults are: Purview audit; DSPM detection of sensitive information in AI interactions; Compliance Manager AI assessment; Identity Protection; network visibility for Copilot Studio agents; lifecycle management for agent identities; agent access insights for SharePoint and OneDrive; restrict external sharing of sites; access control for sites and OneDrive; content permission insights; Defender real-time protection and investigation; and advanced hunting. The three SharePoint policies need a Microsoft 365 Copilot licence and still require the admin to create the report or apply the setting in the SharePoint admin centre.</p>
+  <p>The defaults are easier to understand by the product that enforces them:</p>
+  <ul>
+    <li><strong>Purview:</strong> audit, DSPM detection of sensitive information in AI interactions, and the Compliance Manager AI assessment.</li>
+    <li><strong>Entra:</strong> Identity Protection, lifecycle management for agent identities, and network visibility for Copilot Studio agents through Global Secure Access.</li>
+    <li><strong>SharePoint:</strong> agent access insights, restricted external sharing, access control for SharePoint and OneDrive, and content permission insights. Three of these policies need a Microsoft 365 Copilot licence and still require the admin to create the report or apply the setting in the SharePoint admin centre.</li>
+    <li><strong>Defender:</strong> real-time protection, investigation and advanced hunting.</li>
+  </ul>
   <p>Custom templates add Entra policies of your choice: Conditional Access, access packages, and custom security attributes. Every policy must already exist in Entra. A Conditional Access policy must be scoped to at least one individual agent identity to appear in the picker; one scoped to all agent identities applies automatically and cannot be overridden. Custom security attribute policies need Attribute Assignment Administrator. AI Administrator can apply access packages but not Conditional Access or attributes. Custom templates need an Agent 365 licence.</p>
   <figure class="shot ">
-    <div class="frame"><div class="imgwrap"><img src="images/deck-s120.png" alt="Policy template pane with Conditional Access, Access Package and Custom Security Attribute policies" loading="lazy"><span class="co" style="left:55%;top:61%">1</span><span class="co" style="left:74%;top:75%">2</span></div></div>
+    <div class="frame"><div class="imgwrap"><img src="images/deck-s120.png" width="1600" height="902" alt="Policy template pane with Conditional Access, Access Package and Custom Security Attribute policies" loading="lazy"><span class="co" style="left:55%;top:61%">1</span><span class="co" style="left:74%;top:75%">2</span></div></div>
     <figcaption><b class="fn"></b> A custom template in the admin centre. Conditional Access and an access package are ticked; the custom security attribute policy is greyed out because the signed-in admin lacks Attribute Assignment Administrator. <span class="colist"><b>1</b> Access package selected <b>2</b> Role required for attributes</span> <span class="src">Source: workshop deck, slide 120, demo tenant. Asset <code>deck-s120</code>.</span></figcaption>
   </figure>
   <div class="note"><p>Templates apply only at activation; you cannot apply one to an approved agent, and edits affect future activations only. Entra policies bite only when the agent authenticates with its Entra identity; an agent using other authentication can carry the policy and bypass it at runtime. Confirm the authentication model before relying on a template for compliance evidence. <span data-tier="own-identity">AI teammate templates are <span class="st" data-st="own-identity"></span>.</span></p></div>
@@ -784,11 +1002,21 @@ svg .red{stroke:var(--road);fill:none;stroke-width:2.2;stroke-linecap:round}
 
   <section id="s6-3" data-search>
   <h3>6.3 Lifecycle actions and management rules</h3>
-  <p><a href="https://learn.microsoft.com/en-us/microsoft-365/admin/manage/agent-actions" target="_blank" rel="noopener">Actions</a> from the flyout are install and uninstall, block and unblock, delete, assign a new owner, add or remove owners, and for Foundry agents start and stop. Delete is Agent Builder only and removes the SharePoint Embedded container irreversibly, with up to twenty-four hours before all users see it gone. Owner reassignment covers shared Agent Builder and Copilot Studio agents. Multiple owners are Agent Builder only, and the last owner cannot be removed. Start and stop deallocate or provision Azure compute and need Azure AI Owner. Blocking a SharePoint or Foundry agent affects only Copilot Chat; blocking an Agent Builder or Copilot Studio agent removes it from every host.</p>
+  <p>Block and delete do not mean the same thing on every platform. The <a href="https://learn.microsoft.com/en-us/microsoft-365/admin/manage/agent-actions" target="_blank" rel="noopener">Actions</a> flyout offers install and uninstall, block and unblock, delete, owner changes and, for Foundry agents, start and stop.</p>
+  <div class="tbl"><table>
+    <thead><tr><th>Action</th><th>Applies to</th><th>What actually happens</th></tr></thead>
+    <tbody>
+      <tr><td>Delete</td><td>Agent Builder only</td><td>Removes the SharePoint Embedded container irreversibly; disappearance can take up to twenty-four hours</td></tr>
+      <tr><td>Reassign owner</td><td>Shared Agent Builder and Copilot Studio agents</td><td>Multiple owners are Agent Builder only, and the last owner cannot be removed</td></tr>
+      <tr><td>Start or stop</td><td>Foundry agents</td><td>Deallocates or provisions Azure compute and needs Azure AI Owner</td></tr>
+      <tr><td>Block</td><td>SharePoint or Foundry</td><td>Blocks the agent in Copilot Chat only</td></tr>
+      <tr><td>Block</td><td>Agent Builder or Copilot Studio</td><td>Removes the agent from every host</td></tr>
+    </tbody>
+  </table></div>
   <p>If an action fails on a Copilot Studio agent, check whether its Power Platform environment runs the IP firewall in active enforcement mode. Admin centre actions arrive from a Microsoft service IP and are rejected; audit-only mode allows them. The workaround is the Power Platform API.</p>
   <p><a href="https://learn.microsoft.com/en-us/microsoft-365/admin/manage/agent-settings" target="_blank" rel="noopener">Management rules</a> under Agents, Settings apply actions in bulk after a review step. Four exist: install Microsoft first-party agents for all users; reassign ownerless Agent Builder agents to the previous owner's manager; block ownerless agents with no usage; reject publish requests older than a set number of days. Each run shows the affected agents before applying.</p>
   <figure class="shot ">
-    <div class="frame"><div class="imgwrap"><img src="images/learn-mac-settings.png" alt="Agent settings page with management rules, allowed agent types, security templates, sharing and user access" loading="lazy"></div></div>
+    <div class="frame"><div class="imgwrap"><img src="images/learn-mac-settings.png" width="1600" height="803" alt="Agent settings page with management rules, allowed agent types, security templates, sharing and user access" loading="lazy"></div></div>
     <figcaption><b class="fn"></b> The settings page: rules, allowed types, templates, sharing, user access, feedback and tags. <span class="src">Source: <a href="https://learn.microsoft.com/en-us/microsoft-365/admin/manage/agent-settings" target="_blank" rel="noopener">Microsoft Learn, Agent settings</a>, CC BY 4.0. Asset <code>learn-mac-settings</code>.</span></figcaption>
   </figure>
   </section>
@@ -802,7 +1030,7 @@ svg .red{stroke:var(--road);fill:none;stroke-width:2.2;stroke-linecap:round}
   <h3>6.5 Tools and MCP servers</h3>
   <p><a href="https://learn.microsoft.com/en-us/microsoft-365/admin/manage/manage-tools-for-agent" target="_blank" rel="noopener">Agents, Tools, Registry</a> lists every tool and MCP server, with block and unblock. A blocked server cannot be invoked from any client. First-party examples are Dataverse, Windows 365 for Agents, MCP management, and admin tools. The page also shows which agents use which Power Platform connector, with a link to govern the connector itself.</p>
   <figure class="shot ">
-    <div class="frame"><div class="imgwrap"><img src="images/learn-mac-tools-registry.png" alt="Tools registry listing MCP servers with status and publisher" loading="lazy"></div></div>
+    <div class="frame"><div class="imgwrap"><img src="images/learn-mac-tools-registry.png" width="1600" height="1106" alt="Tools registry listing MCP servers with status and publisher" loading="lazy"></div></div>
     <figcaption><b class="fn"></b> The tools registry. A blocked server cannot be invoked from any client. <span class="src">Source: <a href="https://learn.microsoft.com/en-us/microsoft-365/admin/manage/manage-tools-for-agent" target="_blank" rel="noopener">Microsoft Learn, Manage tools for agents</a>, CC BY 4.0. Asset <code>learn-mac-tools-registry</code>.</span></figcaption>
   </figure>
   <p data-tier="byo-mcp">Bring your own MCP server is <span class="st" data-st="byo-mcp"></span>. A developer registers a remote server through the Agent 365 CLI with URL, authentication type (none, API key in header or query, external OAuth, or Entra OAuth) and declared tools. It appears under Tools, Requests; an AI or Global Administrator reviews the tools, approves, and consents to the Entra permissions the server needs. Approved servers route through the tooling gateway, which is what produces telemetry. Supported clients are Copilot Studio, Visual Studio Code, Claude Code and GitHub Copilot CLI; Foundry and declarative agents are not. Republishing a new version and deleting a registered server are both unsupported. Invocations appear in the <code>CloudAppEvents</code> table under the ExecuteToolByGateway action.</p>
@@ -815,10 +1043,10 @@ svg .red{stroke:var(--road);fill:none;stroke-width:2.2;stroke-linecap:round}
   <p>Access packages grant what the blueprint does not: security group membership, application permissions including Graph application permissions, and Entra roles. In the assignment policy, under Who can get access, choose users, service principals and agent identities in your directory, then All agents. Requests come from the agent itself, from its sponsor, or by direct admin assignment. Assignments expire. The sponsor is notified, can request an extension that may trigger fresh approval, or lets it lapse and the agent loses access. Standing access becomes the exception.</p>
   <figure class="stepper" data-mode="solo">
     <div class="frame"><div class="imgstage">
-      <img data-step="1" src="images/deck-s116.png" alt="New access package: name, description and catalogue" loading="lazy">
-      <img data-step="2" src="images/deck-s117.png" alt="Resource roles: requesting Microsoft Graph delegated permissions" loading="lazy">
-      <img data-step="3" src="images/deck-s118.png" alt="Requests: who can get access, All agents (preview), agent sponsor or owner can request" loading="lazy">
-      <img data-step="4" src="images/deck-s119.png" alt="Lifecycle: assignments expire after seven days" loading="lazy">
+      <img data-step="1" src="images/deck-s116.png" alt="New access package: name, description and catalogue" loading="lazy" width="1600" height="903">
+      <img data-step="2" src="images/deck-s117.png" alt="Resource roles: requesting Microsoft Graph delegated permissions" loading="lazy" width="1600" height="900">
+      <img data-step="3" src="images/deck-s118.png" alt="Requests: who can get access, All agents (preview), agent sponsor or owner can request" loading="lazy" width="1600" height="900">
+      <img data-step="4" src="images/deck-s119.png" alt="Lifecycle: assignments expire after seven days" loading="lazy" width="1600" height="898">
     </div></div>
     <div class="steps"><button type="button" class="sbtn prev">Previous</button><span class="scount"></span><button type="button" class="sbtn next">Next</button></div>
     <figcaption><b class="fn"></b> Building an access package for agents in Entra, four screens. <span class="stext" data-texts='["Basics: a package named for the agent class, in the Agent 365 catalogue.","Resource roles: the Graph permissions this class of agent may hold. Delegated or application, chosen deliberately.","Requests: who can get access is set to All agents (preview); who can request includes the agent sponsor or owner.","Lifecycle: assignments expire after a set number of days. Standing access is the exception."]'></span> <span class="src">Source: workshop deck, slides 116 to 119, demo tenant. Assets <code>deck-s116</code> to <code>deck-s119</code>.</span></figcaption>
@@ -855,29 +1083,29 @@ svg .red{stroke:var(--road);fill:none;stroke-width:2.2;stroke-linecap:round}
   <p>Audit covers agent-to-human, human-to-agent, agent-to-tool and agent-to-agent interactions, with dedicated Agent 365 activities in the unified audit log and the AI activities tab of activity explorer. Data lifecycle management applies retention and deletion in Teams, SharePoint, OneDrive and email. Communication Compliance detects non-compliant content in agent conversations across Teams and email with built-in classifiers. eDiscovery finds interactions in the associated mailbox; treat the instance as a custodian and filter on Copilot activity. Compliance Manager provides AI regulation templates.</p>
   <div class="strip c2">
   <figure class="shot ">
-    <div class="frame"><div class="imgwrap"><img src="images/deck-s080.png" alt="Purview audit search results with ConnectedAIAppInteraction records" loading="lazy"></div></div>
+    <div class="frame"><div class="imgwrap"><img src="images/deck-s080.png" width="1600" height="900" alt="Purview audit search results with ConnectedAIAppInteraction records" loading="lazy"></div></div>
     <figcaption><b class="fn"></b> Audit: agent interactions land in the unified audit log with their own record types. <span class="src">Source: workshop deck, slide 80, demo tenant. Asset <code>deck-s080</code>.</span></figcaption>
   </figure>
   <figure class="shot ">
-    <div class="frame"><div class="imgwrap"><img src="images/deck-s078.png" alt="Retention policy for AI agents data, keep then delete after seven years" loading="lazy"></div></div>
+    <div class="frame"><div class="imgwrap"><img src="images/deck-s078.png" width="1600" height="900" alt="Retention policy for AI agents data, keep then delete after seven years" loading="lazy"></div></div>
     <figcaption><b class="fn"></b> Data lifecycle: a retention policy scoped to agent data. <span class="src">Source: workshop deck, slide 78, demo tenant. Asset <code>deck-s078</code>.</span></figcaption>
   </figure>
   <figure class="shot ">
-    <div class="frame"><div class="imgwrap"><img src="images/deck-s077.png" alt="Communication Compliance policy for unethical behaviour in AI agents with matched sources" loading="lazy"></div></div>
+    <div class="frame"><div class="imgwrap"><img src="images/deck-s077.png" width="1600" height="900" alt="Communication Compliance policy for unethical behaviour in AI agents with matched sources" loading="lazy"></div></div>
     <figcaption><b class="fn"></b> Communication Compliance: a policy for unethical behaviour in agent conversations, with matches across channels. <span class="src">Source: workshop deck, slide 77, demo tenant. Asset <code>deck-s077</code>.</span></figcaption>
   </figure>
   <figure class="shot ">
-    <div class="frame"><div class="imgwrap"><img src="images/deck-s079.png" alt="eDiscovery review set showing an agent conversation with custodian and label metadata" loading="lazy"></div></div>
+    <div class="frame"><div class="imgwrap"><img src="images/deck-s079.png" width="1600" height="900" alt="eDiscovery review set showing an agent conversation with custodian and label metadata" loading="lazy"></div></div>
     <figcaption><b class="fn"></b> eDiscovery: an agent interaction in a review set with custodian, retention label and sensitivity label. <span class="src">Source: workshop deck, slide 79, demo tenant. Asset <code>deck-s079</code>.</span></figcaption>
   </figure>
   </div>
   <p>Start on the DSPM AI observability page in the new Purview portal. Classic DSPM for AI does not support Agent 365. The page lists every agent active in the last thirty days, ranked by the Insider Risk Management risk level, with risky activities grouped as oversharing, exfiltration and unethical behaviour, and per-agent recommendations.</p>
   <figure class="shot ">
-    <div class="frame"><div class="imgwrap"><img src="images/deck-s085.png" alt="Purview DSPM AI observability page with agent registry, risk levels and policy coverage" loading="lazy"></div></div>
+    <div class="frame"><div class="imgwrap"><img src="images/deck-s085.png" width="1600" height="900" alt="Purview DSPM AI observability page with agent registry, risk levels and policy coverage" loading="lazy"></div></div>
     <figcaption><b class="fn"></b> DSPM AI observability: every agent with a risk level from Insider Risk Management, the sensitive interaction trend and policy coverage. <span class="src">Source: workshop deck, slide 85, demo tenant. Asset <code>deck-s085</code>.</span></figcaption>
   </figure>
   <div class="yt" data-id="CrAJZy7ne3Q" data-start="0">
-    <div class="ytframe"><img src="https://i.ytimg.com/vi/CrAJZy7ne3Q/hqdefault.jpg" alt="" loading="lazy"><button type="button" class="ytplay" aria-label="Play video: Agent 365: controls for data security and compliance in Purview"><span></span></button></div>
+    <div class="ytframe"><img src="https://i.ytimg.com/vi/CrAJZy7ne3Q/hqdefault.jpg" alt="" width="480" height="360" loading="lazy"><button type="button" class="ytplay" aria-label="Play video: Agent 365: controls for data security and compliance in Purview"><span></span></button></div>
     <div class="ytmeta"><p class="ytt">Agent 365: controls for data security and compliance in Purview</p><div class="chapters"><button type="button" data-t="0">Registry and shadow agents</button><button type="button" data-t="0">Runtime block of labelled files</button><button type="button" data-t="0">DLP on agent-drafted messages</button><button type="button" data-t="0">Communication Compliance and Audit</button></div><p class="muted small">Microsoft Mechanics on YouTube. Nothing loads until you press play.</p></div>
   </div>
   </section>
@@ -890,7 +1118,8 @@ svg .red{stroke:var(--road);fill:none;stroke-width:2.2;stroke-linecap:round}
 
 <!-- ============================ 7 ============================ -->
 <section class="block" id="s7">
-  <div class="shead"><span class="n">07</span><h2>Secure</h2></div>
+  <div class="shead"><span class="n">07</span><div><p class="chapter-mark">Secure</p><h2>Stop the action, not just the identity</h2></div></div>
+  <aside class="operator-note"><span class="label">The dependency people miss</span><strong>The identity can be trusted while the action is unsafe.</strong>Conditional Access decides whether an identity may proceed. Runtime protection still has to decide whether this particular prompt, response or tool call should execute.</aside>
 
   <section id="s7-1" data-search>
   <h3>7.1 Identity <span class="badge" data-badge="agent-id"></span></h3>
@@ -916,7 +1145,7 @@ svg .red{stroke:var(--road);fill:none;stroke-width:2.2;stroke-linecap:round}
   </figure>
 
   <h4>How tokens flow</h4>
-  <p>The <a href="https://learn.microsoft.com/en-us/entra/agent-id/agent-on-behalf-of-oauth-flow" target="_blank" rel="noopener">on-behalf-of exchange</a> has six steps. The user authenticates and receives a token audienced to the blueprint. The client hands it to the blueprint. The blueprint presents its credential to Entra and receives an exchange token for the child identity it is impersonating. The identity sends an on-behalf-of request carrying both tokens. Entra validates both, checks the exchange token is bound to the blueprint and resolves to that child, and issues a resource token to the identity. The identity uses it against the resource. A refresh token variant supports background work.</p>
+  <p>The <a href="https://learn.microsoft.com/en-us/entra/agent-id/agent-on-behalf-of-oauth-flow" target="_blank" rel="noopener">on-behalf-of exchange</a> matters because Entra never gives the agent the user's original token. The blueprint proves its own identity, the child identity carries both contexts into the exchange, and Entra issues a resource token only after validating the chain. Conditional Access evaluates at that final issuance. The stepper below carries the six-step mechanics; a refresh-token variant supports background work.</p>
   <p>An autonomous agent skips the user token: the blueprint obtains an exchange token, the identity trades it for a resource token, and the subject is the agent identity. Agent users add one further exchange so the final subject is the user account.</p>
 
   <figure class="stepper" data-mode="cumulative">
@@ -981,7 +1210,7 @@ svg .red{stroke:var(--road);fill:none;stroke-width:2.2;stroke-linecap:round}
   </ol>
   <p>Run every policy in report-only first. Agent traffic patterns will surprise you.</p>
   <figure class="shot " data-tier="ca-agent-risk">
-    <div class="frame"><div class="imgwrap"><img src="images/deck-s124.png" alt="Conditional Access policy for all agent identities with the Agent risk (Preview) condition set to High and Medium, grant Block access" loading="lazy"><span class="co" style="left:24%;top:47%">1</span><span class="co" style="left:86%;top:30%">2</span><span class="co" style="left:23%;top:75%">3</span></div></div>
+    <div class="frame"><div class="imgwrap"><img src="images/deck-s124.png" width="1600" height="924" alt="Conditional Access policy for all agent identities with the Agent risk (Preview) condition set to High and Medium, grant Block access" loading="lazy"><span class="co" style="left:24%;top:47%">1</span><span class="co" style="left:86%;top:30%">2</span><span class="co" style="left:23%;top:75%">3</span></div></div>
     <figcaption><b class="fn"></b> Policy three in the sequence: all agent identities, all resources, Agent risk condition, block. Report-only is the first stop. <span class="colist"><b>1</b> All agent identities <b>2</b> Agent risk levels <b>3</b> Block access</span> <span class="src">Source: workshop deck, slide 124, demo tenant. Asset <code>deck-s124</code>.</span></figcaption>
   </figure>
 
@@ -1002,14 +1231,14 @@ svg .red{stroke:var(--road);fill:none;stroke-width:2.2;stroke-linecap:round}
   </table></div>
   <p>In on-behalf-of flows risk is attributed to the user, so remediation lands on the compromised session without disrupting the agent for others. The Risky agents report supports confirm compromise, confirm safe, dismiss and disable; detections are kept ninety days and export through diagnostic settings. Licence enforcement for this feature is coming.</p>
   <figure class="shot ">
-    <div class="frame"><div class="imgwrap"><img src="images/deck-s125.png" alt="ID Protection risky agent details pane with confirm compromised, confirm safe, dismiss and disable actions" loading="lazy"></div></div>
+    <div class="frame"><div class="imgwrap"><img src="images/deck-s125.png" width="1600" height="923" alt="ID Protection risky agent details pane with confirm compromised, confirm safe, dismiss and disable actions" loading="lazy"></div></div>
     <figcaption><b class="fn"></b> A risky agent in ID Protection: risk state, level, the sponsor, and the four actions an analyst can take. <span class="src">Source: workshop deck, slide 125, demo tenant. Asset <code>deck-s125</code>.</span></figcaption>
   </figure>
 
   <h4>Platform specifics</h4>
   <p><a href="https://learn.microsoft.com/en-us/microsoft-copilot-studio/admin-use-entra-agent-identities" target="_blank" rel="noopener">Copilot Studio</a> has created an Entra Agent ID for every new agent since May 2026 under a tenant blueprint named Microsoft Copilot Studio agent identity blueprint; opting out is no longer possible. Older agents keep app registrations until migrated, manually or by Microsoft. On publish, the agent's connectors become API permissions on its identity, so a specific connector can be targeted with Conditional Access. Foundry provisions a default blueprint and identity per project and a dedicated pair on publish. The Agent 365 CLI creates blueprints and instances explicitly for any framework.</p>
   <figure class="shot ">
-    <div class="frame"><div class="imgwrap"><img src="images/deck-s123.png" alt="Entra admin centre overview of a Copilot Studio agent identity showing sponsors, owners, blueprint and granted permissions" loading="lazy"><span class="co" style="left:43%;top:47%">1</span><span class="co" style="left:57%;top:62%">2</span><span class="co" style="left:82%;top:72%">3</span></div></div>
+    <div class="frame"><div class="imgwrap"><img src="images/deck-s123.png" width="1600" height="933" alt="Entra admin centre overview of a Copilot Studio agent identity showing sponsors, owners, blueprint and granted permissions" loading="lazy"><span class="co" style="left:43%;top:47%">1</span><span class="co" style="left:57%;top:62%">2</span><span class="co" style="left:82%;top:72%">3</span></div></div>
     <figcaption><b class="fn"></b> What an agent identity looks like in Entra: sponsor, owner, the parent blueprint, granted permissions and links to its Conditional Access policies and access packages. <span class="colist"><b>1</b> Sponsor and owner <b>2</b> Parent blueprint <b>3</b> Policies and packages</span> <span class="src">Source: workshop deck, slide 123, demo tenant. Asset <code>deck-s123</code>.</span></figcaption>
   </figure>
   </section>
@@ -1027,16 +1256,16 @@ svg .red{stroke:var(--road);fill:none;stroke-width:2.2;stroke-linecap:round}
   <p>The practical order is classify and label first, base access on risk rather than identity alone, prevent oversharing before it becomes a breach, and enforce at the moment of interaction.</p>
   <div class="strip c2">
   <figure class="shot ">
-    <div class="frame"><div class="imgwrap"><img src="images/deck-s088.png" alt="DSPM agent overview page showing high risk level with insider risk alerts and risky activities" loading="lazy"></div></div>
+    <div class="frame"><div class="imgwrap"><img src="images/deck-s088.png" width="1600" height="900" alt="DSPM agent overview page showing high risk level with insider risk alerts and risky activities" loading="lazy"></div></div>
     <figcaption><b class="fn"></b> One agent's risk profile in DSPM: the Insider Risk level, active alerts and counts of oversharing, exfiltration and unethical activity. <span class="src">Source: workshop deck, slide 88, demo tenant. Asset <code>deck-s088</code>.</span></figcaption>
   </figure>
   <figure class="shot ">
-    <div class="frame"><div class="imgwrap"><img src="images/deck-s090.png" alt="Insider Risk Management alert: agent attempt at sensitive file exfiltration with a three-step sequence and scatter plot" loading="lazy"></div></div>
+    <div class="frame"><div class="imgwrap"><img src="images/deck-s090.png" width="1600" height="900" alt="Insider Risk Management alert: agent attempt at sensitive file exfiltration with a three-step sequence and scatter plot" loading="lazy"></div></div>
     <figcaption><b class="fn"></b> An Insider Risk Management alert on an agent: access, exfiltration attempt blocked by DLP, and a communication risk, plotted as a sequence. <span class="src">Source: workshop deck, slide 90, demo tenant. Asset <code>deck-s090</code>.</span></figcaption>
   </figure>
   </div>
   <figure class="shot ">
-    <div class="frame"><div class="imgwrap"><img src="images/deck-s091.png" alt="Activity explorer DLP rule match detail: policy, rule triggered, action taken message blocked, blocked files with Confidential labels" loading="lazy"><span class="co" style="left:85%;top:61%">1</span><span class="co" style="left:83%;top:92%">2</span></div></div>
+    <div class="frame"><div class="imgwrap"><img src="images/deck-s091.png" width="1600" height="900" alt="Activity explorer DLP rule match detail: policy, rule triggered, action taken message blocked, blocked files with Confidential labels" loading="lazy"><span class="co" style="left:85%;top:61%">1</span><span class="co" style="left:83%;top:92%">2</span></div></div>
     <figcaption><b class="fn"></b> The DLP rule match in activity explorer: which policy, which rule, the blocked message and the labelled files it would have carried. <span class="colist"><b>1</b> Action taken: message blocked <b>2</b> Blocked files and labels</span> <span class="src">Source: workshop deck, slide 91, demo tenant. Asset <code>deck-s091</code>.</span></figcaption>
   </figure>
   </section>
@@ -1046,14 +1275,14 @@ svg .red{stroke:var(--road);fill:none;stroke-width:2.2;stroke-linecap:round}
   <h4>Enabling Defender for agents</h4>
   <p>Onboarding to Agent 365 <a href="https://learn.microsoft.com/en-us/defender-xdr/security-for-ai/get-started-defender-security-for-ai" target="_blank" rel="noopener">enables Security for AI</a> automatically. Confirm at Settings, Security for AI, Get started, where two steps remain. Connect the Microsoft 365 connector with Entra ID management events and Microsoft 365 activities selected; without it, Copilot Studio real-time protection still blocks but its alerts do not reach the portal. For Copilot Studio real-time protection, toggle it on, hand the generated URL to a Power Platform administrator, and paste the resulting App ID back. Security Administrator is required.</p>
   <figure class="shot ">
-    <div class="frame"><div class="imgwrap"><img src="images/learn-xdr-setup.png" alt="Security for AI setup checklist in the Defender portal" loading="lazy"></div></div>
+    <div class="frame"><div class="imgwrap"><img src="images/learn-xdr-setup.png" width="1600" height="986" alt="Security for AI setup checklist in the Defender portal" loading="lazy"></div></div>
     <figcaption><b class="fn"></b> The setup checklist: Agent 365 done automatically, the Microsoft 365 connector and Copilot Studio still to do. <span class="src">Source: <a href="https://learn.microsoft.com/en-us/defender-xdr/security-for-ai/get-started-defender-security-for-ai" target="_blank" rel="noopener">Microsoft Learn, Enable security for AI agents</a>, CC BY 4.0. Asset <code>learn-xdr-setup</code>.</span></figcaption>
   </figure>
 
   <h4>Inventory and posture</h4>
   <p><a href="https://learn.microsoft.com/en-us/defender-xdr/security-for-ai/ai-agent-inventory" target="_blank" rel="noopener">Assets, AI agents</a> lists agents from Copilot Studio, Foundry, Microsoft 365, supported non-Microsoft platforms and endpoints, each with risk level, indicators, recommendation count and active alerts. <span data-tier="defender-posture"><a href="https://learn.microsoft.com/en-us/defender-xdr/security-for-ai/ai-agent-risk-assessment" target="_blank" rel="noopener">Posture risk</a> is <span class="st" data-st="defender-posture"></span>. Indicators include weak instructions, high usage, indirect prompt injection exposure, privileged business-system access and active threat; local agents add critical device, critical user, vulnerable device and privileged development access. Risk level and recommendations are computed separately, so a high-risk agent may have none and a low-risk agent may have one.</span> <code>AgentsInfo</code> stores snapshots; use <code>arg_max(Timestamp, *) by AgentId</code> for current state.</p>
   <figure class="shot " data-tier="defender-posture">
-    <div class="frame"><div class="imgwrap"><img src="images/deck-s045.png" alt="Defender agent page for a Finance Data Analysis Agent: high risk, blast radius, attack surface graph, twelve recommendations" loading="lazy"><span class="co" style="left:24%;top:17%">1</span><span class="co" style="left:47%;top:60%">2</span><span class="co" style="left:81%;top:52%">3</span></div></div>
+    <div class="frame"><div class="imgwrap"><img src="images/deck-s045.png" width="1600" height="900" alt="Defender agent page for a Finance Data Analysis Agent: high risk, blast radius, attack surface graph, twelve recommendations" loading="lazy"><span class="co" style="left:24%;top:17%">1</span><span class="co" style="left:47%;top:60%">2</span><span class="co" style="left:81%;top:52%">3</span></div></div>
     <figcaption><b class="fn"></b> One agent in Defender: risk level and factors, active alerts, the attack surface graph to its tools and MCP servers, and prioritised recommendations. <span class="colist"><b>1</b> Risk factors <b>2</b> Attack surface graph <b>3</b> Recommendations</span> <span class="src">Source: workshop deck, slide 45, demo tenant. Asset <code>deck-s045</code>.</span></figcaption>
   </figure>
 
@@ -1062,11 +1291,11 @@ svg .red{stroke:var(--road);fill:none;stroke-width:2.2;stroke-linecap:round}
   <p>A default rule audits all agents and records matches as behaviours. Custom rules block. Create them under Settings, Security for AI, Policies and rules, Real-time protection, scoped to agents that hold an Entra Agent ID, with detection types secret exfiltration, malicious content propagation, evasion techniques and unsafe email domain. Events land in <code>BehaviorInfo</code> with agent, user and tool, which is where custom detections and automation are built. A blocking rule replaces near-real-time alerts for the agents it covers. Prompt evidence collection, on by default, includes redacted suspicious snippets in alerts; disable it under Settings, Security for AI if data handling rules require.</p>
   <div class="strip c2">
   <figure class="shot ">
-    <div class="frame"><div class="imgwrap"><img src="images/deck-s049.png" alt="Real-time protection rules list with a default audit rule and a custom block rule" loading="lazy"></div></div>
+    <div class="frame"><div class="imgwrap"><img src="images/deck-s049.png" width="1600" height="900" alt="Real-time protection rules list with a default audit rule and a custom block rule" loading="lazy"></div></div>
     <figcaption><b class="fn"></b> The rules list: the built-in audit rule covers all agents; a custom rule blocks, scoped with one exclusion. <span class="src">Source: workshop deck, slide 49, demo tenant. Asset <code>deck-s049</code>.</span></figcaption>
   </figure>
   <figure class="shot ">
-    <div class="frame"><div class="imgwrap"><img src="images/learn-xdr-detection-types.png" alt="Detection types dropdown: secret exfiltration, malicious content propagation, evasion techniques, unsafe email domain" loading="lazy"></div></div>
+    <div class="frame"><div class="imgwrap"><img src="images/learn-xdr-detection-types.png" width="1600" height="1038" alt="Detection types dropdown: secret exfiltration, malicious content propagation, evasion techniques, unsafe email domain" loading="lazy"></div></div>
     <figcaption><b class="fn"></b> The four detection types a blocking rule can carry. <span class="src">Source: <a href="https://learn.microsoft.com/en-us/defender-xdr/security-for-ai/ai-agent-real-time-protection" target="_blank" rel="noopener">Microsoft Learn, Real-time protection</a>, CC BY 4.0. Asset <code>learn-xdr-detection-types</code>.</span></figcaption>
   </figure>
   </div>
@@ -1097,20 +1326,20 @@ svg .red{stroke:var(--road);fill:none;stroke-width:2.2;stroke-linecap:round}
   </figure>
   <div class="strip c3">
   <figure class="shot " data-tier="defender-nrt">
-    <div class="frame"><div class="imgwrap"><img src="images/deck-s046.png" alt="Incidents and alerts tab listing a multi-stage prompt injection and malicious URL campaign" loading="lazy"></div></div>
+    <div class="frame"><div class="imgwrap"><img src="images/deck-s046.png" width="1600" height="908" alt="Incidents and alerts tab listing a multi-stage prompt injection and malicious URL campaign" loading="lazy"></div></div>
     <figcaption><b class="fn"></b> Incidents on an agent: a multi-stage prompt injection campaign correlated into one incident. <span class="src">Source: workshop deck, slide 46, demo tenant. Asset <code>deck-s046</code>.</span></figcaption>
   </figure>
   <figure class="shot " data-tier="defender-nrt">
-    <div class="frame"><div class="imgwrap"><img src="images/deck-s047.png" alt="Incident attack story with a graph linking the agent, a malicious URL and a user" loading="lazy"></div></div>
+    <div class="frame"><div class="imgwrap"><img src="images/deck-s047.png" width="1600" height="900" alt="Incident attack story with a graph linking the agent, a malicious URL and a user" loading="lazy"></div></div>
     <figcaption><b class="fn"></b> The attack story: agent, malicious URL and the user who submitted it, in one graph. <span class="src">Source: workshop deck, slide 47, demo tenant. Asset <code>deck-s047</code>.</span></figcaption>
   </figure>
   <figure class="shot ">
-    <div class="frame"><div class="imgwrap"><img src="images/deck-s048.png" alt="Advanced hunting community query for AI agents with MCP tools using maker credentials" loading="lazy"></div></div>
+    <div class="frame"><div class="imgwrap"><img src="images/deck-s048.png" width="1600" height="839" alt="Advanced hunting community query for AI agents with MCP tools using maker credentials" loading="lazy"></div></div>
     <figcaption><b class="fn"></b> Advanced hunting: a community query finding agents whose MCP tools run on the maker's own credentials. <span class="src">Source: workshop deck, slide 48, demo tenant. Asset <code>deck-s048</code>.</span></figcaption>
   </figure>
   </div>
   <div class="yt" data-id="DMzkIq_DzhE" data-start="0">
-    <div class="ytframe"><img src="https://i.ytimg.com/vi/DMzkIq_DzhE/hqdefault.jpg" alt="" loading="lazy"><button type="button" class="ytplay" aria-label="Play video: Agent 365: security operations in Defender"><span></span></button></div>
+    <div class="ytframe"><img src="https://i.ytimg.com/vi/DMzkIq_DzhE/hqdefault.jpg" alt="" width="480" height="360" loading="lazy"><button type="button" class="ytplay" aria-label="Play video: Agent 365: security operations in Defender"><span></span></button></div>
     <div class="ytmeta"><p class="ytt">Agent 365: security operations in Defender</p><div class="chapters"><button type="button" data-t="0">Agent inventory</button><button type="button" data-t="0">Alerts to incident graph</button><button type="button" data-t="0">Real-time block of a malicious tool call</button><button type="button" data-t="0">Hunting templates and Conditional Access from an incident</button></div><p class="muted small">Microsoft Mechanics on YouTube. Nothing loads until you press play.</p></div>
   </div>
   </section>
@@ -1134,28 +1363,28 @@ Set-MpPreference -AiAgentNetworkInspection Audit</code></pre>
   <p data-tier="mde-runtime">There is no native Intune policy; deploy the same commands as a PowerShell platform script in system context. Microsoft's rollout is audit on a small group for one to two weeks, review, widen, then Block by device group. In Block mode the user sees the block in the terminal and as a toast, protection history records it, and a Suspicious AI prompt injection alert reaches the SOC with process context; in Audit mode the alert is informational. Tamper protection covers the setting.</p>
   <div class="strip c2">
   <figure class="shot " data-tier="mde-runtime">
-    <div class="frame"><div class="imgwrap"><img src="images/deck-s059.png" alt="Claude Code terminal: Read readme.md blocked, tool result blocked by Microsoft Defender, Windows Security toast" loading="lazy"><span class="co" style="left:42%;top:41%">1</span><span class="co" style="left:90%;top:88%">2</span></div></div>
+    <div class="frame"><div class="imgwrap"><img src="images/deck-s059.png" width="1600" height="858" alt="Claude Code terminal: Read readme.md blocked, tool result blocked by Microsoft Defender, Windows Security toast" loading="lazy"><span class="co" style="left:42%;top:41%">1</span><span class="co" style="left:90%;top:88%">2</span></div></div>
     <figcaption><b class="fn"></b> Defender blocks a tool call. The read never happens, the agent explains it was blocked, and Windows Security shows a toast. <span class="colist"><b>1</b> Tool result blocked <b>2</b> Toast</span> <span class="src">Source: workshop deck, slide 59, demo tenant. Asset <code>deck-s059</code>.</span></figcaption>
   </figure>
   <figure class="shot " data-tier="mde-runtime">
-    <div class="frame"><div class="imgwrap"><img src="images/deck-s060.png" alt="Claude Code session where a PostToolUse hook returns a blocking error and a Data Loss Prevention dialogue says interaction blocked due to sensitive info sharing" loading="lazy"><span class="co" style="left:38%;top:72%">1</span><span class="co" style="left:84%;top:60%">2</span></div></div>
+    <div class="frame"><div class="imgwrap"><img src="images/deck-s060.png" width="1299" height="868" alt="Claude Code session where a PostToolUse hook returns a blocking error and a Data Loss Prevention dialogue says interaction blocked due to sensitive info sharing" loading="lazy"><span class="co" style="left:38%;top:72%">1</span><span class="co" style="left:84%;top:60%">2</span></div></div>
     <figcaption><b class="fn"></b> Purview blocks the same loop on content. The file was read by the hook, judged sensitive, and never reached the model. <span class="colist"><b>1</b> Hook returned blocking error <b>2</b> DLP dialogue</span> <span class="src">Source: workshop deck, slide 60, demo tenant. Asset <code>deck-s060</code>.</span></figcaption>
   </figure>
   </div>
   <figure class="shot " data-tier="mde-runtime">
-    <div class="frame"><div class="imgwrap"><img src="images/deck-s061.png" alt="Defender alert Suspicious AI prompt injection with process tree showing claude.exe and Trojan:AIMCP/PromptInjection.A!Hook" loading="lazy"><span class="co" style="left:43%;top:72%">1</span><span class="co" style="left:84%;top:22%">2</span></div></div>
+    <div class="frame"><div class="imgwrap"><img src="images/deck-s061.png" width="1600" height="857" alt="Defender alert Suspicious AI prompt injection with process tree showing claude.exe and Trojan:AIMCP/PromptInjection.A!Hook" loading="lazy"><span class="co" style="left:43%;top:72%">1</span><span class="co" style="left:84%;top:22%">2</span></div></div>
     <figcaption><b class="fn"></b> What the SOC sees: a Suspicious AI prompt injection alert with the process tree, the detection name and MITRE technique. <span class="colist"><b>1</b> Detection in claude.exe <b>2</b> Alert severity and state</span> <span class="src">Source: workshop deck, slide 61, demo tenant. Asset <code>deck-s061</code>.</span></figcaption>
   </figure>
   <figure class="shot " data-tier="mde-discovery">
-    <div class="frame"><div class="imgwrap"><img src="images/deck-s062.png" alt="Advanced hunting query over the exposure graph linking local AI agents to sensitive and critical assets" loading="lazy"></div></div>
+    <div class="frame"><div class="imgwrap"><img src="images/deck-s062.png" width="1600" height="769" alt="Advanced hunting query over the exposure graph linking local AI agents to sensitive and critical assets" loading="lazy"></div></div>
     <figcaption><b class="fn"></b> Hunting from the endpoint side: which local agents can reach sensitive or critical assets through the identity they run under. <span class="src">Source: workshop deck, slide 62, demo tenant. Asset <code>deck-s062</code>.</span></figcaption>
   </figure>
   <p>Containment at the operating system is the least mature layer. Intune blocks unsanctioned agents through the Shadow AI page, today OpenClaw only, and can require device compliance for agent Conditional Access. The service description also lists a policy-controlled runtime through <a href="https://learn.microsoft.com/en-us/windows-365/agents/introduction-windows-365-for-agents" target="_blank" rel="noopener">Windows 365 for Agents</a>, Intune-managed Cloud PCs that agents check out and in. <span data-tier="mxc">Isolated execution containers with per-agent file and network permissions appear only in the <a href="https://blogs.windows.com/windowsdeveloper/2026/06/02/windows-platform-security-for-ai-agents/" target="_blank" rel="noopener">Windows platform blog</a> as Microsoft Execution Containers, <span class="st" data-st="mxc"></span> on Insider builds. Treat them as roadmap.</span></p>
   <figure class="shot narrow" data-tier="mxc">
-    <div class="frame"><div class="imgwrap"><img src="images/deck-s063.png" alt="Intune Create Policy, Agent execution (Preview): targeted agent OpenClaw, allow execution in container, allowed filesystem directories with read and read/write, allow network access" loading="lazy"></div></div>
+    <div class="frame"><div class="imgwrap"><img src="images/deck-s063.png" width="705" height="726" alt="Intune Create Policy, Agent execution (Preview): targeted agent OpenClaw, allow execution in container, allowed filesystem directories with read and read/write, allow network access" loading="lazy"></div></div>
     <figcaption><b class="fn"></b> The Intune agent execution policy as shown in the workshop: a targeted agent, container execution, per-directory read or write, and a network switch. Preview, and not yet on Microsoft Learn. <span class="src">Source: workshop deck, slide 63, demo tenant. Asset <code>deck-s063</code>.</span></figcaption>
   </figure>
-  <figure class="sketch">
+  <figure class="sketch" id="fig-local-agent-layers">
     <div class="frame">
     <svg viewBox="0 0 900 340" role="img" aria-labelledby="flt">
       <title id="flt">Hand-drawn: a developer's laptop with three rings around it labelled see it, govern it, contain it</title>
@@ -1208,17 +1437,17 @@ Set-MpPreference -AiAgentNetworkInspection Audit</code></pre>
   <h3>7.5 Network controls on agent traffic <span class="badge" data-badge="gsa-copilot-studio"></span></h3>
   <p><a href="https://learn.microsoft.com/en-us/entra/global-secure-access/concept-secure-web-ai-gateway-agents" target="_blank" rel="noopener">Global Secure Access for Copilot Studio agents</a> is enabled per environment in the Power Platform admin centre. HTTP node traffic, custom connectors and the MCP server connector then route through GSA and meet the baseline profile: web content filtering, threat intelligence filtering and network file filtering. Local agents on devices with the GSA client are covered by the Internet Access profile.</p>
   <figure class="shot ">
-    <div class="frame"><div class="imgwrap"><img src="images/deck-s134.png" alt="Global Secure Access web filtering rule with session type set to Agent, HTTP methods POST PATCH PUT DELETE, and two destinations" loading="lazy"><span class="co" style="left:43%;top:64%">1</span><span class="co" style="left:43%;top:76%">2</span></div></div>
+    <div class="frame"><div class="imgwrap"><img src="images/deck-s134.png" width="1600" height="729" alt="Global Secure Access web filtering rule with session type set to Agent, HTTP methods POST PATCH PUT DELETE, and two destinations" loading="lazy"><span class="co" style="left:43%;top:64%">1</span><span class="co" style="left:43%;top:76%">2</span></div></div>
     <figcaption><b class="fn"></b> A web filtering rule scoped to agent sessions only: write methods to named destinations, with users untouched. <span class="colist"><b>1</b> Session type: Agent <b>2</b> HTTP methods</span> <span class="src">Source: workshop deck, slide 134, demo tenant. Asset <code>deck-s134</code>.</span></figcaption>
   </figure>
   <p><a href="https://learn.microsoft.com/en-us/entra/global-secure-access/how-to-ai-prompt-injection-protection" target="_blank" rel="noopener">Prompt injection protection</a> applies Prompt Shields inline to eleven supported models plus custom JSON endpoints, without code changes. It needs Entra Internet Access, TLS inspection, and a prompt policy linked to a security profile applied by Conditional Access. Text only, up to 64,000 characters, JSON applications only.</p>
   <figure class="shot ">
-    <div class="frame"><div class="imgwrap"><img src="images/learn-gsa-prompt-shield.png" alt="Architecture diagram of prompt injection protection in Global Secure Access" loading="lazy"></div></div>
+    <div class="frame"><div class="imgwrap"><img src="images/learn-gsa-prompt-shield.png" width="1600" height="914" alt="Architecture diagram of prompt injection protection in Global Secure Access" loading="lazy"></div></div>
     <figcaption><b class="fn"></b> Where prompt injection protection sits: inline in the network path, before the prompt reaches the model. <span class="src">Source: <a href="https://learn.microsoft.com/en-us/entra/global-secure-access/how-to-ai-prompt-injection-protection" target="_blank" rel="noopener">Microsoft Learn, Prompt injection protection</a>, CC BY 4.0. Asset <code>learn-gsa-prompt-shield</code>.</span></figcaption>
   </figure>
   <p data-tier="gsa-mcp-firewall">The <a href="https://learn.microsoft.com/en-us/entra/global-secure-access/how-to-configure-mcp-firewall" target="_blank" rel="noopener">MCP firewall</a> is <span class="st" data-st="gsa-mcp-firewall"></span>. It inspects MCP over streamable HTTP and server-sent events to remote servers and can block all MCP, allow or deny servers by URL, allow or block tools, resources and prompt templates per server, and block outdated versions or unencrypted transport. Discover usage first through Generative AI Insights, which suggests servers seen recently. Local servers, stdio transport and JSON-RPC batches are not inspected.</p>
   <figure class="shot " data-tier="gsa-mcp-firewall">
-    <div class="frame"><div class="imgwrap"><img src="images/learn-gsa-mcp-tools.png" alt="MCP policy rule editor showing discovered tools on a server with classifications" loading="lazy"></div></div>
+    <div class="frame"><div class="imgwrap"><img src="images/learn-gsa-mcp-tools.png" width="1600" height="868" alt="MCP policy rule editor showing discovered tools on a server with classifications" loading="lazy"></div></div>
     <figcaption><b class="fn"></b> Discovering a server's tools from inside the policy editor, so a rule can name exactly the tool to block. <span class="src">Source: <a href="https://learn.microsoft.com/en-us/entra/global-secure-access/how-to-configure-mcp-firewall" target="_blank" rel="noopener">Microsoft Learn, Configure MCP firewall</a>, CC BY 4.0. Asset <code>learn-gsa-mcp-tools</code>.</span></figcaption>
   </figure>
   <figure class="mcp" data-mode="allow">
@@ -1238,7 +1467,7 @@ Set-MpPreference -AiAgentNetworkInspection Audit</code></pre>
   </figure>
   <p data-tier="gsa-genai-insights">Generative AI Insights events, including prompt bodies and MCP payloads, stream to Sentinel through the NetworkAccessGenerativeAIInsights diagnostic category.</p>
   <div class="yt" data-id="G6Aot9UCePU" data-start="220">
-    <div class="ytframe"><img src="https://i.ytimg.com/vi/G6Aot9UCePU/hqdefault.jpg" alt="" loading="lazy"><button type="button" class="ytplay" aria-label="Play video: Zero Trust security for AI agents"><span></span></button></div>
+    <div class="ytframe"><img src="https://i.ytimg.com/vi/G6Aot9UCePU/hqdefault.jpg" alt="" width="480" height="360" loading="lazy"><button type="button" class="ytplay" aria-label="Play video: Zero Trust security for AI agents"><span></span></button></div>
     <div class="ytmeta"><p class="ytt">Zero Trust security for AI agents</p><div class="chapters"><button type="button" data-t="220">03:40 Conditional Access for agent identities</button><button type="button" data-t="299">04:59 Agent ID and access packages</button><button type="button" data-t="367">06:07 Runtime observability</button><button type="button" data-t="418">06:58 DLP, labels and data access governance</button><button type="button" data-t="467">07:47 MCP catalogue</button></div><p class="muted small">Microsoft Mechanics on YouTube. Nothing loads until you press play.</p></div>
   </div>
   </section>
@@ -1246,18 +1475,25 @@ Set-MpPreference -AiAgentNetworkInspection Audit</code></pre>
 
 <!-- ============================ 8 ============================ -->
 <section class="block" id="s8">
-  <div class="shead"><span class="n">08</span><h2>Running an evaluation</h2></div>
+  <div class="shead"><span class="n">08</span><h2>A twelve-week evaluation you can actually run</h2></div>
   <p>Microsoft's proof-of-concept template supplies three workstreams and a twelve-week rhythm. Success criteria below are reworded so each can be verified against a documented capability.</p>
 
   <section id="s8-1" data-search>
   <h3>8.1 Three workstreams</h3>
-  <p><strong>Observe</strong> validates the registry against your own inventory, exercises approve, reject, block, delete and reassign, connects one external platform, and integrates one agent through the SDK where relevant. Success: a complete inventory of in-scope agents, visibility of how they touch data, tools and each other, and adoption insight.</p>
-  <p><strong>Govern</strong> builds policy templates, provisions agent identities and validates their lifecycle, creates access packages and reviews, enforces Conditional Access against test scenarios, and confirms audit reaches Sentinel. Success: Agent ID and Conditional Access demonstrably enforced on test agents, blueprints validated, and an audit pipeline a reviewer can query.</p>
-  <p><strong>Secure</strong> establishes a DSPM baseline, validates DLP enforcement and incident traceability, reviews Defender posture recommendations, and runs detection scenarios against Foundry and Copilot Studio agents. Success: a completed exfiltration simulation with evidence, and two or three detections producing an incident in the tenant.</p>
+  <p>Each workstream must end in evidence, not another workshop.</p>
+  <div class="tbl"><table>
+    <thead><tr><th>Route</th><th>Test</th><th>Evidence at the end</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Observe</strong></td><td>Reconcile the registry with your inventory; exercise approve, reject, block, delete and reassign; connect one external platform; integrate one SDK agent where relevant</td><td>A complete in-scope inventory, visibility into data and tool relationships, and adoption insight</td></tr>
+      <tr><td><strong>Govern</strong></td><td>Build policy templates; provision agent identities and validate lifecycle; create access packages and reviews; test Conditional Access; confirm audit reaches Sentinel</td><td>Agent ID and Conditional Access enforced on test agents, validated blueprints, and a queryable audit pipeline</td></tr>
+      <tr><td><strong>Secure</strong></td><td>Establish a DSPM baseline; validate DLP and incident traceability; review Defender posture; run Foundry and Copilot Studio detection scenarios</td><td>An evidenced exfiltration simulation and two or three detections joined into a tenant incident</td></tr>
+    </tbody>
+  </table></div>
   </section>
 
   <section id="s8-2" data-search>
-  <h3>8.2 A twelve-week plan</h3>
+  <h3>8.2 The named workshop rhythm across twelve weeks</h3>
+  <p>The source names workshops in weeks 1, 2 and 4 to 10, with a weekly sync throughout. It assigns no standalone activity to weeks 3, 11 or 12.</p>
   <div class="tbl"><table>
     <thead><tr><th>Week</th><th>Activity</th><th>Team</th></tr></thead>
     <tbody>
@@ -1276,16 +1512,16 @@ Set-MpPreference -AiAgentNetworkInspection Audit</code></pre>
     <svg viewBox="0 0 900 200" role="img" aria-labelledby="ftt">
       <title id="ftt">Twelve-week evaluation timeline with workshops in weeks one, two, four, five, six, seven to eight and nine to ten, and a weekly sync throughout</title>
       <line x1="40" y1="120" x2="860" y2="120" class="st"/>
-      <g class="m"><line x1="40" y1="114" x2="40" y2="126" stroke="var(--ink-3)"/><text x="40" y="146" text-anchor="middle">1</text><line x1="108" y1="114" x2="108" y2="126" stroke="var(--ink-3)"/><text x="108" y="146" text-anchor="middle">2</text><line x1="177" y1="114" x2="177" y2="126" stroke="var(--ink-3)"/><text x="177" y="146" text-anchor="middle">3</text><line x1="245" y1="114" x2="245" y2="126" stroke="var(--ink-3)"/><text x="245" y="146" text-anchor="middle">4</text><line x1="313" y1="114" x2="313" y2="126" stroke="var(--ink-3)"/><text x="313" y="146" text-anchor="middle">5</text><line x1="382" y1="114" x2="382" y2="126" stroke="var(--ink-3)"/><text x="382" y="146" text-anchor="middle">6</text><line x1="450" y1="114" x2="450" y2="126" stroke="var(--ink-3)"/><text x="450" y="146" text-anchor="middle">7</text><line x1="518" y1="114" x2="518" y2="126" stroke="var(--ink-3)"/><text x="518" y="146" text-anchor="middle">8</text><line x1="586" y1="114" x2="586" y2="126" stroke="var(--ink-3)"/><text x="586" y="146" text-anchor="middle">9</text><line x1="655" y1="114" x2="655" y2="126" stroke="var(--ink-3)"/><text x="655" y="146" text-anchor="middle">10</text><line x1="723" y1="114" x2="723" y2="126" stroke="var(--ink-3)"/><text x="723" y="146" text-anchor="middle">11</text><line x1="791" y1="114" x2="791" y2="126" stroke="var(--ink-3)"/><text x="791" y="146" text-anchor="middle">12</text><line x1="860" y1="114" x2="860" y2="126" stroke="var(--ink-3)"/><text x="860" y="146" text-anchor="middle">13</text></g>
+      <g class="m"><line x1="40" y1="114" x2="40" y2="126" stroke="var(--ink-3)"/><text x="40" y="146" text-anchor="middle">1</text><line x1="115" y1="114" x2="115" y2="126" stroke="var(--ink-3)"/><text x="115" y="146" text-anchor="middle">2</text><line x1="189" y1="114" x2="189" y2="126" stroke="var(--ink-3)"/><text x="189" y="146" text-anchor="middle">3</text><line x1="264" y1="114" x2="264" y2="126" stroke="var(--ink-3)"/><text x="264" y="146" text-anchor="middle">4</text><line x1="338" y1="114" x2="338" y2="126" stroke="var(--ink-3)"/><text x="338" y="146" text-anchor="middle">5</text><line x1="413" y1="114" x2="413" y2="126" stroke="var(--ink-3)"/><text x="413" y="146" text-anchor="middle">6</text><line x1="487" y1="114" x2="487" y2="126" stroke="var(--ink-3)"/><text x="487" y="146" text-anchor="middle">7</text><line x1="562" y1="114" x2="562" y2="126" stroke="var(--ink-3)"/><text x="562" y="146" text-anchor="middle">8</text><line x1="636" y1="114" x2="636" y2="126" stroke="var(--ink-3)"/><text x="636" y="146" text-anchor="middle">9</text><line x1="711" y1="114" x2="711" y2="126" stroke="var(--ink-3)"/><text x="711" y="146" text-anchor="middle">10</text><line x1="785" y1="114" x2="785" y2="126" stroke="var(--ink-3)"/><text x="785" y="146" text-anchor="middle">11</text><line x1="860" y1="114" x2="860" y2="126" stroke="var(--ink-3)"/><text x="860" y="146" text-anchor="middle">12</text></g>
       <text x="40" y="164" class="m">week</text>
       <g font-size="10">
         <circle cx="40" cy="120" r="7" class="fa"/><text x="40" y="60" text-anchor="middle" class="d">Kick-off</text><text x="40" y="74" text-anchor="middle" class="m">licences, roles</text>
-        <circle cx="108" cy="120" r="7" class="fa"/><text x="108" y="90" text-anchor="middle" class="d">Observe</text><text x="108" y="104" text-anchor="middle" class="m">admin centre</text>
-        <circle cx="245" cy="120" r="7" class="fa"/><text x="245" y="60" text-anchor="middle" class="d">Govern</text><text x="245" y="74" text-anchor="middle" class="m">Entra</text>
-        <circle cx="313" cy="120" r="7" class="fa"/><text x="313" y="90" text-anchor="middle" class="d">Secure</text><text x="313" y="104" text-anchor="middle" class="m">Defender</text>
-        <circle cx="382" cy="120" r="7" class="fa"/><text x="382" y="60" text-anchor="middle" class="d">Secure</text><text x="382" y="74" text-anchor="middle" class="m">Purview</text>
-        <rect x="444" y="113" width="82" height="14" rx="7" class="fa"/><text x="485" y="90" text-anchor="middle" class="d">Developers</text><text x="485" y="104" text-anchor="middle" class="m">SDK and CLI</text>
-        <rect x="581" y="113" width="82" height="14" rx="7" class="fa"/><text x="622" y="60" text-anchor="middle" class="d">Detection testing</text><text x="622" y="74" text-anchor="middle" class="m">Foundry, Copilot Studio</text>
+        <circle cx="115" cy="120" r="7" class="fa"/><text x="115" y="90" text-anchor="middle" class="d">Observe</text><text x="115" y="104" text-anchor="middle" class="m">admin centre</text>
+        <circle cx="264" cy="120" r="7" class="fa"/><text x="264" y="60" text-anchor="middle" class="d">Govern</text><text x="264" y="74" text-anchor="middle" class="m">Entra</text>
+        <circle cx="338" cy="120" r="7" class="fa"/><text x="338" y="90" text-anchor="middle" class="d">Secure</text><text x="338" y="104" text-anchor="middle" class="m">Defender</text>
+        <circle cx="413" cy="120" r="7" class="fa"/><text x="413" y="60" text-anchor="middle" class="d">Secure</text><text x="413" y="74" text-anchor="middle" class="m">Purview</text>
+        <rect x="480" y="113" width="89" height="14" rx="7" class="fa"/><text x="525" y="90" text-anchor="middle" class="d">Developers</text><text x="525" y="104" text-anchor="middle" class="m">SDK and CLI</text>
+        <rect x="629" y="113" width="89" height="14" rx="7" class="fa"/><text x="674" y="60" text-anchor="middle" class="d">Detection testing</text><text x="674" y="74" text-anchor="middle" class="m">Foundry, Copilot Studio</text>
         <text x="860" y="186" text-anchor="end" class="m">Weekly one-hour sync throughout</text>
       </g>
     </svg>
@@ -1296,24 +1532,33 @@ Set-MpPreference -AiAgentNetworkInspection Audit</code></pre>
 
   <section id="s8-3" data-search>
   <h3>8.3 Responsibilities</h3>
-  <p>Executive sponsorship and sign-off sit with the customer. Tenant provisioning is customer-accountable with Microsoft or a partner responsible. Discovery is shared. Pillar deployment and policy definition are partner-led with the customer accountable. Validation is partner-led with the customer consulted. Adoption is customer-led. Governance actions need an AI Administrator in the room and investigation needs Security Reader at minimum; those are usually different people.</p>
+  <p>The customer owns every final decision. Microsoft or a partner may lead delivery; neither owns acceptance.</p>
+  <div class="tbl"><table>
+    <thead><tr><th>Work</th><th>Delivery lead</th><th>Customer role</th></tr></thead>
+    <tbody>
+      <tr><td>Executive sponsorship and sign-off</td><td>Customer</td><td>Owns and approves</td></tr>
+      <tr><td>Tenant provisioning</td><td>Microsoft or partner</td><td>Accountable</td></tr>
+      <tr><td>Discovery</td><td>Shared</td><td>Participates and validates scope</td></tr>
+      <tr><td>Pillar deployment and policy definition</td><td>Microsoft or partner</td><td>Accountable</td></tr>
+      <tr><td>Validation</td><td>Microsoft or partner</td><td>Consulted and accepts evidence</td></tr>
+      <tr><td>Adoption</td><td>Customer</td><td>Leads</td></tr>
+    </tbody>
+  </table></div>
+  <p>Governance actions need an AI Administrator in the room. Investigation needs Security Reader at minimum. Those are usually different people.</p>
   </section>
 </section>
 
 <!-- ============================ 9 ============================ -->
 <section class="block" id="s9" data-search>
-  <div class="shead"><span class="n">09</span><h2>Starter checklist</h2></div>
+  <div class="shead"><span class="n">09</span><h2>The first ten moves</h2></div>
+  <p>Use this as the production handoff after the evaluation has produced evidence.</p>
   <ol class="check">
     <li><div>Inventory before policy. Get every agent into the registry: Microsoft, partner, published, shared, synced and discovered. Export on day one.</div></li>
-    <li><div>Assign a sponsor to every agent identity and enable the three sponsor lifecycle tasks.</div></li>
-    <li><div>Model agents as a distinct identity class: blueprints for classes, identities for instances, agent users only where unavoidable. Managed identities or certificates on blueprints, never secrets.</div></li>
+    <li><div>Assign every agent identity a sponsor and enable the three sponsor lifecycle tasks. Use blueprints for classes, identities for instances and agent users only where unavoidable. Put managed identities or certificates on blueprints, never secrets.</div></li>
     <li><div>Design Conditional Access at the token issuance boundary. Block-all excluding approved agents in report-only, then custom security attributes, then the high-risk block from the template.</div></li>
-    <li><div>Connect existing Entra, Purview, SharePoint and Defender policies through templates, and confirm each agent authenticates with its Entra identity.</div></li>
-    <li><div>Replace standing access with expiring access packages under sponsor review.</div></li>
-    <li><div>Label data first and check encrypting labels grant agent instances VIEW and EXTRACT. Then add instances to DLP and Insider Risk Management policies.</div></li>
-    <li><div>Confirm audit on every instance, set retention, enable Communication Compliance classifiers, and run one eDiscovery search on an agent mailbox.</div></li>
-    <li><div>In Defender, confirm the Security for AI toggle, connect the Microsoft 365 connector, onboard Copilot Studio real-time protection, and leave the default audit rule running two weeks before writing blocking rules.</div></li>
-    <li><div>Prioritise posture work by blast radius: high usage plus privileged access plus excessive permissions.</div></li>
+    <li><div>Connect existing Entra, Purview, SharePoint and Defender policies through templates, confirm each agent uses its Entra identity, and replace standing access with expiring access packages under sponsor review.</div></li>
+    <li><div>Label data first and check encrypting labels grant agent instances VIEW and EXTRACT. Add instances to DLP and Insider Risk Management, then confirm audit, retention and Communication Compliance and run one eDiscovery search on an agent mailbox.</div></li>
+    <li><div>In Defender, confirm the Security for AI toggle, connect the Microsoft 365 connector and onboard Copilot Studio real-time protection. Leave the default audit rule running for two weeks, then prioritise posture by blast radius: high usage, privileged access and excessive permissions.</div></li>
     <li><div>Decide the local-agent stance per device group. Runtime protection in audit on developer devices first. Block OpenClaw if present. Treat container isolation as roadmap.</div></li>
     <li><div>With Entra Internet Access, put prompt injection protection in front of the models users reach and pilot the MCP firewall in default-block with an allow-list.</div></li>
     <li><div>Route everything into the SOC you already run: Defender incidents, the six hunting tables, and Generative AI Insights in Sentinel.</div></li>
@@ -1323,7 +1568,7 @@ Set-MpPreference -AiAgentNetworkInspection Audit</code></pre>
 
 <!-- ============================ 10 ============================ -->
 <section class="block" id="s10" data-search>
-  <div class="shead"><span class="n">10</span><h2>Availability at a glance</h2></div>
+  <div class="shead"><span class="n">10</span><h2>What you can deploy today</h2></div>
   <p class="muted">Rendered from the data block at the top of this file. Reviewed <span data-val="reviewed"></span>.</p>
   <div class="tbl"><table id="avail">
     <thead><tr><th>Capability</th><th>Status</th><th>Note</th><th>Where</th></tr></thead>
@@ -1366,11 +1611,25 @@ Set-MpPreference -AiAgentNetworkInspection Audit</code></pre>
 <script>
 (function(){
   const D = window.A365;
+  const root = document.documentElement;
   const cap = Object.fromEntries(D.capabilities.map(c => [c.key, c]));
   const get = (path) => path.split('.').reduce((o,k)=>o && o[k], D);
 
+  /* Keep sticky-header offsets accurate across the two-row mobile header. */
+  const header = document.querySelector('.topbar');
+  const syncHeaderHeight = () => root.style.setProperty('--header-h', Math.ceil(header.getBoundingClientRect().height + 12) + 'px');
+  syncHeaderHeight();
+  if ('ResizeObserver' in window) new ResizeObserver(syncHeaderHeight).observe(header);
+  window.addEventListener('resize', syncHeaderHeight, {passive:true});
+
   /* --- Render values from the data block --- */
   document.querySelectorAll('[data-val]').forEach(el => { const v = get(el.dataset.val); if (v != null) el.textContent = v; });
+  const visibleCaps = D.capabilities.filter(c => !c.hidden);
+  const summaries = {
+    capabilities: visibleCaps.length,
+    previews: visibleCaps.filter(c => c.tier !== 'ga').length
+  };
+  document.querySelectorAll('[data-summary]').forEach(el => { const v = summaries[el.dataset.summary]; if (v != null) el.textContent = v; });
   document.querySelectorAll('[data-badge]').forEach(el => {
     const c = cap[el.dataset.badge]; if (!c) return;
     el.textContent = D.tiers[c.tier].label; el.classList.add('t-' + c.tier);
@@ -1393,6 +1652,8 @@ Set-MpPreference -AiAgentNetworkInspection Audit</code></pre>
 
   /* --- Table of contents --- */
   const list = document.getElementById('toc-list');
+  const toc = document.getElementById('toc'), tt = document.getElementById('toc-toggle');
+  const mobileNav = matchMedia('(max-width: 960px)');
   const heads = document.querySelectorAll('article h2, article h3');
   heads.forEach(h => {
     const sec = h.closest('section'); if (!sec || !sec.id) return;
@@ -1409,15 +1670,38 @@ Set-MpPreference -AiAgentNetworkInspection Audit</code></pre>
   const setCurrent = (id) => {
     if (current === id) return; current = id;
     links.forEach(a => a.removeAttribute('aria-current'));
-    const a = links.get(id); if (a) { a.setAttribute('aria-current','true'); a.scrollIntoView({block:'nearest'}); }
+    const a = links.get(id);
+    if (a) {
+      a.setAttribute('aria-current','true');
+      if (!mobileNav.matches) {
+        const top = a.offsetTop - (toc.clientHeight / 2) + (a.offsetHeight / 2);
+        toc.scrollTo({top:Math.max(0, top), behavior:'smooth'});
+      }
+    }
   };
   const targets = [...links.keys()].map(id => document.getElementById(id)).filter(Boolean);
   const onScroll = () => {
-    const y = window.scrollY + 120; let best = targets[0];
-    for (const t of targets) { if (t.classList.contains('is-hidden')) continue; if (t.offsetTop <= y) best = t; else break; }
+    const y = window.scrollY + header.getBoundingClientRect().height + 68; let best = targets[0];
+    for (const t of targets) {
+      if (t.classList.contains('is-hidden')) continue;
+      const top = t.getBoundingClientRect().top + window.scrollY;
+      if (top <= y) best = t; else break;
+    }
     if (best) setCurrent(best.id);
   };
-  window.addEventListener('scroll', onScroll, {passive:true}); onScroll();
+  const refreshSpy = () => requestAnimationFrame(onScroll);
+  const alignInitialHash = () => {
+    const id = decodeURIComponent(location.hash.slice(1)); if (!id) return refreshSpy();
+    const target = document.getElementById(id); if (!target || target.classList.contains('is-hidden')) return;
+    const offset = header.getBoundingClientRect().height + 16;
+    root.classList.add('no-smooth');
+    window.scrollTo({top:window.scrollY + target.getBoundingClientRect().top - offset, behavior:'auto'});
+    requestAnimationFrame(() => root.classList.remove('no-smooth')); refreshSpy();
+  };
+  window.addEventListener('scroll', onScroll, {passive:true});
+  window.addEventListener('hashchange', refreshSpy);
+  window.addEventListener('load', () => { const ready = document.fonts ? document.fonts.ready : Promise.resolve(); ready.then(() => setTimeout(alignInitialHash, 50)); });
+  refreshSpy();
 
   /* --- GA-only filter and search --- */
   const q = document.getElementById('q'), ga = document.getElementById('ga-only'), count = document.getElementById('count');
@@ -1534,13 +1818,26 @@ Set-MpPreference -AiAgentNetworkInspection Audit</code></pre>
   /* --- YouTube facade --- */
   document.querySelectorAll('.yt').forEach(box=>{
     const id=box.dataset.id, frame=box.querySelector('.ytframe');
+    const direct=document.createElement('a');
+    direct.className='watchlink'; direct.href='https://www.youtube.com/watch?v='+id; direct.target='_blank'; direct.rel='noopener'; direct.textContent='Watch on YouTube ↗';
+    box.querySelector('.ytmeta').appendChild(direct);
     function load(t){ frame.innerHTML='<iframe src="https://www.youtube-nocookie.com/embed/'+id+'?start='+(t|0)+'&autoplay=1&rel=0" title="YouTube video" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>'; }
     box.querySelector('.ytplay').addEventListener('click',()=>load(+box.dataset.start||0));
     box.querySelectorAll('.chapters button').forEach(b=>b.addEventListener('click',()=>load(+b.dataset.t)));
   });
 
+  /* Documentation links remain in the reading flow; portals and media may open separately. */
+  document.querySelectorAll('a[target="_blank"]').forEach(a => {
+    try {
+      const host = new URL(a.href).hostname;
+      if (host === 'learn.microsoft.com' || host === 'www.microsoft.com' || host === 'blogs.windows.com') {
+        a.removeAttribute('target'); a.removeAttribute('rel');
+      }
+    } catch(e){}
+  });
+
   /* --- Theme --- */
-  const root = document.documentElement, tbtn = document.getElementById('theme');
+  const tbtn = document.getElementById('theme');
   try { const saved = localStorage.getItem('a365-theme'); if (saved) root.dataset.theme = saved; } catch(e){}
   tbtn.addEventListener('click', () => {
     const dark = root.dataset.theme === 'dark' || (!root.dataset.theme && matchMedia('(prefers-color-scheme: dark)').matches);
@@ -1549,9 +1846,14 @@ Set-MpPreference -AiAgentNetworkInspection Audit</code></pre>
   });
 
   /* --- Mobile contents toggle --- */
-  const tt = document.getElementById('toc-toggle'), toc = document.getElementById('toc');
-  tt.addEventListener('click', () => { const open = tt.getAttribute('aria-expanded') === 'true'; tt.setAttribute('aria-expanded', String(!open)); toc.hidden = open; });
-  if (matchMedia('(max-width: 960px)').matches) { toc.hidden = true; tt.setAttribute('aria-expanded','false'); }
+  function setToc(open){
+    toc.hidden = !open; tt.setAttribute('aria-expanded', String(open)); tt.textContent = open ? 'Close' : 'Sections';
+  }
+  tt.addEventListener('click', () => setToc(tt.getAttribute('aria-expanded') !== 'true'));
+  list.addEventListener('click', e => { if (mobileNav.matches && e.target.closest('a')) setToc(false); });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape' && mobileNav.matches && !toc.hidden) { setToc(false); tt.focus(); } });
+  mobileNav.addEventListener('change', e => { if (e.matches) setToc(false); else { toc.hidden = false; tt.setAttribute('aria-expanded','false'); tt.textContent = 'Sections'; } });
+  if (mobileNav.matches) setToc(false); else toc.hidden = false;
 })();
 </script>
 </body>
