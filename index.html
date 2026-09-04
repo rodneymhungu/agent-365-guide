@@ -641,7 +641,7 @@ footer{border-block-start:8px solid var(--ink);background:var(--paper-2)}
 <!-- ============================ 1 ============================ -->
 <section class="block" id="s1" data-search>
   <div class="shead"><span class="n">01</span><h2>The control plane does not enforce anything</h2></div>
-  <p>Agent 365 is a control plane, not an enforcement engine. It inventories every agent in the tenant, approves and retires them, and attaches policies to them. Enforcement happens in products you already run: <a href="https://learn.microsoft.com/en-us/microsoft-agent-365/admin/capabilities-entra" target="_blank" rel="noopener">Microsoft Entra</a> for identity, <a href="https://learn.microsoft.com/en-us/purview/ai-agent-365" target="_blank" rel="noopener">Microsoft Purview</a> for data and compliance, <a href="https://learn.microsoft.com/en-us/defender-xdr/security-for-ai/defender-security-for-ai" target="_blank" rel="noopener">Microsoft Defender</a> for threats, Microsoft Intune for device posture, and the <a href="https://learn.microsoft.com/en-us/microsoft-365/admin/manage/agent-365-overview" target="_blank" rel="noopener">Microsoft 365 admin centre</a> for lifecycle and availability.</p>
+  <p>Agent 365 is a control plane. It inventories every agent in the tenant, approves and retires them, and attaches policies to them. Enforcement happens in products you already run: <a href="https://learn.microsoft.com/en-us/microsoft-agent-365/admin/capabilities-entra" target="_blank" rel="noopener">Microsoft Entra</a> for identity, <a href="https://learn.microsoft.com/en-us/purview/ai-agent-365" target="_blank" rel="noopener">Microsoft Purview</a> for data and compliance, <a href="https://learn.microsoft.com/en-us/defender-xdr/security-for-ai/defender-security-for-ai" target="_blank" rel="noopener">Microsoft Defender</a> for threats, Microsoft Intune for device posture, and the <a href="https://learn.microsoft.com/en-us/microsoft-365/admin/manage/agent-365-overview" target="_blank" rel="noopener">Microsoft 365 admin centre</a> for lifecycle and availability.</p>
   <p>The product reached general availability on <span data-val="gaDate"></span>, licensed per user. The <a href="https://learn.microsoft.com/en-us/microsoft-agent-365/overview" target="_blank" rel="noopener">overview</a> states it works best with Microsoft 365 E5 and needs at least one user with a qualifying licence. Agents themselves need no licence at GA: every agent owned or managed by a licensed user is covered. The exception is the <a href="https://learn.microsoft.com/en-us/microsoft-agent-365/frontier" target="_blank" rel="noopener">Frontier preview programme</a>, which licenses per agent instance.</p>
   <p>Microsoft's three pillars are Observe, Govern and Secure. This guide follows that order because each pillar depends on the one before it.</p>
   <aside class="operator-note"><span class="label">Rodney's field note 01</span><strong>Inventory is not containment.</strong>A clean registry can still hide an unprotected runtime. Test the enforcing product.</aside>
@@ -781,7 +781,7 @@ footer{border-block-start:8px solid var(--ink);background:var(--paper-2)}
 <!-- ============================ 4 ============================ -->
 <section class="block" id="s4" data-search>
   <div class="shead"><span class="n">04</span><h2>Five products share the enforcement path</h2></div>
-  <p>Microsoft describes Observe as real-time visibility into the agent estate, Govern as guardrails across the agent lifecycle, and Secure as extending existing identity, data and threat protection to agents. Engineers need two answers: which product enforces the control, and who owns it. Every row is a product you already administer.</p>
+  <p>Microsoft describes Observe as real-time visibility into the agent estate, Govern as guardrails across the agent lifecycle, and Secure as extending existing identity, data and threat protection to agents. Engineers need two answers: which product enforces the control, and who owns it.</p>
   <div class="tbl"><table>
     <thead><tr><th>Pillar</th><th>Capability</th><th>Enforced in</th><th>Owned by</th></tr></thead>
     <tbody>
@@ -920,7 +920,7 @@ footer{border-block-start:8px solid var(--ink);background:var(--paper-2)}
     <figcaption><b class="fn"></b> The Shadow AI page. OpenClaw carries the red icon because it is the one agent that can be blocked from here. <span class="src">Source: workshop deck, slide 55, demo tenant. Asset <code>deck-s055</code>.</span></figcaption>
   </figure>
   <p data-tier="local-agents-page">The <a href="https://learn.microsoft.com/en-us/microsoft-365/admin/manage/agent-local" target="_blank" rel="noopener">Local agents page</a> at All agents, Local agents (Frontier) is also <span class="st" data-st="local-agents-page"></span> and deliberately separate. Shadow AI covers unmanaged autonomous applications; local agents are developer tools chosen on purpose: OpenClaw, Claude Code, Gemini CLI, GitHub Copilot CLI, and the Claude Code, Cline, Codex, Gemini Code Assist and Roo Code extensions for Visual Studio Code. Viewing needs Microsoft 365 E3 and Intune enrolment. Both pages show first access, last activity, device and user counts, and with Global Secure Access, endpoints, requests and bytes per agent, plus a per-device list with Defender last-seen timestamps.</p>
-  <p data-tier="mde-discovery">Underneath sits <a href="https://learn.microsoft.com/en-us/defender-endpoint/local-agent-discovery-overview" target="_blank" rel="noopener">Defender for Endpoint local agent discovery</a>, <span class="st" data-st="mde-discovery"></span>, covering Windows and macOS and a wider set: command-line agents such as Claude Code, Codex CLI, Gemini CLI, GitHub Copilot CLI and Warp; desktop apps such as ChatGPT, Claude, Goose, Ollama and Perplexity; agentic IDEs such as Cursor and Kiro; the VS Code extensions; and claw-based agents such as OpenClaw and Clawpilot. An agent is one user, one device, one agent type, so a developer running Claude Code in fifteen folders is one entry. Discovery captures local and remote MCP server configurations, feeds an exposure map from agent to device to identity to reachable resources, and populates advanced hunting.</p>
+  <p data-tier="mde-discovery">Beneath it, <a href="https://learn.microsoft.com/en-us/defender-endpoint/local-agent-discovery-overview" target="_blank" rel="noopener">Defender for Endpoint local agent discovery</a>, <span class="st" data-st="mde-discovery"></span>, covers Windows and macOS and a wider set: command-line agents such as Claude Code, Codex CLI, Gemini CLI, GitHub Copilot CLI and Warp; desktop apps such as ChatGPT, Claude, Goose, Ollama and Perplexity; agentic IDEs such as Cursor and Kiro; the VS Code extensions; and claw-based agents such as OpenClaw and Clawpilot. An agent is one user, one device, one agent type, so a developer running Claude Code in fifteen folders is one entry. Discovery captures local and remote MCP server configurations, feeds an exposure map from agent to device to identity to reachable resources, and populates advanced hunting.</p>
   <div class="strip c2">
   <figure class="shot " data-tier="mde-discovery">
     <div class="frame"><div class="imgwrap"><img src="images/deck-s056.png" width="1600" height="898" alt="Defender AI Assets local agents inventory with device, user and MCP server details" loading="lazy"></div></div>
@@ -931,7 +931,7 @@ footer{border-block-start:8px solid var(--ink);background:var(--paper-2)}
     <figcaption><b class="fn"></b> The exposure map: a local agent, the identity it runs under, and everything that identity can reach. <span class="src">Source: workshop deck, slide 57, demo tenant. Asset <code>deck-s057</code>.</span></figcaption>
   </figure>
   </div>
-  <p data-tier="gsa-agent-discovery">A third layer sits in Global Secure Access. <a href="https://learn.microsoft.com/en-us/entra/global-secure-access/concept-ai-agent-discovery" target="_blank" rel="noopener">AI agent discovery</a>, <span class="st" data-st="gsa-agent-discovery"></span>, classifies agents reaching the internet from devices with the GSA client as managed or shadow by whether they hold an Entra Agent ID, and attributes traffic to user, device and process. <a href="https://learn.microsoft.com/en-us/entra/global-secure-access/concept-shadow-ai-discovery" target="_blank" rel="noopener">Shadow AI discovery</a> is application-level and uses the Defender for Cloud Apps catalogue to score AI SaaS, model provider APIs and SaaS MCP servers. <a href="https://learn.microsoft.com/en-us/entra/global-secure-access/concept-generative-ai-insights" target="_blank" rel="noopener">Generative AI Insights</a>, <span class="st" data-st="gsa-genai-insights"></span>, logs prompt content to eleven supported applications and every MCP operation to remote servers, discovered by protocol inspection rather than catalogue. All three need Internet Access traffic forwarding; prompt and MCP logging need TLS inspection except on the Copilot Studio path.</p>
+  <p data-tier="gsa-agent-discovery">Global Secure Access adds a third layer. <a href="https://learn.microsoft.com/en-us/entra/global-secure-access/concept-ai-agent-discovery" target="_blank" rel="noopener">AI agent discovery</a>, <span class="st" data-st="gsa-agent-discovery"></span>, classifies agents reaching the internet from devices with the GSA client as managed or shadow by whether they hold an Entra Agent ID, and attributes traffic to user, device and process. <a href="https://learn.microsoft.com/en-us/entra/global-secure-access/concept-shadow-ai-discovery" target="_blank" rel="noopener">Shadow AI discovery</a> is application-level and uses the Defender for Cloud Apps catalogue to score AI SaaS, model provider APIs and SaaS MCP servers. <a href="https://learn.microsoft.com/en-us/entra/global-secure-access/concept-generative-ai-insights" target="_blank" rel="noopener">Generative AI Insights</a>, <span class="st" data-st="gsa-genai-insights"></span>, logs prompt content to eleven supported applications and every MCP operation to remote servers, discovered by protocol inspection rather than catalogue. All three need Internet Access traffic forwarding; prompt and MCP logging need TLS inspection except on the Copilot Studio path.</p>
   </section>
 
   <section id="s5-6" data-search>
@@ -1118,7 +1118,7 @@ footer{border-block-start:8px solid var(--ink);background:var(--paper-2)}
 
 <!-- ============================ 7 ============================ -->
 <section class="block" id="s7">
-  <div class="shead"><span class="n">07</span><div><p class="chapter-mark">Secure</p><h2>Stop the action, not just the identity</h2></div></div>
+  <div class="shead"><span class="n">07</span><div><p class="chapter-mark">Secure</p><h2>Last, stop the action itself</h2></div></div>
   <aside class="operator-note"><span class="label">The dependency people miss</span><strong>The identity can be trusted while the action is unsafe.</strong>Conditional Access decides whether an identity may proceed. Runtime protection still has to decide whether this particular prompt, response or tool call should execute.</aside>
 
   <section id="s7-1" data-search>
@@ -1253,7 +1253,7 @@ footer{border-block-start:8px solid var(--ink);background:var(--paper-2)}
     <li>Endpoint DLP can warn or block users pasting sensitive data into third-party AI sites in a browser on onboarded Windows devices.</li>
     <li>Encryption without a sensitivity label is the one capability listed as unsupported.</li>
   </ul>
-  <p>The practical order is classify and label first, base access on risk rather than identity alone, prevent oversharing before it becomes a breach, and enforce at the moment of interaction.</p>
+  <p>The order that works: label first, gate access on risk rather than identity alone, fix oversharing before an agent finds it, and block at the moment of interaction.</p>
   <div class="strip c2">
   <figure class="shot ">
     <div class="frame"><div class="imgwrap"><img src="images/deck-s088.png" width="1600" height="900" alt="DSPM agent overview page showing high risk level with insider risk alerts and risky activities" loading="lazy"></div></div>
@@ -1322,7 +1322,7 @@ footer{border-block-start:8px solid var(--ink);background:var(--paper-2)}
       </g>
     </svg>
     </div>
-    <figcaption><b class="fn"></b> Four hops, four threat classes. Controls on the human-facing hops alone are no longer sufficient.</figcaption>
+    <figcaption><b class="fn"></b> Four hops, four threat classes. Guarding only the two human-facing hops leaves two open.</figcaption>
   </figure>
   <div class="strip c3">
   <figure class="shot " data-tier="defender-nrt">
@@ -1346,7 +1346,7 @@ footer{border-block-start:8px solid var(--ink);background:var(--paper-2)}
 
   <section id="s7-4" data-search>
   <h3>7.4 Local agents on the endpoint <span class="badge" data-badge="mde-runtime"></span></h3>
-  <p>A local agent runs with the user's identity, tokens, sessions and files, outside every onboarding flow above. Three layers apply at three maturity levels.</p>
+  <p>A local agent runs with the user's identity, tokens, sessions and files, outside every onboarding flow above. Three layers apply, and they are not equally mature.</p>
   <p>Discovery is section 5.5, <span class="st" data-st="mde-discovery"></span>.</p>
   <div class="term" id="term">
     <div class="tbar"><i></i><i></i><i></i><span id="ttitle">Claude Code · developer laptop · Defender for Endpoint in Block mode</span></div>
@@ -1484,7 +1484,7 @@ Set-MpPreference -AiAgentNetworkInspection Audit</code></pre>
   <div class="tbl"><table>
     <thead><tr><th>Route</th><th>Test</th><th>Evidence at the end</th></tr></thead>
     <tbody>
-      <tr><td><strong>Observe</strong></td><td>Reconcile the registry with your inventory; exercise approve, reject, block, delete and reassign; connect one external platform; integrate one SDK agent where relevant</td><td>A complete in-scope inventory, visibility into data and tool relationships, and adoption insight</td></tr>
+      <tr><td><strong>Observe</strong></td><td>Reconcile the registry with your inventory; exercise approve, reject, block, delete and reassign; connect one external platform; integrate one SDK agent where relevant</td><td>A complete in-scope inventory, visibility into data and tool relationships, and usage figures you can report</td></tr>
       <tr><td><strong>Govern</strong></td><td>Build policy templates; provision agent identities and validate lifecycle; create access packages and reviews; test Conditional Access; confirm audit reaches Sentinel</td><td>Agent ID and Conditional Access enforced on test agents, validated blueprints, and a queryable audit pipeline</td></tr>
       <tr><td><strong>Secure</strong></td><td>Establish a DSPM baseline; validate DLP and incident traceability; review Defender posture; run Foundry and Copilot Studio detection scenarios</td><td>An evidenced exfiltration simulation and two or three detections joined into a tenant incident</td></tr>
     </tbody>
