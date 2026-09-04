@@ -1,0 +1,1068 @@
+{
+ "generated": "2026-09-04",
+ "note": "Every raster asset on the page and where it came from. Edit index.html figure captions and this file together.",
+ "assets": [
+  {
+   "id": "deck-s045",
+   "file": "images/deck-s045.png",
+   "kind": "deck",
+   "feature": "Defender agent posture",
+   "view": "Agent page: risk level, blast radius, attack surface graph, recommendations",
+   "used_in": "#s7-3",
+   "keywords": [
+    "defender",
+    "posture",
+    "blast radius",
+    "attack surface",
+    "recommendations"
+   ],
+   "source": {
+    "deck": "FSI NL Agent 365 event 02.09.pptx",
+    "deck_location": "OneDrive/Dev/Agent 365 Front-End Slides/",
+    "slide": 45,
+    "slide_title": "Assess agent exposure and prioritize remediation based on risk factors, blast radius, crit",
+    "media_in_pptx": "ppt/media/image192.png",
+    "extracted_copy": "deck-screenshots/s045-*.png"
+   },
+   "crop": null,
+   "downscaled_to_max_width": 1600,
+   "tenant_note": "demo tenant data, approved by marketing",
+   "replace_when": "a newer deck or blog shows this view with changed UI or a GA label"
+  },
+  {
+   "id": "deck-s046",
+   "file": "images/deck-s046.png",
+   "kind": "deck",
+   "feature": "Defender incidents",
+   "view": "Incidents and alerts tab for an agent",
+   "used_in": "#s7-3",
+   "keywords": [
+    "defender",
+    "incidents",
+    "alerts",
+    "jailbreak",
+    "malicious url"
+   ],
+   "source": {
+    "deck": "FSI NL Agent 365 event 02.09.pptx",
+    "deck_location": "OneDrive/Dev/Agent 365 Front-End Slides/",
+    "slide": 46,
+    "slide_title": "Correlate attack signals into a unified incident to understand how an AI attack unfolded",
+    "media_in_pptx": "ppt/media/image193.png",
+    "extracted_copy": "deck-screenshots/s046-*.png"
+   },
+   "crop": null,
+   "downscaled_to_max_width": 1600,
+   "tenant_note": "demo tenant data, approved by marketing",
+   "replace_when": "a newer deck or blog shows this view with changed UI or a GA label"
+  },
+  {
+   "id": "deck-s047",
+   "file": "images/deck-s047.png",
+   "kind": "deck",
+   "feature": "Defender incident graph",
+   "view": "Attack story with incident graph across agent, user and URL",
+   "used_in": "#s7-3",
+   "keywords": [
+    "defender",
+    "incident",
+    "attack story",
+    "graph"
+   ],
+   "source": {
+    "deck": "FSI NL Agent 365 event 02.09.pptx",
+    "deck_location": "OneDrive/Dev/Agent 365 Front-End Slides/",
+    "slide": 47,
+    "slide_title": "Visualize agent relationships, connected tools, and dependencies to understand potential a",
+    "media_in_pptx": "ppt/media/image194.png",
+    "extracted_copy": "deck-screenshots/s047-*.png"
+   },
+   "crop": null,
+   "downscaled_to_max_width": 1600,
+   "tenant_note": "demo tenant data, approved by marketing",
+   "replace_when": "a newer deck or blog shows this view with changed UI or a GA label"
+  },
+  {
+   "id": "deck-s048",
+   "file": "images/deck-s048.png",
+   "kind": "deck",
+   "feature": "Defender advanced hunting",
+   "view": "AgentsInfo query for MCP tools with maker credentials",
+   "used_in": "#s7-3",
+   "keywords": [
+    "defender",
+    "hunting",
+    "kql",
+    "agentsinfo",
+    "mcp"
+   ],
+   "source": {
+    "deck": "FSI NL Agent 365 event 02.09.pptx",
+    "deck_location": "OneDrive/Dev/Agent 365 Front-End Slides/",
+    "slide": 48,
+    "slide_title": "Proactively hunt for risky agent behaviors, misconfigurations, and emerging threats across",
+    "media_in_pptx": "ppt/media/image195.png",
+    "extracted_copy": "deck-screenshots/s048-*.png"
+   },
+   "crop": null,
+   "downscaled_to_max_width": 1600,
+   "tenant_note": "demo tenant data, approved by marketing",
+   "replace_when": "a newer deck or blog shows this view with changed UI or a GA label"
+  },
+  {
+   "id": "deck-s049",
+   "file": "images/deck-s049.png",
+   "kind": "deck",
+   "feature": "Defender real-time protection",
+   "view": "Policies and rules: default audit rule and custom block rule",
+   "used_in": "#s7-3",
+   "keywords": [
+    "defender",
+    "real-time protection",
+    "rules",
+    "block"
+   ],
+   "source": {
+    "deck": "FSI NL Agent 365 event 02.09.pptx",
+    "deck_location": "OneDrive/Dev/Agent 365 Front-End Slides/",
+    "slide": 49,
+    "slide_title": "Prevent malicious or unsafe agent actions with policy-based runtime protection",
+    "media_in_pptx": "ppt/media/image196.png",
+    "extracted_copy": "deck-screenshots/s049-*.png"
+   },
+   "crop": null,
+   "downscaled_to_max_width": 1600,
+   "tenant_note": "demo tenant data, approved by marketing",
+   "replace_when": "a newer deck or blog shows this view with changed UI or a GA label"
+  },
+  {
+   "id": "deck-s055",
+   "file": "images/deck-s055.png",
+   "kind": "deck",
+   "feature": "Shadow AI page",
+   "view": "Shadow AI (Frontier) list in Microsoft 365 admin center",
+   "used_in": "#s5-5",
+   "keywords": [
+    "shadow ai",
+    "openclaw",
+    "frontier",
+    "admin centre"
+   ],
+   "source": {
+    "deck": "FSI NL Agent 365 event 02.09.pptx",
+    "deck_location": "OneDrive/Dev/Agent 365 Front-End Slides/",
+    "slide": 55,
+    "slide_title": "Agent 365 provides visibility to local shadow agents",
+    "media_in_pptx": "ppt/media/image203.png",
+    "extracted_copy": "deck-screenshots/s055-*.png"
+   },
+   "crop": null,
+   "downscaled_to_max_width": 1600,
+   "tenant_note": "demo tenant data, approved by marketing",
+   "replace_when": "a newer deck or blog shows this view with changed UI or a GA label"
+  },
+  {
+   "id": "deck-s056",
+   "file": "images/deck-s056.png",
+   "kind": "deck",
+   "feature": "Defender local agents",
+   "view": "AI Assets: local agents inventory with device and user context",
+   "used_in": "#s5-5",
+   "keywords": [
+    "defender",
+    "local agents",
+    "inventory",
+    "mcp servers"
+   ],
+   "source": {
+    "deck": "FSI NL Agent 365 event 02.09.pptx",
+    "deck_location": "OneDrive/Dev/Agent 365 Front-End Slides/",
+    "slide": 56,
+    "slide_title": "Defender discovers and profiles local agents",
+    "media_in_pptx": "ppt/media/image204.png",
+    "extracted_copy": "deck-screenshots/s056-*.png"
+   },
+   "crop": null,
+   "downscaled_to_max_width": 1600,
+   "tenant_note": "demo tenant data, approved by marketing",
+   "replace_when": "a newer deck or blog shows this view with changed UI or a GA label"
+  },
+  {
+   "id": "deck-s057",
+   "file": "images/deck-s057.png",
+   "kind": "deck",
+   "feature": "Defender exposure map",
+   "view": "Local agent exposure map to cloud resources",
+   "used_in": "#s5-5",
+   "keywords": [
+    "defender",
+    "exposure management",
+    "map",
+    "blast radius"
+   ],
+   "source": {
+    "deck": "FSI NL Agent 365 event 02.09.pptx",
+    "deck_location": "OneDrive/Dev/Agent 365 Front-End Slides/",
+    "slide": 57,
+    "slide_title": "Defender maps local agent exposure",
+    "media_in_pptx": "ppt/media/image205.png",
+    "extracted_copy": "deck-screenshots/s057-*.png"
+   },
+   "crop": null,
+   "downscaled_to_max_width": 1600,
+   "tenant_note": "demo tenant data, approved by marketing",
+   "replace_when": "a newer deck or blog shows this view with changed UI or a GA label"
+  },
+  {
+   "id": "deck-s059",
+   "file": "images/deck-s059.png",
+   "kind": "deck",
+   "feature": "Defender runtime block",
+   "view": "Claude Code tool call blocked by Defender with Windows Security toast",
+   "used_in": "#s7-4",
+   "keywords": [
+    "defender for endpoint",
+    "runtime protection",
+    "claude code",
+    "prompt injection",
+    "block"
+   ],
+   "source": {
+    "deck": "FSI NL Agent 365 event 02.09.pptx",
+    "deck_location": "OneDrive/Dev/Agent 365 Front-End Slides/",
+    "slide": 59,
+    "slide_title": "Defender enforces security policies during runtime",
+    "media_in_pptx": "ppt/media/image207.png",
+    "extracted_copy": "deck-screenshots/s059-*.png"
+   },
+   "crop": null,
+   "downscaled_to_max_width": 1600,
+   "tenant_note": "demo tenant data, approved by marketing",
+   "replace_when": "a newer deck or blog shows this view with changed UI or a GA label"
+  },
+  {
+   "id": "deck-s060",
+   "file": "images/deck-s060.png",
+   "kind": "deck",
+   "feature": "Purview runtime DLP block",
+   "view": "Claude Code read blocked by Purview DLP with dialogue",
+   "used_in": "#s7-4",
+   "keywords": [
+    "purview",
+    "dlp",
+    "claude code",
+    "runtime",
+    "block",
+    "endpoint"
+   ],
+   "source": {
+    "deck": "FSI NL Agent 365 event 02.09.pptx",
+    "deck_location": "OneDrive/Dev/Agent 365 Front-End Slides/",
+    "slide": 60,
+    "slide_title": "Purview enforces a sensitive data policy at runtime",
+    "media_in_pptx": "ppt/media/image208.png",
+    "extracted_copy": "deck-screenshots/s060-*.png"
+   },
+   "crop": {
+    "x": 370,
+    "y": 110,
+    "w": 1299,
+    "h": 868,
+    "reason": "remove desktop wallpaper; keep PowerShell, Claude Code and DLP dialogue"
+   },
+   "downscaled_to_max_width": 1600,
+   "tenant_note": "demo tenant data, approved by marketing",
+   "replace_when": "a newer deck or blog shows this view with changed UI or a GA label"
+  },
+  {
+   "id": "deck-s061",
+   "file": "images/deck-s061.png",
+   "kind": "deck",
+   "feature": "Defender alert",
+   "view": "Suspicious AI prompt injection alert with process tree",
+   "used_in": "#s7-4",
+   "keywords": [
+    "defender",
+    "alert",
+    "process tree",
+    "claude.exe"
+   ],
+   "source": {
+    "deck": "FSI NL Agent 365 event 02.09.pptx",
+    "deck_location": "OneDrive/Dev/Agent 365 Front-End Slides/",
+    "slide": 61,
+    "slide_title": "Defender security alerts include session context for investigation",
+    "media_in_pptx": "ppt/media/image209.png",
+    "extracted_copy": "deck-screenshots/s061-*.png"
+   },
+   "crop": null,
+   "downscaled_to_max_width": 1600,
+   "tenant_note": "demo tenant data, approved by marketing",
+   "replace_when": "a newer deck or blog shows this view with changed UI or a GA label"
+  },
+  {
+   "id": "deck-s062",
+   "file": "images/deck-s062.png",
+   "kind": "deck",
+   "feature": "Defender hunting local agents",
+   "view": "Exposure graph query: local agents reaching sensitive assets",
+   "used_in": "#s7-4",
+   "keywords": [
+    "defender",
+    "hunting",
+    "exposure graph",
+    "local agents"
+   ],
+   "source": {
+    "deck": "FSI NL Agent 365 event 02.09.pptx",
+    "deck_location": "OneDrive/Dev/Agent 365 Front-End Slides/",
+    "slide": 62,
+    "slide_title": "Defender correlates agent activity and hunts for risky configurations",
+    "media_in_pptx": "ppt/media/image210.png",
+    "extracted_copy": "deck-screenshots/s062-*.png"
+   },
+   "crop": null,
+   "downscaled_to_max_width": 1600,
+   "tenant_note": "demo tenant data, approved by marketing",
+   "replace_when": "a newer deck or blog shows this view with changed UI or a GA label"
+  },
+  {
+   "id": "deck-s063",
+   "file": "images/deck-s063.png",
+   "kind": "deck",
+   "feature": "Intune agent execution policy",
+   "view": "Create policy: agent execution in container, filesystem and network",
+   "used_in": "#s7-4",
+   "keywords": [
+    "intune",
+    "container",
+    "execution",
+    "preview",
+    "openclaw"
+   ],
+   "source": {
+    "deck": "FSI NL Agent 365 event 02.09.pptx",
+    "deck_location": "OneDrive/Dev/Agent 365 Front-End Slides/",
+    "slide": 63,
+    "slide_title": "Intune can allow the local agent to run inside an isolated container on a managed device",
+    "media_in_pptx": "ppt/media/image211.png",
+    "extracted_copy": "deck-screenshots/s063-*.png"
+   },
+   "crop": {
+    "x": 195,
+    "y": 40,
+    "w": 705,
+    "h": 726,
+    "reason": "keep the policy form only"
+   },
+   "downscaled_to_max_width": 1600,
+   "tenant_note": "demo tenant data, approved by marketing",
+   "replace_when": "a newer deck or blog shows this view with changed UI or a GA label"
+  },
+  {
+   "id": "deck-s077",
+   "file": "images/deck-s077.png",
+   "kind": "deck",
+   "feature": "Communication Compliance",
+   "view": "Unethical behaviour in AI agents policy with matched sources",
+   "used_in": "#s6-7",
+   "keywords": [
+    "purview",
+    "communication compliance",
+    "agents"
+   ],
+   "source": {
+    "deck": "FSI NL Agent 365 event 02.09.pptx",
+    "deck_location": "OneDrive/Dev/Agent 365 Front-End Slides/",
+    "slide": 77,
+    "slide_title": "Detect regulatory compliance and business conduct violations in agent interactions",
+    "media_in_pptx": "ppt/media/image218.png",
+    "extracted_copy": "deck-screenshots/s077-*.png"
+   },
+   "crop": null,
+   "downscaled_to_max_width": 1600,
+   "tenant_note": "demo tenant data, approved by marketing",
+   "replace_when": "a newer deck or blog shows this view with changed UI or a GA label"
+  },
+  {
+   "id": "deck-s078",
+   "file": "images/deck-s078.png",
+   "kind": "deck",
+   "feature": "Data lifecycle management",
+   "view": "Retention policy for AI agents data",
+   "used_in": "#s6-7",
+   "keywords": [
+    "purview",
+    "retention",
+    "data lifecycle"
+   ],
+   "source": {
+    "deck": "FSI NL Agent 365 event 02.09.pptx",
+    "deck_location": "OneDrive/Dev/Agent 365 Front-End Slides/",
+    "slide": 78,
+    "slide_title": "Apply retention policies to agent data to meet organizational and regulatory requirements",
+    "media_in_pptx": "ppt/media/image219.png",
+    "extracted_copy": "deck-screenshots/s078-*.png"
+   },
+   "crop": null,
+   "downscaled_to_max_width": 1600,
+   "tenant_note": "demo tenant data, approved by marketing",
+   "replace_when": "a newer deck or blog shows this view with changed UI or a GA label"
+  },
+  {
+   "id": "deck-s079",
+   "file": "images/deck-s079.png",
+   "kind": "deck",
+   "feature": "eDiscovery",
+   "view": "Review set with agent interaction and custodian metadata",
+   "used_in": "#s6-7",
+   "keywords": [
+    "purview",
+    "ediscovery",
+    "review set",
+    "agent"
+   ],
+   "source": {
+    "deck": "FSI NL Agent 365 event 02.09.pptx",
+    "deck_location": "OneDrive/Dev/Agent 365 Front-End Slides/",
+    "slide": 79,
+    "slide_title": "Bring agent interactions into eDiscovery workflows for investigation and review",
+    "media_in_pptx": "ppt/media/image220.png",
+    "extracted_copy": "deck-screenshots/s079-*.png"
+   },
+   "crop": null,
+   "downscaled_to_max_width": 1600,
+   "tenant_note": "demo tenant data, approved by marketing",
+   "replace_when": "a newer deck or blog shows this view with changed UI or a GA label"
+  },
+  {
+   "id": "deck-s080",
+   "file": "images/deck-s080.png",
+   "kind": "deck",
+   "feature": "Audit",
+   "view": "Audit search results with ConnectedAIAppInteraction",
+   "used_in": "#s6-7",
+   "keywords": [
+    "purview",
+    "audit",
+    "connectedaiappinteraction"
+   ],
+   "source": {
+    "deck": "FSI NL Agent 365 event 02.09.pptx",
+    "deck_location": "OneDrive/Dev/Agent 365 Front-End Slides/",
+    "slide": 80,
+    "slide_title": "Maintain a detailed audit trail of agent actions and interactions",
+    "media_in_pptx": "ppt/media/image221.png",
+    "extracted_copy": "deck-screenshots/s080-*.png"
+   },
+   "crop": null,
+   "downscaled_to_max_width": 1600,
+   "tenant_note": "demo tenant data, approved by marketing",
+   "replace_when": "a newer deck or blog shows this view with changed UI or a GA label"
+  },
+  {
+   "id": "deck-s085",
+   "file": "images/deck-s085.png",
+   "kind": "deck",
+   "feature": "DSPM AI observability",
+   "view": "Agent registry view with risk levels and policy coverage",
+   "used_in": "#s6-7",
+   "keywords": [
+    "purview",
+    "dspm",
+    "ai observability",
+    "risk"
+   ],
+   "source": {
+    "deck": "FSI NL Agent 365 event 02.09.pptx",
+    "deck_location": "OneDrive/Dev/Agent 365 Front-End Slides/",
+    "slide": 85,
+    "slide_title": "Discover and assess agent risk with a centralized view of agent activity, sensitive intera",
+    "media_in_pptx": "ppt/media/image231.png",
+    "extracted_copy": "deck-screenshots/s085-*.png"
+   },
+   "crop": null,
+   "downscaled_to_max_width": 1600,
+   "tenant_note": "demo tenant data, approved by marketing",
+   "replace_when": "a newer deck or blog shows this view with changed UI or a GA label"
+  },
+  {
+   "id": "deck-s088",
+   "file": "images/deck-s088.png",
+   "kind": "deck",
+   "feature": "DSPM agent risk profile",
+   "view": "Agent overview with risk level and Insider Risk alerts",
+   "used_in": "#s7-2",
+   "keywords": [
+    "purview",
+    "dspm",
+    "agent",
+    "insider risk"
+   ],
+   "source": {
+    "deck": "FSI NL Agent 365 event 02.09.pptx",
+    "deck_location": "OneDrive/Dev/Agent 365 Front-End Slides/",
+    "slide": 88,
+    "slide_title": "Understand an agent's risk profile, activity patterns, and exposure to sensitive data",
+    "media_in_pptx": "ppt/media/image232.png",
+    "extracted_copy": "deck-screenshots/s088-*.png"
+   },
+   "crop": null,
+   "downscaled_to_max_width": 1600,
+   "tenant_note": "demo tenant data, approved by marketing",
+   "replace_when": "a newer deck or blog shows this view with changed UI or a GA label"
+  },
+  {
+   "id": "deck-s090",
+   "file": "images/deck-s090.png",
+   "kind": "deck",
+   "feature": "Insider Risk Management alert",
+   "view": "Agent exfiltration attempt sequence and scatter plot",
+   "used_in": "#s7-2",
+   "keywords": [
+    "purview",
+    "insider risk",
+    "agent",
+    "exfiltration",
+    "dlp"
+   ],
+   "source": {
+    "deck": "FSI NL Agent 365 event 02.09.pptx",
+    "deck_location": "OneDrive/Dev/Agent 365 Front-End Slides/",
+    "slide": 90,
+    "slide_title": "Connect related agent activities into a single investigation timeline to uncover data secu",
+    "media_in_pptx": "ppt/media/image234.png",
+    "extracted_copy": "deck-screenshots/s090-*.png"
+   },
+   "crop": null,
+   "downscaled_to_max_width": 1600,
+   "tenant_note": "demo tenant data, approved by marketing",
+   "replace_when": "a newer deck or blog shows this view with changed UI or a GA label"
+  },
+  {
+   "id": "deck-s091",
+   "file": "images/deck-s091.png",
+   "kind": "deck",
+   "feature": "DLP rule match",
+   "view": "Activity explorer detail: blocked message and files",
+   "used_in": "#s7-2",
+   "keywords": [
+    "purview",
+    "dlp",
+    "activity explorer",
+    "blocked"
+   ],
+   "source": {
+    "deck": "FSI NL Agent 365 event 02.09.pptx",
+    "deck_location": "OneDrive/Dev/Agent 365 Front-End Slides/",
+    "slide": 91,
+    "slide_title": "Review detailed agent interactions to understand what data was accessed, shared, or blocke",
+    "media_in_pptx": "ppt/media/image235.png",
+    "extracted_copy": "deck-screenshots/s091-*.png"
+   },
+   "crop": null,
+   "downscaled_to_max_width": 1600,
+   "tenant_note": "demo tenant data, approved by marketing",
+   "replace_when": "a newer deck or blog shows this view with changed UI or a GA label"
+  },
+  {
+   "id": "deck-s116",
+   "file": "images/deck-s116.png",
+   "kind": "deck",
+   "feature": "Access package basics",
+   "view": "New access package for agent permissions",
+   "used_in": "#s6-6",
+   "keywords": [
+    "entra",
+    "access package",
+    "entitlement"
+   ],
+   "source": {
+    "deck": "FSI NL Agent 365 event 02.09.pptx",
+    "deck_location": "OneDrive/Dev/Agent 365 Front-End Slides/",
+    "slide": 116,
+    "slide_title": "Create access packages that defines exactly what this class of agents are allowed to do",
+    "media_in_pptx": "ppt/media/image281.png",
+    "extracted_copy": "deck-screenshots/s116-*.png"
+   },
+   "crop": null,
+   "downscaled_to_max_width": 1600,
+   "tenant_note": "demo tenant data, approved by marketing",
+   "replace_when": "a newer deck or blog shows this view with changed UI or a GA label"
+  },
+  {
+   "id": "deck-s117",
+   "file": "images/deck-s117.png",
+   "kind": "deck",
+   "feature": "Access package resource roles",
+   "view": "Request API permissions for the package",
+   "used_in": "#s6-6",
+   "keywords": [
+    "entra",
+    "access package",
+    "graph permissions"
+   ],
+   "source": {
+    "deck": "FSI NL Agent 365 event 02.09.pptx",
+    "deck_location": "OneDrive/Dev/Agent 365 Front-End Slides/",
+    "slide": 117,
+    "slide_title": "Define exactly what this agent is allowed to do",
+    "media_in_pptx": "ppt/media/image282.png",
+    "extracted_copy": "deck-screenshots/s117-*.png"
+   },
+   "crop": null,
+   "downscaled_to_max_width": 1600,
+   "tenant_note": "demo tenant data, approved by marketing",
+   "replace_when": "a newer deck or blog shows this view with changed UI or a GA label"
+  },
+  {
+   "id": "deck-s118",
+   "file": "images/deck-s118.png",
+   "kind": "deck",
+   "feature": "Access package requests",
+   "view": "Who can get access: all agents (preview)",
+   "used_in": "#s6-6",
+   "keywords": [
+    "entra",
+    "access package",
+    "agents",
+    "sponsor"
+   ],
+   "source": {
+    "deck": "FSI NL Agent 365 event 02.09.pptx",
+    "deck_location": "OneDrive/Dev/Agent 365 Front-End Slides/",
+    "slide": 118,
+    "slide_title": "Configure who can request access and which agents are included",
+    "media_in_pptx": "ppt/media/image283.png",
+    "extracted_copy": "deck-screenshots/s118-*.png"
+   },
+   "crop": null,
+   "downscaled_to_max_width": 1600,
+   "tenant_note": "demo tenant data, approved by marketing",
+   "replace_when": "a newer deck or blog shows this view with changed UI or a GA label"
+  },
+  {
+   "id": "deck-s119",
+   "file": "images/deck-s119.png",
+   "kind": "deck",
+   "feature": "Access package lifecycle",
+   "view": "Assignment expiry in days",
+   "used_in": "#s6-6",
+   "keywords": [
+    "entra",
+    "access package",
+    "expiry"
+   ],
+   "source": {
+    "deck": "FSI NL Agent 365 event 02.09.pptx",
+    "deck_location": "OneDrive/Dev/Agent 365 Front-End Slides/",
+    "slide": 119,
+    "slide_title": "Define assignment length to prevent standing access permissions",
+    "media_in_pptx": "ppt/media/image284.png",
+    "extracted_copy": "deck-screenshots/s119-*.png"
+   },
+   "crop": null,
+   "downscaled_to_max_width": 1600,
+   "tenant_note": "demo tenant data, approved by marketing",
+   "replace_when": "a newer deck or blog shows this view with changed UI or a GA label"
+  },
+  {
+   "id": "deck-s120",
+   "file": "images/deck-s120.png",
+   "kind": "deck",
+   "feature": "Policy template custom policies",
+   "view": "Policy template with Conditional Access, access package, custom attribute",
+   "used_in": "#s6-2",
+   "keywords": [
+    "admin centre",
+    "policy template",
+    "entra"
+   ],
+   "source": {
+    "deck": "FSI NL Agent 365 event 02.09.pptx",
+    "deck_location": "OneDrive/Dev/Agent 365 Front-End Slides/",
+    "slide": 120,
+    "slide_title": "IT admins reuse access packages to ensure every similar agent is onboarded with the same g",
+    "media_in_pptx": "ppt/media/image285.png",
+    "extracted_copy": "deck-screenshots/s120-*.png"
+   },
+   "crop": null,
+   "downscaled_to_max_width": 1600,
+   "tenant_note": "demo tenant data, approved by marketing",
+   "replace_when": "a newer deck or blog shows this view with changed UI or a GA label"
+  },
+  {
+   "id": "deck-s123",
+   "file": "images/deck-s123.png",
+   "kind": "deck",
+   "feature": "Agent identity in Entra",
+   "view": "Agent identity overview with sponsor, blueprint, permissions",
+   "used_in": "#s7-1",
+   "keywords": [
+    "entra",
+    "agent identity",
+    "blueprint",
+    "sponsor"
+   ],
+   "source": {
+    "deck": "FSI NL Agent 365 event 02.09.pptx",
+    "deck_location": "OneDrive/Dev/Agent 365 Front-End Slides/",
+    "slide": 123,
+    "slide_title": "Establish trusted identities for agents to ensure they can be observed, governed, and secu",
+    "media_in_pptx": "ppt/media/image302.png",
+    "extracted_copy": "deck-screenshots/s123-*.png"
+   },
+   "crop": null,
+   "downscaled_to_max_width": 1600,
+   "tenant_note": "demo tenant data, approved by marketing",
+   "replace_when": "a newer deck or blog shows this view with changed UI or a GA label"
+  },
+  {
+   "id": "deck-s124",
+   "file": "images/deck-s124.png",
+   "kind": "deck",
+   "feature": "Conditional Access agent risk",
+   "view": "Policy with Agent risk (Preview) condition and block",
+   "used_in": "#s7-1",
+   "keywords": [
+    "entra",
+    "conditional access",
+    "agent risk"
+   ],
+   "source": {
+    "deck": "FSI NL Agent 365 event 02.09.pptx",
+    "deck_location": "OneDrive/Dev/Agent 365 Front-End Slides/",
+    "slide": 124,
+    "slide_title": "Enforce adaptive access policies to help ensure agents access only the resources they need",
+    "media_in_pptx": "ppt/media/image303.png",
+    "extracted_copy": "deck-screenshots/s124-*.png"
+   },
+   "crop": null,
+   "downscaled_to_max_width": 1600,
+   "tenant_note": "demo tenant data, approved by marketing",
+   "replace_when": "a newer deck or blog shows this view with changed UI or a GA label"
+  },
+  {
+   "id": "deck-s125",
+   "file": "images/deck-s125.png",
+   "kind": "deck",
+   "feature": "Risky agent details",
+   "view": "ID Protection risky agent with confirm compromised",
+   "used_in": "#s7-1",
+   "keywords": [
+    "entra",
+    "id protection",
+    "risky agents"
+   ],
+   "source": {
+    "deck": "FSI NL Agent 365 event 02.09.pptx",
+    "deck_location": "OneDrive/Dev/Agent 365 Front-End Slides/",
+    "slide": 125,
+    "slide_title": "Identify risky agent access behavior and automatically trigger protection measures",
+    "media_in_pptx": "ppt/media/image304.png",
+    "extracted_copy": "deck-screenshots/s125-*.png"
+   },
+   "crop": null,
+   "downscaled_to_max_width": 1600,
+   "tenant_note": "demo tenant data, approved by marketing",
+   "replace_when": "a newer deck or blog shows this view with changed UI or a GA label"
+  },
+  {
+   "id": "deck-s134",
+   "file": "images/deck-s134.png",
+   "kind": "deck",
+   "feature": "GSA web filtering rule",
+   "view": "Session type Agent, HTTP methods, destinations",
+   "used_in": "#s7-5",
+   "keywords": [
+    "global secure access",
+    "web filtering",
+    "agent session"
+   ],
+   "source": {
+    "deck": "FSI NL Agent 365 event 02.09.pptx",
+    "deck_location": "OneDrive/Dev/Agent 365 Front-End Slides/",
+    "slide": 134,
+    "slide_title": "",
+    "media_in_pptx": "ppt/media/image351.png",
+    "extracted_copy": "deck-screenshots/s134-*.png"
+   },
+   "crop": null,
+   "downscaled_to_max_width": 1600,
+   "tenant_note": "demo tenant data, approved by marketing",
+   "replace_when": "a newer deck or blog shows this view with changed UI or a GA label"
+  },
+  {
+   "id": "learn-mac-registry",
+   "file": "images/learn-mac-registry.png",
+   "kind": "learn",
+   "feature": "Agent registry in Microsoft 365 admin center",
+   "view": "Agent registry in Microsoft 365 admin center",
+   "used_in": "#s5-1",
+   "keywords": [],
+   "source": {
+    "page": "https://learn.microsoft.com/en-us/microsoft-365/admin/manage/agent-registry",
+    "image": "https://learn.microsoft.com/en-us/microsoft-365/media/agents/agent-registry.png",
+    "licence": "CC BY 4.0 (Microsoft Learn documentation)"
+   },
+   "crop": null,
+   "downscaled_to_max_width": 1600,
+   "replace_when": "the Learn page replaces its screenshot; re-download from the image URL"
+  },
+  {
+   "id": "learn-mac-overview",
+   "file": "images/learn-mac-overview.png",
+   "kind": "learn",
+   "feature": "Agent overview in Microsoft 365 admin center",
+   "view": "Agent overview in Microsoft 365 admin center",
+   "used_in": "#s5-1",
+   "keywords": [],
+   "source": {
+    "page": "https://learn.microsoft.com/en-us/microsoft-365/admin/manage/agent-365-overview",
+    "image": "https://learn.microsoft.com/en-us/microsoft-365/media/agents/agent-overview.png",
+    "licence": "CC BY 4.0 (Microsoft Learn documentation)"
+   },
+   "crop": null,
+   "downscaled_to_max_width": 1600,
+   "replace_when": "the Learn page replaces its screenshot; re-download from the image URL"
+  },
+  {
+   "id": "learn-mac-map",
+   "file": "images/learn-mac-map.png",
+   "kind": "learn",
+   "feature": "Use Agent Map",
+   "view": "Use Agent Map",
+   "used_in": "#s5-2",
+   "keywords": [],
+   "source": {
+    "page": "https://learn.microsoft.com/en-us/microsoft-365/admin/manage/agent-map",
+    "image": "https://learn.microsoft.com/en-us/microsoft-365/media/agents/agent-map.png",
+    "licence": "CC BY 4.0 (Microsoft Learn documentation)"
+   },
+   "crop": null,
+   "downscaled_to_max_width": 1600,
+   "replace_when": "the Learn page replaces its screenshot; re-download from the image URL"
+  },
+  {
+   "id": "learn-mac-risks-card",
+   "file": "images/learn-mac-risks-card.png",
+   "kind": "learn",
+   "feature": "Agent registry: agents at risk",
+   "view": "Agent registry: agents at risk",
+   "used_in": "#s5-3",
+   "keywords": [],
+   "source": {
+    "page": "https://learn.microsoft.com/en-us/microsoft-365/admin/manage/agent-registry",
+    "image": "https://learn.microsoft.com/en-us/microsoft-365/media/agents/risks-card.png",
+    "licence": "CC BY 4.0 (Microsoft Learn documentation)"
+   },
+   "crop": null,
+   "downscaled_to_max_width": 1600,
+   "replace_when": "the Learn page replaces its screenshot; re-download from the image URL"
+  },
+  {
+   "id": "learn-mac-requests",
+   "file": "images/learn-mac-requests.png",
+   "kind": "learn",
+   "feature": "Agent requests",
+   "view": "Agent requests",
+   "used_in": "#s6-1",
+   "keywords": [],
+   "source": {
+    "page": "https://learn.microsoft.com/en-us/microsoft-365/admin/manage/agent-requests",
+    "image": "https://learn.microsoft.com/en-us/microsoft-365/media/agents/agent-requests.png",
+    "licence": "CC BY 4.0 (Microsoft Learn documentation)"
+   },
+   "crop": null,
+   "downscaled_to_max_width": 1600,
+   "replace_when": "the Learn page replaces its screenshot; re-download from the image URL"
+  },
+  {
+   "id": "learn-mac-upload-template",
+   "file": "images/learn-mac-upload-template.png",
+   "kind": "learn",
+   "feature": "Upload custom agent: apply security template",
+   "view": "Upload custom agent: apply security template",
+   "used_in": "#s6-1",
+   "keywords": [],
+   "source": {
+    "page": "https://learn.microsoft.com/en-us/microsoft-365/admin/manage/agent-registry",
+    "image": "https://learn.microsoft.com/en-us/microsoft-365/media/agents/agent-upload-02.png",
+    "licence": "CC BY 4.0 (Microsoft Learn documentation)"
+   },
+   "crop": null,
+   "downscaled_to_max_width": 1600,
+   "replace_when": "the Learn page replaces its screenshot; re-download from the image URL"
+  },
+  {
+   "id": "learn-mac-settings",
+   "file": "images/learn-mac-settings.png",
+   "kind": "learn",
+   "feature": "Agent settings",
+   "view": "Agent settings",
+   "used_in": "#s6-3",
+   "keywords": [],
+   "source": {
+    "page": "https://learn.microsoft.com/en-us/microsoft-365/admin/manage/agent-settings",
+    "image": "https://learn.microsoft.com/en-us/microsoft-365/media/agents/agent-settings.png",
+    "licence": "CC BY 4.0 (Microsoft Learn documentation)"
+   },
+   "crop": null,
+   "downscaled_to_max_width": 1600,
+   "replace_when": "the Learn page replaces its screenshot; re-download from the image URL"
+  },
+  {
+   "id": "learn-mac-tools-registry",
+   "file": "images/learn-mac-tools-registry.png",
+   "kind": "learn",
+   "feature": "Manage tools for agents",
+   "view": "Manage tools for agents",
+   "used_in": "#s6-5",
+   "keywords": [],
+   "source": {
+    "page": "https://learn.microsoft.com/en-us/microsoft-365/admin/manage/manage-tools-for-agent",
+    "image": "https://learn.microsoft.com/en-us/microsoft-365/media/agents/agent-tools-registry.png",
+    "licence": "CC BY 4.0 (Microsoft Learn documentation)"
+   },
+   "crop": null,
+   "downscaled_to_max_width": 1600,
+   "replace_when": "the Learn page replaces its screenshot; re-download from the image URL"
+  },
+  {
+   "id": "learn-a365-registry-sync",
+   "file": "images/learn-a365-registry-sync.png",
+   "kind": "learn",
+   "feature": "Connected platforms",
+   "view": "Connected platforms",
+   "used_in": "#s5-4",
+   "keywords": [],
+   "source": {
+    "page": "https://learn.microsoft.com/en-us/microsoft-agent-365/admin/connected-platforms",
+    "image": "https://learn.microsoft.com/en-us/microsoft-agent-365/admin/media/agent-registry/platform-registry-sync.png",
+    "licence": "CC BY 4.0 (Microsoft Learn documentation)"
+   },
+   "crop": null,
+   "downscaled_to_max_width": 1600,
+   "replace_when": "the Learn page replaces its screenshot; re-download from the image URL"
+  },
+  {
+   "id": "learn-a365-sdk-integration",
+   "file": "images/learn-a365-sdk-integration.png",
+   "kind": "learn",
+   "feature": "Agent 365 SDK overview",
+   "view": "Agent 365 SDK overview",
+   "used_in": "#s5-4",
+   "keywords": [],
+   "source": {
+    "page": "https://learn.microsoft.com/en-us/microsoft-agent-365/developer/agent-365-sdk",
+    "image": "https://learn.microsoft.com/en-us/microsoft-agent-365/developer/media/agent-365-sdk/integration-model.png",
+    "licence": "CC BY 4.0 (Microsoft Learn documentation)"
+   },
+   "crop": null,
+   "downscaled_to_max_width": 1600,
+   "replace_when": "the Learn page replaces its screenshot; re-download from the image URL"
+  },
+  {
+   "id": "learn-mde-block-toast",
+   "file": "images/learn-mde-block-toast.png",
+   "kind": "learn",
+   "feature": "Set up AI agent runtime protection",
+   "view": "Set up AI agent runtime protection",
+   "used_in": "#s7-4",
+   "keywords": [],
+   "source": {
+    "page": "https://learn.microsoft.com/en-us/defender-endpoint/configure-ai-agent-runtime-protection",
+    "image": "https://learn.microsoft.com/en-us/defender-endpoint/media/configure-ai-agent-runtime-protection/ai-runtime-agent-block-and-toast.png",
+    "licence": "CC BY 4.0 (Microsoft Learn documentation)"
+   },
+   "crop": null,
+   "downscaled_to_max_width": 1600,
+   "replace_when": "the Learn page replaces its screenshot; re-download from the image URL"
+  },
+  {
+   "id": "learn-xdr-setup",
+   "file": "images/learn-xdr-setup.png",
+   "kind": "learn",
+   "feature": "Enable security for AI agents",
+   "view": "Enable security for AI agents",
+   "used_in": "#s7-3",
+   "keywords": [],
+   "source": {
+    "page": "https://learn.microsoft.com/en-us/defender-xdr/security-for-ai/get-started-defender-security-for-ai",
+    "image": "https://learn.microsoft.com/en-us/defender-xdr/security-for-ai/media/get-started-defender-security-for-ai/security-for-ai-setup-checklist.png",
+    "licence": "CC BY 4.0 (Microsoft Learn documentation)"
+   },
+   "crop": null,
+   "downscaled_to_max_width": 1600,
+   "replace_when": "the Learn page replaces its screenshot; re-download from the image URL"
+  },
+  {
+   "id": "learn-xdr-detection-types",
+   "file": "images/learn-xdr-detection-types.png",
+   "kind": "learn",
+   "feature": "Real-time protection: detection types",
+   "view": "Real-time protection: detection types",
+   "used_in": "#s7-3",
+   "keywords": [],
+   "source": {
+    "page": "https://learn.microsoft.com/en-us/defender-xdr/security-for-ai/ai-agent-real-time-protection",
+    "image": "https://learn.microsoft.com/en-us/defender-xdr/security-for-ai/media/ai-agent-real-time-protection/create-rule-detection-types.png",
+    "licence": "CC BY 4.0 (Microsoft Learn documentation)"
+   },
+   "crop": null,
+   "downscaled_to_max_width": 1600,
+   "replace_when": "the Learn page replaces its screenshot; re-download from the image URL"
+  },
+  {
+   "id": "learn-gsa-prompt-shield",
+   "file": "images/learn-gsa-prompt-shield.png",
+   "kind": "learn",
+   "feature": "Prompt injection protection architecture",
+   "view": "Prompt injection protection architecture",
+   "used_in": "#s7-5",
+   "keywords": [],
+   "source": {
+    "page": "https://learn.microsoft.com/en-us/entra/global-secure-access/how-to-ai-prompt-injection-protection",
+    "image": "https://learn.microsoft.com/en-us/entra/global-secure-access/media/how-to-ai-prompt-injection-protection/prompt-shield-architecture.png",
+    "licence": "CC BY 4.0 (Microsoft Learn documentation)"
+   },
+   "crop": null,
+   "downscaled_to_max_width": 1600,
+   "replace_when": "the Learn page replaces its screenshot; re-download from the image URL"
+  },
+  {
+   "id": "learn-gsa-mcp-tools",
+   "file": "images/learn-gsa-mcp-tools.png",
+   "kind": "learn",
+   "feature": "MCP firewall: discovered tools",
+   "view": "MCP firewall: discovered tools",
+   "used_in": "#s7-5",
+   "keywords": [],
+   "source": {
+    "page": "https://learn.microsoft.com/en-us/entra/global-secure-access/how-to-configure-mcp-firewall",
+    "image": "https://learn.microsoft.com/en-us/entra/global-secure-access/media/how-to-configure-mcp-firewall/mcp-discovered-tools.png",
+    "licence": "CC BY 4.0 (Microsoft Learn documentation)"
+   },
+   "crop": null,
+   "downscaled_to_max_width": 1600,
+   "replace_when": "the Learn page replaces its screenshot; re-download from the image URL"
+  },
+  {
+   "id": "learn-entra-risky-agents",
+   "file": "images/learn-entra-risky-agents.png",
+   "kind": "learn",
+   "feature": "ID Protection for agents: risky agents report",
+   "view": "ID Protection for agents: risky agents report",
+   "used_in": "#s7-1",
+   "keywords": [],
+   "source": {
+    "page": "https://learn.microsoft.com/en-us/entra/id-protection/concept-risky-agents",
+    "image": "https://learn.microsoft.com/en-us/entra/id-protection/media/concept-risky-agents/risky-agents-report.png",
+    "licence": "CC BY 4.0 (Microsoft Learn documentation)"
+   },
+   "crop": null,
+   "downscaled_to_max_width": 1600,
+   "replace_when": "the Learn page replaces its screenshot; re-download from the image URL"
+  }
+ ]
+}
