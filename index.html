@@ -684,7 +684,7 @@ footer{border-block-start:8px solid var(--ink);background:var(--paper-2)}
   <p>Agent 365 is included in Microsoft 365 E7 and sold as an add-on to E5, A5 and Business Premium, or to Defender Suite plus Purview Suite. The <a href="https://www.microsoft.com/microsoft-agent-365" target="_blank" rel="noopener">pricing page</a> lists the add-on at <span data-val="price.addon"></span> and E7 at <span data-val="price.e7"></span>, <span data-val="price.note"></span>; check your own region and agreement. An admin-led trial of <span data-val="trial"></span> is available from the admin centre banner.</p>
   <p>Three dependencies sit outside the Agent 365 licence:</p>
   <ul>
-    <li><a href="https://learn.microsoft.com/en-us/entra/identity/conditional-access/agent-id" target="_blank" rel="noopener">Conditional Access for agents</a> needs Entra ID P1 or P2 per user. Network controls need Microsoft Entra Internet Access.</li>
+    <li><a href="https://learn.microsoft.com/en-us/entra/identity/conditional-access/agent-id" target="_blank" rel="noopener">Conditional Access for agents</a> needs Entra ID P1 or P2 per user, plus Agent 365; Microsoft says enforcement of the Agent 365 requirement is coming. Network controls need Microsoft Entra Internet Access.</li>
     <li><a href="https://learn.microsoft.com/en-us/entra/id-governance/agent-id-governance-overview" target="_blank" rel="noopener">Entra ID Governance for agents</a> needs Microsoft 365 E7, or Agent 365 with at least Entra P1 or Microsoft 365 E3.</li>
     <li><a href="https://learn.microsoft.com/en-us/entra/agent-id/what-is-microsoft-entra-agent-id" target="_blank" rel="noopener">Entra Agent ID</a> itself is available to all Entra customers. Extending Entra security to those identities needs Agent 365.</li>
   </ul>
@@ -1586,7 +1586,7 @@ Set-MpPreference -AiAgentNetworkInspection Audit</code></pre>
   <div class="in">
     <div>
       <p><strong>About this guide</strong></p>
-      <p>Assembled by Rodney Mhungu. Structure and diagrams are adapted from a September 2026 Agent 365 workshop; every factual claim is taken from Microsoft Learn and linked at the point of use. Opinions are my own. Reviewed <span data-val="reviewed"></span>.</p>
+      <p>Assembled by Rodney Mhungu. Structure and diagrams are adapted from a September 2026 Agent 365 workshop; every factual claim is taken from Microsoft Learn and linked at the point of use. Opinions are my own. Built on my <a href="https://github.com/rodneymhungu/field-guide-principles" target="_blank" rel="noopener">field guide principles</a>. Reviewed <span data-val="reviewed"></span>.</p>
     </div>
     <div>
       <p><strong>Sources</strong> (Microsoft Learn unless stated)</p>
