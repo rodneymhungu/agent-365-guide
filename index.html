@@ -175,14 +175,6 @@ hr{border:0;border-block-start:1px solid var(--rule);margin:0}
 .topbar .in{display:flex;align-items:center;gap:1rem;padding:.55rem clamp(1rem,3vw,2rem);max-width:1400px;margin-inline:auto}
 .brand{font-family:var(--serif);font-weight:700;font-size:1.05rem;text-decoration:none;color:var(--ink);letter-spacing:-.01em;white-space:nowrap}
 .brand span{color:var(--accent)}
-.search{flex:1;display:flex;align-items:center;gap:.5rem;max-width:480px;margin-inline:auto}
-.search input{
-  width:100%;font:inherit;font-size:.92rem;padding:.45rem .8rem .45rem 2.1rem;border:1px solid var(--rule);border-radius:6px;
-  background:var(--paper-2);color:var(--ink);
-  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%237a8290' stroke-width='2'><circle cx='11' cy='11' r='7'/><path d='m20 20-3.5-3.5'/></svg>");
-  background-repeat:no-repeat;background-position:.65rem center;
-}
-.search .hint{font-family:var(--mono);font-size:.7rem;color:var(--ink-3);border:1px solid var(--rule);padding:.05em .4em;border-radius:3px}
 .count{font-size:.78rem;color:var(--ink-2);white-space:nowrap;min-width:6.5rem;text-align:right}
 .toggle{display:inline-flex;align-items:center;gap:.5rem;font-size:.82rem;font-weight:600;color:var(--ink-2);cursor:pointer;user-select:none;white-space:nowrap}
 .toggle input{appearance:none;width:34px;height:20px;border-radius:999px;background:var(--paper-3);border:1px solid var(--rule);position:relative;cursor:pointer;margin:0;transition:background .2s}
@@ -271,8 +263,6 @@ footer li{margin-block-end:.3rem}
 /* Filter / search states */
 .is-hidden{display:none !important}
 mark{background:var(--pre-bg);color:inherit;padding:0 .1em;border-radius:2px}
-.nomatch{display:none;color:var(--ink-2);font-style:italic}
-body.searching .nomatch{display:block}
 
 /* Motion */
 @keyframes rise{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
@@ -289,7 +279,6 @@ section.top > *:nth-child(4){animation-delay:.24s}
   .toc-toggle{display:block;font:inherit;font-size:.85rem;font-weight:600;background:var(--paper-2);border:1px solid var(--rule);border-radius:6px;padding:.5rem .8rem;color:var(--ink);cursor:pointer;width:100%;text-align:left;margin-block-start:1rem}
   .toc[hidden]{display:none}
   .topbar .in{flex-wrap:wrap;gap:.6rem}
-  .search{order:3;max-width:none;flex-basis:100%}
   .count{display:none}
 }
 @media print{
@@ -330,6 +319,7 @@ section.top > *:nth-child(4){animation-delay:.24s}
 .cp g.pill,.cp g.prod{cursor:pointer;transition:opacity .2s}
 .cp.active g.pill:not(.lit),.cp.active g.prod:not(.lit){opacity:.22}
 .cp g.lit rect{stroke:var(--accent);stroke-width:2}
+.cp .frame{overflow-x:auto;overflow-y:hidden;overscroll-behavior-inline:contain;scrollbar-width:thin}
 .cp g:focus{outline:none}.cp g:focus-visible rect{stroke:var(--accent);stroke-width:2.5}
 /* CA explorer */
 .ca .pat{display:flex;gap:.5rem;flex-wrap:wrap;margin-block-end:.6rem}
@@ -432,8 +422,7 @@ a{text-decoration-thickness:1.5px;text-decoration-color:color-mix(in srgb,var(--
 .topbar .in{max-width:1520px;padding:.65rem clamp(1rem,3vw,2.25rem);gap:.8rem}
 .brand{font-family:var(--mono);font-size:.78rem;text-transform:uppercase;letter-spacing:.08em}
 .field-id{font:600 .7rem var(--mono);color:var(--ink-3);text-transform:uppercase;letter-spacing:.08em;white-space:nowrap}
-.search input,.theme-btn{border-color:var(--ink);border-radius:0;background-color:var(--paper-2)}
-.search .hint{border-radius:0;border-color:var(--ink)}
+.theme-btn{border-color:var(--ink);border-radius:0;background-color:var(--paper-2)}
 .toggle input{border-radius:0;border-color:var(--ink);background:var(--paper-3)}
 .toggle input::after{border-radius:0;background:var(--ink)}
 .theme-btn{min-height:36px}
@@ -512,7 +501,7 @@ figcaption{font-family:var(--mono);font-size:.75rem;line-height:1.55;border-colo
 .ca .capanel div{border-radius:0;border:1.5px solid var(--ink);background:var(--paper-2)}
 .term{border:2px solid var(--ink);border-radius:0;box-shadow:7px 7px 0 var(--signal)}
 
-.yt{position:relative;grid-template-columns:minmax(0,1.25fr) minmax(260px,.75fr);gap:0;border:2px solid var(--ink);border-radius:0;background:var(--ink);color:#fffaf0;padding:0;box-shadow:8px 8px 0 var(--signal)}
+.yt{position:relative;grid-template-columns:minmax(0,1.25fr) minmax(260px,.75fr);gap:0;border:2px solid #151a22;border-radius:0;background:#151a22;color:#fffaf0;padding:0;box-shadow:8px 8px 0 var(--signal)}
 .yt::before{content:"WATCH / REFERENCE VIDEO";position:absolute;z-index:2;top:0;left:0;padding:.35rem .55rem;background:var(--signal);color:#fff;font:600 .62rem var(--mono);letter-spacing:.08em}
 .yt .ytframe{border-radius:0}.ytmeta{padding:1rem 1rem 1.1rem}.ytt{font-family:var(--serif);font-size:1.2rem;line-height:1.05;color:#fffaf0}
 .yt .muted{color:#bfb8aa}.chapters button{background:#23231e;color:#fffaf0;border-color:#777064;box-shadow:none;min-height:38px}.chapters button:hover{border-color:var(--signal);color:#fffaf0}
@@ -529,7 +518,7 @@ footer{border-block-start:8px solid var(--ink);background:var(--paper-2)}
   .topbar .in{display:grid;grid-template-columns:minmax(0,1fr) auto auto;gap:.55rem .6rem}
   .brand{grid-column:1}.field-id,.count{display:none}.toc-toggle{display:inline-flex;align-items:center;justify-content:center;grid-column:2;grid-row:1;width:auto;min-height:38px;margin:0;padding:.38rem .6rem;border:1.5px solid var(--ink);border-radius:0;background:var(--paper-2);font:700 .68rem var(--mono);text-transform:uppercase;letter-spacing:.04em}
   .theme-btn{grid-column:3;grid-row:1;min-width:38px;font-size:0;padding:.3rem}.theme-btn::after{content:"◐";font-size:1rem}
-  .search{grid-column:1/3;grid-row:2;order:initial;max-width:none;flex-basis:auto;margin:0}.toggle{grid-column:3;grid-row:2;font-size:.7rem;justify-self:end}.search input{min-height:42px}
+  .toggle{grid-column:1/4;grid-row:2;font-size:.72rem;justify-self:end}
   .shell,footer .in{grid-template-columns:1fr}
   .toc{position:fixed;inset:var(--header-h) .7rem .7rem .7rem;z-index:30;max-height:none;margin:0;padding:1.2rem 1rem 2rem 1.8rem;border:2px solid var(--ink);border-radius:0;background-color:var(--paper-2);box-shadow:8px 8px 0 var(--signal);overflow-y:auto}
   .toc a{min-height:40px;display:flex;align-items:center}.toc[hidden]{display:none}
@@ -542,6 +531,8 @@ footer{border-block-start:8px solid var(--ink);background:var(--paper-2)}
   .tbl{box-shadow:4px 4px 0 var(--ink)}
   .sketch .frame{overflow-x:auto;overflow-y:hidden;overscroll-behavior-inline:contain;scrollbar-width:thin}
   .sketch svg{width:700px;max-width:none}
+  .cp svg{width:760px;max-width:none}
+  .cp figcaption::before{content:"Tap a pillar. Swipe to see all three →";display:block;margin-block-end:.45rem;color:var(--signal);font:700 .64rem var(--mono);letter-spacing:.06em;text-transform:uppercase}
   .sketch figcaption::before{content:"Swipe drawing to follow the scene →";display:block;margin-block-end:.45rem;color:var(--signal);font:700 .64rem var(--mono);letter-spacing:.06em;text-transform:uppercase}
 }
 @media (pointer:coarse){button,.sbtn,.pat button,.plan button,.tscen button,.chapters button{min-height:44px}}
@@ -555,10 +546,6 @@ footer{border-block-start:8px solid var(--ink);background:var(--paper-2)}
   <div class="in">
     <a class="brand" href="#top">rodney<span>.</span>mhungu</a>
     <span class="field-id">Agent control atlas · Field edition 01</span>
-    <div class="search" role="search">
-      <input id="q" type="search" placeholder="Search the guide" aria-label="Search the guide" autocomplete="off">
-      <span class="hint" aria-hidden="true">/</span>
-    </div>
     <span class="count" id="count" aria-live="polite"></span>
     <label class="toggle"><input type="checkbox" id="ga-only"> GA only</label>
     <button class="theme-btn" id="theme" type="button" aria-label="Toggle colour theme">Theme</button>
@@ -797,12 +784,12 @@ footer{border-block-start:8px solid var(--ink);background:var(--paper-2)}
     <tr><td>Secure</td><td>Web, prompt, MCP and file controls on agent traffic</td><td>Entra Global Secure Access</td><td>Network and identity administrators</td></tr>
     </tbody>
   </table></div>
-  <p>Your existing tenant-wide policies are the starting point; policy templates connect them to agents at onboarding. The personas do not change either. Most user-control owners keep the same job when the subject becomes an agent.</p>
+  <p>Policy templates take the tenant-wide policies you already have and attach them to each agent at onboarding. The owners do not change either: whoever runs a control for users runs it for agents.</p>
 
   <figure class="cp">
     <div class="frame">
     <svg viewBox="0 0 900 360" role="img" aria-labelledby="f2t">
-      <title id="f2t">The distributed control plane: Agent 365 foundation on top, three pillars beneath, each mapped to the products that enforce it. Hover or focus a pillar to see its products.</title>
+      <title id="f2t">The distributed control plane: Agent 365 foundation on top, three pillars beneath, each mapped to the products that enforce it. Hover, tap or focus a pillar to see its products.</title>
       <rect x="40" y="24" width="820" height="46" rx="6" class="fa"/>
       <text x="450" y="46" text-anchor="middle" class="d on" font-size="13">AGENT 365 · control plane</text>
       <text x="450" y="62" text-anchor="middle" class="on" font-size="11">registry and identity · access and policies · observability · tools gateway · runtime protection</text>
@@ -822,7 +809,7 @@ footer{border-block-start:8px solid var(--ink);background:var(--paper-2)}
         <g class="prod" id="p-defender"><rect x="600" y="260" width="260" height="30" rx="4" class="st2 fp"/><text x="730" y="280" text-anchor="middle">Defender XDR · Defender for Endpoint</text></g>
         <g class="prod" id="p-intune"><rect x="600" y="296" width="260" height="30" rx="4" class="st2 fp"/><text x="730" y="316" text-anchor="middle">Intune</text></g>
       </g>
-      <text x="40" y="346" font-size="11" class="m">Hover or tab to a pillar. Nothing below the top bar is a new enforcement point.</text>
+      <text x="40" y="346" font-size="11" class="m">Hover, tap or tab to a pillar. Nothing below the top bar is a new enforcement point.</text>
     </svg>
     </div>
     <figcaption><b class="fn"></b> The distributed control plane. Agent 365 coordinates; the products beneath enforce.</figcaption>
@@ -1576,7 +1563,6 @@ Set-MpPreference -AiAgentNetworkInspection Audit</code></pre>
   </table></div>
 </section>
 
-<p class="nomatch" id="nomatch">No section matches that search.</p>
 
 </article>
 </main>
@@ -1703,39 +1689,16 @@ Set-MpPreference -AiAgentNetworkInspection Audit</code></pre>
   window.addEventListener('load', () => { const ready = document.fonts ? document.fonts.ready : Promise.resolve(); ready.then(() => setTimeout(alignInitialHash, 50)); });
   refreshSpy();
 
-  /* --- GA-only filter and search --- */
-  const q = document.getElementById('q'), ga = document.getElementById('ga-only'), count = document.getElementById('count');
-  const searchable = [...document.querySelectorAll('[data-search]')];
+  /* --- GA-only filter --- */
+  const ga = document.getElementById('ga-only'), count = document.getElementById('count');
   const tiered = [...document.querySelectorAll('[data-tier]')];
-  const norm = s => (s || '').toLowerCase();
-
   function apply(){
-    const term = norm(q.value.trim()), gaOnly = ga.checked;
-    document.body.classList.toggle('searching', !!term);
+    const gaOnly = ga.checked;
     tiered.forEach(el => el.classList.toggle('is-hidden', gaOnly && el.dataset.tierValue && el.dataset.tierValue !== 'ga'));
-    let shown = 0;
-    searchable.forEach(sec => {
-      const hit = !term || norm(sec.textContent).includes(term);
-      sec.classList.toggle('is-hidden', !hit); if (hit) shown++;
-      const li = list.querySelector(`li[data-for="${sec.id}"]`); if (li) li.classList.toggle('is-hidden', !hit);
-    });
-    document.querySelectorAll('article > section.block').forEach(b => {
-      const subs = b.querySelectorAll(':scope > section[data-search]');
-      if (subs.length) { const any = [...subs].some(s => !s.classList.contains('is-hidden')); b.classList.toggle('is-hidden', !any);
-        const li = list.querySelector(`li[data-for="${b.id}"]`); if (li) li.classList.toggle('is-hidden', !any); }
-    });
-    document.getElementById('nomatch').classList.toggle('is-hidden', !term || shown > 0);
-    count.textContent = term ? `${shown} section${shown === 1 ? '' : 's'}` : (gaOnly ? 'GA only' : '');
+    count.textContent = gaOnly ? 'GA only' : '';
     onScroll();
   }
-  q.addEventListener('input', apply); ga.addEventListener('change', apply);
-  q.addEventListener('keydown', e => {
-    if (e.key === 'Enter') { const first = searchable.find(s => !s.classList.contains('is-hidden')); if (first) first.scrollIntoView({block:'start'}); }
-    if (e.key === 'Escape') { q.value = ''; apply(); q.blur(); }
-  });
-  document.addEventListener('keydown', e => {
-    if (e.key === '/' && document.activeElement !== q && !/input|textarea/i.test(document.activeElement.tagName)) { e.preventDefault(); q.focus(); }
-  });
+  ga.addEventListener('change', apply);
 
   /* --- Figure numbering --- */
   document.querySelectorAll('figcaption .fn').forEach((b,i)=>{ b.textContent = 'Figure ' + (i+1) + '.'; });
@@ -1768,8 +1731,14 @@ Set-MpPreference -AiAgentNetworkInspection Audit</code></pre>
     const svg=fig.querySelector('svg'), pills=[...svg.querySelectorAll('g.pill')], prods=[...svg.querySelectorAll('g.prod')];
     function light(ids){ svg.classList.add('active'); pills.forEach(p=>p.classList.toggle('lit', ids.pill===p)); prods.forEach(p=>p.classList.toggle('lit', ids.set.has(p.id))); }
     function clear(){ svg.classList.remove('active'); [...pills,...prods].forEach(p=>p.classList.remove('lit')); }
-    pills.forEach(p=>{ const on=()=>light({pill:p,set:new Set(p.dataset.links.split(' '))}); p.addEventListener('pointerenter',on); p.addEventListener('focus',on); p.addEventListener('pointerleave',clear); p.addEventListener('blur',clear); });
-    prods.forEach(pr=>{ pr.addEventListener('pointerenter',()=>{ const owners=pills.filter(p=>p.dataset.links.split(' ').includes(pr.id)); svg.classList.add('active'); pills.forEach(p=>p.classList.toggle('lit',owners.includes(p))); prods.forEach(x=>x.classList.toggle('lit',x===pr)); }); pr.addEventListener('pointerleave',clear); });
+    const hover=matchMedia('(hover:hover)').matches;
+    pills.forEach(p=>{ const on=()=>light({pill:p,set:new Set(p.dataset.links.split(' '))});
+      if(hover){ p.addEventListener('pointerenter',on); p.addEventListener('pointerleave',clear); p.addEventListener('focus',on); p.addEventListener('blur',clear); }
+      else { p.addEventListener('click',e=>{ e.stopPropagation(); p.classList.contains('lit') ? clear() : on(); }); }
+      p.addEventListener('keydown',e=>{ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); p.classList.contains('lit') ? clear() : on(); } });
+    });
+    if(!hover){ svg.addEventListener('click',clear); }
+    if(hover) prods.forEach(pr=>{ pr.addEventListener('pointerenter',()=>{ const owners=pills.filter(p=>p.dataset.links.split(' ').includes(pr.id)); svg.classList.add('active'); pills.forEach(p=>p.classList.toggle('lit',owners.includes(p))); prods.forEach(x=>x.classList.toggle('lit',x===pr)); }); pr.addEventListener('pointerleave',clear); });
   });
 
   /* --- Conditional Access explorer --- */
