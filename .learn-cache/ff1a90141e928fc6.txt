@@ -1,0 +1,11 @@
+Security for AI -> ./
+  What's new for AI security? -> whats-new
+  Responsible AI -> transparency-application-cards-security
+  Build a strong security posture for AI -> posture
+  Prepare for AI security -> prepare
+  Discover AI apps and data -> discover
+  Protect AI apps and data -> protect
+  Govern AI for compliance -> govern
+  Security for AI discovery and governance tools ->
+    Assess AI security with Security Dashboard for AI -> security-dashboard-for-ai
+    Secure AI agents at scale using Microsoft Agent 365 -> agent-365-security

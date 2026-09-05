@@ -1,2 +1,8 @@
 .gstack/
 .DS_Store
+
+# automation scratch outputs
+learn-diff.md
+CHANGES.md
+feedback-input.md
+digest.md

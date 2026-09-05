@@ -1,0 +1,234 @@
+Connected platforms in the Microsoft 365 agent registry
+The Connected platforms page in the Microsoft 365 admin center enables you, as an administrator, to securely connect external AI agent environments and synchronize agents into the Agent 365 agent registry for centralized visibility and governance.
+AI agents are often deployed across multiple environments such as Amazon Bedrock, Google Vertex AI, Salesforce, and Databricks. Without a centralized agent registry, you must manually track agents across disconnected platforms.
+By using Connected platforms, you can:
+Connect supported third‑party AI platforms.
+Authenticate once per environment.
+Synchronize agents from external environments into Microsoft Agent 365 agent registry.
+Perform agent management actions supported by the AI platform APIs.
+Manage external platform connections
+You can create and manage external platform connections from the Connected platforms page in the Microsoft 365 admin center.
+From this page, you can:
+Create new platform connections.
+View connection sync status.
+Monitor last sync activity.
+Review errors associated with sync attempts.
+Delete existing connections.
+Create a platform connection
+To synchronize agents from an external platform, follow these steps:
+Open the Microsoft 365 admin center in your browser.
+In the navigation pane, select Agents > All Agents to see the agent registry.
+In the Connected platforms web part, select Manage. The Connected platforms page is displayed.
+Select + Connect a platform.
+Enter a connection name for the external environment and provide a description.
+Select the external platform.
+Select the region.
+Indicate if you want to import agents automatically.
+Enter the required authentication credentials.
+Validate credentials.
+Save the connection.
+After successful validation and setup:
+The Microsoft 365 admin can trigger a sync by using the Sync agents button.
+Agents from the connected environment synchronize into the agent registry.
+You can configure future synchronizations to occur on a scheduled basis, in a future release.
+View details after a sync
+Select an existing connection to view sync details and monitor synchronization status.
+Connection details include:
+Platform provider
+Regions
+Last run date
+Last sync status
+Total synced agents
+Synchronization results
+Supported platforms
+Use Connected platforms to synchronize agents from the following platforms:
+Amazon Bedrock
+Google Vertex AI
+Salesforce Agentforce
+Databricks Genie
+Anthropic Claude Managed Agents
+Oracle Generative AI Agents
+Microsoft product teams are actively working to expand support to more platforms. Check back frequently to learn about new platform integrations.
+Authentication requirements
+This section provides platform-specific authentication requirements and setup instructions for connections in Connected platforms.
+Amazon Bedrock
+To set up a connection to an Amazon Bedrock environment in Connected platforms, verify that you have the permission, context, and these Amazon Bedrock credentials:
+AWS Region: Knowledge about the Amazon Web Services region where the agents are deployed
+Amazon Bedrock access key ID
+Amazon Bedrock secret access key
+To generate access key ID and secret access key:
+Create new or use an existing IAM user with the following permissions to agent resources:
+bedrock:ListAgents
+bedrock:GetAgent
+bedrock:ListAgentAliases
+bedrock:GetAgentAlias
+bedrock:ListAgentVersions
+bedrock:GetAgentVersion
+bedrock:InvokeModel
+bedrock:InvokeAgent
+bedrock:InvokeInlineAgent
+bedrock:DeleteAgent
+To synchronize Bedrock AgentCore harnesses and runtimes, add the following permissions:
+bedrock-agentcore:ListHarnesses
+bedrock-agentcore:ListAgentRuntimes
+bedrock-agentcore:ListGateways
+bedrock-agentcore:ListGatewayTargets
+bedrock-agentcore:GetHarness
+bedrock-agentcore:GetAgentRuntime
+bedrock-agentcore:GetGateway
+bedrock-agentcore:GetGatewayTarget
+bedrock-agentcore:GetMemory
+bedrock-agentcore:DeleteHarness
+bedrock-agentcore:DeleteAgentRuntime
+bedrock-agentcore:DeleteGateway
+bedrock-agentcore:DeleteGatewayTarget
+bedrock-agentcore:DeleteMemory
+Create a new access key.
+For more information about creating an access and secret key, see Amazon Bedrock and Amazon Web Services documentation. For more information about Amazon Bedrock and Microsoft Entra Agent ID, see Secure an Amazon Bedrock agent with Microsoft Entra Agent ID.
+Google Vertex AI
+Provide credentials associated with your Google Cloud environment to authenticate and synchronize agents.
+To set up a connection to a Google Vertex AI environment in Connected platforms, verify that you have the permission, context, and these Google Vertex AI credentials:
+Google Cloud Region: Knowledge about the Vertex region where the agents are deployed.
+Google Vertex AI project ID: The ID of your Google Vertex AI project.
+Google Vertex AI credentials: Secret access key
+Create a new or use an existing service account with the following access to project resources:
+Vertex AI Administrator role or custom role with permissions:
+aiplatform.reasoningEngines.list
+aiplatform.reasoningEngines.get
+aiplatform.reasoningEngines.delete
+Generate a new secret key
+For more information about creating a service account key, see Google Cloud Vertex AI and Google Cloud documentation.
+Salesforce Agentforce
+To set up a connection to a Salesforce Agentforce environment in Connected platforms, ensure you have a Salesforce account with the right permissions, Domain URL, consumer key, and consumer secret.
+To set up OAuth in Salesforce, set up a connected app, get your My Domain URL, and retrieve the consumer key and secret.
+Set up a connected app
+Go to Setup > Search App Manager.
+Select External Client App Manager.
+Select New External Client app and fill in the details.
+Check Enable OAuth.
+Set the Callback URL.
+For testing: https://login.salesforce.com/services/oauth2/success
+Move the following scopes from Available to Selected:
+Access chatbot services (chatbot_api)
+Access the Salesforce API Platform (sfap_api)
+Manage user data via APIs (api)
+Perform requests at any time (refresh_token, offline_access)
+Enable Client Credentials Flow.
+Select Save.
+Go to Policies > OAuth Policies.
+Enable Client Credentials Flow and set Run As to a user with API access (for example, usernamd1.eb52cfb153dc@agentforce.com).
+Get your My Domain URL
+Go to Setup > Search My Domain.
+Copy the current My Domain URL.
+Retrieve consumer key and secret
+After saving the connected app, go back to External Client App Manager.
+Locate your app.
+Select Settings and OAuth Settings.
+Select Consumer Key and Secret to see:
+Consumer Key
+Consumer Secret (select Click to reveal)
+For more information about setting up OAuth in Salesforce and getting a consumer key and consumer secret, see Salesforce Agentforce documentation.
+Databricks Genie
+To set up a connection to Databricks in Connected platforms, you need a service principal in your Databricks account with admin access in the workspace.
+To create a valid connection, you need:
+Workspace URL: Databricks portal URL
+Client ID: Service Principal Client/Application ID
+Client Secret: Service Principal Client Secret
+For more details about service principal creation, see Databricks public documentation.
+Anthropic Claude Managed Agents
+To set up a connection to Anthropic Claude in Connected platforms, you need a workspace in your Anthropic Claude account and a workspace-scoped API key with access to that workspace.
+Create a new workspace to use with Connected platforms instead of using the default workspace. The default workspace doesn't expose a workspace ID that you can use when you create the connection.
+Important
+Anthropic Claude's Managed Agents APIs are currently in beta. As a result, Anthropic Claude connections in Connected platforms are currently available as a preview feature.
+To create a valid connection, you need:
+Workspace ID: The unique ID of the Anthropic Claude workspace that contains the agents to synchronize.
+API Key: A workspace-scoped Anthropic API key for the selected workspace.
+Oracle Generative AI Agents
+To set up a connection to an Oracle Cloud Infrastructure Generative AI Agents environment in Connected platforms, create a service account and grant it the required permissions.
+Step 1: Create a group
+Go to cloud.oracle.com, and sign in.
+Select the menu icon, and then select Identity & Security > Domains.
+Select the Default domain, or your active domain.
+Select the User Management tab, and then select Groups > Create Group.
+Enter the following information:
+Name: 3P-Portal-Agents
+Description: 3P portal access to list, read, and delete GenAI Agents
+Select Create.
+Step 2: Create a service user
+In the same identity domain, under the User Management tab, select Users > Create User.
+Enter the following information:
+First Name: SVC
+Last Name: 3P Portal Agents
+Username: svc-3p-portal-agents
+Email: Enter a shared mailbox, such as svc-genai@yourcompany.com.
+Clear Use the email address as the username if shown.
+Select Create.
+On the user's page, select Groups > Assign to Group, and then select 3P-Portal-Agents.
+Don't set a console password for this user. It should be API-only.
+Step 3: Generate an API key for the service user
+On the service user's page, go to API Keys.
+Select Add API Key.
+Select Generate API Key Pair.
+Select Download Private Key, and save the file as oci_api_key.pem.
+Select Add.
+Copy the configuration file preview. It looks like the following example:
+[DEFAULT]
+user=ocid1.user.oc1..aaaaaa...
+fingerprint=ab:cd:ef:12:...
+tenancy=ocid1.tenancy.oc1..aaaaaa...
+region=us-chicago-1
+key_file=<path to private key>
+Select Close.
+Step 4: Create the IAM policy
+The third-party app needs permissions to read agents, endpoints, and knowledge bases, and to delete agents and endpoints.
+Select the menu icon, and then select Identity & Security > Policies.
+Select your root compartment, or the compartment where your agents live.
+Select Create Policy.
+Enter the following information:
+Name: 3P-Portal-GenAI-Agents
+Description: 3P portal: read + delete GenAI Agents
+Add the policy statements from Option A or Option B. Replace <YourCompartment> with your compartment name. To cover all compartments, use tenancy instead of compartment <YourCompartment>.
+Select Create.
+Option A: Full management
+The following policy grants full management access, including create, read, update, and delete operations:
+Allow group 3P-Portal-Agents to manage generative-ai-agent-family in compartment <YourCompartment>
+This option uses fewer policy statements, but it's more permissive than the app requires because it also allows create and update operations.
+Option B: Least privilege (recommended)
+The following policies grant list and get access to all agent resources and restrict management access to delete operations:
+Allow group 3P-Portal-Agents to read generative-ai-agent-family in compartment <YourCompartment>
+Allow group 3P-Portal-Agents to manage genai-agent in compartment <YourCompartment> where request.permission = 'GENAI_AGENT_DELETE'
+Allow group 3P-Portal-Agents to manage genai-agent-endpoint in compartment <YourCompartment> where request.permission = 'GENAI_AGENT_ENDPOINT_DELETE'
+Deleting an agent that still has an endpoint also requires the endpoint delete permission. Therefore, both delete policy statements are required.
+Step 5: Get the compartment OCID
+The app lists agents within a compartment. Enter the compartment where your agents are located. Use the root tenancy compartment to cover child compartments through a subtree search.
+Select the menu icon, and then select Identity & Security > Compartments.
+Copy the compartment OCID. For the root compartment, use the tenancy OCID.
+Step 6: Provide the connection information
+To connect OCI Generative AI Agents, provide the following information:
+Item
+Example
+Used for
+Private key file
+oci_api_key.pem
+Signing API requests
+User OCID
+ocid1.user.oc1..aaaaaa...
+Service user identity
+Tenancy OCID
+ocid1.tenancy.oc1..aaaaaa...
+Tenancy or root compartment
+Fingerprint
+ab:cd:ef:12:34:...
+API key fingerprint
+Region
+us-chicago-1
+Region where agents run
+Compartment OCID
+ocid1.tenancy.oc1..aaaaaa... or a child compartment OCID
+Location where agents are listed or deleted
+Revoke access
+Immediate: Delete the API key from the service user by going to Identity & Security > Domains > Default > User Management > Users > svc-3p-portal-agents > API Keys > Delete.
+Permanent: Delete the service user.
+Temporary: Remove the user from the 3P-Portal-Agents group. The policy no longer applies.
+Reduce scope: Remove the two manage delete statements in Option B to make the account read-only.
+Only active OCI Generative AI agents are synced.

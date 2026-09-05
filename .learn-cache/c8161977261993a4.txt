@@ -1,0 +1,20 @@
+Get started with Microsoft Agent 365
+Agent 365 addresses the needs of a range of stakeholders. This article provides pointers for how to get started with Microsoft Agent 365, depending on your role in the organization.
+IT admins
+With Microsoft Agent 365, IT administrators can monitor agent activity, enforce policies, resolve problems, and manage threats. They can ensure agents behave securely and comply with enterprise standards.
+To start learning about the monitoring and administrative capabilities in Microsoft Agent 365, see Manage agents in the Microsoft 365 admin center. To learn more about the identity and security framework that extends Microsoft Entra capabilities to AI agents governed by Agent 365, see What is Microsoft Entra Agent ID.
+Security workers
+For security professionals, Agent 365 ensures that each agent is managed with enterprise-grade controls for identity, authentication, compliance, and observability. Agent 365 integrates with Microsoft Purview to apply data protection policies and audit agent activity, and with Microsoft Defender to detect, investigate, and respond to threats in real time.
+To learn more about securing agents with Microsoft Agent 365, see Secure AI agents at scale.
+Agent developers
+The agents you build with Microsoft Copilot Studio automatically integrate with Microsoft Agent 365. They appear in the agent registry, send telemetry to Agent 365, and automatically receive Entra Agent IDs. To get started building agents for Agent 365 with low-code tools, see Build agents with Copilot Studio and Agent 365.
+Agent 365 also offers developers unified SDKs and frameworks that simplify developing, onboarding, and certifying custom-built agents. Agent 365's agentic tools expose consistent MCP interfaces and SDKs. Developers can use agentic tools for Outlook, Teams, and SharePoint and business integrations - accelerating delivery while inheriting enterprise grade security and compliance.
+To get started integrating your custom-built agents to Agent 365, see Connect existing agents to Microsoft Agent 365.
+Business decision makers
+For business decision makers, Agent 365 ensures that agents in your organization are deployed in a secure and governable manner, driving productivity and business outcomes.
+To learn more about the benefits of Microsoft Agent 365, see Microsoft Adoption Hub for Agent 365.
+Information workers
+Agent 365 enables you to amplify the size and quality of your impact through seamless collaboration with agents, allowing you to offload routine tasks and focus on higher-value work.
+See Get started with Agents to learn more.
+Next step
+Connect existing agents to Agent 365

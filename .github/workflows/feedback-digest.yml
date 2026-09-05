@@ -1,0 +1,78 @@
+name: Weekly feedback digest → Gmail
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '30 5 * * 1'   # Mondays, half an hour after the Learn drift run
+
+permissions:
+  contents: read
+  issues: read
+  copilot-requests: write   # lets GITHUB_TOKEN call Copilot CLI if COPILOT_PAT is not set
+
+jobs:
+  digest:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+
+      - name: Collect signals (GoatCounter, GitHub, Brave)
+        env:
+          GOATCOUNTER_TOKEN: ${{ secrets.GOATCOUNTER_TOKEN }}
+          BRAVE_API_KEY: ${{ secrets.BRAVE_API_KEY }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: python3 scripts/feedback_collect.py
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v7
+
+      - name: Install Copilot CLI
+        run: npm install -g @github/copilot
+
+      - name: Write the digest
+        env:
+          COPILOT_PAT: ${{ secrets.COPILOT_PAT }}
+          GITHUB_TOKEN: ${{ github.token }}
+        run: |
+          if [ -n "$COPILOT_PAT" ]; then export COPILOT_GITHUB_TOKEN="$COPILOT_PAT"; fi
+          cat > /tmp/prompt.md << 'PROMPT'
+          Read feedback-input.md (weekly signals about a public guide) and index.html (the guide).
+          Write digest.md as a short email body in plain Markdown, British spelling, no headers
+          larger than ###, under 350 words:
+
+          1. Three lines of numbers: visitors this week, where they came from, which sections
+             were opened most, anything that moved sharply. If a source was unavailable, say so
+             in one clause.
+          2. "What people are saying": summarise each public mention or issue in one line with
+             its link. If there are none, say so in one sentence and move on.
+          3. "Suggested improvements": at most three, each tied to evidence in the inputs
+             (a referrer, a high-traffic section, an issue, a mention). Cite the guide section
+             id (e.g. s7-4) the suggestion applies to. No generic advice.
+          4. One closing line: what to watch next week.
+
+          Do not invent numbers. Do not modify any file other than digest.md.
+          PROMPT
+          # claude-haiku-4.5 is listed as a valid --model id in the Copilot CLI programmatic
+          # reference; swap it if `copilot help` on the runner shows a different cheap model.
+          copilot -p "$(cat /tmp/prompt.md)" \
+            --allow-tool=write \
+            --allow-tool='shell(cat:*)' \
+            --model claude-haiku-4.5 \
+            --no-ask-user -s
+          test -f digest.md || cp feedback-input.md digest.md
+
+      - name: Send via Gmail
+        uses: dawidd6/action-send-mail@v3
+        with:
+          server_address: smtp.gmail.com
+          server_port: 465
+          secure: true
+          username: ${{ secrets.GMAIL_USERNAME }}
+          password: ${{ secrets.GMAIL_APP_PASSWORD }}   # Google Account → Security → App passwords
+          subject: "Agent 365 guide — weekly digest (${{ github.run_started_at }})"
+          to: ${{ secrets.GMAIL_USERNAME }}
+          from: Agent 365 guide bot <${{ secrets.GMAIL_USERNAME }}>
+          body: file://digest.md
+          convert_markdown: true
+          attachments: feedback-input.md

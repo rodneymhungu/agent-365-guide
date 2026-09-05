@@ -43,6 +43,10 @@ This guide is the first built on my [field guide principles](https://github.com/
 
 Before publishing, confirm that both scripts parse, every local image and internal anchor resolves, every image has width and height, nothing overflows at 390px or 1440px, and the page reads correctly in light and dark. Then run an AI-writing review on any prose that changed.
 
+## Keeping it current
+
+Two GitHub Actions run every Monday. One re-fetches every Learn page the guide cites, and when a page has changed asks Copilot CLI for the minimal edit and opens a pull request for review. The other collects visitor numbers, referrers, issues and public mentions and emails a short digest. Both are described in [scripts/README.md](scripts/README.md), including the five secrets they need.
+
 ## Licence and attribution
 
 Screenshots from Microsoft Learn are CC BY 4.0. Workshop deck screenshots show demo-tenant data approved for publication. Structure and diagrams are adapted from a September 2026 Agent 365 workshop. Text and drawings by Rodney Mhungu.

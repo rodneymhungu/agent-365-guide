@@ -1,0 +1,128 @@
+Policy templates
+Agent 365 policy templates provide a streamlined approach to governance and security management for agents in your organization. Templates bundle predefined policies and protections from Microsoft Entra, Purview, SharePoint Online, and Defender to ensure consistent security and compliance controls across all your agents.
+This article covers how to create, update, and delete policy templates, and explains supported default and custom policies.
+What is a template?
+An Agent 365 policy template is a collection of predefined governance and security policies that you apply to agents to enforce organizational standards. Use templates to:
+Standardize governance across all agents in your organization.
+Reduce manual configuration by applying multiple policies at one time.
+Ensure compliance with security and regulatory requirements.
+Template types
+To enhance governance and security for agents, apply a template that includes predefined policies and protections.
+Default templates
+Microsoft provides default templates that include essential security and compliance controls from:
+Microsoft Entra
+Microsoft Purview
+SharePoint Online
+Microsoft Defender
+Your tenant has default policies for all agents. The platform automatically enables some policies, while others require more configuration based on your organization's setup and requirements.
+Policy name
+Description
+Purview audit enabled
+Audit trails log all activities and provide clear observability. For more information, see Use Microsoft Purview to manage data security & compliance for Microsoft Agent 365.
+Detect sensitive information (DSPM) in AI interaction
+Data security controls safeguard against sensitive data leaks and oversharing. For more information, about Data Security Posture Management (DSPM), see Learn about Data Security Posture Management for AI.
+Purview AI compliance assessment
+Continuous monitoring evaluates agents for compliance gaps and identifies areas needing attention. For more information, see Microsoft Purview Compliance Manager.
+Identity protection
+Detect agent identity threats by flagging anomalous activities involving agents. For more information, see ID Protection for agents.
+Network visibility
+Enable network visibility to agents and external resources. For more information, see Configure Secure Web and AI Gateway for Microsoft Copilot Studio agents.
+Lifecycle management for agents
+Govern Microsoft Entra Agent IDs at scale with lifecycle policies. For more information, see Governing Agent Identities.
+Agent access insights
+Provides insights on agents accessing SharePoint and OneDrive sites. For more information, see Microsoft Agent 365 integration with SharePoint Online and OneDrive.
+Restrict external sharing of sites and its content
+Provides capability to restrict agents and Copilot from discovering specific sites and content. For more information, see Restrict SharePoint site access with Microsoft 365 groups and Microsoft Entra security groups.
+Access control for sites and OneDrive
+For more information, see Microsoft Agent 365 integration with SharePoint Online and OneDrive.
+Content permissions insights
+For more information, see Restrict discovery of SharePoint sites and content.
+AI real time protection and investigation
+Detect and block suspicious agent activity during runtime. For more information, see Detect, block, and investigate threats to AI agents using Microsoft Defender.
+Advanced hunting
+Get alerts on agent activity and investigate suspicious events with advanced hunting capabilities. For more information, see Advanced Hunting tables for AI agent investigation.
+SharePoint Online prerequisites
+To use the SharePoint Online capabilities, the following prerequisites must be met.
+After the policy is selected in the template, the admin must go to the SharePoint admin center to create the insights report or to apply the Restrict Content discovery setting.
+The global admin and SharePoint admin can log in to SharePoint admin center.
+The tenant must have a Microsoft 365 Copilot license.
+Custom templates
+Use custom templates to extend governance beyond the default policies and meet your organization's specific requirements. Custom templates include policies from Microsoft Entra that you can apply on a case-by-case basis to address specific governance needs.
+Custom template prerequisites
+To create a template, ensure the following prerequisites are met:
+Create all policies in Entra. Otherwise, you can't select a policy when creating a template.
+Both the global admin and AI admin need the Attribute Assignment Administrator role for custom security attribute policies. If you're a global admin, you can consent to assign the role.
+The AI admin can create and apply access packages, but doesn't have enough privileges for conditional access and custom security attributes.
+Policy name
+Description
+Conditional access
+Configure conditional access policies for agents to align with your organization's security requirements. For more information, see Conditional Access for Agent ID.
+Access packages
+Govern agents access rights through access packages. For more information, see Allow users, service principals, and agent identities in your directory to request the access package.
+Custom security attribute
+Assign custom security attributes to enforce fine-grained access control. For more information, see What are custom security attributes in Microsoft Entra ID?.
+Conditional access
+Create a conditional access policy for agents in Entra. This process involves the following key components:
+Assignments: Scope policies to specific agents.
+Target resources: Define which resources the policy applies to.
+Conditions: Set conditions such as sign-in risk.
+Access controls: Configure grant or block access controls.
+Policy state: Toggle policies On, Off, or Report only.
+Create a policy
+Go to the Microsoft Entra admin center.
+In the navigation pane, select Conditional Access.
+Select + Create new policy, then enter a policy name.
+Under Assignments, select the link to open other options.
+Specify that this policy applies to Agents.
+Select the Select agents option, and then select at least one individual agent identity.
+Important
+Selecting at least one agent identity is required to create the policy. Only policies with at least one agent ID are visible in Microsoft 365 admin center when creating a template.
+Complete the remaining policy configuration as needed, then create and save the policy.
+To learn more, see Conditional Access for Agent ID.
+If the policy is scoped to all agent identities, it's automatically selected in the Microsoft 365 admin center experience and can't be overridden.
+Access packages
+Access packages allow you to govern agent access rights by bundling resources, roles, and policies into a single package. Use access packages to manage and automate access for agents. Learn more about how to create access package in Allow users, service principals, and agent identities in your directory to request the access package.
+Custom security attributes
+Custom security attributes allow you to assign organization-specific metadata to agent identities, enabling fine-grained access control and policy enforcement based on custom attribute values. Learn more about custom security attributes in What are custom security attributes in Microsoft Entra ID?.
+Important
+Entra policy requires an agent to authenticate by using its Entra identity when accessing resources. If the agent doesn't use Entra-based authentication, you can assign this policy, but it might not be enforced during runtime. Work with your agent developer to verify that Entra-based authentication is enabled before relying on these policies for compliance.
+Add a new template
+To add a new template, follow these steps:
+Open the Microsoft 365 admin center in your browser.
+In the navigation pane, expand Agents.
+Select Settings > Templates > Add a New Template.
+Enter details about the template:
+Enter the template name.
+Enter a description for the template.
+Indicate if this template applies to agents with their own access.
+Select Next and then choose any custom policies you want to add to the template.
+Review and finish adding the template.
+Microsoft's built-in, default policies appear locked and can't be edited. Add custom policies, as needed, to meet your organization's requirements.
+When you add a new template, it appears as locked and you can't create a new template. The tenant must have an Agent 365 license for applying Entra custom policies.
+Scenarios for AI templates are in preview and available only for Frontier tenants. Custom policies aren't yet supported.
+Select Save template.
+When you activate an agent, a dropdown menu displays both your custom templates and Microsoft's default templates. To apply its policies to the agent, select the desired template from the list.
+Edit a template
+To edit a template, follow these steps:
+Open the Microsoft 365 admin center in your browser.
+In the navigation pane, expand Agents.
+Go to Settings > Templates and select a template.
+Select the policy to update.
+Save your changes.
+The updated template applies to all new activations. The changes don't affect agents that are already approved.
+Delete a template
+To delete a template, follow these steps:
+Open the Microsoft 365 admin center in your browser.
+In the navigation pane, expand Agents.
+Go to Settings > Templates and select a template.
+Select a policy to delete.
+Select Delete.
+Select a template
+As an administrator, choose a default template or custom template to apply based on the agent type. Two default templates are available:
+Default policy template for all agents except AI teammates.
+Default policy template for AI teammates in Frontier.
+AI teammates are in preview and available only for Frontier tenants.
+When you activate an agent, a dropdown menu displays both Microsoft default templates and custom templates. Select the desired template to apply its policies to the agent. For more information, see Policy templates.
+Frequently asked questions (FAQ)
+Can I apply the policy to already approved agents?
+Agent 365 policy templates support only new agent activation. You can't apply the policy to approved agents.

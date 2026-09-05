@@ -1,0 +1,137 @@
+name: Learn drift → pull request
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '0 5 * * 1'   # Mondays 05:00 UTC (07:00 Amsterdam in summer)
+
+permissions:
+  contents: write
+  pull-requests: write
+  copilot-requests: write   # lets GITHUB_TOKEN call Copilot CLI if COPILOT_PAT is not set
+
+concurrency:
+  group: learn-drift
+  cancel-in-progress: false
+
+jobs:
+  watch:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+
+      - name: Detect drift on cited Learn pages (no LLM)
+        id: watch
+        run: |
+          python3 scripts/learn_watch.py | tee -a "$GITHUB_OUTPUT"
+          echo "### Learn drift" >> "$GITHUB_STEP_SUMMARY"
+          head -n 3 learn-diff.md >> "$GITHUB_STEP_SUMMARY"
+
+      # ---------- Everything below only runs when a cited page changed ----------
+
+      - name: Set up Node.js
+        if: steps.watch.outputs.changed == 'true'
+        uses: actions/setup-node@v7
+
+      - name: Install Copilot CLI
+        if: steps.watch.outputs.changed == 'true'
+        run: npm install -g @github/copilot
+
+      # Microsoft Learn MCP server so Copilot can read the full page, not just the diff.
+      # Path and shape per docs.github.com "Add MCP servers for Copilot CLI" (5 Sep 2026).
+      - name: Configure Microsoft Learn MCP
+        if: steps.watch.outputs.changed == 'true'
+        run: |
+          mkdir -p ~/.copilot
+          cat > ~/.copilot/mcp-config.json << 'JSON'
+          {
+            "mcpServers": {
+              "microsoft-learn": { "type": "http", "url": "https://learn.microsoft.com/api/mcp", "tools": ["*"] }
+            }
+          }
+          JSON
+
+      - name: Propose guide edits with Copilot CLI
+        if: steps.watch.outputs.changed == 'true'
+        env:
+          COPILOT_PAT: ${{ secrets.COPILOT_PAT }}      # fine-grained PAT, "Copilot Requests" permission
+          GITHUB_TOKEN: ${{ github.token }}            # fallback auth (org-billed Copilot only)
+        run: |
+          if [ -n "$COPILOT_PAT" ]; then export COPILOT_GITHUB_TOKEN="$COPILOT_PAT"; fi
+          cat > /tmp/prompt.md << 'PROMPT'
+          You are maintaining index.html, a single-file guide to Microsoft Agent 365 for security
+          and compliance engineers. Read learn-diff.md first. It lists Microsoft Learn pages that
+          changed since the last run, a unified diff of each, and which guide sections (ids like
+          s6-2) cite that page. Entries ending in toc.json are docs tables of contents: a new line
+          there means Microsoft published a new page, which may describe a capability the guide
+          does not cover yet.
+
+          Your job, in order:
+          1. For each changed page, decide whether the change affects a factual claim in the cited
+             sections. Cosmetic Learn edits (wording, navigation, dates in the header) do not.
+          2. Where a claim is affected, make the minimal edit to the relevant section's prose.
+             Keep the author's voice, British spelling, and the existing sentence rhythm. Do not
+             add new sections, do not restructure, do not touch "Rodney's field note" callouts.
+          3. If a capability's status moved (preview → GA, new Frontier preview, retired), update
+             the matching entry in the window.A365.capabilities array at the top of index.html.
+             Use the existing tier keys: ga, preview, frontier, roadmap. Update the note field if
+             a date or licence dependency changed. Then set A365.reviewed to today's date in the
+             form "5 September 2026".
+          4. If you cannot verify a change against the Learn page itself (use the microsoft-learn
+             MCP server to fetch it), do not guess: leave the prose alone and describe the
+             uncertainty in CHANGES.md instead.
+          5. Write CHANGES.md: one bullet per edit with the section id, the Learn URL, and a
+             one-line reason. Add a final "Needs a human decision" list for anything you skipped,
+             including any new Learn page that the guide should probably cite.
+
+          Never edit files other than index.html and CHANGES.md. Never change the CSS or scripts
+          other than the window.A365 data block.
+          PROMPT
+          copilot -p "$(cat /tmp/prompt.md)" \
+            --allow-tool=write \
+            --allow-tool='shell(cat:*)' \
+            --allow-tool='shell(grep:*)' \
+            --allow-tool='microsoft-learn' \
+            --no-ask-user -s
+          test -f CHANGES.md || echo "- Copilot produced no CHANGES.md; review learn-diff.md manually." > CHANGES.md
+
+      - name: Build PR body
+        if: steps.watch.outputs.changed == 'true'
+        run: |
+          {
+            echo "Automated weekly check of the Microsoft Learn pages this guide cites."
+            echo
+            echo "## Proposed edits"
+            cat CHANGES.md
+            echo
+            echo "<details><summary>Raw Learn diff</summary>"
+            echo
+            cat learn-diff.md
+            echo
+            echo "</details>"
+          } > /tmp/pr-body.md
+          rm -f CHANGES.md learn-diff.md   # PR body carries these; keep the tree clean
+
+      - name: Open or update pull request
+        if: steps.watch.outputs.changed == 'true'
+        uses: peter-evans/create-pull-request@v7
+        with:
+          branch: auto/learn-drift
+          title: "Learn drift: cited pages changed"
+          body-path: /tmp/pr-body.md
+          commit-message: "chore: refresh Learn cache and propose guide edits"
+          add-paths: |
+            index.html
+            .learn-cache/**
+          labels: learn-drift
+          delete-branch: true
+
+      # Nothing changed: still commit any newly cached pages (e.g. a URL added to index.html)
+      # so next week has something to diff against. No-op when the cache is identical.
+      - name: Refresh cache on main
+        if: steps.watch.outputs.changed == 'false'
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "chore: refresh Learn cache"
+          file_pattern: ".learn-cache/**"

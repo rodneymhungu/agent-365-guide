@@ -1,0 +1,26 @@
+Protect agent identities with Microsoft Entra
+Microsoft Entra Agent ID provides the identity platform capabilities for Microsoft Agent 365, enabling organizations to securely manage AI agents throughout their lifecycle. With Microsoft Entra Agent ID, you can control their access to resources and monitor their activities within your organization's security and compliance framework.
+Manage AI agents at scale
+Building on Agent 365 as the unified registry for agent visibility, Microsoft Entra Agent ID enables customers to manage AI agents at scale by providing a dedicated identity and access management foundation. Agents discovered through Agent 365 can be assigned a first‑class identity in Entra Agent ID, allowing organizations to apply consistent authentication, authorization, lifecycle management, and policy enforcement as agents grow in number and capability. This separation of concerns lets Agent 365 focus on discovering and inventorying all agents, while Entra Agent ID enables customers to manage agents at scale with the right identities, permissions, and protections required for enterprise deployment. For more information, see Agent Registry convergence with Microsoft Agent 365.
+Govern agent identities and lifecycle
+With Microsoft Entra Agent ID you can manage agents in much the same way you would any identity in your tenant. Now you can ensure agents have a responsible person providing oversight throughout the agent lifecycle and an agent's access doesn't persist longer than needed.
+Microsoft Entra ID governance for agents provides:
+Agent sponsorship and ownership capabilities for effective agent governance.
+Agent lifecycle workflows so that an agent doesn't have access to resources for longer than needed.
+Protect agent access to resources
+As the scope, volume, and ecosystems of agents continues to grow, so does the need to secure what those agents can access. Microsoft Entra Agent ID provides those guardrails and best practices by extending Zero Trust principles to agents. You can enforce least-privilege access by only giving agents access rights to the apps and resources they need to complete their tasks. With Microsoft Entra Agent ID, you can:
+Protect access to resources with Conditional Access for agents.
+Create policies that apply to agent identities, target agent resources, and trigger based on agent risk.
+Automatically detect and respond to risky agent identity behavior, such as accessing unfamiliar resources or making a high number of sign-in attempts, with Microsoft Entra ID protection for agents.
+Apply network-level controls to agents created in Microsoft Copilot Studio with capabilities of Microsoft Entra Agent ID. For more information, see Learn about Secure Web And AI Gateway for Microsoft Copilot Studio agents.
+Apply web content filtering, threat intelligence filtering, and network file filtering to agent traffic.
+Microsoft Entra agent identity platform capabilities
+Build a complete identity and authorization solution for your AI agents with the Microsoft Entra agent identity platform. This framework provides authentication, authorization, integration, and interoperability capabilities to solve the unique challenges of AI agents operating in enterprise environments.
+Configure secure and standard authentication for application-only and delegated access scenarios.
+Integrate with the platform using robust SDKs and APIs.
+Related content
+Secure AI agents at scale using Microsoft Agent 365
+Microsoft Entra Agent ID documentation
+Integrate third-party agents with Microsoft Entra Agent ID
+Secure an Amazon Bedrock agent with Microsoft Entra Agent ID
+Secure an n8n agent with Microsoft Entra Agent ID

@@ -1,0 +1,46 @@
+Microsoft Entra Agent IDs for Copilot Studio agents
+This article describes features used in agents or agent flows powered by the standard harness.
+Microsoft Copilot Studio integrates with Microsoft Entra Agent ID.
+Agent identities extend identity governance and visibility to agents. These identities help your organization build, discover, govern, and protect agent identities across services by using a unified platform.
+Copilot Studio automatically creates a Microsoft Entra Agent ID for each new agent you create. You can view and manage these identities in the Microsoft Entra admin center.
+Important
+Before May 2026, Copilot Studio automatically provisioned an Azure app registration in your tenant for each agent you created. After May 2026, Copilot Studio automatically creates a Microsoft Entra Agent ID for each new agent.
+Existing agents that use an app-registration identity will be migrated by Microsoft in a future update.
+Governance capabilities work for both Entra Agent IDs and app registration IDs during the transition period, but you can optionally manually migrate older agents to use Entra Agent IDs in the Power Platform admin center, with PowerShell scripts, or with Power Platform APIs.
+Key benefits:
+Audit logging in Microsoft Entra ID
+Agent lifecycle management
+Integration with Entra ID Governance
+Visibility of connector permissions as API permissions on the agent identity, so Entra and Microsoft 365 admins can see what an agent can do without opening Power Platform admin center
+Ability to target those connector permissions with Microsoft Entra Conditional Access policies (for example, network location, device compliance, or risk conditions)
+Microsoft Entra ID logs authentication activity. You can view sign-in events in the Microsoft Entra admin center.
+When you create your first agent after the rollout of Entra Agent ID integration in May 2026, Copilot Studio adds a blueprint to your tenant. The blueprint is named Microsoft Copilot Studio agent identity blueprint. A corresponding blueprint principal is also created.
+For more information, see Understanding Blueprint Principals. For technical details, see How are agent identities created? in the Microsoft Entra Agent ID documentation.
+Existing agents and backfill
+Existing agents that you created before Entra Agent ID rolled out in May 2026 continue to use app registrations.
+You can manually migrate older agents to use Agent IDs in the Power Platform admin center, or with PowerShell scripts and Power Platform APIs.
+Governance capabilities work for both Agent IDs and App Registration IDs during the transition period.
+Connector permissions on the agent identity
+When a maker publishes an agent, Copilot Studio attaches API permissions to the agent's Entra Agent ID for each Power Platform connector the agent is configured to use. This lets Microsoft Entra ID and Microsoft 365 admins see which connectors an agent can call without leaving the Microsoft Entra admin center. The scopes are only honored by the Power Platform connector runtime and are re-validated at runtime against Advanced Connector Policies (ACP) and DLP, so they can't be used to bypass your governance policies.
+Because the scopes are first-class API permissions on the agent's Entra Agent ID, admins can also target them with Microsoft Entra Conditional Access policies. Microsoft Entra Conditional Access policies include requiring network location, device compliance, or risk-based conditions before tokens are issued for a specific connector resource.
+For the full explanation, which includes how scopes appear in Entra, when they're applied, and what's in scope today, see What scopes are attached to my agent's Entra Agent ID?.
+Validate or retrieve agent identity details
+To confirm that Copilot Studio created an agent identity, review the agent metadata:
+In Copilot Studio, go to the Settings page for your agent.
+Select Advanced.
+Expand the Metadata section. The GUID for the agent identity that is associated with the agent appears under Entra Agent ID. Use this GUID in the Microsoft Entra admin center to confirm that agent identities are populated.
+Understanding Blueprint Principals
+When you create the first agent identity in an environment, Copilot Studio adds a Microsoft Copilot Studio agent identity blueprint to your tenant. The agent identity associated with your Copilot Studio agent is created as a child of this blueprint principal.
+Blueprint ID: 25664c89-cea5-4ab6-b924-a54fd8a19ae0
+All agent identities are children of the Copilot Studio global blueprint.
+For more information, see How are agent identities created?.
+Deleting agent identities
+When you delete an agent in Copilot Studio, Copilot Studio also deletes the associated Microsoft Entra Agent ID.
+Opt out of automatic agent identity creation
+Previously, you could opt out of Entra Agent ID at the environment level. Starting May 2026, all new agents have Microsoft Entra Agent IDs, and you can no longer opt out of automatic agent identity creation.
+Frequently asked questions
+For answers to commonly asked questions about agent identities, app registrations, and authentication, see Agent identities and authentication in Copilot Studio.
+Related articles
+Agent identities and authentication in Copilot Studio
+Configure user authentication with Microsoft Entra ID
+Delete agents

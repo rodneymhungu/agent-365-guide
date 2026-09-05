@@ -1,0 +1,140 @@
+Microsoft Agent 365 SDK overview
+The Microsoft Agent 365 SDK connects an agent you already own and run to Microsoft Agent 365. Use it when your agent needs code-level access to Agent 365 capabilities such as agent identity, observability, governed Work IQ tools, or notifications.
+Where the SDK fits
+The integration model shows the boundary between built-in integrations, registry synchronization, and developer-integrated Agent 365 SDK scenarios.
+Agents on platforms with built-in Agent 365 integration, and agents imported through registry sync, can already appear in the Agent 365 inventory. Add the SDK when the agent needs capabilities that the platform path doesn't provide and that you must configure in code, such as observability or Work IQ tooling. Platform integrations evolve, so confirm the current platform guidance before deciding that the SDK is required. See Choose your integration option.
+What the SDK adds
+The SDK provides four capabilities:
+Capability
+Description
+Identity
+Use a Microsoft Entra-backed agent identity for secure authentication and controlled access to tools and data. Agents that need their own user account and mailbox are available only to tenants participating in the Frontier preview program.
+Observability
+Emit telemetry through OpenTelemetry, producing audited, traceable interactions, inference events, and tool usage.
+Tooling
+Invoke governed Work IQ Model Context Protocol (MCP) servers to reach Microsoft 365 workloads such as Mail, Calendar, Word, SharePoint, and Teams under admin control.
+Notifications
+Receive and respond to messages from Teams, Outlook, Word comments, and email, like a human participant in Microsoft 365 apps. This capability requires an agent's user account and is available only to tenants participating in the Frontier preview program.
+Choose the capabilities that match your agent's requirements rather than adopting the entire SDK surface. Identity, tooling, and notifications use an agent identity blueprint as their Entra foundation. Notifications also require an agent user account, while observability can use either the agent identity blueprint or a standard Microsoft Entra app registration.
+The SDK is delivered in language-specific packages for Python, JavaScript, and .NET. Install the package or packages for the capabilities you select, then configure the corresponding identity, permissions, and runtime integration. For the available packages, see Agent 365 SDK packages.
+Compare Microsoft Agent 365 SDK and Microsoft 365 Agents SDK
+Microsoft Agent 365 SDK and Microsoft 365 Agents SDK are different products.
+Microsoft Agent 365 SDK (This SDK)
+Microsoft 365 Agents SDK
+Doesn't build agents.Extends an agent that already exists to add identity, observability, tooling, and notifications.
+A framework for building conversational agents.Handles message delivery across channels such as Teams and Microsoft 365 Copilot, and manages conversation state.
+These two SDKs work together, so you can build an agent with the Microsoft 365 Agents SDK and then use the Agent 365 SDK to give it identity, observability, tooling, and notifications.
+What it is and what it isn't
+You continue to own the three layers that make the agent work:
+Layer
+Description
+Model
+The language model or reasoning engine your agent calls. The SDK doesn't call or select models.
+Framework or runtime
+LangChain, Microsoft Agent Framework, Semantic Kernel, the OpenAI Agents SDK, the Claude Agent SDK, or custom code. The SDK doesn't build agents, plan or orchestrate steps, or execute tools.
+Host
+Wherever the agent runs today, such as Azure, AWS, Google Cloud, or on-premises. The SDK doesn't host or deploy your agent.
+The Microsoft Agent 365 SDK runs alongside these layers. It doesn't build, host, deploy, orchestrate, or execute the agent.
+The Microsoft Agent 365 SDK registers governed MCP servers so your agent can reach Microsoft 365 workloads, but your runtime still executes the tool calls.
+The onboarding flow
+The integration follows four stages:
+Stage
+Description
+1. Register
+Create the agent identity blueprint and the agent identity in Microsoft Entra.
+2. Extend
+Add the capabilities your agent needs, such as observability, Work IQ tooling, or notifications.
+3. Validate
+Run the agent as before and confirm its identity, telemetry, tool access, and message handling.
+4. Operate
+Use Agent 365 controls to govern and audit the connected agent.
+You can complete these steps manually or use Agent 365 Skills from a supported coding assistant. Skills guide the setup, make the required changes, and validate the result.
+How a request flows
+A single interaction can use all four capabilities. When someone @mentions your agent in a Word comment:
+Notifications deliver the mention to your agent.
+Identity and authentication determine whether the agent acts as itself, on behalf of a signed-in user, or through an agent user account. The selected mode, permissions, consent, and token subject define which data and actions are available.
+Tooling gives the agent governed access to the Microsoft 365 data it needs.
+Observability records the invocation, tool calls, and model inference.
+Your agent then responds in the comment thread.
+Agent 365 SDK packages
+Find the Agent 365 SDK packages in the package managers for the supported languages.
+Python
+JavaScript
+.NET
+The Agent 365 SDK packages for Python are on the Python Package Index (PYPI).
+Package
+Description
+microsoft-agents-a365-notifications
+Notification and messaging extensions for AI agent applications. Provides utilities for handling agent notifications, lifecycle events, and routing across different channels and subchannels in Microsoft 365 applications.
+microsoft-agents-a365-observability-core
+Telemetry, tracing, and monitoring components for AI agents built on OpenTelemetry. Provides structured spans for agent invocation, tool execution, and LLM inference with context propagation and pluggable exporters.
+microsoft-agents-a365-observability-extensions-agent-framework
+Observability extensions for Microsoft Agent Framework. Provides OpenTelemetry tracing integration specifically for Agent Framework-based applications.
+microsoft-agents-a365-observability-extensions-openai
+Observability extensions for OpenAI Agents SDK. Provides OpenTelemetry tracing integration for OpenAI Agents-based applications with automatic instrumentation for agent workflows and tool invocations.
+microsoft-agents-a365-observability-extensions-langchain
+Observability extensions for LangChain framework. Provides OpenTelemetry tracing integration for LangChain-based AI applications with automatic instrumentation for chains, agents, and tools.
+microsoft-agents-a365-observability-extensions-semantic-kernel
+Observability extensions for Semantic Kernel framework. Provides OpenTelemetry tracing integration for Semantic Kernel-based applications with automatic instrumentation for kernel functions, plugins, and planners.
+microsoft-agents-a365-runtime
+Core runtime utilities and environment management for AI agent applications. Provides essential Power Platform API discovery, environment configuration, and authentication scope resolution.
+microsoft-agents-a365-tooling
+Core tooling functionality for MCP (Model Context Protocol) tool server management in applications built with the Microsoft Agent 365 SDK. Provides the foundation for discovering, registering, and managing tool servers across different AI frameworks.
+microsoft-agents-a365-tooling-extensions-agentframework
+Agent Framework specific tools and services for AI agent development. Provides MCP (Model Context Protocol) tool registration service for dynamically adding MCP servers to Agent Framework agents.
+microsoft-agents-a365-tooling-extensions-openai
+OpenAI Agents SDK specific tools and services for AI agent development. Provides MCP (Model Context Protocol) tool registration service for dynamically adding MCP servers to OpenAI Agents SDK-based agents.
+microsoft-agents-a365-tooling-extensions-semantickernel
+Semantic Kernel specific tools and services for AI agent development. Provides MCP (Model Context Protocol) tool registration service for dynamically adding MCP servers to Semantic Kernel-based agents.
+microsoft-agents-a365-tooling-extensions-azureaifoundry
+Azure AI Foundry specific tools and services for AI agent development. Provides MCP (Model Context Protocol) tool registration service for dynamically adding MCP servers to Azure AI Foundry agents.
+The Agent 365 SDK packages for JavaScript are on NPM.
+Package
+Description
+@microsoft/agents-a365-notifications
+Agent notification services and models for handling user notifications in applications built with the Microsoft Agent 365 SDK. Provides type-safe notification handling for email, Word comments, and other collaboration scenarios.
+@microsoft/agents-a365-observability
+OpenTelemetry-based observability and tracing for Microsoft Agents Agent 365 applications. Provides comprehensive monitoring capabilities for agent invocations, tool executions, and AI model inference calls with seamless Azure Monitor integration.
+@microsoft/agents-a365-runtime
+Core runtime utilities and services for applications built with the Microsoft Agent 365 SDK. Provides authentication, authorization, and Power Platform API discovery capabilities for building enterprise-ready AI agents.
+@microsoft/agents-a365-tooling
+Core tooling functionality for MCP (Model Context Protocol) tool server management in applications built with the Microsoft Agent 365 SDK. Provides the foundation for discovering, registering, and managing tool servers across different AI frameworks.
+@microsoft/agents-a365-tooling-extensions-claude
+Claude SDK integration for the Microsoft Agent 365 Tooling SDK. This package enables seamless integration of MCP (Model Context Protocol) tool servers with Anthropic's Claude, providing automatic tool discovery and registration.
+@microsoft/agents-a365-tooling-extensions-openai
+OpenAI Agents SDK integration for the Microsoft Agent 365 Tooling SDK. This package enables seamless integration of MCP (Model Context Protocol) tool servers with OpenAI Agents, providing automatic tool discovery and registration.
+@microsoft/agents-a365-tooling-extensions-langchain
+LangChain integration for the Microsoft Agent 365 Tooling SDK. This package enables seamless integration of MCP (Model Context Protocol) tool servers with LangChain agents, providing automatic tool discovery and registration as DynamicStructuredTool instances.
+The Agent 365 SDK packages for .NET are on NuGet.
+Package
+Description
+Microsoft.Agents.A365.Notifications
+Provides notification services for agents, including sending and managing messages and alerts.
+Microsoft.Agents.A365.Observability
+Enables monitoring and telemetry for agent activities, supporting metrics, logging, and tracing.
+Microsoft.Agents.A365.Observability.Runtime
+Observability runtime components for Microsoft Agent 365 SDK, providing base OpenTelemetry tracing and monitoring functionality for AI agents and tools.
+Microsoft.Agents.A365.Observability.Hosting
+Observability hosting components for Microsoft Agent 365 SDK
+Microsoft.Agents.A365.Observability.Extensions.OpenAI
+Adds observability support for agents using OpenAI, including tracking and logging of AI interactions.
+Microsoft.Agents.A365.Observability.Extensions.SemanticKernel
+Integrates Semantic Kernel observability features for enhanced monitoring of semantic operations.
+Microsoft.Agents.A365.Observability.Extensions.AgentFramework
+Provides tracing and monitoring for Agent Framework operations.
+Microsoft.Agents.A365.Runtime
+Core runtime for agent execution, lifecycle management, and orchestration.
+Microsoft.Agents.A365.Tooling
+Provides tools for agent development, debugging, and management.
+Microsoft.Agents.A365.Tooling.Extensions.AzureAIFoundry
+Tooling extensions for integrating agents with Azure AI Foundry services.
+Microsoft.Agents.A365.Tooling.Extensions.SemanticKernel
+Tooling support for agents using Semantic Kernel features.
+Microsoft.Agents.A365.Tooling.Extensions.AgentFramework
+Tooling support for agents using Agent Framework features.
+Related content
+Choose your integration option
+Agent identity
+Quickstart: Connect an existing agent to Agent 365
+Agent 365 SDK frequently asked questions
+Agent 365 SDK validation checklist

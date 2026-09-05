@@ -1825,5 +1825,40 @@ Set-MpPreference -AiAgentNetworkInspection Audit</code></pre>
   if (mobileNav.matches) setToc(false); else toc.hidden = false;
 })();
 </script>
+<!-- Privacy-friendly analytics (GoatCounter): page views, no cookies. -->
+<script
+  data-goatcounter="https://rodneymhungu.goatcounter.com/count"
+  async
+  src="https://gc.zgo.at/count.js"></script>
+
+<!--
+  Section-level engagement. The guide navigates by hash (#s6-2, #s7-4). GoatCounter
+  ignores the hash by default, so this records each section a reader lands on as its
+  own path, e.g. /agent-365-guide/#s7-4. The weekly digest can then say which
+  sections actually get read.
+-->
+<script>
+  (function () {
+    var last = null, timer = null;
+    function sectionTitle(hash) {
+      var el = hash && document.querySelector(hash);
+      var h = el && el.querySelector('h2, h3, h4');
+      return h ? h.textContent.replace(/\s+/g, ' ').trim() : document.title;
+    }
+    function countSection() {
+      var hash = location.hash;
+      if (!hash || hash === last || !window.goatcounter || !window.goatcounter.count) return;
+      last = hash;
+      window.goatcounter.count({
+        path: location.pathname + hash,
+        title: sectionTitle(hash),
+        event: false   // counted as a page view so it shows in the normal path list
+      });
+    }
+    function schedule() { clearTimeout(timer); timer = setTimeout(countSection, 400); }
+    window.addEventListener('hashchange', schedule);
+    window.addEventListener('load', function () { if (location.hash) schedule(); });
+  })();
+</script>
 </body>
 </html>

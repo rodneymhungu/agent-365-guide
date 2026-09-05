@@ -1,0 +1,150 @@
+Governance and Lifecycle actions for agents available in Microsoft 365 admin center
+The Microsoft 365 admin center provides governance and lifecycle management capabilities for agents through the Agent Registry. These capabilities enable administrators to manage agent visibility, access, distribution, and retirement across the tenant.
+Agent actions
+Microsoft 365 for government Community Cloud High (GCCH) and Government Community Cloud Moderate (GCCM) environments support publishing agents to the organization.
+Agent actions
+Description
+Install and uninstall
+Install an agent for users so it's ready to use without manual installation by end users. Admin can uninstall a previously installed agent.
+Block and unblock
+Restrict access to an agent across the organization, preventing any user from using it.
+Delete
+Delete agents and any associated files. When you delete an agent, it permanently removes the agent from the inventory and deletes all associated files.
+Start and stop
+Start or stop the underlying Azure infrastructure to govern Foundry agents. This action is unique to Microsoft Foundry agents.
+Assign a new owner
+Assign a new owner to agents that are ownerless or active.
+Add an owner
+Add an owner to an Agent Builder agent that already has an owner.
+Remove an owner
+Remove an owner from an Agent Builder agent that has multiple owners.
+Publish to store
+Make a requested agent available to members of your organization by publishing the agent to Agent Store. For more information, see Actions for requested agents.
+Reject submission
+Prevent a requested agent from becoming available to members of your organization. For more information, see Actions for requested agents.
+For information about actions related to the agent registry list, such as Export to Excel, Upload custom agent, and Manage pinned agents, see Agent registry in the Microsoft 365 admin center.
+Install agents
+You can install agents across the whole organization or for specific users or groups by using the same controls that work for any other app in the Microsoft 365 admin center.
+To install an agent through the Microsoft 365 admin center, follow these steps:
+Sign in to the Microsoft 365 admin center.
+Select Agents > All agents.
+In the All agents page, make sure Registry is selected. Select the Status filter and then select Available.
+From the list of agents, select an agent that isn't already installed.
+In the agent details pane that opens, immediately under the agent's name, select Install.
+In the Deploy agent to selected users pane, decide whether to install the agent to all users or to specific users or groups, and then select Next.
+In the Review permissions pane, review the requested permissions for the agent. If the permissions are acceptable, select Grant admin consent. For more information, see Agent permissions.
+In the Permissions requested window, select Accept to grant the permissions to the agent, and then select Next.
+In the Review & finish pane, select Finish deployment.
+Installing an agent affects its availability and functionality in Copilot and in the other host products, such as Outlook, Teams, or Microsoft 365.
+Uninstall agents
+You can uninstall first-party or external agents across the whole organization or for specific users or groups by using the same controls that work for any other agent in the Microsoft 365 admin center.
+To uninstall an agent through the Microsoft 365 admin center, follow these steps:
+Sign in to the Microsoft 365 admin center.
+Select Agents > All agents.
+Under Agents, select All agents.
+In the All agents page, make sure Registry is selected. Select the Status filter and then select Available.
+Select an installed agent from the list of agents.
+In the agent details pane that opens, immediately under the agent's name, select Uninstall.
+If you don't see the Uninstall option, the selected agent might not be installed.
+In the Remove agent pane, select the Remove agent option, and then select the Uninstall Agent button.
+Uninstalling an agent affects its availability and functionality in Copilot and in the other host products, such as Microsoft Outlook, Microsoft Teams, or other Microsoft 365 applications.
+Block or unblock agents
+Block or unblock agents for the entire organization by using the same controls that work for any other app in the Microsoft 365 admin center.
+To block or unblock an agent, follow these steps:
+Sign in to the Microsoft 365 admin center.
+Select Agents > All agents.
+In the All agents page, select an agent from the list of agents.
+In the agent details pane that opens, immediately under the agent's name, select Block or Unblock.
+In the Block agent or Unblock agent pane that opens, select either Block agent or Unblock agent, and then select Save.
+Blocking or unblocking an agent that you created by using Microsoft Copilot Agent Builder and Microsoft Copilot Studio affects its availability and functionality in Microsoft Copilot. It also affects availability and functionality in other host products, such as Microsoft Outlook, Microsoft Teams, or other Microsoft 365 applications. However, blocking an agent that you created by using SharePoint or Microsoft Foundry only impacts its availability in Microsoft Copilot Chat.
+For the Researcher and Analyst agents, the Edit users panel is disabled. To manage their availability, block the agent for the entire tenant by using the Block action in the Microsoft 365 admin center.
+Delete agents
+You can delete agents that you created by using Microsoft Copilot Agent Builder directly from the Microsoft 365 admin center. Deleting an agent permanently removes the agent and its data from the tenant.
+To delete an Agent Builder agent, follow these steps:
+Sign in to the Microsoft 365 admin center.
+Select Agents > All agents.
+In the All agents page, from the list of agents find the Agent Builder agent that you want to delete.
+Tip
+To quickly find Agent Builder agents, use the Platform filter in the All agents page and then select Agent Builder in Microsoft Copilot.
+Next to the Agent Builder agent you want to delete, select the vertical ellipses (⁝), and then select Delete.
+When you delete an agent, the following actions occur:
+Microsoft 365 removes the agent from the inventory.
+All associated files are deleted.
+The underlying SharePoint Embedded container is deleted.
+This deletion process is irreversible. Once you delete an agent, it might take up to 24 hours for the deletion to reach all users who had access to the agent. During this time, users might still see the agent listed, but they can't interact with it.
+Start or stop a Foundry agent
+You can start or stop the underlying Azure infrastructure to govern Foundry agents.
+Important
+You must have an Azure AI Owner role.
+Stop or Start operate on individual deployments by deallocating or provisioning Azure compute resources. These actions affect your underlying Azure infrastructure, not just how an agent is used in your organization.
+To start or stop an agent, use the following steps:
+Sign in to the Microsoft 365 admin center.
+Select Agents > All agents.
+In the All agents page, find and select Microsoft Foundry agent that you want to stop or start.
+The agent details pane is displayed.
+If required, select Add role to add the Azure AI Owner role to manage Azure infrastructure for the agent.
+Select Stop or Start to control the underlying Azure infrastructure related to the agent.
+Assign new owner to an agent
+IT administrators can reassign ownership for agents that don't have an owner or that are active.
+Important
+You can only reassign ownership of shared agents for Agent Builder and Copilot Studio agents.
+To reassign ownership of a shared agent, follow these steps:
+Sign in to the Microsoft 365 admin center.
+Select Agents > All agents.
+In the All agents page, from the list of agents select an Agent Builder or Copilot Studio agent that you want to reassign.
+Tip
+To quickly find Agent Builder or Copilot Studio agents, use the Platform filter in the All agents page and then select either Agent Builder in Microsoft Copilot or Copilot Studio.
+In the agent details pane, immediately under the agent name, select Assign new owner.
+In the Assign a new owner pane, enter a new owner from your organization, and then select Assign.
+The following changes occur after owner reassignment:
+The new owner gets full edit and delete permissions, plus access to any files the previous owner uploaded.
+The previous owner loses all access, including read rights.
+Add an owner to an Agent Builder agent
+Agent Builder agents support multiple owners. Admins can view the full owner list and add owners to help maintain continuity and accountability for shared agents.
+Important
+All owners have the same rights to edit, share, manage, and maintain an Agent Builder agent. There are no primary or secondary owner roles.
+Before you begin, ensure that:
+You use an account that has permission to manage agents in the Microsoft 365 admin center.
+The agent was created with Agent Builder in Microsoft 365 Copilot.
+The owner you add is an individual user. Groups aren't supported as Agent Builder owners.
+To add an owner, follow these steps:
+Sign in to the Microsoft 365 admin center.
+Select Agents > All agents.
+Find and select the Agent Builder agent that you want to manage.
+Tip
+To narrow the list, use the Platform filter and select Agent Builder in Microsoft 365 Copilot.
+On the Details tab in the agent details pane, select the user link next to Owner.
+In the Owners pane, select Add owner.
+Search for and select a user in your organization.
+Select Add to update the owner list.
+Changes to the owner list are reflected for the agent in Microsoft Agent 365 and Agent Builder. Adding an owner doesn't change the Created by value.
+Remove an owner from an Agent Builder agent
+To remove an owner, follow these steps:
+Sign in to the Microsoft 365 admin center.
+Select Agents > All agents.
+Find and select the Agent Builder agent that you want to manage.
+On the Details tab in the agent details pane, select the user link next to Owner.
+In the Owners pane, select the owner that you want to remove.
+Select Remove owner.
+Review the change, and then select Remove.
+You can't remove the last remaining owner. Add another owner before you remove the current owner. Use Add owner or Remove owner for agents that already have owners. For an ownerless agent, use the ownership reassignment experience described in Assign new owner to an agent.
+Why multiple owners matter
+Multiple owners reduce reliance on a single person and help teams continue to edit and maintain an agent when responsibilities change. Admin visibility and owner management in Microsoft Agent 365 also give organizations a consistent place to review accountability for shared Agent Builder agents.
+Admin actions fail on agents behind Power Platform Firewall
+If an admin action fails and doesn't run on the targeted agent, the agent might reside in an environment that's configured with Power Platform Firewall in active enforcement mode.
+Admin actions behave differently depending on the firewall mode:
+Active enforcement mode – Admin actions that you initiate from the Microsoft 365 admin center fail and aren't applied to the agent. The IP address is the upstream service IP rather than the originating admin client IP, so the firewall rejects the request.
+Audit-only mode – Admin actions succeed and only generate an alert in Microsoft Purview.
+Check whether the environment is in active enforcement mode
+In the Power Platform admin center:
+Go to Security > Identity and access > IP firewall.
+Select the environment or environment group that contains the agent.
+Select the Advanced tab to see more IP firewall settings.
+Confirm the following settings:
+Set IP Firewall to On.
+Set Turn on IP firewall in audit-only mode to Off.
+If Turn on IP firewall in audit-only mode is On, the firewall logs activity but allows requests regardless of IP address, and admin actions from the Microsoft 365 admin center succeed. If it's Off while IP Firewall is On, the environment is in active enforcement mode and admin actions are blocked.
+For more information about firewall configuration, see IP firewall in Power Platform environments.
+To resolve this issue, run the action directly against the Power Platform API (PPAPI). For more information, see the following resources:
+Reassign ownership of orphaned agents with the Power Platform API
+Quarantine noncompliant agents with the Power Platform API

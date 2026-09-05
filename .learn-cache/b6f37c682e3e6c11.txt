@@ -1,0 +1,16 @@
+What's new in Windows 365 for Agents
+Learn what new features are available in Windows 365 for Agents.
+Each monthly update might take up to a week to roll out to all customers.
+Week of August 24, 2026
+Secure baseline for Windows 365 for Agents
+A dedicated security baseline for Windows 365 for Agents is now generally available in Microsoft Intune. Administrators can apply Microsoft-recommended security configurations to agent Cloud PCs, helping establish a consistent security posture and protect agent workloads from common security risks. For more information, see Windows 365 for Agents Security Baseline.
+Week of August 3, 2026
+Device grouping and Intune Autopilot device preparation profiles for Cloud PC agent pools (preview)
+Windows 365 for Agents Cloud PC agent pools now support linking either a Microsoft Entra group or a Microsoft Intune Autopilot device preparation profile. This enables IT administrators to manage Cloud PC agent pools at scale by providing a way to target security and compliance policies, deploy required applications, and maintain consistent configurations across Cloud PCs for Agents using existing Intune workflows. For more information, see Cloud PC agent pool device grouping and preparation.
+Week of June 1, 2026
+Windows 365 for Agents now generally available
+Windows 365 for Agents is now generally available, delivering a purpose-built Cloud PC solution for agentic workloads. This offering enables agent users to check out, sign in to, and complete tasks on managed Cloud PCs, with access and permissions managed through Agent 365. By providing secure, scalable environments for automated and assisted workflows, organizations can better support agent-driven operations. For more information, see Windows 365 for Agents.
+Conditional access for agent users with device compliance
+Windows 365 now integrates with Microsoft Entra Conditional Access for agent users, enabling admins to enforce device compliance before allowing access. Agents connecting from non-compliant Cloud PCs are blocked from accessing resources or executing tasks. This capability strengthens security by ensuring agent operations occur only on compliant devices. For more information, see Identity Security Overview.
+Next steps
+What is Windows 365 for Agents?

@@ -1,0 +1,140 @@
+Microsoft Agent 365 documentation -> ./
+Overview -> overview
+Explore ->
+  Why Microsoft Agent 365? -> guidance/why-agent-365-for-enterprise
+  Govern without slowing innovation -> guidance/govern-agents-support-innovation
+  Microsoft Entra and Agent 365 -> guidance/entra-agent-365
+  Microsoft Defender and Agent 365 -> guidance/defender-agent-365
+  Microsoft Purview and Agent 365 -> guidance/purview-agent-365
+  Microsoft Intune and Agent 365 -> guidance/intune-agent-365
+  Explore more guidance... -> guidance/
+Get started ->
+  Who uses Agent 365? -> get-started
+  Agent management overview -> /microsoft-365/admin/manage/agent-365-overview
+  Agent management roles and permissions -> /microsoft-365/admin/manage/agent-roles-perms
+  Connect existing agents -> connect-existing-agents
+  Discover partner agents -> third-party-agents
+  Copilot Studio integration ->
+    Overview -> builder/overview
+    Agent identity integration -> builder/identity
+    Agent registry integration -> builder/agent-registry
+    Observability integration -> builder/observability
+  Microsoft Foundry integration ->
+    Overview -> /azure/foundry/agents/concepts/agent-365-integration
+    Grant observability permissions for Foundry agents -> /azure/foundry/agents/how-to/grant-agent-365-permissions
+    Configure data collection for Foundry agents -> /azure/foundry/agents/how-to/configure-agent-365-data-collection
+  Preview features in Frontier -> frontier
+Discover and monitor agents ->
+  Agent registry -> /microsoft-365/admin/manage/agent-registry
+  Connected platforms -> admin/connected-platforms
+  Agent map -> /microsoft-365/admin/manage/agent-map
+  Agent requests -> /microsoft-365/admin/manage/agent-requests
+  Local agents (preview) -> /microsoft-365/admin/manage/agent-local
+  Agent details -> /microsoft-365/admin/manage/agent-details
+  Agents on multiple tenants (preview) -> /microsoft-365/admin/manage/agent-multi-tenant
+  Graph API for agent registry and agent details -> admin/graph-api
+  Monitor agent activity ->
+    Agent activity in Teams -> observe
+    Agent activity in Microsoft 365 Copilot -> observe-agents-microsoft-365-copilot
+Manage agents ->
+  Governance and lifecycle actions -> /microsoft-365/admin/manage/agent-actions
+  Manage agent instances -> /microsoft-365/admin/manage/manage-agent-instances
+  Manage connected agents -> /microsoft-365/admin/manage/manage-connected-agents-for-researcher
+  Settings ->
+    Agent settings -> /microsoft-365/admin/manage/agent-settings
+    Policy templates -> admin/policy-template
+  Shadow AI (preview) -> /microsoft-365/admin/manage/agent-shadow-ai
+Manage tools ->
+  Agent tools overview -> /microsoft-365/admin/manage/manage-tools-for-agent
+  Bring your own MCP -> /microsoft-365/admin/manage/manage-tools-for-agent
+  Work IQ MCP overview (preview) -> tooling-servers-overview
+  Certify your MCP server with Microsoft -> /microsoft-copilot-studio/mcp-certification
+Manage identity and access ->
+  Protect agent identities with Microsoft Entra -> admin/capabilities-entra
+  Data access for agents -> share
+  Manage access to Exchange Online -> admin/exchange-online-integration
+  Manage access to SharePoint Online and OneDrive -> admin/sharepoint-integration
+  Agents with their own identity (preview) ->
+    Onboard agents with their own identity -> onboard
+    Use agents with their own identity -> use
+Manage security and risks ->
+  Secure AI agents at scale -> /security/security-for-ai/agent-365-security
+  Enable security for AI agents using Microsoft Defender -> /defender-xdr/security-for-ai/get-started-defender-security-for-ai
+  Configure real-time agent protection and prompt evidence -> /defender-xdr/security-for-ai/ai-agent-real-time-protection
+  Discover AI agents and manage posture -> /defender-xdr/security-for-ai/ai-agent-inventory
+  AI agent risk posture (Preview) -> /defender-xdr/security-for-ai/ai-agent-risk-assessment
+  Detect and investigate threats to AI agents -> /defender-xdr/security-for-ai/ai-agent-detection-protection
+  Data privacy as part of Agent 365 -> /defender-xdr/security-for-ai/privacy-defender-agent-365
+  Transition agent security to Agent 365 -> /defender-xdr/security-for-ai/transition-agent-security-to-agent-365
+Data protection and compliance ->
+  Data handling, data residency, and compliance -> admin/data-residency-protection-compliance
+  Use Microsoft Purview for data security and compliance -> /purview/ai-agent-365
+  Data handling and privacy in Microsoft Defender -> /defender-xdr/security-for-ai/privacy-defender-agent-365
+Extend agents for Agent 365 ->
+  Overview -> developer/
+    Agent 365 SDK overview -> developer/agent-365-sdk
+    Choose your integration option -> developer/choose-integration-option
+  Get started ->
+    Agent 365 Skills -> developer/agent-365-skills
+    Quickstart: Connect an existing agent to Agent 365 -> developer/get-started
+    Sample agents ->
+      JavaScript + LangChain Framework -> developer/quickstart-nodejs-langchain
+      Python + Microsoft Agent Framework -> developer/quickstart-python-agent-framework
+      JavaScript + Anthropic Claude Agent SDK -> developer/quickstart-nodejs-claude
+      More samples -> developer/samples
+  Add Agent 365 capabilities ->
+    Identity ->
+      Agent identity -> developer/identity
+      Set up agent blueprint -> developer/registration
+      Create agent instance -> developer/create-instance
+      Third-party identity providers -> developer/third-party-identity-providers
+    Observability ->
+      Observability concepts -> developer/observability-concepts
+      Authentication setup -> developer/observability-authentication-setup
+      Observability SDK -> developer/observability
+      Microsoft OpenTelemetry -> developer/microsoft-opentelemetry
+        Python reference -> /python/api/opentelemetry-python/opentelemetry-overview
+        JavaScript reference -> /javascript/api/opentelemetry-javascript/opentelemetry-overview
+        .NET reference -> /dotnet/api/opentelemetry-dotnet/opentelemetry-overview
+      Attribute reference -> developer/observability-attribute-reference
+      Integrate using direct OTel -> developer/direct-open-telemetry-integration
+      Troubleshoot direct OTel -> developer/direct-open-telemetry-troubleshooting
+    Tooling servers ->
+      Add and manage tools -> developer/tooling
+      Mock tooling server -> developer/mock-tooling-server
+    Messaging and notifications ->
+      Handle messages -> developer/message-handling
+      Agent messaging endpoint -> developer/agent-messaging-endpoint
+      Notify agents -> developer/notification
+  Validate and deploy ->
+    Agent 365 SDK validation checklist -> developer/validation-checklist
+    Testing your agent -> developer/testing
+    Test with Dev Tunnels -> developer/test-with-devtunnels
+    Deploy your agent ->
+      Deploy to Azure -> developer/deploy-agent-azure
+      Deploy to AWS -> developer/deploy-agent-aws
+      Deploy to GCP -> developer/deploy-agent-gcp
+  Publish ->
+    Publish agent to the Microsoft 365 admin center -> developer/publish
+    Submit agent to Microsoft Partner Center -> developer/submit-agent-partner-center
+  Reference and support ->
+    Agent 365 SDK frequently asked questions -> developer/faq
+    Troubleshooting -> developer/troubleshooting
+    Custom client app registration -> developer/custom-client-app-registration
+    Agent 365 SDK -> developer/agent-365-sdk
+      Python -> /python/api/agent365-sdk-python/agent365-overview
+      JavaScript -> /javascript/api/agent365-sdk-node/agent365-overview
+      .NET -> /dotnet/api/agent365-sdk-dotnet/agent365-overview
+    Agent 365 CLI -> developer/agent-365-cli
+      Agent 365 CLI reference ->
+        CLI reference -> developer/reference/cli/
+        cleanup -> developer/reference/cli/cleanup
+        develop -> developer/reference/cli/develop
+        develop-mcp -> developer/reference/cli/develop-mcp
+        logs -> developer/reference/cli/logs
+        publish -> developer/reference/cli/publish
+        query-entra -> developer/reference/cli/query-entra
+        setup -> developer/reference/cli/setup
+Resources ->
+  Service description -> /office365/servicedescriptions/microsoft-agent-365/microsoft-agent-365
+  Responsible AI -> admin/responsible-ai-faq

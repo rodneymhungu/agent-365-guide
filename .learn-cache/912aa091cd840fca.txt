@@ -1,0 +1,16 @@
+Connect existing agents to Microsoft Agent 365
+As AI agents built on diverse platforms, frameworks, and runtimes proliferate across the enterprise, organizations need a unified way to govern, secure, and observe them all. Whether your agents originate from open-source frameworks, third-party SaaS platforms, or custom in-house development, Microsoft Agent 365 provides a single control plane to bring them under consistent management.
+Agents you build with Microsoft Foundry, Microsoft Copilot Studio, and Agent Builder in Microsoft 365 Copilot are automatically integrated with Microsoft Agent 365. For your existing agents built outside of the Microsoft ecosystem, this guide summarizes the steps to onboard your custom-built agents to the Agent 365 control plane.
+Sync external agents to the registry
+If you have agents built with external platforms such as Amazon Bedrock or Google Vertex AI, you can synchronize them into the Microsoft Agent 365 agent registry for centralized visibility and governance. To get started, see Registry sync in the Agent 365 registry.
+Integrate agents with Agent 365 SDK
+Agents built outside the Microsoft ecosystem can be extended to integrate with Microsoft Agent 365 by using the Agent 365 SDK. This allows your existing agents to gain enterprise‑grade identity, observability, notifications, security, and governed access to Microsoft 365 data. To get started, see Get started with Agent 365 development.
+Apply policies and access controls
+Once your agents are registered and integrated with the Agent 365 SDK, you can apply policies and access controls to ensure that they operate within the guardrails defined by your organization's security and compliance requirements. This includes configuring role-based access, data access policies, and other governance controls that enforce how agents interact with Microsoft 365 data and services. To get started, see Agent tenant settings.
+Manage agent tooling
+Using the Agent 365 CLI, you can discover, connect, and authenticate Agent 365 tooling servers powered by Work IQ MCP directly into your AI agent workflows, then test and validate behavior with built-in tracing. The Agent 365 tools catalog provides a rich set of Work IQ and other MCP servers that expose secure, auditable tools for common productivity and business workflows. Work IQ MCP tools include Copilot, Calendar, Mail, SharePoint, OneDrive, Teams, User, Word, and Dataverse/Dynamics 365.
+To get started, see Add and manage tools.
+Apply best practices for security and governance
+Microsoft Agent 365 provides a set of security and governance capabilities that help ensure your agents operate in a secure, compliant, and auditable manner. This includes integration with Microsoft Purview for data protection and auditing, Microsoft Defender for threat detection and response, and Entra Agent ID for identity and authentication management. To get started with best practices for securing and governing your agents, see Security for AI.
+Next step
+Microsoft Agent 365 SDK and CLI

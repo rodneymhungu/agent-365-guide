@@ -1,0 +1,41 @@
+Data handling, data residency, and compliance in Agent 365 observability
+Agent 365 is Microsoft’s unified platform for managing AI agents built across Microsoft 365 Copilot, Copilot Studio, Foundry, SharePoint, and third-party runtimes. As organizations scale their use of autonomous agents, robust observability becomes essential for security, compliance, and auditability.
+Agent 365 introduces advanced observability capabilities designed to support enterprise-grade agent governance. Developers are required to implement observability. It’s a strategic move that allows full transparency, security, and accountability across the agent lifecycle.
+This integration gives you deep visibility and control, supports proactive governance, enforces security standards, and builds scalable trust in autonomous systems.
+Observability data captures what happened during an agent action or session. This data can include what the agent did, whether it used tools or made model calls, how long actions took, and whether the run completed successfully or resulted in an error.
+This article focuses on data handling, data residency, and compliance for the Agent 365 observability. It explains what data can be collected, how data flows into Agent 365 observability, how the data is used, where it is stored, how long it is kept, and which Microsoft commitments apply.
+Customers and developers control what observability data their custom or third‑party agents send to Agent 365 observability. Microsoft then processes, stores, and secures that data according to the applicable Microsoft Product Terms and the Microsoft Products and Services Data Protection Addendum (DPA)
+Overview
+Agent 365 observability collects runtime activity data from supported agents and uses that data to power agent oversight and analytics experiences across Microsoft.
+In the Microsoft 365 admin center, observability data provides IT administrators with analytics and insights such as agent usage trends, performance signals, and overall agent health across the organization. This data helps administrators understand how agents are being used and identify operational or governance issues.
+Microsoft Purview and Microsoft Defender use relevant agent activity data to support compliance monitoring, security analytics, and investigation scenarios.
+Microsoft agent development platforms such as Microsoft Foundry, Microsoft Copilot Studio, and Agent Builder include built‑in observability support that powers Agent 365 capabilities by default. If an organization signs up for an Agent 365 trial or has an active Agent 365 license, agents built using these platforms automatically send observability data to Agent 365, and developers don't need to take any extra steps to enable this behavior.
+For custom or third‑party agents, developers must explicitly integrate with Agent 365 observability and allow agent activity data to be sent to the service.
+How data flows into Agent 365 observability
+Data collection starts when a customer begins an Agent 365 trial or purchases a valid Agent 365 license and accepts the Agent 365 Terms of Use. Agent 365 doesn't store agent activity data before this point.
+Once Agent 365 is enabled, supported agents start sending observability data as part of normal operation. They send this data in the format defined for agent invocation, tool execution, and inference calls, based on the supported Agent 365 observability schema fields. For third-party agents, the observability data that Agent 365 receives depends on how the developer integrates the agent and what data the developer chooses to send. If required observability data isn't sent, Agent 365 experiences that rely on this data might be limited or less effective. This limitation includes analytics in Microsoft 365 admin center and security and compliance experiences in Microsoft Purview and Microsoft Defender.
+After data reaches Agent 365, Microsoft stores and processes it so it can power experiences across Microsoft 365 admin center, Microsoft Purview, and Microsoft Defender. Agent 365 processes and stores customer data in accordance with Microsoft 365’s enterprise data handling, security, and compliance commitments.
+What data is collected
+Agent 365 observability can collect agent activity data such as agent runs, tool usage, model or inference calls, timing information, status, and errors. It can also include inputs and outputs that the source platform or the agent developer includes in observability data.
+The service collects identifiers that are required to associate activity with the correct organization, agent, and user session. This collection includes tenant identifiers, agent identifiers, and user identifiers. Agent 365 also processes service and licensing information that is necessary to validate eligibility and operate the service correctly.
+For custom and third‑party agents, customers and developers decide what data is included by configuring how the agent is instrumented.
+Data residency
+Agent 365 observability service stores customer content in the default geography of the tenant.
+When a customer creates a Microsoft Entra tenant, they select a country or region. This selection defines the tenant’s default geography, which Microsoft uses to determine where Microsoft 365 and related services, including Agent 365, store customer data.
+In limited scenarios, certain categories of Agent 365 service‑generated data, such as data used for service metrics and analytics, might be replicated and stored in the European Union (EU) for EU‑based tenants, and in the United States for tenants in all other regions. As a result, in limited circumstances, including for some tenants located in Asia-Pacific (APAC), this specific service‑generated data might be stored outside the tenant’s default home geography. To this end, Agent 365 honors EU Data Boundary (EUDB) commitments.
+Agent 365 doesn't currently support Advanced Data Residency (ADR). For more information, see Advanced data residency in Microsoft 365.
+Data retention
+Agent 365 stores observability data for 30 days. After this period, the data is automatically deleted.
+Data protection and security
+Agent 365 provides the same enterprise‑grade data protection guarantees that apply to core Microsoft 365 services.
+Agent 365 logically isolates all data accessed or processed by tenant and protects it by using Microsoft Entra–based authentication and authorization controls. Microsoft standard encryption technologies encrypt customer data both at rest and in transit to help protect it throughout its lifecycle.
+Agent 365 doesn't provide third‑party companies, advertisers, or non‑Microsoft services access to customer data as part of normal service operation.
+Compliance commitments
+Agent 365 processes customer data in accordance with the Microsoft Products and Services Data Protection Addendum (DPA) and applicable Microsoft Product Terms.
+Although Agent 365 is not yet classified as a Core Online Service under the Microsoft Product Terms, it operates entirely on top of Microsoft services that already have Core Online Service designations. These services undergo independent third‑party audits and certifications, including SOC reports, ISO certifications, and compliance with frameworks such as FedRAMP, HIPAA, and PCI DSS.
+Because Agent 365 relies on these audited services rather than introducing a separate data path, customers can trace data handling, identity decisions, and policy enforcement back to services whose controls are independently validated. Microsoft is actively working to bring Agent 365 itself into the Core Online Service classification.
+Related content
+Default Geography of the Microsoft Entra ID Tenant
+Data Residency support for Microsoft Purview
+Data security and retention in Microsoft Defender XDR
+Microsoft Agent 365 integration with Foundry

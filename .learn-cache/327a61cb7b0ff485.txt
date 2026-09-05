@@ -1,0 +1,99 @@
+Local agents in Microsoft 365 admin center (Preview)
+Important
+This feature is part of Frontier preview program. Frontier connects you directly with Microsoft's latest AI innovations. Frontier previews are subject to the existing preview terms of your customer agreements. As these features are still in development, their availability and capabilities might change over time.
+The Local agents page in the Microsoft 365 admin center helps IT administrators discover, monitor, and govern unmanaged AI agents used within their organization.
+This preview capability provides a dedicated view for viewing how these local agents, which include local agentic developer tools are currently used within their organization.
+Local Agents is currently in public preview. Features, supported agents, and behaviors might change before general availability.
+Prerequisites
+To use Local Agents detection and governance, you need:
+Microsoft 365 E3 license to view Local Agents.
+At least one of the following roles:
+Security Administrator.
+AI Administrator.
+Global Reader.
+Security Reader.
+Security Operator.
+Reports Reader.
+User Experience Success Manager.
+Intune Administrator.
+Microsoft Intune enrollment for managed Windows devices.
+Opt in to the Frontier preview experience in the Microsoft 365 admin center.
+To view additional metadata about how detected agents are being used, enable Global Secure Access (GSA) for your tenant and enrolled devices using Microsoft Entra Internet Access (IA) license, Microsoft Entra Suite license, or Microsoft 365 E7 license. For more information, see Tutorial: Enable Internet Access traffic forwarding.
+What are Local Agents?
+Local Agents are developer-controlled tools and extensions—such as IDE plugins, CLIs, and code editors—intentionally integrated into development workflows with explicit configuration. These agents include extensions for VS Code and similar developer-focused applications built to enhance productivity during the software development lifecycle.
+How Local Agents differs from Shadow AI: Local Agents are intentionally chosen developer tools managed within known environments, while Shadow AI consists of unmanaged, autonomous applications deployed without organizational awareness.
+Available features
+During public preview, the Local Agents experience allows admins to detect the following local agents:
+Agent
+Detection
+OpenClaw
+Available
+Claude Code
+Available
+Gemini CLI
+Available
+GitHub Copilot CLI
+Available
+VSCode Claude Code Extension
+Available
+VSCode Cline Extension
+Available
+VSCode Codex Extension
+Available
+VSCode Gemini Code Assist Extension
+Available
+VSCode Roo Code Extension
+Available
+Shadow AI detection and blocking currently apply only to managed Windows devices enrolled with Microsoft Intune.
+Access the Local Agent (Frontier) page
+The Local Agents (Frontier) page in the Microsoft 365 admin center is a dedicated experience separate from the All agents page. It focuses exclusively on unmanaged AI agents that require detection and governance.
+To access the Local Agents (Frontier) page in the Microsoft 365 admin center, follow these steps:
+Sign in to the Microsoft 365 admin center.
+Select All Agents > Local Agents (Frontier).
+The Local Agents (Frontier) page displays a list of known Local Agents that can be detected in your environment.
+View the details of a Local Agent
+Use the following step to view the details for a Local Agent:
+Select the agent from the Local Agents list in the Local Agents (Frontier) page.
+The Details pane opens for the selected Local Agents agent.
+Select the Details tab.
+The Details pane provides the following agent information:
+Details tile:
+First accessed: Date the agent was first accessed.
+Most recent activity: Date the agent was last used.
+Last scanned: Date the agent was last detected.
+Detections tile:
+Devices: Count of devices that this agent is detected running on.
+Users: Unique count of users that are detected using this agent.
+Total traffic tile:
+Unique endpoints: Number of unique fully qualified domain names (FQDN) the agent accessed.
+Requests: Number of network requests made by the agent.
+Data sent: Network traffic sent by the agent.
+Data received: Network traffic received by the agent.
+The following fields will only be populated with data if Global Secure Access (GSA) has been enabled:
+Users
+Most recent activity
+Last scanned
+Unique endpoints
+Requests
+Data sent
+Data received
+View detected devices for a Local Agent
+You can view detected devices for an agent in the Local Agent details pane by following these steps:
+Select the agent from the Local Agents list in the Local Agents (Frontier) page.
+The Details pane opens for the selected Local Agents agent.
+Select the Detected devices tab.
+A list of detected devices is displayed.
+View devices listed in the device table, or search for a specific device name.
+The Detected devices table provides the following device data:
+Device information
+Description
+Device name
+Name of the device
+Model
+Type of device (such as Desktop, Virtual Machine, Server, Laptop).
+Operating system
+Operating system installed on the device.
+Last Seen
+The last time Microsoft Defender detected the agent on the device.
+Additional information
+Shadow AI in Microsoft 365 admin center
