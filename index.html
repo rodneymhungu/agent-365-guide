@@ -706,7 +706,7 @@ footer{border-block-start:8px solid var(--ink);background:var(--paper-2)}
 <section class="block" id="s3" data-search>
   <div class="shead"><span class="n">03</span><h2>Agents do not behave like applications</h2></div>
   <p>An agent, in the <a href="https://learn.microsoft.com/en-us/entra/agent-id/what-are-agent-identities" target="_blank" rel="noopener">Entra definition</a>, is an application that pursues a goal by understanding its context, deciding, and acting autonomously with tools. Structurally it is a model, an orchestration loop, memory and tools. Inputs arrive as user messages, system events or messages from other agents. Outputs go to people, to other agents, or out through tool calls that retrieve, act and write memory. Every hop is an observation point and an attack surface.</p>
-  <p>Autonomy is the property that matters. Given the same goal twice, an agent may take a different path, because its reasoning is probabilistic. Identity controls assume the opposite: users authenticate, applications have fixed permissions, actions are predictable. So identity must enforce boundaries, not reasoning. A guard checks whether you are authorised, not why you want to enter.</p>
+  <p>Autonomy is the property that matters. Given the same goal twice, an agent may take a different path, because its reasoning is probabilistic. Identity controls assume the opposite: users authenticate, applications have fixed permissions, actions are predictable. So identity must enforce boundaries, because it cannot see reasoning. A guard checks whether you are authorised, not why you want to enter.</p>
   <figure class="sketch" id="fig-guard">
     <div class="frame">
     <svg viewBox="0 0 900 300" role="img" aria-labelledby="fgt">
@@ -812,7 +812,7 @@ footer{border-block-start:8px solid var(--ink);background:var(--paper-2)}
       <text x="40" y="346" font-size="11" class="m">Hover, tap or tab to a pillar. Nothing below the top bar is a new enforcement point.</text>
     </svg>
     </div>
-    <figcaption><b class="fn"></b> The distributed control plane. Agent 365 coordinates; the products beneath enforce.</figcaption>
+    <figcaption><b class="fn"></b> The distributed control plane. Agent 365 coordinates. Enforcement happens in the products beneath.</figcaption>
   </figure>
 </section>
 
@@ -1240,7 +1240,7 @@ footer{border-block-start:8px solid var(--ink);background:var(--paper-2)}
     <li>Endpoint DLP can warn or block users pasting sensitive data into third-party AI sites in a browser on onboarded Windows devices.</li>
     <li>Encryption without a sensitivity label is the one capability listed as unsupported.</li>
   </ul>
-  <p>The order that works: label first, gate access on risk rather than identity alone, fix oversharing before an agent finds it, and block at the moment of interaction.</p>
+  <p>The order that works is label first, then gate access on risk rather than identity alone. Fix oversharing before an agent finds it, and block at the moment of interaction.</p>
   <div class="strip c2">
   <figure class="shot ">
     <div class="frame"><div class="imgwrap"><img src="images/deck-s088.png" width="1600" height="900" alt="DSPM agent overview page showing high risk level with insider risk alerts and risky activities" loading="lazy"></div></div>
@@ -1463,11 +1463,11 @@ Set-MpPreference -AiAgentNetworkInspection Audit</code></pre>
 <!-- ============================ 8 ============================ -->
 <section class="block" id="s8">
   <div class="shead"><span class="n">08</span><h2>A twelve-week evaluation you can actually run</h2></div>
-  <p>Microsoft's proof-of-concept template supplies three workstreams and a twelve-week rhythm. Success criteria below are reworded so each can be verified against a documented capability.</p>
+  <p>An informal proof-of-concept template, used in workshops with customers, supplies three workstreams and a twelve-week rhythm. Success criteria below are reworded so each can be verified against a documented capability.</p>
 
   <section id="s8-1" data-search>
   <h3>8.1 Three workstreams</h3>
-  <p>Each workstream must end in evidence, not another workshop.</p>
+  <p>Each workstream closes on evidence (a workshop is not evidence).</p>
   <div class="tbl"><table>
     <thead><tr><th>Route</th><th>Test</th><th>Evidence at the end</th></tr></thead>
     <tbody>
@@ -1480,7 +1480,7 @@ Set-MpPreference -AiAgentNetworkInspection Audit</code></pre>
 
   <section id="s8-2" data-search>
   <h3>8.2 The named workshop rhythm across twelve weeks</h3>
-  <p>The source names workshops in weeks 1, 2 and 4 to 10, with a weekly sync throughout. It assigns no standalone activity to weeks 3, 11 or 12.</p>
+  <p>This template names workshops in weeks 1, 2 and 4 to 10, with a weekly sync throughout. It assigns no standalone activity to weeks 3, 11 or 12.</p>
   <div class="tbl"><table>
     <thead><tr><th>Week</th><th>Activity</th><th>Team</th></tr></thead>
     <tbody>
@@ -1513,7 +1513,7 @@ Set-MpPreference -AiAgentNetworkInspection Audit</code></pre>
       </g>
     </svg>
     </div>
-    <figcaption><b class="fn"></b> The twelve-week rhythm from Microsoft's proof-of-concept template.</figcaption>
+    <figcaption><b class="fn"></b> The twelve-week rhythm from the informal workshop template.</figcaption>
   </figure>
   </section>
 
@@ -1546,7 +1546,7 @@ Set-MpPreference -AiAgentNetworkInspection Audit</code></pre>
     <li><div>Connect existing Entra, Purview, SharePoint and Defender policies through templates, confirm each agent uses its Entra identity, and replace standing access with expiring access packages under sponsor review.</div></li>
     <li><div>Label data first and check encrypting labels grant agent instances VIEW and EXTRACT. Add instances to DLP and Insider Risk Management, then confirm audit, retention and Communication Compliance and run one eDiscovery search on an agent mailbox.</div></li>
     <li><div>In Defender, confirm the Security for AI toggle, connect the Microsoft 365 connector and onboard Copilot Studio real-time protection. Leave the default audit rule running for two weeks, then prioritise posture by blast radius: high usage, privileged access and excessive permissions.</div></li>
-    <li><div>Decide the local-agent stance per device group. Runtime protection in audit on developer devices first. Block OpenClaw if present. Treat container isolation as roadmap.</div></li>
+    <li><div>Decide the local-agent stance per device group. Runtime protection in audit on developer devices first. Block OpenClaw if present. Container isolation is still roadmap.</div></li>
     <li><div>With Entra Internet Access, put prompt injection protection in front of the models users reach and pilot the MCP firewall in default-block with an allow-list.</div></li>
     <li><div>Route everything into the SOC you already run: Defender incidents, the six hunting tables, and Generative AI Insights in Sentinel.</div></li>
     <li><div>Record that observability data lives thirty days in the tenant geography and that Agent 365 is not yet a Core Online Service.</div></li>
@@ -1556,7 +1556,7 @@ Set-MpPreference -AiAgentNetworkInspection Audit</code></pre>
 <!-- ============================ 10 ============================ -->
 <section class="block" id="s10" data-search>
   <div class="shead"><span class="n">10</span><h2>What you can deploy today</h2></div>
-  <p class="muted">Rendered from the data block at the top of this file. Reviewed <span data-val="reviewed"></span>.</p>
+  <p class="muted">Rendered from the data block at the top of this page. Reviewed <span data-val="reviewed"></span>.</p>
   <div class="tbl"><table id="avail">
     <thead><tr><th>Capability</th><th>Status</th><th>Note</th><th>Where</th></tr></thead>
     <tbody></tbody>
