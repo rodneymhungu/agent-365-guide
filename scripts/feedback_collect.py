@@ -18,7 +18,7 @@ Env vars
   GITHUB_REPOSITORY   provided by Actions (owner/repo)
   BRAVE_API_KEY       https://brave.com/search/api/  (free tier is enough)
 """
-import datetime as dt, json, os, sys, urllib.parse
+import datetime as dt, json, os, re, sys, urllib.parse
 from urllib.request import Request, urlopen
 from urllib.error import URLError, HTTPError
 
@@ -35,6 +35,23 @@ def get(url, headers=None, timeout=30):
     req = Request(url, headers={"User-Agent": "agent-365-guide-feedback/1.0", **(headers or {})})
     with urlopen(req, timeout=timeout) as r:
         return json.loads(r.read().decode("utf-8", "replace"))
+
+
+def describe(e):
+    """Turn an HTTPError into 'HTTP 404: <what the server said>' so the digest
+    explains itself; other errors are returned as-is."""
+    if isinstance(e, HTTPError):
+        try:
+            body = e.read().decode("utf-8", "replace").strip()
+        except Exception:
+            body = ""
+        try:
+            body = json.loads(body).get("error") or body
+        except ValueError:
+            body = re.sub(r"<[^>]+>", " ", body)
+        body = re.sub(r"\s+", " ", body).strip()[:200]
+        return f"HTTP {e.code} {e.reason}" + (f": {body}" if body else "")
+    return str(e)
 
 
 def section(title, body):
@@ -62,7 +79,9 @@ def goatcounter():
     site = os.environ.get("GOATCOUNTER_SITE", "rodneymhungu.goatcounter.com")
     if not tok:
         return "GOATCOUNTER_TOKEN not set."
-    h = {"Authorization": f"Bearer {tok}"}
+    # GoatCounter requires Content-Type: application/json on every API call; without
+    # it errors come back as an HTML page instead of {"error": ...}.
+    h = {"Authorization": f"Bearer {tok}", "Content-Type": "application/json"}
     base = f"https://{site}/api/v0"
     rng = {"start": week_ago.isoformat(), "end": today.isoformat()}
     lines = []
@@ -105,7 +124,7 @@ def goatcounter():
                 for host, n in sorted(by_host.items(), key=lambda kv: -kv[1])[:10]:
                     lines.append(f"- {host}: {n}")
     except (HTTPError, URLError, ValueError, KeyError) as e:
-        lines.append(f"GoatCounter unavailable: {e}  (see https://www.goatcounter.com/help/api)")
+        lines.append(f"GoatCounter unavailable: {describe(e)}  (see https://www.goatcounter.com/help/api)")
     return "\n".join(lines)
 
 
@@ -141,7 +160,7 @@ def github():
         views = get(f"{api}/traffic/views?per=week", h)
         lines.append(f"\nRepo page views (14 days): {views.get('count')} total, {views.get('uniques')} unique")
     except (HTTPError, URLError) as e:
-        lines.append(f"\ntraffic API unavailable: {e}")
+        lines.append(f"\ntraffic API unavailable: {describe(e)}")
     return "\n".join(lines)
 
 
