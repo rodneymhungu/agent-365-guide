@@ -9,7 +9,7 @@ Everything here was verified against the live docs on 5 September 2026; the
 | Workflow | When | What it does | Output |
 |---|---|---|---|
 | `learn-drift.yml` | Mon 05:00 UTC | `learn_watch.py` fetches the 51 Learn pages `index.html` cites, plus the Agent 365 and Security-for-AI docs tables of contents and the Windows 365 for Agents what's-new page, and diffs them against `.learn-cache/`. Only if something changed: Copilot CLI proposes minimal edits to `index.html` and the `window.A365` status block. | A pull request, never a push to `main` |
-| `feedback-digest.yml` | Mon 05:30 UTC | `feedback_collect.py` pulls GoatCounter visitors and per-section views, GitHub issues and traffic referrers, and Brave Search mentions. Copilot CLI writes a ≤350-word digest. | Email to your Gmail |
+| `feedback-digest.yml` | Mon 05:30 UTC | `feedback_collect.py` pulls GoatCounter visitors and per-section views, GitHub issues and traffic referrers, and Brave Search mentions. Copilot CLI writes a ≤350-word digest. | An issue on this repo, which GitHub emails to watchers |
 
 `.learn-cache/` is committed and already seeded, so the first scheduled run is a
 real comparison. There is no Agent 365 "What's new" page on Learn; the docs
@@ -18,21 +18,31 @@ line and the PR's "Needs a human decision" list will name it.
 
 ## Secrets to add (Settings → Secrets and variables → Actions)
 
+No secret is required. Both workflows run on the automatic `GITHUB_TOKEN`.
+The two below only add optional sources to the digest.
+
 | Secret | Where to get it | Used by |
 |---|---|---|
-| `COPILOT_PAT` | github.com/settings/personal-access-tokens/new → fine-grained PAT with **Copilot Requests** permission | both |
-| `GOATCOUNTER_TOKEN` | rodneymhungu.goatcounter.com → Settings → API tokens (read-only, "statistics") | digest |
-| `BRAVE_API_KEY` | brave.com/search/api (free tier) | digest |
-| `GMAIL_USERNAME` | your Gmail address | digest |
-| `GMAIL_APP_PASSWORD` | Google Account → Security → 2-Step Verification → App passwords | digest |
+| `GOATCOUNTER_TOKEN` | rodneymhungu.goatcounter.com → Settings → API tokens (read-only, "statistics") | digest, visitor numbers |
+| `BRAVE_API_KEY` | brave.com/search/api (free tier) | digest, public mentions |
+| `COPILOT_PAT` | github.com/settings/personal-access-tokens/new → fine-grained PAT with **Copilot Requests** permission | not needed; the token fallback works |
 
 `GITHUB_TOKEN` is provided automatically. Both workflows also request the
-`copilot-requests: write` permission, so if `COPILOT_PAT` is left unset the CLI
-falls back to `GITHUB_TOKEN`; GitHub documents that path as billed to an
-organisation, so on a personal account expect to need the PAT.
+`copilot-requests: write` permission, and the 7 September run confirmed the CLI
+falls back to `GITHUB_TOKEN` successfully on a personal account, so `COPILOT_PAT`
+is not needed.
 
 Any source whose secret is missing is reported as "unavailable" in the digest
 rather than failing the run.
+
+## Delivery
+
+The digest is posted as an issue labelled `digest`, opened by the
+`github-actions` bot. GitHub emails it to anyone watching the repository, so the
+owner gets it without any mail credential stored here. It was an SMTP email to
+Gmail until 7 September 2026; that needed a Google app password, which is a real
+credential granting mailbox access, and the issue route removes it. The raw
+signals are folded into a collapsed block at the bottom of the issue.
 
 ## Analytics
 
@@ -55,13 +65,31 @@ those as "sections opened" and treats paths without a hash as page visits.
   goatcounter.com/api.json.
 - Seed run: 54 pages fetched, none unreachable, no Learn chrome in the cache.
 
-## Things to check after the first real run
+## Verified on the runner, 7 September 2026
+
+The first scheduled `learn-drift` run compared all 55 cached pages, found no
+drift and skipped the Copilot steps. A manual `feedback-digest` run reached the
+email step. Between them they settled three of the open questions.
+
+- `copilot-requests: write` **does** work on a personal account with no
+  `COPILOT_PAT`. The CLI authenticated with `GITHUB_TOKEN` and wrote a digest
+  that followed the prompt. `COPILOT_PAT` is optional, not required.
+- `--model claude-haiku-4.5` was accepted by the CLI on the runner.
+- The GitHub traffic API returns **403 Forbidden** to `GITHUB_TOKEN`. Traffic
+  needs push access, and workflow `permissions` has no `administration` key to
+  grant it, so referrers cannot work without a personal access token. Either add
+  one for that call or drop the referrer section from the digest.
+
+## Still to check
 
 - If a PR's diff is mostly boilerplate, extend the `CHROME` regex in
   `learn_watch.py`; the seed run was clean but Learn changes its chrome.
 - `start`/`end` are sent to GoatCounter as `YYYY-MM-DD`; if the API rejects
-  that, the digest will say "GoatCounter unavailable" with the error.
-- Whether `copilot-requests: write` works on a personal account without the PAT.
+  that, the digest will say "GoatCounter unavailable" with the error. The run had
+  no token, so this is still untested.
+- `feedback-digest.yml` has never fired on its own schedule. On 7 September the
+  05:00 drift run arrived five hours late and the 05:30 digest run did not arrive
+  at all. Confirm it fires next Monday before trusting the cron.
 
 ## Why it's split this way
 

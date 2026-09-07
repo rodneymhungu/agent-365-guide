@@ -1,4 +1,4 @@
-name: Weekly feedback digest → Gmail
+name: Weekly feedback digest → issue
 
 on:
   workflow_dispatch:
@@ -7,7 +7,7 @@ on:
 
 permissions:
   contents: read
-  issues: read
+  issues: write             # the digest is delivered as an issue, which GitHub emails to watchers
   copilot-requests: write   # lets GITHUB_TOKEN call Copilot CLI if COPILOT_PAT is not set
 
 jobs:
@@ -62,17 +62,21 @@ jobs:
             --no-ask-user -s
           test -f digest.md || cp feedback-input.md digest.md
 
-      - name: Send via Gmail
-        uses: dawidd6/action-send-mail@v3
-        with:
-          server_address: smtp.gmail.com
-          server_port: 465
-          secure: true
-          username: ${{ secrets.GMAIL_USERNAME }}
-          password: ${{ secrets.GMAIL_APP_PASSWORD }}   # Google Account → Security → App passwords
-          subject: "Agent 365 guide — weekly digest (${{ github.run_started_at }})"
-          to: ${{ secrets.GMAIL_USERNAME }}
-          from: Agent 365 guide bot <${{ secrets.GMAIL_USERNAME }}>
-          body: file://digest.md
-          convert_markdown: true
-          attachments: feedback-input.md
+      - name: Open the digest as an issue
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          {
+            cat digest.md
+            echo
+            echo "<details>"
+            echo "<summary>Raw signals collected this week</summary>"
+            echo
+            echo '```'
+            cat feedback-input.md
+            echo '```'
+            echo
+            echo "</details>"
+          } > issue-body.md
+          gh label create digest --color 0e8a16 --description "Weekly feedback digest" --force
+          gh issue create --title "Weekly digest, $(date -u '+%-d %B %Y')" --body-file issue-body.md --label digest
