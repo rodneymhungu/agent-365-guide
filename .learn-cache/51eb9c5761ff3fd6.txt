@@ -1,6 +1,6 @@
 Conditional Access for agents
 Conditional Access is an intelligent policy engine that helps organizations control how users and agents access corporate resources. It brings together real-time signals such as user's and agent's context, device, location, and session risk information to determine when to allow, block, or limit access, or require more verification steps.
-Conditional Access for agents requires Microsoft Entra ID P1 or P2 and a Microsoft Agent 365 license for each user. Network controls for agents require Microsoft Entra Internet Access. For more information, see What is Microsoft Entra Agent ID.
+Conditional Access for agents requires Microsoft Entra ID P1 or P2 and a Microsoft Agent 365 license for each user. Enforcement of Agent 365 licensing is coming soon. Network controls for agents require Microsoft Entra Internet Access. For more information, see What is Microsoft Entra Agent ID.
 Learn about Conditional Access for agents:
 High-level overview of Conditional Access: What is Conditional Access?
 Guide to managing agent identities across your organization: Manage agent identities in your organization.
