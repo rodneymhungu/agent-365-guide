@@ -47,6 +47,16 @@ def section(title, body):
 #   GET /api/v0/stats/toprefs?start&end&include_paths=<path_id>... -> {"stats":[{"name","count"}]}
 # "count" is visitors (GoatCounter does not expose raw pageviews via the API). There is no
 # path-prefix filter, so we pull the top 100 paths and filter client-side.
+def referrer_host(name):
+    """Reduce a referrer to its hostname. GoatCounter may return a full URL or a
+    bare 'host/path'; both are trimmed so no path or query ever reaches the digest."""
+    if not name:
+        return "(direct)"
+    name = name.strip()
+    if "://" in name:
+        name = urllib.parse.urlsplit(name).netloc or name
+    return name.split("/", 1)[0].split("?", 1)[0].lower() or "(direct)"
+
 def goatcounter():
     tok = os.environ.get("GOATCOUNTER_TOKEN")
     site = os.environ.get("GOATCOUNTER_SITE", "rodneymhungu.goatcounter.com")
@@ -84,10 +94,16 @@ def goatcounter():
             q = urllib.parse.urlencode({**rng, "limit": 10, "include_paths": ids}, doseq=True)
             refs = get(f"{base}/stats/toprefs?{q}", h).get("stats", [])
             if refs:
+                # Hostnames only. The digest is posted as a public issue, and a full
+                # referrer can carry a reader's internal wiki or intranet URL.
+                by_host = {}
+                for r in refs:
+                    host = referrer_host(r.get("name"))
+                    by_host[host] = by_host.get(host, 0) + int(r.get("count", 0) or 0)
                 lines.append("")
-                lines.append("Top referrers:")
-                for r in refs[:10]:
-                    lines.append(f"- {r.get('name') or '(direct)'}: {r.get('count', 0)}")
+                lines.append("Top referrers (hostnames only):")
+                for host, n in sorted(by_host.items(), key=lambda kv: -kv[1])[:10]:
+                    lines.append(f"- {host}: {n}")
     except (HTTPError, URLError, ValueError, KeyError) as e:
         lines.append(f"GoatCounter unavailable: {e}  (see https://www.goatcounter.com/help/api)")
     return "\n".join(lines)
