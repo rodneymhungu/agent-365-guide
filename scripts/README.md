@@ -27,7 +27,10 @@ The two below only add optional sources to the digest.
 | `BRAVE_API_KEY` | brave.com/search/api (free tier) | digest, public mentions |
 | `COPILOT_PAT` | github.com/settings/personal-access-tokens/new → fine-grained PAT with **Copilot Requests** permission | not needed; the token fallback works |
 
-`GITHUB_TOKEN` is provided automatically. Both workflows also request the
+`GITHUB_TOKEN` is provided automatically. The drift workflow also needs the
+repository setting "Allow GitHub Actions to create and approve pull requests"
+(Settings, Actions, General, Workflow permissions) switched on, or the
+pull-request step fails. Both workflows also request the
 `copilot-requests: write` permission, and the 7 September run confirmed the CLI
 falls back to `GITHUB_TOKEN` successfully on a personal account, so `COPILOT_PAT`
 is not needed.
@@ -91,6 +94,13 @@ delivery step, and once the GoatCounter token existed, pulled real numbers.
 - Scheduled runs arrive late. On 7 September the 05:00 drift run started at
   09:59 and the 05:30 digest run at 10:39. That is normal for GitHub's cron on a
   quiet repository, not a fault.
+
+- The drift workflow's Copilot and pull-request path works, forced on
+  7 September by altering one cached page on a throwaway branch. Copilot fetched
+  the live page through the Learn MCP server, found the guide already correct,
+  and proposed at most a one-line note change. The pull request only opened once
+  the repository setting "Allow GitHub Actions to create and approve pull
+  requests" was enabled; it is off by default and the run fails without it.
 
 ## Still to check
 
