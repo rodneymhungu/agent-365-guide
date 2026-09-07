@@ -520,7 +520,7 @@ footer{border-block-start:8px solid var(--ink);background:var(--paper-2)}
   .theme-btn{grid-column:3;grid-row:1;min-width:38px;font-size:0;padding:.3rem}.theme-btn::after{content:"◐";font-size:1rem}
   .toggle{grid-column:1/4;grid-row:2;font-size:.72rem;justify-self:end}
   .shell,footer .in{grid-template-columns:1fr}
-  .toc{position:fixed;inset:var(--header-h) .7rem .7rem .7rem;z-index:30;max-height:none;margin:0;padding:1.2rem 1rem 2rem 1.8rem;border:2px solid var(--ink);border-radius:0;background-color:var(--paper-2);box-shadow:8px 8px 0 var(--signal);overflow-y:auto}
+  .toc{position:fixed;inset:var(--header-h) .7rem .7rem .7rem;align-self:stretch;z-index:30;max-height:none;margin:0;padding:1.2rem 1rem 2rem 1.8rem;border:2px solid var(--ink);border-radius:0;background-color:var(--paper-2);box-shadow:8px 8px 0 var(--signal);overflow-y:auto;overscroll-behavior:contain}
   .toc a{min-height:40px;display:flex;align-items:center}.toc[hidden]{display:none}
   main{padding-block-start:1.4rem}.hero-layout{gap:2.2rem}.route-plate{max-width:680px}.hero-title{font-size:clamp(3.35rem,14vw,5.8rem)}
 }
