@@ -68,8 +68,8 @@ those as "sections opened" and treats paths without a hash as page visits.
 ## Verified on the runner, 7 September 2026
 
 The first scheduled `learn-drift` run compared all 55 cached pages, found no
-drift and skipped the Copilot steps. A manual `feedback-digest` run reached the
-email step. Between them they settled three of the open questions.
+drift and skipped the Copilot steps. Manual `feedback-digest` runs reached the
+delivery step, and once the GoatCounter token existed, pulled real numbers.
 
 - `copilot-requests: write` **does** work on a personal account with no
   `COPILOT_PAT`. The CLI authenticated with `GITHUB_TOKEN` and wrote a digest
@@ -79,17 +79,22 @@ email step. Between them they settled three of the open questions.
   needs push access, and workflow `permissions` has no `administration` key to
   grant it, so referrers cannot work without a personal access token. Either add
   one for that call or drop the referrer section from the digest.
+- GoatCounter works, verified with a real token. Every API call must send
+  `Content-Type: application/json`; without it the API answers **404** and an
+  HTML error page rather than `{"error": ...}`. `start`/`end` as `YYYY-MM-DD`
+  are accepted.
+- Referrers are reduced to hostnames before they reach the digest, because the
+  digest is a public issue and a full referrer can carry a reader's internal URL.
+- The collector ignores issues labelled `digest`, so a digest never reports on
+  the previous digests.
+- Scheduled runs arrive late. On 7 September the 05:00 drift run started at
+  09:59 and the 05:30 digest run at 10:39. That is normal for GitHub's cron on a
+  quiet repository, not a fault.
 
 ## Still to check
 
 - If a PR's diff is mostly boilerplate, extend the `CHROME` regex in
   `learn_watch.py`; the seed run was clean but Learn changes its chrome.
-- `start`/`end` are sent to GoatCounter as `YYYY-MM-DD`; if the API rejects
-  that, the digest will say "GoatCounter unavailable" with the error. The run had
-  no token, so this is still untested.
-- `feedback-digest.yml` has never fired on its own schedule. On 7 September the
-  05:00 drift run arrived five hours late and the 05:30 digest run did not arrive
-  at all. Confirm it fires next Monday before trusting the cron.
 
 ## Why it's split this way
 

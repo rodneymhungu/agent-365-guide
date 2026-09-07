@@ -24,13 +24,13 @@ been exercised.
 
 ## What Rodney has to do himself
 
-Nothing is required. Two optional secrets at
+Nothing is required. `GOATCOUNTER_TOKEN` was added on 7 September and works.
+One optional secret at
 https://github.com/rodneymhungu/agent-365-guide/settings/secrets/actions
-would enrich the digest:
+would add public mentions to the digest:
 
 | Secret | Where it comes from | Adds |
 |---|---|---|
-| `GOATCOUNTER_TOKEN` | rodneymhungu.goatcounter.com, Settings, API tokens, read-only statistics | visitor numbers and sections opened |
 | `BRAVE_API_KEY` | brave.com/search/api, free tier | public mentions |
 
 Without them the digest still arrives and says those sources were unavailable.
@@ -51,15 +51,12 @@ Without them the digest still arrives and says those sources were unavailable.
 3. Decide what to do about the traffic API 403. Referrers need a personal access
    token with push access, or the section comes out of the digest.
 
-4. Confirm `feedback-digest.yml` fires on its own schedule next Monday. It did
-   not on 7 September.
-
-5. Review any Learn drift pull request with Rodney. The rule for this guide:
+4. Review any Learn drift pull request with Rodney. The rule for this guide:
    every factual claim must trace to a Microsoft Learn page, and a wrong
    GA/preview flip is worse than a stale one. Never merge a status change
    without checking the cited page.
 
-6. Delete this file once all of the above is done.
+5. Delete this file once all of the above is done.
 
 ## How the pieces fit
 
