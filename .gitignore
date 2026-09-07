@@ -6,3 +6,6 @@ learn-diff.md
 CHANGES.md
 feedback-input.md
 digest.md
+
+# python bytecode
+__pycache__/

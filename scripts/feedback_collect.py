@@ -7,8 +7,9 @@ fails is reported as "unavailable" rather than crashing the run.
 Sources
   1. GoatCounter  — visitors, per-section hash views, top referrers for the last 7 days
                     (same account as data-security-art-of-the-possible; filtered by path)
-  2. GitHub       — stars delta, open issues/discussions, and the repo traffic API
-                    (referrers and popular paths, last 14 days)
+  2. GitHub       — stars, forks, watchers and open issues (the traffic API is
+                    deliberately not used: it needs push access, so a PAT, and
+                    GoatCounter already covers referrers)
   3. Brave Search — public mentions of the guide URL or title
 
 Env vars
@@ -18,7 +19,7 @@ Env vars
   GITHUB_REPOSITORY   provided by Actions (owner/repo)
   BRAVE_API_KEY       https://brave.com/search/api/  (free tier is enough)
 """
-import datetime as dt, json, os, sys, urllib.parse
+import datetime as dt, json, os, re, sys, urllib.parse
 from urllib.request import Request, urlopen
 from urllib.error import URLError, HTTPError
 
@@ -37,6 +38,23 @@ def get(url, headers=None, timeout=30):
         return json.loads(r.read().decode("utf-8", "replace"))
 
 
+def describe(e):
+    """Turn an HTTPError into 'HTTP 404: <what the server said>' so the digest
+    explains itself; other errors are returned as-is."""
+    if isinstance(e, HTTPError):
+        try:
+            body = e.read().decode("utf-8", "replace").strip()
+        except Exception:
+            body = ""
+        try:
+            body = json.loads(body).get("error") or body
+        except ValueError:
+            body = re.sub(r"<[^>]+>", " ", body)
+        body = re.sub(r"\s+", " ", body).strip()[:200]
+        return f"HTTP {e.code} {e.reason}" + (f": {body}" if body else "")
+    return str(e)
+
+
 def section(title, body):
     return f"## {title}\n\n{body.strip()}\n\n"
 
@@ -47,12 +65,24 @@ def section(title, body):
 #   GET /api/v0/stats/toprefs?start&end&include_paths=<path_id>... -> {"stats":[{"name","count"}]}
 # "count" is visitors (GoatCounter does not expose raw pageviews via the API). There is no
 # path-prefix filter, so we pull the top 100 paths and filter client-side.
+def referrer_host(name):
+    """Reduce a referrer to its hostname. GoatCounter may return a full URL or a
+    bare 'host/path'; both are trimmed so no path or query ever reaches the digest."""
+    if not name:
+        return "(direct)"
+    name = name.strip()
+    if "://" in name:
+        name = urllib.parse.urlsplit(name).netloc or name
+    return name.split("/", 1)[0].split("?", 1)[0].lower() or "(direct)"
+
 def goatcounter():
     tok = os.environ.get("GOATCOUNTER_TOKEN")
     site = os.environ.get("GOATCOUNTER_SITE", "rodneymhungu.goatcounter.com")
     if not tok:
         return "GOATCOUNTER_TOKEN not set."
-    h = {"Authorization": f"Bearer {tok}"}
+    # GoatCounter requires Content-Type: application/json on every API call; without
+    # it errors come back as an HTML page instead of {"error": ...}.
+    h = {"Authorization": f"Bearer {tok}", "Content-Type": "application/json"}
     base = f"https://{site}/api/v0"
     rng = {"start": week_ago.isoformat(), "end": today.isoformat()}
     lines = []
@@ -84,12 +114,18 @@ def goatcounter():
             q = urllib.parse.urlencode({**rng, "limit": 10, "include_paths": ids}, doseq=True)
             refs = get(f"{base}/stats/toprefs?{q}", h).get("stats", [])
             if refs:
+                # Hostnames only. The digest is posted as a public issue, and a full
+                # referrer can carry a reader's internal wiki or intranet URL.
+                by_host = {}
+                for r in refs:
+                    host = referrer_host(r.get("name"))
+                    by_host[host] = by_host.get(host, 0) + int(r.get("count", 0) or 0)
                 lines.append("")
-                lines.append("Top referrers:")
-                for r in refs[:10]:
-                    lines.append(f"- {r.get('name') or '(direct)'}: {r.get('count', 0)}")
+                lines.append("Top referrers (hostnames only):")
+                for host, n in sorted(by_host.items(), key=lambda kv: -kv[1])[:10]:
+                    lines.append(f"- {host}: {n}")
     except (HTTPError, URLError, ValueError, KeyError) as e:
-        lines.append(f"GoatCounter unavailable: {e}  (see https://www.goatcounter.com/help/api)")
+        lines.append(f"GoatCounter unavailable: {describe(e)}  (see https://www.goatcounter.com/help/api)")
     return "\n".join(lines)
 
 
@@ -109,23 +145,14 @@ def github():
         lines.append(f"repo metadata unavailable: {e}")
     try:
         issues = get(f"{api}/issues?state=open&sort=updated&per_page=20", h)
-        issues = [i for i in issues if "pull_request" not in i]
+        # Skip pull requests and the digests themselves, so the digest never reports on itself.
+        issues = [i for i in issues if "pull_request" not in i
+                  and not any(l.get("name") == "digest" for l in i.get("labels", []))]
         lines.append(f"\nOpen issues: {len(issues)}")
         for i in issues[:10]:
             lines.append(f"- #{i['number']} {i['title']} (updated {i['updated_at'][:10]}, {i['comments']} comments)")
     except (HTTPError, URLError) as e:
         lines.append(f"issues unavailable: {e}")
-    # Traffic API needs push access; GITHUB_TOKEN on your own repo has it.
-    try:
-        refs = get(f"{api}/traffic/popular/referrers", h)
-        if refs:
-            lines.append("\nGitHub traffic referrers (14 days):")
-            for r in refs[:10]:
-                lines.append(f"- {r['referrer']}: {r['count']} views, {r['uniques']} unique")
-        views = get(f"{api}/traffic/views?per=week", h)
-        lines.append(f"\nRepo page views (14 days): {views.get('count')} total, {views.get('uniques')} unique")
-    except (HTTPError, URLError) as e:
-        lines.append(f"\ntraffic API unavailable: {e}")
     return "\n".join(lines)
 
 

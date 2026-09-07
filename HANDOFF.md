@@ -3,70 +3,57 @@
 Written 5 September 2026 by Claude Code on Rodney's Mac. Read this first if you are
 picking the work up on another machine. Delete this file once everything below is done.
 
-## Where things stand
+## Where things stand, updated 7 September 2026
 
-- The repo `rodneymhungu/agent-365-guide` has two GitHub Actions workflows, two Python
-  scripts, a seeded Learn cache, and a GoatCounter snippet in `index.html`. All of it is
-  committed and pushed to `main` (commit `a55e992`), and the live site already carries
-  the analytics snippet.
-- Nothing has run yet. Both workflows are inert until the repository secrets below exist.
-- Full technical notes, including what was verified against the docs and what could
-  still drift, are in `scripts/README.md`. Read that before changing anything.
+The Windows laptop is now signed in to the GitHub CLI, and both workflows have
+been exercised.
 
-## If you are on the Windows laptop
+- **Learn drift works.** It ran on schedule on 7 September, compared the 55
+  cached Learn pages, found no drift and skipped the Copilot steps. The Copilot
+  and pull-request path is still unproven, because nothing had changed to
+  propose.
+- **The digest now arrives as an issue.** A manual run on 7 September collected
+  signals, installed the CLI and wrote the digest, then failed at the old Gmail
+  step. Rather than store a Google app password, the delivery was changed to open
+  an issue labelled `digest`, which GitHub emails to the repository owner.
+- **The repository has no secrets, and no longer needs any.** Both workflows run
+  on the automatic `GITHUB_TOKEN`.
+- **`COPILOT_PAT` turned out to be optional.** Copilot CLI authenticated with the
+  automatic `GITHUB_TOKEN` on a personal account and accepted the
+  `claude-haiku-4.5` model id. See `scripts/README.md` for the full findings.
 
-The Mac clone lives inside OneDrive. Do not rely on OneDrive to sync a `.git` folder;
-clone fresh instead:
+## What Rodney has to do himself
 
-```
-git clone https://github.com/rodneymhungu/agent-365-guide.git
-```
-
-## What Rodney has to do himself (an agent cannot do these)
-
-Add five repository secrets at
+Nothing is required. `GOATCOUNTER_TOKEN` was added on 7 September and works.
+One optional secret at
 https://github.com/rodneymhungu/agent-365-guide/settings/secrets/actions
+would add public mentions to the digest:
 
-| Secret | Where it comes from | Needed for |
+| Secret | Where it comes from | Adds |
 |---|---|---|
-| `COPILOT_PAT` | github.com/settings/personal-access-tokens/new, fine-grained, permission **Copilot Requests** | both workflows |
-| `GMAIL_USERNAME` | Rodney's Gmail address | digest email |
-| `GMAIL_APP_PASSWORD` | Google Account, Security, 2-Step Verification, App passwords | digest email |
-| `GOATCOUNTER_TOKEN` | rodneymhungu.goatcounter.com, Settings, API tokens, read-only statistics | visitor numbers (optional) |
-| `BRAVE_API_KEY` | brave.com/search/api, free tier | public mentions (optional) |
+| `BRAVE_API_KEY` | brave.com/search/api, free tier | public mentions |
 
-Without the optional two, the digest still sends and just says those sources were
-unavailable.
+Without them the digest still arrives and says those sources were unavailable.
 
-## What the agent should do once secrets exist
+## What is left for the agent
 
-1. Trigger both workflows by hand and watch them:
+1. Confirm the issue-based digest reads sensibly, and that GitHub emailed it:
 
    ```
-   gh workflow run learn-drift.yml
    gh workflow run feedback-digest.yml
-   gh run list --limit 5
-   gh run view --log-failed
+   gh run watch
    ```
 
-2. Things the Mac session could not test and that may need a fix on first run:
-   - Copilot CLI auth via `COPILOT_PAT`. If it fails, check the PAT has the Copilot
-     Requests permission and has not expired.
-   - The `--model claude-haiku-4.5` id in `feedback-digest.yml`. If rejected, run
-     `copilot help` on the runner (or locally) and pick the current cheap model.
-   - GoatCounter `start`/`end` sent as `YYYY-MM-DD`. If the digest says "GoatCounter
-     unavailable", the error text will say what format it wanted; fix it in
-     `scripts/feedback_collect.py`.
-   - Whether the Learn drift PR diff is mostly boilerplate. If so, extend the `CHROME`
-     regex in `scripts/learn_watch.py` and re-seed the cache with
-     `rm -rf .learn-cache && python3 scripts/learn_watch.py`, then commit.
+2. Prove the drift workflow's Copilot and pull-request path. Drift is rare, so
+   force it: on a branch, delete one file from `.learn-cache/`, run the workflow,
+   check the pull request it opens, then revert.
 
-3. Confirm the digest email arrived in Rodney's Gmail and reads sensibly.
+3. Review any Learn drift pull request with Rodney. The rule for this guide:
+   every factual claim must trace to a Microsoft Learn page, and a wrong
+   GA/preview flip is worse than a stale one. Never merge a status change
+   without checking the cited page.
 
-4. If a Learn drift PR was opened, review it with Rodney. The rule for this guide:
-   every factual claim must trace to a Microsoft Learn page, and a wrong GA/preview
-   flip is worse than a stale one. Never merge a status change without checking the
-   cited page.
+4. Delete this file once all of the above is done.
 
 ## How the pieces fit
 
@@ -75,8 +62,9 @@ unavailable.
   something changed does it install Copilot CLI, ask for the minimal edit, and open a
   pull request on branch `auto/learn-drift`. It never pushes content to `main`.
 - `feedback-digest.yml` (Mondays 05:30 UTC): `scripts/feedback_collect.py` gathers
-  GoatCounter, GitHub traffic and issues, and Brave Search mentions into
-  `feedback-input.md`; Copilot writes `digest.md`; an SMTP action emails it via Gmail.
+  GoatCounter, GitHub stars and issues, and Brave Search mentions into
+  `feedback-input.md`; Copilot writes `digest.md`; it is opened as an issue
+  labelled `digest`, which GitHub emails to the owner.
 - Everything runs on GitHub's hosted runners. No laptop needs to be on.
 
 ## Style rules for any edit to the guide
