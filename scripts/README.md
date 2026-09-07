@@ -9,7 +9,7 @@ Everything here was verified against the live docs on 5 September 2026; the
 | Workflow | When | What it does | Output |
 |---|---|---|---|
 | `learn-drift.yml` | Mon 05:00 UTC | `learn_watch.py` fetches the 51 Learn pages `index.html` cites, plus the Agent 365 and Security-for-AI docs tables of contents and the Windows 365 for Agents what's-new page, and diffs them against `.learn-cache/`. Only if something changed: Copilot CLI proposes minimal edits to `index.html` and the `window.A365` status block. | A pull request, never a push to `main` |
-| `feedback-digest.yml` | Mon 05:30 UTC | `feedback_collect.py` pulls GoatCounter visitors and per-section views, GitHub issues and traffic referrers, and Brave Search mentions. Copilot CLI writes a ≤350-word digest. | An issue on this repo, which GitHub emails to watchers |
+| `feedback-digest.yml` | Mon 05:30 UTC | `feedback_collect.py` pulls GoatCounter visitors, per-section views and referrers, GitHub stars and issues, and Brave Search mentions. Copilot CLI writes a ≤350-word digest. | An issue on this repo, which GitHub emails to watchers |
 
 `.learn-cache/` is committed and already seeded, so the first scheduled run is a
 real comparison. There is no Agent 365 "What's new" page on Learn; the docs
@@ -77,8 +77,9 @@ delivery step, and once the GoatCounter token existed, pulled real numbers.
 - `--model claude-haiku-4.5` was accepted by the CLI on the runner.
 - The GitHub traffic API returns **403 Forbidden** to `GITHUB_TOKEN`. Traffic
   needs push access, and workflow `permissions` has no `administration` key to
-  grant it, so referrers cannot work without a personal access token. Either add
-  one for that call or drop the referrer section from the digest.
+  grant it. Rather than store a personal access token, the traffic section was
+  dropped on 7 September: it measured visits to the repository page, not the
+  guide, and GoatCounter already reports referrers for the guide itself.
 - GoatCounter works, verified with a real token. Every API call must send
   `Content-Type: application/json`; without it the API answers **404** and an
   HTML error page rather than `{"error": ...}`. `start`/`end` as `YYYY-MM-DD`

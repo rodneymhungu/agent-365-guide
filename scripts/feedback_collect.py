@@ -7,8 +7,9 @@ fails is reported as "unavailable" rather than crashing the run.
 Sources
   1. GoatCounter  — visitors, per-section hash views, top referrers for the last 7 days
                     (same account as data-security-art-of-the-possible; filtered by path)
-  2. GitHub       — stars delta, open issues/discussions, and the repo traffic API
-                    (referrers and popular paths, last 14 days)
+  2. GitHub       — stars, forks, watchers and open issues (the traffic API is
+                    deliberately not used: it needs push access, so a PAT, and
+                    GoatCounter already covers referrers)
   3. Brave Search — public mentions of the guide URL or title
 
 Env vars
@@ -152,17 +153,6 @@ def github():
             lines.append(f"- #{i['number']} {i['title']} (updated {i['updated_at'][:10]}, {i['comments']} comments)")
     except (HTTPError, URLError) as e:
         lines.append(f"issues unavailable: {e}")
-    # Traffic API needs push access; GITHUB_TOKEN on your own repo has it.
-    try:
-        refs = get(f"{api}/traffic/popular/referrers", h)
-        if refs:
-            lines.append("\nGitHub traffic referrers (14 days):")
-            for r in refs[:10]:
-                lines.append(f"- {r['referrer']}: {r['count']} views, {r['uniques']} unique")
-        views = get(f"{api}/traffic/views?per=week", h)
-        lines.append(f"\nRepo page views (14 days): {views.get('count')} total, {views.get('uniques')} unique")
-    except (HTTPError, URLError) as e:
-        lines.append(f"\ntraffic API unavailable: {describe(e)}")
     return "\n".join(lines)
 
 
