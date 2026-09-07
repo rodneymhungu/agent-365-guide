@@ -144,7 +144,9 @@ def github():
         lines.append(f"repo metadata unavailable: {e}")
     try:
         issues = get(f"{api}/issues?state=open&sort=updated&per_page=20", h)
-        issues = [i for i in issues if "pull_request" not in i]
+        # Skip pull requests and the digests themselves, so the digest never reports on itself.
+        issues = [i for i in issues if "pull_request" not in i
+                  and not any(l.get("name") == "digest" for l in i.get("labels", []))]
         lines.append(f"\nOpen issues: {len(issues)}")
         for i in issues[:10]:
             lines.append(f"- #{i['number']} {i['title']} (updated {i['updated_at'][:10]}, {i['comments']} comments)")
