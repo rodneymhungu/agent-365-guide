@@ -57,3 +57,11 @@ Every screenshot on the page, where it came from, and where it is used. Generate
 2. Crop or downscale the new image to at most 1600 px wide and save it under the same file name, or a new name.
 3. Update the `<img src>` and the figure caption's source line in `index.html`, then this table and `manifest.json`.
 4. Deck screenshots show demo-tenant data approved for publication; check any new capture carries the same approval.
+
+## Link preview card
+
+`og.png` (1200×630) is the Open Graph and Twitter card image referenced from the `<head>` of `index.html`. It is not used on the page. It is rendered from `scripts/og-card.html`, a standalone copy of the hero route plate with the animation frozen. To regenerate after changing the plate:
+
+```
+chrome --headless=new --disable-gpu --hide-scrollbars --window-size=1200,630 --virtual-time-budget=8000 --screenshot=images/og.png scripts/og-card.html
+```

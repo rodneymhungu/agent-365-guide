@@ -1,0 +1,52 @@
+<!DOCTYPE html><html lang="en-GB"><head><meta charset="utf-8">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;700;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--paper:#f4ecd8;--ink:#171713;--ink-2:#48473f;--rule:#c7b996;--accent:#1949c6;--signal:#ef5a31;--observe:#2467d6;--govern:#e05d34;--secure:#28775a;
+--sans:"Public Sans","Segoe UI",Helvetica,Arial,sans-serif;--mono:"JetBrains Mono",ui-monospace,Consolas,monospace}
+html,body{margin:0}
+body{width:1200px;height:630px;overflow:hidden;position:relative;background-color:var(--paper);
+background-image:linear-gradient(to bottom,transparent 31px,color-mix(in srgb,var(--rule) 22%,transparent) 32px);background-size:100% 32px;background-position:0 14px;font-family:var(--sans);color:var(--ink)}
+.plate{position:absolute;left:298px;top:34px;width:598px;height:534px;border:2px solid var(--ink);background:#171713;box-shadow:10px 10px 0 var(--signal)}
+.plate svg{display:block;width:100%;height:100%}
+.plate text{font-family:var(--sans);fill:#fffaf0}
+.plate .route-display{font-weight:900;letter-spacing:-.08em;fill:transparent;stroke:#fffaf0;stroke-width:1.4px}
+.plate .route-small{font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;fill:#c9c0ae}
+.plate .route-label{font-family:var(--mono);font-size:13px;font-weight:600}
+.route-line{fill:none;stroke-width:9;stroke-linecap:square;stroke-linejoin:round}
+.route-line.observe{stroke:var(--observe)}.route-line.govern{stroke:var(--govern)}.route-line.secure{stroke:var(--secure)}
+.route-node{fill:var(--ink);stroke-width:3}.route-node.observe{stroke:var(--observe)}.route-node.govern{stroke:var(--govern)}.route-node.secure{stroke:var(--secure)}
+.route-runner{fill:#fffaf0;filter:drop-shadow(0 0 5px #fffaf0)}
+.eyebrow{position:absolute;left:48px;top:44px;width:220px;line-height:1.5;font:700 13px var(--sans);letter-spacing:.14em;text-transform:uppercase;color:var(--accent)}
+.side{position:absolute;left:48px;top:104px;width:220px;font:500 12px/1.7 var(--mono);color:var(--ink-2);text-transform:uppercase;letter-spacing:.06em}
+.side b{display:block;color:var(--ink);font-weight:600}
+.url{position:absolute;left:48px;bottom:22px;font:600 12px var(--mono);letter-spacing:.05em;color:var(--ink-2)}
+.by{position:absolute;right:48px;bottom:22px;font:600 12px var(--mono);letter-spacing:.05em;color:var(--ink-2);text-align:right}
+.by b{color:var(--ink)}
+</style></head><body>
+<div class="eyebrow">Field guide 01 · Microsoft Agent 365</div>
+<div class="side"><b>mapped for defenders</b>which product enforces each control, what it needs, and what is still in preview.</div>
+<div class="plate"><svg viewBox="0 0 560 500" role="img">
+<text x="32" y="84" class="route-display" font-size="78">AGENT</text>
+<text x="34" y="159" class="route-display" font-size="88">365</text>
+<text x="37" y="192" class="route-small">one request · three control routes</text>
+<path class="route-line observe" d="M38 245 H188 V225 H320 V265 H518"/>
+<path class="route-line govern" d="M38 302 H148 V330 H350 V305 H518"/>
+<path class="route-line secure" d="M38 359 H220 V390 H405 V350 H518"/>
+<circle class="route-node observe" cx="188" cy="225" r="13"/>
+<circle class="route-node govern" cx="350" cy="305" r="13"/>
+<circle class="route-node secure" cx="405" cy="350" r="13"/>
+<circle class="route-runner" cx="118" cy="359" r="5"/>
+<text x="39" y="231" class="route-label">OBSERVE</text>
+<text x="39" y="289" class="route-label">GOVERN</text>
+<text x="39" y="346" class="route-label">SECURE</text>
+<text x="171" y="211" class="route-small">find it</text>
+<text x="329" y="291" class="route-small">own it</text>
+<text x="382" y="336" class="route-small">stop it</text>
+<path d="M455 336 l18 28 M473 336 l-18 28" stroke="#ef5a31" stroke-width="6"/>
+<text x="36" y="455" class="route-small">the control plane coordinates.</text>
+<text x="36" y="473" class="route-small">the products underneath enforce.</text>
+</svg></div>
+<div class="url">rodneymhungu.github.io/agent-365-guide</div>
+<div class="by">field notes by <b>Rodney Mhungu</b></div>
+</body></html>
