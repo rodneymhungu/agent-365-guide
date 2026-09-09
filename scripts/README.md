@@ -102,6 +102,15 @@ delivery step, and once the GoatCounter token existed, pulled real numbers.
   the repository setting "Allow GitHub Actions to create and approve pull
   requests" was enabled; it is off by default and the run fails without it.
 
+## Licensing FAQ, added 9 September 2026
+
+`EXTRA_URLS` now includes the Agent 365 licensing FAQ at
+microsoft.com/licensing/faqs/122, which is where the purchase prerequisites
+live (Learn only links to it). The page returns a 4 KB JavaScript shell to the
+watcher's own user agent and the full HTML to a browser user agent, so `fetch()`
+uses a Chrome UA for any host other than learn.microsoft.com. First scheduled
+run after this change caches it; drift shows up from the run after that.
+
 ## Still to check
 
 - If a PR's diff is mostly boilerplate, extend the `CHROME` regex in
