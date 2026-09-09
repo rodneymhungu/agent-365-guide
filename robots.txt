@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://rodneymhungu.github.io/agent-365-guide/sitemap.xml

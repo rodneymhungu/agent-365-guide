@@ -47,6 +47,8 @@ Before publishing, confirm that both scripts parse, every local image and intern
 
 Two GitHub Actions run every Monday. One re-fetches every Learn page the guide cites, and when a page has changed asks Copilot CLI for the minimal edit and opens a pull request for review. The other collects visitor numbers, referrers, issues and public mentions and posts a short digest as an issue labelled `digest`, which GitHub emails to anyone watching the repository. Both are described in [scripts/README.md](scripts/README.md). Neither needs a secret. Two optional tokens add visitor numbers and public mentions to the digest.
 
+A changelog lives in the `changes` array of the same data block and renders at the end of chapter 10. `sitemap.xml`, `robots.txt`, the canonical link and the JSON-LD block in the head exist for search engines; update `lastmod` and `dateModified` when the review date changes.
+
 ## Licence and attribution
 
 Screenshots from Microsoft Learn are CC BY 4.0. Workshop deck screenshots show demo-tenant data approved for publication. Structure and diagrams are adapted from a September 2026 Agent 365 workshop. Text and drawings by Rodney Mhungu.
