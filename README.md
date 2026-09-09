@@ -45,7 +45,7 @@ Before publishing, confirm that both scripts parse, every local image and intern
 
 ## Keeping it current
 
-Two GitHub Actions run every Monday. One re-fetches every Learn page the guide cites, and when a page has changed asks Copilot CLI for the minimal edit and opens a pull request for review. The other collects visitor numbers, referrers, issues and public mentions and emails a short digest. Both are described in [scripts/README.md](scripts/README.md), including the five secrets they need.
+Two GitHub Actions run every Monday. One re-fetches every Learn page the guide cites, and when a page has changed asks Copilot CLI for the minimal edit and opens a pull request for review. The other collects visitor numbers, referrers, issues and public mentions and posts a short digest as an issue labelled `digest`, which GitHub emails to anyone watching the repository. Both are described in [scripts/README.md](scripts/README.md). Neither needs a secret. Two optional tokens add visitor numbers and public mentions to the digest.
 
 ## Licence and attribution
 
