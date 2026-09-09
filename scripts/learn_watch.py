@@ -30,7 +30,13 @@ EXTRA_URLS = [
     "https://learn.microsoft.com/en-us/microsoft-agent-365/toc.json",
     "https://learn.microsoft.com/en-us/security/security-for-ai/toc.json",
     "https://learn.microsoft.com/en-us/windows-365/agents/whats-new",
+    # Licensing prerequisites live here, not on Learn. The page serves a 4 KB
+    # JavaScript shell to unknown user agents and full HTML to a browser UA,
+    # so fetch() switches UA for hosts other than learn.microsoft.com.
+    "https://www.microsoft.com/licensing/faqs/122",
 ]
+BROWSER_UA = ("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "
+              "(KHTML, like Gecko) Chrome/128.0 Safari/537.36")
 
 MAX_DIFF_LINES = 160   # per page; keeps the agent prompt bounded
 
@@ -111,7 +117,8 @@ def normalise(raw_html: str, url: str = "") -> str:
 def fetch(url: str, retries: int = 3):
     for i in range(retries):
         try:
-            req = Request(url, headers={"User-Agent": UA, "Accept-Language": "en-US,en;q=0.9"})
+            ua = UA if "learn.microsoft.com" in url else BROWSER_UA
+            req = Request(url, headers={"User-Agent": ua, "Accept-Language": "en-US,en;q=0.9"})
             with urlopen(req, timeout=30) as r:
                 return r.read().decode("utf-8", "replace")
         except HTTPError as e:
