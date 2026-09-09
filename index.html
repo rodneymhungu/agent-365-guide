@@ -19,6 +19,11 @@
 <meta name="twitter:title" content="Agent 365 for security and compliance engineers">
 <meta name="twitter:description" content="Which product enforces each Agent 365 control, what it needs, and what is still in preview.">
 <meta name="twitter:image" content="https://rodneymhungu.github.io/agent-365-guide/images/og.png">
+<link rel="canonical" href="https://rodneymhungu.github.io/agent-365-guide/">
+<link rel="alternate" type="application/atom+xml" title="Changes to this guide" href="https://github.com/rodneymhungu/agent-365-guide/commits/main.atom">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"TechArticle","headline":"Agent 365 for security and compliance engineers","description":"A how-to guide to Microsoft Agent 365 for security and compliance engineers: what it enforces, where, under which licence, and what is still in preview.","url":"https://rodneymhungu.github.io/agent-365-guide/","image":"https://rodneymhungu.github.io/agent-365-guide/images/og.png","datePublished":"2026-09-04","dateModified":"2026-09-09","inLanguage":"en-GB","author":{"@type":"Person","name":"Rodney Mhungu"},"about":["Microsoft Agent 365","Microsoft Entra","Microsoft Purview","Microsoft Defender","Microsoft Intune"]}
+</script>
 
 <!--
   ==========================================================================
@@ -32,6 +37,10 @@
   everywhere. Do not edit statuses in the prose by hand.
 
   Tiers: ga | preview | frontier | roadmap
+
+  When you change "reviewed", add a line to "changes" (newest first) and update
+  dateModified in the JSON-LD block above and lastmod in sitemap.xml. Search
+  engines read those two; readers read the changelog in chapter 10.
 
   Screenshots live in images/. images/manifest.json and images/README.md record
   where every one came from (deck slide or Learn page), how it was cropped, and
@@ -53,6 +62,13 @@ window.A365 = {
     frontier: { label: "Frontier preview", phrase: "a Frontier preview" },
     roadmap:  { label: "Early preview",    phrase: "in early preview" }
   },
+  changes: [
+    { date: "9 September 2026", section: "s2-1", text: "Licensing prerequisites corrected after feedback from Microsoft product marketing: Entra ID P1 is already in every plan that qualifies for Agent 365, and the licensing FAQ is now cited." },
+    { date: "8 September 2026", text: "Link preview card for LinkedIn and Teams." },
+    { date: "7 September 2026", text: "Weekly check of every cited Learn page, with a pull request when one moves. Sections panel scrolls on phones." },
+    { date: "5 September 2026", section: "s7-1", text: "Noted that licence enforcement for Conditional Access and Identity Protection for agents is still pending." },
+    { date: "4 September 2026", text: "First published." }
+  ],
   capabilities: [
     { key: "control-plane",      name: "Agent 365 licence and admin centre control plane", tier: "ga", note: "GA since 1 May 2026", where: "Microsoft 365 admin centre" },
     { key: "registry",           name: "Registry, overview, requests, actions, management rules, settings, policy templates", tier: "ga", where: "Microsoft 365 admin centre" },
@@ -481,6 +497,7 @@ section.top > *{animation:none}
 .field-stats span:last-child{border:0}.field-stats b{font:800 1.4rem var(--sans);letter-spacing:-.03em;color:var(--ink);text-transform:none}
 .guide-notes{border-block-end:1px solid var(--rule);padding:.8rem 0;margin-block-start:.8rem;max-width:100%}
 .guide-notes summary{cursor:pointer;font:600 .72rem var(--mono);text-transform:uppercase;letter-spacing:.06em;color:var(--ink-2)}
+.guide-notes .changes{margin:.8rem 0 0;padding-inline-start:1.1rem;max-width:80ch}.guide-notes .changes li{margin-block-end:.4rem}.guide-notes .changes b{font:600 .72rem var(--mono);color:var(--ink-2);margin-inline-end:.4rem}
 .guide-notes .legend{margin-block-start:1rem}.guide-notes .source-note{margin-block:.8rem 0;max-width:80ch}
 
 .block{position:relative;padding-block:1rem 4.5rem;border-block-end:2px solid var(--ink);margin-block-end:4rem}
@@ -1574,6 +1591,11 @@ Set-MpPreference -AiAgentNetworkInspection Audit</code></pre>
     <thead><tr><th>Capability</th><th>Status</th><th>Note</th><th>Where</th></tr></thead>
     <tbody></tbody>
   </table></div>
+  <details class="guide-notes" id="changelog">
+    <summary>What changed, and when</summary>
+    <ul class="changes"></ul>
+    <p class="muted small">Every Monday a workflow re-reads each Learn page this guide cites and opens a pull request when one has moved, so a status here changes within a week of Microsoft changing it. <a href="https://github.com/rodneymhungu/agent-365-guide/commits/main.atom">Subscribe to changes</a> or <a href="https://github.com/rodneymhungu/agent-365-guide" target="_blank" rel="noopener">watch the repository</a>.</p>
+  </details>
 </section>
 
 
@@ -1586,6 +1608,7 @@ Set-MpPreference -AiAgentNetworkInspection Audit</code></pre>
     <div>
       <p><strong>About this guide</strong></p>
       <p>Assembled by Rodney Mhungu. Structure and diagrams are adapted from a September 2026 Agent 365 workshop; every factual claim is taken from Microsoft Learn and linked at the point of use. Opinions are my own. Built on my <a href="https://github.com/rodneymhungu/field-guide-principles" target="_blank" rel="noopener">field guide principles</a>. Reviewed <span data-val="reviewed"></span>.</p>
+      <p><strong>Found an error?</strong> Corrections are worth more to me than praise. <a href="https://github.com/rodneymhungu/agent-365-guide/issues/new?title=Correction%3A%20&amp;labels=correction" target="_blank" rel="noopener">Open an issue</a> with the chapter number and the Learn page that disagrees, and it goes into the next review.</p>
     </div>
     <div>
       <p><strong>Sources</strong> (Microsoft Learn unless stated)</p>
@@ -1647,6 +1670,15 @@ Set-MpPreference -AiAgentNetworkInspection Audit</code></pre>
     const tr = document.createElement('tr'); tr.dataset.tier = c.key; tr.dataset.tierValue = c.tier;
     tr.innerHTML = `<td>${c.name}</td><td><span class="badge t-${c.tier}" style="margin:0">${D.tiers[c.tier].label}</span></td><td class="muted">${c.note || ''}</td><td>${c.where}</td>`;
     tb.appendChild(tr);
+  });
+
+  /* --- Changelog from the data block --- */
+  const ch = document.querySelector('#changelog .changes');
+  if (ch) (D.changes || []).forEach(c => {
+    const li = document.createElement('li');
+    const sec = c.section ? ` <a href="#${c.section}">${c.section.slice(1).replace('-', '.')}</a>` : '';
+    li.innerHTML = `<b>${c.date}</b>${sec} ${c.text}`;
+    ch.appendChild(li);
   });
 
   /* --- Table of contents --- */

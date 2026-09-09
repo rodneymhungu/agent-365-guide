@@ -45,7 +45,9 @@ Before publishing, confirm that both scripts parse, every local image and intern
 
 ## Keeping it current
 
-Two GitHub Actions run every Monday. One re-fetches every Learn page the guide cites, and when a page has changed asks Copilot CLI for the minimal edit and opens a pull request for review. The other collects visitor numbers, referrers, issues and public mentions and emails a short digest. Both are described in [scripts/README.md](scripts/README.md), including the five secrets they need.
+Two GitHub Actions run every Monday. One re-fetches every Learn page the guide cites, and when a page has changed asks Copilot CLI for the minimal edit and opens a pull request for review. The other collects visitor numbers, referrers, issues and public mentions and posts a short digest as an issue on this repository. Both are described in [scripts/README.md](scripts/README.md), including the optional secrets.
+
+A changelog lives in the `changes` array of the same data block and renders at the end of chapter 10. `sitemap.xml`, `robots.txt`, the canonical link and the JSON-LD block in the head exist for search engines; update `lastmod` and `dateModified` when the review date changes.
 
 ## Licence and attribution
 
