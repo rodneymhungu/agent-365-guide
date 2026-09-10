@@ -108,7 +108,7 @@ window.A365 = {
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;0,6..72,700;1,6..72,400&amp;family=Public+Sans:wght@400;500;600;700;800;900&amp;family=JetBrains+Mono:wght@400;500;600&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;0,6..72,700;1,6..72,400&amp;family=Public+Sans:ital,wght@0,400..900;1,400..900&amp;family=JetBrains+Mono:wght@400;500;600&amp;display=swap" rel="stylesheet">
 
 <style>
 /* === TOKENS === */
@@ -397,7 +397,7 @@ tr.locked td.y{color:var(--ink-3);font-weight:400}
 .sketch{font-family:var(--hand)}
 .sketch .frame{background:var(--paper);background-image:radial-gradient(rgba(21,26,34,.07) 1px,transparent 1px);background-size:14px 14px}
 svg .hand{font-family:var(--hand);fill:var(--ink)}
-svg .halo{paint-order:stroke;stroke:var(--paper);stroke-width:7px;stroke-linejoin:round}
+svg .halo{paint-order:stroke;stroke:var(--paper);stroke-width:5px;stroke-linejoin:round}
 svg .ink{stroke:var(--ink);fill:none;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
 svg .inkthin{stroke:var(--ink);fill:none;stroke-width:1.4;stroke-linecap:round;stroke-linejoin:round}
 svg .red{stroke:var(--road);fill:none;stroke-width:2.2;stroke-linecap:round}
@@ -742,7 +742,7 @@ footer{border-block-start:8px solid var(--ink);background:var(--paper-2)}
     <div class="frame">
     <svg viewBox="0 0 900 300" role="img" aria-labelledby="fgt">
       <title id="fgt">A hand-drawn scene: an agent at a door offers a long explanation of why it needs to enter; the guard asks only whether it is on the list</title>
-      <defs><filter id="wob" x="-5%" y="-5%" width="110%" height="110%"><feTurbulence type="fractalNoise" baseFrequency="0.018" numOctaves="2" seed="3" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="2.2"/></filter></defs>
+      <defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="context-stroke"/></marker><filter id="wob" x="-5%" y="-5%" width="110%" height="110%"><feTurbulence type="fractalNoise" baseFrequency="0.018" numOctaves="2" seed="3" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="2.2"/></filter></defs>
       <g filter="url(#wob)">
         <!-- door -->
         <path d="M600 60 h140 v210 h-140 z" class="ink"/><path d="M612 72 h116 v186 h-116 z" class="inkthin"/><circle cx="716" cy="170" r="4" class="ink"/>
@@ -1404,22 +1404,24 @@ Set-MpPreference -AiAgentNetworkInspection Audit</code></pre>
   </figure>
   <figure class="sketch" id="fig-local-agent-layers">
     <div class="frame">
-    <svg viewBox="0 0 900 340" role="img" aria-labelledby="flt">
+    <svg viewBox="0 0 900 390" role="img" aria-labelledby="flt">
       <title id="flt">Hand-drawn: a developer's laptop with three rings around it labelled see it, govern it, contain it</title>
       <g filter="url(#wob)">
-        <ellipse cx="450" cy="190" rx="400" ry="130" class="inkthin" stroke-dasharray="7 6"/>
-        <ellipse cx="450" cy="190" rx="290" ry="96" class="inkthin" stroke-dasharray="7 6"/>
-        <ellipse cx="450" cy="190" rx="180" ry="62" class="inkthin" stroke-dasharray="7 6"/>
+        <ellipse cx="450" cy="215" rx="410" ry="158" class="inkthin" stroke-dasharray="7 6"/>
+        <ellipse cx="450" cy="215" rx="300" ry="110" class="inkthin" stroke-dasharray="7 6"/>
+        <ellipse cx="450" cy="215" rx="200" ry="66" class="inkthin" stroke-dasharray="7 6"/>
         <!-- laptop -->
-        <path d="M400 168 h100 v50 h-100 z" class="ink"/><path d="M388 218 h124 l8 12 h-140 z" class="ink"/><text x="450" y="200" text-anchor="middle" class="hand" font-size="15">claude</text>
+        <path d="M400 200 h100 v50 h-100 z" class="ink"/><path d="M388 250 h124 l8 12 h-140 z" class="ink"/>
         <!-- dev stick figure -->
-        <circle cx="352" cy="150" r="12" class="ink"/><path d="M352 162 v40 M352 175 l-16 18 M352 175 l20 12 M352 202 l-12 28 M352 202 l12 28" class="ink"/>
-        <text x="450" y="118" text-anchor="middle" class="hand halo" font-size="18" font-weight="700">Contain it</text><text x="450" y="136" text-anchor="middle" class="hand halo" font-size="13">the OS decides what the agent may touch</text>
-        <text x="450" y="80" text-anchor="middle" class="hand halo" font-size="18" font-weight="700">Govern it</text><text x="450" y="98" text-anchor="middle" class="hand halo" font-size="13">Intune: block it, or allow it with guardrails</text>
-        <text x="450" y="44" text-anchor="middle" class="hand halo" font-size="18" font-weight="700">See it</text><text x="450" y="62" text-anchor="middle" class="hand halo" font-size="13">Defender discovery, the same registry as everything else</text>
-        <text x="690" y="300" class="hand" font-size="14">runtime checks sit on the</text><text x="690" y="318" class="hand" font-size="14">laptop itself (Defender, Purview)</text>
-        <path d="M680 296 q-40 -20 -150 -60" class="inkthin" marker-end="url(#ah)"/>
+        <circle cx="312" cy="184" r="12" class="ink"/><path d="M312 196 v40 M312 208 l-16 18 M312 208 l20 12 M312 236 l-12 28 M312 236 l12 28" class="ink"/>
+        <path d="M690 352 q-40 -30 -160 -86" class="inkthin" marker-end="url(#ah)"/>
       </g>
+      <!-- labels sit outside the filter so glyphs stay crisp; one band per ring -->
+      <text x="450" y="232" text-anchor="middle" class="hand" font-size="15">claude</text>
+      <text x="450" y="78" text-anchor="middle" class="hand halo" font-size="18" font-weight="700">See it</text><text x="450" y="96" text-anchor="middle" class="hand halo" font-size="13">Defender discovery, the same registry as everything else</text>
+      <text x="450" y="124" text-anchor="middle" class="hand halo" font-size="18" font-weight="700">Govern it</text><text x="450" y="142" text-anchor="middle" class="hand halo" font-size="13">Intune: block it, or allow it with guardrails</text>
+      <text x="450" y="170" text-anchor="middle" class="hand halo" font-size="18" font-weight="700">Contain it</text><text x="450" y="188" text-anchor="middle" class="hand halo" font-size="13">the OS decides what the agent may touch</text>
+      <text x="700" y="356" class="hand" font-size="14">runtime checks sit on the</text><text x="700" y="374" class="hand" font-size="14">laptop itself (Defender, Purview)</text>
     </svg>
     </div>
     <figcaption><b class="fn"></b> Three layers around a developer's laptop. The outer two exist today in preview; the inner one is roadmap.</figcaption>
