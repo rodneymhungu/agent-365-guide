@@ -1,0 +1,201 @@
+Microsoft Licensing FAQs
+This content is for informational purposes only. MICROSOFT MAKES NO WARRANTIES, EXPRESS OR IMPLIED, ON THIS PAGE. Please see full disclaimer below.
+All Product and Topics
+Microsoft Agent 365
+Microsoft Agent 365
+Microsoft Agent 365
+Collapse All
+Microsoft Agent 365
+Q: How is Agent 365 licensed—per user or per agent—and how does the licensing apply to Microsoft 365 E7 versus Agent 365 standalone?
+Agent 365 is licensed per user, whether purchased as part of Microsoft 365 E7 or as a standalone offering.
+Agents do not require their own licenses. Licensing aligns to how agents are used - across both delegated access and own access flows and is tied to the user associated with the agent (e.g. user, owner, sponsor, or manager).
+In all cases, licensing is assigned per user.
+Q: What is the business model and pricing structure for Agent 365, including pay-as-you-go and consumption-based options?
+Agent 365 is available in the Microsoft 365 E7 license with list price $99/user/mo. It can also be available standalone license with list price at $15/user/mo.
+There are no consumption-based costs for Agent 365 yet. All interactions of a user’s agents (including agents using delegated access and own access) will be managed under the per user license.
+Q: Which users in our organization should we license for Agent 365?
+These users are required to be licensed:
+Users who delegate their access to agents (i.e., OBO agents) will need to be licensed with A365
+The owner, sponsor or the manager of agents with own access (i.e., non-OBO agents, e.g., AskHR agent) will need to be licensed with A365
+We recommend broad coverage to support compliance and scale, including:
+Users who interact with, manage, or sponsor A365 managed agents
+Microsoft 365 Copilot users
+Teams expanding beyond initial pilots into broader agent adoption
+Microsoft recognizes that this guidance can be difficult to operationalize today, as there is limited visibility into user-level agent interactions during policy configuration. We are continuing to improve visibility, tracking, and the overall licensing experience.
+Q: If we already have Microsoft 365 Copilot, do we still need Agent 365 for full protection and compliance for agents?
+Yes. Microsoft 365 Copilot provides AI capabilities to end-users, but Agent 365 is needed in addition to M365 Copilot to ensure all agents (beyond Copilot) are managed, governed and secured.
+Think of it this way: Copilot is about what AI can do; Agent 365 is about controlling what AI is allowed to do.
+Q: What are the key principles to understand Agent 365 licensing?
+Principle 1: Agent 365 is licensed per user for every agent. We recommend licensing all users of agents.
+Agent 365 is licensed per user, covering agents that users interact with, manage, or sponsor across both delegated access and own access.
+A single Agent 365 license covers all agents associated with that user; agents themselves are not licensed. Licensing is tied to the user benefiting from or responsible for the agent’s actions.
+An Agent 365 license is recommended for all users who interact with, manage, or sponsor agents, to ensure consistent governance and protection as adoption scales.
+A license is required only for users who interact with, manage, or sponsor agents that use Agent 365 premium capabilities.
+Principle 2: Licensing is contractually enforced, the same as today for Microsoft 365 E5.
+If an agent is tied to an unlicensed user, the activity is not entitled to Agent 365 protections. This creates an out-of-compliance scenario.
+As with other Microsoft services, users cannot access or benefit from functionality they are not licensed for under the Microsoft Universal License Terms.
+Multiplexing, or pooling services to reduce the number of required licenses, is not permitted.
+Principle 3: Microsoft Cloud subscription customers get basic capabilities. Licensed users are entitled to premium capabilities.
+All Microsoft Cloud subscription customers receive foundational Agent 365 capabilities at no additional cost, including agent identity, inventory visibility, basic usage insights, and core admin governance actions.
+Premium capabilities such as advanced usage analytics, agent governance policies, security posture management, threat detection, and data security controls require an Agent 365 license.
+This tiered model allows organizations to start governing agents immediately, while enabling deeper observability, governance, and security controls as adoption scales.
+An Agent 365 license is required for users who need premium capabilities; foundational capabilities included with Microsoft Cloud subscriptions do not require additional licensing.
+Principle 4: Agent 365 covers a range of agent types (both 1P and 3P) though some feature availability may vary.
+Agent 365 provides a unified observability, governance, and framework that applies to both first-party Microsoft agents and ecosystem partner agents operating within the tenant.
+Core capabilities such as agent identity, registry visibility, and admin governance apply broadly across agent types, ensuring consistent management regardless of origin.
+Premium capabilities may vary in depth or availability depending on the agent type, platform, or level of integration.
+Organizations can sync agents from external platforms into the Agent 365 registry, extending visibility and governance to ecosystem partner agents across their environment.
+Q: If Agent 365 is a per-user license that covers all agents a user touches, can a single licensed sponsor manage a fleet of agent-to-agent (A2A) or agent-to-tool (A2T) agents?
+Yes, a single licensed user can manage a large number of agents, including at fleet scale. There is no fixed cap in the licensing model on the number of agents a licensed user can oversee.
+However, standard service protections and usage limits may apply to ensure platform stability and fair usage.
+Q: Do we need Microsoft 365 E7 to use Agent 365?
+No, Microsoft 365 ME7 is not needed for using Agent 365, which can be purchased as a standalone add-on ($15 per user month). However, Microsoft 365 E7 provides the most complete Agent 365 experience for scaling agents securely across an organization.
+Q: Does Microsoft 365 E7 include Agent 365?
+Yes, Agent 365 is available as part of Microsoft 365 E7 and is also offered as a standalone per‑user subscription, subject to applicable licensing terms and availability at GA. Agent 365 is not included in M365 E3/E5 licenses.
+Q: Which Agent 365 capabilities are included with Microsoft Cloud Subscription, and which require an Agent 365 license?
+Some Agent 365 capabilities are included with a Microsoft cloud subscription and are available at the tenant level, including:
+Agent Identity
+Agent Registry
+Basic agent usage insights
+Admin agent governance actions (publish, deploy, block, delete, approve, reassign, manage user access, pin, etc.)
+Audit logs and eDiscovery for agent activity
+Block unsanctioned local endpoint agents
+Discovery of AI on endpoints
+Other capabilities require an Agent 365 licenses:
+Observability:
+Advanced agent usage insights
+Agent Map
+Registry sync
+Graph API
+Governance:
+Agent Identity Governance
+Lifecycle management for agents
+Automate agent lifecycle actions
+Tool controls for agents
+Policy templates for agents
+Audit logs and eDiscovery for agent activity
+Data Lifecyle Management for agent data and interactions
+Communication Compliance for agents
+Security:
+Data Security Posture Management for agents
+Insider Risk Management for agents
+Agents inherit and honor data sensitivity labels
+Data loss prevention for agents
+Conditional access and identity protection for agents
+Secure Access Service Edge (SASE) for agents
+Device compliance for agent conditional access
+Policy controlled environment for agents runtime
+Agent Security Posture Management
+Threat Detection and Blocking for agents
+Threat Hunting and Investigation for agents
+Q: Does Microsoft 365 E7 (including Agent 365) meet European Union (EU) Data Boundary requirements?
+Yes. Microsoft 365 E7, including Agent 365, is designed to align with Microsoft’s EU Data Boundary commitments.
+As with other Microsoft commercial offerings, customers will have options available both with and without Microsoft Teams in accordance with Microsoft’s commitments in the EU.
+Q: Do we pay extra for security when we register Microsoft Foundry agent in Agent 365?
+No. Agent 365 does not differentiate between agents built in Microsoft Foundry or Copilot Studio. Since the license is assigned to the user, the security and governance capabilities are included at no additional cost, regardless of which platform was used to create the agent.
+Q: If Agent 365 governs agents rather than people, why is it licensed per user?
+Agent 365 is licensed per user because every agent is associated with a person in some capacity, whether interacting with the agent or serving as its owner, sponsor, or manager.
+This per-user model is familiar and predictable, helping organizations plan, budget, and scale their agent adoption.
+Q: What counts toward our Agent 365 licensing needs—blueprints, agents, or agent instances?
+Blueprints, agents, and agent instances are not licensed separately. They do not count as individual licensing units.
+A single licensed user can create, manage, and use multiple blueprints, agents, and agent instances.
+There are no additional per-agent or per-instance charges within Agent 365.
+Q: Is Windows 365 for Agents included in Agent 365 or bundled with other Microsoft products?
+No. Windows 365 for Agents is not included in Agent 365 and is not bundled with other Microsoft products like Copilot Studio.
+It is a standalone offering that integrates with Agent 365 and other services, but must be purchased separately.
+Agent 365 provides the governance layer for agents, while Windows 365 for Agents provides the runtime environment when needed, so customers can choose to use them together based on their scenarios.
+Q: How is Windows 365 for Agents sold with Agent 365?
+Windows 365 for Agents and Agent 365 are offered as separate but complementary products.
+Agent 365 is licensed per user (either standalone or as part of Microsoft 365 E7), while Windows 365 for Agents is billed based on usage.
+Customers typically use Agent 365 to govern agents across their environment and add Windows 365 for Agents when those agents need a full desktop or browser-based runtime environment to complete tasks.
+Q: How is Windows 365 for Agents billed?
+Windows 365 for Agents is billed on a pay-as-you-go basis, based on hourly usage.
+Customers are charged $0.40 per VM per hour, and the cost appears as a separate line item in billing.
+This model allows organizations to scale usage up or down depending on demand, so they only pay for the compute resources when agents are actively running.
+Q: If I don’t have an Agent 365 license, can I still use Data Security Posture Management (DSPM) and AI Observability?
+Yes. You can use DSPM and AI Observability without an Agent 365 license. However, to see agent-specific insights in DSPM and AI Observability, you need Agent 365 or Microsoft 365 E7. If you don’t have Agent 365 or Microsoft 365 E7, you can still view non-agent insights, but you won’t see agent-related insights.
+Q: When do Agent 365 capabilities become available after assigning a license?
+You can access Agent 365 observability signals as soon as you assign the first Agent 365 license. At that point, these observability signals and insights become available in the Agent 365 Overview page.
+Q: Do we need to accept Terms before using Agent 365?
+Yes. You must accept the applicable Terms when starting an Agent 365 trial or purchasing paid licenses. Terms acceptance is part of the onboarding and activation experience for Agent 365.
+Q: Why are licensing prerequisites introduced for Agent 365?
+Licensing prerequisites are introduced for Agent 365 because core Agent 365 functionality relies on technical capabilities from the underlying licenses being enabled. This ensures you make informed purchase decisions and can realize Agent 365 functionality and value.
+Q: What are the licensing prerequisites for Agent 365?
+If you are an enterprise customer, you need Microsoft 365 E5 (ME5) or Microsoft 365 E3 (or Office 365 E3 + EMS E3) plus both Defender Suite and Purview Suite.
+If you are a frontline worker customer, you need Microsoft 365 F1/F3 plus Defender and Purview Suite FLW.
+If you are a small or medium-sized business (SMB) customer, you need Microsoft 365 Business Premium. To unlock Agent 365 functionality, you also need Defender Suite for SMB and Purview Suite for SMB, although these are not formal prerequisites.
+If you are an education customer, you need Microsoft 365 A5 for Faculty or Microsoft 365 A3 (or Office 365 A3 + EMS A3) for Faculty plus or both Defender Suite for Education and Purview Suite for Education.
+Q: Does Agent 365 require us to standardize on Microsoft 365 E5 (ME5) for productivity workloads?
+Core Agent 365 functionality relies on the technical capabilities from the underlying Microsoft 365 E5 (ME5) license (or Microsoft Defender + Purview Suite FLW for Frontline Workers) to be fully enabled. If you do not have these licenses, you cannot take full advantage of core Agent 365 capabilities.
+Purview: does not provide advanced classification or auto-labeling of grounding data
+Defender: does not provide detection of local agents on endpoints, posture and runtime protection for local agents, or threat hunting and investigation for cloud agents
+Intune: does not provide controls for local agents on Windows or the ability to block OpenClaw
+Entra: Entra does not provide Entra network controls for cloud agents if the user does not have Microsoft 365 E3 (ME3) or Microsoft Entra ID P1 (IDP1). It also does not provide Identity Protection or Entra network controls for local agents. You can obtain network controls for local agents through Entra Suite or Entra standalone offerings.
+You need this prerequisite to realize the full functionality and value of Agent 365.
+If you are on Business Premium, the answer is different—you still need additional add-ons (Defender Suite and Purview Suite for SMB) to unblock A365 functionality.
+Q: Do the licensing prerequisites impact Microsoft 365 E7 (ME7) or other ME7 components?
+No. Licensing prerequisites do not impact Microsoft 365 E7 or other E7 components because E7 includes Microsoft 365 E5 and Agent 365, along with Microsoft 365 Copilot and Entra Suite.
+Q: What happens if we purchase Agent 365 and have Entra Suite or Entra P1/P2 but do not have Microsoft 365 E5?
+Given that Microsoft 365 E5 (ME5) is becoming a licensing prerequisite for Agent 365 (A365), realistically there shouldn’t be any scenarios in which you have A365 + Entra Suite without ME5. However, assuming Microsoft 365 E5 (ME5) were not a prerequisite for Agent 365 (A365), and you were licensed with Microsoft 365 E3 (ME3) + Entra Suite + A365, selected capabilities for agents packaged in A365 would not fully function. See below:
+Purview: would not provide advanced classification or auto-labeling of grounding data
+Defender: would not provide detection of local agents on endpoints, posture and runtime protection for local agents, or threat hunting and investigation for cloud agents
+Intune: would not provide controls for local agents on Windows or block OpenClaw
+Q: What are the licensing requirements for Frontline Workers who want to purchase Agent 365?
+To purchase Agent 365, you must have Microsoft Defender + Purview Suite FLW.
+Q: How do licensing prerequisites apply in mixed-license environments (for example, Microsoft 365 E3 (ME3), Microsoft 365 E5 (ME5), Frontline Worker (FLW), and Copilot users), and which users need to meet the ME5 prerequisite in this scenario?
+You can only license Agent 365 for users who meet the required prerequisites:
+Information Workers (IWs) must have Microsoft 365 E5 (ME5)
+Frontline Workers (FLWs) must have Microsoft Defender + Purview Suite FLW
+Any users who do not meet these prerequisites (for example, ME3 + Copilot users) are not eligible for Agent 365.
+Example scenario:
+You have 5k Microsoft 365 E3 (ME3) + Copilot users, 1k Microsoft 365 E5 (ME5) users, and 2.5k Microsoft Defender + Purview Suite FLW users
+You can only license Agent 365 for:
+The 1k ME5 users
+The 2.5k Microsoft Defender + Purview Suite FLW users
+·        In this scenario, your ME3 + Copilot users are not eligible because they do not meet the prerequisite requirements.
+Q: How do the licensing prerequisites for Agent 365 apply to existing signed contracts?
+Signed contracts are not impacted by this change and remain valid until renewal.
+Q: What reports are available to help determine how many users should be licensed for Agent 365, including if I don’t have any paid Agent 365 licenses?
+A.   There are currently two broadly available reports that you can use to inform your Agent 365 licensing needs, both now and as your agentic ecosystem continues to grow.
+You need to use both reports together to understand your licensing needs across both users and sponsors/managers of agents.
+Report Name: Active users using agents in Microsoft 365 Copilot
+Location: In the Microsoft 365 Admin Center -> Reports -> Usage. Under Microsoft 365 Copilot -> Agents.
+Content: This report shows the number of unique users using agents in Microsoft 365 Copilot in the last 30 days.
+Limitations: Refer to the question below.
+Exportable: Yes.
+License Prerequisite: None.
+Report Name: Registry agent owners
+Location: In the Microsoft 365 Admin Center -> Agents -> All agents.
+Content: This report shows the names of agent owners of existing agents in the registry.
+Limitations: None. Includes all agents in the customer environment including: third-party (3P) agents brought in via the Agent 365 SDK, 3P agents from the Microsoft Marketplace ingested via Partner Center, 3P agents ingested via Registry Sync, and all Microsoft first-party (1P) agents including LOB.
+Exportable: Yes.
+License Prerequisite: None.
+Q: Where can I learn how to use Agent 365 licensing and usage reports?
+You can learn how to use Agent 365 licensing and usage reports by reviewing the following Microsoft Learn documentation:
+Microsoft 365 Copilot Agents usage report - Microsoft 365 Copilot Agents Usage Report - Microsoft 365 admin | Microsoft Learn
+Manage agent registry in Microsoft 365 admin center - Agent Registry in Microsoft 365 admin center - Microsoft 365 admin | Microsoft Learn
+Q: How does Agent 365 differ from Microsoft 365 E5 in terms of licensing and value?
+Agent 365 and Microsoft 365 E5 are complementary, but they secure different layers of the AI
+Microsoft 365 E5 focuses on securing users and data, including how users interact with A (e.g., Copilot in M365 apps).
+Agent 365 is purpose-built to manage and secure AI agents at scale – including Microsoft, custom, and ecosystem partner agents, across their full lifecycle and additional interaction types (agent-to-human, agent-to-agent, and agent-to-tool).
+Microsoft 365 E5 was designed for user-driven AI interactions. As organizations adopt autonomous agents that operate with their own access, risk expands beyond the user to how agents operate, access resources, and take action independently.
+Without Agent 365, customers may have limited visibility and control over:
+Agents operating outside of user context (agents operating with their own access)
+Agent-to-agent and agent-to-tool interactions
+Centralized inventory and governance of all agents across platforms
+Consistent lifecycle management and policy enforcement for agents
+Licensing difference:
+Microsoft 365 E5: Licensed per user to protect user activity and data
+Agent 365: Also licensed per user, but covers the agents that user interacts with, manages, or sponsors
+Microsoft 365 E5 protects users, Agent 365 protects agents, and E7 protects users and agents.
+Q: What are all the options for licensing a user for Agent 365?
+The options for licensing a user for Agent 365 are:
+Microsoft 365 E7
+Microsoft 365 E5/A5/Business Premium + Agent 365
+Microsoft 365 + Defender Suite + Purview Suite + Agent 365
+Office 365 E3 + Enterprise Mobility and Security (EMS) E3 + Defender Suite + Purview Suite + Agent 365
+Microsoft 365 + Defender Suite Edu + Purview Suite Edu + Agent 365
+Office 365 A3 + EMS A3 + Defender Suite Edu + Purview Suite Edu + Agent 365
+M365 F1/F3 + Defender and Purview Suite FLW + Agent 365
+Office 365 F3 + EMS E3 (K) + Defender and Purview Suite FLW + Agent 365
+This content is for informational purposes only. MICROSOFT MAKES NO WARRANTIES, EXPRESS OR IMPLIED, ON THIS PAGE. This information is provided to help guide your authorized use of products you license; it is not your agreement. Your use of products licensed under your volume license agreement is governed by the terms and conditions of that agreement. In the case of any conflict between this information and your agreement, the terms and conditions of your agreement control.

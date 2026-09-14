@@ -44,7 +44,7 @@ User Principal Name
 The user or identity whose traffic was inspected.
 Supported Generative AI applications
 Prompt logging supports the following Generative AI applications:
-Microsoft 365 Copilot
+Microsoft Copilot
 Copilot (public)
 ChatGPT
 Claude

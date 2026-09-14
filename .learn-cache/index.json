@@ -12,12 +12,14 @@
   "7dabecd96ea73529": "https://learn.microsoft.com/en-us/entra/agent-id/agent-on-behalf-of-oauth-flow",
   "e6d9d8a8414dfb8b": "https://learn.microsoft.com/en-us/entra/agent-id/what-are-agent-identities",
   "8c2cc2a3fd93664a": "https://learn.microsoft.com/en-us/entra/agent-id/what-is-microsoft-entra-agent-id",
+  "67e1fcc2ef71d82b": "https://learn.microsoft.com/en-us/entra/fundamentals/licensing",
   "c6d25ec4afbf1770": "https://learn.microsoft.com/en-us/entra/global-secure-access/concept-ai-agent-discovery",
   "6437b474ceb516d9": "https://learn.microsoft.com/en-us/entra/global-secure-access/concept-generative-ai-insights",
   "2393563dc1f6ced4": "https://learn.microsoft.com/en-us/entra/global-secure-access/concept-secure-web-ai-gateway-agents",
   "e299c77e5ad81a2a": "https://learn.microsoft.com/en-us/entra/global-secure-access/concept-shadow-ai-discovery",
   "dd9a2963d90f55b3": "https://learn.microsoft.com/en-us/entra/global-secure-access/how-to-ai-prompt-injection-protection",
   "ef3f40a77d1466c4": "https://learn.microsoft.com/en-us/entra/global-secure-access/how-to-configure-mcp-firewall",
+  "f014377a77e6de89": "https://learn.microsoft.com/en-us/entra/global-secure-access/overview-what-is-global-secure-access",
   "c72a9bf4fffa82e5": "https://learn.microsoft.com/en-us/entra/id-governance/agent-id-governance-overview",
   "e37a34d8de01ad26": "https://learn.microsoft.com/en-us/entra/id-governance/agent-sponsor-tasks",
   "714e53790aa8f06c": "https://learn.microsoft.com/en-us/entra/id-protection/concept-risky-agents",
@@ -52,5 +54,6 @@
   "629c1ba27e0e6a23": "https://learn.microsoft.com/en-us/security/security-for-ai/agent-365-security",
   "ff1a90141e928fc6": "https://learn.microsoft.com/en-us/security/security-for-ai/toc.json",
   "f948359391ae7a1e": "https://learn.microsoft.com/en-us/windows-365/agents/introduction-windows-365-for-agents",
-  "b6f37c682e3e6c11": "https://learn.microsoft.com/en-us/windows-365/agents/whats-new"
+  "b6f37c682e3e6c11": "https://learn.microsoft.com/en-us/windows-365/agents/whats-new",
+  "03007d25763eb919": "https://www.microsoft.com/licensing/faqs/122"
 }

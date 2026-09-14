@@ -15,7 +15,7 @@ For cloud agents, there are two types of real-time protection rules:
 Default rule: Audits all agents, recording matching activity as a behavior without stopping the action. This gives you visibility before you enforce blocking.
 Custom rules: Block matching actions before they execute and record the behavior. Create custom rules for high-confidence threats and scope them to specific agents.
 When Microsoft Defender audits or blocks an action, it records the event as a behavior in the BehaviorInfo table, including what happened, why the action was considered risky, and which agent, user, and tool were involved. Security teams can query these behaviors to build custom detections, hunting queries, and downstream automation. Near-real-time detections continue to surface as alerts only in audit mode. When a blocking rule covers an agent, near-real-time alerts aren't generated for that agent.
-Block events from Microsoft Prompt Shields for Foundry and Microsoft 365 Copilot Agent Builder are also recorded as behaviors. This isn't yet supported for agents built with Microsoft Copilot Studio.
+Block events from Microsoft Prompt Shields for Foundry and Microsoft Copilot Agent Builder are also recorded as behaviors. This isn't yet supported for agents built with Microsoft Copilot Studio.
 Configure real-time protection rules
 To view and manage rules, go to Settings > Security for AI > Policies & rules > Real-time protection. A built-in Default rule audits all agents. You can create custom rules to block specific detection types and scope them to specific agents.
 Create a real-time protection rule

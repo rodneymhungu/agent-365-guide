@@ -6,10 +6,10 @@ Microsoft Defender detects and enables security teams to investigate threats to 
 Prerequisites
 Enable security for AI agents, including the Microsoft 365 app connector to collect Agent 365 observability data for AI agent actions. See Enable security for AI agents using Microsoft Defender.
 Ensure that your AI agent emits observability data to Microsoft 365:
-Agents built with Microsoft Copilot Studio, Microsoft Foundry, and declarative agents built with the Microsoft 365 Copilot Agent Builder send observability data to Microsoft 365 by default.
+Agents built with Microsoft Copilot Studio, Microsoft Foundry, and declarative agents built with the Microsoft Copilot Agent Builder send observability data to Microsoft 365 by default.
 For AI agents built on other platforms, enable observability using the Microsoft Agent 365 SDK, as described in the Agent 365 development lifecycle documentation.
 Threat detection is supported only for published Microsoft Foundry agents. Unpublished agents, including agents used only in a playground environment, aren’t supported.
-For more information, see Publish agents to Microsoft 365 Copilot and Microsoft Teams in the Foundry portal
+For more information, see Publish agents to Microsoft Copilot and Microsoft Teams in the Foundry portal
 To detect threats to local AI agents that run on endpoints, set up AI agent runtime protection in Microsoft Defender for Endpoint. Microsoft Defender for Endpoint must run in active mode. Local agents are onboarded separately from cloud agents.
 (Optional) To include the prompt snippets that triggered a detection as evidence in alerts, enable prompt evidence collection. This setting is enabled by default.
 Detect AI agent threats in near-real-time
@@ -23,7 +23,7 @@ Microsoft Defender correlates AI agent alerts into incidents and surfaces the re
 Investigate incidents and alerts
 Microsoft Defender correlates AI agent alerts from near‑real‑time detections into incidents. Real‑time protection audit and block events are recorded as behaviors in the BehaviorInfo table, which you can correlate with alerts during investigation.
 Security analysts can use the incident graph and investigation experience to understand the full context of a potential attack, including relationships between involved entities and the blast radius of AI agent threats. For more information, see Incidents and alerts in the Microsoft Defender portal.
-Block events from Microsoft Prompt Shields for Foundry and Microsoft 365 Copilot Agent Builder are also recorded as behaviors. This isn't yet supported for agents built with Microsoft Copilot Studio.
+Block events from Microsoft Prompt Shields for Foundry and Microsoft Copilot Agent Builder are also recorded as behaviors. This isn't yet supported for agents built with Microsoft Copilot Studio.
 Correlate alerts and Agent 365 observability data and hunt for risks using Advanced Hunting
 Advanced Hunting in Microsoft Defender enables security teams to query Agent 365 observability data alongside other security data by using Kusto Query Language (KQL). This supports proactive threat hunting, incident investigation, and root‑cause analysis for agents, applications, identities, and devices.
 For example, use Advanced Hunting to:
