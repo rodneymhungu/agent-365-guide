@@ -8,7 +8,11 @@ on:
 permissions:
   contents: read
   issues: write             # the digest is delivered as an issue, which GitHub emails to watchers
+  pull-requests: read       # the collector lists open learn-drift pull requests and their age
   copilot-requests: write   # lets GITHUB_TOKEN call Copilot CLI if COPILOT_PAT is not set
+
+env:
+  OWNER: rodneymhungu       # assigned and mentioned on every digest so it lands in notifications and email
 
 jobs:
   digest:
@@ -37,19 +41,26 @@ jobs:
         run: |
           if [ -n "$COPILOT_PAT" ]; then export COPILOT_GITHUB_TOKEN="$COPILOT_PAT"; fi
           cat > /tmp/prompt.md << 'PROMPT'
-          Read feedback-input.md (weekly signals about a public guide) and index.html (the guide).
-          Write digest.md as a short email body in plain Markdown, British spelling, no headers
+          Read feedback-input.md (weekly signals about a public guide), PLAN.md (the growth
+          plan: target, weekly rotation, log) and index.html (the guide). Write digest.md as a
+          short email body in plain Markdown, British spelling, no em or en dashes, no headers
           larger than ###, under 350 words:
 
-          1. Three lines of numbers: visitors this week, where they came from, which sections
-             were opened most, anything that moved sharply. If a source was unavailable, say so
+          0. If feedback-input.md has an "Action needed" section, repeat it first, verbatim,
+             under the heading "### Action needed". Otherwise omit this part.
+          1. Three lines of numbers: visitors this week against the target in PLAN.md,
+             where they came from (referrers, not paths), which sections and pages were
+             opened most, anything that moved sharply. If a source was unavailable, say so
              in one clause.
-          2. "What people are saying": summarise each public mention or issue in one line with
-             its link. If there are none, say so in one sentence and move on.
-          3. "Suggested improvements": at most three, each tied to evidence in the inputs
-             (a referrer, a high-traffic section, an issue, a mention). Cite the guide section
-             id (e.g. s7-4) the suggestion applies to. No generic advice.
-          4. One closing line: what to watch next week.
+          2. "Waiting on you": list every open learn-drift pull request from the inputs
+             with its age in days. If there are none, one sentence.
+          3. "What people are saying": summarise each public mention or issue in one line
+             with its link. If there are none, say so in one sentence and move on.
+          4. "This week's focus": the rotation focus named in the inputs, and the single
+             most useful concrete step towards it given the evidence (a referrer, a
+             high-traffic section, an issue, a mention). Cite the guide section id
+             (e.g. s7-4) where it applies. No generic advice.
+          5. One closing line: what to watch next week.
 
           Do not invent numbers. Do not modify any file other than digest.md.
           PROMPT
@@ -62,11 +73,13 @@ jobs:
             --no-ask-user -s
           test -f digest.md || cp feedback-input.md digest.md
 
-      - name: Open the digest as an issue
+      - name: Open the digest as an issue, close the previous one
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
           {
+            echo "@${OWNER} this week's digest. The plan of record is [PLAN.md](PLAN.md)."
+            echo
             cat digest.md
             echo
             echo "<details>"
@@ -79,4 +92,10 @@ jobs:
             echo "</details>"
           } > issue-body.md
           gh label create digest --color 0e8a16 --description "Weekly feedback digest" --force
-          gh issue create --title "Weekly digest, $(date -u '+%-d %B %Y')" --body-file issue-body.md --label digest
+          previous=$(gh issue list --label digest --state open --json number --jq '.[].number')
+          new=$(gh issue create --title "Weekly digest, $(date -u '+%-d %B %Y')" \
+                  --body-file issue-body.md --label digest --assignee "$OWNER")
+          echo "Opened $new"
+          for n in $previous; do
+            gh issue close "$n" --comment "Superseded by $new."
+          done

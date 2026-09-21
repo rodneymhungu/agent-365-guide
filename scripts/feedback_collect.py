@@ -7,10 +7,16 @@ fails is reported as "unavailable" rather than crashing the run.
 Sources
   1. GoatCounter  — visitors, per-section hash views, top referrers for the last 7 days
                     (same account as data-security-art-of-the-possible; filtered by path)
-  2. GitHub       — stars, forks, watchers and open issues (the traffic API is
-                    deliberately not used: it needs push access, so a PAT, and
-                    GoatCounter already covers referrers)
+  2. GitHub       — stars, forks, watchers, open issues and open learn-drift pull
+                    requests with their age (the traffic API is deliberately not
+                    used: it needs push access, so a PAT, and GoatCounter already
+                    covers referrers)
   3. Brave Search — public mentions of the guide URL or title
+  4. Plan         — the target and this week's rotation focus from PLAN.md
+
+Anything that needs a human (analytics down, a drift pull request left open)
+is collected into an "Action needed" section at the top of the file, and the
+digest prompt repeats it first.
 
 Env vars
   GOATCOUNTER_TOKEN   API token from https://rodneymhungu.goatcounter.com/user/api
@@ -28,8 +34,21 @@ SITE_URL = "https://rodneymhungu.github.io/agent-365-guide/"
 TITLE = "Agent 365 for security and compliance engineers"
 OUT = "feedback-input.md"
 
+# The growth plan (PLAN.md). The digest reports visitors against the target and
+# names the week's focus so nobody has to count weeks by hand.
+TARGET = 2000
+ROTATION_START = dt.date(2026, 9, 21)   # a Monday; focus 1 that week
+ROTATION = [
+    "1. Split a section into its own indexable page",
+    "2. Build or extend a lookup table (licence, preview against GA, control to scenario)",
+    "3. Write the changed-this-week note from the drift pull request",
+    "4. Distribution: LinkedIn post, session follow-up, account outreach",
+]
+STALE_PR_DAYS = 2   # a learn-drift pull request older than this is called out
+
 today = dt.date.today()
 week_ago = today - dt.timedelta(days=7)
+problems = []   # anything that needs a human, surfaced at the top of the digest
 
 
 def get(url, headers=None, timeout=30):
@@ -79,6 +98,8 @@ def goatcounter():
     tok = os.environ.get("GOATCOUNTER_TOKEN")
     site = os.environ.get("GOATCOUNTER_SITE", "rodneymhungu.goatcounter.com")
     if not tok:
+        problems.append("GOATCOUNTER_TOKEN is not set, so visitors and referrers are not being measured. "
+                        "Add it under Settings, Secrets and variables, Actions.")
         return "GOATCOUNTER_TOKEN not set."
     # GoatCounter requires Content-Type: application/json on every API call; without
     # it errors come back as an HTML page instead of {"error": ...}.
@@ -92,10 +113,15 @@ def goatcounter():
         pages = [r for r in rows if "#" not in r["path"]]
         sections = [r for r in rows if "#" in r["path"]]
         visitors = sum(r.get("count", 0) for r in pages)
-        lines.append(f"Last 7 days: **{visitors} visitors** on `{SITE_PATH}` "
+        lines.append(f"Last 7 days: **{visitors} visitors** on `{SITE_PATH}` against a target of {TARGET} "
                      f"({len(sections)} distinct sections opened by hash).")
         if hits.get("more"):
             lines.append("_(GoatCounter returned more than 100 paths; totals may be incomplete.)_")
+        if len(pages) > 1:
+            lines.append("")
+            lines.append("Visitors per page:")
+            for r in sorted(pages, key=lambda r: -r.get("count", 0)):
+                lines.append(f"- `{r['path']}`: {r.get('count', 0)}")
         by_day = {}
         for r in pages:
             for d in r.get("stats", []):
@@ -126,6 +152,15 @@ def goatcounter():
                     lines.append(f"- {host}: {n}")
     except (HTTPError, URLError, ValueError, KeyError) as e:
         lines.append(f"GoatCounter unavailable: {describe(e)}  (see https://www.goatcounter.com/help/api)")
+        hint = ("Re-create a read-only 'statistics' API token while signed in to "
+                f"https://{site}/ (Settings, API tokens), update the GOATCOUNTER_TOKEN "
+                "repository secret, then run this workflow by hand.")
+        if isinstance(e, HTTPError) and e.code == 404:
+            # An unknown token answers 401 "unknown token", so a 404 means the token was
+            # accepted but the site or data it points at was not found. Seen 14 Sep 2026.
+            hint = ("The API answered 404 to a token it accepted, so the token is probably "
+                    "bound to a different GoatCounter site. " + hint)
+        problems.append("Visitor numbers and referrers are not being collected. " + hint)
     return "\n".join(lines)
 
 
@@ -153,14 +188,38 @@ def github():
             lines.append(f"- #{i['number']} {i['title']} (updated {i['updated_at'][:10]}, {i['comments']} comments)")
     except (HTTPError, URLError) as e:
         lines.append(f"issues unavailable: {e}")
+    # Open drift pull requests are the "changed this week" note waiting to be written.
+    # One that sits for days is the ball being dropped, so it goes to the top.
+    try:
+        prs = get(f"{api}/pulls?state=open&per_page=20", h)
+        drift = [p for p in prs if any(l.get("name") == "learn-drift" for l in p.get("labels", []))]
+        lines.append(f"\nOpen learn-drift pull requests: {len(drift)}")
+        for p in drift:
+            opened = dt.date.fromisoformat(p["created_at"][:10])
+            age = (today - opened).days
+            lines.append(f"- #{p['number']} {p['title']} (open {age} days) {p['html_url']}")
+            if age >= STALE_PR_DAYS:
+                problems.append(f"Drift pull request #{p['number']} has been open {age} days: {p['html_url']}. "
+                                "Review it, merge it, then log the change in PLAN.md.")
+    except (HTTPError, URLError, ValueError, KeyError) as e:
+        lines.append(f"pull requests unavailable: {e}")
     return "\n".join(lines)
+
+
+# ---------- 4. Plan ----------
+def plan():
+    weeks = max(0, (today - ROTATION_START).days // 7)
+    focus = ROTATION[weeks % len(ROTATION)]
+    return (f"Target: {TARGET} high-value visitors a week (PLAN.md).\n"
+            f"Week {weeks + 1} of the rotation. This week's focus: {focus}\n"
+            "Every week: check referrers, not just paths.")
 
 
 # ---------- 3. Brave web search ----------
 def brave():
     key = os.environ.get("BRAVE_API_KEY")
     if not key:
-        return "BRAVE_API_KEY not set — public mention search skipped."
+        return "BRAVE_API_KEY not set; public mention search skipped (issue #10)."
     h = {"X-Subscription-Token": key, "Accept": "application/json"}
     queries = [
         f'"{SITE_URL}"',
@@ -185,9 +244,13 @@ def brave():
 
 def main():
     md = f"# Feedback inputs for {TITLE}\n\nWindow: {week_ago} to {today}. Site: {SITE_URL}\n\n"
-    md += section("Visitors (GoatCounter)", goatcounter())
-    md += section("Repository (GitHub)", github())
-    md += section("Public mentions (Brave Search, past week)", brave())
+    body = section("Plan", plan())
+    body += section("Visitors (GoatCounter)", goatcounter())
+    body += section("Repository (GitHub)", github())
+    body += section("Public mentions (Brave Search, past week)", brave())
+    if problems:
+        md += section("Action needed", "\n".join(f"- {p}" for p in problems))
+    md += body
     with open(OUT, "w", encoding="utf-8") as f:
         f.write(md)
     print(md[:2000], file=sys.stderr)

@@ -45,7 +45,11 @@ Before publishing, confirm that both scripts parse, every local image and intern
 
 ## Keeping it current
 
-Two GitHub Actions run every Monday. One re-fetches every Learn page the guide cites, and when a page has changed asks Copilot CLI for the minimal edit and opens a pull request for review. The other collects visitor numbers, referrers, issues and public mentions and posts a short digest as an issue labelled `digest`, which GitHub emails to anyone watching the repository. Both are described in [scripts/README.md](scripts/README.md). Neither needs a secret. Two optional tokens add visitor numbers and public mentions to the digest.
+Two GitHub Actions run every Monday. One re-fetches every Learn page the guide cites, and when a page has changed asks Copilot CLI for the minimal edit and opens a pull request for review. The other collects visitor numbers, referrers, issues, open drift pull requests and public mentions and posts a short digest as an issue labelled `digest`. Both the pull request and the issue are assigned to the author and mention him, so GitHub notifies and emails on every one. Both are described in [scripts/README.md](scripts/README.md). Neither needs a secret. Two optional tokens add visitor numbers and public mentions to the digest.
+
+## Where this is going
+
+[PLAN.md](PLAN.md) is the plan of record: the visitor target, the weekly rotation of work, the blockers, and a log of what shipped. Read it first if you are picking the work up.
 
 A changelog lives in the `changes` array of the same data block and renders at the end of chapter 10. `sitemap.xml`, `robots.txt`, the canonical link and the JSON-LD block in the head exist for search engines; update `lastmod` and `dateModified` when the review date changes.
 
