@@ -256,11 +256,14 @@ def brave():
 
 
 # ---------- 5. LinkedIn article draft ----------
+SHORT = "agent-365-guide/"   # visible shortened section link, a navigation label (format rule 4)
+
+
 def article_draft(weeks):
-    """Every second week, write a LinkedIn article draft from the changes entries
-    in a365-data.js dated within the last two weeks. Deterministic on purpose:
-    no model touches it, so the wording is the guide's own. Returns the draft
-    text, or None on a week without a draft."""
+    """Every second week, write a LinkedIn article draft in the field-guide
+    release-note format (distribution/README.md) from the changes entries in
+    a365-data.js dated within the last two weeks. Deterministic on purpose:
+    no model touches it. Returns the draft text, or None on an off week."""
     if weeks % ARTICLE_EVERY_WEEKS:
         return None
     try:
@@ -269,31 +272,51 @@ def article_draft(weeks):
     except OSError:
         return None
     since = today - dt.timedelta(days=14)
-    items = []
-    for m in re.finditer(r'\{\s*date:\s*"([^"]+)"(?:,\s*section:\s*"([^"]+)")?,\s*text:\s*"((?:[^"\\]|\\.)*)"', js):
+    learn, guide = [], []
+    pat = re.compile(r'\{\s*date:\s*"([^"]+)"(?:,\s*section:\s*"([^"]+)")?(?:,\s*kind:\s*"([^"]+)")?,\s*text:\s*"((?:[^"\\]|\\.)*)"')
+    for m in pat.finditer(js):
         try:
             d = dt.datetime.strptime(m.group(1), "%d %B %Y").date()
         except ValueError:
             continue
-        if d >= since:
-            items.append((d, m.group(2), m.group(3).replace('\\"', '"')))
-    items.sort(reverse=True)
+        if d < since:
+            continue
+        item = (d, m.group(2), m.group(4).replace('\\"', '"'))
+        (guide if m.group(3) == "guide" else learn).append(item)
+    learn.sort(reverse=True); guide.sort(reverse=True)
+
+    def bullet(text, sec):
+        # Bold the first sentence: it names the product and the capability.
+        m = re.match(r"(.+?[.:])\s+(.*)", text)
+        head, rest = (m.group(1), m.group(2)) if m else (text, "")
+        link = f" {SHORT}#{sec}" if sec else ""
+        return f"• **{head.rstrip('.:')}.** {rest}{link}".rstrip()
+
+    learn = learn[:6]
+    n = len(learn)
+    words = {0: "No", 1: "One", 2: "Two", 3: "Three", 4: "Four", 5: "Five", 6: "Six"}
     lines = ["# LinkedIn article draft (every second week; copy, edit, post from the computer)", "",
              "Before posting: run ai-writing-review on this draft and decide each flag.", "",
-             "Headline: What changed in the last two weeks in the Agent 365 field guide", "",
-             "Updated this fortnight: the Agent 365 field guide for security and compliance engineers.", ""]
-    if items:
-        lines.append("What moved:")
+             "Headline: What changed this week in the Agent 365 field guide", "",
+             "The Agent 365 field guide for security and compliance engineers: which product enforces each control, what it needs, and what works today.", ""]
+    if learn:
+        lines.append(f"{words.get(n, str(n))} thing{'s' if n != 1 else ''} moved on Microsoft Learn, and the guide moved with {'them' if n != 1 else 'it'}:")
         lines.append("")
-        for d, sec, text in items[:6]:
-            lines.append(f"\u2022 {text}")
+        for d, sec, text in learn:
+            lines.append(bullet(text, sec))
         lines.append("")
     else:
         lines.append("No cited Learn page changed in the last two weeks. Write this one about a single section instead; the most-opened sections are listed under Visitors above.")
         lines.append("")
-    lines += ["Every claim links to Learn. Status badges change the week Microsoft changes a page.", "",
-              "See what changed and what you can deploy today:", ARTICLE_LINK, "",
-              "Cover image: crop the table or figure the article is about; see distribution/README.md.",
+    if guide:
+        parts = []
+        for d, sec, text in guide[:3]:
+            parts.append(f"{text.rstrip('.')} ({SHORT}#{sec})" if sec else text.rstrip('.'))
+        lines.append("• Also new to the guide: " + "; ".join(parts) + ".")
+        lines.append("")
+    lines += ["Every claim in the guide links to Learn. GA/Preview status badges follow Microsoft's release notes, checked every Monday.", "",
+              "What you can deploy today:", ARTICLE_LINK, "",
+              "Cover image: a Learn screenshot or the figure the article is about; see distribution/README.md.",
               "When posted, save the article as distribution/<date>-linkedin.md with the URL on its Posted line and log it under focus 4 in PLAN.md."]
     return "\n".join(lines)
 

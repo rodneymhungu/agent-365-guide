@@ -35,14 +35,14 @@ window.A365 = {
     { date: "21 September 2026", section: "s5-5", text: "Defender for Endpoint local agent discovery stays in preview. Learn's page dropped its preview label, but the Defender for Endpoint release notes and the portal still say preview, and there is no GA entry." },
     { date: "21 September 2026", section: "s7-4", text: "Intune now has a native Antivirus policy for agent-native event inspection; network inspection still needs a PowerShell platform script. Runtime protection setup page cited." },
     { date: "21 September 2026", section: "s5-4", text: "Snowflake Cortex joins registry sync's supported platforms. Connected platforms page cited." },
-    { date: "21 September 2026", section: "s4-1", text: "Chapter 4 gains a scenario-to-control table: start from what you need to stop, land on the control, the enforcing product and its status." },
-    { date: "21 September 2026", section: "s2", text: "Chapter 2 is also published on its own page, licensing.html, so the licensing question can be found on its own." },
+    { date: "21 September 2026", section: "s4-1", kind: "guide", text: "Chapter 4 gains a scenario-to-control table: start from what you need to stop, land on the control, the enforcing product and its status." },
+    { date: "21 September 2026", section: "s2", kind: "guide", text: "Chapter 2 is also published on its own page, licensing.html, so the licensing question can be found on its own." },
     { date: "14 September 2026", section: "s5-5", text: "Local agents page: the detected developer-tool list has grown substantially and blocking now covers Gemini CLI, VS Code extensions and OpenClaw's Node.js siblings. Learn page cited." },
     { date: "9 September 2026", section: "s2-1", text: "Licensing prerequisites corrected after Microsoft product marketing feedback: Entra ID P1 comes with every plan that qualifies for Agent 365. Licensing FAQ cited." },
-    { date: "8 September 2026", text: "Link preview card for LinkedIn and Teams." },
-    { date: "7 September 2026", text: "Weekly check of every cited Learn page, with a pull request when one moves. Sections panel scrolls on phones." },
+    { date: "8 September 2026", kind: "guide", text: "Link preview card for LinkedIn and Teams." },
+    { date: "7 September 2026", kind: "guide", text: "Weekly check of every cited Learn page, with a pull request when one moves. Sections panel scrolls on phones." },
     { date: "5 September 2026", section: "s7-1", text: "Noted that licence enforcement for Conditional Access and Identity Protection for agents is still pending." },
-    { date: "4 September 2026", text: "First published." }
+    { date: "4 September 2026", kind: "guide", text: "First published." }
   ],
   capabilities: [
     { key: "control-plane",      name: "Agent 365 licence and admin centre control plane", tier: "ga", note: "GA since 1 May 2026", where: "Microsoft 365 admin centre" },
