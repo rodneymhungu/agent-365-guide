@@ -99,6 +99,7 @@ Newest first. One line per item shipped, with the pull request.
 | Date | Focus | Shipped | Evidence |
 |---|---|---|---|
 | 21 September 2026 | 3 | Merged the 21 September drift pull request after checking each claim on the live Learn page: Defender for Endpoint local agent discovery is GA (macOS still preview), Intune has a native Antivirus profile for agent-native runtime protection, Snowflake Cortex joins registry sync. Three changelog entries. Writing review: two "now/still" phrasings removed. | #25 |
+| 21 September 2026 | Correction | Defender for Endpoint local agent discovery back to preview after Rodney caught it against the portal and the release notes. Drift prompt now requires a release-notes GA entry before any tier moves to ga. LinkedIn draft corrected. | #35 |
 | 21 September 2026 | Plumbing | The Monday digest now carries a LinkedIn article draft every second week, built from the last fortnight's changelog entries without a model. First one lands 5 October. | #34 |
 | 21 September 2026 | Writing review | `ai-writing-review` run over both pages: twelve flags, ten applied (changelog voice in 5.5 from the drift edit, "data block" in reader copy, a contrast rhythm in 4.1, closing verdicts for 6.7 and 7.5, small repetitions), two kept as note-only. | #24 |
 | 21 September 2026 | Skim pass | "In a hurry?" line under the hero actions pointing at 4.1, 9 and 10. Four dense paragraphs became tables or a list: purchase prerequisites (2.1), roles by task (2.3), the three Global Secure Access features (5.5), the four Entra Agent ID objects (7.1). Stale worktree copy removed. Brave key surfaced under Action needed in the digest. | #23 |
@@ -127,7 +128,12 @@ Newest first. One line per item shipped, with the pull request.
 6. Prose follows the [field guide principles](https://github.com/rodneymhungu/field-guide-principles):
    UK spelling, no em or en dashes, status from data, source at the point of
    use, opinion only in numbered field notes.
-7. Every change to prose goes through the `ai-writing-review` skill before
+7. A Learn page dropping "(Preview)" from its title is not a GA signal. Move a
+   status to `ga` only when the product's release notes or What's new page say
+   GA. Learnt on 21 September 2026: the drift run flipped Defender for Endpoint
+   local agent discovery to GA on the title change; the release notes and the
+   portal still said preview, and the LinkedIn draft repeated the error.
+8. Every change to prose goes through the `ai-writing-review` skill before
    the pull request opens: report the flags, apply the ones the author
    approves, log the ones kept. Rodney's standing instruction from
    21 September 2026 is to run it on every prose update without being asked.
