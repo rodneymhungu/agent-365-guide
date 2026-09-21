@@ -1,6 +1,8 @@
 # Automation for agent-365-guide
 
-Two weekly GitHub Actions workflows plus a GoatCounter snippet in `index.html`.
+Two weekly GitHub Actions workflows, a check that runs on every push
+(`pages-check.yml`: split pages match the guide, shared scripts parse, every
+page is in the sitemap), plus a GoatCounter snippet on each page.
 Everything here was verified against the live docs on 5 September 2026; the
 "things to check" list at the bottom is what could still drift.
 

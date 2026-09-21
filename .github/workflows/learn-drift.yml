@@ -63,12 +63,19 @@ jobs:
         run: |
           if [ -n "$COPILOT_PAT" ]; then export COPILOT_GITHUB_TOKEN="$COPILOT_PAT"; fi
           cat > /tmp/prompt.md << 'PROMPT'
-          You are maintaining index.html, a single-file guide to Microsoft Agent 365 for security
-          and compliance engineers. Read learn-diff.md first. It lists Microsoft Learn pages that
-          changed since the last run, a unified diff of each, and which guide sections (ids like
-          s6-2) cite that page. Entries ending in toc.json are docs tables of contents: a new line
-          there means Microsoft published a new page, which may describe a capability the guide
-          does not cover yet.
+          You are maintaining a guide to Microsoft Agent 365 for security and compliance
+          engineers. It is two HTML pages plus one data file:
+            - index.html: the full guide, chapters 1 to 10.
+            - licensing.html: chapter 2 published on its own page. Its <section id="s2"> block
+              is a byte-for-byte copy of the one in index.html, apart from elements marked
+              data-page-only. Any edit inside chapter 2 must be made identically in both files.
+            - a365-data.js: the window.A365 object: review date, dates, prices, the changelog
+              and the status tier of every capability. Both pages render from it.
+          Read learn-diff.md first. It lists Microsoft Learn pages that changed since the last
+          run, a unified diff of each, and which guide sections (ids like s6-2, with the page
+          names in brackets) cite that page. Entries ending in toc.json are docs tables of
+          contents: a new line there means Microsoft published a new page, which may describe
+          a capability the guide does not cover yet.
 
           Your job, in order:
           1. For each changed page, decide whether the change affects a factual claim in the cited
@@ -77,10 +84,11 @@ jobs:
              Keep the author's voice, British spelling, and the existing sentence rhythm. Do not
              add new sections, do not restructure, do not touch "Rodney's field note" callouts.
           3. If a capability's status moved (preview → GA, new Frontier preview, retired), update
-             the matching entry in the window.A365.capabilities array at the top of index.html.
-             Use the existing tier keys: ga, preview, frontier, roadmap. Update the note field if
-             a date or licence dependency changed. Then set A365.reviewed to today's date in the
-             form "5 September 2026".
+             the matching entry in the capabilities array in a365-data.js. Use the existing tier
+             keys: ga, preview, frontier, roadmap. Update the note field if a date or licence
+             dependency changed. Then set reviewed to today's date in the form "5 September 2026"
+             and add one entry to the changes array (newest first) with the section id and a
+             one-line description that names the Learn page.
           4. If you cannot verify a change against the Learn page itself (use the microsoft-learn
              MCP server to fetch it), do not guess: leave the prose alone and describe the
              uncertainty in CHANGES.md instead.
@@ -88,8 +96,8 @@ jobs:
              one-line reason. Add a final "Needs a human decision" list for anything you skipped,
              including any new Learn page that the guide should probably cite.
 
-          Never edit files other than index.html and CHANGES.md. Never change the CSS or scripts
-          other than the window.A365 data block.
+          Never edit files other than index.html, licensing.html, a365-data.js and CHANGES.md.
+          Never touch guide.css or guide.js.
           PROMPT
           copilot -p "$(cat /tmp/prompt.md)" \
             --allow-tool=write \
@@ -98,6 +106,17 @@ jobs:
             --allow-tool='microsoft-learn' \
             --no-ask-user -s
           test -f CHANGES.md || echo "- Copilot produced no CHANGES.md; review learn-diff.md manually." > CHANGES.md
+
+      # A chapter published on its own page must still match the guide. Report, do not block:
+      # the PR is the review gate and the pages-check workflow marks it red.
+      - name: Check split pages still match the guide
+        if: steps.watch.outputs.changed == 'true'
+        run: |
+          python3 scripts/check_pages.py || {
+            echo >> CHANGES.md
+            echo "## Needs a human decision" >> CHANGES.md
+            echo "- scripts/check_pages.py: chapter 2 differs between index.html and licensing.html. Make the two identical before merging." >> CHANGES.md
+          }
 
       - name: Build PR body
         if: steps.watch.outputs.changed == 'true'
@@ -128,6 +147,8 @@ jobs:
           commit-message: "chore: refresh Learn cache and propose guide edits"
           add-paths: |
             index.html
+            licensing.html
+            a365-data.js
             .learn-cache/**
           labels: learn-drift
           assignees: ${{ env.OWNER }}   # assignment and the mention above both notify and email
