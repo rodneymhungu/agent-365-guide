@@ -11,7 +11,7 @@ Everything here was verified against the live docs on 5 September 2026; the
 | Workflow | When | What it does | Output |
 |---|---|---|---|
 | `learn-drift.yml` | Mon 05:00 UTC | `learn_watch.py` fetches the 51 Learn pages `index.html` cites, plus the Agent 365 and Security-for-AI docs tables of contents and the Windows 365 for Agents what's-new page, and diffs them against `.learn-cache/`. Only if something changed: Copilot CLI proposes minimal edits to `index.html` and the `window.A365` status block. | A pull request, never a push to `main` |
-| `feedback-digest.yml` | Mon 05:30 UTC | `feedback_collect.py` pulls GoatCounter visitors, per-page and per-section views and referrers, GitHub stars, issues and open `learn-drift` pull requests with their age, Brave Search mentions, and the week's focus from the rotation in `PLAN.md`. Copilot CLI writes a ≤350-word digest. | An issue on this repo, assigned to the owner; the previous digest issue is closed as superseded |
+| `feedback-digest.yml` | Mon 05:30 UTC | `feedback_collect.py` pulls GoatCounter visitors, per-page and per-section views and referrers, GitHub stars, issues and open `learn-drift` pull requests with their age, Brave Search mentions, and the week's focus from the rotation in `PLAN.md`. Copilot CLI writes a ≤350-word digest. Every second week the collector also writes a LinkedIn article draft from the last fortnight's `changes` entries, appended to the issue verbatim (no model touches it). | An issue on this repo, assigned to the owner; the previous digest issue is closed as superseded |
 
 Both outputs are assigned to `rodneymhungu` and mention him in the first
 line, so they arrive as GitHub notifications and email without anyone

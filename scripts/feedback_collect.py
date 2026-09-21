@@ -13,6 +13,9 @@ Sources
                     covers referrers)
   3. Brave Search — public mentions of the guide URL or title
   4. Plan         — the target and this week's rotation focus from PLAN.md
+  5. Article      — every second week, a LinkedIn article draft built from the
+                    last fortnight's changes entries in a365-data.js, written to
+                    linkedin-draft.md and appended to the digest issue verbatim
 
 Anything that needs a human (analytics down, a drift pull request left open)
 is collected into an "Action needed" section at the top of the file, and the
@@ -45,6 +48,9 @@ ROTATION = [
     "4. Distribution: LinkedIn post, session follow-up, account outreach",
 ]
 STALE_PR_DAYS = 2   # a learn-drift pull request older than this is called out
+ARTICLE_EVERY_WEEKS = 2   # a LinkedIn article draft lands in the digest every second week
+ARTICLE_LINK = SITE_URL + "#s10"
+DRAFT_OUT = "linkedin-draft.md"
 
 today = dt.date.today()
 week_ago = today - dt.timedelta(days=7)
@@ -207,12 +213,17 @@ def github():
 
 
 # ---------- 4. Plan ----------
+def rotation_week():
+    return max(0, (today - ROTATION_START).days // 7)
+
+
 def plan():
-    weeks = max(0, (today - ROTATION_START).days // 7)
+    weeks = rotation_week()
     focus = ROTATION[weeks % len(ROTATION)]
+    draft = "This digest carries a LinkedIn article draft." if weeks % ARTICLE_EVERY_WEEKS == 0 else "No article draft this week; the next one comes with next week's digest."
     return (f"Target: {TARGET} high-value visitors a week (PLAN.md).\n"
             f"Week {weeks + 1} of the rotation. This week's focus: {focus}\n"
-            "Every week: check referrers, not just paths.")
+            f"Every week: check referrers, not just paths. {draft}")
 
 
 # ---------- 3. Brave web search ----------
@@ -244,6 +255,48 @@ def brave():
     return "\n".join(lines) if lines else "No new public mentions found in the past week."
 
 
+# ---------- 5. LinkedIn article draft ----------
+def article_draft(weeks):
+    """Every second week, write a LinkedIn article draft from the changes entries
+    in a365-data.js dated within the last two weeks. Deterministic on purpose:
+    no model touches it, so the wording is the guide's own. Returns the draft
+    text, or None on a week without a draft."""
+    if weeks % ARTICLE_EVERY_WEEKS:
+        return None
+    try:
+        with open("a365-data.js", encoding="utf-8") as f:
+            js = f.read()
+    except OSError:
+        return None
+    since = today - dt.timedelta(days=14)
+    items = []
+    for m in re.finditer(r'\{\s*date:\s*"([^"]+)"(?:,\s*section:\s*"([^"]+)")?,\s*text:\s*"((?:[^"\\]|\\.)*)"', js):
+        try:
+            d = dt.datetime.strptime(m.group(1), "%d %B %Y").date()
+        except ValueError:
+            continue
+        if d >= since:
+            items.append((d, m.group(2), m.group(3).replace('\\"', '"')))
+    items.sort(reverse=True)
+    lines = ["# LinkedIn article draft (every second week; copy, edit, post from the computer)", "",
+             "Headline: What changed in the last two weeks in the Agent 365 field guide", "",
+             "Updated this fortnight: the Agent 365 field guide for security and compliance engineers.", ""]
+    if items:
+        lines.append("What moved:")
+        lines.append("")
+        for d, sec, text in items[:6]:
+            lines.append(f"\u2022 {text}")
+        lines.append("")
+    else:
+        lines.append("No cited Learn page changed in the last two weeks. Write this one about a single section instead; the most-opened sections are listed under Visitors above.")
+        lines.append("")
+    lines += ["Every claim links to Learn. Status badges change the week Microsoft changes a page.", "",
+              "See what changed and what you can deploy today:", ARTICLE_LINK, "",
+              "Cover image: crop the table or figure the article is about; see distribution/README.md.",
+              "When posted, save the article as distribution/<date>-linkedin.md with the URL on its Posted line and log it under focus 4 in PLAN.md."]
+    return "\n".join(lines)
+
+
 def main():
     md = f"# Feedback inputs for {TITLE}\n\nWindow: {week_ago} to {today}. Site: {SITE_URL}\n\n"
     body = section("Plan", plan())
@@ -255,6 +308,10 @@ def main():
     md += body
     with open(OUT, "w", encoding="utf-8") as f:
         f.write(md)
+    draft = article_draft(rotation_week())
+    if draft:
+        with open(DRAFT_OUT, "w", encoding="utf-8") as f:
+            f.write(draft + "\n")
     print(md[:2000], file=sys.stderr)
 
 
