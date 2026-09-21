@@ -130,6 +130,7 @@ section.top{padding-block:1rem 2.6rem;border-block-end:1px solid var(--rule);mar
 
 /* Tables */
 .tbl{overflow-x:auto;margin:1.2rem 0 1.6rem;border:1px solid var(--rule);border-radius:6px;background:var(--paper-2);box-shadow:var(--shadow)}
+.tbl.wide table{min-width:760px} /* five-column lookups scroll inside the frame on a phone instead of squeezing */
 table{width:100%;border-collapse:collapse;font-size:.9rem}
 th,td{text-align:left;padding:.55rem .75rem;border-block-end:1px solid var(--rule);vertical-align:top}
 th{font-family:var(--sans);font-size:.7rem;letter-spacing:.09em;text-transform:uppercase;color:var(--ink-2);background:var(--paper-3);font-weight:700}
