@@ -48,6 +48,7 @@ Salesforce Agentforce
 Databricks Genie
 Anthropic Claude Managed Agents
 Oracle Generative AI Agents
+Snowflake Cortex
 Microsoft product teams are actively working to expand support to more platforms. Check back frequently to learn about new platform integrations.
 Authentication requirements
 This section provides platform-specific authentication requirements and setup instructions for connections in Connected platforms.
@@ -83,6 +84,8 @@ bedrock-agentcore:DeleteAgentRuntime
 bedrock-agentcore:DeleteGateway
 bedrock-agentcore:DeleteGatewayTarget
 bedrock-agentcore:DeleteMemory
+bedrock-agentcore:DeleteWorkloadIdentity
+bedrock-agentcore:DeleteAgentRuntimeEndpoint
 Create a new access key.
 For more information about creating an access and secret key, see Amazon Bedrock and Amazon Web Services documentation. For more information about Amazon Bedrock and Microsoft Entra Agent ID, see Secure an Amazon Bedrock agent with Microsoft Entra Agent ID.
 Google Vertex AI
@@ -232,3 +235,8 @@ Permanent: Delete the service user.
 Temporary: Remove the user from the 3P-Portal-Agents group. The policy no longer applies.
 Reduce scope: Remove the two manage delete statements in Option B to make the account read-only.
 Only active OCI Generative AI agents are synced.
+Snowflake Cortex
+To set up a connection to Snowflake Cortex in Connected platforms, provide the following information:
+Account identifier: In the Snowflake app, select View Account Details in the lower-left corner to find the account identifier.
+Database and schema: Enter the database and schema where you created the agents. For more information about creating agents, see Snowflake Cortex Agents.
+Connected platforms uses RSA key-pair authentication to connect to Snowflake. Configure key-pair authentication for the Snowflake user before you create the connection. For more information, see Key-pair authentication and key-pair rotation.

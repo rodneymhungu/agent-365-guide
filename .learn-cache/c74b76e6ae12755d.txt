@@ -7,36 +7,46 @@ Feature availability
 The following table describes core Agent 365 capabilities:
 Features
 Management Console
-Microsoft 365 Enterprise, Business, Education, and First Line Worker plans
-Microsoft Enterprise 7
-Agent 365
+Included with Microsoft 365 Enterprise, Business, Education, and Front Line Worker plans
+Requires Microsoft 365 E7 / G7 or Agent 365
+GCC Availability
 Inventory of agents across the organization in the Agent Registry
 Microsoft 365 Admin Center
+At GA
 Basic governance actions on agents (publish, deploy, block, delete, approve; assign agents to specific user/groups; reassign agent owner, pin, etc.)
 Microsoft 365 Admin Center
+At GA
 Automate agent lifecycle actions using conditions-based rules
 Microsoft 365 Admin Center
+At GA
 Synchronize agents and agent metadata from external platforms that aren’t managed by Agent 365 into the registry
 Microsoft 365 Admin Center
+At GA
 Policy templates applying customized policies and controls to agents
 Microsoft 365 Admin Center
+At GA
 Observability and monitoring of agent activity (Visualization and telemetry)
 Microsoft 365 Admin Center
+At GA
 Control which tools (including Microsoft MCP servers) agents can access tenant-wide
 Microsoft 365 Admin Center
+At GA
 Graph API provides access to agent registry, basic metadata, and governance actions
 N/A
 Access packages for agents to define scope of agent permissions
 Entra
+At GA
 Built‑in Entra lifecycle policies automate sponsor‑driven workflows to maintain accountability
 Entra
+At GA
 Conditional access and identity protection for agents (for agents with delegated access - extend user policies to agents)
 Entra
+At GA
 Monitor and block malicious and noncompliant network traffic for agents, operating on user devices, and for Copilot Studio agents​
 Entra
 Audit logs of agent activities and eDiscovery (content search) of agent interaction to export and hold for legal, regulatory, and investigative needs
 Purview
-Data Lifecyle Management for agent-generated data and interactions in line with regulations and org policies
+Data Lifecycle Management for agent-generated data and interactions in line with regulations and org policies
 Purview
 Detect and review noncompliant agent interactions; extend compliance manager to agents to assess, manage, and demonstrate AI compliance
 Purview
@@ -54,10 +64,12 @@ Identify and remediate agent misconfigurations and exposure risks, relationship 
 Defender
 Detect suspicious agent activity, receive alerts, and allow blocking for tool invocations for agents
 Defender
-Collect A365 unified agent observability logs and allows Investigation and hunting for threats in for agents
+Collect Agent 365 unified agent observability logs and allow investigation and hunting for threats for agents
 Defender
+At GA
 Device compliance for agent conditional access
 Intune
+At GA
 Policy-controlled environment for agents runtime
 Intune
 Block unsanctioned local endpoint agents

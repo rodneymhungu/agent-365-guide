@@ -19,7 +19,7 @@
   ==========================================================================
 */
 window.A365 = {
-  reviewed: "14 September 2026",
+  reviewed: "21 September 2026",
   gaDate: "1 May 2026",
   transitionDate: "1 July 2026",
   trial: "25 seats for 30 days",
@@ -32,6 +32,9 @@ window.A365 = {
     roadmap:  { label: "Early preview",    phrase: "in early preview" }
   },
   changes: [
+    { date: "21 September 2026", section: "s5-5", text: "Defender for Endpoint local agent discovery is now GA (macOS discovery remains preview); the Learn page dropped its preview banner." },
+    { date: "21 September 2026", section: "s7-4", text: "Intune now has a native Antivirus policy for agent-native event inspection; network inspection still needs a PowerShell platform script. Runtime protection setup page cited." },
+    { date: "21 September 2026", section: "s5-4", text: "Snowflake Cortex joins registry sync's supported platforms. Connected platforms page cited." },
     { date: "21 September 2026", section: "s4-1", text: "Chapter 4 gains a scenario-to-control table: start from what you need to stop, land on the control, the enforcing product and its status." },
     { date: "21 September 2026", section: "s2", text: "Chapter 2 is also published on its own page, licensing.html, so the licensing question can be found on its own." },
     { date: "14 September 2026", section: "s5-5", text: "Local agents page: the detected developer-tool list has grown substantially and blocking now covers Gemini CLI, VS Code extensions and OpenClaw's Node.js siblings. Learn page cited." },
@@ -47,7 +50,7 @@ window.A365 = {
     { key: "agent-map",          name: "Agent map", tier: "ga", where: "Microsoft 365 admin centre" },
     { key: "single-agent-map",   name: "Single Agent Map", tier: "preview", where: "Microsoft 365 admin centre" },
     { key: "graph-api",          name: "Graph API for registry and details", tier: "preview", where: "Graph" },
-    { key: "registry-sync",      name: "Registry sync (Bedrock, Vertex, Agentforce, Genie, Oracle)", tier: "ga", where: "Microsoft 365 admin centre" },
+    { key: "registry-sync",      name: "Registry sync (Bedrock, Vertex, Agentforce, Genie, Oracle, Snowflake Cortex)", tier: "ga", where: "Microsoft 365 admin centre" },
     { key: "registry-sync-anthropic", name: "Registry sync for Anthropic Claude Managed Agents", tier: "preview", where: "Microsoft 365 admin centre" },
     { key: "byo-mcp",            name: "Bring your own MCP server", tier: "preview", where: "Admin centre and CLI" },
     { key: "shadow-ai-page",     name: "Shadow AI page", tier: "frontier", where: "Microsoft 365 admin centre" },
@@ -65,7 +68,7 @@ window.A365 = {
     { key: "defender-nrt",       name: "Defender near-real-time detection", tier: "preview", where: "Defender XDR" },
     { key: "defender-rtp-mcs",   name: "Defender real-time protection for Copilot Studio agents", tier: "preview", where: "Defender XDR" },
     { key: "defender-rtp-foundry", name: "Defender real-time protection for Foundry agents", tier: "preview", where: "Defender XDR" },
-    { key: "mde-discovery",      name: "Defender for Endpoint local agent discovery", tier: "preview", where: "Defender for Endpoint" },
+    { key: "mde-discovery",      name: "Defender for Endpoint local agent discovery", tier: "ga", note: "macOS discovery still in preview", where: "Defender for Endpoint" },
     { key: "mde-runtime",        name: "Defender for Endpoint runtime protection", tier: "preview", where: "Defender for Endpoint" },
     { key: "gsa-copilot-studio", name: "Global Secure Access for Copilot Studio agents, prompt injection protection", tier: "ga", note: "Device and prompt-injection paths need Entra Internet Access", where: "Global Secure Access" },
     { key: "gsa-shadow-ai",      name: "Global Secure Access Shadow AI discovery", tier: "ga", where: "Global Secure Access" },
