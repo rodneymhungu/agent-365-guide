@@ -25,6 +25,20 @@ real comparison. There is no Agent 365 "What's new" page on Learn; the docs
 tables of contents stand in for it, so a page Microsoft adds shows up as a diff
 line and the PR's "Needs a human decision" list will name it.
 
+## Status tiers change only by a human
+
+`guard_tiers.py` enforces it twice. In the drift workflow, `--restore` puts
+back any `tier` the model changed in `a365-data.js` and writes the proposal
+into the pull request under "Needs a human decision". In `pages-check.yml`,
+`--check` fails any pull request that moves a tier to `ga` unless the pull
+request body links a release-notes or What's new page on learn.microsoft.com.
+The watcher also tracks six product release-notes pages (`RELEASE_NOTES` in
+`learn_watch.py`), keeping only diff lines that mention agents or MCP, so a
+real GA entry arrives as evidence in the Monday pull request. Reason: on
+21 September 2026 a Learn page dropped "(Preview)" from its title, the drift
+run moved the capability to GA, and the product's release notes and portal
+still said preview.
+
 ## Secrets to add (Settings → Secrets and variables → Actions)
 
 No secret is required. Both workflows run on the automatic `GITHUB_TOKEN`.
