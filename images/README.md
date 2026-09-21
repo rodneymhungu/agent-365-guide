@@ -50,6 +50,7 @@ Every screenshot on the page, where it came from, and where it is used. Generate
 | `learn-gsa-prompt-shield` | #s7-5 | Prompt injection protection architecture: Prompt injection protection architecture | [Learn](https://learn.microsoft.com/en-us/entra/global-secure-access/how-to-ai-prompt-injection-protection) image `prompt-shield-architecture.png`, CC BY 4.0 | none, downscaled to 1600px |
 | `learn-gsa-mcp-tools` | #s7-5 | MCP firewall: discovered tools: MCP firewall: discovered tools | [Learn](https://learn.microsoft.com/en-us/entra/global-secure-access/how-to-configure-mcp-firewall) image `mcp-discovered-tools.png`, CC BY 4.0 | none, downscaled to 1600px |
 | `learn-entra-risky-agents` | #s7-1 | ID Protection for agents: risky agents report: ID Protection for agents: risky agents report | [Learn](https://learn.microsoft.com/en-us/entra/id-protection/concept-risky-agents) image `risky-agents-report.png`, CC BY 4.0 | none, downscaled to 1600px |
+| `defender-local-agents-2026-09` | article cover; candidate for #s5-5 | Defender AI Assets (preview), Local agents tab: 42 monitored agents, inventory and the ChatGPT Desktop detail pane with MCP servers | Defender portal, demo tenant, captured by Rodney 21 September 2026 | none, downscaled to 1600px |
 
 ## How to replace a screenshot
 
