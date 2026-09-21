@@ -28,7 +28,13 @@ Read this first when you come back. Everything below the line was done on
    section (`licensing.html` or `#s4-1`, not the home page), one session
    follow-up, one account outreach. Log each here with the link and the
    referrer to expect.
-5. **Writing review.** The `ai-writing-review` skill is now installed for
+5. **Decide on GCC.** The 21 September drift run found the service
+   description gained a "GCC Availability" column: several agent controls
+   (Purview DLP and eDiscovery for agents, Defender posture and detection,
+   Intune containment) show "No" for Government Community Cloud tenants, and
+   the E7 row now reads "E7 / G7". Chapter 2 says nothing about GCC. Decide
+   whether a one-line caveat belongs in 2.1 or whether GCC stays out of scope.
+6. **Writing review.** The `ai-writing-review` skill is now installed for
    Claude Code; run it on the next prose change and decide each flag.
 
 ## Target
@@ -89,6 +95,7 @@ Newest first. One line per item shipped, with the pull request.
 
 | Date | Focus | Shipped | Evidence |
 |---|---|---|---|
+| 21 September 2026 | 3 | Merged the 21 September drift pull request after checking each claim on the live Learn page: Defender for Endpoint local agent discovery is GA (macOS still preview), Intune has a native Antivirus profile for agent-native runtime protection, Snowflake Cortex joins registry sync. Three changelog entries. Writing review: two "now/still" phrasings removed. | #25 |
 | 21 September 2026 | Writing review | `ai-writing-review` run over both pages: twelve flags, ten applied (changelog voice in 5.5 from the drift edit, "data block" in reader copy, a contrast rhythm in 4.1, closing verdicts for 6.7 and 7.5, small repetitions), two kept as note-only. | #24 |
 | 21 September 2026 | Skim pass | "In a hurry?" line under the hero actions pointing at 4.1, 9 and 10. Four dense paragraphs became tables or a list: purchase prerequisites (2.1), roles by task (2.3), the three Global Secure Access features (5.5), the four Entra Agent ID objects (7.1). Stale worktree copy removed. Brave key surfaced under Action needed in the digest. | #23 |
 | 21 September 2026 | 2 | Chapter 4 gains a scenario-to-control table (4.1): fifteen scenarios, each landing on the control, the enforcing product, a status badge rendered from the data, and the section to read. GA only hides the rows you cannot deploy yet. | #22 |

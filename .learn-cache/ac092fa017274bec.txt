@@ -6,6 +6,8 @@ Microsoft Defender provides AI agent runtime protection by inspecting key points
 This article explains what runtime protection stops, how it works, and how to investigate detections.
 Tip
 Runtime protection complements Microsoft Defender's discovery capabilities, which automatically detect supported local AI agents and MCP server configurations across your devices. For more information, see Local AI agent discovery with Microsoft Defender for Endpoint.
+Tip
+To safely validate runtime protection on a test device, run the AI agent runtime protection demonstration.
 What runtime protection detects
 Runtime protection targets the defining threat to local AI agents: prompt injection, which involves malicious instructions hidden inside otherwise-legitimate content that an agent reads and then acts on. Defender inspects the three points where content enters or leaves the agent's reasoning: the user's prompt, the tool calls the agent is about to make, and the responses those tools return. This approach catches injection regardless of where the content originated, whether a file, a web page, a repository, or a tool's output.
 For example, a coding agent fetches a project's documentation to answer a question, and the page contains hidden text that instructs the agent to read the local .env file and post its contents to an external URL. The agent treats the instruction as part of the page and is about to comply, but Defender detects the prompt injection in the tool response and blocks the action before any data leaves the device.
@@ -30,12 +32,13 @@ Block: Defender blocks the threat and follows the notification rules configured 
 Audit: Defender allows the action to continue and records the detection. A security alert is still raised in Defender for investigation.
 Disabled: Runtime protection is off. Defender doesn't inspect agent activity, and agents run without prompt injection detection or blocking.
 Microsoft recommends starting in audit mode to observe detections and validate accuracy before switching to block mode for active enforcement. The runtime protection setting is protected by tamper protection, which prevents unauthorized changes, and works alongside your existing Defender controls.
-For configuration steps, see Enable runtime protection.
+For local PowerShell and organization-wide Microsoft Intune configuration options, see Set up AI agent runtime protection with Microsoft Defender for Endpoint.
 Investigation
 When runtime protection detects prompt injection, Defender raises a Suspicious AI prompt injection alert and correlates related activity into incidents for investigation.
 For the full investigation workflow, including user and SOC experiences, see Review and investigate detections.
 Supported agents
-The following table lists the local AI agents that Defender supports for runtime protection through agent-native event inspection.
+Agent-native event inspection
+The following table lists the local AI agents that Defender supports through agent-native event inspection.
 Agent
 Hooks documentation
 Claude Code
@@ -46,6 +49,9 @@ GitHub Copilot CLI
 GitHub Copilot hooks
 GitHub Copilot app
 GitHub Copilot app hooks
+Network inspection
+Defender supports the following local AI agents through network inspection:
+OpenClaw
 Broader AI security capabilities
 Defender's runtime protection capabilities are part of a comprehensive AI security approach. Defender provides other capabilities across your organization's AI ecosystem:
 Discover local AI agents: Automatically detect supported local AI agents and MCP server configurations across your devices. For more information, see Local AI agent discovery with Microsoft Defender for Endpoint.
