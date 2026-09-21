@@ -82,6 +82,17 @@ jobs:
             echo
             cat digest.md
             echo
+            if [ -f linkedin-draft.md ]; then
+              echo
+              echo "### LinkedIn article draft"
+              echo
+              echo "Every second week. Deterministic, built from the last fortnight's changes entries; no model has touched it."
+              echo
+              echo '```'
+              tail -n +2 linkedin-draft.md
+              echo '```'
+              echo
+            fi
             echo "<details>"
             echo "<summary>Raw signals collected this week</summary>"
             echo
