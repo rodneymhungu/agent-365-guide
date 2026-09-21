@@ -113,6 +113,12 @@ jobs:
             --no-ask-user -s
           test -f CHANGES.md || echo "- Copilot produced no CHANGES.md; review learn-diff.md manually." > CHANGES.md
 
+      # Status tiers change only by a human. Put back any tier the model moved and list the
+      # proposal under "Needs a human decision" (scripts/guard_tiers.py explains why).
+      - name: Guard status tiers
+        if: steps.watch.outputs.changed == 'true'
+        run: python3 scripts/guard_tiers.py --restore --base HEAD
+
       # A chapter published on its own page must still match the guide. Report, do not block:
       # the PR is the review gate and the pages-check workflow marks it red.
       - name: Check split pages still match the guide

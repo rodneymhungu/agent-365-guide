@@ -36,6 +36,22 @@ EXTRA_URLS = [
     # so fetch() switches UA for hosts other than learn.microsoft.com.
     "https://www.microsoft.com/licensing/faqs/122",
 ]
+
+# Product release notes. These are where GA is announced; a prose page dropping
+# "(Preview)" from its title is not (learnt 21 September 2026). They change
+# most weeks about things this guide does not cover, so their diffs are kept
+# only where a changed line mentions agents or MCP; otherwise the page counts
+# as unchanged and the cache still moves forward.
+RELEASE_NOTES = [
+    "https://learn.microsoft.com/en-us/defender-endpoint/whats-new-in-microsoft-defender-endpoint",
+    "https://learn.microsoft.com/en-us/defender-xdr/whats-new",
+    "https://learn.microsoft.com/en-us/entra/fundamentals/whats-new",   # also carries Global Secure Access and ID Governance
+    "https://learn.microsoft.com/en-us/purview/whats-new",
+    "https://learn.microsoft.com/en-us/intune/whats-new/",
+    "https://learn.microsoft.com/en-us/microsoft-365/admin/whats-new-in-preview",
+]
+EXTRA_URLS += RELEASE_NOTES
+RELEVANT = re.compile(r"agent|mcp", re.I)
 BROWSER_UA = ("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "
               "(KHTML, like Gecko) Chrome/128.0 Safari/537.36")
 
@@ -176,7 +192,14 @@ def main() -> int:
                 diff = list(difflib.unified_diff(
                     before.splitlines(), now.splitlines(),
                     fromfile="previous", tofile="current", lineterm="", n=2))
-                changed.append((url, diff))
+                if url in RELEASE_NOTES:
+                    diff = [ln for ln in diff if ln.startswith(("---", "+++", "@@"))
+                            or (ln[:1] in "+-" and RELEVANT.search(ln))]
+                    if not any(ln[:1] in "+-" and not ln.startswith(("---", "+++")) for ln in diff):
+                        unchanged += 1
+                        diff = None
+                if diff:
+                    changed.append((url, diff))
         else:
             new.append(url)
         with open(path, "w", encoding="utf-8") as f:
