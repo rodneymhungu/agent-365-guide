@@ -66,7 +66,7 @@
         <a href="#s4">Which product enforces what <span aria-hidden="true">→</span></a>
         <a href="#s2-1">What your licence unlocks <span aria-hidden="true">↓</span></a>
       </div>
-      <p class="muted small hurry">In a hurry? <a href="#s4-1">4.1</a> maps what you need to stop to the control that stops it, <a href="#s9">9</a> is the first ten moves, <a href="#s10">10</a> is what you can deploy today.</p>
+      <p class="muted small hurry">In a hurry? <a href="#s4-1">4.1</a> maps scenarios to the controls that stop them, <a href="#s9">9</a> is the first ten moves, <a href="#s10">10</a> is what you can deploy today.</p>
     </div>
     <figure class="route-plate">
       <div class="plate">
@@ -166,7 +166,7 @@
   </table></div>
   <p>Agent 365 is included in Microsoft 365 E7 and sold as a per-user add-on. The <a href="https://www.microsoft.com/licensing/faqs/122" target="_blank" rel="noopener">licensing FAQ</a> sets what you must already own before you can buy it.</p>
   <div class="tbl"><table>
-    <thead><tr><th>Segment</th><th>Base plan that qualifies</th><th>Also needed before you can buy</th></tr></thead>
+    <thead><tr><th>Segment</th><th>Base plan that qualifies</th><th>Also needed</th></tr></thead>
     <tbody>
     <tr><td>Enterprise</td><td>Microsoft 365 E5</td><td>Nothing further</td></tr>
     <tr><td>Enterprise</td><td>Microsoft 365 E3, or Office 365 E3 plus EMS E3</td><td>Defender Suite and Purview Suite</td></tr>
@@ -256,7 +256,7 @@
     </div>
     <figcaption><b class="fn"></b> The guard does not care why. Conditional Access, access packages and blueprints are the list.</figcaption>
   </figure>
-  <p>Application identities also assume long-term stability and known ownership. Agents are created dynamically, sometimes thousands a day, and may live for minutes. Ordinary service principals leave orphaned credentials and permissions behind. That gap is what Entra Agent ID fills, and why the identity model in section 7 underpins everything else.</p>
+  <p>Application identities also assume long-term stability and known ownership. Agents are created dynamically, sometimes thousands a day, and may live for minutes. Ordinary service principals leave orphaned credentials and permissions behind. That gap is what Entra Agent ID fills, and why section 7 comes before the rest of Secure.</p>
 
   <figure class="stepper" data-mode="cumulative">
     <div class="frame">
@@ -339,7 +339,7 @@
 
   <section id="s4-1" data-search>
   <h3>4.1 Start from what you need to stop</h3>
-  <p>Most questions arrive as a scenario, not a product name. This table starts from the scenario and lands on the control, the product that enforces it, and its status today. Status renders from the data block; the GA only switch in the header hides the rows you cannot deploy yet.</p>
+  <p>Most questions arrive as a scenario. This table starts from the scenario and lands on the control, the product that enforces it, and its status today. The GA only switch in the header hides the rows you cannot deploy yet.</p>
   <div class="tbl wide"><table>
     <thead><tr><th>When</th><th>The control</th><th>Enforced in</th><th>Status</th><th>Read</th></tr></thead>
     <tbody>
@@ -375,7 +375,7 @@
     <div class="frame"><div class="imgwrap"><img src="images/learn-mac-registry.png" width="1600" height="796" alt="Agent registry list in the Microsoft 365 admin centre" loading="lazy"><span class="co" style="left:22%;top:15%">1</span><span class="co" style="left:45%;top:15%">2</span><span class="co" style="left:68%;top:15%">3</span></div></div>
     <figcaption><b class="fn"></b> The registry. The three cards above the list are the ones to read first. <span class="colist"><b>1</b> Total agents <b>2</b> Agents without owners <b>3</b> Unmanaged agents</span> <span class="src">Source: <a href="https://learn.microsoft.com/en-us/microsoft-365/admin/manage/agent-registry" target="_blank" rel="noopener">Microsoft Learn, Agent registry</a>, CC BY 4.0. Asset <code>learn-mac-registry</code>.</span></figcaption>
   </figure>
-  <p>Filters cover status, publisher type, channel, platform and data source. Use the data source filter on day one: it isolates agents with embedded knowledge, meaning maker-uploaded files, and agents on fine-tuned models. Both carry data handling implications the rest of the inventory does not.</p>
+  <p>Filters cover status, publisher type, channel, platform and data source. Use the data source filter first: it isolates agents with embedded knowledge, meaning maker-uploaded files, and agents on fine-tuned models. Both carry data handling implications the rest of the inventory does not.</p>
   <p>Export to CSV gives more than thirty attributes per agent, including owner, platform, version and instructions. Export on day one of an evaluation to get a baseline to diff against. A custom agent can be uploaded as a zip through the same wizard described in section 6.1. <span data-tier="graph-api">Microsoft Graph access is <span class="st" data-st="graph-api"></span>: the package management APIs list all agents and return per-agent detail under the AI Administrator role.</span></p>
   <p>The <a href="https://learn.microsoft.com/en-us/microsoft-365/admin/manage/agent-365-overview" target="_blank" rel="noopener">overview page</a> at Agents, Overview shows a thirty-day snapshot: total agents, active users, agent run-time in hours, and which external platforms registry sync has scanned. Four action cards link to prefiltered views: pending requests, agents without owners, agents at risk, and agents with exceptions. Activity metrics start only when licences are activated, so the first month is partial. The overview shows the top five platforms only. Draft agents are visible only for Copilot Studio.</p>
   <figure class="shot ">
@@ -454,7 +454,7 @@
     <div class="frame"><div class="imgwrap"><img src="images/deck-s055.png" width="1600" height="936" alt="Shadow AI (Frontier) page listing OpenClaw, ChatGPT Desktop, Claude Desktop and others" loading="lazy"></div></div>
     <figcaption><b class="fn"></b> The Shadow AI page. OpenClaw carries the red icon because it is the one agent that can be blocked from here. <span class="src">Source: workshop deck, slide 55, demo tenant. Asset <code>deck-s055</code>.</span></figcaption>
   </figure>
-  <p data-tier="local-agents-page">The <a href="https://learn.microsoft.com/en-us/microsoft-365/admin/manage/agent-local" target="_blank" rel="noopener">Local agents page</a> at All agents, Local agents (Frontier) is also <span class="st" data-st="local-agents-page"></span> and deliberately separate. Shadow AI covers unmanaged autonomous applications; local agents are developer tools chosen on purpose, and the detected list has grown well past the original handful: Claude Code, Codex, Cursor, Devin, Gemini CLI, GitHub Copilot (app and CLI), Antigravity, Junie, Kiro, Microsoft Scout, Warp, Windsurf, and the Claude Code, Cline, Codex, Gemini Code Assist, GitHub Copilot and Roo Code extensions for Visual Studio Code. Viewing needs Microsoft 365 E3 and Intune enrolment. Blocking has arrived on this page too, but only for Gemini CLI, the Visual Studio Code extensions, and OpenClaw's Node.js siblings QClaw and Claw/Nanobot, which share a single Intune policy per run type; every other tool in the list is still detection-only. Both pages show first access, last activity, device and user counts, and with Global Secure Access, endpoints, requests and bytes per agent, plus a per-device list with Defender last-seen timestamps.</p>
+  <p data-tier="local-agents-page">The <a href="https://learn.microsoft.com/en-us/microsoft-365/admin/manage/agent-local" target="_blank" rel="noopener">Local agents page</a> at All agents, Local agents (Frontier) is also <span class="st" data-st="local-agents-page"></span> and deliberately separate. Shadow AI covers unmanaged autonomous applications; local agents are developer tools chosen on purpose: Claude Code, Codex, Cursor, Devin, Gemini CLI, GitHub Copilot (app and CLI), Antigravity, Junie, Kiro, Microsoft Scout, Warp, Windsurf, and the Claude Code, Cline, Codex, Gemini Code Assist, GitHub Copilot and Roo Code extensions for Visual Studio Code. Viewing needs Microsoft 365 E3 and Intune enrolment. Blocking covers only Gemini CLI, the Visual Studio Code extensions, and OpenClaw's Node.js siblings QClaw and Claw/Nanobot, which share a single Intune policy per run type; every other tool in the list is detection-only. Both pages show first access, last activity, device and user counts, and with Global Secure Access, endpoints, requests and bytes per agent, plus a per-device list with Defender last-seen timestamps.</p>
   <p data-tier="mde-discovery">Beneath it, <a href="https://learn.microsoft.com/en-us/defender-endpoint/local-agent-discovery-overview" target="_blank" rel="noopener">Defender for Endpoint local agent discovery</a>, <span class="st" data-st="mde-discovery"></span>, covers Windows and macOS and a wider set: command-line agents such as Claude Code, Codex CLI, Gemini CLI, GitHub Copilot CLI and Warp; desktop apps such as ChatGPT, Claude, Goose, Ollama and Perplexity; agentic IDEs such as Cursor and Kiro; the VS Code extensions; and claw-based agents such as OpenClaw and Clawpilot. An agent is one user, one device, one agent type, so a developer running Claude Code in fifteen folders is one entry. Discovery captures local and remote MCP server configurations, feeds an exposure map from agent to device to identity to reachable resources, and populates advanced hunting.</p>
   <div class="strip c2">
   <figure class="shot " data-tier="mde-discovery">
@@ -642,7 +642,7 @@
     <figcaption><b class="fn"></b> eDiscovery: an agent interaction in a review set with custodian, retention label and sensitivity label. <span class="src">Source: workshop deck, slide 79, demo tenant. Asset <code>deck-s079</code>.</span></figcaption>
   </figure>
   </div>
-  <p>Start on the DSPM AI observability page in the new Purview portal. Classic DSPM for AI does not support Agent 365. The page lists every agent active in the last thirty days, ranked by the Insider Risk Management risk level, with risky activities grouped as oversharing, exfiltration and unethical behaviour, and per-agent recommendations.</p>
+  <p>Start on the DSPM AI observability page in the new Purview portal. Classic DSPM for AI does not support Agent 365. The page lists every agent active in the last thirty days, ranked by the Insider Risk Management risk level, with risky activities grouped as oversharing, exfiltration and unethical behaviour, and per-agent recommendations. It is the one view that ranks every agent by risk, so it tells you which instance to add to a policy first.</p>
   <figure class="shot ">
     <div class="frame"><div class="imgwrap"><img src="images/deck-s085.png" width="1600" height="900" alt="Purview DSPM AI observability page with agent registry, risk levels and policy coverage" loading="lazy"></div></div>
     <figcaption><b class="fn"></b> DSPM AI observability: every agent with a risk level from Insider Risk Management, the sensitive interaction trend and policy coverage. <span class="src">Source: workshop deck, slide 85, demo tenant. Asset <code>deck-s085</code>.</span></figcaption>
@@ -1020,6 +1020,7 @@ Set-MpPreference -AiAgentNetworkInspection Audit</code></pre>
     <figcaption><b class="fn"></b> The MCP firewall works at the tool level. One tool on one server can be blocked while the rest of that server keeps working.</figcaption>
   </figure>
   <p data-tier="gsa-genai-insights">Generative AI Insights events, including prompt bodies and MCP payloads, stream to Sentinel through the NetworkAccessGenerativeAIInsights diagnostic category.</p>
+  <p>Of the three, the MCP firewall is the one to pilot first: it is the only control here that can name a single tool.</p>
   <div class="yt" data-id="G6Aot9UCePU" data-start="220">
     <div class="ytframe"><img src="https://i.ytimg.com/vi/G6Aot9UCePU/hqdefault.jpg" alt="" width="480" height="360" loading="lazy"><button type="button" class="ytplay" aria-label="Play video: Zero Trust security for AI agents"><span></span></button></div>
     <div class="ytmeta"><p class="ytt">Zero Trust security for AI agents</p><div class="chapters"><button type="button" data-t="220">03:40 Conditional Access for agent identities</button><button type="button" data-t="299">04:59 Agent ID and access packages</button><button type="button" data-t="367">06:07 Runtime observability</button><button type="button" data-t="418">06:58 DLP, labels and data access governance</button><button type="button" data-t="467">07:47 MCP catalogue</button></div><p class="muted small">Microsoft Mechanics on YouTube. Nothing loads until you press play.</p></div>
@@ -1123,7 +1124,7 @@ Set-MpPreference -AiAgentNetworkInspection Audit</code></pre>
 <!-- ============================ 10 ============================ -->
 <section class="block" id="s10" data-search>
   <div class="shead"><span class="n">10</span><h2>What you can deploy today</h2></div>
-  <p class="muted">Rendered from the data block at the top of this page. Reviewed <span data-val="reviewed"></span>.</p>
+  <p class="muted">Every status on this page comes from one list. Reviewed <span data-val="reviewed"></span>.</p>
   <div class="tbl"><table id="avail">
     <thead><tr><th>Capability</th><th>Status</th><th>Note</th><th>Where</th></tr></thead>
     <tbody></tbody>
