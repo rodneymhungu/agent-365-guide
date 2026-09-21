@@ -279,6 +279,7 @@ def article_draft(weeks):
             items.append((d, m.group(2), m.group(3).replace('\\"', '"')))
     items.sort(reverse=True)
     lines = ["# LinkedIn article draft (every second week; copy, edit, post from the computer)", "",
+             "Before posting: run ai-writing-review on this draft and decide each flag.", "",
              "Headline: What changed in the last two weeks in the Agent 365 field guide", "",
              "Updated this fortnight: the Agent 365 field guide for security and compliance engineers.", ""]
     if items:

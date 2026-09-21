@@ -136,5 +136,6 @@ Newest first. One line per item shipped, with the pull request.
    portal still said preview, and the LinkedIn draft repeated the error.
 8. Every change to prose goes through the `ai-writing-review` skill before
    the pull request opens: report the flags, apply the ones the author
-   approves, log the ones kept. Rodney's standing instruction from
+   approves, log the ones kept. This includes every distribution draft in
+   `distribution/` before it is posted, the digest-generated ones included. Rodney's standing instruction from
    21 September 2026 is to run it on every prose update without being asked.
