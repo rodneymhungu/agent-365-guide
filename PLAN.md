@@ -20,10 +20,9 @@ Read this first when you come back. Everything below the line was done on
 2. **Brave Search key (optional, issue #10).** Free key at
    brave.com/search/api, saved as `BRAVE_API_KEY` in the same place. The
    digest then reports public mentions.
-3. **Field guide principles repository.** `Dev/field-guide-principles` has
-   uncommitted edits from 9 September (field notes describe real events,
-   distinct products stay distinct) plus today's amendment of "one HTML
-   file" to "one page per topic, one data file". Review, commit, push.
+3. **Field guide principles repository: pushed, 21 September, 16:10.** Commit
+   893e6e2 carries the 9 September edits and the "one page per topic, one
+   data file" amendment. The guide, the skill and the repo now agree.
 4. **Next rotation focus is 4, distribution.** One LinkedIn post linking a
    section (`licensing.html` or `#s4-1`, not the home page), one session
    follow-up, one account outreach. Log each here with the link and the
