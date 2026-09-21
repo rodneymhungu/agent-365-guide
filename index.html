@@ -50,7 +50,7 @@
 
 <script>
 window.A365 = {
-  reviewed: "9 September 2026",
+  reviewed: "14 September 2026",
   gaDate: "1 May 2026",
   transitionDate: "1 July 2026",
   trial: "25 seats for 30 days",
@@ -63,6 +63,7 @@ window.A365 = {
     roadmap:  { label: "Early preview",    phrase: "in early preview" }
   },
   changes: [
+    { date: "14 September 2026", section: "s5-5", text: "Local agents page: the detected developer-tool list has grown substantially and blocking now covers Gemini CLI, VS Code extensions and OpenClaw's Node.js siblings. Learn page cited." },
     { date: "9 September 2026", section: "s2-1", text: "Licensing prerequisites corrected after Microsoft product marketing feedback: Entra ID P1 comes with every plan that qualifies for Agent 365. Licensing FAQ cited." },
     { date: "8 September 2026", text: "Link preview card for LinkedIn and Teams." },
     { date: "7 September 2026", text: "Weekly check of every cited Learn page, with a pull request when one moves. Sections panel scrolls on phones." },
@@ -937,7 +938,7 @@ footer{border-block-start:8px solid var(--ink);background:var(--paper-2)}
     <div class="frame"><div class="imgwrap"><img src="images/deck-s055.png" width="1600" height="936" alt="Shadow AI (Frontier) page listing OpenClaw, ChatGPT Desktop, Claude Desktop and others" loading="lazy"></div></div>
     <figcaption><b class="fn"></b> The Shadow AI page. OpenClaw carries the red icon because it is the one agent that can be blocked from here. <span class="src">Source: workshop deck, slide 55, demo tenant. Asset <code>deck-s055</code>.</span></figcaption>
   </figure>
-  <p data-tier="local-agents-page">The <a href="https://learn.microsoft.com/en-us/microsoft-365/admin/manage/agent-local" target="_blank" rel="noopener">Local agents page</a> at All agents, Local agents (Frontier) is also <span class="st" data-st="local-agents-page"></span> and deliberately separate. Shadow AI covers unmanaged autonomous applications; local agents are developer tools chosen on purpose: OpenClaw, Claude Code, Gemini CLI, GitHub Copilot CLI, and the Claude Code, Cline, Codex, Gemini Code Assist and Roo Code extensions for Visual Studio Code. Viewing needs Microsoft 365 E3 and Intune enrolment. Both pages show first access, last activity, device and user counts, and with Global Secure Access, endpoints, requests and bytes per agent, plus a per-device list with Defender last-seen timestamps.</p>
+  <p data-tier="local-agents-page">The <a href="https://learn.microsoft.com/en-us/microsoft-365/admin/manage/agent-local" target="_blank" rel="noopener">Local agents page</a> at All agents, Local agents (Frontier) is also <span class="st" data-st="local-agents-page"></span> and deliberately separate. Shadow AI covers unmanaged autonomous applications; local agents are developer tools chosen on purpose, and the detected list has grown well past the original handful: Claude Code, Codex, Cursor, Devin, Gemini CLI, GitHub Copilot (app and CLI), Antigravity, Junie, Kiro, Microsoft Scout, Warp, Windsurf, and the Claude Code, Cline, Codex, Gemini Code Assist, GitHub Copilot and Roo Code extensions for Visual Studio Code. Viewing needs Microsoft 365 E3 and Intune enrolment. Blocking has arrived on this page too, but only for Gemini CLI, the Visual Studio Code extensions, and OpenClaw's Node.js siblings QClaw and Claw/Nanobot, which share a single Intune policy per run type; every other tool in the list is still detection-only. Both pages show first access, last activity, device and user counts, and with Global Secure Access, endpoints, requests and bytes per agent, plus a per-device list with Defender last-seen timestamps.</p>
   <p data-tier="mde-discovery">Beneath it, <a href="https://learn.microsoft.com/en-us/defender-endpoint/local-agent-discovery-overview" target="_blank" rel="noopener">Defender for Endpoint local agent discovery</a>, <span class="st" data-st="mde-discovery"></span>, covers Windows and macOS and a wider set: command-line agents such as Claude Code, Codex CLI, Gemini CLI, GitHub Copilot CLI and Warp; desktop apps such as ChatGPT, Claude, Goose, Ollama and Perplexity; agentic IDEs such as Cursor and Kiro; the VS Code extensions; and claw-based agents such as OpenClaw and Clawpilot. An agent is one user, one device, one agent type, so a developer running Claude Code in fifteen folders is one entry. Discovery captures local and remote MCP server configurations, feeds an exposure map from agent to device to identity to reachable resources, and populates advanced hunting.</p>
   <div class="strip c2">
   <figure class="shot " data-tier="mde-discovery">
