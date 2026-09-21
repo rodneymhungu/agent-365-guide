@@ -9,3 +9,8 @@ Before posting, run the `ai-writing-review` skill on the draft and decide each
 flag. The digest-generated drafts are assembled from changelog entries, which
 were reviewed when they were merged, but the assembled article has not been
 read as one piece until you do this. Log the review in the draft file.
+
+Posts describe the product and what the guide says about it. They never
+mention the guide's own workings: the drift workflow, documentation
+discrepancies, label changes on Learn, or how a status was verified. That is
+maintenance detail; readers are searching for what the product does.
