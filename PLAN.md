@@ -28,13 +28,7 @@ Read this first when you come back. Everything below the line was done on
    section (`licensing.html` or `#s4-1`, not the home page), one session
    follow-up, one account outreach. Log each here with the link and the
    referrer to expect.
-5. **Decide on GCC.** The 21 September drift run found the service
-   description gained a "GCC Availability" column: several agent controls
-   (Purview DLP and eDiscovery for agents, Defender posture and detection,
-   Intune containment) show "No" for Government Community Cloud tenants, and
-   the E7 row now reads "E7 / G7". Chapter 2 says nothing about GCC. Decide
-   whether a one-line caveat belongs in 2.1 or whether GCC stays out of scope.
-6. **Writing review.** The `ai-writing-review` skill is now installed for
+5. **Writing review.** The `ai-writing-review` skill is now installed for
    Claude Code; run it on the next prose change and decide each flag.
 
 ## Target
@@ -88,6 +82,14 @@ whether they are the reader this guide is for.
 2. **Brave Search key.** Issue #10. Optional, but without it the digest
    never sees public mentions, which is the only distribution feedback loop
    that does not depend on the referrer.
+
+## Out of scope
+
+Decided by Rodney, with the date, so nobody re-opens these by accident.
+
+| Since | Topic | Decision |
+|---|---|---|
+| 21 September 2026 | Microsoft 365 Government Community Cloud (GCC, G7) availability | Out of scope. GCC is a United States programme and this guide's readers are not in it. The service description's "GCC Availability" column is not tracked and chapter 2 carries no GCC caveat. Reopen only if a reader asks for it explicitly, through an issue. Drift pull requests that mention GCC changes can be merged without adding prose. |
 
 ## Log
 
