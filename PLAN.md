@@ -23,10 +23,12 @@ Read this first when you come back. Everything below the line was done on
 3. **Field guide principles repository: pushed, 21 September, 16:10.** Commit
    893e6e2 carries the 9 September edits and the "one page per topic, one
    data file" amendment. The guide, the skill and the repo now agree.
-4. **Next rotation focus is 4, distribution.** One LinkedIn post linking a
-   section (`licensing.html` or `#s4-1`, not the home page), one session
-   follow-up, one account outreach. Log each here with the link and the
-   referrer to expect.
+4. **Post the LinkedIn article, planned for the evening of 22 September.**
+   Everything is in `distribution/2026-09-21-linkedin.md`: three pickup
+   steps, headline, body, and two cover images beside it. Format decided on
+   21 September: a short weekly LinkedIn article on the latest update, guide
+   link inside the article. When posted, add the URL to that file's "Posted"
+   line and a row under focus 4 in the log below.
 5. **Writing review.** The `ai-writing-review` skill is now installed for
    Claude Code; run it on the next prose change and decide each flag.
 
@@ -66,7 +68,7 @@ than one. The digest names the current focus so nobody has to count.
 | 1 | Split a section into its own indexable page | A new `*.html` at the repository root with its own title, description, canonical link and JSON-LD, listed in `sitemap.xml`, linked from the section it came from, rendering status from `a365-data.js`. |
 | 2 | Build or extend a lookup table | A table a reader can scan in ten seconds: licence, preview against GA, control to scenario. Every row sourced at the point of use; status rendered from the data block, never typed. |
 | 3 | Write the changed-this-week note | Merge the open `learn-drift` pull request, then add one entry to `changes` in `a365-data.js` that says what moved and links the Learn page. If nothing drifted, say so in the digest and skip. |
-| 4 | Distribution | One LinkedIn post that links a section, not the home page. One follow-up to a session or workshop audience. One account or partner outreach. Record each in the log with the link and the referrer to expect. |
+| 4 | Distribution | A short weekly LinkedIn article on the latest update, built from that week's `changes` entries, with the guide link inside the article (decided 21 September 2026). Drafts live in `distribution/`, one file per post with its cover image. Plus, when there is one, a follow-up to a session audience or an account outreach. Record each in the log with the link and the referrer to expect. |
 
 Every week, whatever the focus: check GoatCounter referrers, not just paths.
 A path tells you what people read. A referrer tells you who sent them and
