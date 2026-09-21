@@ -68,7 +68,7 @@ window.A365 = {
     { key: "defender-nrt",       name: "Defender near-real-time detection", tier: "preview", where: "Defender XDR" },
     { key: "defender-rtp-mcs",   name: "Defender real-time protection for Copilot Studio agents", tier: "preview", where: "Defender XDR" },
     { key: "defender-rtp-foundry", name: "Defender real-time protection for Foundry agents", tier: "preview", where: "Defender XDR" },
-    { key: "mde-discovery",      name: "Defender for Endpoint local agent discovery", tier: "ga", note: "macOS discovery still in preview", where: "Defender for Endpoint" },
+    { key: "mde-discovery",      name: "Defender for Endpoint local agent discovery", tier: "ga", note: "macOS discovery in preview", where: "Defender for Endpoint" },
     { key: "mde-runtime",        name: "Defender for Endpoint runtime protection", tier: "preview", where: "Defender for Endpoint" },
     { key: "gsa-copilot-studio", name: "Global Secure Access for Copilot Studio agents, prompt injection protection", tier: "ga", note: "Device and prompt-injection paths need Entra Internet Access", where: "Global Secure Access" },
     { key: "gsa-shadow-ai",      name: "Global Secure Access Shadow AI discovery", tier: "ga", where: "Global Secure Access" },
