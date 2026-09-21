@@ -2,7 +2,8 @@
 """
 learn_watch.py — deterministic drift detector for the Agent 365 guide.
 
-1. Pulls every learn.microsoft.com URL that index.html links to (plus EXTRA_URLS).
+1. Pulls every learn.microsoft.com URL that any page at the repository root links
+   to (index.html, licensing.html, ...) plus EXTRA_URLS.
 2. Fetches each page, keeps the <main> content, normalises it to plain text.
 3. Compares against .learn-cache/<id>.txt from the last run.
 4. Writes learn-diff.md (a unified diff per changed page, with the guide
@@ -17,7 +18,7 @@ from urllib.request import Request, urlopen
 from urllib.error import URLError, HTTPError
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-INDEX = os.path.join(ROOT, "index.html")
+PAGES = sorted(f for f in os.listdir(ROOT) if f.endswith(".html"))   # index.html, licensing.html, ...
 CACHE = os.path.join(ROOT, ".learn-cache")
 REPORT = os.path.join(ROOT, "learn-diff.md")
 UA = "agent-365-guide-watch/1.0 (+https://rodneymhungu.github.io/agent-365-guide/)"
@@ -134,22 +135,27 @@ def url_id(url: str) -> str:
     return hashlib.sha1(url.encode()).hexdigest()[:16]
 
 
-def sections_citing(index_html: str, url: str):
-    """Guide section ids (e.g. s6-2) whose HTML contains this URL."""
-    ids = []
-    heads = list(re.finditer(r'<section[^>]+id="(s\d+(?:-\d+)?)"', index_html))
-    for i, m in enumerate(heads):
-        end = heads[i + 1].start() if i + 1 < len(heads) else len(index_html)
-        if url in index_html[m.start():end]:
-            ids.append(m.group(1))
-    return ids
+def sections_citing(pages: dict, url: str):
+    """Guide section ids (e.g. s6-2) whose HTML contains this URL, with the page
+    names in brackets when the section is published on more than one page."""
+    found = {}
+    for name, html in pages.items():
+        heads = list(re.finditer(r'<section[^>]+id="(s\d+(?:-\d+)?)"', html))
+        for i, m in enumerate(heads):
+            end = heads[i + 1].start() if i + 1 < len(heads) else len(html)
+            if url in html[m.start():end]:
+                found.setdefault(m.group(1), []).append(name)
+    return [f"{sid} ({', '.join(names)})" if len(pages) > 1 else sid for sid, names in found.items()]
 
 
 def main() -> int:
-    with open(INDEX, encoding="utf-8") as f:
-        index_html = f.read()
+    pages = {}
+    for name in PAGES:
+        with open(os.path.join(ROOT, name), encoding="utf-8") as f:
+            pages[name] = f.read()
+    all_html = "\n".join(pages.values())
 
-    found = {u.rstrip(".,") for u in re.findall(r'https://learn\.microsoft\.com/[^"\'<>\s)]+', index_html)}
+    found = {u.rstrip(".,") for u in re.findall(r'https://learn\.microsoft\.com/[^"\'<>\s)]+', all_html)}
     urls = sorted(found | set(EXTRA_URLS))
     os.makedirs(CACHE, exist_ok=True)
 
@@ -188,10 +194,10 @@ def main() -> int:
         if gone:
             f.write("## Unreachable (404 or repeated failure)\n\n")
             for u in gone:
-                f.write(f"- {u} — cited in: {', '.join(sections_citing(index_html, u)) or 'sources list only'}\n")
+                f.write(f"- {u} — cited in: {', '.join(sections_citing(pages, u)) or 'sources list only'}\n")
             f.write("\n")
         for url, diff in changed:
-            secs = sections_citing(index_html, url)
+            secs = sections_citing(pages, url)
             f.write(f"## {url}\n\nCited in guide sections: {', '.join(secs) if secs else 'sources list only'}\n\n")
             f.write("```diff\n" + "\n".join(diff[:MAX_DIFF_LINES]) + "\n```\n")
             if len(diff) > MAX_DIFF_LINES:

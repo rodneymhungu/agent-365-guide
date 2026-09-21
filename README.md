@@ -27,7 +27,12 @@ Facts come from Microsoft Learn and are linked in the sentence that makes the cl
 
 ## How it is built
 
-One HTML file, no build step. Everything that goes stale lives in the `A365` object in the first script block: the review date, GA and transition dates, prices, the trial offer, and the status of every capability. Status badges, the "in preview" phrases in the prose, and the deploy-today table all render from that object. To update a status, change the tier in the data block. Do not edit it in the prose.
+Plain HTML, no build step, no framework. Four files at the root do the work:
+
+- `index.html` is the full guide.
+- `licensing.html` is chapter 2 published on its own page so that it can be found on its own. Its chapter block is a copy of the one in `index.html`; `scripts/check_pages.py` fails the build if the two differ.
+- `a365-data.js` holds everything that goes stale: the review date, GA and transition dates, prices, the trial offer, the changelog, and the status of every capability. Status badges, the "in preview" phrases in the prose, and the deploy-today table all render from that object on every page. To update a status, change the tier there. Do not edit it in the prose.
+- `guide.css` and `guide.js` are the shared tokens, layout and behaviour.
 
 Tiers are `ga`, `preview`, `frontier` and `roadmap`.
 

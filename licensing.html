@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<meta name="description" content="Which Agent 365 capabilities need the add-on or Microsoft 365 E7, what you must already own to buy it, the 1 July 2026 transition for Copilot Studio and Foundry, and the Entra roles that can act.">
+<title>Agent 365 licensing: what the licence unlocks, prerequisites and roles</title>
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="rodney.mhungu">
+<meta property="og:title" content="Agent 365 licensing: what the licence unlocks, prerequisites and roles">
+<meta property="og:description" content="Which Agent 365 capabilities need the add-on or Microsoft 365 E7, what you must already own to buy it, the 1 July 2026 transition for Copilot Studio and Foundry, and the Entra roles that can act.">
+<meta property="og:url" content="https://rodneymhungu.github.io/agent-365-guide/licensing.html">
+<meta property="og:image" content="https://rodneymhungu.github.io/agent-365-guide/images/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Agent 365 route plate: one request, three control routes. Observe finds it, Govern owns it, Secure stops it.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Agent 365 licensing: what the licence unlocks, prerequisites and roles">
+<meta name="twitter:description" content="What needs the Agent 365 add-on, what you must already own, and which roles can act.">
+<meta name="twitter:image" content="https://rodneymhungu.github.io/agent-365-guide/images/og.png">
+<link rel="canonical" href="https://rodneymhungu.github.io/agent-365-guide/licensing.html">
+<link rel="alternate" type="application/atom+xml" title="Changes to this guide" href="https://github.com/rodneymhungu/agent-365-guide/commits/main.atom">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"TechArticle","headline":"Agent 365 licensing: what the licence unlocks, prerequisites and roles","description":"Which Agent 365 capabilities need the add-on or Microsoft 365 E7, what you must already own to buy it, the 1 July 2026 transition for Copilot Studio and Foundry, and the Entra roles that can act.","url":"https://rodneymhungu.github.io/agent-365-guide/licensing.html","image":"https://rodneymhungu.github.io/agent-365-guide/images/og.png","datePublished":"2026-09-21","dateModified":"2026-09-21","inLanguage":"en-GB","author":{"@type":"Person","name":"Rodney Mhungu"},"isPartOf":{"@type":"TechArticle","name":"Agent 365 for security and compliance engineers","url":"https://rodneymhungu.github.io/agent-365-guide/"},"about":["Microsoft Agent 365","Microsoft 365 E7","Microsoft Entra","Microsoft Purview","Microsoft Defender"]}
+</script>
+
+<!-- Status, dates, prices and the changelog live in a365-data.js; read the comment there before editing. -->
+<script src="a365-data.js"></script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;0,6..72,700;1,6..72,400&amp;family=Public+Sans:ital,wght@0,400..900;1,400..900&amp;family=JetBrains+Mono:wght@400;500;600&amp;display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="guide.css">
+</head>
+<body>
+
+<header class="topbar">
+  <div class="in">
+    <a class="brand" href="index.html">rodney<span>.</span>mhungu</a>
+    <span class="field-id">Agent control atlas · Field edition 01 · Chapter 2</span>
+    <span class="count" id="count" aria-live="polite"></span>
+    <button class="theme-btn" id="theme" type="button" aria-label="Toggle colour theme">Theme</button>
+    <button class="toc-toggle" id="toc-toggle" type="button" aria-expanded="false" aria-controls="toc">Sections</button>
+  </div>
+</header>
+
+<div class="shell">
+<nav class="toc" id="toc" aria-label="Contents">
+  <p class="k">On this page</p>
+  <ol id="toc-list"></ol>
+  <p class="k" style="margin-block-start:1.4rem">The full guide</p>
+  <ol>
+    <li class="l3"><a href="index.html">Agent 365 for security and compliance engineers</a></li>
+    <li class="l3"><a href="index.html#s4">Which product enforces what</a></li>
+    <li class="l3"><a href="index.html#s10">What you can deploy today</a></li>
+  </ol>
+</nav>
+
+<main id="top">
+<article>
+
+<section class="top" id="s0">
+  <p class="eyebrow">Field guide 01 · Microsoft Agent 365 · Chapter 2</p>
+  <h1>Agent 365 licensing: what the licence unlocks, what you must already own, and who can act</h1>
+  <p class="lede">Agent 365 is included in Microsoft 365 E7 and sold as a per-user add-on. The registry, basic actions, lifecycle rules and registry sync work without it. Every other control needs it, and you cannot buy it without Microsoft 365 E5, or E3 with the Defender and Purview suites. Pick your plan below to see what opens up.</p>
+  <div class="field-stats" aria-label="Page summary">
+    <span><b data-val="price.addon"></b> add-on per user per month</span>
+    <span><b data-val="price.e7"></b> Microsoft 365 E7 per user per month</span>
+    <span><b data-val="trial"></b> admin-led trial</span>
+    <span><b data-val="reviewed"></b> last reviewed</span>
+  </div>
+</section>
+
+<section class="block" id="s2">
+  <div class="shead"><span class="n">02</span><h2>What you need before the controls appear</h2></div>
+  <p class="muted small" data-page-only>Chapter 2 of <a href="index.html">the full guide</a>. Prices and dates render from the same data file as the guide. Reviewed <span data-val="reviewed"></span>.</p>
+
+  <section id="s2-1" data-search>
+  <h3>2.1 What the licence unlocks</h3>
+  <p>The <a href="https://learn.microsoft.com/en-us/office365/servicedescriptions/microsoft-agent-365/microsoft-agent-365" target="_blank" rel="noopener">service description</a> splits capabilities between ordinary Microsoft 365 plans and Microsoft 365 E7 or the Agent 365 add-on. A tenant without the add-on can already see its registry and take basic actions.</p>
+  <div class="plan" role="group" aria-label="Choose your plan">
+    <span class="muted small">Your plan:</span>
+    <button type="button" data-plan="base" aria-pressed="true">Microsoft 365 E3 or E5 only</button>
+    <button type="button" data-plan="addon" aria-pressed="false">E5 plus Agent 365 add-on</button>
+    <button type="button" data-plan="e7" aria-pressed="false">Microsoft 365 E7</button>
+    <p class="planmsg" id="planmsg"></p>
+  </div>
+  <div class="tbl"><table>
+    <thead><tr><th>Capability</th><th>Console</th><th>Microsoft 365 Enterprise, Business, Education, Frontline</th><th>Microsoft 365 E7 or Agent 365</th></tr></thead>
+    <tbody>
+    <tr><td>Agent registry inventory</td><td>Microsoft 365 admin centre</td><td class="y">Yes</td><td class="y">Yes</td></tr>
+    <tr><td>Basic governance actions (publish, deploy, block, delete, approve, assign, reassign owner, pin)</td><td>Microsoft 365 admin centre</td><td class="y">Yes</td><td class="y">Yes</td></tr>
+    <tr><td>Rules-based lifecycle automation</td><td>Microsoft 365 admin centre</td><td class="y">Yes</td><td class="y">Yes</td></tr>
+    <tr><td>Registry sync from external platforms</td><td>Microsoft 365 admin centre</td><td class="y">Yes</td><td class="y">Yes</td></tr>
+    <tr><td>Policy templates</td><td>Microsoft 365 admin centre</td><td class="n">No</td><td class="y">Yes</td></tr>
+    <tr><td>Observability and monitoring of agent activity</td><td>Microsoft 365 admin centre</td><td class="n">No</td><td class="y">Yes</td></tr>
+    <tr><td>Tenant-wide tool controls, including Microsoft MCP servers</td><td>Microsoft 365 admin centre</td><td class="n">No</td><td class="y">Yes</td></tr>
+    <tr><td>Graph API for registry and governance actions</td><td>API</td><td class="n">No</td><td class="y">Yes</td></tr>
+    <tr><td>Access packages and sponsor-driven lifecycle for agents</td><td>Entra</td><td class="n">No</td><td class="y">Yes</td></tr>
+    <tr><td>Conditional Access and Identity Protection for agents</td><td>Entra</td><td class="n">No</td><td class="y">Yes</td></tr>
+    <tr><td>Network controls for agent traffic on user devices and Copilot Studio agents</td><td>Entra</td><td class="n">No</td><td class="y">Yes</td></tr>
+    <tr><td>Audit, eDiscovery, data lifecycle, Communication Compliance, Compliance Manager for agents</td><td>Purview</td><td class="n">No</td><td class="y">Yes</td></tr>
+    <tr><td>DSPM AI observability, Insider Risk Management, sensitivity labels, DLP for agents</td><td>Purview</td><td class="n">No</td><td class="y">Yes</td></tr>
+    <tr><td>Shadow AI endpoint sync, agent posture, threat detection and blocking, hunting</td><td>Defender</td><td class="n">No</td><td class="y">Yes</td></tr>
+    <tr><td>Device compliance for agent Conditional Access, policy-controlled runtime, block unsanctioned local agents</td><td>Intune</td><td class="n">No</td><td class="y">Yes</td></tr>
+    </tbody>
+  </table></div>
+  <p>Agent 365 is included in Microsoft 365 E7 and sold as a per-user add-on. The <a href="https://www.microsoft.com/licensing/faqs/122" target="_blank" rel="noopener">licensing FAQ</a> sets the prerequisites for buying it. Enterprise: Microsoft 365 E5, or E3 (or Office 365 E3 plus EMS E3) with both Defender Suite and Purview Suite. Frontline: F1 or F3 with Defender and Purview Suite FLW. SMB: Business Premium, plus the SMB Defender and Purview suites before the premium features work. Education: A5, or A3 with the education suites. The <a href="https://www.microsoft.com/microsoft-agent-365" target="_blank" rel="noopener">pricing page</a> lists the add-on at <span data-val="price.addon"></span> and E7 at <span data-val="price.e7"></span>, <span data-val="price.note"></span>; check your own region and agreement. An admin-led trial of <span data-val="trial"></span> is available from the admin centre banner.</p>
+  <p>Two Learn pages list Entra ID P1 or P2 beside Agent 365 as a prerequisite. That is not a second purchase: every plan that qualifies you to buy Agent 365 already carries Entra ID P1 at least: E5, A5 and Defender Suite include P2, and E3, EMS E3, Business Premium, F1 and F3 include P1 (<a href="https://learn.microsoft.com/en-us/entra/fundamentals/licensing" target="_blank" rel="noopener">Entra licensing</a>). So:</p>
+  <ul>
+    <li><strong>Covered by your base plan.</strong> <a href="https://learn.microsoft.com/en-us/entra/identity/conditional-access/agent-id" target="_blank" rel="noopener">Conditional Access for agents</a> needs an Agent 365 licence for each user, and Microsoft says enforcement of that requirement is coming. The Entra ID P1 it also lists comes with your base plan.</li>
+    <li><strong>Covered by your base plan.</strong> <a href="https://learn.microsoft.com/en-us/entra/id-governance/agent-id-governance-overview" target="_blank" rel="noopener">Entra ID Governance for agents</a> is the same: Microsoft 365 E7, or Agent 365 on any qualifying base plan. The agent features (access packages for agents, sponsor tasks in lifecycle workflows) sit in the Agent 365 column of the governance licensing table; the rest of ID Governance still needs its own licence or the Entra Suite.</li>
+    <li><strong>The one extra.</strong> Learn's Conditional Access page says network controls for agents need <a href="https://learn.microsoft.com/en-us/entra/global-secure-access/overview-what-is-global-secure-access" target="_blank" rel="noopener">Microsoft Entra Internet Access</a>, standalone or in the Entra Suite, which E7 includes. The <a href="https://www.microsoft.com/licensing/faqs/122" target="_blank" rel="noopener">FAQ</a> narrows that: Agent 365 on E3 or P1 covers the network controls for cloud agents such as Copilot Studio, while controls for local agents on devices need the Entra Suite or standalone Internet Access.</li>
+    <li><strong>Free for everyone.</strong> <a href="https://learn.microsoft.com/en-us/entra/agent-id/what-is-microsoft-entra-agent-id" target="_blank" rel="noopener">Entra Agent ID</a> is available to all Entra customers. Extending Entra security to those identities needs Agent 365.</li>
+  </ul>
+  </section>
+
+  <section id="s2-2" data-search>
+  <h3>2.2 The <span data-val="transitionDate"></span> transition</h3>
+  <p>Agent security for Copilot Studio and Foundry moved licences. From <span data-val="transitionDate"></span>, discovery, posture, detection and real-time protection for those platforms <a href="https://learn.microsoft.com/en-us/defender-xdr/security-for-ai/transition-agent-security-to-agent-365" target="_blank" rel="noopener">require Agent 365</a> and are no longer covered by Defender for Cloud Apps or Defender for Cloud. The <code>AIAgentsInfo</code> hunting table is replaced by <code>AgentsInfo</code>. Legacy real-time protection rules set to Block stopped enforcing on that date and must be redefined under Settings, Security for AI, Policies and rules. Third-party cloud agents previously found through Defender for Cloud connectors now arrive through registry sync. Update saved hunting queries and redefine blocking rules first.</p>
+  </section>
+
+  <section id="s2-3" data-search>
+  <h3>2.3 Roles you will need</h3>
+  <p><a href="https://learn.microsoft.com/en-us/microsoft-365/admin/manage/agent-roles-perms" target="_blank" rel="noopener">Agent management roles</a> are Entra roles. Only two can act.</p>
+  <div class="tbl"><table>
+    <thead><tr><th>Role</th><th>View insights</th><th>View registry</th><th>Install, approve, manage</th></tr></thead>
+    <tbody>
+    <tr><td>Global Administrator</td><td class="y">Yes</td><td class="y">Yes</td><td class="y">Yes</td></tr>
+    <tr><td>AI Administrator</td><td class="y">Yes</td><td class="y">Yes</td><td class="y">Yes</td></tr>
+    <tr><td>Global Reader</td><td class="y">Yes</td><td class="y">Yes</td><td>Read-only tools and settings</td></tr>
+    <tr><td>AI Reader</td><td class="y">Yes</td><td class="y">Yes</td><td>Read-only tools and settings</td></tr>
+    <tr><td>Security Administrator</td><td class="y">Yes</td><td class="y">Yes</td><td class="n">No</td></tr>
+    <tr><td>Security Reader</td><td class="y">Yes</td><td class="y">Yes</td><td class="n">No</td></tr>
+    <tr><td>Reports Reader</td><td class="y">Yes</td><td class="y">Yes</td><td class="n">No</td></tr>
+    <tr><td>User Experience Success Manager</td><td class="y">Yes</td><td class="y">Yes</td><td class="n">No</td></tr>
+    </tbody>
+  </table></div>
+  <p>The enforcing products add their own roles. Following a Defender or Entra risk link from the registry needs Security Reader, Security Administrator or Global Reader. Following a Purview risk link needs an Insider Risk Management Analyst or Investigator role, which AI Administrator lacks. Custom policy templates using custom security attributes need Attribute Assignment Administrator. Defender's Security for AI needs Security Administrator. Purview setup expects Compliance Administrator. Global Secure Access needs its own Administrator role plus Conditional Access Administrator. Sponsor lifecycle workflows need Lifecycle Workflows Administrator. No one person will hold all of these in a well-run tenant, so staff the evaluation accordingly.</p>
+  </section>
+</section>
+
+<section class="block" id="next">
+  <div class="shead"><span class="n">→</span><h2>Where this sits in the guide</h2></div>
+  <p>Licensing is chapter 2 because nothing in the Observe, Govern and Secure chapters appears until the licence is active and the roles above are held. Once they are, the next question is how agents differ from the applications you already govern.</p>
+  <div class="hero-actions" aria-label="Continue reading">
+    <a href="index.html#s3">Chapter 3: agents do not behave like applications <span aria-hidden="true">→</span></a>
+    <a href="index.html#s10">What you can deploy today <span aria-hidden="true">→</span></a>
+  </div>
+</section>
+
+</article>
+</main>
+</div>
+
+<footer>
+  <div class="in">
+    <div>
+      <p><strong>About this page</strong></p>
+      <p>Chapter 2 of <a href="index.html">Agent 365 for security and compliance engineers</a>, published on its own so it can be found on its own. Assembled by Rodney Mhungu. Every factual claim is taken from Microsoft Learn or microsoft.com and linked at the point of use. Built on my <a href="https://github.com/rodneymhungu/field-guide-principles" target="_blank" rel="noopener">field guide principles</a>. Reviewed <span data-val="reviewed"></span>.</p>
+      <p><strong>Found an error?</strong> <a href="https://github.com/rodneymhungu/agent-365-guide/issues/new?title=Correction%3A%20licensing&amp;labels=correction" target="_blank" rel="noopener">Open an issue</a> with the paragraph and the page that disagrees. It goes into the next review.</p>
+    </div>
+    <div>
+      <p><strong>Sources</strong> (Microsoft Learn unless stated)</p>
+      <ul>
+        <li>Licensing: <a href="https://www.microsoft.com/microsoft-agent-365" target="_blank" rel="noopener">Microsoft Agent 365 plans</a>, <a href="https://www.microsoft.com/licensing/faqs/122" target="_blank" rel="noopener">Agent 365 licensing FAQ</a> (microsoft.com/licensing), <a href="https://learn.microsoft.com/en-us/entra/fundamentals/licensing" target="_blank" rel="noopener">Microsoft Entra licensing</a></li>
+        <li>Agent 365: <a href="https://learn.microsoft.com/en-us/office365/servicedescriptions/microsoft-agent-365/microsoft-agent-365" target="_blank" rel="noopener">service description</a>, <a href="https://learn.microsoft.com/en-us/microsoft-agent-365/overview" target="_blank" rel="noopener">overview</a>, <a href="https://learn.microsoft.com/en-us/microsoft-agent-365/frontier" target="_blank" rel="noopener">Frontier previews</a></li>
+        <li>Microsoft 365 admin centre: <a href="https://learn.microsoft.com/en-us/microsoft-365/admin/manage/agent-roles-perms" target="_blank" rel="noopener">roles and permissions</a></li>
+        <li>Entra: <a href="https://learn.microsoft.com/en-us/entra/identity/conditional-access/agent-id" target="_blank" rel="noopener">Conditional Access for agents</a>, <a href="https://learn.microsoft.com/en-us/entra/id-governance/agent-id-governance-overview" target="_blank" rel="noopener">governing agent identities</a>, <a href="https://learn.microsoft.com/en-us/entra/agent-id/what-is-microsoft-entra-agent-id" target="_blank" rel="noopener">what is Agent ID</a>, <a href="https://learn.microsoft.com/en-us/entra/global-secure-access/overview-what-is-global-secure-access" target="_blank" rel="noopener">Global Secure Access</a></li>
+        <li>Defender XDR: <a href="https://learn.microsoft.com/en-us/defender-xdr/security-for-ai/transition-agent-security-to-agent-365" target="_blank" rel="noopener">transition to Agent 365</a></li>
+      </ul>
+      <p><a href="#top">Back to top</a></p>
+    </div>
+  </div>
+</footer>
+
+<script src="guide.js"></script>
+<!-- Privacy-friendly analytics (GoatCounter): page views, no cookies. -->
+<script
+  data-goatcounter="https://rodneymhungu.goatcounter.com/count"
+  async
+  src="https://gc.zgo.at/count.js"></script>
+</body>
+</html>
