@@ -66,6 +66,7 @@
         <a href="#s4">Which product enforces what <span aria-hidden="true">→</span></a>
         <a href="#s2-1">What your licence unlocks <span aria-hidden="true">↓</span></a>
       </div>
+      <p class="muted small hurry">In a hurry? <a href="#s4-1">4.1</a> maps what you need to stop to the control that stops it, <a href="#s9">9</a> is the first ten moves, <a href="#s10">10</a> is what you can deploy today.</p>
     </div>
     <figure class="route-plate">
       <div class="plate">
@@ -163,7 +164,19 @@
     <tr><td>Device compliance for agent Conditional Access, policy-controlled runtime, block unsanctioned local agents</td><td>Intune</td><td class="n">No</td><td class="y">Yes</td></tr>
     </tbody>
   </table></div>
-  <p>Agent 365 is included in Microsoft 365 E7 and sold as a per-user add-on. The <a href="https://www.microsoft.com/licensing/faqs/122" target="_blank" rel="noopener">licensing FAQ</a> sets the prerequisites for buying it. Enterprise: Microsoft 365 E5, or E3 (or Office 365 E3 plus EMS E3) with both Defender Suite and Purview Suite. Frontline: F1 or F3 with Defender and Purview Suite FLW. SMB: Business Premium, plus the SMB Defender and Purview suites before the premium features work. Education: A5, or A3 with the education suites. The <a href="https://www.microsoft.com/microsoft-agent-365" target="_blank" rel="noopener">pricing page</a> lists the add-on at <span data-val="price.addon"></span> and E7 at <span data-val="price.e7"></span>, <span data-val="price.note"></span>; check your own region and agreement. An admin-led trial of <span data-val="trial"></span> is available from the admin centre banner.</p>
+  <p>Agent 365 is included in Microsoft 365 E7 and sold as a per-user add-on. The <a href="https://www.microsoft.com/licensing/faqs/122" target="_blank" rel="noopener">licensing FAQ</a> sets what you must already own before you can buy it.</p>
+  <div class="tbl"><table>
+    <thead><tr><th>Segment</th><th>Base plan that qualifies</th><th>Also needed before you can buy</th></tr></thead>
+    <tbody>
+    <tr><td>Enterprise</td><td>Microsoft 365 E5</td><td>Nothing further</td></tr>
+    <tr><td>Enterprise</td><td>Microsoft 365 E3, or Office 365 E3 plus EMS E3</td><td>Defender Suite and Purview Suite</td></tr>
+    <tr><td>Frontline</td><td>F1 or F3</td><td>Defender and Purview Suite FLW</td></tr>
+    <tr><td>SMB</td><td>Business Premium</td><td>The SMB Defender and Purview suites, before the premium features work</td></tr>
+    <tr><td>Education</td><td>A5</td><td>Nothing further</td></tr>
+    <tr><td>Education</td><td>A3</td><td>The education suites</td></tr>
+    </tbody>
+  </table></div>
+  <p>The <a href="https://www.microsoft.com/microsoft-agent-365" target="_blank" rel="noopener">pricing page</a> lists the add-on at <span data-val="price.addon"></span> and E7 at <span data-val="price.e7"></span>, <span data-val="price.note"></span>; check your own region and agreement. An admin-led trial of <span data-val="trial"></span> is available from the admin centre banner.</p>
   <p>Two Learn pages list Entra ID P1 or P2 beside Agent 365 as a prerequisite. That is not a second purchase: every plan that qualifies you to buy Agent 365 already carries Entra ID P1 at least: E5, A5 and Defender Suite include P2, and E3, EMS E3, Business Premium, F1 and F3 include P1 (<a href="https://learn.microsoft.com/en-us/entra/fundamentals/licensing" target="_blank" rel="noopener">Entra licensing</a>). So:</p>
   <ul>
     <li><strong>Covered by your base plan.</strong> <a href="https://learn.microsoft.com/en-us/entra/identity/conditional-access/agent-id" target="_blank" rel="noopener">Conditional Access for agents</a> needs an Agent 365 licence for each user, and Microsoft says enforcement of that requirement is coming. The Entra ID P1 it also lists comes with your base plan.</li>
@@ -194,7 +207,20 @@
     <tr><td>User Experience Success Manager</td><td class="y">Yes</td><td class="y">Yes</td><td class="n">No</td></tr>
     </tbody>
   </table></div>
-  <p>The enforcing products add their own roles. Following a Defender or Entra risk link from the registry needs Security Reader, Security Administrator or Global Reader. Following a Purview risk link needs an Insider Risk Management Analyst or Investigator role, which AI Administrator lacks. Custom policy templates using custom security attributes need Attribute Assignment Administrator. Defender's Security for AI needs Security Administrator. Purview setup expects Compliance Administrator. Global Secure Access needs its own Administrator role plus Conditional Access Administrator. Sponsor lifecycle workflows need Lifecycle Workflows Administrator. No one person will hold all of these in a well-run tenant, so staff the evaluation accordingly.</p>
+  <p>The enforcing products add their own roles.</p>
+  <div class="tbl"><table>
+    <thead><tr><th>To do this</th><th>You need</th></tr></thead>
+    <tbody>
+    <tr><td>Follow a Defender or Entra risk link from the registry</td><td>Security Reader, Security Administrator or Global Reader</td></tr>
+    <tr><td>Follow a Purview risk link</td><td>Insider Risk Management Analyst or Investigator, which AI Administrator lacks</td></tr>
+    <tr><td>Build custom policy templates on custom security attributes</td><td>Attribute Assignment Administrator</td></tr>
+    <tr><td>Set up Defender Security for AI</td><td>Security Administrator</td></tr>
+    <tr><td>Set up Purview</td><td>Compliance Administrator</td></tr>
+    <tr><td>Configure Global Secure Access</td><td>Global Secure Access Administrator plus Conditional Access Administrator</td></tr>
+    <tr><td>Run sponsor lifecycle workflows</td><td>Lifecycle Workflows Administrator</td></tr>
+    </tbody>
+  </table></div>
+  <p>No one person will hold all of these in a well-run tenant, so staff the evaluation accordingly.</p>
   </section>
 </section>
 
@@ -440,7 +466,15 @@
     <figcaption><b class="fn"></b> The exposure map: a local agent, the identity it runs under, and everything that identity can reach. <span class="src">Source: workshop deck, slide 57, demo tenant. Asset <code>deck-s057</code>.</span></figcaption>
   </figure>
   </div>
-  <p data-tier="gsa-agent-discovery">Global Secure Access adds a third layer. <a href="https://learn.microsoft.com/en-us/entra/global-secure-access/concept-ai-agent-discovery" target="_blank" rel="noopener">AI agent discovery</a>, <span class="st" data-st="gsa-agent-discovery"></span>, classifies agents reaching the internet from devices with the GSA client as managed or shadow by whether they hold an Entra Agent ID, and attributes traffic to user, device and process. <a href="https://learn.microsoft.com/en-us/entra/global-secure-access/concept-shadow-ai-discovery" target="_blank" rel="noopener">Shadow AI discovery</a> is application-level and uses the Defender for Cloud Apps catalogue to score AI SaaS, model provider APIs and SaaS MCP servers. <a href="https://learn.microsoft.com/en-us/entra/global-secure-access/concept-generative-ai-insights" target="_blank" rel="noopener">Generative AI Insights</a>, <span class="st" data-st="gsa-genai-insights"></span>, logs prompt content to eleven supported applications and every MCP operation to remote servers, discovered by protocol inspection rather than catalogue. All three need Internet Access traffic forwarding; prompt and MCP logging need TLS inspection except on the Copilot Studio path.</p>
+  <div data-tier="gsa-agent-discovery">
+  <p>Global Secure Access adds a third layer, three features with different scopes.</p>
+  <ul>
+    <li><a href="https://learn.microsoft.com/en-us/entra/global-secure-access/concept-ai-agent-discovery" target="_blank" rel="noopener">AI agent discovery</a>, <span class="st" data-st="gsa-agent-discovery"></span>, classifies agents reaching the internet from devices with the GSA client as managed or shadow by whether they hold an Entra Agent ID, and attributes traffic to user, device and process.</li>
+    <li><a href="https://learn.microsoft.com/en-us/entra/global-secure-access/concept-shadow-ai-discovery" target="_blank" rel="noopener">Shadow AI discovery</a> is application-level and uses the Defender for Cloud Apps catalogue to score AI SaaS, model provider APIs and SaaS MCP servers.</li>
+    <li><a href="https://learn.microsoft.com/en-us/entra/global-secure-access/concept-generative-ai-insights" target="_blank" rel="noopener">Generative AI Insights</a>, <span class="st" data-st="gsa-genai-insights"></span>, logs prompt content to eleven supported applications and every MCP operation to remote servers, discovered by protocol inspection rather than catalogue.</li>
+  </ul>
+  <p>All three need Internet Access traffic forwarding; prompt and MCP logging need TLS inspection except on the Copilot Studio path.</p>
+  </div>
   </section>
 
   <section id="s5-6" data-search>
@@ -633,7 +667,16 @@
   <section id="s7-1" data-search>
   <h3>7.1 Identity <span class="badge" data-badge="agent-id"></span></h3>
   <h4>The four objects in Entra Agent ID</h4>
-  <p><a href="https://learn.microsoft.com/en-us/entra/agent-id/what-are-agent-identities" target="_blank" rel="noopener">Entra Agent ID</a> introduces four objects. An agent identity blueprint is a reusable template for a class of agents: description, app roles, verified publisher, optional claims, and the credentials. A blueprint principal is created automatically when a blueprint enters a tenant and is the object that obtains Graph tokens to create identities. An agent identity is a service principal subtype created from a blueprint; it has no credentials of its own. An agent user is an optional Entra user account paired one-to-one with an identity for scenarios needing a user object, such as a mailbox.</p>
+  <p><a href="https://learn.microsoft.com/en-us/entra/agent-id/what-are-agent-identities" target="_blank" rel="noopener">Entra Agent ID</a> introduces four objects.</p>
+  <div class="tbl"><table>
+    <thead><tr><th>Object</th><th>What it is</th><th>What actually happens</th></tr></thead>
+    <tbody>
+    <tr><td>Agent identity blueprint</td><td>A reusable template for a class of agents: description, app roles, verified publisher, optional claims</td><td>Holds the credentials</td></tr>
+    <tr><td>Blueprint principal</td><td>Created automatically when a blueprint enters a tenant</td><td>Obtains the Graph tokens that create identities</td></tr>
+    <tr><td>Agent identity</td><td>A service principal subtype created from a blueprint</td><td>Has no credentials of its own</td></tr>
+    <tr><td>Agent user</td><td>An optional Entra user account paired one-to-one with an identity</td><td>Exists only where a user object is needed, such as a mailbox</td></tr>
+    </tbody>
+  </table></div>
   <p>The blueprint is what the agent is; the identity is who is acting. Policies at blueprint level cover every identity created from it, which is how controls scale across hundreds of instances.</p>
   <p>Managed identities are the preferred blueprint credential, certificates are acceptable, and client secrets should not be used in production. Blueprints and their children cannot start interactive authorisation flows, so delegated permissions must be preauthorised as inheritable permissions on the blueprint.</p>
 

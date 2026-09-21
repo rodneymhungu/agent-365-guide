@@ -219,6 +219,8 @@ def plan():
 def brave():
     key = os.environ.get("BRAVE_API_KEY")
     if not key:
+        problems.append("BRAVE_API_KEY is not set, so public mentions are never searched (issue #10). "
+                        "Free tier at brave.com/search/api; add it under Settings, Secrets and variables, Actions.")
         return "BRAVE_API_KEY not set; public mention search skipped (issue #10)."
     h = {"X-Subscription-Token": key, "Accept": "application/json"}
     queries = [

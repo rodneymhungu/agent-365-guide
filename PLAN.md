@@ -7,6 +7,31 @@ the section "How an agent picks this up" at the bottom.
 
 Started 21 September 2026. Reviewed every Monday alongside the weekly digest.
 
+## Where Rodney left off, 21 September 2026
+
+Read this first when you come back. Everything below the line was done on
+21 September; these are the things that were still open when you left.
+
+1. **GoatCounter token (blocks all measurement).** Sign in to
+   rodneymhungu.goatcounter.com, Settings, API tokens, create a read-only
+   "statistics" token. In this repository: Settings, Secrets and variables,
+   Actions, update `GOATCOUNTER_TOKEN`. Then Actions, "Weekly feedback
+   digest", Run workflow. The new digest should show visitors and referrers
+   instead of "Action needed". About five minutes.
+2. **Brave Search key (optional, issue #10).** Free key at
+   brave.com/search/api, saved as `BRAVE_API_KEY` in the same place. The
+   digest then reports public mentions.
+3. **Field guide principles repository.** `Dev/field-guide-principles` has
+   uncommitted edits from 9 September (field notes describe real events,
+   distinct products stay distinct) plus today's amendment of "one HTML
+   file" to "one page per topic, one data file". Review, commit, push.
+4. **Next rotation focus is 4, distribution.** One LinkedIn post linking a
+   section (`licensing.html` or `#s4-1`, not the home page), one session
+   follow-up, one account outreach. Log each here with the link and the
+   referrer to expect.
+5. **Writing review.** The `ai-writing-review` skill is now installed for
+   Claude Code; run it on the next prose change and decide each flag.
+
 ## Target
 
 2,000 high-value visitors a week to
@@ -67,6 +92,7 @@ Newest first. One line per item shipped, with the pull request.
 
 | Date | Focus | Shipped | Evidence |
 |---|---|---|---|
+| 21 September 2026 | Skim pass | "In a hurry?" line under the hero actions pointing at 4.1, 9 and 10. Four dense paragraphs became tables or a list: purchase prerequisites (2.1), roles by task (2.3), the three Global Secure Access features (5.5), the four Entra Agent ID objects (7.1). Stale worktree copy removed. Brave key surfaced under Action needed in the digest. | #23 |
 | 21 September 2026 | 2 | Chapter 4 gains a scenario-to-control table (4.1): fifteen scenarios, each landing on the control, the enforcing product, a status badge rendered from the data, and the section to read. GA only hides the rows you cannot deploy yet. | #22 |
 | 21 September 2026 | 1 | Chapter 2 published as its own page, `licensing.html`, with its own title, description, canonical link, card and JSON-LD, listed in the sitemap. Data, styles and behaviour moved to shared files so both pages render from one data object. A build check keeps the two copies identical. | #20 |
 | 21 September 2026 | Plan | Tracking issue #21 opened and pinned so the plan is the first thing on the repository page. | #21 |

@@ -456,3 +456,4 @@ footer{border-block-start:8px solid var(--ink);background:var(--paper-2)}
 @media (pointer:coarse){button,.sbtn,.pat button,.plan button,.tscen button,.chapters button{min-height:44px}}
 @media (prefers-reduced-motion:reduce){.route-line{animation:none;stroke-dashoffset:0}.route-runner{display:none}.hero-actions a{transition:none}}
 
+.hurry{margin-block-start:1rem;max-width:54ch}
