@@ -162,32 +162,6 @@
       "replace_when": "a newer deck or blog shows this view with changed UI or a GA label"
     },
     {
-      "id": "deck-s056",
-      "file": "images/deck-s056.png",
-      "kind": "deck",
-      "feature": "Defender local agents",
-      "view": "AI Assets: local agents inventory with device and user context",
-      "used_in": "#s5-5",
-      "keywords": [
-        "defender",
-        "local agents",
-        "inventory",
-        "mcp servers"
-      ],
-      "source": {
-        "deck": "FSI NL Agent 365 event 02.09.pptx",
-        "deck_location": "OneDrive/Dev/Agent 365 Front-End Slides/",
-        "slide": 56,
-        "slide_title": "Defender discovers and profiles local agents",
-        "media_in_pptx": "ppt/media/image204.png",
-        "extracted_copy": "deck-screenshots/s056-*.png"
-      },
-      "crop": null,
-      "downscaled_to_max_width": 1600,
-      "tenant_note": "demo tenant data, approved by marketing",
-      "replace_when": "a newer deck or blog shows this view with changed UI or a GA label"
-    },
-    {
       "id": "deck-s057",
       "file": "images/deck-s057.png",
       "kind": "deck",
@@ -207,33 +181,6 @@
         "slide_title": "Defender maps local agent exposure",
         "media_in_pptx": "ppt/media/image205.png",
         "extracted_copy": "deck-screenshots/s057-*.png"
-      },
-      "crop": null,
-      "downscaled_to_max_width": 1600,
-      "tenant_note": "demo tenant data, approved by marketing",
-      "replace_when": "a newer deck or blog shows this view with changed UI or a GA label"
-    },
-    {
-      "id": "deck-s059",
-      "file": "images/deck-s059.png",
-      "kind": "deck",
-      "feature": "Defender runtime block",
-      "view": "Claude Code tool call blocked by Defender with Windows Security toast",
-      "used_in": "#s7-4",
-      "keywords": [
-        "defender for endpoint",
-        "runtime protection",
-        "claude code",
-        "prompt injection",
-        "block"
-      ],
-      "source": {
-        "deck": "FSI NL Agent 365 event 02.09.pptx",
-        "deck_location": "OneDrive/Dev/Agent 365 Front-End Slides/",
-        "slide": 59,
-        "slide_title": "Defender enforces security policies during runtime",
-        "media_in_pptx": "ppt/media/image207.png",
-        "extracted_copy": "deck-screenshots/s059-*.png"
       },
       "crop": null,
       "downscaled_to_max_width": 1600,
@@ -270,32 +217,6 @@
         "h": 868,
         "reason": "remove desktop wallpaper; keep PowerShell, Claude Code and DLP dialogue"
       },
-      "downscaled_to_max_width": 1600,
-      "tenant_note": "demo tenant data, approved by marketing",
-      "replace_when": "a newer deck or blog shows this view with changed UI or a GA label"
-    },
-    {
-      "id": "deck-s061",
-      "file": "images/deck-s061.png",
-      "kind": "deck",
-      "feature": "Defender alert",
-      "view": "Suspicious AI prompt injection alert with process tree",
-      "used_in": "#s7-4",
-      "keywords": [
-        "defender",
-        "alert",
-        "process tree",
-        "claude.exe"
-      ],
-      "source": {
-        "deck": "FSI NL Agent 365 event 02.09.pptx",
-        "deck_location": "OneDrive/Dev/Agent 365 Front-End Slides/",
-        "slide": 61,
-        "slide_title": "Defender security alerts include session context for investigation",
-        "media_in_pptx": "ppt/media/image209.png",
-        "extracted_copy": "deck-screenshots/s061-*.png"
-      },
-      "crop": null,
       "downscaled_to_max_width": 1600,
       "tenant_note": "demo tenant data, approved by marketing",
       "replace_when": "a newer deck or blog shows this view with changed UI or a GA label"
@@ -1065,12 +986,12 @@
       "replace_when": "the Learn page replaces its screenshot; re-download from the image URL"
     },
     {
-      "id": "defender-local-agents-2026-09",
-      "file": "images/defender-local-agents-2026-09.png",
-      "kind": "portal",
-      "feature": "Defender local agents",
-      "view": "AI Assets (preview), Local agents tab: 42 monitored agents, inventory by agent, version, device, OS, account; ChatGPT Desktop detail pane with device, user, MCP servers and local MCP servers",
-      "used_in": "distribution/2026-09-21-linkedin.md (article cover); candidate replacement for deck-s056 in #s5-5",
+      "id": "learn-mde-discovery",
+      "file": "images/learn-mde-discovery.png",
+      "kind": "learn",
+      "feature": "Defender for Endpoint local agents",
+      "view": "AI Assets (preview), Local agents tab: 42 monitored agents, inventory by agent, version, device, OS and account; ChatGPT Desktop detail pane with MCP servers and local MCP servers",
+      "used_in": "#s5-5",
       "keywords": [
         "defender",
         "local agents",
@@ -1080,15 +1001,65 @@
         "preview"
       ],
       "source": {
-        "portal": "Microsoft Defender, Assets, AI agents, Local agents",
-        "captured_by": "Rodney Mhungu",
-        "captured": "2026-09-21",
-        "original": "Downloads/discovery-overview.png, 4394 by 2457"
+        "learn_page": "https://learn.microsoft.com/en-us/defender-endpoint/local-agent-discovery-overview",
+        "media": "https://learn.microsoft.com/en-us/defender-endpoint/media/local-agent-discovery-overview/discovery-overview.png",
+        "licence": "CC BY 4.0"
       },
       "crop": null,
       "downscaled_to_max_width": 1600,
-      "tenant_note": "demo tenant (CONTOSO, DEV-WIN11-*, ENG-WKS-*); published by Rodney on LinkedIn on 22 September 2026",
-      "replace_when": "the page loses its preview label or the layout changes"
+      "replaces": "deck-s056",
+      "replaced_on": "2026-09-21",
+      "replace_when": "the Learn page replaces the image or the layout changes"
+    },
+    {
+      "id": "learn-mde-block-toast",
+      "file": "images/learn-mde-block-toast.png",
+      "kind": "learn",
+      "feature": "Defender for Endpoint runtime protection",
+      "view": "Claude Code terminal: Read readme.md blocked by Defender, tool result blocked message, Windows Security toast",
+      "used_in": "#s7-4",
+      "keywords": [
+        "defender",
+        "runtime protection",
+        "claude code",
+        "block",
+        "toast"
+      ],
+      "source": {
+        "learn_page": "https://learn.microsoft.com/en-us/defender-endpoint/configure-ai-agent-runtime-protection",
+        "media": "https://learn.microsoft.com/en-us/defender-endpoint/media/configure-ai-agent-runtime-protection/ai-runtime-agent-block-and-toast.png",
+        "licence": "CC BY 4.0"
+      },
+      "crop": null,
+      "downscaled_to_max_width": 1600,
+      "replaces": "deck-s059",
+      "replaced_on": "2026-09-21",
+      "replace_when": "the Learn page replaces the image or the layout changes"
+    },
+    {
+      "id": "learn-mde-pi-alert",
+      "file": "images/learn-mde-pi-alert.png",
+      "kind": "learn",
+      "feature": "Defender for Endpoint runtime protection",
+      "view": "Suspicious AI prompt injection alert: process tree with claude.exe, Trojan:AIMCP/PromptInjection.A!Hook, alert details and MITRE technique",
+      "used_in": "#s7-4",
+      "keywords": [
+        "defender",
+        "runtime protection",
+        "alert",
+        "prompt injection",
+        "process tree"
+      ],
+      "source": {
+        "learn_page": "https://learn.microsoft.com/en-us/defender-endpoint/configure-ai-agent-runtime-protection",
+        "media": "https://learn.microsoft.com/en-us/defender-endpoint/media/configure-ai-agent-runtime-protection/runtime-protection-suspicious-prompt-injection-alert.png",
+        "licence": "CC BY 4.0"
+      },
+      "crop": null,
+      "downscaled_to_max_width": 1600,
+      "replaces": "deck-s061",
+      "replaced_on": "2026-09-21",
+      "replace_when": "the Learn page replaces the image or the layout changes"
     }
   ]
 }
