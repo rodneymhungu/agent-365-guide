@@ -298,7 +298,7 @@ def article_draft(weeks):
     lines = ["# LinkedIn article draft (every second week; copy, edit, post from the computer)", "",
              "Before posting: run ai-writing-review on this draft and decide each flag.", "",
              "Headline: What changed this week in the Agent 365 field guide", "",
-             "The Agent 365 field guide for security and compliance engineers: which product enforces each control, what it needs, and what works today.", ""]
+             "Updated this week: the Agent 365 field guide for security and compliance engineers.", ""]
     if learn:
         lines.append(f"{words.get(n, str(n))} thing{'s' if n != 1 else ''} moved on Microsoft Learn, and the guide moved with {'them' if n != 1 else 'it'}:")
         lines.append("")
@@ -314,8 +314,8 @@ def article_draft(weeks):
             parts.append(f"{text.rstrip('.')} ({SHORT}#{sec})" if sec else text.rstrip('.'))
         lines.append("• Also new to the guide: " + "; ".join(parts) + ".")
         lines.append("")
-    lines += ["Every claim in the guide links to Learn. GA/Preview status badges follow Microsoft's release notes, checked every Monday.", "",
-              "What you can deploy today:", ARTICLE_LINK, "",
+    lines += ["Every claim in this guide links to Learn. GA/Preview status badges follow Microsoft's release notes, checked every Monday.", "",
+              "See what changed and what you can deploy today: " + ARTICLE_LINK, "",
               "Cover image: a Learn screenshot or the figure the article is about; see distribution/README.md.",
               "When posted, save the article as distribution/<date>-linkedin.md with the URL on its Posted line and log it under focus 4 in PLAN.md."]
     return "\n".join(lines)
