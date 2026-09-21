@@ -84,7 +84,13 @@ jobs:
              Keep the author's voice, British spelling, and the existing sentence rhythm. Do not
              add new sections, do not restructure, do not touch "Rodney's field note" callouts.
           3. If a capability's status moved (preview → GA, new Frontier preview, retired), update
-             the matching entry in the capabilities array in a365-data.js. Use the existing tier
+             the matching entry in the capabilities array in a365-data.js. A page dropping
+             "(Preview)" from its title or losing its prerelease notice is NOT a GA signal on its
+             own: Learn pages are relabelled ahead of, and inconsistently with, the product. Move a
+             tier to ga only when the product's own release notes or What's new page carry a GA
+             entry for that capability (for Defender for Endpoint: whats-new-in-microsoft-defender-endpoint;
+             for Defender XDR: its release notes). Otherwise leave the tier, add a note saying the
+             label moved, and list it under "Needs a human decision". Use the existing tier
              keys: ga, preview, frontier, roadmap. Update the note field if a date or licence
              dependency changed. Then set reviewed to today's date in the form "5 September 2026"
              and add one entry to the changes array (newest first) with the section id and a
