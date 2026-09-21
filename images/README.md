@@ -10,11 +10,11 @@ Every screenshot on the page, where it came from, and where it is used. Generate
 | `deck-s048` | #s7-3 | Defender advanced hunting: AgentsInfo query for MCP tools with maker credentials | Deck `FSI NL Agent 365 event 02.09.pptx`, slide 48 (`ppt/media/image195.png`) | none, downscaled to 1600px |
 | `deck-s049` | #s7-3 | Defender real-time protection: Policies and rules: default audit rule and custom block rule | Deck `FSI NL Agent 365 event 02.09.pptx`, slide 49 (`ppt/media/image196.png`) | none, downscaled to 1600px |
 | `deck-s055` | #s5-5 | Shadow AI page: Shadow AI (Frontier) list in Microsoft 365 admin center | Deck `FSI NL Agent 365 event 02.09.pptx`, slide 55 (`ppt/media/image203.png`) | none, downscaled to 1600px |
-| `deck-s056` | #s5-5 | Defender local agents: AI Assets: local agents inventory with device and user context | Deck `FSI NL Agent 365 event 02.09.pptx`, slide 56 (`ppt/media/image204.png`) | none, downscaled to 1600px |
+| `learn-mde-discovery` | #s5-5 | Defender AI Assets (preview), Local agents tab: inventory and the ChatGPT Desktop detail pane with MCP servers | Learn, Local AI agent discovery, `discovery-overview.png`, CC BY 4.0 | none, downscaled to 1600px |
 | `deck-s057` | #s5-5 | Defender exposure map: Local agent exposure map to cloud resources | Deck `FSI NL Agent 365 event 02.09.pptx`, slide 57 (`ppt/media/image205.png`) | none, downscaled to 1600px |
-| `deck-s059` | #s7-4 | Defender runtime block: Claude Code tool call blocked by Defender with Windows Security toast | Deck `FSI NL Agent 365 event 02.09.pptx`, slide 59 (`ppt/media/image207.png`) | none, downscaled to 1600px |
+| `learn-mde-block-toast` | #s7-4 | Claude Code: Read blocked by Defender, tool result blocked, Windows Security toast | Learn, Set up AI agent runtime protection, `ai-runtime-agent-block-and-toast.png`, CC BY 4.0 | none, downscaled to 1600px |
 | `deck-s060` | #s7-4 | Purview runtime DLP block: Claude Code read blocked by Purview DLP with dialogue | Deck `FSI NL Agent 365 event 02.09.pptx`, slide 60 (`ppt/media/image208.png`) | x370 y110 1299×868: remove desktop wallpaper; keep PowerShell, Claude Code and DLP dialogue |
-| `deck-s061` | #s7-4 | Defender alert: Suspicious AI prompt injection alert with process tree | Deck `FSI NL Agent 365 event 02.09.pptx`, slide 61 (`ppt/media/image209.png`) | none, downscaled to 1600px |
+| `learn-mde-pi-alert` | #s7-4 | Suspicious AI prompt injection alert with process tree, detection name and MITRE technique | Learn, Set up AI agent runtime protection, `runtime-protection-suspicious-prompt-injection-alert.png`, CC BY 4.0 | none, downscaled to 1600px |
 | `deck-s062` | #s7-4 | Defender hunting local agents: Exposure graph query: local agents reaching sensitive assets | Deck `FSI NL Agent 365 event 02.09.pptx`, slide 62 (`ppt/media/image210.png`) | none, downscaled to 1600px |
 | `deck-s063` | #s7-4 | Intune agent execution policy: Create policy: agent execution in container, filesystem and network | Deck `FSI NL Agent 365 event 02.09.pptx`, slide 63 (`ppt/media/image211.png`) | x195 y40 705×726: keep the policy form only |
 | `deck-s077` | #s6-7 | Communication Compliance: Unethical behaviour in AI agents policy with matched sources | Deck `FSI NL Agent 365 event 02.09.pptx`, slide 77 (`ppt/media/image218.png`) | none, downscaled to 1600px |
@@ -50,7 +50,6 @@ Every screenshot on the page, where it came from, and where it is used. Generate
 | `learn-gsa-prompt-shield` | #s7-5 | Prompt injection protection architecture: Prompt injection protection architecture | [Learn](https://learn.microsoft.com/en-us/entra/global-secure-access/how-to-ai-prompt-injection-protection) image `prompt-shield-architecture.png`, CC BY 4.0 | none, downscaled to 1600px |
 | `learn-gsa-mcp-tools` | #s7-5 | MCP firewall: discovered tools: MCP firewall: discovered tools | [Learn](https://learn.microsoft.com/en-us/entra/global-secure-access/how-to-configure-mcp-firewall) image `mcp-discovered-tools.png`, CC BY 4.0 | none, downscaled to 1600px |
 | `learn-entra-risky-agents` | #s7-1 | ID Protection for agents: risky agents report: ID Protection for agents: risky agents report | [Learn](https://learn.microsoft.com/en-us/entra/id-protection/concept-risky-agents) image `risky-agents-report.png`, CC BY 4.0 | none, downscaled to 1600px |
-| `defender-local-agents-2026-09` | article cover; candidate for #s5-5 | Defender AI Assets (preview), Local agents tab: 42 monitored agents, inventory and the ChatGPT Desktop detail pane with MCP servers | Defender portal, demo tenant, captured by Rodney 21 September 2026 | none, downscaled to 1600px |
 
 ## How to replace a screenshot
 
@@ -66,3 +65,5 @@ Every screenshot on the page, where it came from, and where it is used. Generate
 ```
 chrome --headless=new --disable-gpu --hide-scrollbars --window-size=1200,630 --virtual-time-budget=8000 --screenshot=images/og.png scripts/og-card.html
 ```
+
+Prefer the Learn original where it shows the same view as a deck slide: it is CC BY 4.0, full resolution, and carries no baked-in callouts. Keep a deck slide when Learn has no matching view or the Learn version contradicts the prose (checked 21 September 2026: 27 slides kept, 3 replaced).
