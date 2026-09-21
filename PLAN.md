@@ -30,7 +30,7 @@ week's focus.
 | 31 August 2026 | 1 | direct | Baseline. Guide published 4 September. |
 | 7 September 2026 | not measured | not measured | GoatCounter returned HTTP 404 to the digest. Token needs re-creating. |
 | 14 September 2026 | not measured | not measured | Drift pull request #16 sat unmerged for a week. Nothing shipped. |
-| 21 September 2026 | not measured | not measured | Catch-up week, see log below. Analytics still blocked on the token. |
+| 21 September 2026 | not measured | not measured | Catch-up week: focus 1, 2 and 3 all shipped, see log. Analytics still blocked on the token; the 21 September digest (#19) says so under Action needed. |
 
 ## The weekly rotation
 
@@ -67,6 +67,9 @@ Newest first. One line per item shipped, with the pull request.
 
 | Date | Focus | Shipped | Evidence |
 |---|---|---|---|
+| 21 September 2026 | 2 | Chapter 4 gains a scenario-to-control table (4.1): fifteen scenarios, each landing on the control, the enforcing product, a status badge rendered from the data, and the section to read. GA only hides the rows you cannot deploy yet. | #22 |
+| 21 September 2026 | 1 | Chapter 2 published as its own page, `licensing.html`, with its own title, description, canonical link, card and JSON-LD, listed in the sitemap. Data, styles and behaviour moved to shared files so both pages render from one data object. A build check keeps the two copies identical. | #20 |
+| 21 September 2026 | Plan | Tracking issue #21 opened and pinned so the plan is the first thing on the repository page. | #21 |
 | 21 September 2026 | 3 | Merged the 14 September drift pull request: Local agents page now detects twenty-three tools and can block some of them. Changelog entry rendered in chapter 10. | #16 |
 | 21 September 2026 | Plumbing | Drift pull requests and digest issues are now assigned to Rodney and mention him, so GitHub emails and notifies on every one. The digest lists any drift pull request older than two days, states visitors against the target, and names the week's focus. The previous digest issue is closed when a new one opens. | this pull request |
 | 21 September 2026 | Plumbing | This plan written. `.gitattributes` added so Windows and OneDrive stop turning every file into a line-ending diff. | this pull request |

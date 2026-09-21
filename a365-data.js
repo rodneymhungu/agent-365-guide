@@ -32,6 +32,8 @@ window.A365 = {
     roadmap:  { label: "Early preview",    phrase: "in early preview" }
   },
   changes: [
+    { date: "21 September 2026", section: "s4-1", text: "Chapter 4 gains a scenario-to-control table: start from what you need to stop, land on the control, the enforcing product and its status." },
+    { date: "21 September 2026", section: "s2", text: "Chapter 2 is also published on its own page, licensing.html, so the licensing question can be found on its own." },
     { date: "14 September 2026", section: "s5-5", text: "Local agents page: the detected developer-tool list has grown substantially and blocking now covers Gemini CLI, VS Code extensions and OpenClaw's Node.js siblings. Learn page cited." },
     { date: "9 September 2026", section: "s2-1", text: "Licensing prerequisites corrected after Microsoft product marketing feedback: Entra ID P1 comes with every plan that qualifies for Agent 365. Licensing FAQ cited." },
     { date: "8 September 2026", text: "Link preview card for LinkedIn and Teams." },
