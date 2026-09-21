@@ -23,7 +23,7 @@ Read this first when you come back. Everything below the line was done on
 3. **Field guide principles repository: pushed, 21 September, 16:10.** Commit
    893e6e2 carries the 9 September edits and the "one page per topic, one
    data file" amendment. The guide, the skill and the repo now agree.
-4. **Post the LinkedIn article, planned for the evening of 22 September.**
+4. **LinkedIn article scheduled for 22 September, 13:00.** Add the URL to the draft file and the log when it is live.
    Everything is in `distribution/2026-09-21-linkedin.md`: three pickup
    steps, headline, body, and two cover images beside it. Format decided on
    21 September: a short weekly LinkedIn article on the latest update, guide
