@@ -1,0 +1,91 @@
+# Plan: 2,000 high-value weekly visitors
+
+This file is the plan of record for growing the Agent 365 field guide. It is
+written for three readers: Rodney, anyone who finds the repository, and any
+agent that picks up the work. If you are an agent, read this file first, then
+the section "How an agent picks this up" at the bottom.
+
+Started 21 September 2026. Reviewed every Monday alongside the weekly digest.
+
+## Target
+
+2,000 high-value visitors a week to
+[rodneymhungu.github.io/agent-365-guide](https://rodneymhungu.github.io/agent-365-guide/).
+
+High-value means the reader is a security, identity, compliance or endpoint
+engineer who runs Entra, Purview, Defender or Intune, or the person who buys
+Agent 365 for them. The proxy signals are the referrer (a Microsoft tenant,
+Teams, LinkedIn, a search query that names Agent 365, Entra Agent ID, Purview
+or Defender), the sections opened (anything in chapters 5 to 10 counts;
+bouncing off the hero does not), and public mentions found by the digest.
+
+Measured by GoatCounter, reported every Monday in the digest issue labelled
+`digest`. The digest states visitors against this target and names the
+week's focus.
+
+## Where we are
+
+| Week of | Visitors (7 days) | Top referrers | Notes |
+|---|---|---|---|
+| 31 August 2026 | 1 | direct | Baseline. Guide published 4 September. |
+| 7 September 2026 | not measured | not measured | GoatCounter returned HTTP 404 to the digest. Token needs re-creating. |
+| 14 September 2026 | not measured | not measured | Drift pull request #16 sat unmerged for a week. Nothing shipped. |
+| 21 September 2026 | not measured | not measured | Catch-up week, see log below. Analytics still blocked on the token. |
+
+## The weekly rotation
+
+One focus a week, in this order, then repeat. Catch-up weeks may do more
+than one. The digest names the current focus so nobody has to count.
+
+| # | Focus | What "done" looks like |
+|---|---|---|
+| 1 | Split a section into its own indexable page | A new `*.html` at the repository root with its own title, description, canonical link and JSON-LD, listed in `sitemap.xml`, linked from the section it came from, rendering status from `a365-data.js`. |
+| 2 | Build or extend a lookup table | A table a reader can scan in ten seconds: licence, preview against GA, control to scenario. Every row sourced at the point of use; status rendered from the data block, never typed. |
+| 3 | Write the changed-this-week note | Merge the open `learn-drift` pull request, then add one entry to `changes` in `a365-data.js` that says what moved and links the Learn page. If nothing drifted, say so in the digest and skip. |
+| 4 | Distribution | One LinkedIn post that links a section, not the home page. One follow-up to a session or workshop audience. One account or partner outreach. Record each in the log with the link and the referrer to expect. |
+
+Every week, whatever the focus: check GoatCounter referrers, not just paths.
+A path tells you what people read. A referrer tells you who sent them and
+whether they are the reader this guide is for.
+
+## Blockers that only Rodney can clear
+
+1. **GoatCounter token.** The digest on 14 September got HTTP 404 "not found".
+   An unknown token returns 401 "unknown token", so this is not a missing
+   secret. Re-create a read-only "statistics" token while signed in to
+   rodneymhungu.goatcounter.com (Settings, API tokens), then update the
+   `GOATCOUNTER_TOKEN` repository secret and run the digest workflow by
+   hand from the Actions tab. If it still fails, check that the token was
+   made on the site that serves `/agent-365-guide`, not a second site.
+2. **Brave Search key.** Issue #10. Optional, but without it the digest
+   never sees public mentions, which is the only distribution feedback loop
+   that does not depend on the referrer.
+
+## Log
+
+Newest first. One line per item shipped, with the pull request.
+
+| Date | Focus | Shipped | Evidence |
+|---|---|---|---|
+| 21 September 2026 | 3 | Merged the 14 September drift pull request: Local agents page now detects twenty-three tools and can block some of them. Changelog entry rendered in chapter 10. | #16 |
+| 21 September 2026 | Plumbing | Drift pull requests and digest issues are now assigned to Rodney and mention him, so GitHub emails and notifies on every one. The digest lists any drift pull request older than two days, states visitors against the target, and names the week's focus. The previous digest issue is closed when a new one opens. | this pull request |
+| 21 September 2026 | Plumbing | This plan written. `.gitattributes` added so Windows and OneDrive stop turning every file into a line-ending diff. | this pull request |
+
+## How an agent picks this up
+
+1. Read this file. Then read the latest issue labelled `digest` and any open
+   pull request labelled `learn-drift`.
+2. If a drift pull request is open, review it first. The guide's value is
+   that every claim traces to Learn; a stale page is worse than a quiet week.
+   Merge it if the edit is verified against the Learn page it cites, then log
+   the change under focus 3.
+3. Take the focus the digest names, or the next one in the rotation table
+   after the last logged entry. Do that one thing to "done" as defined above.
+4. Add a row to the log with the pull request number. Update "Where we are"
+   with the visitor count and referrers from the digest.
+5. Never put a token or key in this repository. It is public. Secrets live
+   in repository settings and are read by the workflows as environment
+   variables; see `scripts/README.md`.
+6. Prose follows the [field guide principles](https://github.com/rodneymhungu/field-guide-principles):
+   UK spelling, no em or en dashes, status from data, source at the point of
+   use, opinion only in numbered field notes.
