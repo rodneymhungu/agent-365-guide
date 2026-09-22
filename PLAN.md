@@ -18,8 +18,9 @@ Read this first when you come back. Everything below the line was done on
    Tokens live at rodneymhungu.goatcounter.com/user/api (user settings, not
    site settings) if it ever needs re-creating.
 2. **Credentials to add, in any order, one at a time (22 September, 21:00):**
-   `BRAVE_API_KEY` (brave.com/search/api, free plan; feeds public mentions and
-   "Questions you could answer"), `BLUESKY_HANDLE` and `BLUESKY_APP_PASSWORD`
+   a web search key for public mentions and "Questions you could answer":
+   `GOOGLE_CSE_KEY` and `GOOGLE_CSE_ID` (Google Programmable Search, free, no
+   card; Brave now needs a card on file, so it is the fallback), `BLUESKY_HANDLE` and `BLUESKY_APP_PASSWORD`
    (bsky.app, Settings, App passwords), `MASTODON_INSTANCE` and
    `MASTODON_TOKEN` (your instance, Preferences, Development, scope
    write:statuses), `DEVTO_API_KEY` (dev.to, Settings, Extensions). All go
