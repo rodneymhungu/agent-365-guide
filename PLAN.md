@@ -17,7 +17,16 @@ Read this first when you come back. Everything below the line was done on
    with a direct API call, re-saved with `gh secret set`, digest re-run.
    Tokens live at rodneymhungu.goatcounter.com/user/api (user settings, not
    site settings) if it ever needs re-creating.
-2. **Brave Search key (issue #10), now also feeds "Questions you could answer".** Free key at
+2. **Credentials to add, in any order, one at a time (22 September, 21:00):**
+   `BRAVE_API_KEY` (brave.com/search/api, free plan; feeds public mentions and
+   "Questions you could answer"), `BLUESKY_HANDLE` and `BLUESKY_APP_PASSWORD`
+   (bsky.app, Settings, App passwords), `MASTODON_INSTANCE` and
+   `MASTODON_TOKEN` (your instance, Preferences, Development, scope
+   write:statuses), `DEVTO_API_KEY` (dev.to, Settings, Extensions). All go
+   in Settings, Secrets and variables, Actions. Plus the Bing Webmaster Tools
+   and Google Search Console meta-tag codes, which Claude puts in both page
+   heads. Steps and reasons in `scripts/README.md`. Nothing breaks while any
+   are missing. Free key at
    brave.com/search/api, saved as `BRAVE_API_KEY` in the same place. The
    digest then reports public mentions.
 3. **Field guide principles repository: pushed, 21 September, 16:10.** Commit
