@@ -23,7 +23,7 @@ Read this first when you come back. Everything below the line was done on
 3. **Field guide principles repository: pushed, 21 September, 16:10.** Commit
    893e6e2 carries the 9 September edits and the "one page per topic, one
    data file" amendment. The guide, the skill and the repo now agree.
-4. **LinkedIn article scheduled for 22 September, 13:00.** Add the URL to the draft file and the log when it is live.
+4. **LinkedIn article posted, 22 September, 13:00.** Next one is due with the digest of 5 October.
    Everything is in `distribution/2026-09-21-linkedin.md`: three pickup
    steps, headline, body, and two cover images beside it. Format decided on
    21 September: a short weekly LinkedIn article on the latest update, guide
@@ -99,6 +99,7 @@ Newest first. One line per item shipped, with the pull request.
 | Date | Focus | Shipped | Evidence |
 |---|---|---|---|
 | 21 September 2026 | 3 | Merged the 21 September drift pull request after checking each claim on the live Learn page: Defender for Endpoint local agent discovery is GA (macOS still preview), Intune has a native Antivirus profile for agent-native runtime protection, Snowflake Cortex joins registry sync. Three changelog entries. Writing review: two "now/still" phrasings removed. | #25 |
+| 22 September 2026 | 4 | First LinkedIn article, the 21 September release note, posted at 13:00 with the Defender local agents screenshot as cover. Expect the referrer www.linkedin.com in the 28 September digest, and section opens on 5.5, 7.4, 5.4 and 4.1. | [post](https://www.linkedin.com/posts/rodney-mhungu-18a26434_ive-updated-the-agent-365-field-guide-with-ugcPost-7507888290696491010-FqIJ) |
 | 21 September 2026 | Images | Three Defender screenshots replaced with the Learn originals (CC BY 4.0, full resolution, no baked-in callouts): the local agents inventory in 5.5, the Claude Code block and toast and the prompt injection alert in 7.4. The other 27 deck slides stay because no Learn page shows the same view or the Learn version contradicts the prose. Rule: prefer the Learn original where it shows the same view. | #39 |
 | 21 September 2026 | Plumbing | Tier changes are now human-only in code, not just in the prompt: `guard_tiers.py` reverts any tier the drift model moves and fails a pull request that moves a tier to GA without a release-notes link. The watcher tracks six product release-notes pages, filtered to lines about agents or MCP. | #36 |
 | 21 September 2026 | Correction | Defender for Endpoint local agent discovery back to preview after Rodney caught it against the portal and the release notes. Drift prompt now requires a release-notes GA entry before any tier moves to ga. LinkedIn draft corrected. | #35 |
