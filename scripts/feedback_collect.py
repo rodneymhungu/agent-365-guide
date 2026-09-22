@@ -125,7 +125,12 @@ def goatcounter():
     lines = []
     try:
         hits = get(f"{base}/stats/hits?" + urllib.parse.urlencode({**rng, "limit": 100}), h)
-        rows = [r for r in hits.get("hits", []) if (r.get("path") or "").startswith(SITE_PATH)]
+        # Only the guide's real pages count as visits: the root and any *.html beside it.
+        # Anything else under the prefix (a stray test path, a typo) is ignored.
+        def is_page(path):
+            rest = path[len(SITE_PATH):].split("#", 1)[0].strip("/")
+            return rest == "" or rest.endswith(".html")
+        rows = [r for r in hits.get("hits", []) if (r.get("path") or "").startswith(SITE_PATH) and is_page(r["path"])]
         pages = [r for r in rows if "#" not in r["path"]]
         sections = [r for r in rows if "#" in r["path"]]
         visitors = sum(r.get("count", 0) for r in pages)
