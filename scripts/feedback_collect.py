@@ -11,7 +11,8 @@ Sources
                     requests with their age (the traffic API is deliberately not
                     used: it needs push access, so a PAT, and GoatCounter already
                     covers referrers)
-  3. Brave Search — public mentions of the guide URL or title
+  3. Web search   — public mentions of the guide URL or title (Google Programmable
+                    Search, free, or Brave, metered)
   4. Plan         — the target and this week's rotation focus from PLAN.md
   5. Article      — every second week, a LinkedIn article draft built from the
                     last fortnight's changes entries in a365-data.js, written to
@@ -30,7 +31,8 @@ Env vars
   GOATCOUNTER_SITE    default rodneymhungu.goatcounter.com
   GITHUB_TOKEN        provided by Actions
   GITHUB_REPOSITORY   provided by Actions (owner/repo)
-  BRAVE_API_KEY       https://brave.com/search/api/  (free tier is enough)
+  GOOGLE_CSE_KEY, GOOGLE_CSE_ID   Google Programmable Search (free, 100 queries a day)
+  BRAVE_API_KEY       https://brave.com/search/api/  (card on file, metered; alternative)
 """
 import datetime as dt, json, os, re, sys, time, urllib.parse
 from urllib.request import Request, urlopen
@@ -247,32 +249,52 @@ def plan():
             f"Every week: check referrers, not just paths. {draft}")
 
 
-# ---------- 3. Brave web search ----------
-def brave():
-    key = os.environ.get("BRAVE_API_KEY")
-    if not key:
-        problems.append("BRAVE_API_KEY is not set, so public mentions are never searched (issue #10). "
-                        "Free tier at brave.com/search/api; add it under Settings, Secrets and variables, Actions.")
-        return "BRAVE_API_KEY not set; public mention search skipped (issue #10)."
-    h = {"X-Subscription-Token": key, "Accept": "application/json"}
-    queries = [
-        f'"{SITE_URL}"',
-        f'"{TITLE}"',
-        '"agent-365-guide" mhungu',
-        'Rodney Mhungu "Agent 365"',
-    ]
+# ---------- 3. Web search (Google Programmable Search, or Brave) ----------
+# Google's Custom Search JSON API: 100 queries a day free, no card, needs an API key
+# and a Programmable Search Engine id set to search the whole web. Brave dropped its
+# free tier in February 2026 (card on file, metered). Either works; Google is tried first.
+def search_provider():
+    if os.environ.get("GOOGLE_CSE_KEY") and os.environ.get("GOOGLE_CSE_ID"):
+        return "google"
+    if os.environ.get("BRAVE_API_KEY"):
+        return "brave"
+    return None
+
+
+def web_search(q, past_week=True):
+    """Return [(title, url, snippet)] for q, restricted to the past week."""
+    prov = search_provider()
+    if prov == "google":
+        d = get("https://www.googleapis.com/customsearch/v1?" + urllib.parse.urlencode(
+            {"key": os.environ["GOOGLE_CSE_KEY"], "cx": os.environ["GOOGLE_CSE_ID"], "q": q, "num": 10,
+             **({"dateRestrict": "w1"} if past_week else {})}))
+        return [(r.get("title", ""), r.get("link", ""), r.get("snippet", "")) for r in d.get("items", [])]
+    if prov == "brave":
+        d = get("https://api.search.brave.com/res/v1/web/search?" + urllib.parse.urlencode(
+            {"q": q, "count": 10, **({"freshness": "pw"} if past_week else {})}),
+            {"X-Subscription-Token": os.environ["BRAVE_API_KEY"], "Accept": "application/json"})
+        return [(r.get("title", ""), r.get("url", ""), r.get("description", "")) for r in d.get("web", {}).get("results", [])]
+    return []
+
+
+NO_SEARCH = ("No web search key set; skipped. Add GOOGLE_CSE_KEY and GOOGLE_CSE_ID (free, 100 queries a day) "
+             "or BRAVE_API_KEY (card on file). See scripts/README.md and issue #10.")
+
+
+def mentions():
+    if not search_provider():
+        problems.append("Public mentions and the questions list are not being searched. " + NO_SEARCH)
+        return NO_SEARCH
+    queries = [f'"{SITE_URL}"', f'"{TITLE}"', '"agent-365-guide" mhungu', 'Rodney Mhungu "Agent 365"']
     seen, lines = set(), []
     for q in queries:
         try:
-            d = get("https://api.search.brave.com/res/v1/web/search?" +
-                    urllib.parse.urlencode({"q": q, "count": 10, "freshness": "pw"}), h)
-            for r in d.get("web", {}).get("results", []):
-                u = r.get("url")
+            for t, u, desc in web_search(q):
                 if u and u not in seen and "rodneymhungu.github.io" not in u:
                     seen.add(u)
-                    lines.append(f"- [{r.get('title','')}]({u}) — {r.get('description','')[:200]}")
+                    lines.append(f"- [{t}]({u}): {desc[:200]}")
         except (HTTPError, URLError, ValueError) as e:
-            lines.append(f"- query `{q}` failed: {e}")
+            lines.append(f"- query `{q}` failed: {describe(e) if isinstance(e, HTTPError) else e}")
     return "\n".join(lines) if lines else "No new public mentions found in the past week."
 
 
@@ -398,10 +420,8 @@ SECTION_HINTS = [
 
 
 def questions():
-    key = os.environ.get("BRAVE_API_KEY")
-    if not key:
-        return "BRAVE_API_KEY not set; thread search skipped (issue #10)."
-    h = {"X-Subscription-Token": key, "Accept": "application/json"}
+    if not search_provider():
+        return NO_SEARCH
     queries = [
         '"Agent 365" (site:reddit.com OR site:learn.microsoft.com/answers OR site:techcommunity.microsoft.com)',
         '"Entra Agent ID" OR "agent identity" conditional access site:reddit.com',
@@ -412,16 +432,14 @@ def questions():
     seen, lines = set(), []
     for q in queries:
         try:
-            d = get("https://api.search.brave.com/res/v1/web/search?" +
-                    urllib.parse.urlencode({"q": q, "count": 10, "freshness": "pw"}), h)
+            results = web_search(q)
         except (HTTPError, URLError, ValueError) as e:
-            lines.append(f"- query `{q[:50]}` failed: {e}"); continue
-        for r in d.get("web", {}).get("results", []):
-            u, t = r.get("url", ""), r.get("title", "")
+            lines.append(f"- query `{q[:50]}` failed: {describe(e) if isinstance(e, HTTPError) else e}"); continue
+        for t, u, desc in results:
             if not u or u in seen or "rodneymhungu" in u:
                 continue
             seen.add(u)
-            blob = (t + " " + r.get("description", "")).lower()
+            blob = (t + " " + desc).lower()
             hint = next(((name, sid) for pat, name, sid in SECTION_HINTS if re.search(pat, blob)), None)
             where = "Reddit" if "reddit.com" in u else "Microsoft Q&A" if "learn.microsoft.com" in u else "Tech Community" if "techcommunity" in u else "web"
             lines.append(f"- [{t[:90]}]({u}) ({where})" + (f": answer with {hint[0]}, `{SITE_URL}#{hint[1]}`" if hint else ""))
@@ -434,7 +452,7 @@ def main():
     body = section("Plan", plan())
     body += section("Visitors (GoatCounter)", goatcounter())
     body += section("Repository (GitHub)", github())
-    body += section("Public mentions (Brave Search, past week)", brave())
+    body += section("Public mentions (web search, past week)", mentions())
     body += section("Questions the guide could answer (past week)", questions())
     if problems:
         md += section("Action needed", "\n".join(f"- {p}" for p in problems))

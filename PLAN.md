@@ -7,10 +7,11 @@ the section "How an agent picks this up" at the bottom.
 
 Started 21 September 2026. Reviewed every Monday alongside the weekly digest.
 
-## Where Rodney left off, 21 September 2026
+## Where Rodney left off, 22 September 2026, 23:30
 
-Read this first when you come back. Everything below the line was done on
-21 September; these are the things that were still open when you left.
+Read this first when you come back. The catch-up week's rotation is complete,
+the first LinkedIn article is out (30 visitors this week, up from 24), and
+the distribution automation is built and waiting for credentials.
 
 1. **GoatCounter token: cleared, 21 September, 15:36.** The token created on
    7 September was fine; the copy saved as the GitHub secret was not. Tested
