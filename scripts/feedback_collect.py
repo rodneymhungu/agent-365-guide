@@ -121,7 +121,9 @@ def goatcounter():
     # it errors come back as an HTML page instead of {"error": ...}.
     h = {"Authorization": f"Bearer {tok}", "Content-Type": "application/json"}
     base = f"https://{site}/api/v0"
-    rng = {"start": week_ago.isoformat(), "end": today.isoformat()}
+    # GoatCounter's end date is exclusive: "end=today" returns nothing for today
+    # (found 22 September 2026). Ask up to tomorrow so the run day is included.
+    rng = {"start": week_ago.isoformat(), "end": (today + dt.timedelta(days=1)).isoformat()}
     lines = []
     try:
         hits = get(f"{base}/stats/hits?" + urllib.parse.urlencode({**rng, "limit": 100}), h)
