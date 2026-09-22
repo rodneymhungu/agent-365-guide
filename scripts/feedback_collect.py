@@ -28,7 +28,7 @@ Env vars
   GITHUB_REPOSITORY   provided by Actions (owner/repo)
   BRAVE_API_KEY       https://brave.com/search/api/  (free tier is enough)
 """
-import datetime as dt, json, os, re, sys, urllib.parse
+import datetime as dt, json, os, re, sys, time, urllib.parse
 from urllib.request import Request, urlopen
 from urllib.error import URLError, HTTPError
 
@@ -57,10 +57,20 @@ week_ago = today - dt.timedelta(days=7)
 problems = []   # anything that needs a human, surfaced at the top of the digest
 
 
-def get(url, headers=None, timeout=30):
+def get(url, headers=None, timeout=30, retries=3):
+    """GET JSON. GoatCounter's API answers an occasional 404 or 429 to a request that
+    succeeds seconds later (seen 21 and 22 September 2026), so transient codes are
+    retried with a short back-off before the source is reported as unavailable."""
     req = Request(url, headers={"User-Agent": "agent-365-guide-feedback/1.0", **(headers or {})})
-    with urlopen(req, timeout=timeout) as r:
-        return json.loads(r.read().decode("utf-8", "replace"))
+    for attempt in range(retries + 1):
+        try:
+            with urlopen(req, timeout=timeout) as r:
+                return json.loads(r.read().decode("utf-8", "replace"))
+        except HTTPError as e:
+            if e.code in (404, 429, 500, 502, 503, 504) and attempt < retries:
+                time.sleep((3, 8, 15)[attempt])
+                continue
+            raise
 
 
 def describe(e):
