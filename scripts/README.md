@@ -46,7 +46,7 @@ still said preview.
 | IndexNow | `.github/workflows/indexnow.yml` | the `<key>.txt` file at the site root (committed; public by design) | On every push to main that changes a page, submits every sitemap URL to api.indexnow.org (Bing, Yandex, Naver, Seznam). Google is served by the sitemap in Search Console. |
 | Bluesky and Mastodon | `scripts/social_post.py` | `BLUESKY_HANDLE`, `BLUESKY_APP_PASSWORD`, `MASTODON_INSTANCE`, `MASTODON_TOKEN` | Posts `social-post.txt` (under 300 characters, from the fortnight's changelog) to whichever network has credentials. |
 | dev.to | `scripts/devto_post.py` | `DEVTO_API_KEY`; repository variable `DEVTO_PUBLISH=true` to publish, otherwise a draft | Cross-posts the release note with `canonical_url` on the guide. |
-| Questions to answer | `feedback_collect.py` | `BRAVE_API_KEY` | Lists last week's Reddit, Microsoft Q&A and Tech Community threads a section answers. The owner answers; the guide is never posted. |
+| Questions to answer | `feedback_collect.py` | `GOOGLE_CSE_KEY` and `GOOGLE_CSE_ID`, or `BRAVE_API_KEY` | Lists last week's Reddit, Microsoft Q&A and Tech Community threads a section answers. The owner answers; the guide is never posted. |
 
 Every poster skips itself when its credentials are missing and writes what it did
 to `distribution-log.md`, which the digest issue shows under "Distribution this week".
@@ -59,7 +59,8 @@ The two below only add optional sources to the digest.
 | Secret | Where to get it | Used by |
 |---|---|---|
 | `GOATCOUNTER_TOKEN` | rodneymhungu.goatcounter.com → Settings → API tokens (read-only, "statistics") | digest, visitor numbers |
-| `BRAVE_API_KEY` | brave.com/search/api (free tier) | digest, public mentions |
+| `GOOGLE_CSE_KEY` and `GOOGLE_CSE_ID` | programmablesearchengine.google.com (new engine, "Search the entire web" on, copy the engine id) and console.cloud.google.com (enable Custom Search API, create an API key). Free, 100 queries a day, no card. | digest: public mentions and questions to answer |
+| `BRAVE_API_KEY` | brave.com/search/api; since February 2026 a card on file and metered billing with a monthly credit tied to attribution. Alternative to the Google pair. | same |
 | `BLUESKY_HANDLE`, `BLUESKY_APP_PASSWORD` | bsky.app → Settings → App passwords | article-week post |
 | `MASTODON_INSTANCE`, `MASTODON_TOKEN` | your instance → Preferences → Development → New application, scope `write:statuses` | article-week post |
 | `DEVTO_API_KEY` | dev.to → Settings → Extensions → DEV Community API Keys | article-week cross-post (draft unless variable `DEVTO_PUBLISH=true`) |
