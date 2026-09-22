@@ -31,6 +31,10 @@ so the same audience is not asked to click twice in a row.
 | Dutch and EU user groups, Experts Live NL, workshop audiences | People you already meet | No | One follow-up message per session with the section that answers what came up | The session follow-up from the plan. Log each. |
 | Hacker News, Product Hunt | Wrong audience for a Microsoft control-plane guide | No | Skip | |
 
+## Built on 22 September 2026
+
+Items 1 to 4 below exist: `indexnow.yml`, `scripts/social_post.py`, `scripts/devto_post.py`, and the "Questions the guide could answer" section of the digest. Each waits only for its credential; see `scripts/README.md`.
+
 ## What to automate, in order
 
 1. **IndexNow on every deploy.** Key file at the site root, one workflow

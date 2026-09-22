@@ -16,6 +16,10 @@ Sources
   5. Article      — every second week, a LinkedIn article draft built from the
                     last fortnight's changes entries in a365-data.js, written to
                     linkedin-draft.md and appended to the digest issue verbatim
+  6. Social       — same weeks, a 300-character version in social-post.txt for
+                    scripts/social_post.py (Bluesky, Mastodon)
+  7. Questions    — threads from the last week on Reddit, Microsoft Q&A and Tech
+                    Community that a guide section answers (Brave Search)
 
 Anything that needs a human (analytics down, a drift pull request left open)
 is collected into an "Action needed" section at the top of the file, and the
@@ -338,12 +342,100 @@ def article_draft(weeks):
     return "\n".join(lines)
 
 
+SOCIAL_OUT = "social-post.txt"
+BLUESKY_LIMIT = 300
+
+
+def social_text(weeks):
+    """A three-line version of the release note for Bluesky and Mastodon, under
+    300 characters, only on article weeks with at least one Learn change."""
+    if weeks % ARTICLE_EVERY_WEEKS:
+        return None
+    try:
+        js = open("a365-data.js", encoding="utf-8").read()
+    except OSError:
+        return None
+    since = today - dt.timedelta(days=14)
+    firsts = []
+    for m in re.finditer(r'\{\s*date:\s*"([^"]+)"(?:,\s*section:\s*"([^"]+)")?(?:,\s*kind:\s*"([^"]+)")?,\s*text:\s*"((?:[^"\\]|\\.)*)"', js):
+        try:
+            d = dt.datetime.strptime(m.group(1), "%d %B %Y").date()
+        except ValueError:
+            continue
+        if d >= since and m.group(3) != "guide":
+            first = re.match(r"(.+?[.:])(\s|$)", m.group(4))
+            firsts.append((first.group(1) if first else m.group(4)).rstrip(".:"))
+    if not firsts:
+        return None
+    head = "Agent 365 field guide, updated. What moved on Microsoft Learn:"
+    tail = f"What you can deploy today: {ARTICLE_LINK}"
+    def short(t, n=72):
+        return t if len(t) <= n else t[:n - 1].rstrip() + "…"
+    bullets = [f"• {short(f)}" for f in firsts[:2]]
+    text = head + "\n" + "\n".join(bullets) + "\n" + tail
+    if len(text) > BLUESKY_LIMIT:
+        text = head + "\n" + bullets[0] + "\n" + tail
+    return text
+
+
+# ---------- 6. Questions the guide could answer ----------
+# Threads from the last week on Reddit, Microsoft Q&A and Tech Community that ask
+# what a guide section explains. The owner answers two a week and cites the
+# section; the guide itself is never posted. Needs BRAVE_API_KEY.
+SECTION_HINTS = [
+    (r"licen[cs]|e7|add-on|pricing", "2.1 What the licence unlocks", "s2-1"),
+    (r"conditional access|agent id|agent identit|blueprint", "7.1 Identity", "s7-1"),
+    (r"dlp|sensitivity label|purview|insider risk", "7.2 Data", "s7-2"),
+    (r"real-time protection|prompt injection|defender xdr|security for ai", "7.3 Threats", "s7-3"),
+    (r"local agent|claude code|openclaw|runtime protection|intune", "7.4 Local agents on the endpoint", "s7-4"),
+    (r"mcp|global secure access|prompt shield", "7.5 Network controls on agent traffic", "s7-5"),
+    (r"access package|sponsor|lifecycle workflow", "6.6 Identity governance in Entra", "s6-6"),
+    (r"policy template", "6.2 Policy templates", "s6-2"),
+    (r"shadow ai", "5.5 Shadow AI and local agents on endpoints", "s5-5"),
+    (r"registry|inventory|agent map", "5.1 The registry and the overview page", "s5-1"),
+    (r"audit|ediscovery|retention|communication compliance", "6.7 Compliance in Purview", "s6-7"),
+]
+
+
+def questions():
+    key = os.environ.get("BRAVE_API_KEY")
+    if not key:
+        return "BRAVE_API_KEY not set; thread search skipped (issue #10)."
+    h = {"X-Subscription-Token": key, "Accept": "application/json"}
+    queries = [
+        '"Agent 365" (site:reddit.com OR site:learn.microsoft.com/answers OR site:techcommunity.microsoft.com)',
+        '"Entra Agent ID" OR "agent identity" conditional access site:reddit.com',
+        '"MCP" Defender OR Purview OR "Global Secure Access" agents site:reddit.com',
+        '"local AI agents" OR "Claude Code" Defender Intune site:reddit.com',
+        '"Agent 365" licensing OR "E7" site:reddit.com',
+    ]
+    seen, lines = set(), []
+    for q in queries:
+        try:
+            d = get("https://api.search.brave.com/res/v1/web/search?" +
+                    urllib.parse.urlencode({"q": q, "count": 10, "freshness": "pw"}), h)
+        except (HTTPError, URLError, ValueError) as e:
+            lines.append(f"- query `{q[:50]}` failed: {e}"); continue
+        for r in d.get("web", {}).get("results", []):
+            u, t = r.get("url", ""), r.get("title", "")
+            if not u or u in seen or "rodneymhungu" in u:
+                continue
+            seen.add(u)
+            blob = (t + " " + r.get("description", "")).lower()
+            hint = next(((name, sid) for pat, name, sid in SECTION_HINTS if re.search(pat, blob)), None)
+            where = "Reddit" if "reddit.com" in u else "Microsoft Q&A" if "learn.microsoft.com" in u else "Tech Community" if "techcommunity" in u else "web"
+            lines.append(f"- [{t[:90]}]({u}) ({where})" + (f": answer with {hint[0]}, `{SITE_URL}#{hint[1]}`" if hint else ""))
+    lines = lines[:8]
+    return "\n".join(lines) if lines else "No new threads found this week."
+
+
 def main():
     md = f"# Feedback inputs for {TITLE}\n\nWindow: {week_ago} to {today}. Site: {SITE_URL}\n\n"
     body = section("Plan", plan())
     body += section("Visitors (GoatCounter)", goatcounter())
     body += section("Repository (GitHub)", github())
     body += section("Public mentions (Brave Search, past week)", brave())
+    body += section("Questions the guide could answer (past week)", questions())
     if problems:
         md += section("Action needed", "\n".join(f"- {p}" for p in problems))
     md += body
@@ -353,6 +445,10 @@ def main():
     if draft:
         with open(DRAFT_OUT, "w", encoding="utf-8") as f:
             f.write(draft + "\n")
+    social = social_text(rotation_week())
+    if social:
+        with open(SOCIAL_OUT, "w", encoding="utf-8") as f:
+            f.write(social + "\n")
     print(md[:2000], file=sys.stderr)
 
 

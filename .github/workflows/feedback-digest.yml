@@ -56,6 +56,9 @@ jobs:
              with its age in days. If there are none, one sentence.
           3. "What people are saying": summarise each public mention or issue in one line
              with its link. If there are none, say so in one sentence and move on.
+          3b. "Questions you could answer": copy up to five lines from the "Questions the
+             guide could answer" input verbatim, links and section suggestions included.
+             If the input says the search was skipped or found nothing, one sentence.
           4. "This week's focus": the rotation focus named in the inputs, and the single
              most useful concrete step towards it given the evidence (a referrer, a
              high-traffic section, an issue, a mention). Cite the guide section id
@@ -73,6 +76,22 @@ jobs:
             --no-ask-user -s
           test -f digest.md || cp feedback-input.md digest.md
 
+      # Article weeks only (the collector writes the files). Each poster skips itself
+      # when its credentials are missing and records what it did in distribution-log.md.
+      - name: Post the short note to Bluesky and Mastodon
+        env:
+          BLUESKY_HANDLE: ${{ secrets.BLUESKY_HANDLE }}
+          BLUESKY_APP_PASSWORD: ${{ secrets.BLUESKY_APP_PASSWORD }}
+          MASTODON_INSTANCE: ${{ secrets.MASTODON_INSTANCE }}
+          MASTODON_TOKEN: ${{ secrets.MASTODON_TOKEN }}
+        run: python3 scripts/social_post.py
+
+      - name: Cross-post the release note to dev.to
+        env:
+          DEVTO_API_KEY: ${{ secrets.DEVTO_API_KEY }}
+          DEVTO_PUBLISH: ${{ vars.DEVTO_PUBLISH }}   # repository variable; "true" publishes, else draft
+        run: python3 scripts/devto_post.py
+
       - name: Open the digest as an issue, close the previous one
         env:
           GH_TOKEN: ${{ github.token }}
@@ -82,6 +101,13 @@ jobs:
             echo
             cat digest.md
             echo
+            if [ -f distribution-log.md ]; then
+              echo
+              echo "### Distribution this week"
+              echo
+              cat distribution-log.md
+              echo
+            fi
             if [ -f linkedin-draft.md ]; then
               echo
               echo "### LinkedIn article draft"
