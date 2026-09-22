@@ -17,7 +17,7 @@ Read this first when you come back. Everything below the line was done on
    with a direct API call, re-saved with `gh secret set`, digest re-run.
    Tokens live at rodneymhungu.goatcounter.com/user/api (user settings, not
    site settings) if it ever needs re-creating.
-2. **Brave Search key (optional, issue #10).** Free key at
+2. **Brave Search key (issue #10), now also feeds "Questions you could answer".** Free key at
    brave.com/search/api, saved as `BRAVE_API_KEY` in the same place. The
    digest then reports public mentions.
 3. **Field guide principles repository: pushed, 21 September, 16:10.** Commit
@@ -99,6 +99,7 @@ Newest first. One line per item shipped, with the pull request.
 | Date | Focus | Shipped | Evidence |
 |---|---|---|---|
 | 21 September 2026 | 3 | Merged the 21 September drift pull request after checking each claim on the live Learn page: Defender for Endpoint local agent discovery is GA (macOS still preview), Intune has a native Antivirus profile for agent-native runtime protection, Snowflake Cortex joins registry sync. Three changelog entries. Writing review: two "now/still" phrasings removed. | #25 |
+| 22 September 2026 | Plumbing | Distribution automation built: IndexNow on every deploy; Bluesky and Mastodon post and dev.to draft on article weeks; "Questions the guide could answer" in the digest. Each needs its credential added as a secret; none added yet except the IndexNow key, which is public. | #43 |
 | 22 September 2026 | 4 | Distribution channels researched and ranked in `distribution/CHANNELS.md`: search via IndexNow, a LinkedIn newsletter, Bluesky and Mastodon, dev.to, curator newsletters, Tech Community, Reddit and Q&A answering, awesome lists, user groups. Automation order proposed; nothing built yet. | CHANNELS.md |
 | 22 September 2026 | 4 | First LinkedIn article, the 21 September release note, posted at 13:00 with the Defender local agents screenshot as cover. Expect the referrer www.linkedin.com in the 28 September digest, and section opens on 5.5, 7.4, 5.4 and 4.1. | [post](https://www.linkedin.com/posts/rodney-mhungu-18a26434_ive-updated-the-agent-365-field-guide-with-ugcPost-7507888290696491010-FqIJ) |
 | 21 September 2026 | Images | Three Defender screenshots replaced with the Learn originals (CC BY 4.0, full resolution, no baked-in callouts): the local agents inventory in 5.5, the Claude Code block and toast and the prompt injection alert in 7.4. The other 27 deck slides stay because no Learn page shows the same view or the Learn version contradicts the prose. Rule: prefer the Learn original where it shows the same view. | #39 |

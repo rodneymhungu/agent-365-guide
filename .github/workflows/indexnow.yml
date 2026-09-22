@@ -1,0 +1,34 @@
+name: IndexNow → search engines
+
+# After every deploy that changes a page, tell Bing, Yandex, Naver and Seznam
+# which URLs changed. IndexNow is the fastest way into Bing's index; Google
+# does not use it and is covered by the sitemap in Search Console. The key is
+# public by design: the engines fetch /<key>.txt from this site to prove we own it.
+
+on:
+  push:
+    branches: [main]
+    paths: ['*.html', 'sitemap.xml', 'a365-data.js']
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  submit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - name: Wait for GitHub Pages to publish
+        run: sleep 90
+      - name: Submit every URL in the sitemap
+        run: |
+          KEY=$(ls *.txt | grep -E '^[0-9a-f]{32}\.txt$' | head -1 | sed 's/\.txt$//')
+          test -n "$KEY" || { echo "no IndexNow key file at the site root"; exit 1; }
+          URLS=$(grep -o '<loc>[^<]*</loc>' sitemap.xml | sed 's/<[^>]*>//g' | python3 -c 'import sys,json;print(json.dumps([l.strip() for l in sys.stdin if l.strip()]))')
+          curl -s -o /tmp/r.txt -w '%{http_code}\n' -X POST https://api.indexnow.org/indexnow \
+            -H 'Content-Type: application/json; charset=utf-8' \
+            -d "{\"host\":\"rodneymhungu.github.io\",\"key\":\"$KEY\",\"keyLocation\":\"https://rodneymhungu.github.io/agent-365-guide/$KEY.txt\",\"urlList\":$URLS}" | tee /tmp/code.txt
+          echo "submitted: $URLS"; cat /tmp/r.txt || true
+          # 200 accepted, 202 accepted pending key check; anything else is a real error
+          grep -qE '^(200|202)$' /tmp/code.txt

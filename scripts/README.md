@@ -39,6 +39,18 @@ real GA entry arrives as evidence in the Monday pull request. Reason: on
 run moved the capability to GA, and the product's release notes and portal
 still said preview.
 
+## Distribution automation (article weeks)
+
+| Step | Script | Needs | Behaviour |
+|---|---|---|---|
+| IndexNow | `.github/workflows/indexnow.yml` | the `<key>.txt` file at the site root (committed; public by design) | On every push to main that changes a page, submits every sitemap URL to api.indexnow.org (Bing, Yandex, Naver, Seznam). Google is served by the sitemap in Search Console. |
+| Bluesky and Mastodon | `scripts/social_post.py` | `BLUESKY_HANDLE`, `BLUESKY_APP_PASSWORD`, `MASTODON_INSTANCE`, `MASTODON_TOKEN` | Posts `social-post.txt` (under 300 characters, from the fortnight's changelog) to whichever network has credentials. |
+| dev.to | `scripts/devto_post.py` | `DEVTO_API_KEY`; repository variable `DEVTO_PUBLISH=true` to publish, otherwise a draft | Cross-posts the release note with `canonical_url` on the guide. |
+| Questions to answer | `feedback_collect.py` | `BRAVE_API_KEY` | Lists last week's Reddit, Microsoft Q&A and Tech Community threads a section answers. The owner answers; the guide is never posted. |
+
+Every poster skips itself when its credentials are missing and writes what it did
+to `distribution-log.md`, which the digest issue shows under "Distribution this week".
+
 ## Secrets to add (Settings → Secrets and variables → Actions)
 
 No secret is required. Both workflows run on the automatic `GITHUB_TOKEN`.
@@ -48,6 +60,9 @@ The two below only add optional sources to the digest.
 |---|---|---|
 | `GOATCOUNTER_TOKEN` | rodneymhungu.goatcounter.com → Settings → API tokens (read-only, "statistics") | digest, visitor numbers |
 | `BRAVE_API_KEY` | brave.com/search/api (free tier) | digest, public mentions |
+| `BLUESKY_HANDLE`, `BLUESKY_APP_PASSWORD` | bsky.app → Settings → App passwords | article-week post |
+| `MASTODON_INSTANCE`, `MASTODON_TOKEN` | your instance → Preferences → Development → New application, scope `write:statuses` | article-week post |
+| `DEVTO_API_KEY` | dev.to → Settings → Extensions → DEV Community API Keys | article-week cross-post (draft unless variable `DEVTO_PUBLISH=true`) |
 | `COPILOT_PAT` | github.com/settings/personal-access-tokens/new → fine-grained PAT with **Copilot Requests** permission | not needed; the token fallback works |
 
 `GITHUB_TOKEN` is provided automatically. The drift workflow also needs the
