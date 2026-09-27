@@ -475,6 +475,28 @@
   </ul>
   <p>All three need Internet Access traffic forwarding; prompt and MCP logging need TLS inspection except on the Copilot Studio path.</p>
   </div>
+
+  <h4 id="s5-5-tools">Which surface sees which tool, and which can block it</h4>
+  <p>The four surfaces above list different tools, and only some of them can block. This table joins the <a href="https://learn.microsoft.com/en-us/microsoft-365/admin/manage/agent-shadow-ai" target="_blank" rel="noopener">Shadow AI page</a>, the <a href="https://learn.microsoft.com/en-us/microsoft-365/admin/manage/agent-local" target="_blank" rel="noopener">Local agents page</a>, <a href="https://learn.microsoft.com/en-us/defender-endpoint/local-agent-discovery-overview" target="_blank" rel="noopener">Defender for Endpoint discovery</a> and <a href="https://learn.microsoft.com/en-us/defender-endpoint/ai-agent-runtime-protection-overview" target="_blank" rel="noopener">runtime protection</a> as their Learn pages list them. Global Secure Access is not a column because it attributes traffic to any agent on a device with its client rather than recognising named tools.</p>
+  <div class="tbl wide"><table>
+    <thead><tr><th>Tool</th><th>Shadow AI page</th><th>Local agents page</th><th>Defender for Endpoint discovery</th><th>Defender runtime protection</th></tr></thead>
+    <tbody>
+    <tr><td>OpenClaw</td><td>Detect, block</td><td>Block only, through the Node.js policy</td><td>Detect</td><td>Network inspection</td></tr>
+    <tr><td>QClaw; Claw/Nanobot</td><td>No</td><td>Block only, through the Node.js policy</td><td>Detect</td><td>No</td></tr>
+    <tr><td>Claw/ZeroClaw</td><td>Detect</td><td>No</td><td>Detect</td><td>No</td></tr>
+    <tr><td>Clawpilot</td><td>No</td><td>No</td><td>Detect</td><td>No</td></tr>
+    <tr><td>ChatGPT Desktop; Claude Desktop; Ollama Desktop; Poe Desktop</td><td>Detect</td><td>No</td><td>Detect</td><td>No</td></tr>
+    <tr><td>OpenCode</td><td>Detect</td><td>No</td><td>Detect</td><td>No</td></tr>
+    <tr><td>Claude Code; Codex CLI; GitHub Copilot CLI</td><td>No</td><td>Detect</td><td>Detect</td><td>Agent hooks</td></tr>
+    <tr><td>GitHub Copilot app</td><td>No</td><td>Detect</td><td>Detect</td><td>Agent hooks</td></tr>
+    <tr><td>Gemini CLI</td><td>No</td><td>Detect, block through the Node.js policy</td><td>Detect</td><td>No</td></tr>
+    <tr><td>Codex Desktop; Cursor; Devin Desktop (formerly Windsurf); Junie CLI; Kiro CLI; Kiro IDE; Warp; Antigravity CLI; Antigravity IDE</td><td>No</td><td>Detect</td><td>Detect</td><td>No</td></tr>
+    <tr><td>Antigravity Desktop; Microsoft Scout</td><td>No</td><td>Detect</td><td>No</td><td>No</td></tr>
+    <tr><td>Goose Desktop; Hermes Agent; Microsoft Copilot app; Perplexity Desktop</td><td>No</td><td>No</td><td>Detect</td><td>No</td></tr>
+    <tr><td>Visual Studio Code extensions: Claude Code, Cline, Codex, Gemini Code Assist, GitHub Copilot, Roo Code</td><td>No</td><td>Detect, block through the VS Code extension policy</td><td>Detect</td><td>No</td></tr>
+    </tbody>
+  </table></div>
+  <p>Two things follow. Blocking from the admin centre reaches only the Node.js family and the Visual Studio Code extensions; for every other tool, stopping it means runtime protection where it is supported or an Intune policy of your own. And Defender for Endpoint sees the widest set, so take the inventory from there and use the admin centre pages for the governance actions they offer.</p>
   </section>
 
   <section id="s5-6" data-search>
