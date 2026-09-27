@@ -32,6 +32,7 @@ window.A365 = {
     roadmap:  { label: "Early preview",    phrase: "in early preview" }
   },
   changes: [
+    { date: "27 September 2026", kind: "guide", text: "Structure pass: 5.4 and 6.1 open on their answer, 6.2 custom templates and 7.3 real-time protection coverage are tables, 5.5 names each tool once, 7.4 says which admin-centre page blocks what." },
     { date: "27 September 2026", section: "s5-5", kind: "guide", text: "5.5 gains a lookup table of which surface detects which local AI tool and which can block it, joined from the Shadow AI, Local agents, Defender discovery and runtime protection pages." },
     { date: "21 September 2026", section: "s5-5", text: "Defender for Endpoint local agent discovery stays in preview. Learn's page dropped its preview label, but the Defender for Endpoint release notes and the portal still say preview, and there is no GA entry." },
     { date: "21 September 2026", section: "s7-4", text: "Intune now has a native Antivirus policy for agent-native event inspection; network inspection still needs a PowerShell platform script. Runtime protection setup page cited." },
