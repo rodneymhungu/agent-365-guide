@@ -31,6 +31,7 @@ After successful validation and setup:
 The Microsoft 365 admin can trigger a sync by using the Sync agents button.
 Agents from the connected environment synchronize into the agent registry.
 You can configure future synchronizations to occur on a scheduled basis, in a future release.
+For supported platforms, see Third-party agent observability with Microsoft Agent 365 (Frontier) to learn how to monitor synchronized agent activity and operational health.
 View details after a sync
 Select an existing connection to view sync details and monitor synchronization status.
 Connection details include:
@@ -93,13 +94,34 @@ Provide credentials associated with your Google Cloud environment to authenticat
 To set up a connection to a Google Vertex AI environment in Connected platforms, verify that you have the permission, context, and these Google Vertex AI credentials:
 Google Cloud Region: Knowledge about the Vertex region where the agents are deployed.
 Google Vertex AI project ID: The ID of your Google Vertex AI project.
-Google Vertex AI credentials: Secret access key
+Google Vertex AI credentials: Google Cloud service account key in JSON format. Enter the complete JSON key document in the connection's credential field, from the opening { to the closing }, not only the private_key value.
 Create a new or use an existing service account with the following access to project resources:
 Vertex AI Administrator role or custom role with permissions:
 aiplatform.reasoningEngines.list
 aiplatform.reasoningEngines.get
 aiplatform.reasoningEngines.delete
-Generate a new secret key
+Generate a new service account key in JSON format
+The permissions above cover agent discovery and management. They're sufficient to create the connection and synchronize agents, but they don't grant access to observability telemetry.
+Additional permissions for agent observability
+If you want to collect agent observability data, grant the following roles to the same service account, in addition to the Vertex AI permissions above. Agent 365 reads Vertex AI telemetry from BigQuery and Cloud Monitoring rather than from the Vertex AI API, so Vertex AI access alone isn't sufficient for observability.
+Required role
+Role ID
+Purpose
+BigQuery Data Viewer
+roles/bigquery.dataViewer
+Read exported trace tables.
+BigQuery Job User
+roles/bigquery.jobUser
+Execute queries to retrieve spans; requires bigquery.jobs.create.
+Monitoring Viewer
+roles/monitoring.viewer
+Read request-count and latency metrics.
+Cloud Trace User
+roles/cloudtrace.user
+Read Cloud Trace spans.
+Important
+Both BigQuery roles are required. BigQuery read access alone isn't sufficient to run the queries that retrieve spans: Data Viewer permits reading the trace tables, and Job User permits running the queries that read them. Granting only one returns no telemetry.
+Granting these roles doesn't by itself make telemetry available. The project also needs the required APIs enabled and trace export configured. For the full setup, see Third-party agent observability.
 For more information about creating a service account key, see Google Cloud Vertex AI and Google Cloud documentation.
 Salesforce Agentforce
 To set up a connection to a Salesforce Agentforce environment in Connected platforms, ensure you have a Salesforce account with the right permissions, Domain URL, consumer key, and consumer secret.
