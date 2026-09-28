@@ -8,6 +8,10 @@ Type
 Feature
 Preview/GA
 Description
+Feature
+Microsoft Defender support for Linux Desktops
+Preview
+Microsoft Defender for Endpoint now extends support to Linux desktops (Public Preview). All Linux distributions currently supported on servers are also supported on Linux desktops. Deployment methods and security capabilities remain consistent across both Linux servers and desktops. For details on licensing and supported distributions, see prerequisites for Microsoft Defender on Linux
 Release - macOS
 Build 101.26072.0017
 GA

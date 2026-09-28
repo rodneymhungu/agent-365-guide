@@ -27,6 +27,7 @@ Get started ->
 Discover and monitor agents ->
   Agent registry -> /microsoft-365/admin/manage/agent-registry
   Connected platforms -> admin/connected-platforms
+    Third-party agent observability (Frontier) -> admin/third-party-agent-observability
   Agent map -> /microsoft-365/admin/manage/agent-map
   Agent requests -> /microsoft-365/admin/manage/agent-requests
   Local agents (preview) -> /microsoft-365/admin/manage/agent-local

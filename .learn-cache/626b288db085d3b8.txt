@@ -1,4 +1,4 @@
-Governance and Lifecycle actions for agents available in Microsoft 365 admin center
+Governance and lifecycle actions for agents available in Microsoft 365 admin center
 The Microsoft 365 admin center provides governance and lifecycle management capabilities for agents through the Agent Registry. These capabilities enable administrators to manage agent visibility, access, distribution, and retirement across the tenant.
 Agent actions
 Microsoft 365 for government Community Cloud High (GCCH) and Government Community Cloud Moderate (GCCM) environments support publishing agents to the organization.
@@ -6,10 +6,12 @@ Agent actions
 Description
 Install and uninstall
 Install an agent for users so it's ready to use without manual installation by end users. Admin can uninstall a previously installed agent.
+Activate
+Activate an agent and allow only selected users or groups to create instances of it.
 Block and unblock
 Restrict access to an agent across the organization, preventing any user from using it.
-Delete
-Delete agents and any associated files. When you delete an agent, it permanently removes the agent from the inventory and deletes all associated files.
+Delete, restore, and permanently delete
+Delete an agent with a 30-day recovery window, restore a deleted agent, or permanently delete it before the recovery window ends.
 Start and stop
 Start or stop the underlying Azure infrastructure to govern Foundry agents. This action is unique to Microsoft Foundry agents.
 Assign a new owner
@@ -48,6 +50,83 @@ In the agent details pane that opens, immediately under the agent's name, select
 If you don't see the Uninstall option, the selected agent might not be installed.
 In the Remove agent pane, select the Remove agent option, and then select the Uninstall Agent button.
 Uninstalling an agent affects its availability and functionality in Copilot and in the other host products, such as Microsoft Outlook, Microsoft Teams, or other Microsoft 365 applications.
+Activate agents
+Activation is a governance step for new agents. When a user requests activation so they can create instances of an agent, the request requires AI admin approval before the requester can create instances. Administrators review the agent's details, such as its description, owner, data, and tools, and then approve or reject the request. When an administrator activates an agent, they can also scope its audience to specific users, groups, or everyone in the organization to ensure a controlled rollout. The activation process in the Microsoft 365 admin center helps you maintain governance, security, and quality of custom applications.
+Overview of the activation process
+The activation process consists of the following steps:
+View a pending activation request - On the Requests tab, view all submitted agents that have a pending activation request. The list shows the agent name, publisher name, status, and date requested. New submissions appear with a status of Allow activation.
+Review submission details - Select a pending agent to view more details and metadata, including its description, capabilities, connected data sources, and tools. These details help you make an informed decision about activating or rejecting the agent.
+Start the request - When you're ready, select the Request tab to open the request wizard.
+Select users - Choose the users you want to approve for activating the agent. Activating an agent makes it available for the selected audience to install and create instances.
+Use the activation wizard - After you accept the activation request, the activation wizard opens so you can select users. You can include the original requesters and add security groups that have access to create instances from the agent.
+Apply a template - To strengthen governance and security for agents, apply a template that includes predefined policies:
+Default template - Microsoft provides an out-of-the-box template with essential security and compliance controls from Microsoft Entra, Microsoft Purview, and SharePoint. The default template automatically assigns the license to minimize manual license management. For more information, see Default template automatic license assignment.
+Custom template - If you need governance beyond the default template, create a custom template and apply extra policies, such as restricting external content sharing, to meet your organization's requirements.
+AI Administrators aren't authorized to configure Conditional Access policies or Microsoft Entra access package policies. These actions require a highly privileged administrator role with the appropriate Microsoft Graph permissions.
+Review permissions and grant admin consent - Review the permissions requested by the agent, and grant admin consent if appropriate. Permissions allow the agent to access relevant data or perform actions on behalf of users.
+Review and complete activation - Review all configurations, and then select Finish to activate the agent.
+After you activate an agent, it becomes available for creating instances in the Teams app store, Microsoft 365 Copilot, and Copilot Studio, and the requester is notified. For future user additions, the process is simplified: the admin only needs to approve or reject requests, using the existing templates without repeating the full activation steps.
+Admin-initiated activation
+Administrators can proactively activate an agent through the Agent Registry without waiting for an activation request. During activation, administrators can make the agent available to all users, specific users, or specific security groups, depending on their organization's deployment requirements.
+Policies predefined in the Microsoft prebuilt default template
+Service
+Policy name
+Description
+Learn more
+Microsoft Entra
+Identity Protection
+Detects agent identity threats by flagging anomalous activities involving agents.
+ID Protection for Agents - Microsoft Entra ID Protection
+Microsoft Entra
+Network visibility
+Enables network visibility into agent access to external resources.
+Learn about Secure Web and AI Gateway for Microsoft Copilot Studio agents - Global Secure Access
+Microsoft Entra
+Lifecycle management for agents
+Governs Microsoft Entra Agent IDs at scale with lifecycle policies.
+Automate identity lifecycle management with Microsoft Entra ID Governance
+SharePoint
+Restrict external sharing of sites and content
+Lets you allow or restrict specific agents from sharing content in SharePoint sites and OneDrive with external users and guests.
+SharePoint Advanced Management overview
+SharePoint
+Access control for sites and OneDrive
+Lets admins specify which agents and users can access a given site.
+Restrict SharePoint site access with Microsoft 365 groups and Microsoft Entra security groups
+SharePoint
+Content permissions insights
+Provides insights on the content and sites that users have permissions to.
+Data access governance reports for SharePoint sites
+SharePoint
+Agent access insights
+Provides insights on agents accessing SharePoint and OneDrive sites.
+Monitor agent access to SharePoint and OneDrive
+Microsoft Purview
+Audit enabled
+Logs audit trails for all activities and provides clear observability.
+Use Microsoft Purview to manage data security & compliance for Microsoft Agent 365
+Microsoft Purview
+Know your data policy
+Applies data security controls to safeguard against sensitive data leaks and oversharing.
+Use Microsoft Purview to manage data security & compliance for Microsoft Agent 365
+Microsoft Purview
+AI compliance assessment
+Continuously monitors and evaluates agents for compliance gaps and identifies areas that need attention.
+Use Microsoft Purview to manage data security & compliance for Microsoft Agent 365
+Microsoft Defender
+Investigation and advanced hunting
+Alerts you to AI agent activity and lets you investigate suspicious events with advanced hunting capabilities.
+Detect and investigate threats to AI agents using Microsoft Defender (Preview)
+Microsoft Defender
+Real-time protection for Microsoft Agent 365 (Preview)
+Detects and blocks suspicious AI agent activity during runtime.
+Detect and investigate threats to AI agents using Microsoft Defender (Preview)
+Default template automatic license assignment
+The default template automatically assigns the license during activation. This automatic license assignment eliminates manual license management and ensures that every hired agent instance is properly licensed before it becomes operational.
+Key benefits include:
+Faster onboarding - Administrators don't need to manually allocate licenses for each instance.
+Compliance assurance - Prevents unlicensed usage and maintains entitlement integrity.
+Scalable management - Supports large-scale deployments without increasing administrative overhead.
 Block or unblock agents
 Block or unblock agents for the entire organization by using the same controls that work for any other app in the Microsoft 365 admin center.
 To block or unblock an agent, follow these steps:
@@ -59,19 +138,32 @@ In the Block agent or Unblock agent pane that opens, select either Block agent o
 Blocking or unblocking an agent that you created by using Microsoft Copilot Agent Builder and Microsoft Copilot Studio affects its availability and functionality in Microsoft Copilot. It also affects availability and functionality in other host products, such as Microsoft Outlook, Microsoft Teams, or other Microsoft 365 applications. However, blocking an agent that you created by using SharePoint or Microsoft Foundry only impacts its availability in Microsoft Copilot Chat.
 For the Researcher and Analyst agents, the Edit users panel is disabled. To manage their availability, block the agent for the entire tenant by using the Block action in the Microsoft 365 admin center.
 Delete agents
-You can delete agents that you created by using Microsoft Copilot Agent Builder directly from the Microsoft 365 admin center. Deleting an agent permanently removes the agent and its data from the tenant.
-To delete an Agent Builder agent, follow these steps:
+When you delete an agent in the Microsoft 365 admin center, the agent is soft deleted. A soft-deleted agent is unavailable to its maker and end users, but its properties and associated resources are retained for 30 days. Retained properties include the agent ID, metadata, channels, ownership, and connections.
+During the 30-day retention period, you can restore the agent or permanently delete it. If you don't restore or permanently delete the agent, Microsoft 365 automatically permanently deletes it when the retention period ends. Soft-delete, restore, and permanent-delete events are recorded in the audit log with information about the system that initiated the action.
+To delete an agent, follow these steps:
 Sign in to the Microsoft 365 admin center.
 Select Agents > All agents.
-In the All agents page, from the list of agents find the Agent Builder agent that you want to delete.
-Tip
-To quickly find Agent Builder agents, use the Platform filter in the All agents page and then select Agent Builder in Microsoft Copilot.
-Next to the Agent Builder agent you want to delete, select the vertical ellipses (⁝), and then select Delete.
-When you delete an agent, the following actions occur:
-Microsoft 365 removes the agent from the inventory.
-All associated files are deleted.
-The underlying SharePoint Embedded container is deleted.
-This deletion process is irreversible. Once you delete an agent, it might take up to 24 hours for the deletion to reach all users who had access to the agent. During this time, users might still see the agent listed, but they can't interact with it.
+On the All agents page, select the agent that you want to delete.
+In the agent details pane, select Delete agent.
+In the confirmation pane, select Delete.
+Restore a deleted agent
+You can restore an agent only while it's soft deleted and within its 30-day retention period. Restoring the agent returns it to an active state and makes it available to its maker and end users with its previous configuration.
+To restore a deleted agent, follow these steps:
+Sign in to the Microsoft 365 admin center.
+Select Agents > All agents.
+On the All agents page, select Deleted.
+Select the agent that you want to restore.
+In the agent details pane, select Restore agent.
+In the confirmation dialog, select Restore.
+Permanently delete an agent
+Permanently deleting an agent removes the agent and its associated resources and can't be undone. You can permanently delete only an agent that's already soft deleted.
+To permanently delete an agent before the 30-day retention period ends, follow these steps:
+Sign in to the Microsoft 365 admin center.
+Select Agents > All agents.
+On the All agents page, select Deleted.
+Select the agent that you want to permanently delete.
+In the agent details pane, select Permanently delete.
+In the confirmation dialog, select Delete.
 Start or stop a Foundry agent
 You can start or stop the underlying Azure infrastructure to govern Foundry agents.
 Important

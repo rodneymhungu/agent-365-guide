@@ -19,7 +19,7 @@
   ==========================================================================
 */
 window.A365 = {
-  reviewed: "21 September 2026",
+  reviewed: "28 September 2026",
   gaDate: "1 May 2026",
   transitionDate: "1 July 2026",
   trial: "25 seats for 30 days",
@@ -32,6 +32,10 @@ window.A365 = {
     roadmap:  { label: "Early preview",    phrase: "in early preview" }
   },
   changes: [
+    { date: "28 September 2026", section: "s7-4", text: "Runtime protection can now be deployed from the Microsoft Defender portal as well as Intune, reaching devices under Defender for Endpoint security settings management; public preview also requires the Beta Channel for platform and engine updates. Runtime protection setup page cited." },
+    { date: "28 September 2026", section: "s6-3", text: "Deleting an agent is now a soft delete with a thirty-day recovery window and a restore option, for any agent type, not an irreversible Agent Builder-only removal. Agent actions page cited." },
+    { date: "28 September 2026", section: "s5-3", text: "The Risks column and Risk details pane now cover high, medium and low severity signals, not high alone; a zero means no active signal at any severity. Agent registry page cited." },
+    { date: "28 September 2026", section: "s6-8", text: "AI administrators, not only administrators, can activate templates and delete agent instances. Manage agent instances page cited." },
     { date: "27 September 2026", kind: "guide", text: "Structure pass: 5.4 and 6.1 open on their answer, 6.2 custom templates and 7.3 real-time protection coverage are tables, 5.5 names each tool once, 7.4 says which admin-centre page blocks what." },
     { date: "27 September 2026", section: "s5-5", kind: "guide", text: "5.5 gains a lookup table of which surface detects which local AI tool and which can block it, joined from the Shadow AI, Local agents, Defender discovery and runtime protection pages." },
     { date: "21 September 2026", section: "s5-5", text: "Defender for Endpoint local agent discovery stays in preview. Learn's page dropped its preview label, but the Defender for Endpoint release notes and the portal still say preview, and there is no GA entry." },

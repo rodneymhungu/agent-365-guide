@@ -12,12 +12,14 @@ Your devices are onboarded to Defender for Endpoint, and Microsoft Defender Anti
 Your devices are running a supported version of Windows, and Microsoft Defender Antivirus has the latest platform, engine, and security intelligence updates.
 Your devices have one or more supported local AI agents installed for the runtime protection approach you plan to enable.
 To deploy the settings with Microsoft Intune, your account has an Intune role with permission to create, update, and assign device configurations, such as Policy and Profile Manager.
+To deploy the settings from the Microsoft Defender portal, your account has permission to manage endpoint security policies. For more information, see Prerequisites for managing endpoint security policies.
 To review alerts, your account has a supported Microsoft Entra role, such as Security Reader, Security Operator, or Security Administrator, or a Microsoft Defender custom role with permission to read security data. For more information, see Required permissions to investigate alerts.
+During public preview, configure test devices to receive Microsoft Defender platform and engine updates from the Beta Channel. For configuration and verification instructions, see Create a custom gradual rollout process for Microsoft Defender updates.
 Recommended deployment approach
 Microsoft recommends the following phased rollout:
 Test: Enable runtime protection in audit mode on a small set of devices where supported agents are actively used.
 Review: Monitor alerts in the Microsoft Defender portal for one to two weeks. Classify inaccurate alerts as false positives. If a detection involves a file incorrectly identified as malicious, submit the file to Microsoft for analysis.
-Deploy: Deploy throughout your organization in audit mode to more device groups.
+Deploy: Deploy throughout your organization in audit mode to more device groups by using Microsoft Intune or the Microsoft Defender portal.
 Enforce: After validating that alerts are accurate and actionable, switch to block mode on device groups where you want active enforcement.
 Enable runtime protection
 To enable runtime protection on a single device:
@@ -53,7 +55,9 @@ Audit: Defender detects and reports prompt injection but allows the agent action
 Block: Defender detects prompt injection and blocks supported agent actions before they run.
 Microsoft recommends that you initially assign the policy in audit mode to a limited device group. Review detections, and then change the setting to block mode when you're ready to enforce protection. Complete the policy wizard, assign the policy to the device groups you want to protect, and then create the policy.
 After the policy applies, verify the setting on an enrolled device:
-Get-MpPreference | Select-Object AiAgentProtection
+In the Microsoft Defender portal, open the device page.
+On the Configuration management tab, select Effective settings.
+Find Ai Agent Protection, and confirm its effective value and configuration source. For more information, see Effective settings on the device entity page.
 Close any terminal windows used to run agents, and then open a new terminal window before starting the agent. Run the AI agent runtime protection demonstration to confirm that Defender detects a benign prompt injection test string.
 The Microsoft Defender AI agent runtime protection profile configures agent-native event inspection. To deploy network inspection with Intune, use a PowerShell platform script.
 Deploy network inspection with a PowerShell platform script
@@ -65,6 +69,26 @@ In the script settings, set Run this script using the logged on credentials to N
 Use Microsoft Intune to deploy the script to target device groups. For detailed steps, see Use PowerShell scripts on Windows devices in Intune.
 To apply a different mode later, update the script or its policy so that Intune runs the script again.
 Intune normally runs a platform script once. It runs the script again only after you change the script or policy, or if a failed script is eligible for retry.
+Deploy settings throughout your organization with the Microsoft Defender portal
+If your organization manages endpoint security policies in the Microsoft Defender portal, use the Microsoft Defender AI agent runtime protection template to deploy agent-native event inspection. The policy can apply to Intune-enrolled devices and devices managed through Defender for Endpoint security settings management.
+For detailed instructions, see Create an endpoint security policy or Edit an endpoint security policy (links open new tabs).
+When you create the policy, use these specific settings:
+Policy type: On the Windows policies tab of the Endpoint security policies page in the Microsoft Defender portal at https://security.microsoft.com/policy-inventory?osPlatform=Windows, select
+Create new policy.
+Select platform: Select Windows.
+Select template: Select Microsoft Defender AI agent runtime protection.
+On the Configuration settings page, configure Ai Agent Protection, which protects agents that expose vendor-supported agent event interfaces. Select one of the following values:
+Default: The protection method is disabled.
+Audit: Defender detects and reports prompt injection but allows the agent action to continue.
+Block: Defender detects prompt injection and blocks supported agent actions before they run.
+Microsoft recommends that you initially assign the policy in audit mode to a limited device group. Review detections, and then change the setting to block mode when you're ready to enforce protection. Complete the policy wizard, assign the policy to the device groups you want to protect, and then create the policy.
+Important
+For devices managed through Defender for Endpoint security settings management that aren't enrolled in Intune, assign the policy to Microsoft Entra device groups. User targeting isn't supported for these devices.
+After the policy applies, verify the setting on a device:
+In the Microsoft Defender portal, open the device page.
+On the Configuration management tab, select Effective settings.
+Find Ai Agent Protection, and confirm its effective value and configuration source. For more information, see Effective settings on the device entity page.
+Close any terminal windows used to run agents, and then open a new terminal window before starting the agent. Run the AI agent runtime protection demonstration to confirm that Defender detects a benign prompt injection test string.
 Review and investigate detections
 After you enable runtime protection, review alerts to validate detection accuracy and tune your configuration before broadening enforcement. This step is critical during the audit phase because it helps you understand what agents are encountering and whether detections represent real threats.
 When runtime protection detects prompt injection, Defender raises a Suspicious AI prompt injection alert and takes action based on the configured mode. The alert appears on the device timeline, and related alerts are correlated into incidents for security operations center (SOC) investigation. In block mode, the alert severity is Critical, High, Medium, or Low based on assessed risk. In audit mode, the alert is Informational, so your team can review what would have been blocked without triaging it as an active threat.
