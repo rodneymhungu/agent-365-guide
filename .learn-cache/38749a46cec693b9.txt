@@ -7,6 +7,8 @@ Roadmap for data security and risk and compliance solutions.
 September 2026
 Data Loss Prevention
 General availability: Integrate Microsoft Entra Global Secure Access with Purview to protect text, files, and AI interactions at the network layer, enforce restrictive actions based on DLP policies, and detect risky user activity through Insider Risk Management. It helps prevent sensitive data from being shared with untrusted cloud applications through browsers, apps, APIs, and add-ins, including generative AI platforms, social media, and collaborative platforms. See Learn about Microsoft Purview Network Data Security.
+Information Barriers
+New: Create an Information Barriers policy compliance report to identify SharePoint sites, OneDrive accounts, and user-owned SharePoint Embedded containers that no longer comply after Information Barriers policy changes.
 August 2026
 Data Governance
 Updated: Data Quality capability requires the Microsoft Purview account and its data sources to be in the same Azure region.
