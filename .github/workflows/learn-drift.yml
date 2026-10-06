@@ -102,6 +102,11 @@ jobs:
              one-line reason. Add a final "Needs a human decision" list for anything you skipped,
              including any new Learn page that the guide should probably cite.
 
+          Out of scope: US government clouds (GCC, GCC High, DoD) and US federal authorisations
+          such as FedRAMP. The guide's readers are commercial customers in Europe and worldwide.
+          Do not add prose or changes entries about them; note the Learn change under
+          "Checked, no edit needed" in CHANGES.md.
+
           Never edit files other than index.html, licensing.html, a365-data.js and CHANGES.md.
           Never touch guide.css or guide.js.
           PROMPT

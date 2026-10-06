@@ -102,6 +102,7 @@ Decided by Rodney, with the date, so nobody re-opens these by accident.
 | Since | Topic | Decision |
 |---|---|---|
 | 21 September 2026 | Microsoft 365 Government Community Cloud (GCC, G7) availability | Out of scope. GCC is a United States programme and this guide's readers are not in it. The service description's "GCC Availability" column is not tracked and chapter 2 carries no GCC caveat. Reopen only if a reader asks for it explicitly, through an issue. Drift pull requests that mention GCC changes can be merged without adding prose. |
+| 6 October 2026 | FedRAMP and other US federal authorisations | Out of scope, for the same reason as GCC: the guide is for commercial customers in Europe and worldwide, and no European buyer decides on FedRAMP. The 5 October drift run added a FedRAMP High sentence to 2.1; it was taken out before merging. The drift prompt now names GCC and FedRAMP as out of scope, so future runs note them in CHANGES.md without editing prose. Data residency and the EU Data Boundary stay in 5.6. |
 
 ## Log
 
@@ -109,6 +110,7 @@ Newest first. One line per item shipped, with the pull request.
 
 | Date | Focus | Shipped | Evidence |
 |---|---|---|---|
+| 6 October 2026 | Plumbing | The 5 October digest crashed before opening its issue: two guide changelog entries dated 27 September, one without a section, could not be sorted. The article draft now sorts on the date alone. FedRAMP and US government clouds added to Out of scope and to the drift prompt. | this pull request |
 | 28 September 2026 | 3 | Merged the 28 September drift pull request after checking each edit against the Learn text it cites: the Risks column covers high, medium and low severity; agent deletion is a soft delete with a thirty-day window for any agent type; AI administrators can activate templates and delete instances; runtime protection deploys from the Defender portal as well as Intune and needs the Beta Channel in preview. Four changelog entries. Writing review: three changelog-voice phrasings removed from 5.3 and 7.4, one rhythm note on the changelog entries kept. Open decisions from the drift report: the 5.3 risk-type table left Learn, a new Activate governance action, and a new third-party agent observability page. | #48 and this pull request |
 | 21 September 2026 | 3 | Merged the 21 September drift pull request after checking each claim on the live Learn page: Defender for Endpoint local agent discovery is GA (macOS still preview), Intune has a native Antivirus profile for agent-native runtime protection, Snowflake Cortex joins registry sync. Three changelog entries. Writing review: two "now/still" phrasings removed. | #25 |
 | 27 September 2026 | Structure | Pyramid pass over the whole guide, seven flags applied: 5.4 and 6.1 open on their answer; 6.2 custom templates and 7.3 real-time coverage became tables; 5.5 names each tool once and points at the new table; 7.4 says which admin-centre page blocks what; 5.2 closes on a verdict. Writing review: no new flags. | #47 |
