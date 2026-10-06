@@ -326,7 +326,9 @@ def article_draft(weeks):
             continue
         item = (d, m.group(2), m.group(4).replace('\\"', '"'))
         (guide if m.group(3) == "guide" else learn).append(item)
-    learn.sort(reverse=True); guide.sort(reverse=True)
+    # Sort on the date alone: entries without a section carry None, which
+    # cannot be compared with a section id when two share a date.
+    learn.sort(key=lambda i: i[0], reverse=True); guide.sort(key=lambda i: i[0], reverse=True)
 
     def bullet(text, sec):
         # Bold the first sentence: it names the product and the capability.
