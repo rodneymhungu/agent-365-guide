@@ -32,6 +32,7 @@ window.A365 = {
     roadmap:  { label: "Early preview",    phrase: "in early preview" }
   },
   changes: [
+    { date: "6 October 2026", kind: "guide", text: "Writing and structure pass: 5.5 and 7.2 open on their verdict, 2.1 and 7.4 split into one claim per sentence, the hero names all five enforcing products, 4.1 lists all seven synced platforms, and cross-references use bare section numbers." },
     { date: "6 October 2026", section: "s6-4", text: "The Allowed agent types setting is now Agent and plugin access and also governs plugins, meaning tools, MCP servers, connectors and skills; Microsoft-built ones stay visible when disabled but cannot be installed. Agent settings page cited." },
     { date: "6 October 2026", section: "s5-4", text: "Registry sync connections are read-only by default: each platform's new setup page gives a least-privilege read permission set, and delete rights are optional, for admins who will delete agents from Agent 365. Amazon Bedrock and Oracle setup pages cited." },
     { date: "5 October 2026", section: "s5-4", text: "The Agent 365 SDK no longer bundles observability: Microsoft deprecated the SDK's observability packages in favour of the separate Microsoft OpenTelemetry Distro, keeping identity, tooling and notifications in the SDK. Agent 365 SDK overview page cited." },

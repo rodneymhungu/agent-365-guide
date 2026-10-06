@@ -61,7 +61,7 @@
     <div class="hero-copy">
       <p class="eyebrow">Field guide 01 · Microsoft Agent 365</p>
       <h1 class="hero-title"><span class="product">Agent 365</span><span class="claim">mapped for defenders</span></h1>
-      <p class="lede">Agent 365 is Microsoft's unified control plane for AI agents: one place to find every agent in the tenant, give it an owner, attach policy and watch what it does. It enforces nothing itself. Entra, Purview, Defender and Intune do that. This guide shows security and compliance engineers which product enforces each control, what it needs, and what works today.</p>
+      <p class="lede">Agent 365 is Microsoft's unified control plane for AI agents: one place to find every agent in the tenant, give it an owner, attach policy and watch what it does. It enforces nothing itself. Entra, Purview, Defender, Intune and the Microsoft 365 admin centre do that. This guide shows security and compliance engineers which product enforces each control, what it needs, and what works today.</p>
       <div class="hero-actions" aria-label="Start exploring">
         <a href="#s4">Which product enforces what <span aria-hidden="true">→</span></a>
         <a href="#s2-1">What your licence unlocks <span aria-hidden="true">↓</span></a>
@@ -179,7 +179,7 @@
   <p>The <a href="https://www.microsoft.com/microsoft-agent-365" target="_blank" rel="noopener">pricing page</a> lists the add-on at <span data-val="price.addon"></span> and E7 at <span data-val="price.e7"></span>, <span data-val="price.note"></span>; check your own region and agreement. An admin-led trial of <span data-val="trial"></span> is available from the admin centre banner.</p>
   <p>Two Learn pages list Entra ID P1 or P2 beside Agent 365 as a prerequisite. That is not a second purchase: every plan that qualifies you to buy Agent 365 already carries Entra ID P1 at least: E5, A5 and Defender Suite include P2, and E3, EMS E3, Business Premium, F1 and F3 include P1 (<a href="https://learn.microsoft.com/en-us/entra/fundamentals/licensing" target="_blank" rel="noopener">Entra licensing</a>). So:</p>
   <ul>
-    <li><strong>Covered by your base plan.</strong> <a href="https://learn.microsoft.com/en-us/entra/identity/conditional-access/agent-id" target="_blank" rel="noopener">Conditional Access for agents</a> needs Microsoft 365 E7, or an Agent 365 licence paired with at least Entra ID P1 or Microsoft 365 E3, and Microsoft still says enforcement of the Agent 365 requirement is coming. The Entra ID P1 it also lists comes with your base plan.</li>
+    <li><strong>Covered by your base plan.</strong> <a href="https://learn.microsoft.com/en-us/entra/identity/conditional-access/agent-id" target="_blank" rel="noopener">Conditional Access for agents</a> needs Microsoft 365 E7, or an Agent 365 licence paired with at least Entra ID P1 or Microsoft 365 E3, and your base plan already includes P1. Microsoft says enforcement of the Agent 365 requirement is coming.</li>
     <li><strong>Covered by your base plan.</strong> <a href="https://learn.microsoft.com/en-us/entra/id-governance/agent-id-governance-overview" target="_blank" rel="noopener">Entra ID Governance for agents</a> is the same: Microsoft 365 E7, or Agent 365 on any qualifying base plan. The agent features (access packages for agents, sponsor tasks in lifecycle workflows) sit in the Agent 365 column of the governance licensing table; the rest of ID Governance still needs its own licence or the Entra Suite.</li>
     <li><strong>The one extra.</strong> Learn's Conditional Access page says network controls for agents need <a href="https://learn.microsoft.com/en-us/entra/global-secure-access/overview-what-is-global-secure-access" target="_blank" rel="noopener">Microsoft Entra Internet Access</a>, standalone or in the Entra Suite, which E7 includes. The <a href="https://www.microsoft.com/licensing/faqs/122" target="_blank" rel="noopener">FAQ</a> narrows that: Agent 365 on E3 or P1 covers the network controls for cloud agents such as Copilot Studio, while controls for local agents on devices need the Entra Suite or standalone Internet Access.</li>
     <li><strong>Free for everyone.</strong> <a href="https://learn.microsoft.com/en-us/entra/agent-id/what-is-microsoft-entra-agent-id" target="_blank" rel="noopener">Entra Agent ID</a> is available to all Entra customers. Extending Entra security to those identities needs Agent 365.</li>
@@ -228,7 +228,7 @@
 <section class="block" id="s3" data-search>
   <div class="shead"><span class="n">03</span><h2>Agents do not behave like applications</h2></div>
   <p>An agent, in the <a href="https://learn.microsoft.com/en-us/entra/agent-id/what-are-agent-identities" target="_blank" rel="noopener">Entra definition</a>, is an application that pursues a goal by understanding its context, deciding, and acting autonomously with tools. Structurally it is a model, an orchestration loop, memory and tools. Inputs arrive as user messages, system events or messages from other agents. Outputs go to people, to other agents, or out through tool calls that retrieve, act and write memory. Every hop is an observation point and an attack surface.</p>
-  <p>Autonomy is the property that matters. Given the same goal twice, an agent may take a different path, because its reasoning is probabilistic. Identity controls assume the opposite: users authenticate, applications have fixed permissions, actions are predictable. So identity must enforce boundaries, because it cannot see reasoning. A guard checks whether you are authorised, not why you want to enter.</p>
+  <p>Autonomy is the defining property: given the same goal twice, an agent may take a different path, because its reasoning is probabilistic. Identity controls assume the opposite: users authenticate, applications have fixed permissions, actions are predictable. So identity must enforce boundaries, because it cannot see reasoning.</p>
   <figure class="sketch" id="fig-guard">
     <div class="frame">
     <svg viewBox="0 0 900 300" role="img" aria-labelledby="fgt">
@@ -256,7 +256,7 @@
     </div>
     <figcaption><b class="fn"></b> The guard does not care why. Conditional Access, access packages and blueprints are the list.</figcaption>
   </figure>
-  <p>Application identities also assume long-term stability and known ownership. Agents are created dynamically, sometimes thousands a day, and may live for minutes. Ordinary service principals leave orphaned credentials and permissions behind. That gap is what Entra Agent ID fills, and why section 7 comes before the rest of Secure.</p>
+  <p>Application identities also assume long-term stability and known ownership. Agents are created dynamically, sometimes thousands a day, and may live for minutes. Ordinary service principals leave orphaned credentials and permissions behind. That gap is what Entra Agent ID fills, and why 7.1 comes before the rest of Secure.</p>
 
   <figure class="stepper" data-mode="cumulative">
     <div class="frame">
@@ -290,7 +290,7 @@
 <!-- ============================ 4 ============================ -->
 <section class="block" id="s4" data-search>
   <div class="shead"><span class="n">04</span><h2>Five products share the enforcement path</h2></div>
-  <p>Microsoft describes Observe as real-time visibility into the agent estate, Govern as guardrails across the agent lifecycle, and Secure as extending existing identity, data and threat protection to agents. Engineers need two answers: which product enforces the control, and who owns it.</p>
+  <p>Engineers need two answers: which product enforces the control, and who owns it. Microsoft describes Observe as real-time visibility into the agent estate, Govern as guardrails across the agent lifecycle, and Secure as extending existing identity, data and threat protection to agents.</p>
   <div class="tbl"><table>
     <thead><tr><th>Pillar</th><th>Capability</th><th>Enforced in</th><th>Owned by</th></tr></thead>
     <tbody>
@@ -344,7 +344,7 @@
     <thead><tr><th>When</th><th>The control</th><th>Enforced in</th><th>Status</th><th>Read</th></tr></thead>
     <tbody>
     <tr data-tier="registry"><td>A new agent appears in the tenant with no owner</td><td><a href="https://learn.microsoft.com/en-us/microsoft-365/admin/manage/agent-registry" target="_blank" rel="noopener">Registry</a> entry, owner assignment, the shadow agent risk</td><td>Microsoft 365 admin centre</td><td><span class="badge" data-badge="registry" style="margin:0"></span></td><td><a href="#s5-1">5.1</a>, <a href="#s5-3">5.3</a></td></tr>
-    <tr data-tier="registry-sync"><td>Agents built on Bedrock, Vertex, Agentforce, Genie or Oracle need to be in the inventory</td><td><a href="https://learn.microsoft.com/en-us/microsoft-agent-365/admin/connected-platforms" target="_blank" rel="noopener">Registry sync</a> from the external platform</td><td>Microsoft 365 admin centre</td><td><span class="badge" data-badge="registry-sync" style="margin:0"></span></td><td><a href="#s5-4">5.4</a></td></tr>
+    <tr data-tier="registry-sync"><td>Agents built on Bedrock, Vertex, Agentforce, Genie, Anthropic, Oracle or Snowflake need to be in the inventory</td><td><a href="https://learn.microsoft.com/en-us/microsoft-agent-365/admin/connected-platforms" target="_blank" rel="noopener">Registry sync</a> from the external platform</td><td>Microsoft 365 admin centre</td><td><span class="badge" data-badge="registry-sync" style="margin:0"></span></td><td><a href="#s5-4">5.4</a></td></tr>
     <tr data-tier="mde-discovery"><td>A developer installs Claude Code, Cursor or Codex on a laptop</td><td><a href="https://learn.microsoft.com/en-us/defender-endpoint/local-agent-discovery-overview" target="_blank" rel="noopener">Local agent discovery</a>, then the <a href="https://learn.microsoft.com/en-us/microsoft-365/admin/manage/agent-local" target="_blank" rel="noopener">Local agents page</a></td><td>Defender for Endpoint; Microsoft 365 admin centre</td><td><span class="badge" data-badge="mde-discovery" style="margin:0"></span></td><td><a href="#s5-5">5.5</a></td></tr>
     <tr data-tier="agent-id"><td>An agent needs an identity that is not a person's</td><td><a href="https://learn.microsoft.com/en-us/entra/agent-id/what-is-microsoft-entra-agent-id" target="_blank" rel="noopener">Entra Agent ID</a>: blueprint, identity, agent user</td><td>Entra</td><td><span class="badge" data-badge="agent-id" style="margin:0"></span></td><td><a href="#s7-1">7.1</a></td></tr>
     <tr data-tier="conditional-access"><td>A risky agent identity must not be issued a token</td><td><a href="https://learn.microsoft.com/en-us/entra/identity/conditional-access/agent-id" target="_blank" rel="noopener">Conditional Access for agents</a>, block at token issuance</td><td>Entra</td><td><span class="badge" data-badge="conditional-access" style="margin:0"></span></td><td><a href="#s7-1">7.1</a></td></tr>
@@ -376,7 +376,7 @@
     <figcaption><b class="fn"></b> The registry. The three cards above the list are the ones to read first. <span class="colist"><b>1</b> Total agents <b>2</b> Agents without owners <b>3</b> Unmanaged agents</span> <span class="src">Source: <a href="https://learn.microsoft.com/en-us/microsoft-365/admin/manage/agent-registry" target="_blank" rel="noopener">Microsoft Learn, Agent registry</a>, CC BY 4.0. Asset <code>learn-mac-registry</code>.</span></figcaption>
   </figure>
   <p>Filters cover status, publisher type, channel, platform and data source. Use the data source filter first: it isolates agents with embedded knowledge, meaning maker-uploaded files, and agents on fine-tuned models. Both carry data handling implications the rest of the inventory does not.</p>
-  <p>Export to CSV gives more than thirty attributes per agent, including owner, platform, version and instructions. Export on day one of an evaluation to get a baseline to diff against. A custom agent can be uploaded as a zip through the same wizard described in section 6.1. <span data-tier="graph-api">Microsoft Graph access is <span class="st" data-st="graph-api"></span>: the package management APIs list all agents and return per-agent detail under the AI Administrator role.</span></p>
+  <p>Export to CSV gives more than thirty attributes per agent, including owner, platform, version and instructions. Export on day one of an evaluation to get a baseline to diff against. A custom agent can be uploaded as a zip through the same wizard described in 6.1. <span data-tier="graph-api">Microsoft Graph access is <span class="st" data-st="graph-api"></span>: the package management APIs list all agents and return per-agent detail under the AI Administrator role.</span></p>
   <p>The <a href="https://learn.microsoft.com/en-us/microsoft-365/admin/manage/agent-365-overview" target="_blank" rel="noopener">overview page</a> at Agents, Overview shows a thirty-day snapshot: total agents, active users, agent run-time in hours, and which external platforms registry sync has scanned. Four action cards link to prefiltered views: pending requests, agents without owners, agents at risk, and agents with exceptions. Activity metrics start only when licences are activated, so the first month is partial. The overview shows the top five platforms only. Draft agents are visible only for Copilot Studio.</p>
   <figure class="shot ">
     <div class="frame"><div class="imgwrap"><img src="images/learn-mac-overview.png" width="1600" height="881" alt="Agent overview dashboard in the Microsoft 365 admin centre" loading="lazy"></div></div>
@@ -429,7 +429,7 @@
     <div class="frame"><div class="imgwrap"><img src="images/learn-a365-registry-sync.png" width="1600" height="750" alt="Connected platforms page with a Google Cloud connection and synced agents" loading="lazy"></div></div>
     <figcaption><b class="fn"></b> Registry sync: one connection per external platform, with sync status and the agents it imported. <span class="src">Source: <a href="https://learn.microsoft.com/en-us/microsoft-agent-365/admin/connected-platforms" target="_blank" rel="noopener">Microsoft Learn, Connected platforms</a>, CC BY 4.0. Asset <code>learn-a365-registry-sync</code>.</span></figcaption>
   </figure>
-  <p>For agents built outside Microsoft platforms that need more than inventory, the <a href="https://learn.microsoft.com/en-us/microsoft-agent-365/developer/agent-365-sdk" target="_blank" rel="noopener">Agent 365 SDK</a> adds three capabilities to an agent you already run: an Entra-backed identity, governed access to Work IQ MCP tools, and notifications. It does not build, host or orchestrate. Observability now comes from the separate Microsoft OpenTelemetry Distro rather than the SDK; the SDK's own observability packages are deprecated. Packages exist for Python, JavaScript and .NET with extensions for LangChain, Semantic Kernel, the OpenAI Agents SDK, the Microsoft Agent Framework and the Claude Agent SDK. Notifications, and agents needing their own user account, are Frontier only.</p>
+  <p>For agents built outside Microsoft platforms that need more than inventory, the <a href="https://learn.microsoft.com/en-us/microsoft-agent-365/developer/agent-365-sdk" target="_blank" rel="noopener">Agent 365 SDK</a> adds three capabilities to an agent you already run: an Entra-backed identity, governed access to Work IQ MCP tools, and notifications. It does not build, host or orchestrate. Observability comes from the separate Microsoft OpenTelemetry Distro, not the SDK; the SDK's own observability packages are deprecated. Packages exist for Python, JavaScript and .NET with extensions for LangChain, Semantic Kernel, the OpenAI Agents SDK, the Microsoft Agent Framework and the Claude Agent SDK. Notifications, and agents needing their own user account, are Frontier only.</p>
   <figure class="shot ">
     <div class="frame"><div class="imgwrap"><img src="images/learn-a365-sdk-integration.png" width="1600" height="589" alt="Diagram of built-in integrations, registry sync and SDK-integrated agents" loading="lazy"></div></div>
     <figcaption><b class="fn"></b> Where the SDK fits: platforms with built-in integration and synced platforms already appear in the inventory; the SDK is for capabilities you must configure in code. <span class="src">Source: <a href="https://learn.microsoft.com/en-us/microsoft-agent-365/developer/agent-365-sdk" target="_blank" rel="noopener">Microsoft Learn, Agent 365 SDK overview</a>, CC BY 4.0. Asset <code>learn-a365-sdk-integration</code>.</span></figcaption>
@@ -440,6 +440,7 @@
   <section id="s5-5" data-search data-tier="mde-discovery">
   <h3>5.5 Shadow AI and local agents on endpoints <span class="badge" data-badge="shadow-ai-page"></span></h3>
   <aside class="operator-note"><span class="label">Rodney's field note 02</span><strong>Three inventories can all be right and still disagree.</strong>Agent 365, Defender and Global Secure Access observe different surfaces. Compare scope before you compare counts.</aside>
+  <p>Take the agent inventory from Defender for Endpoint, which sees the widest set of tools, and use the admin centre pages for the governance actions they offer. Blocking from the admin centre reaches only OpenClaw and its Node.js family and the Visual Studio Code extensions.</p>
   <div class="tbl"><table>
     <thead><tr><th>Surface</th><th>What it sees</th><th>Its boundary</th></tr></thead>
     <tbody>
@@ -467,9 +468,9 @@
   </figure>
   </div>
   <div data-tier="gsa-agent-discovery">
-  <p>Global Secure Access adds a third layer, three features with different scopes.</p>
+  <p>Global Secure Access is the fourth surface, with three features of different scope.</p>
   <ul>
-    <li><a href="https://learn.microsoft.com/en-us/entra/global-secure-access/concept-ai-agent-discovery" target="_blank" rel="noopener">AI agent discovery</a>, <span class="st" data-st="gsa-agent-discovery"></span>, classifies agents reaching the internet from devices with the GSA client as managed or shadow by whether they hold an Entra Agent ID, and attributes traffic to user, device and process.</li>
+    <li><a href="https://learn.microsoft.com/en-us/entra/global-secure-access/concept-ai-agent-discovery" target="_blank" rel="noopener">AI agent discovery</a>, <span class="st" data-st="gsa-agent-discovery"></span>, classifies agents reaching the internet from devices with the Global Secure Access client as managed or shadow by whether they hold an Entra Agent ID, and attributes traffic to user, device and process.</li>
     <li><a href="https://learn.microsoft.com/en-us/entra/global-secure-access/concept-shadow-ai-discovery" target="_blank" rel="noopener">Shadow AI discovery</a> is application-level and uses the Defender for Cloud Apps catalogue to score AI SaaS, model provider APIs and SaaS MCP servers.</li>
     <li><a href="https://learn.microsoft.com/en-us/entra/global-secure-access/concept-generative-ai-insights" target="_blank" rel="noopener">Generative AI Insights</a>, <span class="st" data-st="gsa-genai-insights"></span>, logs prompt content to eleven supported applications and every MCP operation to remote servers, discovered by protocol inspection rather than catalogue.</li>
   </ul>
@@ -496,7 +497,7 @@
     <tr><td>Visual Studio Code extensions: Claude Code, Cline, Codex, Gemini Code Assist, GitHub Copilot, Roo Code</td><td>No</td><td>Detect, block through the VS Code extension policy</td><td>Detect</td><td>No</td></tr>
     </tbody>
   </table></div>
-  <p>Two things follow. Blocking from the admin centre reaches only the Node.js family and the Visual Studio Code extensions; for every other tool, stopping it means runtime protection where it is supported or an Intune policy of your own. And Defender for Endpoint sees the widest set, so take the inventory from there and use the admin centre pages for the governance actions they offer.</p>
+  <p>For every other tool, stopping it means runtime protection where it is supported or an Intune policy of your own.</p>
   </section>
 
   <section id="s5-6" data-search>
@@ -512,7 +513,7 @@
   <section id="s6-1" data-search>
   <h3>6.1 Onboarding through one IT-controlled flow</h3>
   <p>Publishing makes four decisions: who can install, who gets it preinstalled, which policy template applies, and which permissions to consent to. An agent published from Copilot Studio, Foundry or the Agents Toolkit lands in <a href="https://learn.microsoft.com/en-us/microsoft-365/admin/manage/agent-requests" target="_blank" rel="noopener">Agents, All agents, Requests</a> as pending review, pending update or pending activate. The flyout shows its description, owner, knowledge sources, tools, custom actions and requested permissions before you decide.</p>
-  <p>Availability and installation are independent, so one group can discover an agent while another has it preinstalled. Only AI Administrators and Global Administrators can complete the wizard. Pending update covers new versions; users keep the old one until you approve. Pending activate covers templates users want to instantiate, covered in section 6.8.</p>
+  <p>Availability and installation are independent, so one group can discover an agent while another has it preinstalled. Only AI Administrators and Global Administrators can complete the wizard. Pending update covers new versions; users keep the old one until you approve. Pending activate covers templates users want to instantiate, covered in 6.8.</p>
 
   <figure>
     <div class="frame">
@@ -727,7 +728,7 @@
   </figure>
 
   <h4>How tokens flow</h4>
-  <p>The <a href="https://learn.microsoft.com/en-us/entra/agent-id/agent-on-behalf-of-oauth-flow" target="_blank" rel="noopener">on-behalf-of exchange</a> matters because Entra never gives the agent the user's original token. The blueprint proves its own identity, the child identity carries both contexts into the exchange, and Entra issues a resource token only after validating the chain. Conditional Access evaluates at that final issuance. The stepper below carries the six-step mechanics; a refresh-token variant supports background work.</p>
+  <p>In the <a href="https://learn.microsoft.com/en-us/entra/agent-id/agent-on-behalf-of-oauth-flow" target="_blank" rel="noopener">on-behalf-of exchange</a>, Entra never gives the agent the user's original token. The blueprint proves its own identity, the child identity carries both contexts into the exchange, and Entra issues a resource token only after validating the chain. Conditional Access evaluates at that final issuance. The stepper below carries the six-step mechanics; a refresh-token variant supports background work.</p>
   <p>An autonomous agent skips the user token: the blueprint obtains an exchange token, the identity trades it for a resource token, and the subject is the agent identity. Agent users add one further exchange so the final subject is the user account.</p>
 
   <figure class="stepper" data-mode="cumulative">
@@ -827,6 +828,7 @@
 
   <section id="s7-2" data-search>
   <h3>7.2 Data <span class="badge" data-badge="purview"></span></h3>
+  <p>Label first, then gate access on risk rather than identity alone: fix oversharing before an agent finds it, and block at the moment of interaction.</p>
   <p><a href="https://learn.microsoft.com/en-us/purview/ai-agent-365" target="_blank" rel="noopener">Purview data security</a> extends to agent instances with behaviours that catch people out.</p>
   <ul>
     <li>Sensitivity labels are honoured, but an instance reads only files explicitly shared with it, and an encrypting label must grant it VIEW and EXTRACT by name. A label granting all users in the organisation is not enough. Content an agent creates does not inherit labels.</li>
@@ -835,7 +837,6 @@
     <li>Endpoint DLP can warn or block users pasting sensitive data into third-party AI sites in a browser on onboarded Windows devices.</li>
     <li>Encryption without a sensitivity label is the one capability listed as unsupported.</li>
   </ul>
-  <p>The order that works is label first, then gate access on risk rather than identity alone. Fix oversharing before an agent finds it, and block at the moment of interaction.</p>
   <div class="strip c2">
   <figure class="shot ">
     <div class="frame"><div class="imgwrap"><img src="images/deck-s088.png" width="1600" height="900" alt="DSPM agent overview page showing high risk level with insider risk alerts and risky activities" loading="lazy"></div></div>
@@ -892,7 +893,7 @@
   </div>
 
   <h4>Detection, investigation and hunting</h4>
-  <p><span data-tier="defender-nrt"><a href="https://learn.microsoft.com/en-us/defender-xdr/security-for-ai/ai-agent-detection-protection" target="_blank" rel="noopener">Near-real-time detection</a> is <span class="st" data-st="defender-nrt"></span>. Defender analyses observability data for jailbreak, indirect prompt injection, malicious content propagation, secret leakage, evasion, LLM reconnaissance and suspicious user or IP access, and correlates alerts into incidents with blast radius. Foundry detection covers published agents only.</span> Six hunting tables matter: <code>AlertInfo</code> and <code>AlertEvidence</code>, <code>CloudAppEvents</code> for observability data, <code>AgentsInfo</code> for inventory, and <code>BehaviorInfo</code> and <code>BehaviorEntities</code> for protection events.</p>
+  <p><span data-tier="defender-nrt"><a href="https://learn.microsoft.com/en-us/defender-xdr/security-for-ai/ai-agent-detection-protection" target="_blank" rel="noopener">Near-real-time detection</a> is <span class="st" data-st="defender-nrt"></span>. Defender analyses observability data for jailbreak, indirect prompt injection, malicious content propagation, secret leakage, evasion, LLM reconnaissance and suspicious user or IP access, and correlates alerts into incidents with blast radius. Foundry detection covers published agents only.</span> Six hunting tables cover agents: <code>AlertInfo</code> and <code>AlertEvidence</code>, <code>CloudAppEvents</code> for observability data, <code>AgentsInfo</code> for inventory, and <code>BehaviorInfo</code> and <code>BehaviorEntities</code> for protection events.</p>
 
   <figure>
     <div class="frame">
@@ -938,7 +939,7 @@
   <section id="s7-4" data-search>
   <h3>7.4 Local agents on the endpoint <span class="badge" data-badge="mde-runtime"></span></h3>
   <p>A local agent runs with the user's identity, tokens, sessions and files, outside every onboarding flow above. Three layers apply, and they are not equally mature.</p>
-  <p>Discovery is section 5.5, <span class="st" data-st="mde-discovery"></span>.</p>
+  <p>Discovery is in 5.5, <span class="st" data-st="mde-discovery"></span>.</p>
   <div class="term" id="term">
     <div class="tbar"><i></i><i></i><i></i><span id="ttitle">Claude Code · developer laptop · Defender for Endpoint in Block mode</span></div>
     <div class="tbody" id="tbody"></div>
@@ -948,10 +949,10 @@
     <button type="button" class="sbtn" id="tstep">Step</button><button type="button" class="sbtn" id="treplay">Replay</button>
   </div>
   <p class="muted small">A replay of the workshop demos, wording as shown on screen. The real screenshots follow.</p>
-  <p data-tier="mde-runtime"><a href="https://learn.microsoft.com/en-us/defender-endpoint/ai-agent-runtime-protection-overview" target="_blank" rel="noopener">Runtime protection in Defender for Endpoint</a> is <span class="st" data-st="mde-runtime"></span>. It inspects the user prompt, the tool request before execution, and the tool response after, for prompt injection and high-risk actions. Agent-native event inspection uses vendor hooks and supports Claude Code, Codex CLI, GitHub Copilot CLI and the GitHub Copilot app. Network inspection covers agents without hooks, except those using certificate pinning or HTTP/3. Each runs Disabled, Audit or Block. <a href="https://learn.microsoft.com/en-us/defender-endpoint/configure-ai-agent-runtime-protection" target="_blank" rel="noopener">Prerequisites</a>: Defender for Endpoint Plan 2, Microsoft 365 E5, Agent 365 or E7; onboarded devices with Defender Antivirus active and signature 1.451.224.0 or later, on the Beta Channel for platform and engine updates while the feature is in public preview. Enable per device:</p>
+  <p data-tier="mde-runtime"><a href="https://learn.microsoft.com/en-us/defender-endpoint/ai-agent-runtime-protection-overview" target="_blank" rel="noopener">Runtime protection in Defender for Endpoint</a> is <span class="st" data-st="mde-runtime"></span>. It inspects the user prompt, the tool request before execution, and the tool response after, for prompt injection and high-risk actions. Agent-native event inspection uses vendor hooks and supports Claude Code, Codex CLI, GitHub Copilot CLI and the GitHub Copilot app. Network inspection covers agents without hooks, except those using certificate pinning or HTTP/3. Each runs Disabled, Audit or Block. <a href="https://learn.microsoft.com/en-us/defender-endpoint/configure-ai-agent-runtime-protection" target="_blank" rel="noopener">Prerequisites</a>: Defender for Endpoint Plan 2, Microsoft 365 E5, and Agent 365 or E7. Devices must be onboarded, run Defender Antivirus with signature 1.451.224.0 or later, and take platform and engine updates from the Beta Channel while the feature is in public preview. Enable per device:</p>
 <pre data-tier="mde-runtime"><code>Set-MpPreference -AiAgentProtection Audit
 Set-MpPreference -AiAgentNetworkInspection Audit</code></pre>
-  <p data-tier="mde-runtime">Intune has a native policy for agent-native event inspection, an endpoint security Antivirus profile named Microsoft Defender AI agent runtime protection; the same profile can also be created in the Microsoft Defender portal, reaching devices under Defender for Endpoint security settings management as well as Intune-enrolled ones. Network inspection has no native policy, so deploy the same commands as a PowerShell platform script in system context. Microsoft's rollout is audit on a small group for one to two weeks, review, widen, then Block by device group by using either console. In Block mode the user sees the block in the terminal and as a toast, protection history records it, and a Suspicious AI prompt injection alert reaches the SOC with process context; in Audit mode the alert is informational. Tamper protection covers the setting.</p>
+  <p data-tier="mde-runtime">Intune has a native policy for agent-native event inspection: an endpoint security Antivirus profile named Microsoft Defender AI agent runtime protection. The same profile can be created in the Microsoft Defender portal, which also reaches devices under Defender for Endpoint security settings management. Network inspection has no native policy, so deploy the same commands as a PowerShell platform script in system context. Microsoft's rollout is audit on a small group for one to two weeks, review, widen, then Block by device group by using either console. In Block mode the user sees the block in the terminal and as a toast, protection history records it, and a Suspicious AI prompt injection alert reaches the SOC with process context; in Audit mode the alert is informational. Tamper protection covers the setting.</p>
   <figure class="shot " data-tier="mde-runtime">
     <div class="frame"><div class="imgwrap"><img src="images/learn-mde-block-toast.png" width="1600" height="858" alt="Claude Code terminal: Read readme.md blocked, tool result blocked by Microsoft Defender, Windows Security toast" loading="lazy"><span class="co" style="left:91%;top:41%">1</span><span class="co" style="left:90%;top:88%">2</span></div></div>
     <figcaption><b class="fn"></b> Defender blocks a tool call. The read never happens, the agent explains it was blocked, and Windows Security shows a toast. <span class="colist"><b>1</b> Tool result blocked <b>2</b> Toast</span> <span class="src">Source: <a href="https://learn.microsoft.com/en-us/defender-endpoint/configure-ai-agent-runtime-protection" target="_blank" rel="noopener">Microsoft Learn, Set up AI agent runtime protection</a>, CC BY 4.0. Asset <code>learn-mde-block-toast</code>.</span></figcaption>
@@ -1026,7 +1027,7 @@ Set-MpPreference -AiAgentNetworkInspection Audit</code></pre>
 
   <section id="s7-5" data-search>
   <h3>7.5 Network controls on agent traffic <span class="badge" data-badge="gsa-copilot-studio"></span></h3>
-  <p><a href="https://learn.microsoft.com/en-us/entra/global-secure-access/concept-secure-web-ai-gateway-agents" target="_blank" rel="noopener">Global Secure Access for Copilot Studio agents</a> is enabled per environment in the Power Platform admin centre. HTTP node traffic, custom connectors and the MCP server connector then route through GSA and meet the baseline profile: web content filtering, threat intelligence filtering and network file filtering. Local agents on devices with the GSA client are covered by the Internet Access profile.</p>
+  <p><a href="https://learn.microsoft.com/en-us/entra/global-secure-access/concept-secure-web-ai-gateway-agents" target="_blank" rel="noopener">Global Secure Access for Copilot Studio agents</a> is enabled per environment in the Power Platform admin centre. HTTP node traffic, custom connectors and the MCP server connector then route through Global Secure Access and meet the baseline profile: web content filtering, threat intelligence filtering and network file filtering. Local agents on devices with the Global Secure Access client are covered by the Internet Access profile.</p>
   <figure class="shot ">
     <div class="frame"><div class="imgwrap"><img src="images/deck-s134.png" width="1600" height="729" alt="Global Secure Access web filtering rule with session type set to Agent, HTTP methods POST PATCH PUT DELETE, and two destinations" loading="lazy"><span class="co" style="left:43%;top:64%">1</span><span class="co" style="left:43%;top:76%">2</span></div></div>
     <figcaption><b class="fn"></b> A web filtering rule scoped to agent sessions only: write methods to named destinations, with users untouched. <span class="colist"><b>1</b> Session type: Agent <b>2</b> HTTP methods</span> <span class="src">Source: workshop deck, slide 134, demo tenant. Asset <code>deck-s134</code>.</span></figcaption>
