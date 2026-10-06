@@ -32,6 +32,7 @@ window.A365 = {
     roadmap:  { label: "Early preview",    phrase: "in early preview" }
   },
   changes: [
+    { date: "6 October 2026", section: "s6-8", text: "Admins can create an agent instance on behalf of a manager: a Global Administrator or AI Administrator starts it from the agent's details in the registry, a wizard checks licences first, and the manager owns the instance in Entra and Teams. Create agentic user instances page cited." },
     { date: "6 October 2026", kind: "guide", text: "Writing and structure pass: 5.5 and 7.2 open on their verdict, 2.1 and 7.4 split into one claim per sentence, the hero names all five enforcing products, 4.1 lists all seven synced platforms, and cross-references use bare section numbers." },
     { date: "6 October 2026", section: "s6-4", text: "The Allowed agent types setting is now Agent and plugin access and also governs plugins, meaning tools, MCP servers, connectors and skills; Microsoft-built ones stay visible when disabled but cannot be installed. Agent settings page cited." },
     { date: "6 October 2026", section: "s5-4", text: "Each registry sync platform now has its own setup page, and the permission scope varies: Amazon Bedrock and Oracle need only read access, with delete rights optional, while Google Vertex AI requires the delete permission. A delete in Agent 365 reaches the source platform. All seven setup pages cited." },
