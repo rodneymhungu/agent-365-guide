@@ -7,7 +7,7 @@ Prerequisites
 You need admin approval for your request in the Microsoft 365 admin center before creating an agent.
 You need a "Microsoft Agent 365 Frontier" subscription enabled by the tenant admins in the Microsoft 365 admin center. This 25-seat subscription allows hiring autonomous agents.
 Discover agent templates
-Agent templates are available in the Microsoft 365 Copilot Store and Teams apps store under Agents for your team. All users in the tenant can find and view agent templates.
+Agent templates are available in the Microsoft Copilot Store and Teams apps store under Agents for your team. All users in the tenant can find and view agent templates.
 For mobile, agent templates are available only in the Teams app store.
 The following image shows examples of agent templates available on both desktop and mobile devices.
 Desktop

@@ -27,7 +27,15 @@ Get started ->
 Discover and monitor agents ->
   Agent registry -> /microsoft-365/admin/manage/agent-registry
   Connected platforms -> admin/connected-platforms
+    Connect Amazon Bedrock -> admin/connected-platforms-amazon-bedrock
+    Connect Google Vertex AI -> admin/connected-platforms-google-vertex-ai
+    Connect Salesforce Agentforce -> admin/connected-platforms-salesforce-agent-force
+    Connect Databricks Genie -> admin/connected-platforms-databricks-genie
+    Connect Anthropic Claude Managed Agents -> admin/connected-platforms-anthropic-claude
+    Connect Oracle Generative AI Agents -> admin/connected-platforms-oracle-generative-ai
+    Connect Snowflake Cortex -> admin/connected-platforms-snowflake-cortex
     Third-party agent observability (Frontier) -> admin/third-party-agent-observability
+    Troubleshoot connected platforms -> admin/troubleshoot-connected-platforms
   Agent map -> /microsoft-365/admin/manage/agent-map
   Agent requests -> /microsoft-365/admin/manage/agent-requests
   Local agents (preview) -> /microsoft-365/admin/manage/agent-local
@@ -36,18 +44,21 @@ Discover and monitor agents ->
   Graph API for agent registry and agent details -> admin/graph-api
   Monitor agent activity ->
     Agent activity in Teams -> observe
-    Agent activity in Microsoft 365 Copilot -> observe-agents-microsoft-365-copilot
+    Agent activity in Microsoft Copilot -> observe-agents-microsoft-365-copilot
 Manage agents ->
   Governance and lifecycle actions -> /microsoft-365/admin/manage/agent-actions
   Manage agent instances -> /microsoft-365/admin/manage/manage-agent-instances
+  Create agentic user instances -> /microsoft-365/admin/manage/create-agentic-user-instances
   Manage connected agents -> /microsoft-365/admin/manage/manage-connected-agents-for-researcher
   Settings ->
     Agent settings -> /microsoft-365/admin/manage/agent-settings
     Policy templates -> admin/policy-template
   Shadow AI (preview) -> /microsoft-365/admin/manage/agent-shadow-ai
 Manage tools ->
-  Agent tools overview -> /microsoft-365/admin/manage/manage-tools-for-agent
-  Bring your own MCP -> /microsoft-365/admin/manage/manage-tools-for-agent
+  Agent tools overview -> /microsoft-365/admin/manage/agent-tools-overview
+  Manage plugins, skills, and MCP servers -> /microsoft-365/admin/manage/manage-plugins-skills-mcp-servers
+  Manage Tools Gateway -> /microsoft-365/admin/manage/manage-tools-gateway
+  Bring your own MCP -> /microsoft-365/admin/manage/manage-byo-mcp-server.md
   Work IQ MCP overview (preview) -> tooling-servers-overview
   Certify your MCP server with Microsoft -> /microsoft-copilot-studio/mcp-certification
 Manage identity and access ->
@@ -92,7 +103,6 @@ Extend agents for Agent 365 ->
     Observability ->
       Observability concepts -> developer/observability-concepts
       Authentication setup -> developer/observability-authentication-setup
-      Observability SDK -> developer/observability
       Microsoft OpenTelemetry -> developer/microsoft-opentelemetry
         Python reference -> /python/api/opentelemetry-python/opentelemetry-overview
         JavaScript reference -> /javascript/api/opentelemetry-javascript/opentelemetry-overview
@@ -126,7 +136,10 @@ Extend agents for Agent 365 ->
       Python -> /python/api/agent365-sdk-python/agent365-overview
       JavaScript -> /javascript/api/agent365-sdk-node/agent365-overview
       .NET -> /dotnet/api/agent365-sdk-dotnet/agent365-overview
+    Archived SDK documentation ->
+      Deprecated Agent 365 Observability SDK -> developer/archive/observability-sdk
     Agent 365 CLI -> developer/agent-365-cli
+      US Government clouds -> developer/configure-cloud-endpoints
       Agent 365 CLI reference ->
         CLI reference -> developer/reference/cli/
         cleanup -> developer/reference/cli/cleanup

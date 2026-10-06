@@ -19,7 +19,7 @@
   ==========================================================================
 */
 window.A365 = {
-  reviewed: "28 September 2026",
+  reviewed: "6 October 2026",
   gaDate: "1 May 2026",
   transitionDate: "1 July 2026",
   trial: "25 seats for 30 days",
@@ -32,6 +32,11 @@ window.A365 = {
     roadmap:  { label: "Early preview",    phrase: "in early preview" }
   },
   changes: [
+    { date: "6 October 2026", section: "s6-4", text: "The Allowed agent types setting is now Agent and plugin access and also governs plugins, meaning tools, MCP servers, connectors and skills; Microsoft-built ones stay visible when disabled but cannot be installed. Agent settings page cited." },
+    { date: "6 October 2026", section: "s5-4", text: "Registry sync connections are read-only by default: each platform's new setup page gives a least-privilege read permission set, and delete rights are optional, for admins who will delete agents from Agent 365. Amazon Bedrock and Oracle setup pages cited." },
+    { date: "5 October 2026", section: "s5-4", text: "The Agent 365 SDK no longer bundles observability: Microsoft deprecated the SDK's observability packages in favour of the separate Microsoft OpenTelemetry Distro, keeping identity, tooling and notifications in the SDK. Agent 365 SDK overview page cited." },
+    { date: "5 October 2026", section: "s5-4", text: "Dropped the claim that registry sync scheduling is promised: the connected platforms page no longer states a scheduled-sync roadmap, only that synchronisation is manual. Connected platforms page cited." },
+    { date: "5 October 2026", section: "s2-1", text: "Conditional Access for agents now states its licensing as Microsoft 365 E7, or an Agent 365 licence paired with at least Entra ID P1 or Microsoft 365 E3; the companion autonomous agents policy page confirms Agent 365 licence enforcement is still coming. Conditional Access for agents page cited." },
     { date: "28 September 2026", section: "s7-4", text: "Runtime protection can now be deployed from the Microsoft Defender portal as well as Intune, reaching devices under Defender for Endpoint security settings management; public preview also requires the Beta Channel for platform and engine updates. Runtime protection setup page cited." },
     { date: "28 September 2026", section: "s6-3", text: "Deleting an agent is now a soft delete with a thirty-day recovery window and a restore option, for any agent type, not an irreversible Agent Builder-only removal. Agent actions page cited." },
     { date: "28 September 2026", section: "s5-3", text: "The Risks column and Risk details pane now cover high, medium and low severity signals, not high alone; a zero means no active signal at any severity. Agent registry page cited." },

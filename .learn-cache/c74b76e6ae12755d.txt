@@ -4,6 +4,7 @@ Available plans
 Microsoft Agent 365 is available as a stand-alone subscription for use with eligible Microsoft 365 subscriptions and is also included with Microsoft 365 E7.
 For detailed plan information on subscriptions that enable users for Microsoft Agent 365, see the Microsoft 365 Enterprise plan comparison, Microsoft 365 Business plan comparison, and Microsoft 365 Education plan comparison.
 Feature availability
+As of October 1, 2026 Microsoft Agent 365 meets all FedRAMP High controls reviewed by Microsoft's independent third-party assessor. Final authorization by Microsoft's accrediting agency is pending.
 The following table describes core Agent 365 capabilities:
 Features
 Management Console
@@ -12,36 +13,26 @@ Requires Microsoft 365 E7 / G7 or Agent 365
 GCC Availability
 Inventory of agents across the organization in the Agent Registry
 Microsoft 365 Admin Center
-At GA
 Basic governance actions on agents (publish, deploy, block, delete, approve; assign agents to specific user/groups; reassign agent owner, pin, etc.)
 Microsoft 365 Admin Center
-At GA
 Automate agent lifecycle actions using conditions-based rules
 Microsoft 365 Admin Center
-At GA
 Synchronize agents and agent metadata from external platforms that aren’t managed by Agent 365 into the registry
 Microsoft 365 Admin Center
-At GA
 Policy templates applying customized policies and controls to agents
 Microsoft 365 Admin Center
-At GA
 Observability and monitoring of agent activity (Visualization and telemetry)
 Microsoft 365 Admin Center
-At GA
 Control which tools (including Microsoft MCP servers) agents can access tenant-wide
 Microsoft 365 Admin Center
-At GA
 Graph API provides access to agent registry, basic metadata, and governance actions
 N/A
 Access packages for agents to define scope of agent permissions
 Entra
-At GA
 Built‑in Entra lifecycle policies automate sponsor‑driven workflows to maintain accountability
 Entra
-At GA
 Conditional access and identity protection for agents (for agents with delegated access - extend user policies to agents)
 Entra
-At GA
 Monitor and block malicious and noncompliant network traffic for agents, operating on user devices, and for Copilot Studio agents​
 Entra
 Audit logs of agent activities and eDiscovery (content search) of agent interaction to export and hold for legal, regulatory, and investigative needs
@@ -66,10 +57,8 @@ Detect suspicious agent activity, receive alerts, and allow blocking for too
 Defender
 Collect Agent 365 unified agent observability logs and allow investigation and hunting for threats for agents
 Defender
-At GA
 Device compliance for agent conditional access
 Intune
-At GA
 Policy-controlled environment for agents runtime
 Intune
 Block unsanctioned local endpoint agents

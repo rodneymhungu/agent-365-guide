@@ -9,6 +9,10 @@ Feature
 Preview/GA
 Description
 Feature
+Microsoft Defender for Endpoint plug-in support for WSL containers (WSLc)
+GA
+Extend Microsoft Defender for Endpoint protection to workloads running in WSL containers (WSLc). Gain visibility into WSL container activity through device inventory, alerts, incidents, device timeline, and Advanced Hunting, helping security teams investigate and respond to threats across both Windows and Linux workloads. MDE plugin version 2.26.921.1.
+Feature
 Microsoft Defender support for Linux Desktops
 Preview
 Microsoft Defender for Endpoint now extends support to Linux desktops (Public Preview). All Linux distributions currently supported on servers are also supported on Linux desktops. Deployment methods and security capabilities remain consistent across both Linux servers and desktops. For details on licensing and supported distributions, see prerequisites for Microsoft Defender on Linux
@@ -52,7 +56,7 @@ Release version 20.126062.12.0 released: See enhancements and features for this 
 Feature
 Vulnerability assessment for Microsoft Store applications
 Preview
-You can now monitor vulnerabilities on devices running Microsoft Store applications, including Microsoft Teams, Mozilla Firefox, WhatsApp, Slack, Dropbox, DuckDuckGo, Dell Command, HP Smart, HP Support Assistant, Dell SupportAssist for Home PCs, and NVIDIA Control Panel (see Microsoft Store applications for the full list). Use the Software evidence area in the software page to view the file path for the vulnerable application, along with a suggested query showing the vulnerable app, version, and file location.
+You can now monitor vulnerabilities on devices running Microsoft Store applications, including Microsoft Teams, Mozilla Firefox, WhatsApp, Slack, Dropbox, DuckDuckGo, Dell Command | Update, HP Smart, NVIDIA Control Panel, 1Password, Beyond Compare, and Evernote (see Microsoft Store applications for the full list). Use the Software evidence area in the software page to view the file path for the vulnerable application, along with a suggested query showing the vulnerable app, version, and file location.
 Release - macOS
 Build 101.26062.0011
 GA

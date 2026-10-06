@@ -16,7 +16,7 @@ Answers
 In the Microsoft 365 admin center, I don't see Copilot Frontier under Copilot Settings.
 Purchase a Microsoft 365 Copilot license or Microsoft E7 license if you don't already have one. Frontier features are available to all Microsoft 365 customers with a Copilot or E7 license.
 The option to purchase a Microsoft 365 Copilot license is unavailable for me.
-Microsoft 365 Copilot is an add-on that requires an eligible base for Microsoft 365 plan (for example, Business Premium, E3, E5, and other plans). Review the prerequisites tab when purchasing a plan for the Microsoft 365 Copilot license.
+Microsoft Copilot is an add-on that requires an eligible base for Microsoft 365 plan (for example, Business Premium, E3, E5, and other plans). Review the prerequisites tab when purchasing a plan for the Microsoft 365 Copilot license.
 How do I check if I'm enrolled in Agent 365 Frontier?
 In the Microsoft 365 Admin Center, ensure you have accepted the Microsoft Agent 365 Terms of Service.
 When using the Agent 365 CLI, I encountered the following error message: ERROR: Error response: Forbidden – Access denied by Frontier access control.
