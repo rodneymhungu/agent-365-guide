@@ -64,7 +64,7 @@
 <section class="top" id="s0">
   <p class="eyebrow">Field guide 01 · Microsoft Agent 365 · Chapter 2</p>
   <h1>Agent 365 licensing: what the licence unlocks, what you must already own, and who can act</h1>
-  <p class="lede">Agent 365 is included in Microsoft 365 E7 and sold as a per-user add-on. The registry, basic actions, lifecycle rules and registry sync work without it. Every other control needs it, and you cannot buy it without Microsoft 365 E5, or E3 with the Defender and Purview suites. Pick your plan below to see what opens up.</p>
+  <p class="lede">Agent 365 is included in Microsoft 365 E7 and sold as a per-user add-on. The registry, basic actions, lifecycle rules and Connected platforms work without it. Every other control needs it, and you cannot buy it without Microsoft 365 E5, or E3 with the Defender and Purview suites. Pick your plan below to see what opens up.</p>
   <div class="field-stats" aria-label="Page summary">
     <span><b data-val="price.addon"></b> add-on per user per month</span>
     <span><b data-val="price.e7"></b> Microsoft 365 E7 per user per month</span>
@@ -93,7 +93,7 @@
     <tr><td>Agent registry inventory</td><td>Microsoft 365 admin centre</td><td class="y">Yes</td><td class="y">Yes</td></tr>
     <tr><td>Basic governance actions (publish, deploy, block, delete, approve, assign, reassign owner, pin)</td><td>Microsoft 365 admin centre</td><td class="y">Yes</td><td class="y">Yes</td></tr>
     <tr><td>Rules-based lifecycle automation</td><td>Microsoft 365 admin centre</td><td class="y">Yes</td><td class="y">Yes</td></tr>
-    <tr><td>Registry sync from external platforms</td><td>Microsoft 365 admin centre</td><td class="y">Yes</td><td class="y">Yes</td></tr>
+    <tr><td>Connected platforms: sync from external platforms</td><td>Microsoft 365 admin centre</td><td class="y">Yes</td><td class="y">Yes</td></tr>
     <tr><td>Policy templates</td><td>Microsoft 365 admin centre</td><td class="n">No</td><td class="y">Yes</td></tr>
     <tr><td>Observability and monitoring of agent activity</td><td>Microsoft 365 admin centre</td><td class="n">No</td><td class="y">Yes</td></tr>
     <tr><td>Tenant-wide tool controls, including Microsoft MCP servers</td><td>Microsoft 365 admin centre</td><td class="n">No</td><td class="y">Yes</td></tr>
@@ -131,7 +131,7 @@
 
   <section id="s2-2" data-search>
   <h3>2.2 The <span data-val="transitionDate"></span> transition</h3>
-  <p>Agent security for Copilot Studio and Foundry moved licences. From <span data-val="transitionDate"></span>, discovery, posture, detection and real-time protection for those platforms <a href="https://learn.microsoft.com/en-us/defender-xdr/security-for-ai/transition-agent-security-to-agent-365" target="_blank" rel="noopener">require Agent 365</a> and are no longer covered by Defender for Cloud Apps or Defender for Cloud. The <code>AIAgentsInfo</code> hunting table is replaced by <code>AgentsInfo</code>. Legacy real-time protection rules set to Block stopped enforcing on that date and must be redefined under Settings, Security for AI, Policies and rules. Third-party cloud agents previously found through Defender for Cloud connectors now arrive through registry sync. Update saved hunting queries and redefine blocking rules first.</p>
+  <p>Agent security for Copilot Studio and Foundry moved licences. From <span data-val="transitionDate"></span>, discovery, posture, detection and real-time protection for those platforms <a href="https://learn.microsoft.com/en-us/defender-xdr/security-for-ai/transition-agent-security-to-agent-365" target="_blank" rel="noopener">require Agent 365</a> and are no longer covered by Defender for Cloud Apps or Defender for Cloud. The <code>AIAgentsInfo</code> hunting table is replaced by <code>AgentsInfo</code>. Legacy real-time protection rules set to Block stopped enforcing on that date and must be redefined under Settings, Security for AI, Policies and rules. Third-party cloud agents previously found through Defender for Cloud connectors now arrive through Connected platforms. Update saved hunting queries and redefine blocking rules first.</p>
   </section>
 
   <section id="s2-3" data-search>

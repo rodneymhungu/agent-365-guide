@@ -32,6 +32,7 @@ window.A365 = {
     roadmap:  { label: "Early preview",    phrase: "in early preview" }
   },
   changes: [
+    { date: "6 October 2026", section: "s5-4", text: "Connected platforms is Learn's name for what the guide called registry sync, and observability differs by platform: the hub lists it for Amazon Bedrock, Google Vertex AI and Anthropic, with the other four coming soon, and third-party agent observability is a Frontier preview whose page also lists Salesforce Agentforce. Connected platforms and Third-party agent observability pages cited." },
     { date: "6 October 2026", section: "s6-8", text: "Admins can create an agent instance on behalf of a manager: a Global Administrator or AI Administrator starts it from the agent's details in the registry, a wizard checks licences first, and the manager owns the instance in Entra and Teams. Create agentic user instances page cited." },
     { date: "6 October 2026", kind: "guide", text: "Writing and structure pass: 5.5 and 7.2 open on their verdict, 2.1 and 7.4 split into one claim per sentence, the hero names all five enforcing products, 4.1 lists all seven synced platforms, and cross-references use bare section numbers." },
     { date: "6 October 2026", section: "s6-4", text: "The Allowed agent types setting is now Agent and plugin access and also governs plugins, meaning tools, MCP servers, connectors and skills; Microsoft-built ones stay visible when disabled but cannot be installed. Agent settings page cited." },
@@ -63,8 +64,9 @@ window.A365 = {
     { key: "agent-map",          name: "Agent map", tier: "ga", where: "Microsoft 365 admin centre" },
     { key: "single-agent-map",   name: "Single Agent Map", tier: "preview", where: "Microsoft 365 admin centre" },
     { key: "graph-api",          name: "Graph API for registry and details", tier: "preview", where: "Graph" },
-    { key: "registry-sync",      name: "Registry sync (Bedrock, Vertex, Agentforce, Genie, Oracle, Snowflake Cortex)", tier: "ga", where: "Microsoft 365 admin centre" },
-    { key: "registry-sync-anthropic", name: "Registry sync for Anthropic Claude Managed Agents", tier: "preview", where: "Microsoft 365 admin centre" },
+    { key: "registry-sync",      name: "Connected platforms (Bedrock, Vertex, Agentforce, Genie, Oracle, Snowflake Cortex)", tier: "ga", where: "Microsoft 365 admin centre" },
+    { key: "registry-sync-anthropic", name: "Connected platforms: Anthropic Claude Managed Agents", tier: "preview", where: "Microsoft 365 admin centre" },
+    { key: "third-party-observability", name: "Third-party agent observability (Bedrock, Vertex AI, Anthropic, Agentforce)", tier: "frontier", where: "Microsoft 365 admin centre" },
     { key: "byo-mcp",            name: "Bring your own MCP server", tier: "preview", where: "Admin centre and CLI" },
     { key: "shadow-ai-page",     name: "Shadow AI page", tier: "frontier", where: "Microsoft 365 admin centre" },
     { key: "local-agents-page",  name: "Local agents page", tier: "frontier", where: "Microsoft 365 admin centre" },
