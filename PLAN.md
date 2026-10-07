@@ -7,41 +7,64 @@ the section "How an agent picks this up" at the bottom.
 
 Started 21 September 2026. Reviewed every Monday alongside the weekly digest.
 
-## Where Rodney left off, 22 September 2026, 23:30
+## Where Rodney left off, 7 October 2026
 
-Read this first when you come back. The catch-up week's rotation is complete,
-the first LinkedIn article is out (30 visitors this week, up from 24), and
-the distribution automation is built and waiting for credentials.
+Read this first when you come back. Everything from 6 October is merged
+(#51 to #59): the drift edits, the digest fix, the whole-guide writing and
+structure sweep, Connected platforms in 5.4 with every setup page linked,
+6.8's admin path, and the FedRAMP decision. The 6 October LinkedIn article
+draft is in `distribution/2026-10-06-linkedin.md`.
 
-1. **GoatCounter token: cleared, 21 September, 15:36.** The token created on
-   7 September was fine; the copy saved as the GitHub secret was not. Tested
-   with a direct API call, re-saved with `gh secret set`, digest re-run.
-   Tokens live at rodneymhungu.goatcounter.com/user/api (user settings, not
-   site settings) if it ever needs re-creating.
-2. **Credentials to add, in any order, one at a time (22 September, 21:00):**
-   a web search key for public mentions and "Questions you could answer":
-   `GOOGLE_CSE_KEY` and `GOOGLE_CSE_ID` (Google Programmable Search, free, no
-   card; Brave now needs a card on file, so it is the fallback), `BLUESKY_HANDLE` and `BLUESKY_APP_PASSWORD`
-   (bsky.app, Settings, App passwords), `MASTODON_INSTANCE` and
-   `MASTODON_TOKEN` (your instance, Preferences, Development, scope
-   write:statuses), `DEVTO_API_KEY` (dev.to, Settings, Extensions). All go
-   in Settings, Secrets and variables, Actions. Plus the Bing Webmaster Tools
-   and Google Search Console meta-tag codes, which Claude puts in both page
-   heads. Steps and reasons in `scripts/README.md`. Nothing breaks while any
-   are missing. Free key at
-   brave.com/search/api, saved as `BRAVE_API_KEY` in the same place. The
-   digest then reports public mentions.
-3. **Field guide principles repository: pushed, 21 September, 16:10.** Commit
-   893e6e2 carries the 9 September edits and the "one page per topic, one
-   data file" amendment. The guide, the skill and the repo now agree.
-4. **LinkedIn article posted, 22 September, 13:00.** Next one is due with the digest of 5 October.
-   Everything is in `distribution/2026-09-21-linkedin.md`: three pickup
-   steps, headline, body, and two cover images beside it. Format decided on
-   21 September: a short weekly LinkedIn article on the latest update, guide
-   link inside the article. When posted, add the URL to that file's "Posted"
-   line and a row under focus 4 in the log below.
-5. **Writing review.** The `ai-writing-review` skill is now installed for
-   Claude Code; run it on the next prose change and decide each flag.
+1. **If the article is live, log it.** Tell Claude "posted, <url>" and it
+   fills the Posted line and the focus 4 row. The article was edited in the
+   LinkedIn editor after the draft: the registry sync bullet now opens
+   "Registry sync is now Connected platforms has a setup page per platform";
+   add "and" after "Connected platforms". Only Rodney can edit the live copy.
+2. **Decide the weekly format: native post or article.** A second review
+   (6 October) argues for a native feed post each week, under about 1,300
+   characters, one change led, two or three more named, the guide linked
+   once in the body, and the article kept for a quarterly piece. The
+   21 September decision was the article, with the LinkedIn referrer as the
+   test. Evidence so far: article week 1 brought 10 LinkedIn visitors, the
+   week with no article brought 4, and a native post has not been tried.
+   Recommendation: post the next update as a native post, compare the
+   referrer count in the following digest, then decide. Do not change
+   `article_draft` in `scripts/feedback_collect.py` until the comparison is
+   in; if the native post wins, that function changes to the shorter shape
+   and the release-note format in `distribution/README.md` gets a second
+   entry.
+3. **Candidate for the next focus 2 week: a permissions table in 5.4.**
+   One row per Connected platforms provider: credential type, the read
+   permission set, whether delete is required, optional or absent, and the
+   extra grant observability needs. Bedrock (two sets, Classic and
+   AgentCore; delete opt-in; S3 or CloudWatch for activity) and Vertex AI
+   (service account key; delete in the base set; four BigQuery, Monitoring
+   and Trace roles for observability) are documented in enough detail; the
+   other five pages are thinner. Source each cell from its setup page.
+4. **Two claims from that review not to repeat.** The Learn hub was not
+   renamed on 28 September; that is the page's ms.date. The guide's
+   5 September cache already carried the Connected platforms title, so the
+   rename sits between the April announcement and 5 September. And the
+   graphic point stands: Foundry integrates automatically and is not a
+   Connected platforms provider, so it should not sit under that label.
+5. **Credentials to add, in any order, one at a time:** `GOOGLE_CSE_KEY`
+   and `GOOGLE_CSE_ID` (Google Programmable Search, free, no card; Brave
+   needs a card, so `BRAVE_API_KEY` is the fallback), `BLUESKY_HANDLE` and
+   `BLUESKY_APP_PASSWORD` (bsky.app, Settings, App passwords),
+   `MASTODON_INSTANCE` and `MASTODON_TOKEN` (your instance, Preferences,
+   Development, scope write:statuses), `DEVTO_API_KEY` (dev.to, Settings,
+   Extensions). All go in Settings, Secrets and variables, Actions. Plus the
+   Bing Webmaster Tools and Google Search Console meta-tag codes, which
+   Claude puts in both page heads. Steps in `scripts/README.md`. Nothing
+   breaks while any are missing.
+6. **Two drafts still unsent:** the curator email in
+   `distribution/2026-09-27-curator-intune-newsletter.md` (from Rodney's own
+   address, recipient to confirm) and the feed post in
+   `distribution/2026-09-30-linkedin-post.md`, which now carries the 5.5
+   table on its own since the article dropped that bullet.
+7. **The claude.ai copy of `ai-writing-review`** still has the 17-tell
+   checklist. The 19-tell version is in the local skill; upload the zip
+   Claude packaged on 6 October, or ask for it again.
 
 ## Target
 
@@ -164,3 +187,9 @@ Newest first. One line per item shipped, with the pull request.
    approves, log the ones kept. This includes every distribution draft in
    `distribution/` before it is posted, the digest-generated ones included. Rodney's standing instruction from
    21 September 2026 is to run it on every prose update without being asked.
+9. The Learn cache starts on 5 September 2026. Before saying a name or
+   feature was never Microsoft's, check the Message Center archive at
+   mc.merill.net and the page's earlier title. Learnt on 6 October 2026:
+   "registry sync" was called the guide's own term for a day; Microsoft had
+   announced the feature under that name in April, and five cited Learn
+   pages still use it.
