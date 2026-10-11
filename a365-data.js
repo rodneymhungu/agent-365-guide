@@ -12,10 +12,14 @@
 
   Tiers: ga | preview | frontier | roadmap
 
-  When you change "reviewed", add a line to "changes" (newest first) and
-  update dateModified in each page's JSON-LD block and lastmod in
-  sitemap.xml. Search engines read those; readers read the changelog in
-  chapter 10.
+  When you change "reviewed", add a line to "changes" (newest first), then
+  run  python3 scripts/check_pages.py --fix  from the repository root. That
+  rewrites the static copies of these values: the text inside every element
+  carrying data-val on both pages (crawlers, link previews and plain text
+  fetches read those, because guide.js only fills them after the page loads),
+  dateModified in each page's JSON-LD block and lastmod in sitemap.xml.
+  The same script without --fix runs on every push and fails when a copy
+  disagrees with this file. Readers read the changelog in chapter 10.
   ==========================================================================
 */
 window.A365 = {
