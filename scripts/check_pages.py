@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """
-check_pages.py — a chapter published on its own page must match the guide.
+check_pages.py — a chapter published on its own page must match the guide,
+and every video chapter button must jump somewhere real.
 
 licensing.html carries chapter 2 (<section class="block" id="s2">) of index.html
 so that the chapter is indexable on its own. The markup must stay identical in
@@ -9,6 +10,12 @@ the chapter block in each pair of files, ignoring whitespace and any element
 marked data-page-only (the cross-links that only make sense on one page).
 
 Exit 1 and print the first differing line when they diverge. No dependencies.
+
+Video chapters: each <div class="yt"> carries chapter buttons with data-t, the
+start in seconds, and a label that opens with the same time as mm:ss. A button
+with data-t="0" sends every chapter to the start of the video, which is how the
+6.7 and 7.5 chapters shipped broken in October 2026. Each button must have a
+non-zero start that matches its label, and starts must increase down the list.
 """
 import difflib, os, re, sys
 
@@ -29,10 +36,36 @@ def block(html: str, sec_id: str) -> str:
     return re.sub(r"\s+", " ", text).strip()
 
 
+def check_chapters(html: str, page: str) -> int:
+    bad = 0
+    for box in re.finditer(r'<div class="yt" data-id="([^"]+)"[^>]*>.*?<div class="chapters">(.*?)</div>', html, re.S):
+        vid, chapters = box.group(1), box.group(2)
+        buttons = re.findall(r'<button type="button" data-t="(\d*)">\s*(?:(\d+):(\d\d))?', chapters)
+        last = 0
+        for t, mm, ss in buttons:
+            start = int(t) if t else 0
+            if start <= 0:
+                print(f"BAD CHAPTER: {page} video {vid}: a chapter starts at 0, so it jumps to the start of the video")
+                bad += 1
+            elif mm is None:
+                print(f"BAD CHAPTER: {page} video {vid}: chapter at {start}s has no mm:ss in its label")
+                bad += 1
+            elif int(mm) * 60 + int(ss) != start:
+                print(f"BAD CHAPTER: {page} video {vid}: label says {mm}:{ss} but data-t is {start}")
+                bad += 1
+            elif start <= last:
+                print(f"BAD CHAPTER: {page} video {vid}: chapter at {start}s does not come after {last}s")
+                bad += 1
+            last = max(last, start)
+        if not bad:
+            print(f"ok: {page} video {vid} has {len(buttons)} chapters with real starts")
+    return bad
+
+
 def main() -> int:
     with open(os.path.join(ROOT, "index.html"), encoding="utf-8") as f:
         index = f.read()
-    bad = 0
+    bad = check_chapters(index, "index.html")
     for page, sec_id in PAIRS:
         with open(os.path.join(ROOT, page), encoding="utf-8") as f:
             other = f.read()
