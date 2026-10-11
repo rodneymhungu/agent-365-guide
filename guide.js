@@ -1,20 +1,37 @@
 /* Behaviour shared by every page of the guide. Loaded at the end of <body>
    after a365-data.js. Every hook is optional: a page without a section
-   simply skips that part. */
+   simply skips that part. Each part also runs on its own: if one throws,
+   say because an element it expects has been renamed, the console names the
+   part that was skipped and every other part still runs. */
 (function(){
-  const D = window.A365;
+  const D = window.A365 || { capabilities: [], changes: [], tiers: {} };
+  if (!window.A365) console.warn('guide.js: a365-data.js did not load, so statuses, prices and the changelog will not render');
   const root = document.documentElement;
   const cap = Object.fromEntries(D.capabilities.map(c => [c.key, c]));
   const get = (path) => path.split('.').reduce((o,k)=>o && o[k], D);
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const part = (name, fn) => { try { fn(); } catch (e) { console.warn('guide.js: ' + name + ' skipped.', e); } };
 
-  /* Keep sticky-header offsets accurate across the two-row mobile header. */
+  /* Shared by several parts. Lookups only; each part checks what it needs. */
   const header = document.querySelector('.topbar');
-  const syncHeaderHeight = () => root.style.setProperty('--header-h', Math.ceil(header.getBoundingClientRect().height + 12) + 'px');
-  syncHeaderHeight();
-  if ('ResizeObserver' in window) new ResizeObserver(syncHeaderHeight).observe(header);
-  window.addEventListener('resize', syncHeaderHeight, {passive:true});
+  const headerHeight = () => header ? header.getBoundingClientRect().height : 0;
+  const list = document.getElementById('toc-list');
+  const toc = document.getElementById('toc'), tt = document.getElementById('toc-toggle');
+  const mobileNav = matchMedia('(max-width: 960px)');
+  let onScroll = () => {};   /* the scroll spy replaces this when the contents panel exists */
+
+  /* --- Sticky header --- */
+  part('sticky header', () => {
+    /* Keep sticky-header offsets accurate across the two-row mobile header. */
+    if (!header) return;
+    const syncHeaderHeight = () => root.style.setProperty('--header-h', Math.ceil(headerHeight() + 12) + 'px');
+    syncHeaderHeight();
+    if ('ResizeObserver' in window) new ResizeObserver(syncHeaderHeight).observe(header);
+    window.addEventListener('resize', syncHeaderHeight, {passive:true});
+  });
 
   /* --- Render values from the data block --- */
+  part('data values', () => {
   document.querySelectorAll('[data-val]').forEach(el => { const v = get(el.dataset.val); if (v != null) el.textContent = v; });
   const visibleCaps = D.capabilities.filter(c => !c.hidden);
   const summaries = {
@@ -33,16 +50,20 @@
   document.querySelectorAll('[data-tier]').forEach(el => {
     const c = cap[el.dataset.tier]; if (c) el.dataset.tierValue = c.tier;
   });
+  });
 
   /* --- Availability table from the data block --- */
+  part('availability table', () => {
   const tb = document.querySelector('#avail tbody');
   if (tb) D.capabilities.filter(c => !c.hidden).forEach(c => {
     const tr = document.createElement('tr'); tr.dataset.tier = c.key; tr.dataset.tierValue = c.tier;
     tr.innerHTML = `<td>${c.name}</td><td><span class="badge t-${c.tier}" style="margin:0">${D.tiers[c.tier].label}</span></td><td class="muted">${c.note || ''}</td><td>${c.where}</td>`;
     tb.appendChild(tr);
   });
+  });
 
   /* --- Changelog from the data block --- */
+  part('changelog', () => {
   const ch = document.querySelector('#changelog .changes');
   if (ch) (D.changes || []).forEach(c => {
     const li = document.createElement('li');
@@ -50,11 +71,11 @@
     li.innerHTML = `<b>${c.date}</b>${sec} ${c.text}`;
     ch.appendChild(li);
   });
+  });
 
-  /* --- Table of contents --- */
-  const list = document.getElementById('toc-list');
-  const toc = document.getElementById('toc'), tt = document.getElementById('toc-toggle');
-  const mobileNav = matchMedia('(max-width: 960px)');
+  /* --- Table of contents and scroll spy --- */
+  part('contents panel', () => {
+  if (!list || !toc) return;
   const heads = document.querySelectorAll('article h2, article h3');
   heads.forEach(h => {
     const sec = h.closest('section'); if (!sec || !sec.id) return;
@@ -65,7 +86,7 @@
     li.appendChild(a); list.appendChild(li);
   });
 
-  /* --- Scroll spy --- */
+  /* Scroll spy */
   const links = new Map([...list.querySelectorAll('a')].map(a => [a.getAttribute('href').slice(1), a]));
   let current = null;
   const setCurrent = (id) => {
@@ -81,8 +102,8 @@
     }
   };
   const targets = [...links.keys()].map(id => document.getElementById(id)).filter(Boolean);
-  const onScroll = () => {
-    const y = window.scrollY + header.getBoundingClientRect().height + 68; let best = targets[0];
+  onScroll = () => {
+    const y = window.scrollY + headerHeight() + 68; let best = targets[0];
     for (const t of targets) {
       if (t.classList.contains('is-hidden')) continue;
       const top = t.getBoundingClientRect().top + window.scrollY;
@@ -94,7 +115,7 @@
   const alignInitialHash = () => {
     const id = decodeURIComponent(location.hash.slice(1)); if (!id) return refreshSpy();
     const target = document.getElementById(id); if (!target || target.classList.contains('is-hidden')) return;
-    const offset = header.getBoundingClientRect().height + 16;
+    const offset = headerHeight() + 16;
     root.classList.add('no-smooth');
     window.scrollTo({top:window.scrollY + target.getBoundingClientRect().top - offset, behavior:'auto'});
     requestAnimationFrame(() => root.classList.remove('no-smooth')); refreshSpy();
@@ -103,8 +124,10 @@
   window.addEventListener('hashchange', refreshSpy);
   window.addEventListener('load', () => { const ready = document.fonts ? document.fonts.ready : Promise.resolve(); ready.then(() => setTimeout(alignInitialHash, 50)); });
   refreshSpy();
+  });
 
   /* --- GA-only filter --- */
+  part('GA-only filter', () => {
   const ga = document.getElementById('ga-only'), count = document.getElementById('count');
   const tiered = [...document.querySelectorAll('[data-tier]')];
   function apply(){
@@ -114,13 +137,15 @@
     onScroll();
   }
   if (ga) ga.addEventListener('change', apply);
+  });
 
   /* --- Figure numbering --- */
+  part('figure numbering', () => {
   document.querySelectorAll('figcaption .fn').forEach((b,i)=>{ b.textContent = 'Figure ' + (i+1) + '.'; });
+  });
 
   /* --- Steppers --- */
-  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
-  document.querySelectorAll('.stepper').forEach(fig=>{
+  document.querySelectorAll('.stepper').forEach(fig=>part('stepper', ()=>{
     const items=[...fig.querySelectorAll('[data-step]')], n=Math.max(...items.map(e=>+e.dataset.step));
     const texts = (()=>{ try{ return JSON.parse(fig.querySelector('.stext')?.dataset.texts||'[]'); }catch(e){ return []; } })();
     const solo = fig.dataset.mode==='solo'; let cur=1, timer=null;
@@ -131,18 +156,20 @@
     next.addEventListener('click',()=>{ stop(); cur=Math.min(n,cur+1); render(); });
     if(play) play.addEventListener('click',()=>{ if(timer) return stop(); if(reduce){ cur=n; render(); return; } if(cur>=n) cur=0; play.textContent='Pause'; timer=setInterval(()=>{ cur++; render(); if(cur>=n) stop(); },1700); render(); });
     render();
-  });
+  }));
 
   /* --- Plan selector --- */
+  part('plan selector', () => {
   const planBtns=[...document.querySelectorAll('.plan button')], planMsg=document.getElementById('planmsg');
   const licRows=[...document.querySelectorAll('#s2-1 .tbl tbody tr')];
   function setPlan(p){ planBtns.forEach(b=>b.setAttribute('aria-pressed', String(b.dataset.plan===p))); let un=0;
     licRows.forEach(tr=>{ const base = tr.children[2].textContent.trim()==='Yes'; const ok = p==='base' ? base : true; tr.classList.toggle('unlock', ok); tr.classList.toggle('locked', !ok); if(ok) un++; });
     planMsg.textContent = p==='base' ? `${un} of ${licRows.length} capabilities. The registry, basic actions, rules and registry sync work without the add-on; everything else needs Agent 365.` : p==='addon' ? `All ${licRows.length} capabilities. E5 already includes Entra ID P2, so Conditional Access and ID Governance for agents need nothing more. Network controls for local agents on devices need Entra Internet Access.` : `All ${licRows.length} capabilities. E7 bundles Agent 365 with the Entra Suite, so the identity and network dependencies are included.`; }
   planBtns.forEach(b=>b.addEventListener('click',()=>setPlan(b.dataset.plan))); if(planBtns.length) setPlan('base');
+  });
 
   /* --- Control plane hover --- */
-  document.querySelectorAll('.cp').forEach(fig=>{
+  document.querySelectorAll('.cp').forEach(fig=>part('control plane figure', ()=>{
     const svg=fig.querySelector('svg'), pills=[...svg.querySelectorAll('g.pill')], prods=[...svg.querySelectorAll('g.prod')];
     function light(ids){ svg.classList.add('active'); pills.forEach(p=>p.classList.toggle('lit', ids.pill===p)); prods.forEach(p=>p.classList.toggle('lit', ids.set.has(p.id))); }
     function clear(){ svg.classList.remove('active'); [...pills,...prods].forEach(p=>p.classList.remove('lit')); }
@@ -154,7 +181,7 @@
     });
     if(!hover){ svg.addEventListener('click',clear); }
     if(hover) prods.forEach(pr=>{ pr.addEventListener('pointerenter',()=>{ const owners=pills.filter(p=>p.dataset.links.split(' ').includes(pr.id)); svg.classList.add('active'); pills.forEach(p=>p.classList.toggle('lit',owners.includes(p))); prods.forEach(x=>x.classList.toggle('lit',x===pr)); }); pr.addEventListener('pointerleave',clear); });
-  });
+  }));
 
   /* --- Conditional Access explorer --- */
   const CAtext={
@@ -162,7 +189,7 @@
     app:{subj:'The agent identity itself. No user is present.',target:'Agent identities, their blueprints, or custom security attributes. Blueprint targeting covers every child identity, present and future.',note:'The only grant control that makes sense is block; there is no user to satisfy MFA. Blueprint policies do not cover agent users.'},
     user:{subj:'The agent\u2019s user account, a real Entra user object.',target:'Agent users, selected individually or by custom security attribute, with the Agent risk condition. Device and network compliance apply only on endpoints such as Windows 365 Cloud PCs for Agents.',note:'Policies targeting all users exclude agent users. Agent users cannot be scoped by group. Use the Agent execution environments condition so cloud-native agents are not blocked with no path to compliance.'}
   };
-  document.querySelectorAll('.ca').forEach(fig=>{
+  document.querySelectorAll('.ca').forEach(fig=>part('Conditional Access figure', ()=>{
     const btns=[...fig.querySelectorAll('.pat button')];
     function set(p){ fig.dataset.pattern=p; btns.forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.p===p)));
       const map={obo:'b-user',app:'b-id',user:'b-au'}, ln={obo:'l-user',app:'l-id',user:'l-au'};
@@ -170,9 +197,10 @@
       fig.querySelectorAll('.ln').forEach(l=>l.style.opacity = l.classList.contains(ln[p]) ? '1' : '0.12');
       fig.querySelector('.ca-subj').textContent=CAtext[p].subj; fig.querySelector('.ca-target').textContent=CAtext[p].target; fig.querySelector('.ca-note').textContent=CAtext[p].note; }
     btns.forEach(b=>b.addEventListener('click',()=>set(b.dataset.p))); set('obo');
-  });
+  }));
 
   /* --- Terminal replay --- */
+  part('terminal replay', () => {
   const SCEN={
     defender:{title:'Claude Code \u00b7 developer laptop \u00b7 Defender for Endpoint in Block mode',lines:[
       ['u','\u276f Summarize the code in this directory'],['dim','\u25cf Let me look at what\u2019s in the current directory.'],['ok','\u25cf List directory .        15 files found'],['ok','\u25cf List directory Code     1 file found'],
@@ -195,12 +223,15 @@
     document.querySelectorAll('.tscen button').forEach(b=>b.addEventListener('click',()=>{ scen=b.dataset.scen; document.querySelectorAll('.tscen button').forEach(x=>x.setAttribute('aria-pressed',String(x===b))); reset(); auto(); }));
     reset(); const io=new IntersectionObserver(es=>{ if(es[0].isIntersecting){ auto(); io.disconnect(); } },{threshold:.4}); io.observe(tbo);
   }
+  });
 
   /* --- MCP toggle --- */
+  part('MCP toggle', () => {
   document.querySelectorAll('.mcp').forEach(fig=>fig.querySelectorAll('.swap button').forEach(b=>b.addEventListener('click',()=>{ fig.dataset.mode=b.dataset.m; fig.querySelectorAll('.swap button').forEach(x=>x.setAttribute('aria-pressed',String(x===b))); })));
+  });
 
   /* --- YouTube facade --- */
-  document.querySelectorAll('.yt').forEach(box=>{
+  document.querySelectorAll('.yt').forEach(box=>part('video', ()=>{
     const id=box.dataset.id, frame=box.querySelector('.ytframe');
     const direct=document.createElement('a');
     direct.className='watchlink'; direct.href='https://www.youtube.com/watch?v='+id; direct.target='_blank'; direct.rel='noopener'; direct.textContent='Watch on YouTube ↗';
@@ -208,7 +239,7 @@
     function load(t){ frame.innerHTML='<iframe src="https://www.youtube-nocookie.com/embed/'+id+'?start='+(t|0)+'&autoplay=1&rel=0" title="YouTube video" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>'; }
     box.querySelector('.ytplay').addEventListener('click',()=>load(+box.dataset.start||0));
     box.querySelectorAll('.chapters button').forEach(b=>b.addEventListener('click',()=>load(+b.dataset.t)));
-  });
+  }));
 
   /* Documentation links remain in the reading flow; portals and media may open separately. */
   document.querySelectorAll('a[target="_blank"]').forEach(a => {
@@ -221,6 +252,7 @@
   });
 
   /* --- Theme --- */
+  part('theme toggle', () => {
   const tbtn = document.getElementById('theme');
   try { const saved = localStorage.getItem('a365-theme'); if (saved) root.dataset.theme = saved; } catch(e){}
   if (tbtn) tbtn.addEventListener('click', () => {
@@ -228,8 +260,11 @@
     root.dataset.theme = dark ? 'light' : 'dark';
     try { localStorage.setItem('a365-theme', root.dataset.theme); } catch(e){}
   });
+  });
 
   /* --- Mobile contents toggle --- */
+  part('mobile contents toggle', () => {
+  if (!toc || !tt || !list) return;
   function setToc(open){
     toc.hidden = !open; tt.setAttribute('aria-expanded', String(open)); tt.textContent = open ? 'Close' : 'Sections';
   }
@@ -238,6 +273,7 @@
   document.addEventListener('keydown', e => { if (e.key === 'Escape' && mobileNav.matches && !toc.hidden) { setToc(false); tt.focus(); } });
   mobileNav.addEventListener('change', e => { if (e.matches) setToc(false); else { toc.hidden = false; tt.setAttribute('aria-expanded','false'); tt.textContent = 'Sections'; } });
   if (mobileNav.matches) setToc(false); else toc.hidden = false;
+  });
 })();
 
 /* Section-level engagement. The guide navigates by hash (#s6-2, #s7-4). GoatCounter
