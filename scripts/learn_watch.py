@@ -26,7 +26,11 @@ UA = "agent-365-guide-watch/1.0 (+https://rodneymhungu.github.io/agent-365-guide
 # Pages the guide should track but does not (yet) link to.
 # There is no Agent 365 "What's new" page on Learn (checked 5 September 2026), so the
 # docs-set tables of contents stand in for it: a new or renamed page shows up as a
-# diff line here before any prose page changes.
+# diff line here before any prose page changes. Microsoft's monthly "What's new in
+# Agent 365" posts live on the Tech Community blog instead; the blog page itself is
+# a JavaScript shell, so its RSS feed is watched; it sits in RELEASE_NOTES below so
+# that the feed's own build timestamp does not count as a change. Blog claims never
+# move a tier: they are announcements, cited as such, until a Learn page carries them.
 EXTRA_URLS = [
     "https://learn.microsoft.com/en-us/microsoft-agent-365/toc.json",
     "https://learn.microsoft.com/en-us/security/security-for-ai/toc.json",
@@ -49,6 +53,9 @@ RELEASE_NOTES = [
     "https://learn.microsoft.com/en-us/purview/whats-new",
     "https://learn.microsoft.com/en-us/intune/whats-new/",
     "https://learn.microsoft.com/en-us/microsoft-365/admin/whats-new-in-preview",
+    # Microsoft's monthly "What's new in Agent 365" posts, as RSS (confirmed working
+    # 11 October 2026). A new post arrives as title and summary lines about agents.
+    "https://techcommunity.microsoft.com/t5/s/gxcuf89792/rss/board?board.id=agent-365-blog",
 ]
 EXTRA_URLS += RELEASE_NOTES
 RELEVANT = re.compile(r"agent|mcp", re.I)

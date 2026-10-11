@@ -22,7 +22,7 @@
 <link rel="canonical" href="https://rodneymhungu.github.io/agent-365-guide/">
 <link rel="alternate" type="application/atom+xml" title="Changes to this guide" href="https://github.com/rodneymhungu/agent-365-guide/commits/main.atom">
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"TechArticle","headline":"Agent 365 for security and compliance engineers","description":"A how-to guide to Microsoft Agent 365 for security and compliance engineers: what it enforces, where, under which licence, and what is still in preview.","url":"https://rodneymhungu.github.io/agent-365-guide/","image":"https://rodneymhungu.github.io/agent-365-guide/images/og.png","datePublished":"2026-09-04","dateModified":"2026-10-06","inLanguage":"en-GB","author":{"@type":"Person","name":"Rodney Mhungu"},"about":["Microsoft Agent 365","Microsoft Entra","Microsoft Purview","Microsoft Defender","Microsoft Intune"]}
+{"@context":"https://schema.org","@type":"TechArticle","headline":"Agent 365 for security and compliance engineers","description":"A how-to guide to Microsoft Agent 365 for security and compliance engineers: what it enforces, where, under which licence, and what is still in preview.","url":"https://rodneymhungu.github.io/agent-365-guide/","image":"https://rodneymhungu.github.io/agent-365-guide/images/og.png","datePublished":"2026-09-04","dateModified":"2026-10-11","inLanguage":"en-GB","author":{"@type":"Person","name":"Rodney Mhungu"},"about":["Microsoft Agent 365","Microsoft Entra","Microsoft Purview","Microsoft Defender","Microsoft Intune"]}
 </script>
 
 <!-- Status, dates, prices and the changelog live in a365-data.js; read the comment there before editing. -->
@@ -105,7 +105,7 @@
   <div class="field-stats" aria-label="Guide summary">
     <span><b data-summary="capabilities"></b> controls tracked</span>
     <span><b data-summary="previews"></b> pre-GA controls</span>
-    <span><b data-val="reviewed">6 October 2026</b> last reviewed</span>
+    <span><b data-val="reviewed">11 October 2026</b> last reviewed</span>
     <span><b>Rodney Mhungu</b> field notes by</span>
   </div>
   <details class="guide-notes">
@@ -345,6 +345,7 @@
     <tbody>
     <tr data-tier="registry"><td>A new agent appears in the tenant with no owner</td><td><a href="https://learn.microsoft.com/en-us/microsoft-365/admin/manage/agent-registry" target="_blank" rel="noopener">Registry</a> entry, owner assignment, the shadow agent risk</td><td>Microsoft 365 admin centre</td><td><span class="badge" data-badge="registry" style="margin:0"></span></td><td><a href="#s5-1">5.1</a>, <a href="#s5-3">5.3</a></td></tr>
     <tr data-tier="registry-sync"><td>Agents built on Bedrock, Vertex, Agentforce, Genie, Anthropic, Oracle or Snowflake need to be in the inventory</td><td><a href="https://learn.microsoft.com/en-us/microsoft-agent-365/admin/connected-platforms" target="_blank" rel="noopener">Connected platforms</a> sync from the external platform</td><td>Microsoft 365 admin centre</td><td><span class="badge" data-badge="registry-sync" style="margin:0"></span></td><td><a href="#s5-4">5.4</a></td></tr>
+    <tr data-tier="apim-discovery"><td>Agents, tools, models or MCP servers already sit behind Azure API Management</td><td><a href="https://techcommunity.microsoft.com/blog/agent-365-blog/whats-new-in-agent-365---september-2026/4560803" target="_blank" rel="noopener">Azure API Management integration</a>, automatic discovery into the registry</td><td>Azure API Management; Microsoft 365 admin centre</td><td><span class="badge" data-badge="apim-discovery" style="margin:0"></span></td><td><a href="#s5-4">5.4</a></td></tr>
     <tr data-tier="mde-discovery"><td>A developer installs Claude Code, Cursor or Codex on a laptop</td><td><a href="https://learn.microsoft.com/en-us/defender-endpoint/local-agent-discovery-overview" target="_blank" rel="noopener">Local agent discovery</a>, then the <a href="https://learn.microsoft.com/en-us/microsoft-365/admin/manage/agent-local" target="_blank" rel="noopener">Local agents page</a></td><td>Defender for Endpoint; Microsoft 365 admin centre</td><td><span class="badge" data-badge="mde-discovery" style="margin:0"></span></td><td><a href="#s5-5">5.5</a></td></tr>
     <tr data-tier="agent-id"><td>An agent needs an identity that is not a person's</td><td><a href="https://learn.microsoft.com/en-us/entra/agent-id/what-is-microsoft-entra-agent-id" target="_blank" rel="noopener">Entra Agent ID</a>: blueprint, identity, agent user</td><td>Entra</td><td><span class="badge" data-badge="agent-id" style="margin:0"></span></td><td><a href="#s7-1">7.1</a></td></tr>
     <tr data-tier="conditional-access"><td>A risky agent identity must not be issued a token</td><td><a href="https://learn.microsoft.com/en-us/entra/identity/conditional-access/agent-id" target="_blank" rel="noopener">Conditional Access for agents</a>, block at token issuance</td><td>Entra</td><td><span class="badge" data-badge="conditional-access" style="margin:0"></span></td><td><a href="#s7-1">7.1</a></td></tr>
@@ -416,6 +417,7 @@
     <tr><td>Compliance or retention gap</td><td>Medium</td><td>Purview</td><td>Interactions missing audit trail or retention policy</td></tr>
     </tbody>
   </table></div>
+  <p data-tier="registry-ai-mode">AI mode for the registry is <span class="st" data-st="registry-ai-mode"></span>. Microsoft's <a href="https://techcommunity.microsoft.com/blog/agent-365-blog/whats-new-in-agent-365---september-2026/4560803" target="_blank" rel="noopener">What's new post of 30 September 2026</a> describes a natural-language search that finds agents without owners, inactive agents and agents that warrant review. No Learn page documents it yet, so the badge says early preview until one does.</p>
   <figure class="shot ">
     <div class="frame"><div class="imgwrap"><img src="images/learn-mac-risks-card.png" width="1600" height="834" alt="Agents at risk card on the admin centre overview" loading="lazy"></div></div>
     <figcaption><b class="fn"></b> The Agents at risk card surfaces the three highest-risk agents and links to the prefiltered registry. <span class="src">Source: <a href="https://learn.microsoft.com/en-us/microsoft-365/admin/manage/agent-registry" target="_blank" rel="noopener">Microsoft Learn, Agent registry, agents at risk</a>, CC BY 4.0. Asset <code>learn-mac-risks-card</code>.</span></figcaption>
@@ -436,6 +438,7 @@
     <figcaption><b class="fn"></b> Where the SDK fits: platforms with built-in integration and synced platforms already appear in the inventory; the SDK is for capabilities you must configure in code. <span class="src">Source: <a href="https://learn.microsoft.com/en-us/microsoft-agent-365/developer/agent-365-sdk" target="_blank" rel="noopener">Microsoft Learn, Agent 365 SDK overview</a>, CC BY 4.0. Asset <code>learn-a365-sdk-integration</code>.</span></figcaption>
   </figure>
   <p>Copilot Studio, Foundry and Agent Builder agents integrate automatically and send observability data by default once a licence or trial is active.</p>
+  <p data-tier="apim-discovery">One more route is announced but not yet documented. Microsoft's <a href="https://techcommunity.microsoft.com/blog/agent-365-blog/whats-new-in-agent-365---september-2026/4560803" target="_blank" rel="noopener">What's new post of 30 September 2026</a> says agents, tools, models and MCP servers onboarded to Azure API Management will appear in Agent 365 without manual registration, with Agent 365 governing access and API Management applying authentication, routing and runtime controls, rolling out from the same day. The integration is <span class="st" data-st="apim-discovery"></span> until a Learn page describes it.</p>
   </section>
 
   <section id="s5-5" data-search data-tier="mde-discovery">
@@ -589,7 +592,7 @@
     </tbody>
   </table></div>
   <p>If an action fails on a Copilot Studio agent, check whether its Power Platform environment runs the IP firewall in active enforcement mode. Admin centre actions arrive from a Microsoft service IP and are rejected; audit-only mode allows them. The workaround is the Power Platform API.</p>
-  <p><a href="https://learn.microsoft.com/en-us/microsoft-365/admin/manage/agent-settings" target="_blank" rel="noopener">Management rules</a> under Agents, Settings apply actions in bulk after a review step. Four exist: install Microsoft first-party agents for all users; reassign ownerless Agent Builder agents to the previous owner's manager; block ownerless agents with no usage; reject publish requests older than a set number of days. Each run shows the affected agents before applying.</p>
+  <p><a href="https://learn.microsoft.com/en-us/microsoft-365/admin/manage/agent-settings" target="_blank" rel="noopener">Management rules</a> under Agents, Settings apply actions in bulk after a review step. Five exist: install Microsoft first-party agents for all users; reassign ownerless Agent Builder agents to the previous owner's manager; block ownerless agents with no usage; apply a policy template to the agents a rule's conditions select; reject publish requests older than a set number of days. Each run shows the affected agents before applying. The template rule runs once rather than on a schedule, and it reaches only registry agents with an identity. Blueprints and AI teammates are outside it. Microsoft's <a href="https://techcommunity.microsoft.com/blog/agent-365-blog/whats-new-in-agent-365---september-2026/4560803" target="_blank" rel="noopener">What's new post of 30 September 2026</a> calls custom rules a public preview and lists ownership, tags, Entra Agent ID, publisher, risk signals and usage as conditions. The Learn page does not list those conditions yet.</p>
   <figure class="shot ">
     <div class="frame"><div class="imgwrap"><img src="images/learn-mac-settings.png" width="1600" height="803" alt="Agent settings page with management rules, allowed agent types, security templates, sharing and user access" loading="lazy"></div></div>
     <figcaption><b class="fn"></b> The settings page: rules, allowed types, templates, sharing, user access, feedback and tags. <span class="src">Source: <a href="https://learn.microsoft.com/en-us/microsoft-365/admin/manage/agent-settings" target="_blank" rel="noopener">Microsoft Learn, Agent settings</a>, CC BY 4.0. Asset <code>learn-mac-settings</code>.</span></figcaption>
@@ -1163,7 +1166,7 @@ Set-MpPreference -AiAgentNetworkInspection Audit</code></pre>
 <!-- ============================ 10 ============================ -->
 <section class="block" id="s10" data-search>
   <div class="shead"><span class="n">10</span><h2>What you can deploy today</h2></div>
-  <p class="muted">Every status on this page comes from one list. Reviewed <span data-val="reviewed">6 October 2026</span>.</p>
+  <p class="muted">Every status on this page comes from one list. Reviewed <span data-val="reviewed">11 October 2026</span>.</p>
   <div class="tbl"><table id="avail">
     <thead><tr><th>Capability</th><th>Status</th><th>Note</th><th>Where</th></tr></thead>
     <tbody></tbody>
@@ -1184,7 +1187,7 @@ Set-MpPreference -AiAgentNetworkInspection Audit</code></pre>
   <div class="in">
     <div>
       <p><strong>About this guide</strong></p>
-      <p>Assembled by Rodney Mhungu. Structure and diagrams are adapted from a September 2026 Agent 365 workshop; every factual claim is taken from Microsoft Learn and linked at the point of use. Opinions are my own. Built on my <a href="https://github.com/rodneymhungu/field-guide-principles" target="_blank" rel="noopener">field guide principles</a>. Reviewed <span data-val="reviewed">6 October 2026</span>.</p>
+      <p>Assembled by Rodney Mhungu. Structure and diagrams are adapted from a September 2026 Agent 365 workshop; every factual claim is taken from Microsoft Learn and linked at the point of use. Opinions are my own. Built on my <a href="https://github.com/rodneymhungu/field-guide-principles" target="_blank" rel="noopener">field guide principles</a>. Reviewed <span data-val="reviewed">11 October 2026</span>.</p>
       <p><strong>Found an error?</strong> <a href="https://github.com/rodneymhungu/agent-365-guide/issues/new?title=Correction%3A%20&amp;labels=correction" target="_blank" rel="noopener">Open an issue</a> with the chapter number and the Learn page that disagrees. It goes into the next review.</p>
     </div>
     <div>

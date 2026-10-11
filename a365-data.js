@@ -23,7 +23,7 @@
   ==========================================================================
 */
 window.A365 = {
-  reviewed: "6 October 2026",
+  reviewed: "11 October 2026",
   gaDate: "1 May 2026",
   transitionDate: "1 July 2026",
   trial: "25 seats for 30 days",
@@ -36,6 +36,10 @@ window.A365 = {
     roadmap:  { label: "Early preview",    phrase: "in early preview" }
   },
   changes: [
+    { date: "11 October 2026", section: "s6-3", text: "Management rules number five: Apply a template joins the four bulk actions, each rule takes conditions that select the agent instances it runs on, and the template rule is a one-off run limited to registry agents with an identity. Microsoft's September What's new post calls custom rules a public preview and lists more conditions than Learn does. Agent settings page and the post cited." },
+    { date: "11 October 2026", section: "s5-3", text: "AI mode, a natural-language search of the registry for ownerless, inactive or review-worthy agents, announced as a public preview in Microsoft's September What's new post. No Learn page yet, so it carries the early preview label." },
+    { date: "11 October 2026", section: "s5-4", text: "Azure API Management integration: agents, tools, models and MCP servers onboarded there appear in Agent 365 without manual registration, rolling out from 30 September per Microsoft's September What's new post. No Learn page yet, so it carries the early preview label." },
+    { date: "11 October 2026", kind: "guide", text: "Chapter buttons under the 6.7 and 7.5 videos jump to their chapters. The review date, prices and key dates sit in the page text for crawlers and link previews. Each part of the page script runs on its own, so one missing element no longer stops the rest." },
     { date: "6 October 2026", section: "s5-4", text: "Connected platforms is the current name for what Microsoft announced as Registry sync in April 2026, and several Learn pages still use the old name; observability differs by platform: the hub lists it for Amazon Bedrock, Google Vertex AI and Anthropic, with the other four coming soon, and third-party agent observability is a Frontier preview whose page also lists Salesforce Agentforce. Connected platforms and Third-party agent observability pages cited." },
     { date: "6 October 2026", section: "s6-8", text: "Admins can create an agent instance on behalf of a manager: a Global Administrator or AI Administrator starts it from the agent's details in the registry, a wizard checks licences first, and the manager owns the instance in Entra and Teams. Create agentic user instances page cited." },
     { date: "6 October 2026", kind: "guide", text: "Writing and structure pass: 5.5 and 7.2 open on their verdict, 2.1 and 7.4 split into one claim per sentence, the hero names all five enforcing products, 4.1 lists all seven synced platforms, and cross-references use bare section numbers." },
@@ -65,11 +69,13 @@ window.A365 = {
   capabilities: [
     { key: "control-plane",      name: "Agent 365 licence and admin centre control plane", tier: "ga", note: "GA since 1 May 2026", where: "Microsoft 365 admin centre" },
     { key: "registry",           name: "Registry, overview, requests, actions, management rules, settings, policy templates", tier: "ga", where: "Microsoft 365 admin centre" },
+    { key: "registry-ai-mode",   name: "AI mode: natural-language search of the registry", tier: "roadmap", note: "Blog announcement of 30 September 2026; no Learn page yet", where: "Microsoft 365 admin centre" },
     { key: "agent-map",          name: "Agent map", tier: "ga", where: "Microsoft 365 admin centre" },
     { key: "single-agent-map",   name: "Single Agent Map", tier: "preview", where: "Microsoft 365 admin centre" },
     { key: "graph-api",          name: "Graph API for registry and details", tier: "preview", where: "Graph" },
     { key: "registry-sync",      name: "Connected platforms (Bedrock, Vertex, Agentforce, Genie, Oracle, Snowflake Cortex)", tier: "ga", where: "Microsoft 365 admin centre" },
     { key: "registry-sync-anthropic", name: "Connected platforms: Anthropic Claude Managed Agents", tier: "preview", where: "Microsoft 365 admin centre" },
+    { key: "apim-discovery",     name: "Azure API Management integration: agents, tools, models and MCP servers discovered from the gateway", tier: "roadmap", note: "Blog announcement of 30 September 2026, rolling out from that date; no Learn page yet", where: "Azure API Management; Microsoft 365 admin centre" },
     { key: "third-party-observability", name: "Third-party agent observability (Bedrock, Vertex AI, Anthropic, Agentforce)", tier: "frontier", where: "Microsoft 365 admin centre" },
     { key: "byo-mcp",            name: "Bring your own MCP server", tier: "preview", where: "Admin centre and CLI" },
     { key: "shadow-ai-page",     name: "Shadow AI page", tier: "frontier", where: "Microsoft 365 admin centre" },
