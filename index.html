@@ -22,7 +22,7 @@
 <link rel="canonical" href="https://rodneymhungu.github.io/agent-365-guide/">
 <link rel="alternate" type="application/atom+xml" title="Changes to this guide" href="https://github.com/rodneymhungu/agent-365-guide/commits/main.atom">
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"TechArticle","headline":"Agent 365 for security and compliance engineers","description":"A how-to guide to Microsoft Agent 365 for security and compliance engineers: what it enforces, where, under which licence, and what is still in preview.","url":"https://rodneymhungu.github.io/agent-365-guide/","image":"https://rodneymhungu.github.io/agent-365-guide/images/og.png","datePublished":"2026-09-04","dateModified":"2026-10-05","inLanguage":"en-GB","author":{"@type":"Person","name":"Rodney Mhungu"},"about":["Microsoft Agent 365","Microsoft Entra","Microsoft Purview","Microsoft Defender","Microsoft Intune"]}
+{"@context":"https://schema.org","@type":"TechArticle","headline":"Agent 365 for security and compliance engineers","description":"A how-to guide to Microsoft Agent 365 for security and compliance engineers: what it enforces, where, under which licence, and what is still in preview.","url":"https://rodneymhungu.github.io/agent-365-guide/","image":"https://rodneymhungu.github.io/agent-365-guide/images/og.png","datePublished":"2026-09-04","dateModified":"2026-10-06","inLanguage":"en-GB","author":{"@type":"Person","name":"Rodney Mhungu"},"about":["Microsoft Agent 365","Microsoft Entra","Microsoft Purview","Microsoft Defender","Microsoft Intune"]}
 </script>
 
 <!-- Status, dates, prices and the changelog live in a365-data.js; read the comment there before editing. -->
@@ -105,7 +105,7 @@
   <div class="field-stats" aria-label="Guide summary">
     <span><b data-summary="capabilities"></b> controls tracked</span>
     <span><b data-summary="previews"></b> pre-GA controls</span>
-    <span><b data-val="reviewed"></b> last reviewed</span>
+    <span><b data-val="reviewed">6 October 2026</b> last reviewed</span>
     <span><b>Rodney Mhungu</b> field notes by</span>
   </div>
   <details class="guide-notes">
@@ -116,7 +116,7 @@
       <span><span class="badge t-frontier">Frontier preview</span>needs Frontier enrolment</span>
       <span><span class="badge t-roadmap">Early preview</span>not in Learn docs</span>
     </div>
-    <p class="muted small source-note">Product GA <b data-val="gaDate"></b>. Screenshots come from Microsoft Learn (CC BY 4.0) and from the September 2026 workshop deck, which shows demo-tenant data approved for publication. Every image is listed with its source in <a href="images/README.md">the image manifest</a>.</p>
+    <p class="muted small source-note">Product GA <b data-val="gaDate">1 May 2026</b>. Screenshots come from Microsoft Learn (CC BY 4.0) and from the September 2026 workshop deck, which shows demo-tenant data approved for publication. Every image is listed with its source in <a href="images/README.md">the image manifest</a>.</p>
   </details>
 </section>
 
@@ -124,7 +124,7 @@
 <section class="block" id="s1" data-search>
   <div class="shead"><span class="n">01</span><h2>The control plane does not enforce anything</h2></div>
   <p>Agent 365 is a control plane. It inventories every agent in the tenant, approves and retires them, and attaches policies to them. Enforcement happens in products you already run: <a href="https://learn.microsoft.com/en-us/microsoft-agent-365/admin/capabilities-entra" target="_blank" rel="noopener">Microsoft Entra</a> for identity, <a href="https://learn.microsoft.com/en-us/purview/ai-agent-365" target="_blank" rel="noopener">Microsoft Purview</a> for data and compliance, <a href="https://learn.microsoft.com/en-us/defender-xdr/security-for-ai/defender-security-for-ai" target="_blank" rel="noopener">Microsoft Defender</a> for threats, Microsoft Intune for device posture, and the <a href="https://learn.microsoft.com/en-us/microsoft-365/admin/manage/agent-365-overview" target="_blank" rel="noopener">Microsoft 365 admin centre</a> for lifecycle and availability.</p>
-  <p>The product reached general availability on <span data-val="gaDate"></span>, licensed per user. The <a href="https://learn.microsoft.com/en-us/microsoft-agent-365/overview" target="_blank" rel="noopener">overview</a> states it works best with Microsoft 365 E5 and needs at least one user with a qualifying licence. The <a href="https://www.microsoft.com/licensing/faqs/122" target="_blank" rel="noopener">licensing FAQ</a> sets firm purchase prerequisites; <a href="#s2-1">2.1</a> lists them. Agents themselves need no licence at GA: every agent owned or managed by a licensed user is covered. The exception is the <a href="https://learn.microsoft.com/en-us/microsoft-agent-365/frontier" target="_blank" rel="noopener">Frontier preview programme</a>, which licenses per agent instance.</p>
+  <p>The product reached general availability on <span data-val="gaDate">1 May 2026</span>, licensed per user. The <a href="https://learn.microsoft.com/en-us/microsoft-agent-365/overview" target="_blank" rel="noopener">overview</a> states it works best with Microsoft 365 E5 and needs at least one user with a qualifying licence. The <a href="https://www.microsoft.com/licensing/faqs/122" target="_blank" rel="noopener">licensing FAQ</a> sets firm purchase prerequisites; <a href="#s2-1">2.1</a> lists them. Agents themselves need no licence at GA: every agent owned or managed by a licensed user is covered. The exception is the <a href="https://learn.microsoft.com/en-us/microsoft-agent-365/frontier" target="_blank" rel="noopener">Frontier preview programme</a>, which licenses per agent instance.</p>
   <p>Microsoft's three pillars are Observe, Govern and Secure. This guide follows that order because each pillar depends on the one before it.</p>
   <aside class="operator-note"><span class="label">Rodney's field note 01</span><strong>Inventory is not containment.</strong>A clean registry can still hide an unprotected runtime. Test the enforcing product.</aside>
 </section>
@@ -176,7 +176,7 @@
     <tr><td>Education</td><td>A3</td><td>The education suites</td></tr>
     </tbody>
   </table></div>
-  <p>The <a href="https://www.microsoft.com/microsoft-agent-365" target="_blank" rel="noopener">pricing page</a> lists the add-on at <span data-val="price.addon"></span> and E7 at <span data-val="price.e7"></span>, <span data-val="price.note"></span>; check your own region and agreement. An admin-led trial of <span data-val="trial"></span> is available from the admin centre banner.</p>
+  <p>The <a href="https://www.microsoft.com/microsoft-agent-365" target="_blank" rel="noopener">pricing page</a> lists the add-on at <span data-val="price.addon">13 euro</span> and E7 at <span data-val="price.e7">91.92 euro</span>, <span data-val="price.note">per user per month, annual commitment, Dutch-localised pricing page</span>; check your own region and agreement. An admin-led trial of <span data-val="trial">25 seats for 30 days</span> is available from the admin centre banner.</p>
   <p>Two Learn pages list Entra ID P1 or P2 beside Agent 365 as a prerequisite. That is not a second purchase: every plan that qualifies you to buy Agent 365 already carries Entra ID P1 at least: E5, A5 and Defender Suite include P2, and E3, EMS E3, Business Premium, F1 and F3 include P1 (<a href="https://learn.microsoft.com/en-us/entra/fundamentals/licensing" target="_blank" rel="noopener">Entra licensing</a>). So:</p>
   <ul>
     <li><strong>Covered by your base plan.</strong> <a href="https://learn.microsoft.com/en-us/entra/identity/conditional-access/agent-id" target="_blank" rel="noopener">Conditional Access for agents</a> needs Microsoft 365 E7, or an Agent 365 licence paired with at least Entra ID P1 or Microsoft 365 E3, and your base plan already includes P1. Microsoft says enforcement of the Agent 365 requirement is coming.</li>
@@ -187,8 +187,8 @@
   </section>
 
   <section id="s2-2" data-search>
-  <h3>2.2 The <span data-val="transitionDate"></span> transition</h3>
-  <p>Agent security for Copilot Studio and Foundry moved licences. From <span data-val="transitionDate"></span>, discovery, posture, detection and real-time protection for those platforms <a href="https://learn.microsoft.com/en-us/defender-xdr/security-for-ai/transition-agent-security-to-agent-365" target="_blank" rel="noopener">require Agent 365</a> and are no longer covered by Defender for Cloud Apps or Defender for Cloud. The <code>AIAgentsInfo</code> hunting table is replaced by <code>AgentsInfo</code>. Legacy real-time protection rules set to Block stopped enforcing on that date and must be redefined under Settings, Security for AI, Policies and rules. Third-party cloud agents previously found through Defender for Cloud connectors now arrive through Connected platforms. Update saved hunting queries and redefine blocking rules first.</p>
+  <h3>2.2 The <span data-val="transitionDate">1 July 2026</span> transition</h3>
+  <p>Agent security for Copilot Studio and Foundry moved licences. From <span data-val="transitionDate">1 July 2026</span>, discovery, posture, detection and real-time protection for those platforms <a href="https://learn.microsoft.com/en-us/defender-xdr/security-for-ai/transition-agent-security-to-agent-365" target="_blank" rel="noopener">require Agent 365</a> and are no longer covered by Defender for Cloud Apps or Defender for Cloud. The <code>AIAgentsInfo</code> hunting table is replaced by <code>AgentsInfo</code>. Legacy real-time protection rules set to Block stopped enforcing on that date and must be redefined under Settings, Security for AI, Policies and rules. Third-party cloud agents previously found through Defender for Cloud connectors now arrive through Connected platforms. Update saved hunting queries and redefine blocking rules first.</p>
   </section>
 
   <section id="s2-3" data-search>
@@ -1163,7 +1163,7 @@ Set-MpPreference -AiAgentNetworkInspection Audit</code></pre>
 <!-- ============================ 10 ============================ -->
 <section class="block" id="s10" data-search>
   <div class="shead"><span class="n">10</span><h2>What you can deploy today</h2></div>
-  <p class="muted">Every status on this page comes from one list. Reviewed <span data-val="reviewed"></span>.</p>
+  <p class="muted">Every status on this page comes from one list. Reviewed <span data-val="reviewed">6 October 2026</span>.</p>
   <div class="tbl"><table id="avail">
     <thead><tr><th>Capability</th><th>Status</th><th>Note</th><th>Where</th></tr></thead>
     <tbody></tbody>
@@ -1184,7 +1184,7 @@ Set-MpPreference -AiAgentNetworkInspection Audit</code></pre>
   <div class="in">
     <div>
       <p><strong>About this guide</strong></p>
-      <p>Assembled by Rodney Mhungu. Structure and diagrams are adapted from a September 2026 Agent 365 workshop; every factual claim is taken from Microsoft Learn and linked at the point of use. Opinions are my own. Built on my <a href="https://github.com/rodneymhungu/field-guide-principles" target="_blank" rel="noopener">field guide principles</a>. Reviewed <span data-val="reviewed"></span>.</p>
+      <p>Assembled by Rodney Mhungu. Structure and diagrams are adapted from a September 2026 Agent 365 workshop; every factual claim is taken from Microsoft Learn and linked at the point of use. Opinions are my own. Built on my <a href="https://github.com/rodneymhungu/field-guide-principles" target="_blank" rel="noopener">field guide principles</a>. Reviewed <span data-val="reviewed">6 October 2026</span>.</p>
       <p><strong>Found an error?</strong> <a href="https://github.com/rodneymhungu/agent-365-guide/issues/new?title=Correction%3A%20&amp;labels=correction" target="_blank" rel="noopener">Open an issue</a> with the chapter number and the Learn page that disagrees. It goes into the next review.</p>
     </div>
     <div>

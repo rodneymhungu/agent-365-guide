@@ -56,7 +56,7 @@ Two GitHub Actions run every Monday. One re-fetches every Learn page the guide c
 
 [PLAN.md](PLAN.md) is the plan of record: the visitor target, the weekly rotation of work, the blockers, and a log of what shipped. Read it first if you are picking the work up.
 
-A changelog lives in the `changes` array of the same data block and renders at the end of chapter 10. `sitemap.xml`, `robots.txt`, the canonical link and the JSON-LD block in the head exist for search engines; update `lastmod` and `dateModified` when the review date changes.
+A changelog lives in the `changes` array of the same data block and renders at the end of chapter 10. `sitemap.xml`, `robots.txt`, the canonical link and the JSON-LD block in the head exist for search engines. The review date, prices and key dates also sit as static text inside the elements that `guide.js` fills, so crawlers and link previews see them without JavaScript. When the review date or a price changes, run `python3 scripts/check_pages.py --fix` to rewrite those copies, `dateModified` and `lastmod` from the data file; the Pages check fails when they disagree.
 
 ## Licence and attribution
 
