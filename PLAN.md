@@ -65,6 +65,22 @@ draft is in `distribution/2026-10-06-linkedin.md`.
 7. **The claude.ai copy of `ai-writing-review`** still has the 17-tell
    checklist. The 19-tell version is in the local skill; upload the zip
    Claude packaged on 6 October, or ask for it again.
+8. **Four pull requests from the 11 October site review, merge in order:**
+   #61 video chapter buttons, #62 static copies of the data values, #63
+   guide.js parts, then the September announcements pull request. Each is
+   stacked on the one before, so its diff shrinks as the earlier ones merge.
+   After the last one merges, the live page shows the 11 October review
+   date.
+9. **Candidate for a later focus 2 week: spending policies in chapter 6.**
+   Microsoft's September What's new post describes cost management in
+   Agent 365: spending policies that cap credits per group and restrict
+   which models and effort levels a group may use, across Copilot Cowork,
+   WorkIQ, Code and Copilot Managed Runtime, with Copilot Studio agents in
+   October. Decision of 11 October: in scope for the spending policy, as a
+   guardrail on a runaway agent and an allow-list of models, as one section
+   in chapter 6 plus a 4.1 row; out of scope for the Consumption Dashboard's
+   value reporting. Wait for a Learn page before writing it; the post is
+   blog-only today.
 
 ## Target
 
@@ -126,6 +142,7 @@ Decided by Rodney, with the date, so nobody re-opens these by accident.
 | Since | Topic | Decision |
 |---|---|---|
 | 21 September 2026 | Microsoft 365 Government Community Cloud (GCC, G7) availability | Out of scope. GCC is a United States programme and this guide's readers are not in it. The service description's "GCC Availability" column is not tracked and chapter 2 carries no GCC caveat. Reopen only if a reader asks for it explicitly, through an issue. Drift pull requests that mention GCC changes can be merged without adding prose. |
+| 11 October 2026 | Cost management and the Consumption Dashboard | Partly. Spending policies (credit caps and model allow-lists per group) are in scope as a chapter 6 section once a Learn page exists; see item 9 above. The Consumption Dashboard's credits-to-value reporting is out of scope: a finance report, not a control a security or compliance engineer deploys. Reopen only if a reader asks. |
 | 6 October 2026 | FedRAMP and other US federal authorisations | Out of scope, for the same reason as GCC: the guide is for commercial customers in Europe and worldwide, and no European buyer decides on FedRAMP. The 5 October drift run added a FedRAMP High sentence to 2.1; it was taken out before merging. The drift prompt now names GCC and FedRAMP as out of scope, so future runs note them in CHANGES.md without editing prose. Data residency and the EU Data Boundary stay in 5.6. |
 
 ## Log
@@ -134,6 +151,8 @@ Newest first. One line per item shipped, with the pull request.
 
 | Date | Focus | Shipped | Evidence |
 |---|---|---|---|
+| 11 October 2026 | 3 | Microsoft's September What's new post (30 September, Tech Community) checked against the guide. Three gaps closed: 6.3 lists the fifth management rule, Apply a template, and the conditions the post adds; 5.3 gains AI mode and 5.4 gains the Azure API Management integration, both as blog-only announcements at the early preview tier until Learn documents them, with a 4.1 row for the gateway. Cost management recorded as a scope decision above. Review date 11 October. | this pull request |
+| 11 October 2026 | Plumbing | Three fixes from an outside site review: the eight chapter buttons under the 6.7 and 7.5 videos no longer all jump to the start; the review date, prices and key dates sit in the page text for crawlers and link previews, with `check_pages.py --fix` to rewrite them and a check that fails when they drift; `guide.js` runs each part on its own so one missing element cannot stop the rest. The first run of the new check also caught `dateModified` a day behind and the sitemap two weeks behind. | #61, #62, #63 |
 | 6 October 2026 | 3 | Gaps raised by Rodney from a review elsewhere, each checked on Learn first. The guide now uses the current name, Connected platforms, in 2.1, 2.2, 4.1, 5.1, 5.4 and the chapter 10 rows. Corrected the same evening: Microsoft announced the feature as Registry sync (Message Center RM559615, 23 April 2026) and the Learn hub carried that title before being renamed by 5 September; five cited Learn pages still use the old name. 5.4 now says so in one sentence, with the announcement linked, so readers searching for the April name find it. 5.4 gains the observability split: the hub lists Bedrock, Vertex AI and Anthropic, with four coming soon, and the Frontier third-party observability page also lists Agentforce, which the hub does not. New Frontier capability row for third-party agent observability. Writing review: three wording fixes, observability moved to its own paragraph. | this pull request |
 | 6 October 2026 | 3 | Closed the two open decisions from the 5 October drift report. 5.4 links all seven registry sync setup pages and says the permission scope varies (Vertex AI requires delete; Bedrock and Oracle are read-only with delete optional), correcting an overgeneralisation added in #51. 6.8 cites the new Create agentic user instances page: admins can create an instance on behalf of a manager. Status left at Frontier; the new page carries no preview notice, but tiers move only on release notes. Writing review: no flags. | #55 and this pull request |
 | 6 October 2026 | Writing review | Whole-guide sweep with `pyramid-edit` and `ai-writing-review`, fifteen flags, all applied: 5.5 and 7.2 open on their verdict; 2.1 and 7.4 split into one claim per sentence; the hero names all five enforcing products; 4.1 lists all seven synced platforms; 3 points at 7.1, not 7; GSA spelled out; bare section numbers; "now" and three "matters" removed; the guard analogy in 3 cut. The `ai-writing-review` checklist was refreshed first with current-model tells ("this matters", copula avoidance, changelog voice). Kept as note-only: the short verdict that closes most sections. | this pull request |
