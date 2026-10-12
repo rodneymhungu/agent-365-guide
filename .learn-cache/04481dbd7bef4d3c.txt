@@ -22,9 +22,9 @@ Pin for users
 The agent is pinned in the UI (based on channel) where the agent was deployed, so that the agent can be found more easily. Based on the users or groups where the agent was deployed, you can specify who has the agent pinned.
 For more information about agent actions, see Agent actions available in Microsoft 365 admin center.
 Tag an agent
-Tags are labels that admins and users apply to agents to organize and find them, such as by team, function, or project. Tags don't change what an agent can do or access.
+Admins and users apply tags to agents to organize and find them, such as by team, function, or project. Tags are labels. Tags don't change what an agent can do or access.
 To apply a tag to an agent:
-Go to Agents > All agents, select an agent from the Registry list.
+Go to Agents > All agents, and select an agent from the Registry list.
 In the agent details pane, select Add tag.
 Select up to five tags from the tags available in your organization.
 The applied tags appear on the agent's page and in the Tags column of the agents list. To find related agents, filter the list by tag. This filter is useful when you want to review all agents owned by one team or all agents that support a particular function.
@@ -52,9 +52,9 @@ This tab gives you a focused view of how a single agent is being used and how it
 Agent instances
 This tab appears when you select an agent that is tagged as an AI teammate in the Agent Registry. AI teammate agents are agent templates from which your organization can instantiate one or more agent instances.
 Connected Agents
-This tab allows you to connect the selected agent with other agents. When using the selected agent, users can get additional information and answers from the connected agents. You can connect up to 10 agents to the selected agent, excluding those added by the agent's maker. Depending on how the agent's maker connected the agents, you might be able to remove them as well. You must make sure the connected agents are available to everyone who needs access.
+This tab allows you to connect the selected agent with other agents. When using the selected agent, users can get more information and answers from the connected agents. You can connect up to 10 agents to the selected agent, excluding those added by the agent's maker. Depending on how the agent's maker connected the agents, you might be able to remove them as well. You must ensure the connected agents are available to everyone who needs access.
 Computer use
-This tab is used to allow the selected agent to perform actions on behalf of the users, as well as access work data. Additionally, you can choose which websites are allowed for Computer use. Note that Web search is required for Computer use.
+This tab is used to allow the selected agent to perform actions on behalf of the users, as well as access work data. Also, you can choose which websites are allowed for Computer use. Web search is required for Computer use.
 Agent details
 The Details tab provides details about the agent's intended purpose. This tab contains the agent's description, instructions, publish status, availability, publisher, deployment, agent type, channel, platform, last updated, sensitivity, and version. Use this tab to assess the agent's general capabilities and state.
 Agent users
@@ -140,8 +140,8 @@ Graph connectors
 Data indexed via Microsoft Graph connectors
 Review knowledge source URLs to verify the agent is only referencing approved, trusted sources. Unfamiliar or external URLs might indicate the agent has access to data outside your organization's boundaries.
 Agent tools
-The Tools section, within the Data & Tools tab, provides the processes, connectors, and actions that the agent uses to handle requests. Tools represent what the agent can do, not just what it can read.
-The following table provides tool types and examples that you can include with the agent:
+The Tools section within the Data & Tools tab shows the processes, connectors, and actions that the agent uses to handle requests. Tools show what the agent can do, not just what it can read.
+The following table lists tool types and examples that you can include with the agent:
 Tool type
 Examples
 Microsoft 365 connectors
@@ -224,7 +224,7 @@ You can find the details of all types of permissions in the Permissions tab on t
 Select a deployed agent from the Agent Registry list in the Microsoft 365 admin center.
 In the agent details pane that opens, select the Permissions tab to view all the permissions granted to the agent.
 Agent certification
-The Certification tab provided in the agent's details pane in the Microsoft 365 admin center gives you a single place to review the trust and attestation signals that are available for the selected agent before you deploy the agent across your organization. For Microsoft-built agents and agents from external publishers, this tab surfaces the publisher attestation provided by the agent's developer, along with any Microsoft 365 Certification status that's been earned through Microsoft's app certification program. Publisher attestation captures the developer's self-reported information about how the agent handles data, security, and compliance. Microsoft 365 Certification reflects an independent security and compliance assessment that's valid for 12 months and helps confirm that the agent meets Microsoft's standards for handling tenant data. By reviewing the Certification tab alongside the Overview, Data & tools, and Security tabs, you can make an informed governance decision for the agent, where you can approve, deploy, block, or remove the agent. Your decision may largely be based on who built the agent, what it has been validated against, and the level of trust the publisher has documented.
+The Certification tab in the agent's details pane in the Microsoft 365 admin center gives you a single place to review the trust and attestation signals that are available for the selected agent before you deploy the agent across your organization. For Microsoft-built agents and agents from external publishers, this tab surfaces the publisher attestation provided by the agent's developer, along with any Microsoft 365 Certification status that's earned through Microsoft's app certification program. Publisher attestation captures the developer's self-reported information about how the agent handles data, security, and compliance. Microsoft 365 Certification reflects an independent security and compliance assessment that's valid for 12 months and helps confirm that the agent meets Microsoft's standards for handling tenant data. By reviewing the Certification tab alongside the Overview, Data & tools, and Security tabs, you can make an informed governance decision for the agent, where you can approve, deploy, block, or remove the agent. Your decision may largely be based on who built the agent, what it has been validated against, and the level of trust the publisher has documented.
 Agent activity
 The Activity tab in the agent details of the Microsoft 365 admin center provides a focused view of how a single agent is used and how it performs across the tenant. By default, the metrics on this tab reflect the last 30 days, but you can adjust the date range to scope the view to a different time window.
 You need a Microsoft E7 or Agent 365 license to see the Activity tab details of an agent.
@@ -242,6 +242,12 @@ Total sessions
 Last activity date (UTC)
 You can export the Active users table to a CSV file. The table also supports pagination.
 These signals let you monitor adoption, measure impact, and identify agents that need your attention. Agents that need your attention might include high exception rates, low active-users counts, and long run-times. Activity metrics currently support Microsoft Copilot Agent Builder, SharePoint, and Microsoft 365 Agents Toolkit agent types.
+Important
+Agent activity metrics in Agent 365 might not match the metrics in the Microsoft 365 Copilot Agents usage report because the two experiences measure usage across different surfaces:
+The agent Registry and Activity tab in Agent 365 show usage across Microsoft surfaces where the agent is deployed, including Microsoft Copilot, Teams, Outlook, SharePoint, and Microsoft 365 apps.
+The Microsoft 365 Copilot Agents usage report (Reports > Usage > Microsoft 365 Copilot > Agents) shows usage only in Microsoft 365 Copilot Chat, Word, Excel, and PowerPoint. It doesn't include usage from other channels, such as Teams or SharePoint.
+Use the Activity tab in Agent 365 to review cross-surface agent usage. Use the Microsoft 365 Copilot Agents usage report to review usage specifically in Microsoft 365 Copilot. Don't compare the metrics directly or expect them to match.
+For more information, see Microsoft 365 Copilot Agents usage report.
 Agent instances
 The Instances tab appears when you select an agent that you tag as an AI teammate in the Agent Registry. AI teammate agents are agent templates from which your organization can create one or more agent instances. Each agent instance has its own Microsoft Entra-backed agent identity, license, mailbox, OneDrive, and Teams presence, so it can participate in Microsoft 365 workflows.
 The Instances tab provides a detailed table of all instances created from the selected agent. The table includes the following columns:
@@ -254,9 +260,9 @@ Owner - The owner of the agent instance.
 Selecting a row opens that instance's details. Based on your assigned role, such as AI Administrator or Global Administrator, you can manage individual instance settings, review security and compliance status, assign or update Microsoft 365 licenses, and take lifecycle actions such as Block, Unblock, or Delete the instance.
 For more information about agent instances, see Manage agent instances in Microsoft 365 admin center.
 Connected agents
-The Connected Agents tab allows you to connect the selected agent with other agents. When users use the selected agent, they can get additional information and answers from the connected agents. You can connect up to 10 agents to the selected agent, excluding those added by the agent's maker. Depending on how the agent maker connected the agents, you might be able to remove them as well.
+The Connected Agents tab allows you to connect the selected agent with other agents. When users use the selected agent, they can get more information and answers from the connected agents. You can connect up to 10 agents to the selected agent, excluding those added by the agent's maker. Depending on how the agent maker connected the agents, you might be able to remove them.
 Important
-You must make sure the connected agents are available to everyone who needs access.
+You must ensure the connected agents are available to everyone who needs access.
 The Connected agents tab provides a table of agents that are currently connected.
 Add a connected agent
 To add a connected agent in the Agent Registry list in Microsoft 365 admin center:
@@ -336,8 +342,8 @@ Allow specific users or groups only.
 No users in your organization.
 For users that have this option disabled, the Computer Use option is grayed out.
 Configure Work access for Researcher with Computer Use:
-The Work option allows users to toggle on Work in the Sources menu, so the Researcher agent can use a user's work content with Computer Use. For example, emails, chats, and files.
-When admins enable this option, users must still manually toggle on Work access.
+The Work option lets users turn on Work in the Sources menu, so the Researcher agent can use a user's work content with Computer Use. For example, emails, chats, and files.
+When admins enable this option, users must still manually turn on Work access.
 When disabled, the Work source appears grayed out and isn't selectable.
 Select which websites are allowed for Computer Use:
 There are three options for configuring websites the virtual device can access:

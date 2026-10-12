@@ -1,0 +1,107 @@
+Connect Salesforce Agentforce to Microsoft Agent 365
+Use this guide to connect Salesforce Agentforce to Microsoft Agent 365 and to
+collect Agentforce session activity for
+third-party agent observability.
+Before you begin
+Confirm that the Agent 365 AI administrator can create connections in the
+Microsoft 365 admin center.
+Ask a Salesforce administrator to complete the Salesforce steps in this
+article.
+Confirm that Einstein Generative AI and Agentforce are turned on in the
+Salesforce org.
+To collect activity, confirm that Data 360 (formerly Data Cloud) is
+available in the org.
+Create a Salesforce external client app
+In Salesforce, select Setup, and then search for App Manager.
+Open External Client App Manager, and then select
+New External Client App.
+Enter an app name and a contact email.
+Select Enable OAuth, and enter a Callback URL, such as
+https://login.salesforce.com/services/oauth2/success.
+Under OAuth Scopes, add these scopes:
+Access chatbot services (chatbot_api)
+Access the Salesforce API Platform (sfap_api)
+Manage user data via APIs (api)
+Perform requests at any time (refresh_token, offline_access)
+Under Flow Enablement, select Enable Client Credentials Flow, and
+then select Create.
+On the app's Policies tab, select Edit. Under OAuth Policies,
+turn on Enable Client Credentials Flow.
+Set Run As to an active user who has API access, and then select
+Save. To collect activity, this user must also be able to query
+Data 360 data space.
+On the app's Settings tab, expand OAuth Settings, select
+Consumer Key and Secret, and record the consumer key and consumer
+secret. Then copy the Current My Domain URL from Setup >
+My Domain.
+Turn on Agentforce session tracing
+Agent 365 collects Agentforce activity from Agentforce Session Tracing data in
+Data 360. Turn on tracing before agents run. Sessions that run while tracing is
+off aren't recorded and can't be collected later.
+If Data 360 isn't set up, go to Setup > Data 360 Setup
+(Data Cloud Setup in some orgs), and select Get Started.
+Provisioning can take up to an hour.
+In Setup, search for Installed Packages, and confirm that
+Salesforce Standard Data Model is version 1.130 or later. To upgrade it,
+see Set Up Agentforce Session Tracing.
+In Setup, search for Einstein Generative AI, and then select
+Einstein Audit, Analytics, and Monitoring Setup.
+Turn on Agentforce Session Tracing if it isn't already on. If you're
+prompted for a data space, select default.
+Turn on Agent Platform Tracing and Audit and Feedback.
+Create the connection
+Open the Microsoft 365 admin center.
+Select Agents > All Agents.
+In Connected platforms, select Manage.
+Select + Connect a platform and choose Salesforce Agentforce.
+Enter the My Domain URL without a path, the consumer key, and the consumer
+secret.
+Validate the credentials.
+Save the connection.
+Select Sync agents.
+New connections collect observability data by default. If you created the connection before observability was available, edit it and select
+Collect agent observability data.
+Verify the connection and activity
+Open the connection, and confirm that synchronization succeeded and that the
+expected agents appear.
+Run a conversation with an active agent. For example, in Agentforce Builder,
+use the Preview panel in Live Test mode, and note the session ID.
+(Optional) In the Data 360 app, open Data Explorer, and select the
+enabled data space, Data Model Objects, and AI Agent Session.
+Confirm that a row exists for the session ID.
+In the Microsoft 365 admin center, open the connection and select
+Sync agents. Agent 365 collects new sessions each time the connection
+syncs.
+In Agents > All Agents, open the agent, select Activity, and
+confirm that Sessions is at least 1.
+The first sessions after you turn on tracing can take up to two hours to reach
+Data 360. If Sessions is still 0, wait a few minutes and sync again.
+Active users shows N/A because Agentforce sessions don't include
+Microsoft Entra identities.
+In some cases, Data 360 doesn't refresh data streams on a schedule. In the
+Data 360 app, open Data Streams, open each Agentforce session tracing
+stream, and select Refresh Now.
+Troubleshoot
+Symptom
+Likely cause
+Resolution
+Credential validation fails
+The client credentials flow isn't turned on in both the app settings and OAuth Policies, Run As isn't set, or the URL isn't the My Domain URL
+Correct the app and the URL. A new app can take a few minutes to accept the flow.
+An agent doesn't appear after synchronization
+The agent isn't active, or the Run As user can't access it
+Activate the agent in Agentforce Builder, check the Run As user's permissions, and sync again.
+Agentforce Session Tracing isn't available
+Data 360 isn't provisioned, Agentforce is off, or Salesforce Standard Data Model is earlier than 1.130
+Complete Turn on Agentforce session tracing.
+A session doesn't appear in Data 360
+Tracing was off during the conversation, or the data stream hasn't refreshed
+Run a new conversation after tracing is on. In Developer Edition orgs, select Refresh Now on the data streams.
+A session appears in Data 360, but Activity is empty
+Collection is off, the connection hasn't synced since the conversation, tracing uses another data space, or the Run As user can't query Data 360
+Select Collect agent observability data, sync again, and give the Run As user access to it, for example with the Data Cloud Architect (formerly Data Cloud Admin) permission set.
+Revoke access
+Revoke access by disabling or deleting the Salesforce external client app,
+rotating the consumer secret, or removing the API access of the Run As
+user.
+For connection issues that aren't specific to Salesforce Agentforce, see Troubleshoot connected platforms.

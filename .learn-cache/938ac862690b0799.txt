@@ -1,0 +1,82 @@
+Connect Google Vertex AI to Microsoft Agent 365
+Use this guide to connect Google Vertex AI agents to Microsoft Agent 365.
+Before you begin
+Confirm that the Agent 365 AI administrator can create connections in the
+Microsoft 365 admin center.
+Ask the platform administrator for the Google Cloud project ID and region.
+Create a Google Cloud service account and a JSON key for that account.
+Use the project and region where the agents are deployed.
+Create the service account
+Grant the service account the Vertex AI permissions required for agent discovery
+and management:
+aiplatform.reasoningEngines.list
+aiplatform.reasoningEngines.get
+aiplatform.reasoningEngines.delete
+The JSON key must contain the complete service-account key document, including
+the opening and closing braces. Don't enter only the private_key value.
+Add observability permissions
+To collect observability data, grant the same service account these roles:
+Role
+Role ID
+Purpose
+BigQuery Data Viewer
+roles/bigquery.dataViewer
+Read exported trace tables
+BigQuery Job User
+roles/bigquery.jobUser
+Run queries to retrieve spans
+Monitoring Viewer
+roles/monitoring.viewer
+Read request-count and latency metrics
+Cloud Trace User
+roles/cloudtrace.user
+Read Cloud Trace spans
+You need both BigQuery roles. Data Viewer permits reading the tables, while
+Job User permits running the queries that retrieve the results.
+Configure Google Cloud telemetry
+On the project where you deployed the agent:
+Enable the Vertex AI API.
+Enable the BigQuery API.
+Enable the Cloud Trace API.
+Enable the Cloud Monitoring API.
+Enable telemetry collection on the deployed agent.
+Enable Trace Analytics BigQuery export.
+Confirm that the trace_analytics_link dataset and its _AllSpans view
+exist.
+Agent 365 can't enable telemetry collection or trace export for you.
+Create the connection
+Open the Microsoft 365 admin center.
+Select Agents > All Agents.
+In Connected platforms, select Manage.
+Select + Connect a platform and choose Google Vertex AI.
+Enter the project ID, region, and complete service-account JSON key.
+Validate the credentials.
+Save the connection.
+Select Sync agents.
+Verify the connection
+Confirm that the expected agents are imported. A connection can validate and
+import agents while returning no telemetry if the project, region, roles, APIs,
+or trace export aren't configured correctly.
+Troubleshoot
+Symptom
+Likely cause
+Resolution
+Agents import but no activity appears
+Observability isn't configured
+Complete the roles, API, telemetry, and trace-export steps.
+No spans, but metrics appear
+BigQuery roles or trace export are missing
+Grant both BigQuery roles and enable trace export.
+Queries fail although tables are readable
+roles/bigquery.jobUser is missing
+Grant BigQuery Job User to the service account.
+No request-count or latency metrics
+Monitoring role or API is missing
+Grant Monitoring Viewer and enable Cloud Monitoring API.
+_AllSpans doesn't exist
+Trace Analytics BigQuery export isn't enabled
+Enable the export and verify the dataset and view.
+Agents import but telemetry is empty
+Connection scope doesn't match deployment scope
+Use the deployed agent's project and region.
+For connection issues that aren't specific to Google Vertex AI, see Troubleshoot connected platforms.
