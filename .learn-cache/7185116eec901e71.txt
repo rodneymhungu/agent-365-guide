@@ -46,6 +46,9 @@ Discover and monitor agents ->
     Agent activity in Teams -> observe
     Agent activity in Microsoft Copilot -> observe-agents-microsoft-365-copilot
 Manage agents ->
+  Onboard agents ->
+    Onboard a single agent with the Agent 365 CLI -> admin/agent-365-onboarding-cli
+    Onboard multiple agents with PowerShell -> admin/bulk-agent-365-onboarding
   Governance and lifecycle actions -> /microsoft-365/admin/manage/agent-actions
   Manage agent instances -> /microsoft-365/admin/manage/manage-agent-instances
   Create agentic user instances -> /microsoft-365/admin/manage/create-agentic-user-instances
@@ -80,6 +83,7 @@ Manage security and risks ->
   Transition agent security to Agent 365 -> /defender-xdr/security-for-ai/transition-agent-security-to-agent-365
 Data protection and compliance ->
   Data handling, data residency, and compliance -> admin/data-residency-protection-compliance
+    Data handling and data residency for Agent 365 observability for Azure agents -> admin/data-residency-protection-compliance-azure-agents
   Use Microsoft Purview for data security and compliance -> /purview/ai-agent-365
   Data handling and privacy in Microsoft Defender -> /defender-xdr/security-for-ai/privacy-defender-agent-365
 Extend agents for Agent 365 ->

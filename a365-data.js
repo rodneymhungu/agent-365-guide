@@ -23,7 +23,7 @@
   ==========================================================================
 */
 window.A365 = {
-  reviewed: "11 October 2026",
+  reviewed: "12 October 2026",
   gaDate: "1 May 2026",
   transitionDate: "1 July 2026",
   trial: "25 seats for 30 days",
@@ -36,6 +36,11 @@ window.A365 = {
     roadmap:  { label: "Early preview",    phrase: "in early preview" }
   },
   changes: [
+    { date: "12 October 2026", section: "s7-1", text: "Policies in the Users assignment exclude agent user accounts whether they target all users, selected users, groups, roles or external users; scope agent users with the Agents assignment instead. Conditional Access for agents page cited." },
+    { date: "12 October 2026", section: "s5-6", text: "Observability collection starting only once a trial or licence is active now applies to third-party agents and to tenants in ten listed countries, including Austria, Denmark and Spain. Data handling, data residency, and compliance page cited." },
+    { date: "12 October 2026", section: "s6-6", text: "Access packages for agents grant OAuth API permissions, delegated and application, for Microsoft Graph and applications. Governing agent identities page cited." },
+    { date: "12 October 2026", section: "s5-5", text: "Defender for Endpoint lists a local agent only after it observes activity, so discovery is not a full software inventory. Local AI agent discovery page cited." },
+    { date: "12 October 2026", section: "s2-1", text: "Dropped the claim that Agent 365 licence enforcement for Conditional Access is coming: the autonomous agents policy page now lists the licence plans without that notice. Secure autonomous agents with Conditional Access page cited." },
     { date: "11 October 2026", section: "s6-3", text: "Management rules number five: Apply a template joins the four bulk actions, each rule takes conditions that select the agent instances it runs on, and the template rule is a one-off run limited to registry agents with an identity. Microsoft's September What's new post calls custom rules a public preview and lists more conditions than Learn does. Agent settings page and the post cited." },
     { date: "11 October 2026", section: "s5-3", text: "AI mode, a natural-language search of the registry for ownerless, inactive or review-worthy agents, announced as a public preview in Microsoft's September What's new post. No Learn page yet, so it carries the early preview label." },
     { date: "11 October 2026", section: "s5-4", text: "Azure API Management integration: agents, tools, models and MCP servers onboarded there appear in Agent 365 without manual registration, rolling out from 30 September per Microsoft's September What's new post. No Learn page yet, so it carries the early preview label." },

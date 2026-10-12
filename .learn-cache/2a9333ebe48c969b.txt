@@ -50,6 +50,8 @@ Reject agents
 As an alternative, within the Requests list, you can select the ellipses to the right of the agent name, and then select Reject submission when you don't want to publish the agent.
 For more information about rejecting requested agents, see Reject agents.
 Request Microsoft built agents unavailable due to admin policy
+Important
+This request and approval workflow supports only Microsoft-built agents. Users can't request access to third-party agents through the Microsoft 365 admin center, and administrators, including Global Administrators, can't approve access to third-party agents in the Microsoft 365 admin center.
 When Microsoft built agent is unavailable because of an admin policy, for example the agent is blocked, users in your organization can't install it. However, they can still request it:
 From the store, a member opens the blocked agent and selects Request.
 The request is submitted to your administrators and appears in the Microsoft 365 admin center under Agents > All agents > Requests. The state of the request shows as Allow user to install.

@@ -1,0 +1,26 @@
+Connect Databricks Genie to Microsoft Agent 365
+Use this guide to connect Databricks Genie to Microsoft Agent 365.
+Before you begin
+Before you create the connection:
+Obtain the Databricks workspace URL.
+Create a service principal.
+Obtain the service principal client ID.
+Obtain the service principal client secret.
+Grant the permissions required to read the Genie agents in the workspace.
+Create the connection
+Open the Microsoft 365 admin center.
+Select Agents > All Agents.
+In Connected platforms, select Manage.
+Select + Connect a platform and choose Databricks Genie.
+Enter the workspace URL, client ID, and client secret.
+Validate the credentials.
+Save the connection.
+Select Sync agents.
+Verify the connection
+Review the synchronization status and confirm that the expected Genie agents
+appear in the Microsoft 365 agent registry.
+Rotate or revoke access
+Rotate the service principal secret in Databricks and update the connected
+platform connection. To revoke access, disable the service principal or remove
+its workspace permissions.
+For connection issues that aren't specific to Databricks Genie, see Troubleshoot connected platforms.
