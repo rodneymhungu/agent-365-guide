@@ -24,7 +24,9 @@ draft is in `distribution/2026-10-06-linkedin.md`.
    once in the body, and the article kept for a quarterly piece. The
    21 September decision was the article, with the LinkedIn referrer as the
    test. Evidence so far: article week 1 brought 10 LinkedIn visitors, the
-   week with no article brought 4, and a native post has not been tried.
+   week with no article brought 4, article week 2 brought 13 (986
+   impressions, 39 article views; see the log row of 18 October), and a
+   native post has not been tried.
    Recommendation: post the next update as a native post, compare the
    referrer count in the following digest, then decide. Do not change
    `article_draft` in `scripts/feedback_collect.py` until the comparison is
@@ -150,7 +152,7 @@ Newest first. One line per item shipped, with the pull request.
 
 | Date | Focus | Shipped | Evidence |
 |---|---|---|---|
-| 18 October 2026 | 4 | Second LinkedIn article, the 28 September and 5 October release note, posted from `distribution/2026-10-06-linkedin.md` with the Connected platforms screenshot as cover. Logged on 18 October; the 12 October digest already shows the referrer, LinkedIn 13 against 4 the week before. Compare with a native post before changing the article generator. | [post](https://lnkd.in/p/exg_rJiH) |
+| 18 October 2026 | 4 | Second LinkedIn article, the 28 September and 5 October release note, posted about 11 October from `distribution/2026-10-06-linkedin.md` with an illustrated cover. Logged on 18 October with one week of LinkedIn analytics: 986 impressions (43% out-of-network), 661 reached, 39 article views, 19 reactions, 3 comments, 2 saves, no reposts. The 12 October digest shows the referrer: LinkedIn 13 against 4 the week before, so about one article reader in three reached the guide. This is the baseline for the native-post comparison; do not change the article generator before it. | [post](https://lnkd.in/p/exg_rJiH) |
 | 11 October 2026 | 3 | Microsoft's September What's new post (30 September, Tech Community) checked against the guide. Three gaps closed: 6.3 lists the fifth management rule, Apply a template, and the conditions the post adds; 5.3 gains AI mode and 5.4 gains the Azure API Management integration, both as blog-only announcements at the early preview tier until Learn documents them, with a 4.1 row for the gateway. Cost management recorded as a scope decision above. Review date 11 October. | this pull request |
 | 11 October 2026 | Plumbing | Three fixes from an outside site review: the eight chapter buttons under the 6.7 and 7.5 videos no longer all jump to the start; the review date, prices and key dates sit in the page text for crawlers and link previews, with `check_pages.py --fix` to rewrite them and a check that fails when they drift; `guide.js` runs each part on its own so one missing element cannot stop the rest. The first run of the new check also caught `dateModified` a day behind and the sitemap two weeks behind. | #61, #62, #63 |
 | 6 October 2026 | 3 | Gaps raised by Rodney from a review elsewhere, each checked on Learn first. The guide now uses the current name, Connected platforms, in 2.1, 2.2, 4.1, 5.1, 5.4 and the chapter 10 rows. Corrected the same evening: Microsoft announced the feature as Registry sync (Message Center RM559615, 23 April 2026) and the Learn hub carried that title before being renamed by 5 September; five cited Learn pages still use the old name. 5.4 now says so in one sentence, with the announcement linked, so readers searching for the April name find it. 5.4 gains the observability split: the hub lists Bedrock, Vertex AI and Anthropic, with four coming soon, and the Frontier third-party observability page also lists Agentforce, which the hub does not. New Frontier capability row for third-party agent observability. Writing review: three wording fixes, observability moved to its own paragraph. | this pull request |
