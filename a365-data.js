@@ -23,7 +23,7 @@
   ==========================================================================
 */
 window.A365 = {
-  reviewed: "12 October 2026",
+  reviewed: "18 October 2026",
   gaDate: "1 May 2026",
   transitionDate: "1 July 2026",
   trial: "25 seats for 30 days",
@@ -36,6 +36,12 @@ window.A365 = {
     roadmap:  { label: "Early preview",    phrase: "in early preview" }
   },
   changes: [
+    { date: "18 October 2026", section: "s5-5", text: "The Defender for Endpoint AI agent support matrix is now the source for both Defender columns of the lookup table: Claude Desktop in Code mode and the GitHub Copilot and Claude Code extensions for Visual Studio Code gain agent hooks, ChatGPT Desktop and Ollama Desktop gain network inspection, Antigravity Desktop and Microsoft Scout are discovered, and Codex CLI is named by the runtime protection overview but absent from the matrix. Sixty tools on Windows, fifty-one on macOS. AI agent support matrix page cited." },
+    { date: "18 October 2026", section: "s7-4", text: "Runtime protection's supported agents come from the support matrix: six agents with hooks, four under network inspection. AI agent support matrix page cited." },
+    { date: "18 October 2026", section: "s5-4", text: "Observability on Connected platforms now covers five platforms, Salesforce Agentforce and Databricks Genie joining Bedrock, Vertex AI and Anthropic, and each connection has a Collect agent observability data switch, on by default, whose queries the provider bills. The two Learn pages disagree about older connections. Connected platforms and Third-party agent observability pages cited." },
+    { date: "18 October 2026", section: "s5-4", text: "Two onboarding walkthroughs for agents you build: a single agent with the Agent 365 CLI, and bulk onboarding from one CSV with PowerShell. Both pages cited." },
+    { date: "18 October 2026", section: "s5-6", text: "Observability data for Foundry and Copilot Studio agents includes prompts and responses, stored in the tenant's default geography whatever the Azure region, and each platform has a control to stop sending it. Data handling for Azure agents page cited." },
+    { date: "18 October 2026", section: "s2-1", text: "Agent risk-based Conditional Access needs Entra ID P2 or Microsoft 365 E5 beside Agent 365, the one policy in 7.1 that E3 does not cover. Secure autonomous agents with Conditional Access page cited." },
     { date: "12 October 2026", section: "s7-1", text: "Policies in the Users assignment exclude agent user accounts whether they target all users, selected users, groups, roles or external users; scope agent users with the Agents assignment instead. Conditional Access for agents page cited." },
     { date: "12 October 2026", section: "s5-6", text: "Observability collection starting only once a trial or licence is active now applies to third-party agents and to tenants in ten listed countries, including Austria, Denmark and Spain. Data handling, data residency, and compliance page cited." },
     { date: "12 October 2026", section: "s6-6", text: "Access packages for agents grant OAuth API permissions, delegated and application, for Microsoft Graph and applications. Governing agent identities page cited." },
@@ -81,14 +87,14 @@ window.A365 = {
     { key: "registry-sync",      name: "Connected platforms (Bedrock, Vertex, Agentforce, Genie, Oracle, Snowflake Cortex)", tier: "ga", where: "Microsoft 365 admin centre" },
     { key: "registry-sync-anthropic", name: "Connected platforms: Anthropic Claude Managed Agents", tier: "preview", where: "Microsoft 365 admin centre" },
     { key: "apim-discovery",     name: "Azure API Management integration: agents, tools, models and MCP servers discovered from the gateway", tier: "roadmap", note: "Blog announcement of 30 September 2026, rolling out from that date; no Learn page yet", where: "Azure API Management; Microsoft 365 admin centre" },
-    { key: "third-party-observability", name: "Third-party agent observability (Bedrock, Vertex AI, Anthropic, Agentforce)", tier: "frontier", where: "Microsoft 365 admin centre" },
+    { key: "third-party-observability", name: "Third-party agent observability (Bedrock, Vertex AI, Anthropic, Agentforce, Genie)", tier: "frontier", where: "Microsoft 365 admin centre" },
     { key: "byo-mcp",            name: "Bring your own MCP server", tier: "preview", where: "Admin centre and CLI" },
     { key: "shadow-ai-page",     name: "Shadow AI page", tier: "frontier", where: "Microsoft 365 admin centre" },
     { key: "local-agents-page",  name: "Local agents page", tier: "frontier", where: "Microsoft 365 admin centre" },
     { key: "own-identity",       name: "Agents with their own identity, AI teammate templates", tier: "frontier", where: "Microsoft 365 admin centre" },
     { key: "agent-id",           name: "Entra Agent ID, blueprints, identities, agent users", tier: "ga", note: "GA for all Entra customers", where: "Entra" },
     { key: "conditional-access", name: "Conditional Access for agents", tier: "ga", note: "Agent risk and Agent execution environments conditions in preview", where: "Entra" },
-    { key: "ca-agent-risk",      name: "Conditional Access: Agent risk condition", tier: "preview", where: "Entra", hidden: true },
+    { key: "ca-agent-risk",      name: "Conditional Access: Agent risk condition", tier: "preview", note: "Needs Entra ID P2 or Microsoft 365 E5 beside Agent 365", where: "Entra", hidden: true },
     { key: "ca-exec-env",        name: "Conditional Access: Agent execution environments condition", tier: "preview", where: "Entra", hidden: true },
     { key: "id-protection",      name: "Identity Protection for agents", tier: "ga", note: "All detections offline; licence enforcement coming", where: "Entra" },
     { key: "id-governance",      name: "Access packages and sponsor lifecycle workflows for agents", tier: "ga", note: "With licence", where: "Entra ID Governance" },
