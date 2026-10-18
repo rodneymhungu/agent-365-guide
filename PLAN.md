@@ -15,11 +15,9 @@ structure sweep, Connected platforms in 5.4 with every setup page linked,
 6.8's admin path, and the FedRAMP decision. The 6 October LinkedIn article
 draft is in `distribution/2026-10-06-linkedin.md`.
 
-1. **If the article is live, log it.** Tell Claude "posted, <url>" and it
-   fills the Posted line and the focus 4 row. The article was edited in the
-   LinkedIn editor after the draft: the registry sync bullet now opens
-   "Registry sync is now Connected platforms has a setup page per platform";
-   add "and" after "Connected platforms". Only Rodney can edit the live copy.
+1. **The 6 October article is live and logged** (18 October, focus 4 row in
+   the log). Still only Rodney can edit the live copy: the registry sync
+   bullet wants "and" after "Connected platforms".
 2. **Decide the weekly format: native post or article.** A second review
    (6 October) argues for a native feed post each week, under about 1,300
    characters, one change led, two or three more named, the guide linked
@@ -108,6 +106,7 @@ week's focus.
 | 14 September 2026 | 24 | LinkedIn 11, direct 9, Teams 3 | Measured on 21 September once the token was fixed. Eleven sections opened; 5.1, 2.2, 10, 3 and 2.1 most. |
 | 21 September 2026 | measuring | measuring | Catch-up week: focus 1, 2 and 3 all shipped, see log. Analytics restored 15:36; the first live digest is the second one dated 21 September. |
 | 28 September 2026 | 26 | direct 18, LinkedIn 4, static.microsoft.com 3 | From the 6 October digest, re-run by hand after the 5 October crash. Most opened: 4.1, 10, 9, 2.1. |
+| 5 October 2026 | 53 | direct 30, LinkedIn 13 (web 9, app 4), Teams 6 | From the 12 October digest. Busiest day 9 October with 11. Most opened: 4.1 and 7.2 (7 each), 2.1, 6.4, 5.3. The 6 October article was posted this week. |
 
 ## The weekly rotation
 
@@ -151,6 +150,7 @@ Newest first. One line per item shipped, with the pull request.
 
 | Date | Focus | Shipped | Evidence |
 |---|---|---|---|
+| 18 October 2026 | 4 | Second LinkedIn article, the 28 September and 5 October release note, posted from `distribution/2026-10-06-linkedin.md` with the Connected platforms screenshot as cover. Logged on 18 October; the 12 October digest already shows the referrer, LinkedIn 13 against 4 the week before. Compare with a native post before changing the article generator. | [post](https://lnkd.in/p/exg_rJiH) |
 | 11 October 2026 | 3 | Microsoft's September What's new post (30 September, Tech Community) checked against the guide. Three gaps closed: 6.3 lists the fifth management rule, Apply a template, and the conditions the post adds; 5.3 gains AI mode and 5.4 gains the Azure API Management integration, both as blog-only announcements at the early preview tier until Learn documents them, with a 4.1 row for the gateway. Cost management recorded as a scope decision above. Review date 11 October. | this pull request |
 | 11 October 2026 | Plumbing | Three fixes from an outside site review: the eight chapter buttons under the 6.7 and 7.5 videos no longer all jump to the start; the review date, prices and key dates sit in the page text for crawlers and link previews, with `check_pages.py --fix` to rewrite them and a check that fails when they drift; `guide.js` runs each part on its own so one missing element cannot stop the rest. The first run of the new check also caught `dateModified` a day behind and the sitemap two weeks behind. | #61, #62, #63 |
 | 6 October 2026 | 3 | Gaps raised by Rodney from a review elsewhere, each checked on Learn first. The guide now uses the current name, Connected platforms, in 2.1, 2.2, 4.1, 5.1, 5.4 and the chapter 10 rows. Corrected the same evening: Microsoft announced the feature as Registry sync (Message Center RM559615, 23 April 2026) and the Learn hub carried that title before being renamed by 5 September; five cited Learn pages still use the old name. 5.4 now says so in one sentence, with the announcement linked, so readers searching for the April name find it. 5.4 gains the observability split: the hub lists Bedrock, Vertex AI and Anthropic, with four coming soon, and the Frontier third-party observability page also lists Agentforce, which the hub does not. New Frontier capability row for third-party agent observability. Writing review: three wording fixes, observability moved to its own paragraph. | this pull request |
