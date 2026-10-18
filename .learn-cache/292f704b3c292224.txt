@@ -11,6 +11,17 @@ For new information about Windows Autopilot solutions, see:
 Windows Autopilot device preparation: What's new
 Windows Autopilot: What's new
 You can use RSS to be notified when this page is updated. For more information, see How to use the docs.
+Week of October 5, 2026
+Device security
+Intune security baseline for Windows 11, version 26H2
+The Windows security baseline for Windows 11, version 26H2 is now available in Microsoft Intune. This baseline reflects current Microsoft security recommendations and is the latest available Windows security baseline in Intune.
+The Windows 11, version 26H2 security baseline includes new settings, updated default values, and revised security guidance. Existing security baseline profiles don't automatically update to the new version.
+To use the Windows 11, version 26H2 security baseline, Intune admins can create a new baseline profile or update an existing profile to the latest version. Review the settings before moving from a previous baseline version, especially if existing profiles include customizations.
+The Configure NetBIOS settings policy isn't included in this baseline release because it's currently supported only on Windows Insider builds. We plan to add the setting in a future baseline update after it becomes available for supported, in-market Windows versions and through the Intune Settings Catalog. This change will be communicated when available.
+For a detailed breakdown of setting changes, see the Windows blog post Windows 11, version 26H2 security baseline.
+To view the default configuration of the Intune baseline for Windows 11, version 26H2, see Windows MDM baseline settings.
+Applies to:
+Windows 11
 Week of September 28, 2026 (Service release 2609)
 Advanced capabilities (formerly "Microsoft Intune Suite")
 Microsoft Cloud PKI support for US Government GCC High
@@ -21,6 +32,14 @@ Windows
 Android
 iOS/iPadOS
 macOS
+Remote Help support for GCCH environments
+Remote Help is now available in US Government Community Cloud High (GCCH) environments. This expansion extends the same secure, cloud-based remote assistance capabilities currently available in GCC to GCCH tenants.
+IT support staff can establish Remote Help sessions with users on enrolled devices to provide real-time troubleshooting. Remote Help uses role-based access controls through Intune, and both helpers and sharers must sign in with their organization's Microsoft Entra ID accounts. DoD environments aren't supported.
+For more information, see Planning for Remote Help.
+Applies to:
+Android
+macOS
+Windows
 App management
 Faster delivery of Win32 apps
 Microsoft Intune now uses push notifications for admin-initiated and service-side changes to Win32 apps. Managed devices can check in sooner after app changes, reducing delivery and refresh delays compared with waiting for normal polling intervals. This update improves Win32 app deployment responsiveness without requiring a new admin workflow.
@@ -55,6 +74,11 @@ For more information, see Use assignment filters in Microsoft Intune.
 Applies to:
 Android Enterprise
 Android (AOSP)
+Windows 11, version 26H2 Settings Catalog update
+Microsoft Intune provides day-zero support for validated Windows policy settings introduced with Windows 11, version 26H2 in the Settings Catalog. Admins can use the new and updated settings to manage Windows endpoints with the latest 26H2 capabilities.
+For more information, see Microsoft Intune Settings Catalog updated to support Windows 11, version 26H2.
+Applies to:
+Windows 11
 Device enrollment
 Automatically launch Microsoft Defender for Endpoint during Android Enterprise device setup
 Microsoft Intune now supports automatically opening Microsoft Defender for Endpoint during out-of-box setup for supported corporate-owned Android Enterprise devices. After you configure the Defender for Endpoint connector, turn on Grant MTD role permissions, and assign the Defender app as required, enable the experience from Endpoint security > Defender for Endpoint. Intune opens Defender during enrollment so users can complete its initial configuration as part of device setup. If configuration isn't completed, the Intune setup step remains available so users can open Defender again.

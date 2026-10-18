@@ -19,7 +19,7 @@ Microsoft Agent 365 gives each AI agent its own Microsoft Entra Agent ID, for id
 Assigning access to agent identities
 When created, agent identities have limited permissions, such as OAuth 2 delegated permission scopes inherited from their parent agent identity blueprint. In addition, agent identities can have resource access assigned to them directly via access packages. Agents can request an access package for own agent IDs, or have their owner or sponsor request one on their behalf. With access packages, you're able to assign agent identities access to the following resources:
 Security Group memberships
-Application OAuth API permissions, including Graph application permissions
+OAuth API permissions, delegated and application permissions for Microsoft Graph and applications
 Microsoft Entra roles
 To use access packages for agent identities, configure an access package with the required policy settings. When creating an access package assignment policy, in the Who can get access section, select For users, service principals, and agent identities in your directory, and then select the option of All agents.
 If your agents aren't using Microsoft Entra agent IDs, then also create an access package assignment policy with the option All Service principals to allow service principals in your directory to be able to request this access package.

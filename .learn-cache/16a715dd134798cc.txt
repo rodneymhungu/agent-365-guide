@@ -1,0 +1,94 @@
+Connect Amazon Bedrock to Microsoft Agent 365
+Use this guide to connect Amazon Bedrock Agents Classic or Amazon Bedrock
+AgentCore to Microsoft Agent 365.
+Before you begin
+Confirm that the Agent 365 AI administrator can create connections in the
+Microsoft 365 admin center.
+Ask the platform administrator for an AWS access key ID and secret access
+key.
+Identify the AWS Regions that contain the agents you want to synchronize.
+Grant only the permissions required for the environments you use.
+Required permissions for synchronization
+For Agents Classic, grant:
+bedrock:ListAgents
+bedrock:GetAgent
+ec2:DescribeRegions
+For AgentCore, grant:
+bedrock-agentcore:ListHarnesses
+bedrock-agentcore:GetHarness
+bedrock-agentcore:ListAgentRuntimes
+bedrock-agentcore:GetAgentRuntime
+ec2:DescribeRegions
+bedrock:ListAgents and the AgentCore list operations discover agents in the
+selected Regions. The get operations read agent details. AgentCore runtimes
+that belong to a harness are skipped so that an agent isn't listed twice.
+Configure Amazon Bedrock Classic activity
+To collect activity from Agents Classic:
+Enable trace capture for each agent in the Amazon Bedrock console.
+Select an S3 activity bucket.
+Store activity under
+observability-store/<agent-id>/, where <agent-id> is the Bedrock agent
+ID.
+Grant s3:ListBucket on the activity bucket.
+Grant s3:GetObject on objects in the activity bucket.
+Agent 365 reads activity. It doesn't invoke agents, write activity records, or
+delete activity records.
+If the bucket uses a customer-managed key, also grant kms:Decrypt on that
+key.
+Configure Amazon Bedrock AgentCore activity
+AgentCore activity is stored in Amazon CloudWatch Logs. Grant:
+logs:StartQuery
+logs:GetQueryResults
+Grant logs:DescribeLogGroups to allow Agent 365 to find custom agent
+endpoints. Without it, only the default endpoint is read.
+Enable Transaction Search in the Amazon CloudWatch console. AgentCore
+activity is queryable only after Transaction Search is enabled for the AWS
+account.
+Optional permissions
+Grant these permissions only when the connection needs the corresponding
+details:
+Capability
+Permissions
+Show Classic tools, collaborators, and knowledge sources
+bedrock:ListAgentActionGroups, bedrock:GetAgentActionGroup, bedrock:ListAgentCollaborators, bedrock:ListAgentKnowledgeBases, bedrock:ListDataSources, bedrock:GetDataSource
+Show AgentCore tools, MCP servers, and connected agents
+bedrock-agentcore:GetGateway, bedrock-agentcore:ListGatewayTargets, bedrock-agentcore:GetGatewayTarget
+Connect every account in an AWS organization
+organizations:ListAccounts, sts:AssumeRole
+Don't grant delete permissions for a read-only connection. If you grant
+bedrock:DeleteAgent, bedrock-agentcore:DeleteHarness, or
+bedrock-agentcore:DeleteAgentRuntime, Agent 365 can remove the corresponding
+agent when an administrator explicitly performs that action.
+Create the connection
+Open the Microsoft 365 admin center.
+Select Agents > All Agents.
+In Connected platforms, select Manage.
+Select + Connect a platform and choose Amazon Bedrock.
+Enter the connection name, AWS access key ID, secret access key, and
+selected Regions.
+Validate the credentials.
+Save the connection.
+Select Sync agents.
+Verify the connection
+Open the connection and check the synchronization status and the number of agents. Open an imported agent to verify its metadata.
+For observability, open the agent and select Activity after you configure the source platform and activity is available.
+Troubleshoot
+Symptom
+Likely cause
+Resolution
+Connection validation fails
+Missing ec2:DescribeRegions, or invalid or disabled credentials
+Confirm the credentials and grant ec2:DescribeRegions.
+Agents have limited metadata
+Missing bedrock:GetAgent or the AgentCore get operation
+Grant the relevant get permission.
+Classic agents have no activity
+Incorrect trace capture, bucket location, bucket path, or S3 permissions
+Enable trace capture and verify the bucket and object permissions.
+AgentCore agents have no activity
+Missing Transaction Search or CloudWatch Logs permissions
+Enable Transaction Search and grant logs:StartQuery and logs:GetQueryResults.
+AgentCore activity is incomplete
+Missing logs:DescribeLogGroups
+Grant the permission when custom endpoints are used.
+For connection issues that aren't specific to Amazon Bedrock, see Troubleshoot connected platforms.

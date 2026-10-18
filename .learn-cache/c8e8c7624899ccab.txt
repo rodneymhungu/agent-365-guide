@@ -1,0 +1,26 @@
+Connect Snowflake Cortex to Microsoft Agent 365
+Use this guide to connect Snowflake Cortex Agents to Microsoft Agent 365.
+Before you begin
+Before you create the connection:
+Obtain the Snowflake account identifier.
+Identify the database and schema where the agents are created.
+Create a Snowflake user.
+Configure RSA key-pair authentication for that user.
+Obtain the private key required by the connection.
+To find the account identifier, in the Snowflake account menu select View Account Details.
+For information about creating agents, see Snowflake Cortex Agents.
+For information about configuring RSA key-pair authentication, see Key-pair authentication and key-pair rotation.
+Create the connection
+Open the Microsoft 365 admin center.
+Select Agents > All Agents.
+In Connected platforms, select Manage.
+Select + Connect a platform and choose Snowflake Cortex.
+Enter the account identifier, database, schema, Snowflake user, and private
+key.
+Validate the credentials.
+Save the connection.
+Select Sync agents.
+Verify the connection
+Review the synchronization status and confirm that the expected Cortex Agents
+appear in the Microsoft 365 agent registry.
+For connection issues that aren't specific to Snowflake Cortex, see Troubleshoot connected platforms.
