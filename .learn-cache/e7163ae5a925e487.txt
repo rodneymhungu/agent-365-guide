@@ -1,0 +1,48 @@
+Connect Anthropic Claude managed agents to Microsoft Agent 365
+Use this guide to connect Anthropic Claude managed agents to Microsoft Agent
+365.
+Important
+Anthropic Claude managed agents APIs are in beta. The Anthropic Claude
+connected-platform integration is a preview feature.
+Before you begin
+Confirm that the Agent 365 AI administrator can create connections in the
+Microsoft 365 admin center.
+Confirm that the platform administrator has an Anthropic Claude workspace.
+Don't use the default workspace because it doesn't expose the workspace ID
+required by the connection.
+Create an environment and a managed agent in the workspace.
+Create a workspace-scoped API key. To create the key, you need at least the
+Developer role.
+Prepare activity
+Create a session that uses the managed agent and environment. Interact with the
+agent to generate session activity before checking the Agent 365 Activity tab.
+Create the connection
+Open the Microsoft 365 admin center.
+Select Agents > All Agents.
+In Connected platforms, select Manage.
+Select + Connect a platform and choose Anthropic Claude.
+Enter the workspace ID and workspace-scoped API key.
+Validate the credentials.
+Save the connection.
+Select Sync agents.
+Verify activity
+After synchronization, open the imported agent and select Activity. After
+you interact with an agent in an Anthropic Claude session, allow 5 to 10
+minutes for the activity to appear in Agent 365.
+Troubleshoot
+Symptom
+Likely cause
+Resolution
+Connection validation fails
+The workspace ID or key is incorrect, belongs to another workspace, or has expired
+Create a workspace-scoped key and verify the workspace ID.
+The connection saves but the agent doesn't appear
+The agent is in another workspace or synchronization isn't finished
+Confirm the workspace and run synchronization again.
+The agent appears but has no activity
+No session activity exists, collection is disabled, or processing is still in progress
+Interact with the agent and wait 5 to 10 minutes before checking Activity.
+A session doesn't appear in Agent Map
+Activity didn't finish processing
+Confirm the session appears on the agent Activity tab, then check Agent Map again.
+For connection issues that aren't specific to Anthropic Claude, see Troubleshoot connected platforms.

@@ -1,0 +1,1044 @@
+Agent 365 Blog articles
+https://techcommunity.microsoft.com/t5/agent-365-blog/bg-p/agent-365-blog
+Agent 365 Blog articles
+Mon, 12 Oct 2026 12:52:35 GMT
+agent-365-blog
+2026-10-12T12:52:35Z
+What's new in Agent 365 - September 2026
+https://techcommunity.microsoft.com/t5/agent-365-blog/what-s-new-in-agent-365-september-2026/ba-p/4560803
+<P>Since launching Agent 365 in May 2026, nearly 50 million agents have been registered across tens of thousands of organizations. As agent adoption accelerates, IT and security teams are looking beyond simple visibility and governance to a new challenge: understanding which agents are delivering value, where resources are being spent, and how to optimize a growing agent estate at scale.</P>
+<P>This month’s Agent 365 updates help address these challenges with new capabilities that connect AI workloads to business outcomes, provide more visibility and control across the agent estate, and centralize governance across agents, tools, and runtime environments. Together, these enhancements help organizations reduce blind spots, automate oversight, and scale AI investments with confidence.</P>
+<H2>Connect AI workloads to business value</H2>
+<P>As AI usage grows across agents, applications, and services, organizations need one place to manage consumption and align access with business needs. Cost management in Agent 365 delivers FinOps for AI capabilities to help organizations manage usage-based AI spend, set clear spending guardrails, track costs and connect usage to value. Cost management in Agent 365 is included with Microsoft cloud subscriptions. New innovations include:</P>
+<H3>Manage more usage-based billed workloads in one place</H3>
+<P>Cost management in Agent 365 expands beyond Copilot Cowork and WorkIQ and now supports Code and Copilot Managed Runtime. Support for agents built with Microsoft Copilot Studio is planned for October, with more AI workloads to follow, making Agent 365 the central home for managing usage-based billing.</P>
+<img />
+<H3>Match model choice to business needs</H3>
+<P>When configuring a spending policy in cost management, admins can give different groups access to the models and effort levels that best fit their work. These policies also shape which models Auto can select in Cowork, allowing advanced models for high-impact projects and power users while offering more efficient options elsewhere. The capability is rolling out for Cowork, with additional workloads planned.</P>
+<img />
+<H3>Connect consumption to Cowork value</H3>
+<P>The Consumption Dashboard in Insights connects Copilot Cowork usage with outcomes, showing trends across active users, credits, and tasks; organizing work by task category; and estimating Cowork-assisted value in time and dollars.</P>
+<P>Leaders can compare value-generating tasks with the credits they consume to decide where to expand adoption, improve usage, or redirect investment.</P>
+<img />
+<H2>Gain more visibility and control across the agent estate</H2>
+<P>As agent estates grow across platforms, IT needs a complete inventory and faster ways to identify where action is required. Agent 365 brings Microsoft-native and third-party agents into one registry, then helps administrators turn that visibility into action through intelligent discovery and automated governance. New innovations include:</P>
+<H3>Find the agents that need attention with AI mode</H3>
+<P>As registries grow, finding the right agents should not require building complex filters. Now in public preview, AI mode transforms the Agent 365 registry from a static browsing experience into an intelligent discovery experience. Administrators can use natural-language prompts to find, filter, and explore agents using contextual attributes - for example, to identify agents without owners, locate inactive agents, or surface agents that warrant closer review. This reduces time to insight and helps administrators turn registry data into practical governance workflows.</P>
+<img />
+<H3>Drive consistency, efficiency, and scale for agent management with automated rules</H3>
+<P>Agent Management Rules, now available in public preview, give admins a powerful way to automate agent governance at scale. In the Microsoft 365 admin center, admins can create custom rules to automatically take actions such as blocking agents, rejecting publication requests, or applying policy templates when specified conditions are met. Rules can be based on a growing set of criteria, including ownership status, agent tags, Microsoft Entra Agent ID, publisher, risk signals, usage activity, and more. This helps organizations reduce manual administration, enforce governance consistently, and keep their agent inventory secure, compliant, and well managed as agent adoption grows.</P>
+<img />
+<H2>Centralize governance across agents, tools and runtimes</H2>
+<P>As agents gain access to more tools, data, and services, organizations need consistent controls that extend across the full agent ecosystem. Agent 365 centralizes governance across agents, tools, and runtime environments, helping IT reduce fragmented oversight, enforce policy consistently, and protect enterprise resources as adoption grows. New innovations include:</P>
+<H3>Control MCP servers, plugins, skills, and connectors from one place</H3>
+<P>Now generally available, Tools management in Agent 365 expands the centralized governance experience beyond MCP servers to include plugins, skills, and connectors. Plugins provide reusable actions and integrations, skills add specialized AI capabilities and workflows, and connectors enable secure access to enterprise and third-party data and services.</P>
+<P>From one management pane, administrators can discover connected tools, review key metadata and usage, and apply tenant-wide allow or block controls across MCP servers, plugins, skills, and connectors. This consistent framework reduces the need to manage tools across separate systems and helps keep agent access within approved organizational boundaries. Power Platform connectors governance is in progress.</P>
+<img />
+<H3>Put custom MCP servers on an approval path</H3>
+<P>Organizations can also bring their own MCP servers under explicit IT oversight. In public preview in September 2026, developers can register custom MCP servers through the Agent 365 CLI and submit them for administrator review before agents are allowed to invoke them. In the Microsoft 365 admin center, administrators can inspect the server description, publisher, requestor, endpoint, and capabilities, then approve or reject the request.</P>
+<P>This creates a clear path from extension to approval. Customers and partners can add the custom and third-party MCP servers their work requires, while IT maintains visibility and control across agents operating in the Microsoft 365 tenant.</P>
+<H3>Connect enterprise AI governance with runtime policy enforcement</H3>
+<P>Beginning September 30, the integration between Microsoft Agent 365 and Azure API Management will begin rolling out, connecting centralized AI governance with policy enforcement at runtime. AI assets onboarded to Azure API Management, including agents, tools, models, and MCP servers, can be automatically discovered in Agent 365, improving visibility while reducing manual onboarding. Administrators can centrally govern access through Agent 365, while Azure API Management applies authentication, routing, and runtime controls to help protect AI traffic and enterprise assets as agents take action.</P>
+<H3>Turn agent growth into business impact</H3>
+<P>Organizations are entering a new phase of AI adoption. Success is no longer measured by the number of agents deployed, but by how effectively those agents are tracked, managed, and connected to business outcomes.</P>
+<P>The latest Agent 365 innovations help organizations understand AI value, gain deeper visibility into their growing agent estate, and apply governance at scale. Together, these capabilities enable IT and security teams to confidently transform agent growth into measurable business impact.</P>
+<H3>Next steps</H3>
+<UL>
+<LI><A href="https://techcommunity.microsoft.com/blog/ai-finops-blog/new-finops-for-ai-capabilities-control-spend-measure-value-and-optimize-for-impa/4559660" target="_blank">Learn more</A> about how new cost management features and the Consumption Dashboard in Agent 365 can help you connect AI usage to business value.</LI>
+<LI><A href="https://admin.cloud.microsoft/" target="_blank">Get started with Agent 365 in the Microsoft 365 admin center</A></LI>
+<LI><A href="https://review.learn.microsoft.com/microsoft-agent-365/overview?branch=main&amp;branchFallbackFrom=pr-en-us-416" target="_blank">Learn more about Agent 365 on MS Learn</A></LI>
+</UL>
+Wed, 30 Sep 2026 16:00:00 GMT
+https://techcommunity.microsoft.com/t5/agent-365-blog/what-s-new-in-agent-365-september-2026/ba-p/4560803
+joriefoss
+2026-09-30T16:00:00Z
+What's new in Agent 365 – July 2026
+https://techcommunity.microsoft.com/t5/agent-365-blog/what-s-new-in-agent-365-july-2026/ba-p/4543654
+<P><EM><SPAN data-contrast="auto">By Alex Pozin and Samer Baroudi</SPAN></EM></P>
+<P>&nbsp;</P>
+<P><SPAN data-contrast="auto">Maintaining visibility and control becomes increasingly complex as organizations deploy more agents across multiple Microsoft 365 tenants, through a heterogenous mix of agent platforms, and across different teams or areas in the organization. Microsoft Agent 365 has introduced new capabilities that help IT, security, and business leaders govern this growing agent ecosystem with greater confidence. The July 2026 updates bring partner risk signals into a unified security view, improve oversight of usage-based AI spend, deliver organization-wide adoption insights, extend agent discovery and governance across ecosystem platforms, and enable centralized management across multiple tenants. Together, these innovations advance Agent 365 as the enterprise control plane for observing, governing, and securing agents at scale.</SPAN><SPAN data-ccp-props="{}">&nbsp;</SPAN></P>
+<H1 aria-level="1"><SPAN data-contrast="none"><SPAN data-ccp-parastyle="heading 1">Expand agent risk&nbsp;</SPAN><SPAN data-ccp-parastyle="heading 1">visib</SPAN><SPAN data-ccp-parastyle="heading 1">i</SPAN><SPAN data-ccp-parastyle="heading 1">lity</SPAN><SPAN data-ccp-parastyle="heading 1">&nbsp;with&nbsp;</SPAN><SPAN data-ccp-parastyle="heading 1">signal</SPAN><SPAN data-ccp-parastyle="heading 1">s</SPAN><SPAN data-ccp-parastyle="heading 1">&nbsp;f</SPAN><SPAN data-ccp-parastyle="heading 1">rom </SPAN><SPAN data-ccp-parastyle="heading 1">Cy</SPAN><SPAN data-ccp-parastyle="heading 1">era, Darktrace, </SPAN><SPAN data-ccp-parastyle="heading 1">Zenity</SPAN></SPAN><SPAN data-ccp-props="{&quot;134245418&quot;:true,&quot;134245529&quot;:true,&quot;335559738&quot;:360,&quot;335559739&quot;:80}">&nbsp;</SPAN></H1>
+<P><SPAN data-contrast="auto">As agents take on more business-critical work, IT and security teams may need to move across multiple portals to understand risk signals spanning identity, data, and threat activity. This fragmented view can make it harder to see an agent's overall risk profile and&nbsp;determine&nbsp;where attention is needed. Microsoft Agent 365 addresses that challenge with a unified control plane that brings agent risk signals together, giving administrators a consistent place to assess and act on risk.</SPAN><SPAN data-ccp-props="{}">&nbsp;</SPAN></P>
+<P><SPAN data-contrast="auto">Microsoft Security delivers native, deeply integrated Agent 365-enabled risk insights and security value across identity, threat protection, data security, compliance, and device management. Today, we are extending visibility for customers who use third-party security solutions by supporting selected partner risk signals in the Agent Registry, beginning with Cyera, Darktrace, and Zenity.</SPAN></P>
+<P><SPAN data-contrast="auto">"Microsoft is committed to delivering the industry’s most trusted and comprehensive AI governance and security experience as part of the Agent 365 promise. Through integrations with our security ecosystem partners, we enable customers to maximize the value of their existing security investments while gaining a unified, end-to-end view of&nbsp;risk&nbsp;signals across their agent&nbsp;ecosystem."</SPAN><SPAN data-ccp-props="{&quot;335559685&quot;:720,&quot;335559738&quot;:240,&quot;335559739&quot;:240}">&nbsp;</SPAN></P>
+<P><SPAN data-contrast="auto">-- Nirav Shah, CVP, Agent 365 and Agent Cloud</SPAN><SPAN data-ccp-props="{&quot;335559685&quot;:720,&quot;335559738&quot;:240,&quot;335559739&quot;:240}">&nbsp;</SPAN></P>
+<P><SPAN data-contrast="auto">Today, customers see agent risk signals within the Agent Details Security tab from across Microsoft Entra, Defender, and Purview. Now, when enabled by an administrator, Agent 365 can also ingest a partner-generated risk signal, matching it to the corresponding agent through Microsoft Entra Agent ID, and enriching your overall agent risk signal profile from within Agent 365. Microsoft Entra Agent ID serves as the identity anchor that allows supported partner signals to map cleanly to the right agent record. This keeps Agent 365 at the center of the governance workflow while giving customers a&nbsp;consolidated&nbsp;view of signals from the security&nbsp;tools&nbsp;they use.</SPAN><SPAN data-ccp-props="{}">&nbsp;</SPAN></P>
+<P>&nbsp;</P>
+<img />
+<P><SPAN data-contrast="auto">Once an integration is active and an active risk signal is received for an eligible agent, these signals appear in the Agent Registry alongside Microsoft-generated risk signals.</SPAN><SPAN data-ccp-props="{}">&nbsp;</SPAN></P>
+<P><SPAN data-contrast="auto">For administrators, Agent 365 provides:</SPAN><SPAN data-ccp-props="{&quot;335559738&quot;:240,&quot;335559739&quot;:240}">&nbsp;</SPAN></P>
+<UL>
+<LI aria-setsize="-1" data-leveltext="" data-font="Symbol" data-listid="3" data-list-defn-props="{&quot;335552541&quot;:1,&quot;335559685&quot;:720,&quot;335559991&quot;:360,&quot;469769226&quot;:&quot;Symbol&quot;,&quot;469769242&quot;:[8226],&quot;469777803&quot;:&quot;left&quot;,&quot;469777804&quot;:&quot;&quot;,&quot;469777815&quot;:&quot;hybridMultilevel&quot;}" data-aria-posinset="1" data-aria-level="1"><SPAN data-contrast="auto">One&nbsp;consolidated&nbsp;view</SPAN><SPAN data-contrast="auto">&nbsp;- agent risk signals count brings together native signals from Microsoft Entra, Defender, and Purview with detections from supported partner solutions, helping administrators quickly&nbsp;identify&nbsp;agents that require attention.</SPAN><SPAN data-ccp-props="{}">&nbsp;</SPAN></LI>
+</UL>
+<UL>
+<LI aria-setsize="-1" data-leveltext="" data-font="Symbol" data-listid="3" data-list-defn-props="{&quot;335552541&quot;:1,&quot;335559685&quot;:720,&quot;335559991&quot;:360,&quot;469769226&quot;:&quot;Symbol&quot;,&quot;469769242&quot;:[8226],&quot;469777803&quot;:&quot;left&quot;,&quot;469777804&quot;:&quot;&quot;,&quot;469777815&quot;:&quot;hybridMultilevel&quot;}" data-aria-posinset="2" data-aria-level="1"><SPAN data-contrast="auto">Risk prioritization</SPAN><SPAN data-contrast="auto">&nbsp;–&nbsp;&nbsp;to&nbsp;help customers understand the overall risk picture for an agent, agent risk signals are prioritized into High, Medium, and Low categories. In addition, each risk signal type shows&nbsp;a number of&nbsp;occurrences, which can help&nbsp;identify&nbsp;repeat patterns requiring investigation or action.&nbsp;</SPAN><SPAN data-ccp-props="{}">&nbsp;</SPAN></LI>
+</UL>
+<UL>
+<LI aria-setsize="-1" data-leveltext="" data-font="Symbol" data-listid="3" data-list-defn-props="{&quot;335552541&quot;:1,&quot;335559685&quot;:720,&quot;335559991&quot;:360,&quot;469769226&quot;:&quot;Symbol&quot;,&quot;469769242&quot;:[8226],&quot;469777803&quot;:&quot;left&quot;,&quot;469777804&quot;:&quot;&quot;,&quot;469777815&quot;:&quot;hybridMultilevel&quot;}" data-aria-posinset="3" data-aria-level="1"><SPAN data-contrast="auto">Consent by design</SPAN><SPAN data-contrast="auto">&nbsp;- partner integrations are optional, and no partner data flows until an administrator enables partner risk signals under Agents &gt; Settings in the Microsoft 365 admin center. Some partners may also require configuration in their own product.</SPAN><SPAN data-ccp-props="{}">&nbsp;</SPAN></LI>
+</UL>
+<P><SPAN data-contrast="auto">This announcement reinforces Microsoft's integrated advantage and commitment to customer choice and meeting customers where they are. These optional partner integrations simply extend Agent 365 security risk visibility based on a customer’s current security solution investments.</SPAN></P>
+<P><SPAN data-ccp-props="{&quot;335559685&quot;:360,&quot;335559738&quot;:240,&quot;335559739&quot;:240}"><SPAN data-contrast="auto">"Cyera gives security teams the confidence to accelerate AI adoption by understanding exactly what each agent can reach, without putting sensitive data at risk. By bringing Cyera Agent Guardian's data risk signals into the Agent Registry, Microsoft Agent 365 gives administrators one&nbsp;consolidated&nbsp;view that combines native Microsoft signals with the data context our platform provides. Together, that's the model this next phase of enterprise AI adoption requires — governance that scales as fast as the agents do."</SPAN>&nbsp;<BR /><SPAN data-contrast="auto"> -- Tamar Bar-Ilan, Co-Founder &amp; CTO, Cyera</SPAN><SPAN data-ccp-props="{&quot;335559685&quot;:720}">&nbsp;</SPAN></SPAN></P>
+<P><SPAN data-contrast="auto">“With Darktrace / SECURE AI, our behavioral approach builds an understanding unique to each organization of how AI agents&nbsp;operate&nbsp;and how their actions connect to people,&nbsp;data&nbsp;and infrastructure. As agents take on more business-critical work, that context is essential for uncovering subtle behavioral changes, unexpected interactions and emerging risks that static controls or known indicators may miss. Bringing those insights into Microsoft Agent 365 gives customers a clearer view of agent risk and the context to act with confidence.”</SPAN>&nbsp;<BR /><SPAN data-contrast="auto">-- Ed Jennings, President and CEO, Darktrace.</SPAN></P>
+<P><SPAN data-contrast="auto">“AI Agents are a reality in every enterprise today- what has started with AI agent pilots is now becoming full scale enterprise-wide deployments, and&nbsp;without a deep security pillar, it just&nbsp;can't&nbsp;happen. We are proud of this important first step in our partnership with Microsoft Agent 365- the&nbsp;Zenity&nbsp;integration with Agent 365 surfaces the critical security issues and real-time threats that AI agents are facing directly in Microsoft Agent 365. Enterprises can now use it to quickly prioritize&nbsp;and&nbsp;act on what matters most with&nbsp;regards&nbsp;to their agentic footprint."&nbsp;</SPAN>&nbsp;<BR /><SPAN data-contrast="auto">-- Ben Kliger, CEO of&nbsp;Zenity</SPAN><SPAN data-ccp-props="{&quot;335559685&quot;:720,&quot;335559738&quot;:240,&quot;335559739&quot;:240}">&nbsp;</SPAN></P>
+<P><SPAN data-contrast="auto">The Agent 365 partner API carrying these signals is available to security vendors across the ecosystem, and we&nbsp;anticipate&nbsp;the list of supported providers to expand in the future.  As the agent ecosystem grows, Agent 365 will continue to bring the visibility, governance, and security organizations need to manage it with confidence.</SPAN><SPAN data-ccp-props="{&quot;335559738&quot;:240,&quot;335559739&quot;:240}">&nbsp;</SPAN></P>
+<P><SPAN data-ccp-props="{&quot;335559738&quot;:240,&quot;335559739&quot;:240}">&nbsp;</SPAN></P>
+<H1><SPAN data-contrast="none">Bring&nbsp;predictability to&nbsp;agentic&nbsp;AI spend with Cost Management</SPAN><SPAN data-ccp-props="{}">&nbsp;</SPAN></H1>
+<P><SPAN data-contrast="auto">As organizations expand their use of agents, they need clear&nbsp;controls&nbsp;to&nbsp;understand consumption, manage budgets, and keep usage-based costs predictable. Cost Management in&nbsp;the Microsoft 365 admin center&nbsp;gives admins a centralized way to&nbsp;monitor&nbsp;and control Copilot Credit spend for&nbsp;agentic&nbsp;usage-based services.&nbsp;This release focuses on&nbsp;Cowork&nbsp;and Work IQ&nbsp;spend.&nbsp;New enterprise-ready updates improve the reliability of spending alerts, make policy assignment more consistent, strengthen the handling of per-user overages, and&nbsp;provide&nbsp;a clearer view of prepaid capacity across Microsoft 365 and Power Platform admin experiences.&nbsp;When a user belongs to multiple spending policies for the same service, the applicable policy is now selected using clear criteria: the highest per-user limit, followed by the largest overall policy limit and then the most recently created policy.&nbsp;The selected policy applies in full, helping admins&nbsp;anticipate&nbsp;which billing configuration and limits will govern each user without combining settings across policies.&nbsp;The updates also help protect shared capacity when a task exceeds a user’s individual limit while it is already running. With this release, Microsoft may allow that task to finish without drawing the resulting per-user overage from the policy’s shared pool or billing it, helping preserve credits for the rest of the group.&nbsp;Finally, admins gain a more&nbsp;accurate&nbsp;picture of capacity-pack credits available for use. Cost Management will distinguish credits already consumed or&nbsp;allocated&nbsp;through other admin centers, including capacity assigned to Power Platform environments or agents, so the amount presented during spending-policy setup more closely reflects the prepaid capacity that&nbsp;remains&nbsp;available.</SPAN><SPAN data-ccp-props="{}">&nbsp;</SPAN></P>
+<P>&nbsp;</P>
+<img />
+<P><SPAN data-ccp-props="{}">&nbsp;</SPAN></P>
+<H1><SPAN data-contrast="none"><SPAN data-ccp-parastyle="heading 1">Empower leaders and analysts with decision-grade org-wide agent insights</SPAN></SPAN><SPAN data-ccp-props="{&quot;134245418&quot;:true,&quot;134245529&quot;:true,&quot;335559738&quot;:360,&quot;335559739&quot;:80}">&nbsp;</SPAN></H1>
+<P><SPAN data-contrast="auto">Now generally available, the Agent 365 Dashboard provides business leaders with a centralized view of agent adoption, engagement, and business impact across their organization. By&nbsp;consolidating&nbsp;telemetry from Agent 365 into a single reporting experience, the dashboard enables leaders to understand how agents are being used,&nbsp;identify&nbsp;where adoption is accelerating or stalling, and make more informed decisions about AI investments, deployment strategies, and change management efforts.</SPAN><SPAN data-ccp-props="{}">&nbsp;</SPAN></P>
+<P><SPAN data-contrast="auto">With built-in reporting and organizational filtering, analysts can evaluate usage across teams, business units, and geographies, while leaders can&nbsp;monitor&nbsp;key adoption metrics such as active users, retention trends, top-performing agents, and overall engagement patterns. Interactive drill-down capabilities provide deeper visibility into individual agent performance, helping organizations&nbsp;identify&nbsp;successful deployments, uncover optimization opportunities, and prioritize investments in the agents delivering the greatest business value.</SPAN><SPAN data-ccp-props="{}">&nbsp;</SPAN></P>
+<P>&nbsp;</P>
+<img />
+<P><SPAN data-ccp-props="{}">&nbsp;</SPAN></P>
+<H1 aria-level="1"><SPAN data-contrast="none"><SPAN data-ccp-parastyle="heading 1">Unify&nbsp;</SPAN><SPAN data-ccp-parastyle="heading 1">a</SPAN><SPAN data-ccp-parastyle="heading 1">gent&nbsp;</SPAN><SPAN data-ccp-parastyle="heading 1">d</SPAN><SPAN data-ccp-parastyle="heading 1">iscovery and&nbsp;</SPAN><SPAN data-ccp-parastyle="heading 1">g</SPAN><SPAN data-ccp-parastyle="heading 1">overnance&nbsp;</SPAN><SPAN data-ccp-parastyle="heading 1">a</SPAN><SPAN data-ccp-parastyle="heading 1">cross&nbsp;</SPAN><SPAN data-ccp-parastyle="heading 1">agent p</SPAN><SPAN data-ccp-parastyle="heading 1">latforms</SPAN></SPAN><SPAN data-ccp-props="{&quot;134245418&quot;:true,&quot;134245529&quot;:true,&quot;335559738&quot;:360,&quot;335559739&quot;:80}">&nbsp;</SPAN></H1>
+<P><SPAN data-contrast="auto">Registry sync is now generally available in Microsoft Agent 365, giving organizations a centralized way to&nbsp;discover and&nbsp;inventory agents that exist beyond Microsoft platforms. As enterprises increasingly build and deploy agents across multiple agent development platforms,&nbsp;maintaining&nbsp;visibility becomes increasingly difficult. Registry sync addresses this challenge by allowing AI administrators to securely connect supported ecosystem agent platforms and synchronize agents and metadata into the Agent 365 registry&nbsp;on a daily or weekly cadence,&nbsp;establishing&nbsp;a single, authoritative system of record for their agent estate. With Registry sync, organizations can reduce blind&nbsp;spots&nbsp;ecosystem&nbsp;partner&nbsp;platforms by bringing externally developed agents into a unified discovery and management experience. Administrators can view synchronized agents alongside Microsoft-native agents, understand where agents originate, review key metadata, and gain a more complete picture of their growing agent landscape.&nbsp;Supported platforms at general availability include Amazon Bedrock, Google Cloud Gemini Enterprise Agent Platform,&nbsp;Anthropic Claude,&nbsp;Databricks Genie,&nbsp;Salesforce&nbsp;Agentforce. Additionally, Snowflake, Oracle OCI, and&nbsp;UIPath&nbsp;to follow soon.</SPAN><SPAN data-ccp-props="{}">&nbsp;</SPAN></P>
+<P><SPAN data-contrast="auto">Registry sync goes beyond visibility. Where supported by the underlying&nbsp;platform&nbsp;APIs, administrators can take agent-level governance actions directly from Agent 365, including lifecycle management actions such as&nbsp;deleting&nbsp;synchronized agents. This enables organizations to govern agents across platforms from a common management&nbsp;plane&nbsp;while continuing to use the development and runtime environments that best fit their business needs. By extending the Agent 365 registry beyond Microsoft boundaries, Registry sync strengthens Agent 365 as the enterprise control plane for agents. Whether agents are built by Microsoft, developed internally, or created on ecosystem platforms, organizations can now&nbsp;establish&nbsp;a more comprehensive view of agents&nbsp;operating&nbsp;across their organization, helping IT and security teams&nbsp;maintain&nbsp;visibility, reduce risk, and improve governance at scale.</SPAN><SPAN data-ccp-props="{}">&nbsp;</SPAN></P>
+<P>&nbsp;</P>
+<img />
+<P><SPAN data-ccp-props="{}">&nbsp;</SPAN></P>
+<P>&nbsp;</P>
+<H1 aria-level="1"><SPAN data-contrast="none"><SPAN data-ccp-parastyle="heading 1">Manage agents across multiple tenants from one place</SPAN></SPAN><SPAN data-ccp-props="{&quot;134245418&quot;:true,&quot;134245529&quot;:true,&quot;335559738&quot;:360,&quot;335559739&quot;:80}">&nbsp;</SPAN></H1>
+<P><SPAN data-contrast="auto">Partners supporting multiple customers and enterprises operating complex multi-tenant environments&nbsp;both&nbsp;need a simpler way to&nbsp;maintain&nbsp;consistent visibility and control. With multi-tenant agent management, now in public preview, administrators can centrally view and manage agents across connected tenants from the Agent 365 in the Microsoft 365 admin center.</SPAN><SPAN data-ccp-props="{}">&nbsp;</SPAN></P>
+<P><SPAN data-contrast="auto">From All tenants &gt; Agents, administrators can view a&nbsp;consolidated&nbsp;agent inventory, add custom agents, deploy agents across selected tenants, compare tenant-specific availability and permissions, review agent risk and activity, and block agents or change their availability where needed. They can also use the tenant switcher to enter a connected tenant through delegated access, without&nbsp;maintaining&nbsp;a separate administrator account in that tenant. Where applicable licensing requirements are met, administrators can also review agent risks. The experience builds on existing cross-tenant administration relationships and Granular Delegated Admin Privileges (GDAP). Partners configure these relationships in Partner Center, while enterprises can configure them through Microsoft Entra Tenant Governance. Available tenants and management actions are&nbsp;determined&nbsp;by the active tenant relationship and the administrator’s delegated role.&nbsp;</SPAN><SPAN data-ccp-props="{}">&nbsp;</SPAN></P>
+<P><SPAN data-contrast="auto">Multi-tenant agent management extends your existing tenant governance foundation into a centralized control plane for agent observability, governance and security. To get started, review your tenant relationships and delegated role assignments, then visit the <A class="lia-external-url" href="https://learn.microsoft.com/microsoft-365/admin/manage/agent-multi-tenant?view=o365-worldwide" target="_blank">MS Learn documentation</A> for prerequisites, supported roles, capabilities, and licensing details.</SPAN><SPAN data-ccp-props="{}">&nbsp;</SPAN></P>
+<img />
+<P><SPAN data-ccp-props="{}">&nbsp;</SPAN></P>
+<P>&nbsp;</P>
+<P><SPAN data-ccp-props="{}">&nbsp;</SPAN></P>
+<P><SPAN data-contrast="auto">The July 2026 updates continue to advance Microsoft Agent 365 as a comprehensive control plane for enterprise agents. With these enhancements to risk signals, cost controls, business insights, cross-platform discovery, and multi-tenant management, Agent 365 helps organizations&nbsp;establish&nbsp;consistent oversight as their agent fleet grows. Whether agents are built on Microsoft or ecosystem platforms and deployed within one tenant or many, organizations can gain a more complete view of their environment, apply governance more consistently, and make better-informed decisions about agent adoption, investment, and risk.</SPAN><SPAN data-ccp-props="{}">&nbsp;</SPAN></P>
+<P><SPAN data-contrast="auto">Next steps:</SPAN><SPAN data-ccp-props="{}">&nbsp;</SPAN></P>
+<UL>
+<LI aria-setsize="-1" data-leveltext="" data-font="Symbol" data-listid="2" data-list-defn-props="{&quot;335552541&quot;:1,&quot;335559685&quot;:720,&quot;335559991&quot;:360,&quot;469769226&quot;:&quot;Symbol&quot;,&quot;469769242&quot;:[8226],&quot;469777803&quot;:&quot;left&quot;,&quot;469777804&quot;:&quot;&quot;,&quot;469777815&quot;:&quot;hybridMultilevel&quot;}" data-aria-posinset="1" data-aria-level="1"><A href="https://admin.cloud.microsoft/" target="_blank" rel="noopener"><SPAN data-contrast="none"><SPAN data-ccp-charstyle="Hyperlink">Get started with Agent 365 in the Microsoft 365 admin center</SPAN></SPAN></A><SPAN data-ccp-props="{}">&nbsp;</SPAN></LI>
+<LI aria-setsize="-1" data-leveltext="" data-font="Symbol" data-listid="2" data-list-defn-props="{&quot;335552541&quot;:1,&quot;335559685&quot;:720,&quot;335559991&quot;:360,&quot;469769226&quot;:&quot;Symbol&quot;,&quot;469769242&quot;:[8226],&quot;469777803&quot;:&quot;left&quot;,&quot;469777804&quot;:&quot;&quot;,&quot;469777815&quot;:&quot;hybridMultilevel&quot;}" data-aria-posinset="2" data-aria-level="1"><A href="https://review.learn.microsoft.com/microsoft-agent-365/overview?branch=main&amp;branchFallbackFrom=pr-en-us-416" target="_blank" rel="noopener"><SPAN data-contrast="none"><SPAN data-ccp-charstyle="Hyperlink">Learn more about Agent 365 on MS Learn</SPAN></SPAN></A><SPAN data-ccp-props="{}">&nbsp;</SPAN></LI>
+</UL>
+Thu, 06 Aug 2026 17:59:48 GMT
+https://techcommunity.microsoft.com/t5/agent-365-blog/what-s-new-in-agent-365-july-2026/ba-p/4543654
+alexpozin
+2026-08-06T17:59:48Z
+What's new in Agent 365 – June 2026
+https://techcommunity.microsoft.com/t5/agent-365-blog/what-s-new-in-agent-365-june-2026/ba-p/4535107
+<P><EM>By Alex Pozin, Samer Baroudi, Brendan Powers</EM></P>
+<P>As AI agents become a core part of enterprise operations, organizations need a consistent way to observe, manage, govern, and secure agents across an increasingly distributed ecosystem spanning cloud, local, and partner-developed experiences. Since the&nbsp;<A href="https://techcommunity.microsoft.com/blog/agent-365-blog/whats-new-in-agent-365-may-2026/4516340" target="_blank" rel="noopener">GA release</A>, Agent 365 has continued to evolve as the control plane for enterprise agents. This month’s innovations strengthen visibility and protection for local agents, simplify onboarding and lifecycle management, and expand programmatic governance capabilities, helping organizations scale AI adoption with greater confidence.</P>
+<H2>Visibility, controls and protections for local agents</H2>
+<P>As local agents become a growing part of the enterprise AI landscape, Agent 365 is expanding end-to-end visibility, governance, and protection across these experiences. From discovering and inventorying local agents in the Agent 365 Registry, to auditing agent activity with Microsoft Purview, securing runtime behavior with Microsoft Defender, and enforcing isolated execution through Microsoft Execution Containers (MXC), organizations gain the controls needed to confidently manage, secure, and govern local agents at scale without sacrificing user productivity.</P>
+<H3>Local agents in the Agent 365 registry</H3>
+<P>Organizations increasingly rely on local agents running directly on user devices, yet these agents often operate outside AI visibility. With local agents now in the Agent 365 registry (public preview), IT and security teams gain a unified view of shadow local agents detected across the environment. The registry surfaces each agent's publisher, detected device count, and last scanned date, and opens into a per agent details pane that lists every endpoint where the agent has been observed, complete with device name, model, and operating system. By centralizing discovery and device‑level context for local agents across managed endpoints, teams pinpoint which shadow AI agents users are running, scope their footprint by device, and accelerate investigations.</P>
+<P>&nbsp;</P>
+<img />
+<H3>Microsoft Purview Audit coverage for GitHub Copilot CLI, Claude Code, OpenAI Codex, and OpenClaw</H3>
+<P>Microsoft Purview Audit in Agent 365 continues to expand its coverage, bringing deeper visibility into agent interactions and strengthening enterprise compliance capabilities. Building on its ability to capture and monitor audit logs across human-to-agent, agent-to-agent, and agent-to-tool interactions with rich contextual metadata on access, actions, and activity, the June update introduces support for emerging local and developer-focused agents, including GitHub Copilot CLI, Claude Code, OpenAI Codex, and OpenClaw. This expansion ensures that organizations can audit activity consistently across these local agents, closing visibility gaps as agent usage becomes more distributed. By extending familiar Microsoft Purview auditing workflows to these new agent experiences, enterprises can more effectively investigate incidents, meet compliance requirements, and confidently scale AI adoption with comprehensive, end-to-end observability.</P>
+<H3>Microsoft Defender and Purview expand Agent 365 security capabilities to cover local agents (Public Preview)</H3>
+<P>Microsoft Defender in Agent 365 expands security posture management, on-device runtime protection, XDR alerting, and advanced hunting for local AI agents. Since the June 2 release, Defender has expanded discovery of local agents and MCP servers across managed Windows and macOS devices, now supporting more than <A href="https://learn.microsoft.com/en-us/defender-endpoint/local-agent-discovery-overview#supported-local-ai-agents-and-mcp-server-configurations" target="_blank" rel="noopener">35 known agent types in preview</A>. With this release, Defender also introduces exposure risk for local agents, helping security teams identify and prioritize the riskiest local agents based on their configuration, permissions, and exposure, with recommendations to reduce risk.</P>
+<P>Defender's on-device runtime protection capabilities, now available in public preview, support Claude Code, GitHub Copilot CLI, GitHub Copilot app, Codex CLI, OpenClaw, and similar Node-based claws using agent-native event inspection and an on-device, network-based runtime inspection. Defender can audit or block malicious instructions introduced through prompt injection attempts and generates Microsoft Defender XDR alerts when attacks are detected. Integration with Microsoft Purview extends protection by auditing or blocking prompts and tool calls in real-time to help prevent exfiltration of sensitive data based on Purview policies. Advanced hunting enables security teams to investigate local agent activity, hunt for exposure risks, and correlate agent inventory with existing endpoint telemetry.</P>
+<H3>Microsoft Execution Containers for local agents (Public Preview)</H3>
+<P>As organizations adopt local AI agents running directly on user devices, they introduce new challenges around visibility, control, and risk, these agents often operate outside traditional governance boundaries, can access sensitive data or tools, and may execute in unmanaged environments. Microsoft Execution Container (MXC) addresses this challenge by enforcing a secure, isolated runtime for local agents, bringing them back under centralized administrative control. In public preview, MXC enables IT to require that local agents run within a hardened Windows container, reducing exposure from unmanaged execution while standardizing security protections across the fleet. By combining isolation with centralized policy enforcement, MXC gives organizations greater confidence in local agent usage, improving visibility into runtime behavior, enabling consistent governance, and mitigating the risk of data leakage or malicious activity without disrupting user productivity.</P>
+<P>&nbsp;</P>
+<img />
+<H2>New Capabilities for Onboarding Agents and Managing the Enterprise Agent Fleet</H2>
+<P>Organizations need a faster path to enterprise readiness and stronger controls for ongoing governance. Agent 365 advances both goals by simplifying agent onboarding with Agent 365 skills, expanding programmatic management through Microsoft Graph APIs, and extending Microsoft Entra ID Governance to ecosystem partner agents, helping IT manage agents with greater automation, visibility, and control at enterprise scale.</P>
+<H3>Accelerate agent onboarding for builders with Agent 365 skills</H3>
+<P>With Agent 365 skills, agent developers can dramatically simplify how they bring agents into Microsoft Agent 365. As outlined in the <A href="https://techcommunity.microsoft.com/blog/agent-365-blog/agent-365-skills-bring-your-agents-into-microsoft-agent-365-in-minutes/4529838" target="_blank" rel="noopener">blog post</A>, this innovation removes the friction of the traditional onboarding “last mile” where developers previously had to manually configure identity, observability, governance, and secure access to Microsoft 365 data. With Agent 365 skills, developers can now use natural language directly within their preferred coding environments to request outcomes like adding observability or integrating tools, while the platform automatically applies and validates the required configurations. By transforming a complex, multi-step setup into a guided, outcome-driven experience, Agent 365 Skills accelerates time to enterprise readiness and enables organizations to operationalize AI agents at scale, faster and with greater confidence.</P>
+<P>&nbsp;</P>
+<img />
+<H3>Expanded Microsoft Graph API support</H3>
+<P>Agent 365 continues to expand its Microsoft Graph API surface area, giving AI administrators powerful, programmatic control over the agent ecosystem. As outlined in the Agent 365 Graph API <A href="https://learn.microsoft.com/microsoft-agent-365/admin/graph-api" target="_blank" rel="noopener">documentation</A>, these APIs enable scalable, automated management of agents, moving beyond manual or UI-driven workflows to support enterprise-grade governance, reporting, and lifecycle automation.</P>
+<P>At a high level, the Agent 365 Graph APIs allow administrators to:</P>
+<UL>
+<LI>Retrieve a complete inventory of agents across the organization</LI>
+<LI>Access detailed metadata for auditing, compliance, and lifecycle management</LI>
+<LI>Automate onboarding, governance workflows, and operational processes at scale</LI>
+<LI>Perform management actions such as blocking, unblocking, or reassigning ownership of agents</LI>
+</UL>
+<P>These capabilities help IT teams integrate agent management into existing toolchains and workflows, improving visibility, consistency, and control across growing agent estates.</P>
+<P>As part of this release, two foundational package management APIs: <EM>List packages</EM> and <EM>Get package details</EM> have now moved from beta to Microsoft Graph v1.0, marking an important step toward production-ready automation. Note that these package management APIs return agents. Apps and add-ins are not included in the API response. These APIs enable AI admin to:</P>
+<UL>
+<LI>List packages (GET /copilot/admin/catalog/packages): Retrieve a full inventory of all agents in the organization for governance and reporting</LI>
+<LI>Get package details (GET /copilot/admin/catalog/packages/{id}): Access rich metadata for a specific agent, including configuration, ownership, and deployment details</LI>
+</UL>
+<P>In addition, we’ve introduced couple of key enhancements driven directly by customer feedback:</P>
+<UL>
+<LI>Expanded role-based access: Support for Global Reader and AI Reader roles enables read-only visibility into these APIs without requiring elevated admin privileges, improving delegation and operational flexibility.</LI>
+<LI>Application permissions support: Customers can now call these APIs using app-only permissions, unlocking secure, unattended automation scenarios.</LI>
+</UL>
+<P>By bringing these APIs to Graph API V1.0, Agent 365 provides a more stable, supported foundation for building custom automation solutions such as inventory reporting, compliance checks, and lifecycle management workflows, directly on top of Microsoft Graph. This advancement reinforces Agent 365’s role as the control plane for enterprise agent governance, enabling administrators to manage agents with the same rigor, scale, and automation used for users and applications. Learn more about the Agent Package Management API <A href="https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/overview" target="_blank" rel="noopener">here</A>.</P>
+<H3>Microsoft Entra ID Governance for ecosystem partner agents</H3>
+<P>Microsoft Entra ID Governance for agent entitlements brings proven identity governance controls to the AI workforce, enabling organizations to manage agent access with the same rigor as human users through scoped permissions, ownership accountability, and time-bound access. With the June update, support now extends to ecosystem partner agents integrated through the Agent 365 SDK, allowing enterprises to apply entitlement management consistently across both internally-developed and third-party agents. This ensures that these agents are governed through access packages, lifecycle workflows, and least-privilege principles, reducing the risk of over-provisioned agents. This delivers unified access governance at scale, helping enforce policy, maintain compliance, and provide clear ownership and accountability as agent ecosystems expand across internal and partner-built agents.</P>
+<H2>Conclusion</H2>
+<P>The June 2026 updates continue to advance Agent 365 as the control plane for enterprise agents. By expanding visibility and security for local agents, streamlining enterprise onboarding, and enhancing automation and governance capabilities, Agent 365 helps organizations scale AI adoption with greater confidence, control, and operational excellence.</P>
+<P>Next steps:</P>
+<UL>
+<LI><A href="https://admin.cloud.microsoft/" target="_blank" rel="noopener">Get started with Agent 365 in the Microsoft 365 admin center</A></LI>
+<LI><A href="https://review.learn.microsoft.com/microsoft-agent-365/overview?branch=main&amp;branchFallbackFrom=pr-en-us-416" target="_blank" rel="noopener">Learn more about Agent 365 on MS Learn</A></LI>
+</UL>
+Wed, 08 Jul 2026 23:18:06 GMT
+https://techcommunity.microsoft.com/t5/agent-365-blog/what-s-new-in-agent-365-june-2026/ba-p/4535107
+alexpozin
+2026-07-08T23:18:06Z
+Agent 365 Skills: Bring your agents into Microsoft Agent 365 in minutes
+https://techcommunity.microsoft.com/t5/agent-365-blog/agent-365-skills-bring-your-agents-into-microsoft-agent-365-in/ba-p/4529838
+<P>Your agent works beautifully on your laptop. It reasons, calls tools, and nails the demo. Then comes the part nobody enjoys: making it enterprise-ready. Identity. Observability. Governance. Messaging. Secure access to Microsoft 365 data. Until now, that last mile meant reading through Microsoft Learn articles, running CLI commands in exactly the right order, hand-editing manifests, and hoping every prerequisite was in place before the agent reached production.</P>
+<P>Organizations are moving fast — from experimenting with AI agents to putting them to work across real business processes. Developers are building with LangChain, OpenAI, Semantic Kernel, Azure AI Foundry, Claude SDK, Google ADK, and more. But great orchestration logic isn’t enough. Agents also need identity, observability, governance, messaging, testing, and secure access to Microsoft 365 data.</P>
+<P>Agent 365 Skills collapse that workflow into a guided, natural-language experience inside the coding assistant developers already use. Describe what you need — <EM>“add observability,” “wire up WorkIQ Mail and Calendar,” “test this agent locally”</EM> — and the skill detects your project, asks only the questions it has to, applies the right changes, and validates the work before the session ends.</P>
+<H3>The last mile is the hard mile</H3>
+<P>Before Agent 365 Skills, onboarding an agent often meant a long, fragile chain of manual steps: installing the Agent 365 CLI, validating Azure prerequisites, registering a blueprint, configuring Entra artifacts, wiring OpenTelemetry exporters, packaging manifests, connecting MCP servers, and testing locally. Miss one step, and things break — often late, in production.</P>
+<img>
+<P>From a multi-hour, order-sensitive gauntlet to one guided sentence.</P>
+</img>
+<P>Agent 365 Skills replace that disconnected workflow with a guided lifecycle. Developers stay in Claude Code, GitHub Copilot CLI, or VS Code agent mode and ask for the outcome they want. The skill handles the implementation details — while preserving the technical controls enterprise teams depend on.</P>
+<P><STRONG>What changes for developers:</STRONG></P>
+<UL>
+<LI>Start with one sentence — <EM>“add WorkIQ tools”</EM> or <EM>“integrate observability”</EM> — instead of reading many Microsoft Learn pages.</LI>
+<LI>Auto-instrument in minutes instead of manually wiring OpenTelemetry exporters, token resolvers, and baggage scopes.</LI>
+<LI>Let the skill apply the required manifest and configuration updates instead of hand-editing them.</LI>
+<LI>Catch issues before shipping with built-in validators instead of hoping nothing was missed.</LI>
+</UL>
+<H3>Watch it work</H3>
+<P>Say a developer wants telemetry. They type a single line:</P>
+<BLOCKQUOTE>
+<PRE><STRONG>&gt; add observability to this agent</STRONG></PRE>
+</BLOCKQUOTE>
+<P>From there, the skill takes over. It detects the framework — say, a .NET Semantic Kernel project — asks only the questions that matter (which authentication mode: OBO, Agentic-User, or S2S), wires OpenTelemetry and the Agent 365 tracing exporter, and confirms the project still builds. No manifest spelunking. No half-configured exporters.</P>
+<img>
+<P><EM>Every skill follows the same five-beat loop: describe, detect, ask, apply, validate.</EM></P>
+</img>
+<P><STRONG>Other requests work the same way:</STRONG></P>
+<UL>
+<LI><EM>“Add messaging and notifications to this agent.”</EM></LI>
+<LI><EM>“Add observability to this agent.”</EM></LI>
+<LI><EM>“Wire up WorkIQ Mail and Calendar.”</EM></LI>
+<LI><EM>“Test this agent locally.”</EM></LI>
+</UL>
+<H3>Six skills, one lifecycle</H3>
+<P>Agent 365 Skills include six skills that map to the lifecycle steps developers hit when preparing an agent for Microsoft Agent 365. Run only the ones your agent needs — or use the <EM>make </EM>skills to execute all the required steps.</P>
+<DIV class="styles_lia-table-wrapper__h6Xo9 styles_table-responsive__MW0lN"><table style="width: 820px;"><thead><tr><td>
+<P><STRONG>Skill</STRONG></P>
+</td><td>
+<P><STRONG>What it does</STRONG></P>
+</td></tr></thead><tbody><tr><td>
+<P><STRONG>a365-setup</STRONG></P>
+</td><td>
+<P>Installs the Agent 365 CLI, validates Azure prerequisites, detects the agent stack, and routes you to the right onboarding path — in one guided flow.</P>
+</td></tr><tr><td>
+<P><STRONG>make-a365-agent</STRONG></P>
+</td><td>
+<P>Registers a <A href="https://learn.microsoft.com/en-us/entra/agent-id/agent-blueprint" target="_blank">Blueprint</A> for agents that need observability or catalog visibility without the full messaging layer.</P>
+</td></tr><tr><td>
+<P><STRONG>instrument-observability</STRONG></P>
+</td><td>
+<P>Wires OpenTelemetry and the Agent 365 tracing exporter so agent spans appear in Microsoft Defender, Microsoft Purview, and the Microsoft 365 admin center. Supports OBO, Agentic-User, and S2S authentication modes.</P>
+</td></tr><tr><td>
+<P><STRONG>add-workiq-tools</STRONG></P>
+</td><td>
+<P>Connects Work Intelligence (WorkIQ) MCP servers — Mail, Calendar, Word, and more — so the agent can read and act on Microsoft 365 data. <A href="https://www.microsoft.com/en-us/microsoft-365/blog/2026/06/02/announcing-the-new-work-iq-apis/" target="_blank">Learn more</A>.</P>
+</td></tr><tr><td>
+<P><STRONG>make-ai-teammate</STRONG></P>
+</td><td>
+<P>Adds Messaging and Notifications so the agent can receive messages over Teams, email, and @mentions.</P>
+</td></tr><tr><td>
+<P><STRONG>test-local</STRONG></P>
+</td><td>
+<P>Launches the agent alongside AgentsPlayground for local smoke testing — no cloud deployment required.</P>
+</td></tr></tbody></table></DIV>
+<H3>Built for the stack you already have</H3>
+<P>Agent development isn’t one language or one framework, and Agent 365 Skills are designed for that reality. They support three major ecosystems and many of the most popular agent frameworks.</P>
+<img />
+<UL>
+<LI><STRONG>.NET: </STRONG>Agent Framework, Semantic Kernel, and Azure AI Foundry.</LI>
+<LI><STRONG>Node.js: </STRONG>LangChain, OpenAI Agents SDK, Claude SDK, Semantic Kernel, and Google ADK.</LI>
+<LI><STRONG>Python: </STRONG>Agent Framework, LangChain, OpenAI, Claude, Semantic Kernel, and Google ADK.</LI>
+</UL>
+<P>The project stack is auto-detected, so you don’t start by writing configuration files or mapping your project by hand. The skill determines the path and guides the next step.</P>
+<H3>Enterprise-ready by design</H3>
+<P>Speed matters — but so does not breaking things. Agent 365 Skills are built to move fast without giving up the safety and validation teams expect.</P>
+<UL>
+<LI><STRONG>Additive and idempotent: </STRONG>Skills don’t delete or restructure existing code, and re-running a skill is safe by design.</LI>
+<LI><STRONG>State-aware: </STRONG>A workspace detection cache tracks what’s already wired, so completed steps are skipped, not duplicated.</LI>
+<LI><STRONG>Guard-railed: </STRONG>Pre-tool hooks block modifications outside the project, and stop-hook validators verify the build passes before the session ends.</LI>
+</UL>
+<P>Together, these controls reduce setup risk while giving developers a repeatable path to register agents, add observability, connect Microsoft 365 data, and test locally.</P>
+<H3>What your agent gains</H3>
+<img>
+<P><EM>One onboarding flow connects your agent to identity, observability, data, messaging, and testing.</EM></P>
+</img>
+<P>For customers, Agent 365 Skills shorten the path from prototype to enterprise-ready agent. Developers spend less time stitching setup steps together and more time building agents that solve business problems. IT and security teams get more consistent registration, observability, and governance patterns across the agent estate.</P>
+<BLOCKQUOTE>
+<P><EM>The result is a faster, safer onboarding experience: agents registered with Agent 365, instrumented for visibility in Defender, Purview, and the Microsoft 365 admin center, connected to Microsoft 365 data through Work IQ MCP servers, and tested locally before deployment.</EM></P>
+</BLOCKQUOTE>
+<H3>Get started</H3>
+<P>Install the skills with:</P>
+<BLOCKQUOTE>
+<PRE><STRONG>gh skill add microsoft/agent365-skills</STRONG></PRE>
+</BLOCKQUOTE>
+<UL>
+<LI>Explore the <A href="https://github.com/microsoft/agent365-skills" target="_blank">GitHub repository</A>.</LI>
+<LI>Read the <A href="https://learn.microsoft.com/en-us/microsoft-agent-365/developer/" target="_blank">Microsoft Agent 365 developer docs</A> for deeper developer guidance.</LI>
+</UL>
+Mon, 22 Jun 2026 16:00:50 GMT
+https://techcommunity.microsoft.com/t5/agent-365-blog/agent-365-skills-bring-your-agents-into-microsoft-agent-365-in/ba-p/4529838
+aarthisk
+2026-06-22T16:00:50Z
+Make any agent enterprise-ready with the Agent 365 SDK
+https://techcommunity.microsoft.com/t5/agent-365-blog/make-any-agent-enterprise-ready-with-the-agent-365-sdk/ba-p/4524575
+<P>One of the biggest barriers to enterprise adoption is the lack of centralized controls. Before deploying an agent broadly, organizations need clear answers: <EM>What is this agent allowed to do? What data can it access? How is it monitored? And how do we step in when something goes wrong?</EM></P>
+<P>Today, developers often piece together identity, runtime protection, and observability using a mix of point solutions and open-source tools. The result is fragmented policy management, disconnected monitoring, and operational overhead that’s difficult to scale within existing IT and security systems. What enterprises need instead is a unified control plane that brings these capabilities together.</P>
+<H3>Introducing the Agent 365 SDK</H3>
+<P>On May 1, <A href="https://www.microsoft.com/en-us/security/blog/2026/05/01/microsoft-agent-365-now-generally-available-expands-capabilities-and-integrations/" target="_blank" rel="noopener" aria-label="Link Microsoft announced the general availability of Agent 365">Microsoft announced the general availability of Agent 365</A>, the control plane for enterprises to observe, govern, and secure agents at scale. Agents built on the Microsoft AI platform (Agent Builder, Copilot Studio, and Microsoft Foundry) get Agent 365 capabilities automatically, with zero additional developer effort. &nbsp;</P>
+<P>For agents built on external platforms or open-source frameworks, the <A class="lia-external-url" href="https://learn.microsoft.com/en-us/microsoft-agent-365/developer/agent-365-sdk?tabs=python" target="_blank">Agent 365 SDK</A> provides the path in. The SDK enables enterprise-grade observability, governance, and security, while the Agent 365 CLI provisions the agent identity and registers the agent in Agent 365 from day one.</P>
+<P>For example, a back-office agent built on Microsoft Foundry and a customer-facing agent built with the OpenAI Agents SDK can both be managed through Agent 365, using the same identity model, observability signals, and policy engine, no matter which platform or framework on which the agent runs. &nbsp;</P>
+<H4>What you get with the Agent 365 SDK&nbsp;&nbsp;</H4>
+<P><STRONG>Observability &nbsp;</STRONG></P>
+<UL>
+<LI><STRONG>A unified agent registry.&nbsp;</STRONG> Every agent registered through the SDK appears in a unified Agent 365 registry, giving admins visibility into ownership, usage, connected tools and knowledge sources, and assigned permissions. Additional signals also help surface unmanaged local agents in the same control plane.</LI>
+<LI><STRONG>Security Operations Center (SOC) visibility in Microsoft Defender.</STRONG> Security Operations Center teams can use Microsoft Defender telemetry to hunt across agent activity, identify vulnerabilities, and investigate potential risks across the entire agent fleet</LI>
+</UL>
+<P><STRONG>Governance &nbsp;</STRONG></P>
+<UL>
+<LI><STRONG>Agent lifecycle management. </STRONG>Apply rules-based policies to automatically expire inactive agents, flag ownerless agents, and block risky ones.</LI>
+<LI><STRONG>Onboarding and agent governance. </STRONG>Deploy agents to specific users or groups only after permissions, policies, and reviews are complete. Block, unblock, or remove agents on demand to control availability.</LI>
+<LI><STRONG>Policy templates. </STRONG>Group existing policies from Entra, Purview, Defender, and SharePoint into reusable templates that apply automatically during agent approval or onboarding.</LI>
+<LI><STRONG>Tool controls for agents. </STRONG>View, allow, or block tools across the&nbsp;tenant&nbsp;so agents only use approved tools, enforcing consistent governance without per-agent configuration. &nbsp;</LI>
+</UL>
+<P><STRONG>Security &nbsp;</STRONG></P>
+<UL>
+<LI><STRONG>Agent identity in Entra.  </STRONG>The SDK generates an agent identity in Entra so the agent can be managed, and policies and role assignments &nbsp; can be applied to it the same way they are applied to users. <A href="https://aka.ms/entra-agentid-dev" target="_blank" rel="noopener" aria-label="Link Learn more in our Entra Agent ID developer blog post.">Learn more in our Entra Agent ID developer blog post.</A></LI>
+<LI><STRONG>Access control. </STRONG> Agents can be secured by Entra Conditional Access and Identity Protection for runtime protections as agent behavior evolves.</LI>
+<LI><STRONG>Threat detection in Defender. </STRONG> Agent activity surfaces in Microsoft Defender alongside the rest of the estate, with alerts wired into the same incident pipeline the SOC already runs on. &nbsp;</LI>
+<LI><STRONG>Threat blocking tool invocation. </STRONG> When you register tools with Agent 365, calls to and responses from those tools are protected by Defender’s runtime protection, blocking high-risk tool calls and actions before they execute. </LI>
+</UL>
+<H3>How companies are putting it to work</H3>
+<P>Many software companies have already integrated the Agent 365 SDK into the agents they build, spanning three primary categories. The first is AI-native software vendors building customer-facing agents, such as Genspark, Zensai, Egnyte, and Zendesk. The second includes agent platforms and “agent factories” where customers build and run their own agents, including Kore.ai, Kasisto, and n8n. And the third is enterprises developing custom internal agents for their own employees and business processes.</P>
+<P>All three groups integrate with the Agent 365 SDK for the same reason: when these agents are deployed into an enterprise, organizations can immediately observe, govern, and secure them in Agent 365 with no additional work required for the core capabilities. More advanced scenarios such as data security and compliance can then be added through Microsoft Purview APIs when required.</P>
+<H3>Two examples of what this looks like in practice</H3>
+<P><STRONG>Kore.ai</STRONG> is an enterprise platform for building and managing AI agents and assistants. Raj Koneru the CEO of Kore.ai had this to say about Agent 365:</P>
+<BLOCKQUOTE>
+<P><EM>"Enterprises can easily build AI agents today but scaling them with trust and governance is where most initiatives stall. With Kore.ai deeply integrated into Microsoft Agent 365, identity, security, and governance are built in from the start, empowering enterprises to move from pilots to AI at scale with confidence."&nbsp;</EM> &nbsp;<STRONG>— &nbsp;Raj Koneru, Chief Executive Officer, Kore.ai</STRONG></P>
+</BLOCKQUOTE>
+<P>&nbsp;</P>
+<P><STRONG>Zensai</STRONG> is an AI-native software development company that ships its Human Success Agent to enterprise customers. Emma Taylor, Culture &amp; Organizational Development Manager at Phoenix Software Solutions, one of&nbsp;Zensai’s&nbsp;customers, on what Agent 365 makes possible: &nbsp;</P>
+<BLOCKQUOTE>
+<P><EM>"Zensai&nbsp;has given us a clear view of how our people and programs are performing, helping us track the metrics that matter. The depth of reporting across the Human Success Platform has been a game changer for our team. We're particularly excited about the Human Success Agent, with Agent 365 delivering the governance and observability our administrators need to confidently manage AI in the enterprise responsibly while surfacing the data and insights that drive better decisions across our business."</EM> &nbsp;<STRONG>— Emma Taylor, Culture &amp; Organizational Development Manager, Phoenix Software Solutions &nbsp;</STRONG></P>
+</BLOCKQUOTE>
+<P>&nbsp;</P>
+<P>The takeaway is direct: integrate once with Agent 365 SDK, and every customer who deploys your agent can easily enable enterprise-grade controls.</P>
+<H3>Get started today</H3>
+<P><STRONG>The Agent 365 SDK is </STRONG><STRONG>available now</STRONG><STRONG>.</STRONG> If your agent is already running, you can onboard it in three steps. &nbsp;</P>
+<OL>
+<LI><STRONG>Install the SDK in your agent project </STRONG>using Python, TypeScript, or .NET.</LI>
+<LI><STRONG>Register the agent with the Agent 365 CLI</STRONG> to provision its identity and automatically onboard it into Agent 365.</LI>
+<LI><STRONG>Wrap your agent entry point with the SDK</STRONG> to stream activity and telemetry into the Agent 365 control plane.</LI>
+</OL>
+<P>For data security visibility and controls, you can integrate Microsoft Purview APIs to enable capabilities such as prompt-based Data Loss Prevention (DLP), Data Security Posture Management, Insider Risk Management, and core compliance features including eDiscovery, Communication Compliance, Audit, and Data Lifecycle Management. <A href="https://aka.ms/PurviewforDevelopers" target="_blank" rel="noopener" aria-label="Link Learn more in our Purview developer blog post.">Learn more in our Purview developer blog post.</A></P>
+<P><A href="http://aka.ms/a365sdk-start" target="_blank" rel="noopener" aria-label="Link Get started with Agent 365 development">Get started with Agent 365 development</A></P>
+<H3>Keep learning</H3>
+<P>Microsoft is actively shaping the Agent 365 SDK based on what builders are asking for. A few places to go deeper and see the SDK in action: &nbsp;</P>
+<UL>
+<LI><STRONG>Watch </STRONG><A href="http://aka.ms/A365-OD840" target="_blank" rel="noopener" aria-label="Link OD840"><STRONG>OD840:</STRONG></A><STRONG>&nbsp;</STRONG>The Microsoft Build on demand developer session that goes deeper on Agent 365 SDK and the design decisions behind it. &nbsp; &nbsp;</LI>
+<LI><STRONG>Watch </STRONG><A href="http://aka.ms/A365-BRK251" target="_blank" rel="noopener" aria-label="Link BRK251"><STRONG>BRK251: </STRONG></A>Build secure and enterprise-ready agents with Agent 365. A hands-on breakout that walks through how Agent 365 SDK and Microsoft Purview APIs work together across the agent lifecycle, with practical examples for runtime visibility, identity-aware access, data protection, and policy-based governance. <U>Available on Wed, Jun 3 11:30 AM - 12:15 PM PDT and on demand.</U></LI>
+<LI><STRONG>Browse the&nbsp;</STRONG><A href="http://aka.ms/a365sdk-docs" target="_blank" rel="noopener" aria-label="Link docs"><STRONG>docs:</STRONG></A> For quick-starts, reference, and the layered toolkit guide.</LI>
+<LI><STRONG>Go deeper on Purview for agents: </STRONG>Start&nbsp;with the <A href="http://aka.ms/PurviewforDevelopers" target="_blank" rel="noopener" aria-label="Link Purview developer blog">Purview developer blog</A> for the story, then the <A href="http://learn.microsoft.com/purview/developer" target="_blank" rel="noopener" aria-label="Link Microsoft Purview developer documentation">Microsoft Purview developer documentation</A> for the full reference.</LI>
+<LI><STRONG>Read more on Entra Agent ID: </STRONG>Start with the <A href="http://aka.ms/entra-agentid-dev" target="_blank" rel="noopener" aria-label="Link Entra Agent ID developer blog">Entra Agent ID developer blog</A>, then the <A href="http://learn.microsoft.com/entra/agent-id" target="_blank" rel="noopener" aria-label="Link Microsoft Entra Agent ID documentation">Microsoft Entra Agent ID documentation</A> for the full reference. &nbsp;</LI>
+</UL>
+<P>Shipping an agent that IT and security teams can actually approve doesn't have to mean piecing together multiple solutions. With the Agent 365 SDK, you can build enterprise-ready agents that organizations can deploy with confidence. &nbsp;</P>
+<P aria-level="1"><SPAN style="color: rgb(30, 30, 30);">&nbsp;</SPAN></P>
+<P><EM><SPAN data-ccp-props="{}">&nbsp;Co-Authored by Jeremiah Follis</SPAN></EM></P>
+Tue, 02 Jun 2026 19:19:00 GMT
+https://techcommunity.microsoft.com/t5/agent-365-blog/make-any-agent-enterprise-ready-with-the-agent-365-sdk/ba-p/4524575
+aaronbjork
+2026-06-02T19:19:00Z
+Microsoft 365 E7 & Agent365: From Where You Are to Enterprise AI at Scale
+https://techcommunity.microsoft.com/t5/agent-365-blog/microsoft-365-e7-agent365-from-where-you-are-to-enterprise-ai-at/ba-p/4519969
+<H2>Introduction</H2>
+<P>As organizations move beyond AI experimentation and begin operationalizing <STRONG>agent-based AI workloads</STRONG>, a new set of challenges is emerging <STRONG>governance, visibility, and control</STRONG>.</P>
+<P>Microsoft’s response to this shift is <STRONG>Microsoft 365 E7</STRONG>, introduced on May 1, 2026. It bundles:</P>
+<UL>
+<LI>Microsoft 365 E5</LI>
+<LI>Microsoft 365 Copilot</LI>
+<LI>Microsoft Entra Suite</LI>
+<LI>Microsoft Agent 365</LI>
+</UL>
+<P>This represents Microsoft’s strategic direction toward a <STRONG>human-led, agent-operated enterprise</STRONG>.</P>
+<P>However, a key pattern is emerging:</P>
+<P>Many organizations deploy Agent 365 and assume governance is complete.</P>
+<P>It isn’t.</P>
+<H2>Understanding Agent 365: Control Plane, Not Control Source</H2>
+<P>Agent 365 is not a standalone security solution, it is a&nbsp;<STRONG>control plane for AI agents</STRONG>.</P>
+<P>It provides:</P>
+<UL>
+<LI>Agent registry and discovery</LI>
+<LI>Blueprint governance and lifecycle control</LI>
+<LI>Observability across agents</LI>
+<LI>Aggregation of signals from Entra, Defender and Purview</LI>
+</UL>
+<H3>Simple analogy</H3>
+<P>Agent 365 is like a <STRONG>dashboard in a car</STRONG></P>
+<UL>
+<LI>It shows status</LI>
+<LI>It aggregates signals</LI>
+<LI>But it does not generate signals</LI>
+</UL>
+<P>Without identity, data and threat signals → governance visibility is incomplete.</P>
+<H2>The Key Gap: “Enabled” vs “Governed”</H2>
+<P>Agent 365 can be enabled standalone but governance requires:</P>
+<UL>
+<LI>Identity signals (Entra)</LI>
+<LI>Threat signals (Defender)</LI>
+<LI>Data risk signals (Purview)</LI>
+</UL>
+<P>This gap between “enablement” and “full governance” is where most deployments fall short.</P>
+<H3>Agent 365 Governance Maturity Heatmap</H3>
+<P>The following heatmap summarizes how governance capabilities evolve as you layer the Microsoft stack:</P>
+<DIV class="styles_lia-table-wrapper__h6Xo9 styles_table-responsive__MW0lN"><table class="lia-border-style-dotted" border="1" style="border-width: 1px;"><tbody><tr><th>Capability</th><th>Agent 365 on E3</th><th>+ Defender Suite</th><th>+ Purview Suite</th><th>+ Entra Suite</th><th>E7 (Full)</th></tr><tr><th><STRONG>Agent registry / inventory</STRONG></th><td>✅ <STRONG>Full</STRONG></td><td>✅</td><td>✅</td><td>✅</td><td>✅</td></tr><tr><th><STRONG>Shadow agent discovery</STRONG></th><td>✅ <STRONG>Full</STRONG></td><td>✅</td><td>✅</td><td>✅</td><td>✅</td></tr><tr><th><STRONG>Blueprint governance / kill-switch</STRONG></th><td>✅ <STRONG>Full</STRONG></td><td>✅</td><td>✅</td><td>✅</td><td>✅</td></tr><tr><th><STRONG>First-party agent observability</STRONG></th><td>✅ <STRONG>Full</STRONG></td><td>✅</td><td>✅</td><td>✅</td><td>✅</td></tr><tr><th><STRONG>Conditional Access for agents (P1)</STRONG></th><td>✅ Already in BP/E3</td><td>✅</td><td>✅</td><td>✅</td><td>✅</td></tr><tr><th><STRONG>ID Governance for agents (P1)</STRONG></th><td>✅ Already in BP/E3</td><td>✅</td><td>✅</td><td>✅</td><td>✅</td></tr><tr><th><STRONG>Risk-based CA / ID Protection (P2)</STRONG></th><td>❌</td><td>✅</td><td>❌</td><td>✅</td><td>✅</td></tr><tr><th><STRONG>MDA behavioral risk detection</STRONG></th><td>❌</td><td>✅</td><td>❌</td><td>❌</td><td>✅</td></tr><tr><th><STRONG>Risks column fully populated</STRONG></th><td>⚠️ Entra only</td><td>⚠️ Entra + Defender</td><td>⚠️ Entra + Purview</td><td>⚠️ Entra + Network</td><td>✅ <STRONG>All signals</STRONG></td></tr><tr><th><STRONG>Purview DLP for agent interactions</STRONG></th><td>⚠️ Basic only</td><td>⚠️ Basic only</td><td>✅ Full</td><td>⚠️ Basic only</td><td>✅ Full</td></tr><tr><th><STRONG>DSPM for AI</STRONG></th><td>❌</td><td>❌</td><td>✅</td><td>❌</td><td>✅</td></tr><tr><th><STRONG>Shadow AI discovery (external tools)</STRONG></th><td>❌</td><td>❌</td><td>❌</td><td>✅</td><td>✅</td></tr><tr><th><STRONG>Security Copilot SCUs</STRONG></th><td>❌</td><td>❌</td><td>❌</td><td>❌</td><td>✅ <EM>(via E5)</EM></td></tr></tbody><colgroup><col style="width: 16.67%" /><col style="width: 16.67%" /><col style="width: 16.67%" /><col style="width: 16.67%" /><col style="width: 16.67%" /><col style="width: 16.67%" /></colgroup></table></DIV>
+<H2>🔍 Interpretation of the Heatmap</H2>
+<H3>Key insight:</H3>
+<P>Agent 365 on its own provides&nbsp;<STRONG>visibility and governance scaffolding</STRONG>, but <STRONG>true governance maturity emerges only when identity (Entra) threat (Defender), and data (Purview) signals are combined</STRONG>.</P>
+<P>Microsoft 365 E7 is the only SKU that delivers <STRONG>all signals, identity, security, compliance and AI governance in a single integrated model</STRONG>.</P>
+<H2>What Works with Agent 365 Alone</H2>
+<P>On Business Premium or E3 + Agent 365, you still get meaningful capabilities:</P>
+<UL>
+<LI>Agent registry (full visibility)</LI>
+<LI>Shadow agent discovery</LI>
+<LI>Blueprint governance and kill-switch</LI>
+<LI>Entra Agent ID (identity registration)</LI>
+<LI>Conditional Access for agents (via Entra P1)</LI>
+<LI>ID Governance (via Entra P1)</LI>
+<LI>First-party agent observability</LI>
+</UL>
+<P>This provides a <STRONG>strong governance foundation</STRONG>, especially for early-stage adoption.</P>
+<H2>What’s Missing Without the Full Stack</H2>
+<P>Without Defender, Purview, and Entra Suite key capabilities are limited:</P>
+<UL>
+<LI>Risk-based Conditional Access (requires Entra P2)</LI>
+<LI>Behavioral threat detection (Defender)</LI>
+<LI>Data interaction governance (Purview DLP)</LI>
+<LI>AI data security posture (DSPM for AI)</LI>
+<LI>External shadow AI discovery (Entra Internet Access)</LI>
+</UL>
+<H3>Result:</H3>
+<P>You can see agents exist but you cannot fully assess&nbsp;<STRONG>risk, behavior or data exposure</STRONG>.</P>
+<H3>What changes across layers:</H3>
+<DIV class="styles_lia-table-wrapper__h6Xo9 styles_table-responsive__MW0lN"><table border="1" style="border-width: 1px;"><tbody><tr><th>Layer Added</th><th>What Improves</th></tr><tr><td>Defender</td><td>Threat detection, behavioral risk</td></tr><tr><td>Purview</td><td>Data protection, AI data governance</td></tr><tr><td>Entra Suite</td><td>Network + identity-level AI control</td></tr><tr><td>E7</td><td>Full integration across all layers</td></tr></tbody><colgroup><col style="width: 50.00%" /><col style="width: 50.00%" /></colgroup></table></DIV>
+<H2>Licensing Model: Clarifying Agent 365</H2>
+<P>Agent 365 licensing is simple but often misunderstood:</P>
+<UL>
+<LI>Licensed <STRONG>per user (not per agent)</STRONG></LI>
+<LI>Covers <STRONG>all agents owned or managed by that user</STRONG></LI>
+<LI>Agents do <STRONG>not need individual licenses</STRONG></LI>
+</UL>
+<P>This eliminates agent sprawl licensing concerns and anchors governance to the user identity.</P>
+<H2>Upgrade Math by Starting Point</H2>
+<P>This is where architecture meets commercial reality.</P>
+<H3>📍 Business Premium</H3>
+<P><STRONG>Starting point: $22/user</STRONG></P>
+<DIV class="styles_lia-table-wrapper__h6Xo9 styles_table-responsive__MW0lN"><table border="1" style="border-width: 1px;"><tbody><tr><th>Step</th><th>Add-on</th><th>Total</th></tr><tr><td>Step 1</td><td>Agent 365 ($15)</td><td>$37</td></tr><tr><td>Step 2</td><td>Defender + Purview Combo ($15)</td><td>$52</td></tr><tr><td>Step 3</td><td>Entra Suite ($12)</td><td>$64</td></tr><tr><td>Step 4</td><td>Copilot + Intune Suite</td><td>~$95</td></tr></tbody><colgroup><col style="width: 33.33%" /><col style="width: 33.33%" /><col style="width: 33.33%" /></colgroup></table></DIV>
+<P>👉 Full E7 Parity: ~$95/user<BR />👉 E7: $99/user</P>
+<P>At this stage:</P>
+<UL>
+<LI>Minimal price difference</LI>
+<LI>E7 adds Security Copilot + removes 300-user limit</LI>
+</UL>
+<P>✅ This is where consolidation becomes compelling.</P>
+<H3>📍 E3</H3>
+<P><STRONG>Starting point: $39/user</STRONG></P>
+<DIV class="styles_lia-table-wrapper__h6Xo9 styles_table-responsive__MW0lN"><table border="1" style="border-width: 1px;"><tbody><tr><th>Component</th><th>Cost</th></tr><tr><td>E3 Base</td><td>$39</td></tr><tr><td>Agent 365</td><td>$15</td></tr><tr><td>Defender Suite</td><td>$12</td></tr><tr><td>Purview Suite</td><td>$12</td></tr><tr><td>Entra Suite</td><td>$12</td></tr><tr><td>Intune Suite</td><td>$10</td></tr><tr><td>Copilot</td><td>$30</td></tr><tr><th><STRONG>Total</STRONG></th><td><STRONG>$130/user</STRONG></td></tr></tbody><colgroup><col style="width: 50.00%" /><col style="width: 50.00%" /></colgroup></table></DIV>
+<P>👉 E7: $99/user</P>
+<P>💥 Delta: $31/user<BR />💥 ~<STRONG>$74K/year extra for 200 users</STRONG></P>
+<P>&nbsp;</P>
+<P>✅Use Agent 365 for visibility if needed</P>
+<P>✅Avoid building full add-on stack</P>
+<P>✅Move to E5 or E7 early</P>
+<H3>📍 E5</H3>
+<P><STRONG>Starting point: $60/user</STRONG></P>
+<P>Remaining gaps:</P>
+<UL>
+<LI>Copilot ($30)</LI>
+<LI>Entra Suite ($12)</LI>
+<LI>Agent 365 ($15)</LI>
+</UL>
+<P>👉 Total: $117/user<BR />👉 E7: $99/user</P>
+<P>💥 Savings: $18/user<BR />💥 ~<STRONG>$108K/year for 500 users</STRONG></P>
+<P>✅ ~15% savings</P>
+<P>✅ Simplified licensing</P>
+<P>✅ This becomes a strong&nbsp;<STRONG>renewal conversation driver</STRONG>.</P>
+<H2>Architectural Perspective</H2>
+<P>AI governance requires layered architecture:</P>
+<DIV class="styles_lia-table-wrapper__h6Xo9 styles_table-responsive__MW0lN"><table border="1" style="border-width: 1px;"><tbody><tr><th>Layer</th><th>Function</th></tr><tr><td>Agent 365</td><td>Control plane</td></tr><tr><td>Entra</td><td>Identity + access</td></tr><tr><td>Defender</td><td>Threat detection</td></tr><tr><td>Purview</td><td>Data protection</td></tr></tbody><colgroup><col style="width: 50.00%" /><col style="width: 50.00%" /></colgroup></table></DIV>
+<P>Governance is not a feature, it is a system built on continuous signals across identity, security and data.</P>
+<H2>How to Position This in Customer Conversations</H2>
+<H3>For Business Premium</H3>
+<UL>
+<LI>Start with Agent 365</LI>
+<LI>Add Defender + Purview for maximum value</LI>
+</UL>
+<H3>For E3</H3>
+<UL>
+<LI>Avoid incremental add-ons</LI>
+<LI>Move to E5/E7</LI>
+</UL>
+<H3>For E5</H3>
+<UL>
+<LI>Position E7 as <STRONG>cost optimization + simplification</STRONG></LI>
+</UL>
+<H2><STRONG>Final Thought</STRONG></H2>
+<P>Agent 365 is a foundational capability but it is not a complete solution.</P>
+<P>On its own, it gives you visibility and a governance layer. But enterprise AI governance is not just about seeing and managing agents it’s about understanding&nbsp;<STRONG>what they’re doing, what they’re accessing and whether they should be doing it at all</STRONG>.</P>
+<P>A simple way to think about it:</P>
+<P>Deploying Agent 365 alone is like setting up a badge system in your building you can track who is inside and control access.</P>
+<P>But without the broader security stack, you still can’t:</P>
+<UL>
+<LI>Detect risky or unusual behavior</LI>
+<LI>Protect sensitive data from overexposure</LI>
+<LI>Enforce governance consistently across the environment</LI>
+</UL>
+<H2>Bottom Line</H2>
+<UL>
+<LI><STRONG>Agent 365</STRONG> provides the control plane</LI>
+<LI><STRONG>Security and compliance services</STRONG> provide the signals</LI>
+<LI><STRONG>Microsoft 365 E7</STRONG> brings these together into a unified governance model</LI>
+</UL>
+<H2>The Strategic Shift</H2>
+<P>Organizations are moving from:</P>
+<UL>
+<LI><STRONG>AI as tools</STRONG> → isolated productivity gains</LI>
+<LI><STRONG>AI as systems</STRONG> → integrated workflows and automation</LI>
+<LI><STRONG>AI as governed ecosystems</STRONG> → secure, compliant, and scalable operations</LI>
+</UL>
+<P>Sustainable AI adoption is not defined by capability alone it is defined by <STRONG>how effectively that capability is governed at scale</STRONG>.</P>
+<P>E7 is not just a licensing evolution it represents a&nbsp;<STRONG>shift to an integrated AI operating model</STRONG>, where governance is embedded by design, not added as an afterthought.</P>
+Fri, 15 May 2026 07:13:27 GMT
+https://techcommunity.microsoft.com/t5/agent-365-blog/microsoft-365-e7-agent365-from-where-you-are-to-enterprise-ai-at/ba-p/4519969
+umamasurkar28
+2026-05-15T07:13:27Z
+Agent365: The Identity-First Control Plane for Scalable AI Agents
+https://techcommunity.microsoft.com/t5/agent-365-blog/agent365-the-identity-first-control-plane-for-scalable-ai-agents/ba-p/4519921
+<P>As organizations move from AI experimentation to enterprise-scale adoption, AI agents are increasingly becoming persistent actors within the digital environment accessing data, invoking APIs, and executing workflows autonomously.&nbsp;</P>
+<P>This shift introduces a new governance challenge:<BR /><STRONG>How do organizations ensure visibility, control and security as the number of agents scales across cloud, SaaS and endpoint environments?</STRONG></P>
+<P>Microsoft Agent365 addresses this challenge by introducing a <STRONG>control plane for AI agents</STRONG>, built on Microsoft Entra, that enables organizations to manage agents using the same identity-driven approach applied to users and applications.</P>
+<H2><STRONG>Why Identity Becomes Foundational for Agent Governance</STRONG></H2>
+<P>In traditional enterprise systems, identity platforms were designed to manage:</P>
+<UL>
+<LI>Human identities</LI>
+<LI>Application identities</LI>
+<LI>Service principals</LI>
+</UL>
+<P>With the introduction of Agent365, this model expands to include <STRONG>AI agents as first-class identities</STRONG>. Each agent is assigned a unique identity in Microsoft Entra, enabling consistent authentication, authorization, and lifecycle management.&nbsp;</P>
+<P>This approach allows organizations to:</P>
+<UL>
+<LI>Apply <STRONG>policy-based access controls</STRONG> to agents</LI>
+<LI>Enforce <STRONG>least privilege access models</STRONG></LI>
+<LI>Integrate agents into <STRONG>existing IAM and Zero Trust frameworks</STRONG></LI>
+</UL>
+<P>As highlighted in recent partner perspectives, identity is evolving from a supporting capability to a <STRONG>centralized control plane for AI governance</STRONG>.</P>
+<H2><STRONG>Managing Agent Sprawl with a Unified Control Plane</STRONG></H2>
+<P>As AI agents proliferate across business units, organizations often face challenges such as:</P>
+<UL>
+<LI>Limited visibility into deployed agents</LI>
+<LI>Inconsistent ownership and lifecycle management</LI>
+<LI>Over-permissioned or unmanaged access to data</LI>
+<LI>Increased operational and security risks</LI>
+</UL>
+<P>Agent365 addresses these challenges through a unified control plane that enables organizations to:</P>
+<UL>
+<LI><STRONG>Discover and inventory agents</STRONG> across the environment</LI>
+<LI><STRONG>Apply governance policies</STRONG> consistently</LI>
+<LI><STRONG>Secure agent interactions and data access</STRONG></LI>
+</UL>
+<P>This aligns with Microsoft’s broader approach to enable organizations to <STRONG>observe, govern, and secure</STRONG> AI workloads at scale.</P>
+<H2><STRONG>Agents as Managed Identities in Microsoft Entra</STRONG></H2>
+<P>One of the core innovations of Agent365 is the introduction of <STRONG>Entra Agent ID</STRONG>, which treats agents as managed identities within the directory.&nbsp;</P>
+<P>This enables organizations to manage agents using familiar identity capabilities, including:</P>
+<UL>
+<LI><STRONG>Conditional Access</STRONG></LI>
+<LI><STRONG>Role-based and attribute-based access control (RBAC/ABAC)</STRONG></LI>
+<LI><STRONG>Identity governance workflows (e.g., access reviews, lifecycle policies)</STRONG></LI>
+<LI><STRONG>Audit and compliance monitoring</STRONG></LI>
+</UL>
+<P>By aligning agent governance with identity, organizations can extend existing security controls without introducing separate governance silos.</P>
+<H2><STRONG>Architecture Overview: Identity-Centric Control Plane</STRONG></H2>
+<P>Agent365 integrates across Microsoft’s security and compliance ecosystem to provide a layered governance model:</P>
+<H3><STRONG>Identity Layer (Control Plane Foundation)</STRONG></H3>
+<UL>
+<LI>Microsoft Entra ID for Agents</LI>
+<LI>Identity governance and lifecycle controls</LI>
+<LI>Conditional access enforcement</LI>
+</UL>
+<H3><STRONG>Governance Layer</STRONG></H3>
+<UL>
+<LI>Centralized agent registry (inventory of agents)</LI>
+<LI>Ownership and accountability tracking</LI>
+<LI>Policy enforcement across agent lifecycle</LI>
+</UL>
+<H3><STRONG>Security and Compliance Layer</STRONG></H3>
+<UL>
+<LI>Microsoft Defender for threat detection and behavior monitoring</LI>
+<LI>Microsoft Purview for data protection and compliance</LI>
+<LI>Integration with Zero Trust architecture</LI>
+</UL>
+<H3><STRONG>Observability Layer</STRONG></H3>
+<UL>
+<LI>Unified telemetry and dashboards</LI>
+<LI>Monitoring of agent activities and interactions</LI>
+</UL>
+<P>Agent365 brings these capabilities together into a centralized experience within Microsoft 365, enabling consistent control across heterogeneous agent ecosystems.</P>
+<H2><STRONG>Extending Zero Trust Principles to AI Agents</STRONG></H2>
+<P>As agents operate autonomously and interact with multiple systems, extending Zero Trust principles becomes essential.</P>
+<P>Agent365 allows organizations to apply:</P>
+<UL>
+<LI><STRONG>Continuous verification of agent identity</STRONG></LI>
+<LI><STRONG>Least privilege access enforcement</STRONG></LI>
+<LI><STRONG>Real-time monitoring and anomaly detection</STRONG></LI>
+</UL>
+<P>This ensures that agents operate within defined boundaries, reducing the risk of unintended actions or data exposure, while enabling secure scaling of AI adoption.</P>
+<H2><STRONG>Key Capabilities Supporting Identity as the Control Plane</STRONG></H2>
+<P>Agent365 enables identity-driven governance through a set of core capabilities:</P>
+<UL>
+<LI><STRONG>Agent Registry</STRONG><BR />Provides a centralized inventory and visibility across all agents</LI>
+<LI><STRONG>Access Control</STRONG><BR />Enables policy-based and conditional access through Microsoft Entra</LI>
+<LI><STRONG>Lifecycle Management</STRONG><BR />Supports provisioning, updates, and decommissioning of agents</LI>
+<LI><STRONG>Security and Compliance Integration</STRONG><BR />Extends Defender and Purview capabilities to agent workflows</LI>
+<LI><STRONG>Cross-platform Support</STRONG><BR />Enables governance across Microsoft, open-source, and third-party agents</LI>
+</UL>
+<P>These capabilities help organizations manage agent ecosystems with the same rigor applied to workforce identities.</P>
+<H2><STRONG>Key gaps Agent365 will surface</STRONG></H2>
+<UL>
+<LI><STRONG>Shadow agents</STRONG><BR />More agents exist than you think built across Copilot Studio, Power Platform, or third-party tools… but never inventoried.</LI>
+<LI><STRONG>Ownerless agents</STRONG><BR />Agents continue running in production with no clear owner or accountability.</LI>
+<LI><STRONG>Over-permissioned access</STRONG><BR />Agents often inherit excessive privileges far beyond least-privilege intent.</LI>
+<LI><STRONG>No lifecycle governance</STRONG><BR />No expiry, no reviews, no retirement. Agents accumulate over time.</LI>
+<LI><STRONG>Untracked multi-agent workflows</STRONG><BR />Agent-to-agent interactions lack complete audit trails.</LI>
+<LI><STRONG>Data exposure via agents</STRONG><BR />Agents amplify existing oversharing risks across enterprise data.</LI>
+<LI><STRONG>Identity &amp; access gaps</STRONG><BR />Traditional conditional access wasn’t designed for autonomous, non-human identities.</LI>
+</UL>
+<P>And in most enterprises, the true scale of these gaps is often underestimated.</P>
+<H2><STRONG>Enabling Secure and Scalable Agentic AI</STRONG></H2>
+<P>Organizations are increasingly recognizing that scaling AI is not just about deploying agents, but about <STRONG>ensuring control, visibility and compliance</STRONG> across their operations.</P>
+<P>Agent365 provides a framework to:</P>
+<UL>
+<LI>Bring agents under a <STRONG>common governance model</STRONG></LI>
+<LI>Align AI operations with <STRONG>enterprise identity architecture</STRONG></LI>
+<LI>Reduce risks associated with unmanaged automation</LI>
+</UL>
+<P>By anchoring agents within Microsoft Entra, enterprises can leverage existing investments in identity, security and compliance to support AI at scale.</P>
+<H2><STRONG>Conclusion</STRONG></H2>
+<P>The transition to agentic AI introduces a new category of identity within the enterprise.</P>
+<P>With Agent365, Microsoft establishes identity as the <STRONG>foundational control plane </STRONG>enabling organizations to manage AI agents as governed, auditable and secure entities.</P>
+<P>As enterprises continue to adopt AI, this approach ensures that innovation can scale while maintaining the control, trust and compliance required in modern digital environments.</P>
+<P>&nbsp;</P>
+Fri, 15 May 2026 05:16:51 GMT
+https://techcommunity.microsoft.com/t5/agent-365-blog/agent365-the-identity-first-control-plane-for-scalable-ai-agents/ba-p/4519921
+umamasurkar28
+2026-05-15T05:16:51Z
+You Asked—We Answered: Inside the Agent 365 AMA
+https://techcommunity.microsoft.com/t5/agent-365-blog/you-asked-we-answered-inside-the-agent-365-ama/ba-p/4519485
+<P>If you missed our live Agent 365 demo and 'Ask Microsoft Anything' AMA—or want to revisit the discussion—this replay is worth your time.</P>
+<P>During the session, we walked through how Agent 365 brings visibility, security, and governance to the rapidly expanding world of AI agents—across both Microsoft and third-party ecosystems. But what made the session especially valuable was the live Q&amp;A: a candid conversation with our experts tackling the real questions organizations are facing right now.</P>
+<P>From licensing and identity models to monitoring third-party agents, managing “shadow AI,” defining risk, and understanding what governance actually looks like in practice—our panel answered it all, live.</P>
+<P>Watch the replay to hear their responses and get clarity on how to confidently adopt and manage AI agents at scale.</P>
+<div data-video-id="https://www.youtube.com/watch?v=sctf7cAeICc/1778688953190" data-video-remote-vid="https://www.youtube.com/watch?v=sctf7cAeICc/1778688953190" class="lia-video-container lia-media-is-center lia-media-size-large"><iframe src="https://cdn.embedly.com/widgets/media.html?src=https%3A%2F%2Fwww.youtube.com%2Fembed%2Fsctf7cAeICc%3Ffeature%3Doembed&amp;display_name=YouTube&amp;url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3Dsctf7cAeICc&amp;image=https%3A%2F%2Fi.ytimg.com%2Fvi%2Fsctf7cAeICc%2Fhqdefault.jpg&amp;type=text%2Fhtml&amp;schema=youtube" allowfullscreen="" style="max-width: 100%"></iframe></div>
+<P class="lia-align-center"><A href="https://techcommunity.microsoft.com/event/microsoft365-events/live-ama-microsoft-agent-365/4511700" target="_blank" rel="noopener">Live AMA: Microsoft Agent 365 | Microsoft Community Hub</A></P>
+<H4><STRONG>Questions about Agent 365 answered in the AMA</STRONG></H4>
+<P>Community members submitted questions via live chat during our Q&amp;A session. Our expert panel answered all of these questions live--watch the video to get their detailed responses!</P>
+<OL>
+<LI>
+<H6>How is Agent 365 licensed?</H6>
+</LI>
+<LI>
+<H6>Microsoft language references three roles (or actions) which need an Agent 365 license. They are users that “interact with”, “manage”, or “sponsor” agents that use Agent 365 Premium capabilities. Can you expand on what defines those three user actions/roles?</H6>
+</LI>
+<LI>
+<H6>I'm planning to build ai agents in Google ADK and want to know if it can be monitored using Agent 365?</H6>
+</LI>
+<LI>
+<H6>Since Agent 365 allows bringing in both first-party and third-party agents, what's the identity and licensing model.</H6>
+</LI>
+<LI>
+<H6>If an agent is not using an Entra Agent Identity, will it still appear in Agent 365 observability or governance?</H6>
+</LI>
+<LI>
+<H6>So, could organizations use Agent 365 for central visibility, monitoring, and governance of agents, even if those agents don’t have their own identities?</H6>
+</LI>
+<LI>
+<H6>Does that mean companies could avoid needing a per-user Agent 365 license for every employee interacting with the agent?</H6>
+</LI>
+<LI>
+<H6>Is there a way of defining a "shadow AI" experience as non-shadowAI? If I want to authorize Claude CLI, how would I do that?</H6>
+</LI>
+<LI>
+<H6>Agents from the Microsoft ecosystem (Copilot Studio, Foundry, SharePoint) and agents from the partner ecosystem will be automatically onboarded into Agent 365. However, today many of these agents execute as users, and some may continue to operate this way indefinitely. In other words, they may never receive their own Entra ID agent identity and may never run using an On-Behalf-Of (OBO) model. What observability, security and governance features of Agent 365 will be available for non-OBO agents?</H6>
+</LI>
+<LI>
+<H6>What are the rules that define what a "risky" agent is?</H6>
+</LI>
+<LI>
+<H6>If an agent is determined as "risky", then how are those signals captured?</H6>
+</LI>
+<LI>
+<H6>When you are reviewing the Agent Risk Activities, is it a mandate to block the agent to review risk activities?</H6>
+</LI>
+<LI>
+<H6>Do you lose autonomous agent usage without an Agent365 license?</H6>
+</LI>
+<LI>
+<H6>What capabilities will be provided for Managed Service Providers (MSP's) to manage Agent 365 across multi-tenant, multi-customer environments?</H6>
+</LI>
+<LI>
+<H6>I'm quite intrigued to know about the pricing structure of M365 agents leveraging MCP tools - is it per user, per agent, per tool invocation, or consumption-based?</H6>
+</LI>
+<LI>
+<H6>Will MCP remote server (soon to be Public Preview) usage incur additional costs on top of Copilot licensing? Will it be bundled to M365 Copilot licensing or be standalone billable service?</H6>
+</LI>
+<LI>
+<H6>Does Agent Rules need to executed manually whenever it’s required... or Agent Rules can be scheduled?</H6>
+</LI>
+<LI>
+<H6>How big is the delta between monitoring agents and controlling agents? Is it 1:1, can any aspect you can monitor about the agent can also be controlled?</H6>
+</LI>
+<LI>
+<H6>What resources are available to help my organization get started with Agent 365?</H6>
+</LI>
+</OL>
+<P>&nbsp;</P>
+<P><STRONG>THANK YOU to all of our community members who participated in the AMA!</STRONG> And thank you to our host <a href="javascript:void(0)" data-lia-user-mentions="" data-lia-user-uid="1571197" data-lia-user-login="Samer_Baroudi" class="lia-mention lia-mention-user">Samer_Baroudi​</a>, demoer and expert Paty Carlos,&nbsp;as well as our expert panel <a href="javascript:void(0)" data-lia-user-mentions="" data-lia-user-uid="419646" data-lia-user-login="Irina_Nechaeva" class="lia-mention lia-mention-user">Irina_Nechaeva​</a> <a href="javascript:void(0)" data-lia-user-mentions="" data-lia-user-uid="648376" data-lia-user-login="NetaH" class="lia-mention lia-mention-user">NetaH​</a> <a href="javascript:void(0)" data-lia-user-mentions="" data-lia-user-uid="2662270" data-lia-user-login="carolinestanford" class="lia-mention lia-mention-user">carolinestanford​</a> and our live chat responders&nbsp;<a href="javascript:void(0)" data-lia-user-mentions="" data-lia-user-uid="1461768" data-lia-user-login="alexpozin" class="lia-mention lia-mention-user">alexpozin​</a> <a href="javascript:void(0)" data-lia-user-mentions="" data-lia-user-uid="2087995" data-lia-user-login="LouAdesida" class="lia-mention lia-mention-user">LouAdesida​</a> <a href="javascript:void(0)" data-lia-user-mentions="" data-lia-user-uid="2440949" data-lia-user-login="Nathalia_Borges" class="lia-mention lia-mention-user">Nathalia_Borges​</a> <a href="javascript:void(0)" data-lia-user-mentions="" data-lia-user-uid="1716747" data-lia-user-login="Sophie_Ke" class="lia-mention lia-mention-user">Sophie_Ke​</a> <a href="javascript:void(0)" data-lia-user-mentions="" data-lia-user-uid="176920" data-lia-user-login="CasandraMarrero" class="lia-mention lia-mention-user">CasandraMarrero​</a> and <a href="javascript:void(0)" data-lia-user-mentions="" data-lia-user-uid="40570" data-lia-user-login="Leandro_Iwase" class="lia-mention lia-mention-user">Leandro_Iwase​</a>!</P>
+<P>&nbsp;</P>
+<P>Best regards,</P>
+<P>Nichole</P>
+<H4>Top five: Agent 365 Resources</H4>
+<OL>
+<LI>
+<H6><A href="https://aka.ms/Agent365" target="_blank" rel="noopener"><STRONG>Overview, Plans and Pricing: </STRONG>https://aka.ms/Agent365</A>&nbsp;</H6>
+</LI>
+<LI>
+<H6>&nbsp;<A class="lia-external-url" href="https://aka.ms/Agent365docs" target="_blank" rel="noopener"><STRONG>Technical Documentation: </STRONG>https://aka.ms/Agent365docs</A>&nbsp;</H6>
+</LI>
+<LI>
+<H6><A class="lia-external-url" href="https://aka.ms/Agent365getstarted" target="_blank" rel="noopener"><STRONG>Adoption Resources:</STRONG> https://aka.ms/Agent365getstarted</A>&nbsp;</H6>
+</LI>
+<LI>
+<H6><A class="lia-external-url" href="https://aka.ms/Agent365blog" target="_blank" rel="noopener"><STRONG>Product Blog: </STRONG>https://aka.ms/Agent365blog</A>&nbsp;</H6>
+</LI>
+<LI>
+<H6><A class="lia-external-url" href="https://aka.ms/Agent365licensing" target="_blank" rel="noopener"><STRONG>Licensing FAQ: </STRONG>https://aka.ms/Agent365licensing</A>&nbsp;</H6>
+</LI>
+</OL>
+Wed, 13 May 2026 19:19:13 GMT
+https://techcommunity.microsoft.com/t5/agent-365-blog/you-asked-we-answered-inside-the-agent-365-ama/ba-p/4519485
+Nichole_Peterson
+2026-05-13T19:19:13Z
+What’s New in Agent 365: May 2026
+https://techcommunity.microsoft.com/t5/agent-365-blog/what-s-new-in-agent-365-may-2026/ba-p/4516340
+<P><EM>By Alex Pozin, Samer Baroudi</EM></P>
+<P>As we celebrate the&nbsp;<A class="lia-external-url" href="https://aka.ms/A365GAblog" target="_blank" rel="noopener">general availability of Agent 365,</A> we’re sharing a closer look at the core capabilities that help organizations adopt agents at scale, responsibly and with speed. Agent 365 is built on three core value pillars: observe, govern, and secure, designed to give IT and security teams clear visibility, consistent controls, and enterprise-grade protection across your entire agent fleet. In this series, we’ll highlight new Agent 365 features and enhancements now and over the months ahead. Let’s dive deep into all the things you can do today. &nbsp;</P>
+<H2>Observe: Monitor and manage agents in real time</H2>
+<H3>Agent 365 overview dashboard</H3>
+<P>The Agent 365 overview dashboard is your starting point for Agent 365 in the Microsoft 365 admin center. With the overview dashboard you gain a clear, real-time view of your agents fleet by surfacing key metrics such as total registered agents, active users, growth trends, connected platforms, total runtime in hours, and emerging risk signals. At a glance, admins can understand the scale, adoption, and overall risk posture of their agent fleet, while recommended actions highlight where attention is needed most, such as reviewing pending agent requests, assigning owners to unclaimed agents, or addressing agents with exceptions (e.g. errors in conversation). Deeper analytics enable exploration of who is building agents, which platforms are gaining traction, how adoption is trending over time, and which agents are most heavily used, helping organizations move from basic visibility to informed, proactive governance as their agent ecosystem grows. As we continue to enrich the overview dashboard based on your needs, use this surface to quickly assess the scale, health, and risk posture of your agent environment, and take prioritized actions to stay in control as adoption grows.</P>
+<img>An image showing the Agent 365 overview page with tile cards displaying key metrics, top actions and agent analytics.</img>
+<H3><A class="lia-anchor" target="_blank" name="_Toc1064385918"></A>Registry</H3>
+<P>As organizations scale their use of agents, having a single, authoritative system of record for agents becomes foundational to visibility, control, and trust. Agent 365 provides a centralized and unified registry that serves as the system of record for agents in the organization. Each agent<SUP>1</SUP>, including those built by Microsoft, your organization, or ecosystem partners, is detailed with a complete record enriched with metadata like its name, description, publisher, platform, ownership, availability and deployment status, permissions from the Microsoft Graph, data and tools access, security and compliance details, certifications, usage activity, and more, giving IT and security teams a full view and eliminating blind spots.</P>
+<img><SPAN data-contrast="auto">An image displaying the Agent 365 registry, showing a list view of agents, tile cards for agent counts, and filter/search navigation elements.</SPAN></img>
+<H3><A class="lia-anchor" target="_blank" name="_Toc34039003"></A>Map</H3>
+<P>The agents map view provides a visual graph of the agent ecosystem, organizing agents by platform into clear clusters and surfacing agent counts so admins can quickly understand the scale and composition of their environment. As you zoom in, the map reveals individual agents and, for a selected agent, visualizes its connections to other agents, making dependencies and relationships explicit as agent usage grows across Microsoft and third-party platforms. Together, these views help IT and security teams move beyond static lists to spot patterns, understand how agents interact, and maintain visibility as their agent landscape becomes more complex.</P>
+<img>An image showing the map view of all agents in the organization clustered by platform</img>
+<H3><A class="lia-anchor" target="_blank" name="_Toc603326186"></A>Agent-level activity</H3>
+<P>Agent‑level activity metrics give admins operational visibility into how each agent is running and being used across the organization. Metrics such as usage sessions, engagement trends, and active users, help admins assess agent usage and validate adoption. Additionally, by correlating activity with users and policy signals, teams can quickly assess unusual behavior, exception alerts, or misconfigurations. Exportable activity data enables deeper analysis and reporting.</P>
+<img><SPAN data-contrast="auto">An image showing a fictitious agent named Zava Alerting agent selected in the registry and displaying agent activity details with metrics and charts for active users, sessions and agent responses</SPAN><SPAN data-contrast="auto">.</SPAN></img>
+<H2><A class="lia-anchor" target="_blank" name="_Toc713979040"></A>Registry sync (Preview)</H2>
+<P>As agents are increasingly built and deployed across multiple platforms, organizations often lack a unified way to discover, inventory, and govern them. Registry sync enables AI admins to securely consent to and connect ecosystem partner agent platforms to Agent 365, bringing external agents and their metadata into the Agent 365 registry for a more unified view of your agent population. Where supported by the synced platform, you can also take agent-level governance actions directly from the Agent 365 registry, starting with agent deletion, to agents built on these platforms. The initial preview includes connections to AWS and Google Cloud, with additional partner platforms planned for future releases.&nbsp;</P>
+<P><EM>Note: Salesforce Agentforce and Databricks Genie are supported as of May 20th, 2026.</EM></P>
+<img>An image showing the registry sync detail view for the Amazon Bedrock connection showing options to sync, edit, and delete the connection, connection details, and a list of synced agents.</img>
+<H3><A class="lia-anchor" target="_blank" name="_Toc1664103494"></A>Shadow AI detection and blocking (Preview)</H3>
+<P>Local agents installed on company devices outside IT and security visibility is an emerging endpoint risk. These agents can read files, execute code, and act on a user’s behalf, enabling access to sensitive data or risky operations without touching managed cloud services. Agent 365 provides the control plane to register and manage approved agents across the environment.</P>
+<P>A new Shadow AI page, enabled by Microsoft Defender and Microsoft Intune, helps identify local agent activity on Windows devices and apply endpoint controls. Initial support includes OpenClaw, with plans to expand to additional widely used agents over time. Admins get a centralized view of local agent usage and can take action to limit unsanctioned execution paths at the endpoint, helping reduce risk while supporting approved tools.</P>
+<UL>
+<LI>Detect — one view of local agents across the environment with Agent 365</LI>
+<LI>Block — Intune policies that help stop unsanctioned agent execution at the endpoint</LI>
+<LI>Protect at scale — guardrails expand with your estate as coverage extends beyond OpenClaw to GitHub Copilot CLI, Claude Code, and more.</LI>
+</UL>
+<P>These capabilities help reduce Shadow AI exposure and bring local agents into a governed, secure endpoint posture.</P>
+<img><SPAN data-contrast="auto">An image showing the </SPAN><SPAN data-contrast="none">new Shadow AI page in Agent 365 in the Microsoft 365 admin center, with a list of devices that OpenClaw agents are running on.</SPAN></img>
+<P>&nbsp;</P>
+<img><SPAN data-contrast="auto">An image showing the </SPAN><SPAN data-contrast="none">new </SPAN><SPAN data-contrast="none">Shadow AI </SPAN><SPAN data-contrast="none">page of Agent 365 in the Microsoft 365 admin center, where Intune policies are being applied</SPAN></img>
+<H2><A class="lia-anchor" target="_blank" name="_Toc926392280"></A>Govern: Establish guardrails for agents and users</H2>
+<H3><A class="lia-anchor" target="_blank" name="_Toc66579357"></A>Agent-level lifecycle and governance actions</H3>
+<P>AI admins can install, publish, block, unblock, delete, assign new owner for agents - all directly from the Agent 365 registry. Centralized lifecycle and governance actions remove friction, reduce delays, and enable fast response as agents are created, shared, and retired.</P>
+<img><SPAN data-contrast="auto">An image showing the agent-level governance actions in the Agent 365 registry</SPAN></img>
+<H3><A class="lia-anchor" target="_blank" name="_Toc195144610"></A>Agent distribution and availability controls</H3>
+<P>Agent distribution and availability controls ensure the right agents reach the right users without overexposure or risk. You can install an agent and precisely control where it’s available across the organization, choosing to make it available to no users, all users, or specific users and groups. This foundational control is critical as it can help enable safe and intentional rollout of agents aligned to roles, readiness, and business need.</P>
+<img>An image displaying the Zava Alerting agent selected in the registry showing installation and availability controls, making it available to only the Agent 365 AI admin and Security Admin user groups</img>
+<H3>Admin approval and publication flow for requested agents</H3>
+<P>The agent approval and publication flow gives admins a centralized control point to review agents before they reach users. Assess each requested agent’s capabilities, data access, permissions, and security and compliance posture in the Agent 365 registry, then choose to publish or reject it from a single workflow. This prevents agent sprawl, reduces over‑privileged access, and ensures agents are onboarded with the right governance across Copilot Studio, Microsoft Foundry, and expanding agent platforms.</P>
+<img><SPAN data-contrast="auto">An image displaying requested agents showing the fictitious Staffing Agent selected with options to either publish to store or reject submission</SPAN></img>
+<H3><A class="lia-anchor" target="_blank" name="_Toc578845148"></A>Agent management rules</H3>
+<P>To help scale governance as adoption grows, Agent 365 automates routine management jobs with rules that act when conditions are met such as expiring inactive agents or blocking agents flagged as risky. Initially, rules-based governance will include standard rules for auto-deployment&nbsp;of Microsoft-built agents as well as auto-reassignment of ownerless agents (starting with agents built with Agent Builder).</P>
+<img>An image displaying agent management rules in Agent 365 settings displaying the standard rule for reassigning ownerless agents.</img>
+<H3><A class="lia-anchor" target="_blank" name="_Toc1903669693"></A>Policy templates</H3>
+<P>Policy templates address the challenge of applying consistent security, compliance, and access controls as agent adoption scales across the organization. By grouping existing policies from services like Microsoft Entra, Microsoft Purview, Microsoft Defender, and Microsoft SharePoint into reusable templates, admins can apply standardized settings and guardrails to agents during approval or onboarding. This ensures consistent governance without configuring individual policies per agent, and is distinct from rules based automation, which manages lifecycle actions after deployment.</P>
+<img>An image displaying policy templates in Agent 365 settings showing a specific policy template detail view including policies from Microsoft Entra, Purview, Defender, and SharePoint</img>
+<H3><A class="lia-anchor" target="_blank" name="_Toc1519144774"></A>Tools management</H3>
+<P>Tools are the resources and services an agent uses to take action and get work done within approved boundaries; for example, an agent can use the Microsoft Teams MCP to schedule a meeting, summarize a conversation, and post updates back to a Teams channel for the group. As agents are built with more capabilities taking more actions across Microsoft 365 and beyond, unmanaged tools introduce security, compliance, and operational risk. Tools management in Agent 365 gives AI admins a centralized control point to view, allow, or block the tools agents can use, such as Microsoft MCP servers, across the tenant. By enforcing consistent, admin-approved tooling policies, organizations ensure agents operate only within approved boundaries and permissions, reducing risk without slowing innovation or requiring per-agent configuration.</P>
+<img><SPAN data-contrast="auto">An image displaying the Tools management pane in Agent 365 displaying a list view of MCP servers</SPAN></img>
+<H3><A class="lia-anchor" target="_blank" name="_Toc1655251611"></A>Identity governance for agents</H3>
+<P>High-impact agents often rely on access to a wide range of organizational resources to perform their tasks, making it critical to manage permissions with precision and control. Microsoft Entra ID Governance for agents brings agents into the same identity governance model used for people. Access packages help define and manage agent permissions with appropriate scope and control, while sponsor lifecycle workflows ensure each agent identity has an assigned user responsible for overseeing access, maintaining accountability, and keeping access aligned with organizational policies over time. Together, these capabilities help organizations keep agent access visible, intentional, and manageable as agents evolve, enabling consistent governance and control at scale as agent adoption grows.</P>
+<img>An image displaying ID Governance access package policy being applied to a policy template in Agent 365</img>
+<H3><A class="lia-anchor" target="_blank" name="_Toc2131807634"></A>Data Lifecycle Management for agents and interactions</H3>
+<P>As agents reason over and generate content, organizations need clear controls over how long agent interactions are retained and when they’re removed. Microsoft Purview Data Lifecycle Management enables admins to define retention and deletion policies for human‑to‑agent and agent‑to‑human interactions, scoped by users and groups, with custom retention periods and post‑retention actions. By extending proven Purview controls to agent interactions, organizations can reduce data exposure and scale agent adoption with consistent, auditable data governance.</P>
+<img>An image displaying a data lifecycle management retention policy in Microsoft Purview</img>
+<P>&nbsp;</P>
+<H3><A class="lia-anchor" target="_blank" name="_Toc1881885847"></A>Communication compliance for agents</H3>
+<P>As agents interact with people at scale, organizations need visibility and controls to detect unethical, inappropriate, or non-compliant behavior. Microsoft Purview Communication Compliance in Agent&nbsp;365 enables you to define and apply policies to human-to-agent and agent-to-human interactions, enabling centralized detection, review, and investigation of risky behavior. By bringing AI interactions into existing compliance operations, organizations can promote responsible agent use, protect employees, and scale agent adoption with built-in oversight and accountability.</P>
+<img><SPAN data-contrast="auto">An image displaying a communication compliance policy in Microsoft Purview</SPAN></img>
+<H3><A class="lia-anchor" target="_blank" name="_Toc358132836"></A>eDiscovery for agent activity</H3>
+<P>Agents generate and act on organizational data, and legal and compliance teams need a way to preserve, search, and review agent activity with the same rigor as human communications. Purview eDiscovery lets organizations place agent interactions under legal hold, search agent‑to‑human and human‑to‑agent interactions across all agents, and review both agent outputs and the documents accessed during execution runtime, all within Microsoft Purview. This delivers a defensible, end‑to‑end discovery experience for agent activity using familiar legal and compliance workflows, enabling confident adoption while meeting regulatory and litigation obligations.</P>
+<img>An image displaying an eDiscovery query in Microsoft Purview</img>
+<H2><A class="lia-anchor" target="_blank" name="_Toc628245340"></A>Secure: Protect agents comprehensively</H2>
+<H3><A class="lia-anchor" target="_blank" name="_Toc1175728563"></A>Risk flags in Agent 365 registry and overview</H3>
+<P>Agent 365 brings IT and Security teams together to create a connected experience for governing AI agents. Agent 365 surfaces agent‑level security and compliance risk flags, powered by first‑party signals from Microsoft Defender, Entra, and Purview, giving AI admins a unified view of risky agents directly in the Microsoft 365 admin center. From the Agent 365 overview or registry, admins can take actions like block agents or restrict access, and escalate to security teams to quickly responds and reduce risk. By bringing IT and Security signals together in a single management surface, Agent 365 enables stronger cross‑team collaboration, making agent management a shared responsibility where IT and Security teams work together to assess risk, take action, and govern agents securely and at scale.</P>
+<img><SPAN data-contrast="auto">An image displaying the security details for a fictitious Comms agent showing two risk flags identified by Microsoft Purview</SPAN></img>
+<H3>Conditional Access for agents</H3>
+<P><SPAN data-contrast="auto">Agents acting on behalf of users can introduce new access risks, especially when interacting with organizational resources. Microsoft Entra Conditional Access enforces dynamic, granular access policies for agents that operate independently, and extends existing user policies to agents acting on behalf of users. It applies the same Zero Trust principles to ensure agent actions are consistently evaluated based on real-time context and risk. This helps organizations reduce the risk of unauthorized or unsafe access by enforcing adaptive, risk-based access controls without introducing a new policy model. Note that Conditional Access for agents&nbsp;is&nbsp;generally available&nbsp;for&nbsp;delegated access agents&nbsp;(agents that act on behalf of the user) and is in public preview for own access agents (agents that operate with their own identity, not tied to a user session).</SPAN></P>
+<img>An image showing the creation of a new conditional access policy for agents in Microsoft Entra admin center</img>
+<P>&nbsp;</P>
+<H3><A class="lia-anchor" target="_blank" name="_Toc1956793408"></A>Identity protection for agents</H3>
+<P><SPAN data-contrast="auto">Agents, whether they are acting on behalf of users or operate independently, can introduce new access risks when elevated agent risk, user risk or sign-in risk is present. Microsoft Entra ID Protection prevents compromise with dynamic evaluation of agent and user identity compromise risk. These risk signals can then be used by Conditional Access policies to block or constrain access to prevent compromise with risk-based Conditional access for agents that act independently and extending risk-based conditional access from users to agents for agents that work on behalf of users. Similar to&nbsp;Conditional Access, Identity protection for agents is&nbsp;generally available&nbsp;for&nbsp;delegated access agents&nbsp;(agents that act on behalf of the user) and is in Public preview for&nbsp;own access agents&nbsp;(agents that&nbsp;operate&nbsp;with their own identity, not tied to a user session).</SPAN></P>
+<img>An image displaying a Conditional Access policy for agents in the Microsoft Entra admin center</img>
+<H3><A class="lia-anchor" target="_blank" name="_Toc699769135"></A></H3>
+<H3><A class="lia-anchor" target="_blank" name="_Toc1604745883"></A>Secure Access Service Edge for agents</H3>
+<P><SPAN data-contrast="auto">Secure Access Service Edge (SASE) for agents extends identity-aware, network-level security controls to agent traffic. For Microsoft Copilot Studio agents&nbsp;and&nbsp;agents running on local endpoint devices&nbsp;with&nbsp;</SPAN><A href="https://learn.microsoft.com/en-us/entra/global-secure-access/how-to-install-windows-client" target="_blank" rel="noopener"><SPAN data-contrast="none"><SPAN data-ccp-charstyle="Hyperlink">Global Secure Access client</SPAN></SPAN></A><SPAN data-contrast="auto">&nbsp;installed,&nbsp;it provides prompt injection protection, threat intelligence filtering, web and URL filtering, and network file filtering to help reduce exposure to malicious destinations and unsafe transfers</SPAN><SPAN data-contrast="auto">.</SPAN><SPAN data-contrast="auto">&nbsp;</SPAN><SPAN data-contrast="auto">Together, these capabilities help organizations extend consistent network protections to agent traffic and support safer agent adoption at scale.</SPAN></P>
+<img><SPAN data-contrast="auto">An image showing Global Secure Access for agents and traffic details in Microsoft Entra</SPAN></img>
+<P>&nbsp;</P>
+<H2>Threat detection and blocking for agents (Preview)</H2>
+<P>Agent adoption brings new threats, such as prompt attacks and tool misuse. Microsoft Defender enables security teams to detect, block, and investigate agent threats in runtime. For example, when an agent abuses its permissions to an email MCP server, exhibiting suspicious behaviors that may cause security incidents, Microsoft Defender can block the email invocation to reduce the incident's impact and trigger incident alerts in the Defender portal for investigation and response. This capability enables security teams to effectively defend agents against the evolving AI threat landscape.</P>
+<img>
+<P>An image showing how a security team can detect, block, and investigate agent threats such as prompt attack and tool misuse in the Microsoft Defender portal</P>
+</img>
+<H2>Threat hunting and investigation for agents (Preview)</H2>
+<P>Beyond threat detection and blocking, security teams can use the unified observability logs in Agent 365 for Advanced Hunting to proactively search for threats, vulnerabilities, and potential exposures in their organization's agentic environment. For example, security teams can identify&nbsp;risky configurations, such as agents with MCP tools using maker credentials. These permissions allow MCP tools to operate as the maker, potentially leading to privilege escalation and exposure. Security teams can run queries in Advanced Hunting to generate a list of agents that present this risk, then collaborate across teams to remediate these risks before they turn into incidents.</P>
+<img>Security team can proactively identify vulnerabilities and exposure leveraging Advanced Hunting capabilities in Microsoft Defender</img>
+<H3><A class="lia-anchor" target="_blank" name="_Toc1894137746"></A>Agent security posture management (Preview)</H3>
+<P>As organizations deploy more agents, security teams need continuous insight into which agents are over‑privileged, misconfigured, or exposed to attack. Microsoft Defender provides agent security posture management by assessing the security posture of Foundry and Copilot Studio agents, identifying vulnerabilities such as excessive permissions and misconfigurations, and surfacing prioritized security recommendations, risk context, and attack path analysis to AI agents. This enables teams to focus remediation where risk is highest, reduce exposure early, and ensure agents are built, deployed, and operated securely across their lifecycle.</P>
+<img>An image showing the fictitious agent Zava Assist in Microsoft Defender</img>
+<H3><A class="lia-anchor" target="_blank" name="_Toc568899743"></A>Data Security Posture Management (DSPM) AI Observability for agents</H3>
+<P>Organizations lack clear visibility into how AI agents access and expose sensitive data, increasing the risk of oversharing and unintended data leakage. Microsoft Purview AI Observability in DSPM provides unified visibility into all agents operating across your environment, Microsoft and non‑Microsoft, and continuously assesses agent data risk posture. This enables security teams to identify sensitive data exposure early, make informed decisions, and proactively reduce risk before it becomes an incident.</P>
+<img>An image showing AI observability within Data Security Posture Management (DSPM) in Microsoft Purview</img>
+<H3><A class="lia-anchor" target="_blank" name="_Toc1188330610"></A>Insider Risk Management for agents</H3>
+<P><SPAN data-contrast="auto">As organizations scale AI agents, they lack visibility&nbsp;into&nbsp;whether agents are accessing, generating, or exposing sensitive data in risky ways. Microsoft Purview Insider Risk Management for agents&nbsp;evaluated&nbsp;insider risk&nbsp;for agents&nbsp;by treating&nbsp;them&nbsp;as first</SPAN>‑<SPAN data-contrast="auto">class identities, enabling detection of risky agent behaviors such as anomalous data access or sensitive content in outputs. This allows security teams to intervene early and confidently scale AI agents while maintaining security, accountability, and compliance.</SPAN></P>
+<img>An image showing an alert spotting an agent attempt at sensitive file exfiltration within Microsoft Purview</img>
+<H3><A class="lia-anchor" target="_blank" name="_Toc1383738578"></A>Data loss prevention for agents</H3>
+<P>As agent adoption scales, confidential information can be unintentionally included in agent interactions, increasing the risk of data exposure across the organization. Microsoft Purview Data Loss Prevention (DLP) extends the same protections organizations use for people - such as to prevent data exfiltration and oversharing - to AI agents, for example by blocking an agent from emailing a confidential file to an external recipient.</P>
+<P>Also, DLP controls for grounding data protect the data agents rely on to reason and respond to interactions. It leverages DLP and labeling policies directly to the data sources used for grounding, preventing agents from accessing or using sensitive content that shouldn’t inform AI decisions or outputs. This gives organizations confidence that advanced AI agents can be deployed without increasing data exposure or compliance risk, even as agents operate across multiple data systems.</P>
+<img>An image displaying a conversation with fictitious agent Zava Procurement Agent showing a DLP-protected document cannot be summarized</img>
+<H2><A class="lia-anchor" target="_blank" name="_Toc813205042"></A>Conclusion</H2>
+<P>As agents become a core part of everyday work, organizations need a way to extend the controls they already trust, from managing people, devices, apps, and data, to managing agents. With Agent 365, Microsoft brings agents into the same, familiar identity, security, and compliance frameworks customers already rely on today. These GA capabilities lay the foundation for scaling agent adoption with confidence, enabling organizations to unlock innovation and productivity while ensuring agents remain governed, secure, and aligned with your organization's needs.</P>
+<P>Next steps:</P>
+<UL>
+<LI><A href="https://aka.ms/a365gablog" target="_blank" rel="noopener">Read the announcement of new public preview capabilities</A></LI>
+<LI><A href="https://techcommunity.microsoft.com/event/microsoft365-events/live-ama-microsoft-agent-365/4511700" target="_blank" rel="noopener">Register for our upcoming Agent 365 live AMA</A></LI>
+<LI><A href="https://aka.ms/Agent365onASN" target="_blank" rel="noopener">Learn via AI Skills Navigator for Agent 365</A></LI>
+<LI><A class="lia-external-url" href="https://admin.cloud.microsoft" target="_blank" rel="noopener">Get started with Agent 365 in the Microsoft 365 admin center</A></LI>
+<LI><A class="lia-external-url" href="https://review.learn.microsoft.com/microsoft-agent-365/overview?branch=main&amp;branchFallbackFrom=pr-en-us-416" target="_blank" rel="noopener"><SPAN data-teams="true">Learn more about Agent 365 on MS Learn</SPAN></A></LI>
+</UL>
+<P>Footnotes</P>
+<OL>
+<LI>Agent metadata available in the Agent 365 registry differs based on the agent’s source platform, as well as factors such as how the agent was built, integrated, and registered. As a result, some agents may expose richer or more standardized metadata, while others may only provide a subset of fields.</LI>
+</OL>
+Mon, 08 Jun 2026 16:14:52 GMT
+https://techcommunity.microsoft.com/t5/agent-365-blog/what-s-new-in-agent-365-may-2026/ba-p/4516340
+alexpozin
+2026-06-08T16:14:52Z
+Ask questions: May 12 live Agent 365 AMA
+https://techcommunity.microsoft.com/t5/agent-365-blog/ask-questions-may-12-live-agent-365-ama/ba-p/4511734
+<P><SPAN data-contrast="none">Microsoft Agent 365--generally available May 1, 2026--is a control plane that empowers IT admins, Security Operations analysts, Identity and Network Security admins, and Data Security &amp; Compliance admins to observe, govern, and secure all agents for their organization.&nbsp;</SPAN></P>
+<P><SPAN data-contrast="none">We’ll demonstrate how to get started and answer your questions about licensing and functionality in this live 'Ask Microsoft Anything' with product and engineering team experts!&nbsp;&nbsp;</SPAN><SPAN data-ccp-props="{&quot;201341983&quot;:0,&quot;335557856&quot;:16777215,&quot;335559739&quot;:120,&quot;335559740&quot;:310}">&nbsp;</SPAN></P>
+<H3 data-start="191" data-end="213">How to Participate</H3>
+<UL data-start="215" data-end="861">
+<LI data-start="215" data-end="355"><STRONG><A class="lia-internal-link lia-internal-url lia-internal-url-content-type-tkb" href="https://techcommunity.microsoft.com/kb/gettingstarted/getting-started-on-the-tech-community/3512627" target="_blank" rel="noopener" data-lia-auto-title="Register for the Microsoft Tech Community" data-lia-auto-title-active="0">Register for the Microsoft Tech Community</A>&nbsp;</STRONG>using your email if you haven’t already. This allows you to post comments and ask questions.</LI>
+<LI data-start="356" data-end="552"><STRONG><A class="lia-internal-link lia-internal-url lia-internal-url-content-type-occasion" href="https://techcommunity.microsoft.com/event/microsoft365-events/live-ama-microsoft-agent-365/4511700" target="_blank" rel="noopener" data-lia-auto-title="Visit the AMA event page" data-lia-auto-title-active="0">Visit the event page</A>&nbsp;</STRONG>now to add the AMA to your calendar, RSVP, and submit questions via the comment area.</LI>
+<LI data-start="553" data-end="631"><A class="lia-internal-link lia-internal-url lia-internal-url-content-type-occasion" href="https://techcommunity.microsoft.com/event/microsoft365-events/live-ama-microsoft-agent-365/4511700" target="_blank" rel="noopener" data-lia-auto-title="Watch the session live or catch the recording on demand" data-lia-auto-title-active="0"><STRONG data-start="555" data-end="614">Watch the session live or catch the recording on demand</STRONG></A>&nbsp;after the event.</LI>
+</UL>
+<P>Hope to see you there! Come ready to learn and ask our experts all of your burning questions!</P>
+<P>&nbsp;</P>
+<P>Best regards,</P>
+<P>Nichole</P>
+Wed, 06 May 2026 18:14:17 GMT
+https://techcommunity.microsoft.com/t5/agent-365-blog/ask-questions-may-12-live-agent-365-ama/ba-p/4511734
+Nichole_Peterson
+2026-05-06T18:14:17Z
+ICYMI: Microsoft Agent 365 AMA
+https://techcommunity.microsoft.com/t5/agent-365-blog/icymi-microsoft-agent-365-ama/ba-p/4503596
+<P>Watch the video of the live AMA to see experts from the Microsoft Agent 365 team answer questions from viewers.&nbsp;</P>
+<P><EM>Recorded on March 18, 2026.</EM></P>
+<div data-video-id="https://youtu.be/Mszz9ntbVpc/1773866134493" data-video-remote-vid="https://youtu.be/Mszz9ntbVpc/1773866134493" class="lia-video-container lia-media-is-center lia-media-size-large"><iframe src="https://cdn.embedly.com/widgets/media.html?src=https%3A%2F%2Fwww.youtube.com%2Fembed%2FMszz9ntbVpc%3Ffeature%3Doembed&amp;display_name=YouTube&amp;url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DMszz9ntbVpc&amp;image=https%3A%2F%2Fi.ytimg.com%2Fvi%2FMszz9ntbVpc%2Fhqdefault.jpg&amp;type=text%2Fhtml&amp;schema=youtube" allowfullscreen="" style="max-width: 100%"></iframe></div>
+<P>Huge thanks to our community for contributing such great questions, plus thank you to our host and expert panelists for a great AMA!</P>
+<P>Still have questions?&nbsp; Check the additional resources below, or drop a comment on this post for us to answer.</P>
+<P>Additional resources:</P>
+<UL>
+<LI><A class="lia-external-url" href="https://www.microsoft.com/licensing/faqs/122" target="_blank" rel="noopener">🤔Agent 365 Licensing FAQ</A></LI>
+<LI><A class="lia-external-url" href="https://learn.microsoft.com/microsoft-agent-365/" target="_blank" rel="noopener">📖Agent 365 technical documentation on Microsoft Learn</A></LI>
+<LI><A class="lia-internal-link lia-internal-url lia-internal-url-content-type-forum" href="https://techcommunity.microsoft.com/category/microsoft365/discussions/agent-365-discussions" target="_blank" rel="noopener" data-lia-auto-title="Join the discussions in Tech Community" data-lia-auto-title-active="0">Agent 365 discussions in Tech Community</A></LI>
+</UL>
+Wed, 18 Mar 2026 21:02:40 GMT
+https://techcommunity.microsoft.com/t5/agent-365-blog/icymi-microsoft-agent-365-ama/ba-p/4503596
+Nichole_Peterson
+2026-03-18T21:02:40Z
+Get to know these Agent 365 community all-stars
+https://techcommunity.microsoft.com/t5/agent-365-blog/get-to-know-these-agent-365-community-all-stars/ba-p/4501056
+<P>With the announcement that Agent 365 will be generally available on May 1, 2026 and included in Microsoft 365 packages with and without Teams, many of our community members are eager to learn more about the new control plane for agents. Hopefully you've heard about the upcoming <A class="lia-external-url" href="https://aka.ms/Agent365AMA" target="_blank" rel="noopener">live AMA with the Agent 365 team on March 18, 2026</A>; but meanwhile, we're highlighting a few folks who are creating helpful explainers of their own.&nbsp;</P>
+<H4><STRONG>Rob Quickenden&nbsp; </STRONG></H4>
+<P><a href="javascript:void(0)" data-lia-user-mentions="" data-lia-user-uid="12140" data-lia-user-login="RobQuickenden" class="lia-mention lia-mention-user">RobQuickenden​</a><STRONG>&nbsp;</STRONG>| <A href="https://mvp.microsoft.com/MVP/profile/71cc5d03-5006-4d60-a60e-28f23ebd89a9" target="_blank" rel="noopener">Microsoft MVP Profile&nbsp;</A>&nbsp;</P>
+<P>Microsoft MVP Rob Quickenden explains Microsoft 365 E7 as a new top‑tier “AI Frontier Suite” designed to help organizations operationalize agentic AI across productivity, identity, and security, not just experiment with Copilot. &nbsp;</P>
+<P>👉<STRONG>Read Rob’s blog post: <A class="lia-external-url" href="https://robquickenden.blog/2026/03/what-is-microsoft365-e7/" target="_blank" rel="noopener">Microsoft 365 E7 Explained – The new “AI Frontier Suite”</A></STRONG></P>
+<H4><STRONG>Simon Doy&nbsp; </STRONG></H4>
+<P><a href="javascript:void(0)" data-lia-user-mentions="" data-lia-user-uid="10712" data-lia-user-login="SimonDoy" class="lia-mention lia-mention-user">SimonDoy​</a> &nbsp;| <A href="https://mvp.microsoft.com/MVP/profile/27fa9567-c755-ed11-9561-000d3a197333" target="_blank" rel="noopener">Microsoft MVP Profile</A></P>
+<P>Simon walks through his hands-on experience building a first Microsoft Agent 365 agent, explaining core concepts like agent blueprints vs. instances, identity, governance, and how Agent 365 integrates with Microsoft Entra ID and Microsoft 365.</P>
+<P><STRONG>👉Read Simon’s blog post: <A class="lia-external-url" href="https://simondoy.com/2026/01/05/delving-into-configuring-and-building-my-first-microsoft-agent-365-agent/" target="_blank" rel="noopener">Delving into Agent 365 – Configuring and Building My First Agent</A></STRONG></P>
+<H4><STRONG>Kunal Sethi</STRONG></H4>
+<P><STRONG>&nbsp;</STRONG><a href="javascript:void(0)" data-lia-user-mentions="" data-lia-user-uid="77888" data-lia-user-login="Kunal Sethi" class="lia-mention lia-mention-user">Kunal Sethi​</a><STRONG> </STRONG>&nbsp;| <A href="https://mvp.microsoft.com/MVP/profile/f870ceb5-7eb7-ea11-a812-000d3a8ccaf5" target="_blank" rel="noopener">Microsoft MVP Profile</A></P>
+<P>Kunal Sethi is the author of one of the most comprehensive architecture‑level deep dives on Agent 365, covering governance, Entra integration, and enterprise design patterns.</P>
+<P><STRONG>👉 Read Kunal's LinkedIn post: <A class="lia-external-url" href="https://www.linkedin.com/pulse/architecting-ai-agents-microsoft-agent-365-deep-dive-kunal-sethi-foxfc/" target="_blank" rel="noopener">Architecting AI Agents with Microsoft Agent 365: A Deep Dive&nbsp;</A></STRONG></P>
+<H4><STRONG>John Savill</STRONG></H4>
+<P><a href="javascript:void(0)" data-lia-user-mentions="" data-lia-user-uid="848896" data-lia-user-login="JohnSavill" class="lia-mention lia-mention-user">JohnSavill​</a> | <A href="https://www.linkedin.com/in/john-savill/" target="_blank" rel="noopener">LinkedIn</A></P>
+<P>Rising to popularity via <A href="https://www.youtube.com/channel/UCpIn7ox7j7bH_OFj7tYouOQ" target="_blank" rel="noopener">John Savill’s Technical Training</A> and his <A href="https://learn.onboardtoazure.com/" target="_blank" rel="noopener">On-Board to Azure</A> series, John’s videos and podcasts are excellent for learning about Microsoft solutions and architecture. Plus, his t-shirt collection is epic.</P>
+<P>Watch this security-focused technical overview where John shows how Agent 365 addresses the challenges of rolling out agents:</P>
+<div data-video-id=" https://youtu.be/WTcyL68qTo8/1773185333204" data-video-remote-vid=" https://youtu.be/WTcyL68qTo8/1773185333204" class="lia-video-container lia-media-is-center lia-media-size-large"><iframe src="https://cdn.embedly.com/widgets/media.html?src=https%3A%2F%2Fwww.youtube.com%2Fembed%2FWTcyL68qTo8%3Ffeature%3Doembed&amp;display_name=YouTube&amp;url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DWTcyL68qTo8&amp;image=https%3A%2F%2Fi.ytimg.com%2Fvi%2FWTcyL68qTo8%2Fhqdefault.jpg&amp;type=text%2Fhtml&amp;schema=youtube" allowfullscreen="" style="max-width: 100%"></iframe></div>
+<H4><STRONG>Nathan Rose</STRONG></H4>
+<P><a href="javascript:void(0)" data-lia-user-mentions="" data-lia-user-uid="2198426" data-lia-user-login="nathanrose1979" class="lia-mention lia-mention-user">nathanrose1979​</a> | <A href="https://mvp.microsoft.com/en-US/mvp/profile/d4987d8d-95fb-ed11-8f6d-000d3a560942" target="_blank" rel="noopener">Microsoft MVP Profile</A></P>
+<P>Nathan Rose kicked off the new year with a hands-on deep dive into Agent 365—what it is, how to enable it in your tenant, and how to use the Overview, Agents, Tools and Settings tabs to discover, govern, block, and deploy agents.</P>
+<div data-video-id="https://youtu.be/Ofx7HzFSiI0?si=Tm5nhOPmEtCKQnNe/1773185426852" data-video-remote-vid="https://youtu.be/Ofx7HzFSiI0?si=Tm5nhOPmEtCKQnNe/1773185426852" class="lia-video-container lia-media-is-center lia-media-size-large"><iframe src="https://cdn.embedly.com/widgets/media.html?src=https%3A%2F%2Fwww.youtube.com%2Fembed%2FOfx7HzFSiI0%3Ffeature%3Doembed&amp;display_name=YouTube&amp;url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DOfx7HzFSiI0&amp;image=https%3A%2F%2Fi.ytimg.com%2Fvi%2FOfx7HzFSiI0%2Fhqdefault.jpg&amp;type=text%2Fhtml&amp;schema=youtube" allowfullscreen="" style="max-width: 100%"></iframe></div>
+<H4><STRONG>Steve Corey</STRONG></H4>
+<P><a href="javascript:void(0)" data-lia-user-mentions="" data-lia-user-uid="378480" data-lia-user-login="stevecorey" class="lia-mention lia-mention-user">stevecorey​</a> | <A href="https://mvp.microsoft.com/MVP/profile/6f4ee417-9f8f-44fe-97da-bbf28624bec3" target="_blank" rel="noopener">Microsoft MVP Profile</A></P>
+<P>In December, Steve Corey published a detailed video explaining how to use the Microsoft Agent 365 dashboard to view and manage your Copilot Agent landscape. It walks through the various screens, options, and settings in Agent 365.</P>
+<div data-video-id="https://youtu.be/ooZRCXbuL_0?si=kB2G-Qkjx6CwC11R/1773185712885" data-video-remote-vid="https://youtu.be/ooZRCXbuL_0?si=kB2G-Qkjx6CwC11R/1773185712885" class="lia-video-container lia-media-is-center lia-media-size-large"><iframe src="https://cdn.embedly.com/widgets/media.html?src=https%3A%2F%2Fwww.youtube.com%2Fembed%2FooZRCXbuL_0%3Ffeature%3Doembed&amp;display_name=YouTube&amp;url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DooZRCXbuL_0&amp;image=https%3A%2F%2Fi.ytimg.com%2Fvi%2FooZRCXbuL_0%2Fhqdefault.jpg&amp;type=text%2Fhtml&amp;schema=youtube" allowfullscreen="" style="max-width: 100%"></iframe></div>
+<P>&nbsp;</P>
+<P>Huge thanks to these awesome Agent 365 content creators. We can't wait to see what you'll do next!</P>
+<H2>Who else are you watching?</H2>
+<P>Are you creating Agent 365 content to help others learn? Or have a recommendation on someone we should follow? Please let me know in the comments!</P>
+<H2>More Agent 365 community resources</H2>
+<P>Deepen your knowledge and connections in the Agent 365 world with these upcoming and everyday opportunities.</P>
+<H4><STRONG>Join the Agent 365 AMA on March 18, 2026&nbsp;</STRONG>| <A class="lia-internal-link lia-internal-url lia-internal-url-content-type-occasion" href="https://techcommunity.microsoft.com/event/microsoft365-events/live-ama-microsoft-agent-365/4499549" target="_blank" rel="noopener" data-lia-auto-title="RSVP" data-lia-auto-title-active="0">RSVP</A></H4>
+<P>Learn more about the capabilities of Agent 365 in this live 'Ask Microsoft Anything' with product and engineering team experts! Get your questions answered about capabilities for agent observability, security, and governance, developer resources, and how to get started as you confidently scale agents in your organization.</P>
+<P><A class="lia-internal-link lia-internal-url lia-internal-url-content-type-blog" href="https://techcommunity.microsoft.com/blog/agent-365-blog/join-the-agent-365-ask-microsoft-anything-session-on-march-18/4499817" target="_blank" rel="noopener" data-lia-auto-title="Learn more about the Agent 365 AMA" data-lia-auto-title-active="0">Learn more about the Agent 365 AMA</A></P>
+<H4><STRONG>Post in the Agent 365 Discussion Space</STRONG> | <A class="lia-internal-link lia-internal-url lia-internal-url-content-type-forum" href="https://techcommunity.microsoft.com/category/microsoft365/discussions/agent-365-discussions" target="_blank" rel="noopener" data-lia-auto-title="Tech Community" data-lia-auto-title-active="0">Tech Community</A></H4>
+<P>Want to meet more Agent 365 community members? Share your expertise or start a conversation in the new Agent 365 discussion space on Tech Community.</P>
+<P><A class="lia-internal-link lia-internal-url lia-internal-url-content-type-forum" href="https://techcommunity.microsoft.com/category/microsoft365/discussions/agent-365-discussions" target="_blank" rel="noopener" data-lia-auto-title="Join the conversation in Tech Community" data-lia-auto-title-active="0">Join the conversation in Tech Community</A></P>
+<H4><STRONG>Attend the Microsoft 365 Community Conference</STRONG> | <A class="lia-external-url" href="https://www.m365conf.com/" target="_blank" rel="noopener">website</A></H4>
+<P>Learn how to get the most out of Agent 365, AI agents, Microsoft 365 Copilot, and meet Agent 365 community members at the Microsoft 365 Community Conference, April 21-23, 2026 in Orlando, Florida, USA.</P>
+<P>At the conference, Agent 365 will be featured in the <A class="lia-external-url" href="https://www.m365conf.com/#!/session/Business%20Apps%20&amp;%20Agents%20Keynote/8580" target="_blank" rel="noopener">Business Apps &amp; Agents keynote by Charles Lamanna </A>&nbsp;and the following sessions:</P>
+<UL>
+<LI><A class="lia-external-url" href="https://www.m365conf.com/#!/session/Featured%20Session:%20Agent%20365:%20The%20control%20plane%20for%20all%20Agents/8559" target="_blank" rel="noopener">Featured Session: Agent 365: The control plane for all Agents</A></LI>
+<LI><A class="lia-external-url" href="https://www.m365conf.com/#!/session/Agent%20365:%20Secure,%20govern,%20and%20scale%20agent%20management/8509" target="_blank" rel="noopener">Agent 365: Secure, govern, and scale agent management</A></LI>
+<LI><A class="lia-external-url" href="https://www.m365conf.com/#!/session/Agent%20Lifecycle%20Management%20and%20Governance%20leveraging%20FastTrack/8495" target="_blank" rel="noopener">Agent Lifecycle Management and Governance leveraging FastTrack</A></LI>
+</UL>
+<P>&nbsp;</P>
+<P>Best regards,</P>
+<P>Nichole</P>
+<P>&nbsp;</P>
+<P>P.S. ICYMI, here's the Agent 365 and Frontier Transformation news from Microsoft that dropped Monday, March 9, 2026:</P>
+<UL>
+<LI><A href="https://blogs.microsoft.com/blog/2026/03/09/introducing-the-first-frontier-suite-built-on-intelligence-trust/" target="_blank" rel="noopener">Introducing the First Frontier Suite built on Intelligence + Trust - The Official Microsoft Blog</A></LI>
+<LI><A href="https://www.microsoft.com/en-us/microsoft-agent-365" target="_blank" rel="noopener">Microsoft Agent 365: The Control Plane for Agents</A></LI>
+<LI><A href="https://www.microsoft.com/en-us/microsoft-365/blog/2026/03/09/powering-frontier-transformation-with-copilot-and-agents/" target="_blank" rel="noopener">Powering Frontier Transformation with Copilot and agents | Microsoft 365 Blog</A></LI>
+<LI><A href="https://partner.microsoft.com/en-US/blog/article/agent-365-announcement" target="_blank" rel="noopener">Leading Frontier Firm transformation with Microsoft 365 E7: The partner opportunity</A></LI>
+</UL>
+Thu, 12 Mar 2026 17:23:39 GMT
+https://techcommunity.microsoft.com/t5/agent-365-blog/get-to-know-these-agent-365-community-all-stars/ba-p/4501056
+Nichole_Peterson
+2026-03-12T17:23:39Z
+Join the Agent 365 'Ask Microsoft Anything' session on March 18
+https://techcommunity.microsoft.com/t5/agent-365-blog/join-the-agent-365-ask-microsoft-anything-session-on-march-18/ba-p/4499817
+<P>&nbsp;</P>
+<DIV class="styles_lia-table-wrapper__h6Xo9 styles_table-responsive__MW0lN lia-align-center"><table class="lia-background-color-custom-34368c" border="1" style="width: 100%; border-width: 1px;"><colgroup><col style="width: 100%" /></colgroup><tbody><tr><td>
+<H3 class="lia-align-center"><SPAN class="lia-text-color-22">Sign up and participate in the March 18 Agent 365 AMA</SPAN></H3>
+<H5 class="lia-align-center"><SPAN class="lia-text-color-22">🌐<A href="https://aka.ms/Agent365AMA" target="_blank" rel="noopener"> <U>aka.ms/Agent365AMA</U></A></SPAN></H5>
+<P>&nbsp;</P>
+</td></tr></tbody></table></DIV>
+<P>&nbsp;</P>
+<P>Learn more about the capabilities of Agent 365 in this live 'Ask Microsoft Anything' with product and engineering team experts! Get your questions answered about capabilities for agent observability, security, and governance, developer resources, and how to get started as you confidently scale agents in your organization.</P>
+<H3>Meet the panel of Agent 365 experts</H3>
+<DIV class="styles_lia-table-wrapper__h6Xo9 styles_table-responsive__MW0lN"><table class="lia-border-color-22" border="1" style="width: 100%; border-width: 1px;"><colgroup><col style="width: 33.3333%" /><col style="width: 33.3333%" /><col style="width: 33.3333%" /></colgroup><tbody><tr><td class="lia-align-center lia-border-color-22" style="padding: 5px;"><img />
+<P><STRONG>Irina Nechaeva</STRONG><BR /><STRONG>General Manager</STRONG></P>
+</td><td class="lia-align-center lia-border-color-22" style="padding: 5px;"><img />
+<P><STRONG>Kendra Springer</STRONG><BR /><STRONG>Principal Group Product Manager</STRONG></P>
+</td><td class="lia-align-center lia-border-color-22" style="padding: 5px;"><img />
+<P><STRONG>Pratap Ladhani</STRONG><BR /><STRONG>Technical Customer Architect</STRONG></P>
+</td></tr><tr><td class="lia-align-center" style="padding: 5px;"><img />
+<P>&nbsp;<STRONG><SPAN data-teams="true">Caroline Stanford</SPAN></STRONG><BR /><STRONG><SPAN data-teams="true">Senior Director</SPAN></STRONG></P>
+</td><td class="lia-align-center" style="padding: 5px;"><img />
+<P>&nbsp;<STRONG>Gad Epstein</STRONG><BR /><STRONG>Principal Group Product Manager</STRONG></P>
+</td><td class="lia-align-center" style="padding: 5px;"><img />
+<P>&nbsp;<STRONG>Neta Haiby</STRONG><BR /><STRONG>Partner Product Manager</STRONG></P>
+</td></tr></tbody></table></DIV>
+<DIV class="styles_lia-table-wrapper__h6Xo9 styles_table-responsive__MW0lN lia-align-center">&nbsp;</DIV>
+<P class="lia-align-center">We're looking forward to you joining the AMA and bringing your questions. See you March 18th!</P>
+<DIV class="styles_lia-table-wrapper__h6Xo9 styles_table-responsive__MW0lN"><table class="lia-background-color-custom-34368c" border="1" style="width: 100%; height: 124.391px; border-width: 1px;"><colgroup><col style="width: 99.9074%" /></colgroup><tbody><tr style="height: 124.391px;"><td style="height: 124.391px;">
+<H2 class="lia-align-center"><SPAN class="lia-text-color-22">Watch the AMA on March 18 (or later)&nbsp;</SPAN></H2>
+<H5 class="lia-align-center"><SPAN class="lia-text-color-22"><A href="https://techcommunity.microsoft.com/event/microsoft365-events/live-ama-microsoft-agent-365/4499549" target="_blank" rel="noopener">🌐 </A></SPAN><SPAN class="lia-text-color-22"><A href="https://techcommunity.microsoft.com/event/microsoft365-events/live-ama-microsoft-agent-365/4499549" target="_blank" rel="noopener"><U>Live AMA: Microsoft Agent 365 | Microsoft Community Hub</U></A></SPAN></H5>
+<P>&nbsp;</P>
+</td></tr></tbody></table></DIV>
+<H5>Additional Agent 365 resources</H5>
+<UL>
+<LI>Get the&nbsp;<A class="lia-external-url" href="https://adoption.microsoft.com/copilot/frontier-program/" target="_blank" rel="noopener">Frontier preview program</A>&nbsp;for&nbsp;early access to Microsoft Agent 365.&nbsp;</LI>
+<LI>Find your way with the <A class="lia-external-url" href="https://learn.microsoft.com/microsoft-365/admin/manage/agent-365-overview" target="_blank" rel="noopener">Agent 365 overview dashboard</A> in Microsoft 365 Admin Center.</LI>
+<LI>Start a post or answer questions in <A class="lia-external-url" href="https://aka.ms/A365discussions" target="_blank" rel="noopener">A365 Discussion Space</A>.</LI>
+<LI>Learn more on&nbsp;<A class="lia-external-url" href="https://learn.microsoft.com/microsoft-agent-365/" target="_blank" rel="noopener">Microsoft Agent 365 on Microsoft Learn</A>.</LI>
+</UL>
+Fri, 06 Mar 2026 22:46:28 GMT
+https://techcommunity.microsoft.com/t5/agent-365-blog/join-the-agent-365-ask-microsoft-anything-session-on-march-18/ba-p/4499817
+Nichole_Peterson
+2026-03-06T22:46:28Z
+Hello, world.
+https://techcommunity.microsoft.com/t5/agent-365-blog/hello-world/ba-p/4494728
+<P>Hello and welcome to the new Agent 365 blog!&nbsp;</P>
+<P>As AI agents become core contributors in modern organizations, having a trusted control plane is essential. So we hope you'll follow and share this blog as an ongoing resource. We'll regularly share product news, practical guidance, and accelerators to get the most from Agent 365.</P>
+<BLOCKQUOTE>
+<P>🚀 <STRONG>Become an early contributor to the Agent 365 community:</STRONG></P>
+<P class="lia-indent-padding-left-30px">1)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Follow the blog at <A class="lia-external-url" href="https://aka.ms/A365blog" target="_blank" rel="noopener">aka.ms/A365blog</A></P>
+<P class="lia-indent-padding-left-30px">2)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Post and reply to topics at <A class="lia-external-url" href="https://aka.ms/A365discussions" target="_blank" rel="noopener">aka.ms/A365discussions</A></P>
+<P class="lia-indent-padding-left-30px">3)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Say hello! Introduce yourself in the comments section below.</P>
+</BLOCKQUOTE>
+<P>For this first post, we’re sharing frequently asked questions and favorite resources for Agent 365.</P>
+<H2>What is Microsoft Agent 365?</H2>
+<P>Agent 365 is the control plane for AI agents. Whether your agents are built with Copilot Studio, Windows 365 for Agents, Microsoft Foundry, open-source frameworks, or third-party platforms, Agent 365 helps you observe, secure, and govern them.</P>
+<P>Agent 365 extends your existing infrastructure to AI agents—adapting the tools and protections you use for employees to meet agent-specific needs. It unites familiar but tailored systems: Microsoft 365 apps optimized for agent productivity, Microsoft Admin Center for agent management, Windows 365 for Agents for a secure execution environment for computer‑using AI agents, and Defender, Entra, and Purview for agent security and governance.</P>
+<P>⭐ <STRONG>Read the <A class="lia-external-url" href="https://www.microsoft.com/microsoft-365/blog/2025/11/18/microsoft-agent-365-the-control-plane-for-ai-agents/" target="_blank" rel="noopener">announcement of Agent 365</A> on the Microsoft 365 blog.</STRONG></P>
+<H2>When was Agent 365 introduced by Microsoft?</H2>
+<P>Last year, we heard the IDC prediction that there will be 1.3 billion agents by 2028. With early adoption of agents, plus no-code and low-code platforms like Copilot Studio and Microsoft Foundry, the agent wave was happening—without IT management, security, or governance. To help organizations take control of agent sprawl, we introduced Microsoft Agent 365 at Microsoft Ignite on November 18, 2025. Agent 365 was detailed in an Innovation Session at the conference by Nirav Shah, CVP of Agent 365 with <a href="javascript:void(0)" data-lia-user-mentions="" data-lia-user-uid="648376" data-lia-user-login="NetaH" class="lia-mention lia-mention-user">NetaH​</a>, &nbsp;<a href="javascript:void(0)" data-lia-user-mentions="" data-lia-user-uid="2760124" data-lia-user-login="monicaugwi" class="lia-mention lia-mention-user">monicaugwi​</a> &nbsp;and Mark Luquire of EY.</P>
+<P><STRONG>⭐ Watch the Innovation Session (45 min.)&nbsp;</STRONG></P>
+<P>&nbsp;</P>
+<div data-video-id="https://youtu.be/-LSrJtikrh8?si=l2hXE9B8ZWiWmCGV/1770957763009" data-video-remote-vid="https://youtu.be/-LSrJtikrh8?si=l2hXE9B8ZWiWmCGV/1770957763009" class="lia-video-container lia-media-is-center lia-media-size-large"><iframe src="https://cdn.embedly.com/widgets/media.html?src=https%3A%2F%2Fwww.youtube.com%2Fembed%2F-LSrJtikrh8%3Ffeature%3Doembed&amp;display_name=YouTube&amp;url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3D-LSrJtikrh8&amp;image=https%3A%2F%2Fi.ytimg.com%2Fvi%2F-LSrJtikrh8%2Fhqdefault.jpg&amp;type=text%2Fhtml&amp;schema=youtube" allowfullscreen="" style="max-width: 100%"></iframe></div>
+<H2>How can I learn more about Microsoft Agent 365?</H2>
+<P>⌚ How much time do you have? ⌚</P>
+<P><STRONG>If you have 5 minutes...</STRONG></P>
+<P>Read the <A href="https://learn.microsoft.com/en-us/microsoft-agent-365/overview" target="_blank" rel="noopener">overview of Microsoft Agent 365</A> by our colleagues at Microsoft Learn<EM>.</EM> The article notes the benefits, prerequisites, and key scenarios for IT admins, security workers, agent developers, and business decision makers.</P>
+<P><STRONG>If you have 10 minutes...</STRONG></P>
+<P>Microsoft Mechanics host <a href="javascript:void(0)" data-lia-user-mentions="" data-lia-user-uid="189" data-lia-user-login="JeremyChapmanMSFT" class="lia-mention lia-mention-user">JeremyChapmanMSFT​</a> created a helpful explainer video that includes a product demo. It does a great job illustrating how Agent 365 helps your organization adopt autonomous agents at scale with confidence, security, and clarity across your business.</P>
+<div data-video-id="https://youtu.be/yWwYLbMvc3s?si=Svd69rdkr6UNV-cn/1770958249859" data-video-remote-vid="https://youtu.be/yWwYLbMvc3s?si=Svd69rdkr6UNV-cn/1770958249859" class="lia-video-container lia-media-is-center lia-media-size-large"><iframe src="https://cdn.embedly.com/widgets/media.html?src=https%3A%2F%2Fwww.youtube.com%2Fembed%2FyWwYLbMvc3s%3Ffeature%3Doembed&amp;display_name=YouTube&amp;url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DyWwYLbMvc3s&amp;image=https%3A%2F%2Fi.ytimg.com%2Fvi%2FyWwYLbMvc3s%2Fhqdefault.jpg&amp;type=text%2Fhtml&amp;schema=youtube" allowfullscreen="" style="max-width: 100%"></iframe></div>
+<P><STRONG>If you have 40 minutes...&nbsp;</STRONG></P>
+<P>Watch Nirav Shah and&nbsp;<a href="javascript:void(0)" data-lia-user-mentions="" data-lia-user-uid="59869" data-lia-user-login="Shilpi_Sinha" class="lia-mention lia-mention-user">Shilpi_Sinha​</a>, Partner Director of Agent 365 deliver a 40-minute technical deep dive followed by Q&amp;A from participants in the Copilot Acceleration Team's CAT AI webinar, "Everything you need to know about Microsoft Agent 365."&nbsp; Hosted by <a href="javascript:void(0)" data-lia-user-mentions="" data-lia-user-uid="208949" data-lia-user-login="Vasavi Bhaviri Setty" class="lia-mention lia-mention-user">Vasavi Bhaviri Setty​</a>, Senior Program Manager.&nbsp;</P>
+<div data-video-id="https://www.youtube.com/watch?v=Mzb2bExbNMg&amp;t/1770958818562" data-video-remote-vid="https://www.youtube.com/watch?v=Mzb2bExbNMg&amp;t/1770958818562" class="lia-video-container lia-media-is-center lia-media-size-large"><iframe src="https://cdn.embedly.com/widgets/media.html?src=https%3A%2F%2Fwww.youtube.com%2Fembed%2FMzb2bExbNMg%3Ffeature%3Doembed&amp;display_name=YouTube&amp;url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DMzb2bExbNMg&amp;image=https%3A%2F%2Fi.ytimg.com%2Fvi%2FMzb2bExbNMg%2Fhqdefault.jpg&amp;type=text%2Fhtml&amp;schema=youtube" allowfullscreen="" style="max-width: 100%"></iframe></div>
+<P>Check out upcoming and past&nbsp;<A class="lia-external-url" href="https://microsoft.github.io/powercat/programs/ai-webinar.html" target="_blank" rel="noopener">Microsoft CAT AI Webinars</A> to help your organization adopt Microsoft Copilot and agents.</P>
+<H2>How do I get started with Agent 365?</H2>
+<P>Get the <A class="lia-external-url" href="https://adoption.microsoft.com/copilot/frontier-program/" target="_blank" rel="noopener">Frontier preview program</A> for <STRONG>early access</STRONG> to Microsoft Agent 365. Frontier connects you directly with Microsoft’s latest AI innovations.</P>
+<H5><STRONG>How to enable Agent 365 with the Frontier preview program</STRONG></H5>
+<P>To start with Agent 365, sign into <A class="lia-external-url" href="https://admin.microsoft.com/" target="_blank" rel="noopener">Microsoft 365 admin center</A> &gt; select <STRONG>Copilot</STRONG> &gt; select <STRONG>Settings</STRONG> &gt; under <STRONG>User access</STRONG>, select <STRONG>Copilot Frontier</STRONG> &gt; choose the specific users, groups, or select all to grant access to the Frontier program. The tenant needs to have at least one license of Microsoft 365 Copilot to enable Microsoft Agent 365 in Frontier.</P>
+<img />
+<P>After you've granted users and groups access to the <STRONG>Copilot Frontier</STRONG> program, go to <STRONG>Agents</STRONG> from the left-pane inside the Microsoft 365 admin center to get started. You might be prompted to agree to the terms of service.</P>
+<P>You’re in! 💪</P>
+<P><STRONG>⭐&nbsp;Next, <A class="lia-external-url" href="https://learn.microsoft.com/microsoft-365/admin/manage/agent-365-overview" target="_blank" rel="noopener">take a tour of your Agent 365 overview page</A></STRONG> and get started managing agents with guidance from the <A class="lia-external-url" href="https://learn.microsoft.com/microsoft-agent-365/" target="_blank" rel="noopener">Agent 365 documentation hub</A> from Microsoft Learn.&nbsp; &nbsp;</P>
+<H2>Where can I find development resources for Agent 365?</H2>
+<P>Getting started with Agent 365 traditionally requires moving through a series of setup steps—installing the <A class="lia-external-url" href="https://learn.microsoft.com/microsoft-agent-365/developer/agent-365-cli" target="_blank">Agent 365 CLI</A>, preparing prerequisites, creating an agent blueprint, deploying code, and finally publishing through the Microsoft 365 admin center. Each phase introduces its own checks and decisions, which can make the process feel complex for new builders. The AI‑guided setup streamlines that experience by letting an AI coding agent—like GitHub Copilot in VS Code—handle the lifecycle on your behalf. Instead of jumping between docs and running commands manually, you simply provide a single instruction file, and the AI guides you interactively through the entire workflow.</P>
+<P><STRONG><A class="lia-external-url" href="https://learn.microsoft.com/microsoft-agent-365/developer/ai-guided-setup" target="_blank">⭐ Get AI-guided setup for the Agent 365 development lifecycle</A></STRONG></P>
+<P><STRONG><A class="lia-external-url" href="https://learn.microsoft.com/microsoft-agent-365/developer/agent-365-cli" target="_blank">➕&nbsp;Learn more about Agent 365 for developers</A></STRONG></P>
+<H2>Follow aka.ms/A365blog to stay up to date</H2>
+<P>Thanks for your interest in Agent 365. Feedback and hearing your needs are fuel for product improvements and plans for this blog. Let’s start the conversation in comments with a question: What’s the biggest challenge your organization faces with AI agents today?</P>
+<P>&nbsp;</P>
+<P><STRONG>🧠 Agent 365 Resources 🧠</STRONG></P>
+<UL>
+<LI>Dig into the <A class="lia-external-url" href="https://learn.microsoft.com/microsoft-agent-365/" target="_blank" rel="noopener">Agent 365 documentation on Microsoft Learn</A></LI>
+<LI>Start a post or answer questions in<A class="lia-external-url" href="https://aka.ms/A365discussions" target="_blank" rel="noopener"> A365 Discussion Space</A></LI>
+<LI>Read the <A class="lia-external-url" href="https://www.microsoft.com/microsoft-365/blog/2025/11/18/microsoft-agent-365-the-control-plane-for-ai-agents/" target="_blank" rel="noopener">Agent 365 blog post</A> from November 2025</LI>
+</UL>
+Wed, 25 Feb 2026 22:10:46 GMT
+https://techcommunity.microsoft.com/t5/agent-365-blog/hello-world/ba-p/4494728
+Nichole_Peterson
+2026-02-25T22:10:46Z

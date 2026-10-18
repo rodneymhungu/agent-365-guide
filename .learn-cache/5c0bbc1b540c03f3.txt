@@ -100,6 +100,21 @@ Enter the provider-specific values described in the provider guide.
 Validate the credentials.
 Save the connection.
 After you save the connection, select Sync agents to start synchronization. Manual synchronization is required.
+Agent observability data collection (preview)
+Important
+This feature is part of Frontier preview program. Frontier connects you directly with Microsoft’s latest AI innovations. Frontier previews are subject to the existing preview terms of your customer agreements. As these features are still in development, their availability and capabilities may change over time.
+When you create or edit a connection to a supported platform, you can control whether Microsoft 365 collects observability data for the agents synchronized from that platform. This setting appears as Collect agent observability data in the connection dialog.
+To check whether observability data collection is available for a platform, see
+the Observability column in Supported platforms.
+When you enable this setting, Microsoft 365 retrieves agent activity telemetry—such as agent sessions, usage, and related operational signals—from the connected platform by using the connection's stored credentials. This telemetry powers the agent Activity experience in the Microsoft 365 admin center and Defender Alerts & insights, giving you centralized visibility into how your synchronized agents are used.
+New connections have this setting enabled by default. Existing connections that you created before the setting was available continue to collect observability data until you change it.
+To change the setting:
+Open the Connected platforms page in the Microsoft 365 admin center.
+Create a new connection, or select an existing connection and edit it.
+Select or clear Collect agent observability data.
+Save the connection.
+Retrieving agent telemetry from the connected platform might query the provider's own logging or data services (for example, Google BigQuery or Amazon S3) and can incur data access or query charges that the provider bills. Review your provider's pricing before you enable collection.
+When you clear this setting, Microsoft 365 stops collecting new observability data for that connection's agents. The agent registry retains telemetry collected earlier according to its existing retention and management behavior.
 Manage an existing connection
 Select an existing connection to review:
 Identify the platform provider.

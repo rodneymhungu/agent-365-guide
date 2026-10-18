@@ -1,0 +1,39 @@
+Connect Oracle generative AI agents to Microsoft Agent 365
+Use this guide to connect Oracle Cloud Infrastructure generative AI agents to
+Microsoft Agent 365.
+Before you begin
+Before you create the connection:
+Create an OCI group for the service user.
+Create an API-only service user.
+Create an API key pair.
+Get the user OCID, tenancy OCID, fingerprint, region, and compartment
+OCID.
+Grant permission to read the agent resources in the selected compartment.
+Create an API-only service user
+Sign in to the Oracle Cloud Console.
+Select Identity & Security > Domains.
+Open the active identity domain and select User Management > Groups.
+Create a group for the Agent 365 connection.
+Create a service user and assign it to the group.
+Don't set a console password for the service user.
+On the service user's page, select API Keys > Add API Key.
+Generate an API key pair and download the private key.
+Grant permissions
+Use a least-privilege policy that grants read access to the agent resources in
+the selected compartment. Grant delete permissions only when administrators
+intend to delete agents or endpoints from Agent 365.
+Create the connection
+Open the Microsoft 365 admin center.
+Select Agents > All Agents.
+In Connected platforms, select Manage.
+Select + Connect a platform and choose Oracle Generative AI Agents.
+Enter the private key, user OCID, tenancy OCID, fingerprint, region, and
+compartment OCID.
+Validate the credentials.
+Save the connection.
+Select Sync agents.
+Revoke access
+Delete the API key to revoke access immediately. For temporary access removal,
+remove the service user from the group. To remove the connection permanently,
+delete the service user after confirming that no other integration uses it.
+For connection issues that aren't specific to Oracle Generative AI Agents, see Troubleshoot connected platforms.
