@@ -3,6 +3,15 @@ Applies to: Microsoft Defender for Endpoint Plan 1, Microsoft Defender for Endpo
 This article describes Microsoft Defender for Endpoint features that are in preview or generally available (GA), released in the past six months.
 For recent releases of Microsoft Defender for Endpoint, including build numbers, improvements, and fixes, see Microsoft Defender for Endpoint release notes.
 Learn more about Preview features.
+October 2026
+Type
+Feature
+Preview/GA
+Description
+Feature
+Vulnerability assessment for Microsoft Store applications
+GA
+Vulnerability assessment for applications installed via the Microsoft Store is now generally available. Defender Vulnerability Management detects supported Microsoft Store applications, adds them to the software inventory, and assesses them for vulnerabilities. Coverage is currently limited to a select set of commonly used applications. Use the Software evidence area on the software page to view the file path for the vulnerable application, along with a suggested query showing the vulnerable app, version, and file location.
 September 2026
 Type
 Feature
@@ -53,10 +62,6 @@ Release - macOS
 Build 101.26062.0012
 GA
 Release version 20.126062.12.0 released: See enhancements and features for this release.
-Feature
-Vulnerability assessment for Microsoft Store applications
-Preview
-You can now monitor vulnerabilities on devices running Microsoft Store applications, including Microsoft Teams, Mozilla Firefox, WhatsApp, Slack, Dropbox, DuckDuckGo, Dell Command | Update, HP Smart, NVIDIA Control Panel, 1Password, Beyond Compare, and Evernote (see Microsoft Store applications for the full list). Use the Software evidence area in the software page to view the file path for the vulnerable application, along with a suggested query showing the vulnerable app, version, and file location.
 Release - macOS
 Build 101.26062.0011
 GA

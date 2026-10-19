@@ -1,7 +1,7 @@
 AI agent runtime protection with Microsoft Defender for Endpoint (Preview)
 Important
 Some information in this article relates to a prereleased product which may be substantially modified before it's commercially released. Microsoft makes no warranties, expressed or implied, with respect to the information provided here.
-Local AI agents, including coding assistants, CLI tools, desktop AI apps, and autonomous agent platforms, run with user privileges on endpoints. These agents act on text from prompts, files, web content, and tool output, and can't reliably separate trusted content from hidden instructions. A single injected instruction can misuse agent access to exfiltrate data, modify code, or run harmful commands.
+Local AI agents, including coding assistants, CLI tools, desktop AI apps, and autonomous agent platforms, run with user privileges on endpoints. These agents act on text from prompts, files, web content, and tool output. They can't reliably separate trusted content from hidden instructions. A single injected instruction can misuse agent access to exfiltrate data, modify code, or run harmful commands.
 Microsoft Defender provides AI agent runtime protection by inspecting critical points in the agent loop where content enters or leaves the agent's reasoning. This helps detect malicious prompts and the harmful agent actions they can cause, audit them, and block actions before they run when the inspection method allows it. Defender uses two inspection approaches: agent-native event inspection for agents that expose vendor-supported event interfaces, and network inspection for covered network paths. To learn more about how runtime protection audits and blocks attacks, see What runtime protection detects and How it works.
 Learn what runtime protection stops, how it works, and how to investigate detections.
 Tip
@@ -12,14 +12,14 @@ What runtime protection detects
 Runtime protection helps protect against attacks involving malicious prompts and the resulting compromise of agent behavior. Defender inspects critical points in the agent loop where content enters or leaves the agent's reasoning and catches attacks regardless of where the content originated, whether a file, a web page, a repository, or a tool's output.
 For example, a coding agent fetches a project's documentation to answer a question, and the page contains hidden text that instructs the agent to read the local .env file and post its contents to an external URL. The agent treats the instruction as part of the page and is about to comply, but Defender detects the prompt injection in the tool response and blocks the action before any data leaves the device.
 How it works
-Runtime protection uses two approaches to inspect agent activity:
+Runtime protection uses two approaches to inspect agent activity: Agent-native event inspection and Network inspection.
 Agent-native event inspection
 Agent-native event inspection uses vendor-supported event interfaces exposed by the agent. Agents such as Claude Code, Codex CLI, and GitHub Copilot CLI expose these interfaces, and Defender uses them to inspect agent activity and apply audit or block decisions at critical points in the agent workflow.
 Defender scans the available agent activity for malicious prompts and high-risk actions. Depending on the event interfaces that the agent supports, Defender can stop malicious content from continuing through the agent loop or prevent a harmful tool action from running.
 Each scan is a fast, inline check rather than continuous monitoring of the agent process, so the added latency is minimal.
 Network inspection
 Network inspection extends runtime protection to agents that don't expose agent-native event interfaces. Instead of relying on structured agent events, Defender inspects the agent-to-Large Language Model (LLM) network flows covered by the support matrix to detect prompt injection in transit.
-Use network inspection when you want to protect agents that communicate with LLM services over the network but don't expose a vendor-supported event interface. This helps close the coverage gap for agents that would otherwise have no runtime protection before or during interaction with the model.
+Use network inspection when you want to protect agents that communicate with LLM services over the network but don't expose a vendor-supported event interface. This approach helps close the coverage gap for agents that would otherwise have no runtime protection before or during interaction with the model.
 Network inspection doesn't support agents that use certificate pinning or HTTP/3.
 What happens when you enable runtime protection
 Once enabled on a device, Defender inspects agent activity at the available inspection points, without changing how users run the agent. What happens following a detection depends on the configured mode:
@@ -40,6 +40,6 @@ Discover cloud and platform agents: Find agents built with Microsoft Copilot Stu
 Assess security posture: Evaluate agent configurations, identify risks, get prioritized recommendations, and surface attack paths.
 Detect and investigate threats: Correlate alerts and investigate suspicious agent behavior in your security infrastructure.
 For details on these capabilities and how to apply them, see Protect AI assets from emerging threats and vulnerabilities using Microsoft Defender.
-Next steps
+Related content
 Set up AI agent runtime protection with Microsoft Defender for Endpoint
 Local AI agent discovery with Microsoft Defender for Endpoint

@@ -179,7 +179,7 @@ Select Stop or Start to control the underlying Azure infrastructure related to t
 Assign new owner to an agent
 IT administrators can reassign ownership for agents that don't have an owner or that are active.
 Important
-You can only reassign ownership of shared agents for Agent Builder and Copilot Studio agents.
+You can only reassign ownership of shared agents for Agent Builder and Copilot Studio agents. You can't reassign ownership of first-party agents, such as system agents or pre-built agents by Microsoft.
 To reassign ownership of a shared agent, follow these steps:
 Sign in to the Microsoft 365 admin center.
 Select Agents > All agents.

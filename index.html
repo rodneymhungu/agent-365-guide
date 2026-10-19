@@ -22,7 +22,7 @@
 <link rel="canonical" href="https://rodneymhungu.github.io/agent-365-guide/">
 <link rel="alternate" type="application/atom+xml" title="Changes to this guide" href="https://github.com/rodneymhungu/agent-365-guide/commits/main.atom">
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"TechArticle","headline":"Agent 365 for security and compliance engineers","description":"A how-to guide to Microsoft Agent 365 for security and compliance engineers: what it enforces, where, under which licence, and what is still in preview.","url":"https://rodneymhungu.github.io/agent-365-guide/","image":"https://rodneymhungu.github.io/agent-365-guide/images/og.png","datePublished":"2026-09-04","dateModified":"2026-10-12","inLanguage":"en-GB","author":{"@type":"Person","name":"Rodney Mhungu"},"about":["Microsoft Agent 365","Microsoft Entra","Microsoft Purview","Microsoft Defender","Microsoft Intune"]}
+{"@context":"https://schema.org","@type":"TechArticle","headline":"Agent 365 for security and compliance engineers","description":"A how-to guide to Microsoft Agent 365 for security and compliance engineers: what it enforces, where, under which licence, and what is still in preview.","url":"https://rodneymhungu.github.io/agent-365-guide/","image":"https://rodneymhungu.github.io/agent-365-guide/images/og.png","datePublished":"2026-09-04","dateModified":"2026-10-19","inLanguage":"en-GB","author":{"@type":"Person","name":"Rodney Mhungu"},"about":["Microsoft Agent 365","Microsoft Entra","Microsoft Purview","Microsoft Defender","Microsoft Intune"]}
 </script>
 
 <!-- Status, dates, prices and the changelog live in a365-data.js; read the comment there before editing. -->
@@ -105,7 +105,7 @@
   <div class="field-stats" aria-label="Guide summary">
     <span><b data-summary="capabilities"></b> controls tracked</span>
     <span><b data-summary="previews"></b> pre-GA controls</span>
-    <span><b data-val="reviewed">12 October 2026</b> last reviewed</span>
+    <span><b data-val="reviewed">19 October 2026</b> last reviewed</span>
     <span><b>Rodney Mhungu</b> field notes by</span>
   </div>
   <details class="guide-notes">
@@ -427,7 +427,7 @@
   <section id="s5-4" data-search>
   <h3>5.4 Connecting external platforms <span class="badge" data-badge="registry-sync"></span></h3>
   <p>Two routes bring outside agents in. The Connected platforms page gives inventory; the SDK adds identity, tool access and notifications to agents you run yourself. Microsoft <a href="https://mc.merill.net/message/RM559615" target="_blank" rel="noopener">announced Connected platforms as Registry sync</a> in April 2026, and <a href="https://learn.microsoft.com/en-us/defender-xdr/security-for-ai/transition-agent-security-to-agent-365" target="_blank" rel="noopener">several Learn pages</a> still link to it under that name. <a href="https://learn.microsoft.com/en-us/microsoft-agent-365/admin/connected-platforms" target="_blank" rel="noopener">Connected platforms</a>, under Agents, All agents, brings agents from <a href="https://learn.microsoft.com/en-us/microsoft-agent-365/admin/connected-platforms-amazon-bedrock" target="_blank" rel="noopener">Amazon Bedrock</a>, <a href="https://learn.microsoft.com/en-us/microsoft-agent-365/admin/connected-platforms-google-vertex-ai" target="_blank" rel="noopener">Google Vertex AI</a>, <a href="https://learn.microsoft.com/en-us/microsoft-agent-365/admin/connected-platforms-salesforce-agent-force" target="_blank" rel="noopener">Salesforce Agentforce</a>, <a href="https://learn.microsoft.com/en-us/microsoft-agent-365/admin/connected-platforms-databricks-genie" target="_blank" rel="noopener">Databricks Genie</a>, <a href="https://learn.microsoft.com/en-us/microsoft-agent-365/admin/connected-platforms-anthropic-claude" target="_blank" rel="noopener">Anthropic Claude Managed Agents</a>, <a href="https://learn.microsoft.com/en-us/microsoft-agent-365/admin/connected-platforms-oracle-generative-ai" target="_blank" rel="noopener">Oracle Generative AI Agents</a> and <a href="https://learn.microsoft.com/en-us/microsoft-agent-365/admin/connected-platforms-snowflake-cortex" target="_blank" rel="noopener">Snowflake Cortex</a> into the same inventory. <span data-tier="registry-sync-anthropic">The Anthropic connection is <span class="st" data-st="registry-sync-anthropic"></span> because <a href="https://learn.microsoft.com/en-us/microsoft-agent-365/admin/connected-platforms-anthropic-claude" target="_blank" rel="noopener">its API is in beta</a>.</span> Each platform's setup page, linked above, lists the credentials and permissions to grant, and the scope varies. Amazon Bedrock and Oracle need only read access, with delete rights optional for admins who will delete agents from Agent 365. Google Vertex AI lists the delete permission among those it requires, and Salesforce Agentforce uses an external client app with API scopes. A delete in Agent 365 reaches the source platform, so check what each connection can delete before you save it. Sync is manual today.</p>
-  <p>Every platform syncs agents into the registry, but observability of what they do differs. The Connected platforms page lists it for Amazon Bedrock, Google Vertex AI and Anthropic, with the other four coming soon. <span data-tier="third-party-observability"><a href="https://learn.microsoft.com/en-us/microsoft-agent-365/admin/third-party-agent-observability" target="_blank" rel="noopener">Third-party agent observability</a> is <span class="st" data-st="third-party-observability"></span>, and its own page also lists Salesforce Agentforce.</span></p>
+  <p>Every platform syncs agents into the registry, but observability of what they do differs. The Connected platforms page lists it for Amazon Bedrock, Google Vertex AI, Salesforce Agentforce, Databricks Genie and Anthropic, with Oracle and Snowflake Cortex coming soon. <span data-tier="third-party-observability"><a href="https://learn.microsoft.com/en-us/microsoft-agent-365/admin/third-party-agent-observability" target="_blank" rel="noopener">Third-party agent observability</a> is <span class="st" data-st="third-party-observability"></span>, and its own page lists the same five platforms.</span></p>
   <figure class="shot ">
     <div class="frame"><div class="imgwrap"><img src="images/learn-a365-registry-sync.png" width="1600" height="750" alt="Connected platforms page with a Google Cloud connection and synced agents" loading="lazy"></div></div>
     <figcaption><b class="fn"></b> Connected platforms: one connection per external platform, with sync status and the agents it imported. <span class="src">Source: <a href="https://learn.microsoft.com/en-us/microsoft-agent-365/admin/connected-platforms" target="_blank" rel="noopener">Microsoft Learn, Connected platforms</a>, CC BY 4.0. Asset <code>learn-a365-registry-sync</code>.</span></figcaption>
@@ -585,7 +585,7 @@
     <thead><tr><th>Action</th><th>Applies to</th><th>What actually happens</th></tr></thead>
     <tbody>
       <tr><td>Delete</td><td>Any agent type</td><td>Soft-deletes with a thirty-day recovery window; restore it or permanently delete it before that window lapses</td></tr>
-      <tr><td>Reassign owner</td><td>Shared Agent Builder and Copilot Studio agents</td><td>Multiple owners are Agent Builder only, and the last owner cannot be removed</td></tr>
+      <tr><td>Reassign owner</td><td>Shared Agent Builder and Copilot Studio agents</td><td>Multiple owners are Agent Builder only, the last owner cannot be removed, and first-party agents such as system and pre-built Microsoft agents cannot be reassigned</td></tr>
       <tr><td>Start or stop</td><td>Foundry agents</td><td>Deallocates or provisions Azure compute and needs Azure AI Owner</td></tr>
       <tr><td>Block</td><td>SharePoint or Foundry</td><td>Blocks the agent in Copilot Chat only</td></tr>
       <tr><td>Block</td><td>Agent Builder or Copilot Studio</td><td>Removes the agent from every host</td></tr>
@@ -1166,7 +1166,7 @@ Set-MpPreference -AiAgentNetworkInspection Audit</code></pre>
 <!-- ============================ 10 ============================ -->
 <section class="block" id="s10" data-search>
   <div class="shead"><span class="n">10</span><h2>What you can deploy today</h2></div>
-  <p class="muted">Every status on this page comes from one list. Reviewed <span data-val="reviewed">12 October 2026</span>.</p>
+  <p class="muted">Every status on this page comes from one list. Reviewed <span data-val="reviewed">19 October 2026</span>.</p>
   <div class="tbl"><table id="avail">
     <thead><tr><th>Capability</th><th>Status</th><th>Note</th><th>Where</th></tr></thead>
     <tbody></tbody>
@@ -1187,7 +1187,7 @@ Set-MpPreference -AiAgentNetworkInspection Audit</code></pre>
   <div class="in">
     <div>
       <p><strong>About this guide</strong></p>
-      <p>Assembled by Rodney Mhungu. Structure and diagrams are adapted from a September 2026 Agent 365 workshop; every factual claim is taken from Microsoft Learn and linked at the point of use. Opinions are my own. Built on my <a href="https://github.com/rodneymhungu/field-guide-principles" target="_blank" rel="noopener">field guide principles</a>. Reviewed <span data-val="reviewed">12 October 2026</span>.</p>
+      <p>Assembled by Rodney Mhungu. Structure and diagrams are adapted from a September 2026 Agent 365 workshop; every factual claim is taken from Microsoft Learn and linked at the point of use. Opinions are my own. Built on my <a href="https://github.com/rodneymhungu/field-guide-principles" target="_blank" rel="noopener">field guide principles</a>. Reviewed <span data-val="reviewed">19 October 2026</span>.</p>
       <p><strong>Found an error?</strong> <a href="https://github.com/rodneymhungu/agent-365-guide/issues/new?title=Correction%3A%20&amp;labels=correction" target="_blank" rel="noopener">Open an issue</a> with the chapter number and the Learn page that disagrees. It goes into the next review.</p>
     </div>
     <div>

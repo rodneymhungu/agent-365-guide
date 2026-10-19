@@ -59,10 +59,12 @@ Manage agents ->
   Shadow AI (preview) -> /microsoft-365/admin/manage/agent-shadow-ai
 Manage tools ->
   Agent tools overview -> /microsoft-365/admin/manage/agent-tools-overview
+  Understand MCP server options -> tooling-servers-overview
+  Use Work IQ APIs -> /microsoft-365/copilot/extensibility/work-iq/api-overview
+  Use developer experiences to manage MCP servers -> add-mcp-tools-developer-experiences
   Manage plugins, skills, and MCP servers -> /microsoft-365/admin/manage/manage-plugins-skills-mcp-servers
   Manage Tools Gateway -> /microsoft-365/admin/manage/manage-tools-gateway
-  Bring your own MCP -> /microsoft-365/admin/manage/manage-byo-mcp-server.md
-  Work IQ MCP overview (preview) -> tooling-servers-overview
+  Bring your own (BYO) MCP server -> /microsoft-365/admin/manage/manage-byo-mcp-server
   Certify your MCP server with Microsoft -> /microsoft-copilot-studio/mcp-certification
 Manage identity and access ->
   Protect agent identities with Microsoft Entra -> admin/capabilities-entra
