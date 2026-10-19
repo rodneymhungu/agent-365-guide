@@ -9,6 +9,19 @@ Microsoft 365 admin center.
 The platform administrator creates the source-platform credentials,
 grants the required permissions, and enables platform-side telemetry when
 applicable.
+Security model
+Connected platform connections are read-only by design:
+Agent 365 never invokes, executes, or interacts with agents in the source
+platform.
+Agent 365 doesn't write to, modify, or delete resources in the source
+platform. The only exception is an explicit administrator action to remove
+a synchronized agent, which requires a separate, optional delete permission
+that you can choose not to grant.
+Observability data is read from the telemetry destination that the source
+platform already writes to on its own, such as an activity bucket or a
+managed logging service. Agent 365 doesn't write to that destination.
+For platform-specific permissions, see the relevant guide in Supported
+platforms.
 Manage external platform connections
 Create and manage external platform connections from the Connected
 platforms page in the Microsoft 365 admin center.
@@ -32,11 +45,9 @@ Vertex AI agents
 Connect Google Vertex AI
 Salesforce Agentforce
 Agentforce
-Coming soon
 Connect Salesforce Agentforce
 Databricks Genie
 Genie
-Coming soon
 Connect Databricks Genie
 Anthropic Claude
 Managed Agents
@@ -49,6 +60,31 @@ Snowflake Cortex
 Cortex Agents
 Coming soon
 Connect Snowflake Cortex
+Where supported, observability provides session, exception, runtime, and
+tool-call metrics on the agent's Activity tab. Coverage varies by
+platform. For metric definitions and platform coverage, see Third-party
+agent observability (Frontier).
+Databricks Genie observability is available through the Frontier program.
+Current limitations
+Manual synchronization only. Agent 365 doesn't currently sync on a
+schedule, and Microsoft doesn't prescribe a fixed synchronization interval.
+Choose a cadence based on how often agents change in the source platform and
+your organization's governance requirements. Re-run Sync agents after
+you add, update, or remove agents in the source platform, and before reviews
+that depend on current registry data.
+Deletion reconciliation isn't guaranteed. Synchronization doesn't
+currently guarantee that an agent removed from the source platform is
+automatically removed from the Microsoft 365 agent registry. Confirm the
+current behavior with your platform administrator, and remove the agent
+from the registry manually if it's no longer needed.
+Observability coverage varies by platform. Some platforms in the
+supported platforms table are marked Coming soon for observability and
+don't yet return activity data.
+Registry sync doesn't add code-level capabilities. It provides
+visibility and governance for agents you don't build or host yourself. If
+you build and host your own agent, or need code-level Agent 365
+capabilities, use the Agent 365 SDK instead. See Connected platforms and
+the Agent 365 SDK.
 Connection lifecycle
 Prepare: Work with your platform administrator to select the account,
 project, workspace, compartment, or region and prepare the required
@@ -59,8 +95,21 @@ Synchronize: Start synchronization so that Agent 365 discovers supported
 agents and adds them to the agent registry.
 Verify: Confirm the expected agents, metadata, and capabilities with
 your platform administrator.
-Operate: Monitor synchronization, rotate credentials, review errors,
-and remove connections when they're no longer needed.
+Operate: Re-run synchronization at the cadence your organization
+chooses and after known source-platform changes. Rotate credentials, review
+errors, and remove connections when they're no longer needed.
+Agent 365 stores the credentials that you enter for a connection as encrypted
+connection data within Microsoft 365. Microsoft encrypts the credentials at
+rest and in transit. Agent 365 doesn't prescribe a universal rotation
+interval. Use the shorter interval required by the source platform or your
+organization's security policy, and rotate credentials immediately if you
+suspect exposure. For broader Agent 365 data-protection commitments, see Data
+handling, data residency, and compliance in Agent 365
+observability.
+Every currently supported platform requires a key-based credential, such as
+an API key, secret, or private key. Keyless authentication options, such as
+workload identity federation or role assumption, aren't currently supported
+for Connected platforms.
 Administrator responsibilities
 Task
 Agent 365 AI administrator
@@ -124,7 +173,26 @@ Review the latest synchronization status.
 Confirm the total number of synchronized agents.
 Review the synchronization results.
 Investigate any synchronization errors.
+Turn Collect agent observability data on or off.
 Follow the relevant provider guide when you need to rotate credentials, change the source scope, revoke access, or remove the connection.
+Connected platforms and the Agent 365 SDK
+Registry sync (the connected platforms feature described in this article)
+gives you visibility and governance for agents that you don't build or host
+yourself. It doesn't require code changes.
+Use the Agent 365 SDK instead of, or in addition to, registry sync when:
+You build and deploy the agent yourself, rather than connecting an
+externally hosted platform.
+Your agent needs code-level Agent 365 capabilities, such as identity,
+observability, tooling, or notifications, that registry sync doesn't
+provide.
+Known considerations when you rely on registry sync alone:
+Synchronization is manual and doesn't run on a schedule.
+Observability coverage depends on what the source platform exposes, and
+some platforms don't yet support it.
+Registry sync is read-only. It can't add capabilities that the source
+platform doesn't already support.
+For a full comparison of integration options and when to choose the SDK, see
+Choose an Agent 365 integration option.
 Related content
 Connect Amazon Bedrock
 Connect Google Vertex AI
@@ -135,3 +203,5 @@ Connect Oracle Generative AI Agents
 Connect Snowflake Cortex
 Third-party agent observability (Frontier)
 Troubleshoot connected platforms
+Choose an Agent 365 integration option
+Data handling, data residency, and compliance in Agent 365 observability

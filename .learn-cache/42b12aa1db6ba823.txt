@@ -1,9 +1,9 @@
 Agent 365 Blog articles
 https://techcommunity.microsoft.com/t5/agent-365-blog/bg-p/agent-365-blog
 Agent 365 Blog articles
-Mon, 12 Oct 2026 12:52:35 GMT
+Sat, 17 Oct 2026 21:04:14 GMT
 agent-365-blog
-2026-10-12T12:52:35Z
+2026-10-17T21:04:14Z
 What's new in Agent 365 - September 2026
 https://techcommunity.microsoft.com/t5/agent-365-blog/what-s-new-in-agent-365-september-2026/ba-p/4560803
 <P>Since launching Agent 365 in May 2026, nearly 50 million agents have been registered across tens of thousands of organizations. As agent adoption accelerates, IT and security teams are looking beyond simple visibility and governance to a new challenge: understanding which agents are delivering value, where resources are being spent, and how to optimize a growing agent estate at scale.</P>

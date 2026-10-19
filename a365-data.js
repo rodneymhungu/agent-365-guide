@@ -23,7 +23,7 @@
   ==========================================================================
 */
 window.A365 = {
-  reviewed: "12 October 2026",
+  reviewed: "19 October 2026",
   gaDate: "1 May 2026",
   transitionDate: "1 July 2026",
   trial: "25 seats for 30 days",
@@ -36,6 +36,8 @@ window.A365 = {
     roadmap:  { label: "Early preview",    phrase: "in early preview" }
   },
   changes: [
+    { date: "19 October 2026", section: "s5-4", text: "Connected platforms observability is now listed for Salesforce Agentforce and Databricks Genie as well as Amazon Bedrock, Google Vertex AI and Anthropic; only Oracle and Snowflake Cortex remain coming soon. Third-party agent observability stays a Frontier preview, and Genie is added to its list. Connected platforms and Third-party agent observability pages cited." },
+    { date: "19 October 2026", section: "s6-3", text: "First-party agents, such as system agents and pre-built Microsoft agents, cannot have their ownership reassigned; reassignment stays limited to shared Agent Builder and Copilot Studio agents. Agent actions page cited." },
     { date: "12 October 2026", section: "s7-1", text: "Policies in the Users assignment exclude agent user accounts whether they target all users, selected users, groups, roles or external users; scope agent users with the Agents assignment instead. Conditional Access for agents page cited." },
     { date: "12 October 2026", section: "s5-6", text: "Observability collection starting only once a trial or licence is active now applies to third-party agents and to tenants in ten listed countries, including Austria, Denmark and Spain. Data handling, data residency, and compliance page cited." },
     { date: "12 October 2026", section: "s6-6", text: "Access packages for agents grant OAuth API permissions, delegated and application, for Microsoft Graph and applications. Governing agent identities page cited." },
@@ -81,7 +83,7 @@ window.A365 = {
     { key: "registry-sync",      name: "Connected platforms (Bedrock, Vertex, Agentforce, Genie, Oracle, Snowflake Cortex)", tier: "ga", where: "Microsoft 365 admin centre" },
     { key: "registry-sync-anthropic", name: "Connected platforms: Anthropic Claude Managed Agents", tier: "preview", where: "Microsoft 365 admin centre" },
     { key: "apim-discovery",     name: "Azure API Management integration: agents, tools, models and MCP servers discovered from the gateway", tier: "roadmap", note: "Blog announcement of 30 September 2026, rolling out from that date; no Learn page yet", where: "Azure API Management; Microsoft 365 admin centre" },
-    { key: "third-party-observability", name: "Third-party agent observability (Bedrock, Vertex AI, Anthropic, Agentforce)", tier: "frontier", where: "Microsoft 365 admin centre" },
+    { key: "third-party-observability", name: "Third-party agent observability (Bedrock, Vertex AI, Anthropic, Agentforce, Genie)", tier: "frontier", where: "Microsoft 365 admin centre" },
     { key: "byo-mcp",            name: "Bring your own MCP server", tier: "preview", where: "Admin centre and CLI" },
     { key: "shadow-ai-page",     name: "Shadow AI page", tier: "frontier", where: "Microsoft 365 admin centre" },
     { key: "local-agents-page",  name: "Local agents page", tier: "frontier", where: "Microsoft 365 admin centre" },
