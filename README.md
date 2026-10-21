@@ -31,6 +31,7 @@ Plain HTML, no build step, no framework. Four files at the root do the work:
 
 - `index.html` is the full guide.
 - `licensing.html` is chapter 2 published on its own page so that it can be found on its own. Its chapter block is a copy of the one in `index.html`; `scripts/check_pages.py` fails the build if the two differ.
+- `changes.html` is the changelog published on its own page, grouped by month and date, so each week's changes have an address to link to. Its list is a static copy of the `changes` array in `a365-data.js`; `scripts/check_pages.py --fix` regenerates it and the build fails when it drifts.
 - `a365-data.js` holds everything that goes stale: the review date, GA and transition dates, prices, the trial offer, the changelog, and the status of every capability. Status badges, the "in preview" phrases in the prose, and the deploy-today table all render from that object on every page. To update a status, change the tier there. Do not edit it in the prose.
 - `guide.css` and `guide.js` are the shared tokens, layout and behaviour.
 
