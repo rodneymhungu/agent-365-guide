@@ -457,3 +457,8 @@ footer{border-block-start:8px solid var(--ink);background:var(--paper-2)}
 @media (prefers-reduced-motion:reduce){.route-line{animation:none;stroke-dashoffset:0}.route-runner{display:none}.hero-actions a{transition:none}}
 
 .hurry{margin-block-start:1rem;max-width:54ch}
+
+/* changes.html: the changelog as a page, same list styling as the chapter 10 fold-out */
+.changes-page .block{padding-block:.5rem 2.6rem}
+.changes-page .changes{margin:.6rem 0 1.6rem;padding-inline-start:1.1rem;max-width:80ch}.changes-page .changes li{margin-block-end:.6rem}.changes-page .changes b{font:600 .72rem var(--mono);color:var(--ink-2);margin-inline-end:.4rem}.changes-page .changes b a{color:inherit}
+.changes-page section[id^=d] h3{font-size:1.05rem;margin-block:1.4rem .2rem}

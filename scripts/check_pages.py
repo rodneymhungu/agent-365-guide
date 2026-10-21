@@ -18,6 +18,11 @@ with data-t="0" sends every chapter to the start of the video, which is how the
 6.7 and 7.5 chapters shipped broken in October 2026. Each button must have a
 non-zero start that matches its label, and starts must increase down the list.
 
+changes.html carries the changes array as a static list between two HTML
+comments, so the changelog is indexable on its own and visible without
+JavaScript. This regenerates that list from the data file and fails when the
+copy differs; --fix rewrites it.
+
 Static values: guide.js fills every element carrying data-val from a365-data.js
 after the page loads, so a crawler, a LinkedIn preview or a plain text fetch
 would otherwise see an empty review date and empty prices. Each such element
@@ -97,6 +102,85 @@ def read_data() -> dict:
     return values
 
 
+def read_changes() -> list:
+    """The changes array of window.A365: date, optional section, optional kind, text."""
+    with open(os.path.join(ROOT, "a365-data.js"), encoding="utf-8") as f:
+        js = f.read()
+    body = js.split("changes: [", 1)[1].split("\n  ],", 1)[0]
+    out = []
+    for m in re.finditer(r'\{ date: "([^"]*)",(?: section: "([^"]*)",)?(?: kind: "([^"]*)",)? text: "((?:[^"\\]|\\.)*)" \}', body):
+        text = m.group(4).replace("\\'", "'").replace('\\"', '"')
+        out.append({"date": m.group(1), "section": m.group(2), "kind": m.group(3), "text": text})
+    if not out:
+        raise SystemExit("a365-data.js: no changes entries parsed")
+    return out
+
+
+def render_changes(changes: list) -> str:
+    """changes.html carries the changes array as static HTML: one <section> per month
+    (an h2, so the contents panel lists it), one <section> per date (an h3), and the
+    same <ul class="changes"> markup guide.js renders in chapter 10. Section numbers
+    link into the guide; entries about the guide itself are labelled Guide."""
+    months, dates = [], {}
+    for c in changes:
+        d = iso(c["date"]); mkey = d[:7]
+        if mkey not in dates:
+            months.append(mkey); dates[mkey] = []
+        if not dates[mkey] or dates[mkey][-1][0] != c["date"]:
+            dates[mkey].append((c["date"], []))
+        dates[mkey][-1][1].append(c)
+    out = ["<!-- changes:start -->"]
+    for mkey in months:
+        y, mo = mkey.split("-")
+        name = [k for k, v in MONTHS.items() if v == int(mo)][0]
+        out.append(f'<section class="block" id="m{mkey}">')
+        out.append(f'  <div class="shead"><span class="n">{mo}</span><h2>{name} {y}</h2></div>')
+        for day, entries in dates[mkey]:
+            out.append(f'  <section id="d{iso(day)}">')
+            out.append(f'  <h3>{day}</h3>')
+            out.append('  <ul class="changes">')
+            for c in entries:
+                if c["section"]:
+                    label = c["section"][1:].replace("-", ".")
+                    tag = f'<b><a href="index.html#{c["section"]}">{label}</a></b>'
+                else:
+                    tag = "<b>Guide</b>"
+                out.append(f'    <li>{tag} {c["text"]}</li>')
+            out.append('  </ul>')
+            out.append('  </section>')
+        out.append('</section>')
+    out.append("<!-- changes:end -->")
+    return "\n".join(out)
+
+
+def check_changes(fix: bool) -> int:
+    path = os.path.join(ROOT, "changes.html")
+    if not os.path.exists(path):
+        return 0
+    with open(path, encoding="utf-8") as f:
+        html = f.read()
+    changes = read_changes()
+    want = render_changes(changes)
+    m = re.search(r"<!-- changes:start -->.*?<!-- changes:end -->", html, re.S)
+    if not m:
+        print("BAD VALUE: changes.html has no changes:start / changes:end markers"); return 1
+    bad = 0
+    if re.sub(r"\s+", " ", m.group(0)) != re.sub(r"\s+", " ", want):
+        print("BAD VALUE: changes.html: the static changes list differs from a365-data.js"); bad += 1
+        html = html.replace(m.group(0), want)
+    count = re.search(r'(<b data-static="changes-count">)(\d+)(</b>)', html)
+    if count and int(count.group(2)) != len(changes):
+        print(f"BAD VALUE: changes.html: changes-count reads {count.group(2)}, data has {len(changes)}"); bad += 1
+        html = html.replace(count.group(0), f"{count.group(1)}{len(changes)}{count.group(3)}")
+    if bad and fix:
+        with open(path, "w", encoding="utf-8") as f:
+            f.write(html)
+        print("fixed: changes.html rewritten from a365-data.js")
+    if not bad:
+        print(f"ok: changes.html carries all {len(changes)} changes entries")
+    return bad
+
+
 def iso(day: str) -> str:
     """'6 October 2026' -> '2026-10-06'."""
     d, mon, y = day.split()
@@ -166,6 +250,7 @@ def main() -> int:
                 f.write(fixed)
             print(f"fixed: {page} rewritten from a365-data.js")
     bad += check_sitemap(data, fix)
+    bad += check_changes(fix)
     with open(os.path.join(ROOT, "index.html"), encoding="utf-8") as f:
         index = f.read()
     bad += check_chapters(index, "index.html")
