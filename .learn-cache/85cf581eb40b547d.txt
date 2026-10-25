@@ -152,7 +152,7 @@ For more information about agent details, see Understand agent details in Micros
 Agent actions
 From the Agent Map, you can take administrative actions directly on agents without leaving the map view. When you select an agent, the details pane opens and provides available actions based on the agent's current state.
 Available actions are based on the state of the agent. Actions can include the following:
-Assign new owner - Assign an owner to an agent that currently has no active owner. You can only assign ownership to users with a Copilot license.
+Assign new owner - Assign an owner to an agent that currently has no active owner.
 Block - Blocks the agent from members of your organization. They won't be able to install or use the agent. Additionally, the agent will be removed from any member of your organization who has already installed it.
 Unblock - Restore access to a previously blocked agent.
 Install - Deploys and installs the agent to the selected users.

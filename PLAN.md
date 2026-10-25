@@ -7,13 +7,15 @@ the section "How an agent picks this up" at the bottom.
 
 Started 21 September 2026. Reviewed every Monday alongside the weekly digest.
 
-## Where Rodney left off, 7 October 2026
+## Where Rodney left off, 25 October 2026
 
-Read this first when you come back. Everything from 6 October is merged
-(#51 to #59): the drift edits, the digest fix, the whole-guide writing and
-structure sweep, Connected platforms in 5.4 with every setup page linked,
-6.8's admin path, and the FedRAMP decision. The 6 October LinkedIn article
-draft is in `distribution/2026-10-06-linkedin.md`.
+Read this first when you come back. The 19 October drift pull request (#69)
+is merged with its decisions closed; the review date is 25 October. The
+19 October LinkedIn post was not sent: the next one is built from the 12 to
+25 October changes, posted as a native feed post with the new chapter 4 map
+as its cover, once that map is merged. The map, the single name in the top
+bar and the mobile bar fix travel in one pull request. The older list below
+is kept because most of it is still open.
 
 1. **The 6 October article is live and logged** (18 October, focus 4 row in
    the log). Still only Rodney can edit the live copy: the registry sync
@@ -152,6 +154,7 @@ Newest first. One line per item shipped, with the pull request.
 
 | Date | Focus | Shipped | Evidence |
 |---|---|---|---|
+| 25 October 2026 | 3 | Merged the 19 October drift pull request after checking each edit against the Learn page it cites. Brought up to main first: #71 had changed chapter 2 and 5.4 after it branched, so its 5.4 observability edit was already in and was dropped. Kept: first-party agents cannot be reassigned (6.3). Decisions closed on Learn: 5.1 says one Copilot Studio agent can appear twice; 5.4 gains the read-only model, key-based credentials, deletion reconciliation and the Purview audit log gap for connection actions; 6.5 cites the new MCP server options page and the CLI evaluate step. Work IQ MCP keeps its name, the options page still uses it. Four changelog entries. | #69 |
 | 18 October 2026 | 3 | Closed every open decision from the 12 October drift report, each checked on Learn first. 5.4: observability on Connected platforms now covers five platforms (Agentforce and Databricks Genie joined), each connection has a Collect agent observability data switch that is on by default and whose provider queries are billed, and the two Learn pages disagree about older connections, which the guide says; two onboarding walkthroughs (single agent with the Agent 365 CLI, bulk from one CSV with PowerShell) cited. 5.5 and 7.4: the Defender AI agent support matrix is now the source for both Defender columns of the lookup table, with Claude Desktop and two VS Code extensions gaining hooks, ChatGPT and Ollama Desktop gaining network inspection, Antigravity Desktop and Microsoft Scout discovered, and Codex CLI named by the overview but absent from the matrix. 5.6: the Azure agents data-residency page, prompts and responses included, per-platform switch-off. 2.1 and 7.1: agent risk-based Conditional Access needs Entra ID P2 or E5. Review date 18 October. Legibility pass: 5.4 split into shorter paragraphs, two long onboarding sentences split; rendered at 390 and 1440 in light and dark with no overflow and no script errors; no dashes, no US spellings, no broken anchors. Writing review: no flags beyond the two splits. | this branch |
 | 18 October 2026 | 3 | Merged the 12 October drift pull request after checking each of its five edits against the live Learn page it cites: the Conditional Access licence notice ("Agent 365 licence will soon be required") is gone from the autonomous agents page, so 2.1 drops the "enforcement is coming" sentence; 5.5 says Defender lists a local agent only after it sees it run and that the list is not a software inventory; 5.6 scopes collection starting at trial or licence to third-party agents and ten named countries; 6.6 access packages grant delegated as well as application permissions; 7.1 says every policy in the Users assignment excludes agent users, and the widget note in guide.js now says the same. Also checked: the Identity Protection page still says its licence requirement is starting soon, so the chapter 7 sentence stands. Sitemap date synced with `check_pages.py --fix`. Writing review: one 5.5 sentence reworded ("observes it active"); changelog entries kept as changelog voice. Open from the drift report, not yet decided: the Connected platforms "Collect agent observability data" setting and its provider charges for 5.4, the new AI agent support matrix page for 7.4 and 5.5, agent risk-based Conditional Access needing P2 or E5 for 2.1 and 7.1, the Azure agents data-residency page for 5.6, and two uncited onboarding pages (CLI and bulk PowerShell). | #67 |
 | 18 October 2026 | 4 | Second LinkedIn article, the 28 September and 5 October release note, posted about 11 October from `distribution/2026-10-06-linkedin.md` with an illustrated cover. Logged on 18 October with one week of LinkedIn analytics: 986 impressions (43% out-of-network), 661 reached, 39 article views, 19 reactions, 3 comments, 2 saves, no reposts. The 12 October digest shows the referrer: LinkedIn 13 against 4 the week before, so about one article reader in three reached the guide. This is the baseline for the native-post comparison; do not change the article generator before it. | [post](https://lnkd.in/p/exg_rJiH) |

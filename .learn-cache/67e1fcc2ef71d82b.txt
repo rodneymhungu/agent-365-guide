@@ -108,7 +108,7 @@ Microsoft Entra Agent ID is a product within Microsoft Entra that provides the p
 Microsoft Agent 365 enables agents to operate across Microsoft 365 services and enterprise workflows, which requires a Microsoft Agent 365 license for each user. For pricing details, see Microsoft Agent 365 plans and pricing.
 Extending Microsoft Entra security features to agents requires Microsoft Agent 365. Agent 365 is included with Microsoft 365 E7 and is available as an add-on to Microsoft E5/A5/Business Premium (or Microsoft Defender Suite + Microsoft Purview Suite). See our latest Agent 365 product terms for more details.
 Microsoft Entra ID Governance
-The following table shows the licensing requirements for Microsoft Entra ID Governance features for member users. Microsoft Entra Suite includes all features of Microsoft Entra ID Governance. Microsoft 365 E7 also includes all ID Governance features through the Entra Suite and Agent 365. Licensing information and example license scenarios for Entitlement management, Access reviews, and Lifecycle Workflows are provided following the table.
+The following table shows the licensing requirements for Microsoft Entra ID Governance features for member users. Microsoft Entra Suite includes all features of Microsoft Entra ID Governance. Microsoft 365 E7 also includes all ID Governance features through the Entra Suite and Agent 365. Licensing information for Entitlement management, Access reviews, and Lifecycle Workflows are provided following the table.
 Features by license
 The following table shows what features associated with identity governance are available with each license. For more information on other features, see Microsoft Entra plans and pricing. Not all features are available in all clouds; see Microsoft Entra feature availability for Azure Government.
 Feature
@@ -429,39 +429,8 @@ Conditional Access - Terms of use attestation
 ✅
 Entitlement Management
 Using this feature requires a Microsoft Entra ID Governance subscription for your organization's member users. Some capabilities within this feature can operate with a Microsoft Entra ID P2 subscription. Some capabilities within this feature require guest billing.
-Example license scenarios
-Here are some example license scenarios to help you determine the number of licenses you must have.
-Scenario
-Calculation
-Number of licenses
-An Identity Governance Administrator at Woodgrove Bank creates initial catalogs. One of the policies specifies that All employees (2,000 employees) can request a specific set of access packages. 150 employees request the access packages.
-2,000 employees who can request the access packages
-2,000
-An Identity Governance Administrator at Woodgrove Bank creates initial catalogs. They create an auto-assignment policy that grants All members of the Sales department (350 employees) access to a specific set of access packages. 350 employees are auto-assigned to the access packages.
-350 employees need licenses.
-351
 Access reviews
 Using this feature requires a Microsoft Entra ID Governance subscription for your organization's member users, including for all employees who are reviewing access or having their access reviewed. Some capabilities within this feature might operate with a Microsoft Entra ID P2 subscription. Some capabilities within this feature require guest billing.
-Example license scenarios
-Here are some example license scenarios to help you determine the number of licenses you must have.
-Scenario
-Calculation
-Number of licenses
-An administrator creates an access review of Group A with 75 member users and 1 group owner, and assigns the group owner as the reviewer.
-1 license for the group owner as reviewer, and 75 licenses for the 75 users.
-76
-An administrator creates an access review of Group B with 500 member users and 3 group owners, and assigns the 3 group owners as reviewers.
-500 licenses for users, and 3 licenses for each group owner as reviewers.
-503
-An administrator creates an access review of Group B with 500 member users. Makes it a self-review.
-500 licenses for each user as self-reviewers
-500
-An administrator creates an access review of Group C with 50 member users. Makes it a self-review.
-50 licenses for each user as self-reviewers.
-50
-An administrator creates an access review of Group D with 6 member users. Makes it a self-review.
-6 licenses for each user as self-reviewers. No additional licenses are required.
-6
 Lifecycle Workflows
 With Microsoft Entra ID Governance licenses for Lifecycle Workflows, you can:
 Create, manage, and delete workflows up to the total limit of 50 workflows.
@@ -469,16 +438,6 @@ Trigger on-demand and scheduled workflow execution.
 Manage and configure existing tasks to create workflows that are specific to your needs.
 Create up to 100 custom task extensions to be used in your workflows.
 Using this feature requires a Microsoft Entra ID Governance subscription for your organization's member users. Some capabilities within this feature require guest billing.
-Example license scenarios
-Scenario
-Calculation
-Number of licenses
-A Lifecycle Workflows Administrator creates a workflow to add new hires in the Marketing department to the Marketing teams group. 250 new hire member users are assigned to the Marketing teams group via this workflow once. Other 150 new hire member users are assigned to the Marketing teams group via this workflow later the same year.
-1 license for the Lifecycle Workflows Administrator, and 400 licenses for the users.
-401
-A Lifecycle Workflows Administrator creates a workflow to pre-offboard a group of employees before their last day of employment. The scope of users who will be pre-offboarded are 40 users once. We offboard 40 licensed users. Now, we can re-assign these 40 licenses and assign 10 more licenses later in the year to pre-offboard 50 more users.
-50 licenses for users, and 1 license for the Lifecycle Workflows Administrator.
-51
 Microsoft Entra Tenant Governance
 The following tables show which Tenant Governance features are available with each license.
 Microsoft Entra P1 is also included in Microsoft 365 E3 and Microsoft 365 Business Premium. Microsoft Entra P2 is also included in Microsoft 365 E5. Microsoft Entra ID Governance is also included in Microsoft Entra Suite and Microsoft 365 E7.
@@ -605,20 +564,6 @@ Users with eligible and/or time-bound assignments as members or owners of PIM fo
 Users able to approve or reject activation requests in PIM
 Users assigned to an access review
 Users who perform access reviews
-Example license scenarios for PIM
-Here are some example license scenarios to help you determine the number of licenses you must have.
-Scenario
-Calculation
-Number of licenses
-Woodgrove Bank has 10 administrators for different departments and 2 Privileged Role Administrators that configure and manage PIM. They make five administrators eligible.
-Five licenses for the administrators who are eligible
-5
-Graphic Design Institute has 25 administrators of which 14 are managed through PIM. Role activation requires approval and there are three different users in the organization who can approve activations.
-14 licenses for the eligible roles + three approvers
-17
-Contoso has 50 administrators of which 42 are managed through PIM. Role activation requires approval and there are five different users in the organization who can approve activations. Contoso also does monthly reviews of users assigned to administrator roles and reviewers are the users' managers of which six aren't in administrator roles managed by PIM.
-42 licenses for the eligible roles + five approvers + six reviewers
-53
 When a license expires for PIM
 If a Microsoft Entra ID P2, Microsoft Entra ID Governance, or trial license expires, Privileged Identity Management features are no longer available in your directory:
 Permanent role assignments to Microsoft Entra roles are unaffected.

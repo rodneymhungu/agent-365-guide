@@ -4,6 +4,9 @@ What's planned for Microsoft Purview
 Microsoft Purview continues to add new solutions and features to help with data governance, data security, and risk and compliance in your organization. Check out the following roadmap sites to learn more about what's planned for Microsoft Purview:
 Roadmap for data governance solutions.
 Roadmap for data security and risk and compliance solutions.
+October 2026
+Data Loss Prevention
+General availability: Endpoint data loss prevention (DLP) can now monitor sensitive data transferred over FTP and SFTP from managed Windows devices. It can enforce restrictive actions to help prevent data exfiltration. Configure FTP and SFTP transfer activities in your Endpoint DLP policies to get started. See Protect FTP and SFTP transfers with Microsoft Purview Endpoint DLP.
 September 2026
 Data Loss Prevention
 General availability: Integrate Microsoft Entra Global Secure Access with Purview to protect text, files, and AI interactions at the network layer, enforce restrictive actions based on DLP policies, and detect risky user activity through Insider Risk Management. It helps prevent sensitive data from being shared with untrusted cloud applications through browsers, apps, APIs, and add-ins, including generative AI platforms, social media, and collaborative platforms. See Learn about Microsoft Purview Network Data Security.

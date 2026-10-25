@@ -23,7 +23,7 @@
   ==========================================================================
 */
 window.A365 = {
-  reviewed: "18 October 2026",
+  reviewed: "25 October 2026",
   gaDate: "1 May 2026",
   transitionDate: "1 July 2026",
   trial: "25 seats for 30 days",
@@ -36,6 +36,10 @@ window.A365 = {
     roadmap:  { label: "Early preview",    phrase: "in early preview" }
   },
   changes: [
+    { date: "25 October 2026", section: "s5-4", text: "Connected platform connections are read-only, every platform needs a key-based credential, an agent removed at the source is not guaranteed to leave the registry, and connection create, sync and delete actions are not guaranteed to reach the Purview audit log. Connected platforms and Third-party agent observability pages cited." },
+    { date: "25 October 2026", section: "s6-3", text: "First-party agents, meaning system agents and pre-built Microsoft agents, cannot have their ownership reassigned; reassignment stays limited to shared Agent Builder and Copilot Studio agents. Agent actions page cited." },
+    { date: "25 October 2026", section: "s6-5", text: "MCP servers come in three kinds on Learn's new options page: Work IQ MCP, Microsoft-hosted workload servers kept for backward compatibility, and custom servers registered through bring your own; the Agent 365 CLI can evaluate a server before registration. MCP server options and developer experiences pages cited." },
+    { date: "25 October 2026", section: "s5-1", text: "One Copilot Studio agent can appear twice in the registry, as shared by creator and as published by your organisation; Learn calls the duplicate rows expected and removing one does not remove the other. Agent registry page cited." },
     { date: "18 October 2026", section: "s5-5", text: "The Defender for Endpoint AI agent support matrix is now the source for both Defender columns of the lookup table: Claude Desktop in Code mode and the GitHub Copilot and Claude Code extensions for Visual Studio Code gain agent hooks, ChatGPT Desktop and Ollama Desktop gain network inspection, Antigravity Desktop and Microsoft Scout are discovered, and Codex CLI is named by the runtime protection overview but absent from the matrix. Sixty tools on Windows, fifty-one on macOS. AI agent support matrix page cited." },
     { date: "18 October 2026", section: "s7-4", text: "Runtime protection's supported agents come from the support matrix: six agents with hooks, four under network inspection. AI agent support matrix page cited." },
     { date: "18 October 2026", section: "s5-4", text: "Observability on Connected platforms now covers five platforms, Salesforce Agentforce and Databricks Genie joining Bedrock, Vertex AI and Anthropic, and each connection has a Collect agent observability data switch, on by default, whose queries the provider bills. The two Learn pages disagree about older connections. Connected platforms and Third-party agent observability pages cited." },

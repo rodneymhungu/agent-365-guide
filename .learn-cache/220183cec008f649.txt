@@ -5,8 +5,9 @@ To access Agent 365 preview features in the Frontier program, your tenant must h
 In Microsoft 365 admin center, navigate to Agents > Overview and select Try now in the banner and I agree to the Terms of Service.
 Next, navigate to Billing > Licenses and confirm you see 25 active licenses for Microsoft 365 Frontier for AI Teammates.
 Only a global admin for the tenant can enable Agent 365 Frontier, and the preview disclaimers in your customer agreements apply.
+You can also enroll by going to Home and selecting Dashboard View from the command bar. Find the Agent 365 card in the dashboard and select Try now and I agree to the Terms of Service.
 Microsoft Agent 365 features in Frontier
-Currently the following Agent 365 features are available to preview through the Frontier program:
+Currently, the following features are available to preview through the Frontier program:
 Agents with their own identity
 Shadow AI
 Frontier program for Microsoft Agent 365 FAQ
