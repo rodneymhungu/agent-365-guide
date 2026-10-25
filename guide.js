@@ -169,19 +169,6 @@
   });
 
   /* --- Control plane hover --- */
-  document.querySelectorAll('.cp').forEach(fig=>part('control plane figure', ()=>{
-    const svg=fig.querySelector('svg'), pills=[...svg.querySelectorAll('g.pill')], prods=[...svg.querySelectorAll('g.prod')];
-    function light(ids){ svg.classList.add('active'); pills.forEach(p=>p.classList.toggle('lit', ids.pill===p)); prods.forEach(p=>p.classList.toggle('lit', ids.set.has(p.id))); }
-    function clear(){ svg.classList.remove('active'); [...pills,...prods].forEach(p=>p.classList.remove('lit')); }
-    const hover=matchMedia('(hover:hover)').matches;
-    pills.forEach(p=>{ const on=()=>light({pill:p,set:new Set(p.dataset.links.split(' '))});
-      if(hover){ p.addEventListener('pointerenter',on); p.addEventListener('pointerleave',clear); p.addEventListener('focus',on); p.addEventListener('blur',clear); }
-      else { p.addEventListener('click',e=>{ e.stopPropagation(); p.classList.contains('lit') ? clear() : on(); }); }
-      p.addEventListener('keydown',e=>{ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); p.classList.contains('lit') ? clear() : on(); } });
-    });
-    if(!hover){ svg.addEventListener('click',clear); }
-    if(hover) prods.forEach(pr=>{ pr.addEventListener('pointerenter',()=>{ const owners=pills.filter(p=>p.dataset.links.split(' ').includes(pr.id)); svg.classList.add('active'); pills.forEach(p=>p.classList.toggle('lit',owners.includes(p))); prods.forEach(x=>x.classList.toggle('lit',x===pr)); }); pr.addEventListener('pointerleave',clear); });
-  }));
 
   /* --- Conditional Access explorer --- */
   const CAtext={

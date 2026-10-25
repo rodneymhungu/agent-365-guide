@@ -36,6 +36,7 @@ window.A365 = {
     roadmap:  { label: "Early preview",    phrase: "in early preview" }
   },
   changes: [
+    { date: "25 October 2026", section: "s4", kind: "guide", text: "Chapter 4\u2019s map has three bands: the four routes an agent takes into Agent 365, the control plane, and the products that enforce, with live status badges on the routes. The top bar carries one name and fits a phone in two rows." },
     { date: "25 October 2026", section: "s5-4", text: "Connected platform connections are read-only, every platform needs a key-based credential, an agent removed at the source is not guaranteed to leave the registry, and connection create, sync and delete actions are not guaranteed to reach the Purview audit log. Connected platforms and Third-party agent observability pages cited." },
     { date: "25 October 2026", section: "s6-3", text: "First-party agents, meaning system agents and pre-built Microsoft agents, cannot have their ownership reassigned; reassignment stays limited to shared Agent Builder and Copilot Studio agents. Agent actions page cited." },
     { date: "25 October 2026", section: "s6-5", text: "MCP servers come in three kinds on Learn's new options page: Work IQ MCP, Microsoft-hosted workload servers kept for backward compatibility, and custom servers registered through bring your own; the Agent 365 CLI can evaluate a server before registration. MCP server options and developer experiences pages cited." },

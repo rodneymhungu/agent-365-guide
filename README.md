@@ -38,7 +38,7 @@ Tiers are `ga`, `preview`, `frontier` and `roadmap`.
 
 Screenshots live in `images/`. [images/README.md](images/README.md) and `images/manifest.json` record where each one came from (deck slide or Learn page), how it was cropped, and which section uses it. Update both when a screenshot is replaced.
 
-Diagrams are hand-built SVG in the page. The two sketches use a hand-drawn face and a slight wobble filter on purpose.
+Diagrams are built in the page from its tokens: SVG for drawings and flows, a plain HTML grid for the chapter 4 map, whose text has to wrap on a phone and whose badges render from the data file. The two sketches use a hand-drawn face and a slight wobble filter on purpose.
 
 ## Why it looks and reads the way it does
 
