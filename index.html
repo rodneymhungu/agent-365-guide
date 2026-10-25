@@ -39,7 +39,6 @@
 <header class="topbar">
   <div class="in">
     <a class="brand" href="#top">rodney<span>.</span>mhungu</a>
-    <span class="field-id">Agent control atlas · Field edition 01</span>
     <span class="count" id="count" aria-live="polite"></span>
     <label class="toggle"><input type="checkbox" id="ga-only"> GA only</label>
     <button class="theme-btn" id="theme" type="button" aria-label="Toggle colour theme">Theme</button>
@@ -308,33 +307,38 @@
   </table></div>
   <p>Policy templates take the tenant-wide policies you already have and attach them to each agent at onboarding. The owners do not change: whoever runs a control for users runs it for agents.</p>
 
-  <figure class="cp">
+  <p>Where an agent runs decides how much of this reaches it. Microsoft <a href="https://learn.microsoft.com/en-us/microsoft-agent-365/developer/choose-integration-option" target="_blank" rel="noopener">compares three routes in</a>: built-in integration for its own platforms, Connected platforms for agents hosted elsewhere, and the Agent 365 SDK for agents you build. Local agents on laptops take a fourth route through Defender for Endpoint. The map puts the four routes above the control plane and the products that enforce beneath it.</p>
+  <figure class="lmap">
     <div class="frame">
-    <svg viewBox="0 0 900 360" role="img" aria-labelledby="f2t">
-      <title id="f2t">The distributed control plane: Agent 365 foundation on top, three pillars beneath, each mapped to the products that enforce it. Hover, tap or focus a pillar to see its products.</title>
-      <rect x="40" y="24" width="820" height="46" rx="6" class="fa"/>
-      <text x="450" y="46" text-anchor="middle" class="d on" font-size="13">AGENT 365 · control plane</text>
-      <text x="450" y="62" text-anchor="middle" class="on" font-size="11">registry and identity · access and policies · observability · tools gateway · runtime protection</text>
-      <path d="M170 70 V96 M450 70 V96 M730 70 V96" class="arr"/>
-      <g class="pill" data-links="p-mac p-sig" tabindex="0" role="button" aria-label="Observe"><rect x="40" y="98" width="260" height="60" rx="6" class="fs"/><text x="170" y="124" text-anchor="middle" class="d" font-size="15">OBSERVE</text><text x="170" y="144" text-anchor="middle" font-size="11" class="m">Inventory, map, risk signals</text></g>
-      <g class="pill" data-links="p-mac2 p-entra-gov p-purview" tabindex="0" role="button" aria-label="Govern"><rect x="320" y="98" width="260" height="60" rx="6" class="fs"/><text x="450" y="124" text-anchor="middle" class="d" font-size="15">GOVERN</text><text x="450" y="144" text-anchor="middle" font-size="11" class="m">Onboarding, lifecycle, compliance</text></g>
-      <g class="pill" data-links="p-entra-gsa p-purview2 p-defender p-intune" tabindex="0" role="button" aria-label="Secure"><rect x="600" y="98" width="260" height="60" rx="6" class="fs"/><text x="730" y="124" text-anchor="middle" class="d" font-size="15">SECURE</text><text x="730" y="144" text-anchor="middle" font-size="11" class="m">Identity, data, threats, endpoint, network</text></g>
-      <path d="M170 158 V186 M450 158 V186 M730 158 V186" class="arr"/>
-      <g font-size="12">
-        <g class="prod" id="p-mac"><rect x="40" y="188" width="260" height="30" rx="4" class="st2 fp"/><text x="170" y="208" text-anchor="middle">Microsoft 365 admin centre</text></g>
-        <g class="prod" id="p-sig"><rect x="40" y="224" width="260" height="30" rx="4" class="st2 fp"/><text x="170" y="244" text-anchor="middle">Entra · Purview · Defender</text></g>
-        <g class="prod" id="p-mac2"><rect x="320" y="188" width="260" height="30" rx="4" class="st2 fp"/><text x="450" y="208" text-anchor="middle">Microsoft 365 admin centre</text></g>
-        <g class="prod" id="p-entra-gov"><rect x="320" y="224" width="260" height="30" rx="4" class="st2 fp"/><text x="450" y="244" text-anchor="middle">Entra ID Governance</text></g>
-        <g class="prod" id="p-purview"><rect x="320" y="260" width="260" height="30" rx="4" class="st2 fp"/><text x="450" y="280" text-anchor="middle">Purview</text></g>
-        <g class="prod" id="p-entra-gsa"><rect x="600" y="188" width="260" height="30" rx="4" class="st2 fp"/><text x="730" y="208" text-anchor="middle">Entra · Global Secure Access</text></g>
-        <g class="prod" id="p-purview2"><rect x="600" y="224" width="260" height="30" rx="4" class="st2 fp"/><text x="730" y="244" text-anchor="middle">Purview</text></g>
-        <g class="prod" id="p-defender"><rect x="600" y="260" width="260" height="30" rx="4" class="st2 fp"/><text x="730" y="280" text-anchor="middle">Defender XDR · Defender for Endpoint</text></g>
-        <g class="prod" id="p-intune"><rect x="600" y="296" width="260" height="30" rx="4" class="st2 fp"/><text x="730" y="316" text-anchor="middle">Intune</text></g>
-      </g>
-      <text x="40" y="346" font-size="11" class="m">Hover, tap or tab to a pillar. Nothing below the top bar is a new enforcement point.</text>
-    </svg>
+      <div class="band run">
+        <p class="k">Where agents run<small>Four routes in, each with a different reach</small></p>
+        <ul>
+          <li><i>Built in</i><b>Microsoft platforms</b><span>Copilot Studio, Foundry, Agent Builder</span><span class="reach">Registry, policy templates, identity and observability without code; admin enablement may still be needed</span></li>
+          <li><i>With the SDK</i><b>Agents you build</b><span>Any framework, hosted by you</span><span class="reach">Identity, Work IQ tools and notifications in code, observability through OpenTelemetry, registration through the CLI</span></li>
+          <li><i>Connected platforms</i><b>External platforms</b><span>Bedrock, Vertex AI, Agentforce, Genie, Anthropic, Oracle, Snowflake Cortex</span><span class="reach">Inventory <span class="badge" data-badge="registry-sync"></span> and activity for five <span class="badge" data-badge="third-party-observability"></span>; the platform keeps its own controls</span></li>
+          <li><i>On the device</i><b>Local agents</b><span>Claude Code, Codex, Copilot CLI and others on laptops</span><span class="reach">Found by Defender for Endpoint <span class="badge" data-badge="mde-discovery"></span>, listed on the Local agents page <span class="badge" data-badge="local-agents-page"></span>, not in the registry</span></li>
+        </ul>
+      </div>
+      <div class="band plane">
+        <p class="k">Agent 365 control plane<small>Microsoft 365 admin centre. Enforces nothing.</small></p>
+        <ul>
+          <li><b>Observe</b><span>Registry, agent map, risk signals gathered from the products beneath</span></li>
+          <li><b>Govern</b><span>Onboarding, policy templates, lifecycle actions, management rules, tenant settings</span></li>
+          <li><b>Secure</b><span>Policies attached at onboarding and enforced beneath</span></li>
+        </ul>
+      </div>
+      <div class="band enforce">
+        <p class="k">Products that enforce<small>Each keeps its own administrator</small></p>
+        <ul>
+          <li><b>Entra</b><span>Agent identity, Conditional Access, Identity Protection, access packages</span></li>
+          <li><b>Purview</b><span>Labels, DLP, audit, retention, Compliance Manager</span></li>
+          <li><b>Defender</b><span>XDR posture, detection and real-time protection; Defender for Endpoint on the device</span></li>
+          <li><b>Intune</b><span>Device compliance; block or contain local agents</span></li>
+          <li><b>Global Secure Access</b><span>Web, prompt, MCP and file controls on agent traffic</span></li>
+        </ul>
+      </div>
     </div>
-    <figcaption><b class="fn"></b> The distributed control plane. Agent 365 coordinates. Enforcement happens in the products beneath.</figcaption>
+    <figcaption><b class="fn"></b> Where agents run, what Agent 365 reaches, and which product enforces. Badges are the status of each tracked capability, from the same list as chapter 10.</figcaption>
   </figure>
 
   <section id="s4-1" data-search>
