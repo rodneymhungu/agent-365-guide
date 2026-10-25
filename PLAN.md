@@ -11,11 +11,12 @@ Started 21 September 2026. Reviewed every Monday alongside the weekly digest.
 
 Read this first when you come back. The 19 October drift pull request (#69)
 is merged with its decisions closed; the review date is 25 October. The
-19 October LinkedIn post was not sent: the next one is built from the 12 to
-25 October changes, posted as a native feed post with the new chapter 4 map
-as its cover, once that map is merged. The map, the single name in the top
-bar and the mobile bar fix travel in one pull request. The older list below
-is kept because most of it is still open.
+19 October LinkedIn post was not sent. Its replacement, a native feed post
+built from the 12 to 25 October changes with the chapter 4 map as its cover,
+is drafted in `distribution/2026-10-25-linkedin-post.md` and waits to be
+posted; it is the native-post test from item 2 below. The map, the single
+name in the top bar and the mobile bar fix are merged (#72). The older list
+below is kept because most of it is still open.
 
 1. **The 6 October article is live and logged** (18 October, focus 4 row in
    the log). Still only Rodney can edit the live copy: the registry sync
@@ -154,6 +155,7 @@ Newest first. One line per item shipped, with the pull request.
 
 | Date | Focus | Shipped | Evidence |
 |---|---|---|---|
+| 25 October 2026 | 4 | Native LinkedIn feed post drafted in `distribution/2026-10-25-linkedin-post.md` from the 12 to 25 October changes: Entra ID P2 for agent-risk Conditional Access leads, then the Defender for Endpoint support matrix, the observability switch the provider bills, and the Purview audit log gap for connection actions, plus the chapter 4 map as the cover image (`2026-10-25-linkedin-cover.png`, rendered from the live page). Under 1,300 characters, the guide linked once. This is the native-post test: compare the LinkedIn referrer in the 2 November digest with the article weeks. Not yet posted. Writing review: no flags applied, two notes. | this pull request |
 | 25 October 2026 | Structure | Chapter 4's Figure 3 rebuilt as a three-band map: the four routes an agent takes into Agent 365 (built in, with the SDK, Connected platforms, on the device), the control plane, and the products that enforce, with status badges on the routes from the data file. The idea came from a community architecture overview by Russell Hockley; the content comes from Learn's Choose an Agent 365 integration option page, now cited in chapter 4. The old hover-pillar SVG and its script and styles are gone. Built as an HTML grid, not SVG, so the text wraps at 390px and the badges use the same spans as the rest of the page; README says so. The top bar carries one name on both pages (the "Agent control atlas" label is gone) and fits a phone in two balanced rows, one row from 621px up. Writing review: one flag applied, "data block" in reader copy. | this pull request |
 | 25 October 2026 | 3 | Merged the 19 October drift pull request after checking each edit against the Learn page it cites. Brought up to main first: #71 had changed chapter 2 and 5.4 after it branched, so its 5.4 observability edit was already in and was dropped. Kept: first-party agents cannot be reassigned (6.3). Decisions closed on Learn: 5.1 says one Copilot Studio agent can appear twice; 5.4 gains the read-only model, key-based credentials, deletion reconciliation and the Purview audit log gap for connection actions; 6.5 cites the new MCP server options page and the CLI evaluate step. Work IQ MCP keeps its name, the options page still uses it. Four changelog entries. | #69 |
 | 18 October 2026 | 3 | Closed every open decision from the 12 October drift report, each checked on Learn first. 5.4: observability on Connected platforms now covers five platforms (Agentforce and Databricks Genie joined), each connection has a Collect agent observability data switch that is on by default and whose provider queries are billed, and the two Learn pages disagree about older connections, which the guide says; two onboarding walkthroughs (single agent with the Agent 365 CLI, bulk from one CSV with PowerShell) cited. 5.5 and 7.4: the Defender AI agent support matrix is now the source for both Defender columns of the lookup table, with Claude Desktop and two VS Code extensions gaining hooks, ChatGPT and Ollama Desktop gaining network inspection, Antigravity Desktop and Microsoft Scout discovered, and Codex CLI named by the overview but absent from the matrix. 5.6: the Azure agents data-residency page, prompts and responses included, per-platform switch-off. 2.1 and 7.1: agent risk-based Conditional Access needs Entra ID P2 or E5. Review date 18 October. Legibility pass: 5.4 split into shorter paragraphs, two long onboarding sentences split; rendered at 390 and 1440 in light and dark with no overflow and no script errors; no dashes, no US spellings, no broken anchors. Writing review: no flags beyond the two splits. | this branch |
