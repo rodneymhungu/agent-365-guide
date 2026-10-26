@@ -1,0 +1,68 @@
+Understand MCP server options in Agent 365
+Microsoft Agent 365 supports MCP servers from different sources. You can surface and govern servers registered with Agent 365 through a common administrative experience. This article helps you understand the main MCP server options that might be available to agents in your organization and where to find the authoritative guidance for managing or connecting them.
+The Tools registry in the Microsoft 365 admin center is the source of truth for the MCP servers currently available in your tenant. What appears in the registry and in agent-building experiences can vary by tenant, region, rollout status, licensing, administrator approval, and organizational policy.
+Compare MCP server options
+Option
+What it provides
+Important considerations
+Work IQ MCP
+A single MCP endpoint with 10 generic tools. These tools discover supported resource paths and schemas at runtime and work across Microsoft 365 data and agents.
+Work IQ is the broader intelligence layer. Work IQ MCP is the MCP server that exposes selected Work IQ capabilities to agents.
+Microsoft-hosted MCP servers
+Focused tools for specific business domains or workloads. These servers might appear in the Tools registry and supported agent-building experiences.
+Some workload-specific MCP servers (Copilot, Calendar, Mail, SharePoint, OneDrive, Teams, User, and Word) are part of a legacy experience retained for testing and backward compatibility and are separate from Work IQ (preview) in Copilot Studio and Work IQ MCP. Don't select them in place of Work IQ when configuring the new Work IQ experience.
+Custom and third-party MCP servers
+Tools from an organization or external provider that agents can connect to directly or use after the server is registered with Agent 365.
+Registration through the bring-your-own (BYO) process enables centralized review and governance. Availability depends on administrator approval, consent, supported clients, and tenant policy.
+Compare Work IQ MCP and Work IQ in Copilot Studio
+Work IQ MCP is generally available as part of the Work IQ API. A direct connection to the Work IQ MCP endpoint doesn't use a harness.
+Work IQ in Copilot Studio uses the same underlying Work IQ capability, but the Copilot Studio integration is in preview. To use Work IQ in Copilot Studio, use an agent powered by the GitHub Copilot harness. The preview designation applies to the Copilot Studio integration, not to the underlying Work IQ MCP service.
+For Work IQ MCP architecture, authentication, and tool behavior, see Work IQ MCP overview.
+View and govern MCP servers
+Administrators use Agents > Tools in the Microsoft 365 admin center to view and govern the tools available to their organization. The registry can include Microsoft-hosted and approved custom MCP servers. For supported MCP servers, administrators can also view and control individual tools that the server exposes.
+To get started, follow the guidance in these articles:
+Overview of the Tools page in Microsoft 365 admin center explains the registry, requests, and supported tool types.
+Manage plugins, skills, and MCP servers in Microsoft 365 admin center explains availability, approval, blocking, and tool-level controls.
+Manage Tools Gateway in Microsoft 365 admin center explains how registered gateways make MCP servers available through Agent 365.
+Bring your own (BYO) MCP server in Microsoft 365 admin center explains evaluation, registration, approval, consent, and monitoring.
+Microsoft-hosted MCP server references
+The following reference articles describe Microsoft-hosted workload-specific and infrastructure MCP servers. This list isn't comprehensive. Inclusion in this list doesn't mean that a server is available in every tenant or agent-building experience.
+Application-specific Microsoft 365 MCP tools (Copilot, Calendar, Mail, SharePoint, OneDrive, Teams, User, and Word) are only intended for backward compatibility purposes and shouldn't be used in production environments or new projects. For new projects that require access to Microsoft 365 resources, use Work IQ MCP or Work IQ in Copilot Studio (preview).
+Copilot (preview): Find and retrieve information from Microsoft 365 content when a more specific workload tool isn't available.
+Calendar (preview): Create, retrieve, update, and cancel events, manage invitations, and check availability.
+Mail (preview): Create, send, reply to, update, and delete email messages.
+SharePoint (preview): Work with sites, lists, document libraries, files, folders, and sharing.
+OneDrive (preview): Work with files and folders in the signed-in user's OneDrive.
+Teams (preview): Work with chats, chat messages, teams, channels, and members.
+User (preview): Retrieve profiles, managers, and direct reports, and search for users.
+Word (preview): Create and read Word documents, and work with comments.
+Windows 365 for Agents: Control a cloud PC through desktop interaction, browser automation, command execution, and UI inspection.
+Fabric IQ Ontology (preview): Discover ontology entities and run natural-language queries over a Fabric ontology. You can learn more in Consume ontology (preview) as an MCP server.
+Microsoft Dataverse (preview): Discover tables, inspect schemas, query data, and create or update records.
+Microsoft MCP management MCP server: Create, update, publish, and delete custom MCP servers and their tools.
+Choose your next step
+Use this list to get started.
+Goal
+Start here
+View or govern tools available in your tenant
+Overview of the Tools page in Microsoft 365 admin center
+Review, block, or manage an MCP server or its tools
+Manage plugins, skills, and MCP servers in Microsoft 365 admin center
+Register and govern an organization's remote MCP server
+Bring your own (BYO) MCP server in Microsoft 365 admin center
+Add a remote MCP server to a Copilot Studio agent
+Connect your agent to an existing MCP server
+Connect a remote MCP server to a Foundry agent
+Connect agents to MCP servers
+Add MCP servers to a custom agent or use developer tooling
+Use developer experiences to manage MCP servers
+Add Work IQ (preview) to your agent in Copilot Studio
+Add Work IQ (preview) to your agent
+Connect Foundry to Work IQ
+Connect a Microsoft Foundry project to Work IQ
+Connect GitHub Copilot CLI to Work IQ
+Connect GitHub Copilot CLI to Work IQ
+Browse certified MCP servers reference documentation
+List of all MCP servers
+Submit an MCP server for Microsoft certification
+Microsoft MCP server certification (preview)

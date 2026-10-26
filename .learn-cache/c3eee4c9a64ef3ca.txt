@@ -1,0 +1,115 @@
+Third-party agent observability with Microsoft Agent 365 (Frontier)
+Important
+This is a preview feature.
+Preview features aren't meant for production use and might have restricted functionality. These features are subject to supplemental terms of use, and are available before an official release so that customers can get early access and provide feedback.
+Important
+This feature is part of Frontier preview program. Frontier connects you directly with Microsoft’s latest AI innovations. Frontier previews are subject to the existing preview terms of your customer agreements. As these features are still in development, their availability and capabilities may change over time.
+After you connect a supported third-party platform and synchronize its agents
+into the Microsoft 365 agent registry, Microsoft Agent 365 can collect
+available activity telemetry and present it in a common monitoring experience.
+Use this capability to:
+View third-party agents alongside Microsoft agents.
+Review sessions and executions.
+Investigate exceptions and runtime behavior.
+Analyze operational trends.
+Review available tool and execution activity.
+For platform-specific permissions and telemetry setup, see the relevant
+Connected platforms configuration guide.
+Supported observability platforms
+Platform
+Environment
+Amazon Bedrock
+Agents Classic and AgentCore
+Google Vertex AI
+Vertex AI agents
+Anthropic Claude
+Managed Agents
+Salesforce Agentforce
+Agent Builder
+Databricks Genie
+Genie agents
+Observability availability and metric coverage vary by platform.
+Databricks Genie observability is available through the Frontier program.
+Configure data collection
+Agent observability data collection is enabled by default for new connections.
+To disable collection, edit the connection and clear Collect agent
+observability data.
+For connections created before this capability was introduced, collection is
+disabled by default. Edit the connection and select Collect agent
+observability data to enable it.
+Enabling collection doesn't create source telemetry. Configure the source
+platform first:
+Connect Amazon Bedrock
+Connect Google Vertex AI
+Connect Anthropic Claude Managed Agents
+Connect Salesforce Agentforce
+Connect Databricks Genie
+View activity
+Open the Microsoft 365 admin center.
+Open the Microsoft 365 agent registry.
+Select a synchronized third-party agent.
+Select the Activity tab.
+Activity can take time to appear after an agent runs. The delay depends on the
+source platform. Anthropic Claude activity can take 5 to 10 minutes after an
+interaction.
+Activity metrics
+Metric
+Description
+Sessions
+Number of agent sessions in the reporting period. A conversational session begins after user interaction and a new session begins after 30 minutes of inactivity. An autonomous session is initiated by a trigger such as a schedule or another agent.
+Exceptions
+Number of sessions in the selected date range that had an error.
+Runtime
+Total time, in hours, that agents spend running during the reporting period.
+Users
+Not available for third-party agents when the source platform doesn't provide Microsoft Entra user identities.
+Understand platform differences
+Third-party platforms use different identity systems and telemetry schemas.
+Consequently:
+Active user information might not be available.
+Session, invocation, runtime, exception, and tool-call metrics can remain
+available.
+Identity-based metrics are displayed as unavailable when the source platform
+doesn't provide the required identity signal.
+Agent 365 doesn't infer missing identity information.
+Data and privacy
+Collected observability telemetry is stored and protected in accordance with
+Agent 365's broader observability data handling commitments. Agent 365 stores
+observability data for 30 days, after which it's automatically deleted. Data
+is encrypted at rest and in transit, and is stored in the tenant's default
+geography, consistent with Agent 365's data residency commitments. For the
+full details on what's collected, where it's stored, how long it's retained,
+and applicable compliance commitments, see Data handling, data residency, and
+compliance in Agent 365 observability.
+Specific telemetry fields, ingestion delay, and deletion behavior for
+synchronized activity can still vary by source platform. Confirm
+platform-specific details in the relevant Connected
+platforms configuration guide before communicating
+them to administrators.
+Agent 365 doesn't currently guarantee that connection create, sync, and delete
+actions appear as searchable events in the Microsoft Purview audit log. Use
+the synchronization status and errors on the Connected platforms page for
+operational monitoring. If your organization requires an audit trail for
+connection administration, record these changes through your organization's
+change-management process.
+Troubleshoot observability
+Symptom
+Likely cause
+Resolution
+Agent appears but no activity is shown
+Source telemetry isn't enabled or collection is disabled
+Enable source telemetry and Collect agent observability data, then run the agent.
+Activity is delayed
+Source processing or ingestion is still running
+Wait for the platform-specific processing interval and check again.
+Users are unavailable
+The source platform doesn't provide Microsoft Entra user identities
+Use sessions, exceptions, runtime, and other available metrics instead.
+Agent imports but telemetry is consistently empty
+Connection scope doesn't match the deployed source environment
+Verify the provider account, project, workspace, compartment, or region.
+For other connection and synchronization issues, see Troubleshoot connected platforms.
+Related content
+Connected platforms in Microsoft Agent 365
+Data handling, data residency, and compliance in Agent 365 observability
+Choose an Agent 365 integration option
