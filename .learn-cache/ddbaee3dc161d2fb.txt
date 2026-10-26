@@ -8,6 +8,10 @@ Type
 Feature
 Preview/GA
 Description
+Release - macOS
+Build 101.26082.0012
+GA
+Release version 20.126082.12.0 released: See enhancements and features for this release.
 Feature
 Vulnerability assessment for Microsoft Store applications
 GA

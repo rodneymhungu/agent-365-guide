@@ -1,0 +1,49 @@
+Use developer experiences to manage MCP servers
+Microsoft Agent 365 provides developer infrastructure for discovering, configuring, testing, and governing Model Context Protocol (MCP) servers. Use these experiences to add Microsoft-hosted MCP servers to a custom agent, build a scenario-focused server, register an existing remote server for governance, or connect a server to a developer client.
+For an introduction to the available MCP server options, see Understand MCP server options in Agent 365.
+Choose a developer experience
+Goal
+Developer experience
+Add Microsoft-hosted MCP servers to an agent that you own and run
+Use the Agent 365 SDK and CLI to discover servers, generate a tooling manifest, configure permissions, and integrate tools with the agent's orchestrator.
+Evaluate an MCP server before onboarding or publishing it
+Use the Agent 365 CLI to inspect the server's tool schemas and generate a quality report.
+Build a scenario-focused MCP server from connectors, Microsoft Graph APIs, Dataverse custom APIs, or REST APIs
+Use the Microsoft MCP management MCP server.
+Register an existing remote MCP server for centralized governance
+Use the Agent 365 CLI to submit the server, and then have an administrator review it in the Microsoft 365 admin center.
+Connect an MCP server directly to a developer client or agent platform
+Use the client's built-in MCP support and the setup guidance for that client.
+Add MCP servers to a custom agent
+The Agent 365 Tooling module and CLI provide the configuration and runtime integration for custom agents. The standard workflow is:
+Discover and select Microsoft-hosted MCP servers with the Agent 365 CLI.
+Generate the ToolingManifest.json file that describes the selected servers.
+Apply the required permissions to the agent blueprint.
+Load the manifest and register the tools with the agent's orchestrator by using the Agent 365 SDK.
+Test tool invocations and review tracing data before deployment.
+Authentication can use an agent identity or On-Behalf-Of (OBO) delegated user permissions, depending on the agent and server. For implementation guidance, see:
+Add and manage tools.
+Agent 365 identity permissions and runtime flow.
+Agent 365 Samples.
+Evaluate an MCP server
+Use the Agent 365 CLI to evaluate a local or remote MCP server before you onboard or publish it. The a365 develop-mcp evaluate command discovers the server's tools, runs deterministic and AI-scored checks against their schemas, and generates an HTML report with prioritized improvements.
+For command options and examples, see develop-mcp evaluate. For the broader review workflow, see Evaluate MCP servers.
+Build a scenario-focused MCP server
+The Microsoft MCP management MCP server is an API-first build surface for creating and managing custom MCP servers. Its tools support operations such as creating a server, adding connector-backed or API-backed tools, updating tool definitions, publishing the server, and deleting it.
+Use this experience when you want to compose a focused set of tools from:
+Power Platform connectors.
+Microsoft Graph APIs.
+Dataverse custom APIs.
+REST APIs.
+For the server endpoint, permissions, and complete tool reference, see Microsoft MCP management MCP server reference.
+Register a bring-your-own MCP server
+Register an existing remote MCP server with the Agent 365 CLI when the server must be available through the Agent 365 control plane. Registration creates a request that an administrator reviews in the Microsoft 365 admin center. After approval and Microsoft Entra consent, supported clients can use the server through the Agent 365 Tooling Gateway, and security teams can monitor invocations in Microsoft Defender.
+If agent identities for a blueprint are missing the BYO MCP server's Tools.ListInvoke.All permission, a Global Administrator can identify and grant access with a365 develop-mcp grant-agents-access. For command options and permission behavior, see develop-mcp grant-agents-access.
+For registration commands, authentication options, approval steps, and currently supported clients, see Bring your own (BYO) MCP server in Microsoft 365 admin center.
+Connect MCP servers to developer clients
+Many agent platforms and coding clients include native MCP support. Follow the documentation for the server and client instead of duplicating its authentication and configuration in your application:
+Connect agents to MCP servers in Microsoft Foundry.
+Connect an existing MCP server to a Copilot Studio agent.
+Connect GitHub Copilot CLI to Work IQ MCP.
+Add and manage MCP servers in Visual Studio Code.
+The server's authentication model, permissions, licensing, and supported tools still apply when you use a client with built-in MCP support. To publish a server for broader customer use, see Microsoft MCP server certification (preview).

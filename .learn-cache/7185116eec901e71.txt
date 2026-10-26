@@ -10,8 +10,8 @@ Explore ->
   Explore more guidance... -> guidance/
 Get started ->
   Who uses Agent 365? -> get-started
-  Agent management overview -> /microsoft-365/admin/manage/agent-365-overview
-  Agent management roles and permissions -> /microsoft-365/admin/manage/agent-roles-perms
+  Agent management overview -> admin/agent-365-overview
+  Agent management roles and permissions -> admin/agent-roles-perms
   Connect existing agents -> connect-existing-agents
   Discover partner agents -> third-party-agents
   Copilot Studio integration ->
@@ -25,7 +25,7 @@ Get started ->
     Configure data collection for Foundry agents -> /azure/foundry/agents/how-to/configure-agent-365-data-collection
   Preview features in Frontier -> frontier
 Discover and monitor agents ->
-  Agent registry -> /microsoft-365/admin/manage/agent-registry
+  Agent registry -> admin/agent-registry-overview
   Connected platforms -> admin/connected-platforms
     Connect Amazon Bedrock -> admin/connected-platforms-amazon-bedrock
     Connect Google Vertex AI -> admin/connected-platforms-google-vertex-ai
@@ -37,34 +37,35 @@ Discover and monitor agents ->
     Third-party agent observability (Frontier) -> admin/third-party-agent-observability
     Troubleshoot connected platforms -> admin/troubleshoot-connected-platforms
   Agent map -> /microsoft-365/admin/manage/agent-map
-  Agent requests -> /microsoft-365/admin/manage/agent-requests
-  Local agents (preview) -> /microsoft-365/admin/manage/agent-local
-  Agent details -> /microsoft-365/admin/manage/agent-details
-  Agents on multiple tenants (preview) -> /microsoft-365/admin/manage/agent-multi-tenant
+  Agent requests -> admin/agent-requests
+  Local agents (preview) -> admin/agent-local
+  Agent details -> admin/agent-details
+  Agents on multiple tenants (preview) -> admin/agent-multi-tenant
   Graph API for agent registry and agent details -> admin/graph-api
   Monitor agent activity ->
     Agent activity in Teams -> observe
     Agent activity in Microsoft Copilot -> observe-agents-microsoft-365-copilot
 Manage agents ->
+  Manage agents for Copilot -> admin/manage-copilot-agents-integrated-apps
   Onboard agents ->
     Onboard a single agent with the Agent 365 CLI -> admin/agent-365-onboarding-cli
     Onboard multiple agents with PowerShell -> admin/bulk-agent-365-onboarding
-  Governance and lifecycle actions -> /microsoft-365/admin/manage/agent-actions
-  Manage agent instances -> /microsoft-365/admin/manage/manage-agent-instances
-  Create agentic user instances -> /microsoft-365/admin/manage/create-agentic-user-instances
-  Manage connected agents -> /microsoft-365/admin/manage/manage-connected-agents-for-researcher
+  Governance and lifecycle actions -> admin/agent-actions
+  Manage agent instances -> admin/manage-agent-instances
+  Create agentic user instances -> admin/create-agentic-user-instances
+  Manage connected agents -> admin/manage-connected-agents
   Settings ->
-    Agent settings -> /microsoft-365/admin/manage/agent-settings
+    Agent settings -> admin/agent-settings
     Policy templates -> admin/policy-template
-  Shadow AI (preview) -> /microsoft-365/admin/manage/agent-shadow-ai
+  Shadow AI (preview) -> admin/agent-shadow-ai
 Manage tools ->
-  Agent tools overview -> /microsoft-365/admin/manage/agent-tools-overview
+  Agent tools overview -> admin/agent-tools-overview
   Understand MCP server options -> tooling-servers-overview
   Use Work IQ APIs -> /microsoft-365/copilot/extensibility/work-iq/api-overview
   Use developer experiences to manage MCP servers -> add-mcp-tools-developer-experiences
-  Manage plugins, skills, and MCP servers -> /microsoft-365/admin/manage/manage-plugins-skills-mcp-servers
-  Manage Tools Gateway -> /microsoft-365/admin/manage/manage-tools-gateway
-  Bring your own (BYO) MCP server -> /microsoft-365/admin/manage/manage-byo-mcp-server
+  Manage plugins, skills, and MCP servers -> admin/manage-plugins-skills-mcp-servers
+  Manage Tools Gateway -> admin/manage-tools-gateway
+  Bring your own (BYO) MCP server -> admin/manage-byo-mcp-server
   Certify your MCP server with Microsoft -> /microsoft-copilot-studio/mcp-certification
 Manage identity and access ->
   Protect agent identities with Microsoft Entra -> admin/capabilities-entra
@@ -99,7 +100,32 @@ Extend agents for Agent 365 ->
       JavaScript + LangChain Framework -> developer/quickstart-nodejs-langchain
       Python + Microsoft Agent Framework -> developer/quickstart-python-agent-framework
       JavaScript + Anthropic Claude Agent SDK -> developer/quickstart-nodejs-claude
-      More samples -> developer/samples
+      More samples ->
+        Samples list -> developer/samples
+        TypeScript (Node.js) ->
+          Autonomous agent -> /samples/microsoft/agent365-samples/autonomous-agent--nodejs-sample/
+          Claude sample agent -> /samples/microsoft/agent365-samples/claude-sample-agent---nodejs/
+          Copilot Studio sample agent -> /samples/microsoft/agent365-samples/copilot-studio-sample-agent---nodejs/
+          Devin sample agent -> /samples/microsoft/agent365-samples/devin-sample-agent---nodejs/
+          LangChain sample agent -> /samples/microsoft/agent365-samples/langchain-sample-agent---nodejs/
+          OpenAI sample agent -> /samples/microsoft/agent365-samples/openai-sample-agent---nodejs/
+          Perplexity sample agent -> /samples/microsoft/agent365-samples/perplexity-sample-agent---nodejs/
+          Vercel AI SDK sample agent -> /samples/microsoft/agent365-samples/vercel-ai-sdk-sample-agent---nodejs/
+        Python ->
+          Agent Framework sample agent -> /samples/microsoft/agent365-samples/agent-framework-sample-agent---python/
+          Autonomous agent -> /samples/microsoft/agent365-samples/autonomous-agent--python-sample/
+          Claude sample agent -> /samples/microsoft/agent365-samples/claude-sample-agent---python/
+          CrewAI agent sample -> /samples/microsoft/agent365-samples/crewai-agent-sample---python/
+          Google ADK sample agent -> /samples/microsoft/agent365-samples/google-adk-sample-agent---python/
+          Observability with Azure Monitor -> /samples/microsoft/agent365-samples/observability--agent-365-sdk-alongside-azure-monitor/
+          Observability with LangGraph -> /samples/microsoft/agent365-samples/observability--agent-365-sdk-with-langgraph/
+          Observability with manual OpenTelemetry instrumentation -> /samples/microsoft/agent365-samples/observability--agent-365-sdk-with-manual-otel--manual-instrumentation/
+          OpenAI sample agent -> /samples/microsoft/agent365-samples/openai-sample-agent---python/
+        C# (.NET) ->
+          Agent Framework simple sample -> /samples/microsoft/agent365-samples/agent-framework-simple-sample/
+          Autonomous agent -> /samples/microsoft/agent365-samples/autonomous-agent--net-sample/
+          Semantic Kernel sample agent -> /samples/microsoft/agent365-samples/semantic-kernel-sample-agent---cnet/
+          W365 computer use sample -> /samples/microsoft/agent365-samples/w365-computer-use-sample/
   Add Agent 365 capabilities ->
     Identity ->
       Agent identity -> developer/identity
