@@ -23,7 +23,7 @@
   ==========================================================================
 */
 window.A365 = {
-  reviewed: "25 October 2026",
+  reviewed: "2 November 2026",
   gaDate: "1 May 2026",
   transitionDate: "1 July 2026",
   trial: "25 seats for 30 days",
@@ -36,6 +36,8 @@ window.A365 = {
     roadmap:  { label: "Early preview",    phrase: "in early preview" }
   },
   changes: [
+    { date: "2 November 2026", section: "s5-4", text: "Databricks Genie connections need a Databricks-managed service principal, not the application ID and secret of an Entra app registration. Connect Databricks Genie page cited." },
+    { date: "2 November 2026", section: "s5-1", text: "The overview's activity metrics start at licence activation for third-party agents only; Learn no longer says so for first-party agents. Agent management overview page cited." },
     { date: "25 October 2026", section: "s4", kind: "guide", text: "Chapter 4\u2019s map has three bands: the four routes an agent takes into Agent 365, the control plane, and the products that enforce, with live status badges on the routes. The top bar carries one name and fits a phone in two rows." },
     { date: "25 October 2026", section: "s5-4", text: "Connected platform connections are read-only, every platform needs a key-based credential, an agent removed at the source is not guaranteed to leave the registry, and connection create, sync and delete actions are not guaranteed to reach the Purview audit log. Connected platforms and Third-party agent observability pages cited." },
     { date: "25 October 2026", section: "s6-3", text: "First-party agents, meaning system agents and pre-built Microsoft agents, cannot have their ownership reassigned; reassignment stays limited to shared Agent Builder and Copilot Studio agents. Agent actions page cited." },
@@ -105,12 +107,12 @@ window.A365 = {
     { key: "id-governance",      name: "Access packages and sponsor lifecycle workflows for agents", tier: "ga", note: "With licence", where: "Entra ID Governance" },
     { key: "purview",            name: "Purview audit, DLP, labels, IRM, Communication Compliance, eDiscovery, DLM, Compliance Manager for agents", tier: "ga", where: "Purview" },
     { key: "defender-core",      name: "Defender agent inventory and real-time protection for Agent 365 tool invocations", tier: "ga", where: "Defender XDR" },
-    { key: "defender-posture",   name: "Defender posture risk assessment", tier: "preview", where: "Defender XDR" },
+    { key: "defender-posture",   name: "Defender posture risk assessment", tier: "preview", note: "Learn's page dropped its preview label on 2 November 2026; the Defender XDR what's new page still says preview", where: "Defender XDR" },
     { key: "defender-nrt",       name: "Defender near-real-time detection", tier: "preview", where: "Defender XDR" },
     { key: "defender-rtp-mcs",   name: "Defender real-time protection for Copilot Studio agents", tier: "preview", where: "Defender XDR" },
     { key: "defender-rtp-foundry", name: "Defender real-time protection for Foundry agents", tier: "preview", where: "Defender XDR" },
     { key: "mde-discovery",      name: "Defender for Endpoint local agent discovery", tier: "preview", note: "Learn's page dropped its preview label on 21 September 2026; the release notes and the portal still say preview", where: "Defender for Endpoint" },
-    { key: "mde-runtime",        name: "Defender for Endpoint runtime protection", tier: "preview", where: "Defender for Endpoint" },
+    { key: "mde-runtime",        name: "Defender for Endpoint runtime protection", tier: "preview", note: "Intune's what's new calls its runtime protection template generally available; the Defender for Endpoint what's new page still says preview", where: "Defender for Endpoint" },
     { key: "gsa-copilot-studio", name: "Global Secure Access for Copilot Studio agents, prompt injection protection", tier: "ga", note: "Device and prompt-injection paths need Entra Internet Access", where: "Global Secure Access" },
     { key: "gsa-shadow-ai",      name: "Global Secure Access Shadow AI discovery", tier: "ga", where: "Global Secure Access" },
     { key: "gsa-mcp-firewall",   name: "MCP firewall", tier: "preview", where: "Global Secure Access" },

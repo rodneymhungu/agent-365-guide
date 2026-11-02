@@ -1,6 +1,6 @@
 Use Agent Map in the Microsoft 365 admin center
 Important
-This feature is available within Microsoft 365 admin center based on licensed subscription. To view your licensed subscriptions in the Microsoft 365 admin center, select Billing > Licenses > Subscriptions. For more information, see Licensing for agent management.
+This feature is available within Microsoft 365 admin center based on your licensed subscription. To view your licensed subscriptions in the Microsoft 365 admin center, select Billing > Licenses > Subscriptions. For more information, see Licensing for agent management.
 Agent Map in the Microsoft 365 admin center gives IT and AI admins a visual way to understand and manage the agents running in their tenant. Instead of relying only on list-based views, Agent Map groups agents by the platform they were created on, making it easier to interpret large agent estates and spot adoption patterns at a glance.
 Use Agent Map to explore your organization's agent landscape, filter to specific subsets (such as ownerless agents), and drill into individual agents to review key details like ownership, configuration, and activity. You can also view how agents relate to each other, helping you understand dependencies and interactions as your agent footprint grows.
 You can use the Agent Map to address what needs your attention, rather than agent inventory details. Use the Agent Map accomplish the following actions:

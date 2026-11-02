@@ -1,0 +1,539 @@
+Microsoft Defender for Endpoint AI agent support matrix
+The Microsoft Defender for Endpoint AI agent support matrix identifies the local AI agents and related scenarios that Defender supports for discovery and runtime protection. Discovery support and runtime protection support are listed separately because they have different operating system and integration requirements.
+Only supported combinations appear in the matrix. If a combination isn't listed, it isn't currently documented as supported.
+AI agent discovery support
+AI agent discovery identifies local AI agents and their configured Model Context Protocol (MCP) servers on onboarded devices. The Name values in these tables correspond to the Name column in the AgentsInfo advanced hunting table. The Vendor values correspond to RawAgentInfo.localAgentMetadata.vendor.
+Discovery is activity based. Defender lists an agent after it observes agent activity on an onboarded device. Installing an agent doesn't by itself guarantee that the agent appears in the local AI agent inventory. For more information about how Defender observes agent activity and how this inventory differs from an inventory of installed software, see Local AI agent discovery with Microsoft Defender for Endpoint.
+A checkmark in the Discovers MCP column indicates that Defender reports remote MCP server data in McpServers and local MCP server data in RawAgentInfo.localAgentMetadata.localMcps. A dash indicates that MCP server configuration discovery isn't documented for that combination.
+A checkmark in the Discovers agent column indicates that Defender supports discovery of that local AI agent.
+Use the values in the Name and Vendor columns in your advanced hunting queries. For examples, see Get an inventory of local AI agents and Review the MCP servers and tools that local AI agents use.
+For runtime protection support, see AI agent runtime protection support.
+Windows
+Name
+Vendor
+Discovers agent
+Discovers MCP
+Amp CLI
+Amp
+✓
+-
+Antigravity CLI
+Google
+✓
+✓
+Antigravity Desktop
+Google
+✓
+✓
+Antigravity IDE
+Google
+✓
+✓
+Buzz
+Block
+✓
+-
+ChatGPT Classic
+OpenAI
+✓
+-
+ChatGPT Desktop
+OpenAI
+✓
+✓
+Claude Code
+Anthropic
+✓
+✓
+Claude Desktop
+Anthropic
+✓
+✓
+Clawpilot
+Microsoft
+✓
+-
+Cline CLI
+Cline
+✓
+-
+CoCo CLI
+Snowflake
+✓
+-
+CoCo Desktop
+Snowflake
+✓
+-
+Codex CLI
+OpenAI
+✓
+✓
+Codex Desktop
+OpenAI
+✓
+✓
+Cursor
+Anysphere
+✓
+✓
+DeepSeek Harness
+DeepSeek
+✓
+-
+Devin CLI
+Cognition
+✓
+-
+Devin Desktop
+Cognition
+✓
+✓
+Foundry Local
+Microsoft
+✓
+-
+Gemini CLI
+Google
+✓
+✓
+GitHub Copilot App
+GitHub
+✓
+✓
+GitHub Copilot CLI
+GitHub
+✓
+✓
+Goose CLI
+Agentic AI Foundation
+✓
+-
+Goose Desktop
+Agentic AI Foundation
+✓
+-
+Grok Bot
+SpaceXAI
+✓
+-
+Grok Build
+SpaceXAI
+✓
+-
+Hermes Agent
+Nous Research
+✓
+-
+Junie CLI
+JetBrains
+✓
+✓
+Kilo CLI
+Kilo Code
+✓
+-
+Kimi Code CLI
+Moonshot AI
+✓
+-
+Kiro CLI
+Amazon
+✓
+✓
+Kiro IDE
+Amazon
+✓
+✓
+LM Studio
+Element Labs
+✓
+-
+LM Studio Bionic
+Element Labs
+✓
+-
+Microsoft Scout
+Microsoft
+✓
+-
+Nanobot
+Claw
+✓
+-
+Oh My Pi
+Stencil
+✓
+-
+Ollama Desktop
+Ollama
+✓
+-
+OpenClaw
+OpenClaw Foundation
+✓
+✓
+OpenCode
+Anomaly
+✓
+✓
+Perplexity Desktop
+Perplexity
+✓
+-
+Pi Coder
+Earendil Works
+✓
+-
+Poe Desktop
+Quora
+✓
+-
+QClaw
+Tencent
+✓
+-
+Qwen Code
+Alibaba Cloud
+✓
+-
+Qwen Code Desktop
+-
+✓
+-
+Qwen Studio
+Alibaba Cloud
+✓
+-
+Trae IDE
+ByteDance
+✓
+-
+VSCode Claude Code Extension
+Anthropic
+✓
+✓
+VSCode Cline Extension
+Cline
+✓
+✓
+VSCode Codex Extension
+OpenAI
+✓
+✓
+VSCode Gemini Code Assist Extension
+Google
+✓
+✓
+VSCode GitHub Copilot Extension
+GitHub
+✓
+✓
+VSCode Kimi Code Extension
+Moonshot AI
+✓
+-
+VSCode Roo Code Extension
+Roo Code
+✓
+✓
+Warp
+Warp
+✓
+✓
+Windsurf
+Cognition
+✓
+✓
+ZCode
+Z.ai
+✓
+-
+ZeroClaw
+Claw
+✓
+✓
+Windows Subsystem for Linux (preview)
+The following local AI agents are supported when they run in Windows Subsystem for Linux (WSL). WSL support doesn't indicate support for native Linux endpoints.
+Name
+Vendor
+Discovers agent
+Discovers MCP
+Claude Code
+Anthropic
+✓
+-
+Codex CLI
+OpenAI
+✓
+-
+GitHub Copilot CLI
+GitHub
+✓
+-
+macOS (preview)
+Name
+Vendor
+Discovers agent
+Discovers MCP
+Antigravity CLI
+Google
+✓
+-
+Antigravity Desktop
+Google
+✓
+-
+Antigravity IDE
+Google
+✓
+-
+ChatGPT Classic
+OpenAI
+✓
+-
+ChatGPT Desktop
+OpenAI
+✓
+✓
+Claude Code
+Anthropic
+✓
+✓
+Claude Desktop
+Anthropic
+✓
+✓
+Clawpilot
+Microsoft
+✓
+-
+Cline CLI
+Cline
+✓
+-
+CoCo Desktop
+Snowflake
+✓
+-
+Codex CLI
+OpenAI
+✓
+✓
+Codex Desktop
+OpenAI
+✓
+✓
+Cursor
+Anysphere
+✓
+✓
+Devin CLI
+Cognition
+✓
+✓
+Devin Desktop
+Cognition
+✓
+-
+Foundry Local
+Microsoft
+✓
+-
+Gemini CLI
+Google
+✓
+✓
+GitHub Copilot App
+GitHub
+✓
+✓
+GitHub Copilot CLI
+GitHub
+✓
+✓
+Goose CLI
+Agentic AI Foundation
+✓
+-
+Goose Desktop
+Agentic AI Foundation
+✓
+-
+Grok Build
+SpaceXAI
+✓
+-
+Hermes Agent
+Nous Research
+✓
+-
+Junie CLI
+JetBrains
+✓
+-
+Kimi Code CLI
+Moonshot AI
+✓
+-
+Kiro CLI
+Amazon
+✓
+-
+Kiro IDE
+Amazon
+✓
+-
+LM Studio
+Element Labs
+✓
+-
+LM Studio Bionic
+Element Labs
+✓
+-
+Microsoft Scout
+Microsoft
+✓
+-
+Nanobot
+Claw
+✓
+-
+Ollama Desktop
+Ollama
+✓
+✓
+OpenClaw
+OpenClaw Foundation
+✓
+✓
+OpenCode
+Anomaly
+✓
+✓
+Perplexity Desktop
+Perplexity
+✓
+-
+Pi Coder
+Earendil Works
+✓
+-
+Poe Desktop
+Quora
+✓
+-
+QClaw
+Tencent
+✓
+-
+Qwen Code
+Alibaba Cloud
+✓
+-
+Qwen Studio
+Alibaba Cloud
+✓
+-
+Trae IDE
+ByteDance
+✓
+-
+VSCode Claude Code Extension
+Anthropic
+✓
+✓
+VSCode Cline Extension
+Cline
+✓
+✓
+VSCode Codex Extension
+OpenAI
+✓
+✓
+VSCode Gemini Code Assist Extension
+Google
+✓
+✓
+VSCode GitHub Copilot Extension
+GitHub
+✓
+✓
+VSCode Kimi Code Extension
+Moonshot AI
+✓
+-
+VSCode Roo Code Extension
+Roo Code
+✓
+-
+Warp
+Warp
+✓
+✓
+Windsurf
+Cognition
+✓
+-
+ZeroClaw
+Claw
+✓
+-
+AI agent runtime protection support
+Support is organized by the method Defender uses to inspect agent activity.
+Runtime protection support doesn't indicate that protection is enabled on a device. To configure audit or block mode, see Set up AI agent runtime protection with Microsoft Defender for Endpoint.
+A dash indicates that a mode or minimum version doesn't apply or isn't specified.
+Windows (preview)
+The following tables list agent and inspection method combinations on Windows.
+Agent-native event inspection
+Agent-native event inspection uses vendor-supported event interfaces. The hooks documentation links describe the applicable vendor interface.
+AI agent or application
+Mode
+Minimum versions
+Hooks documentation
+Claude Code
+-
+-
+Claude Code hooks
+GitHub Copilot CLI
+-
+-
+GitHub Copilot CLI hooks
+GitHub Copilot app
+-
+-
+GitHub Copilot hooks reference
+Claude Desktop
+Code
+-
+Claude Code hooks
+VS Code GitHub Copilot extension
+-
+-
+GitHub Copilot hooks reference
+VS Code Claude Code extension
+-
+-
+Claude Code hooks
+Network inspection
+Network inspection covers agents that communicate with LLMs through well-known inference services. It doesn't cover agents that use certificate pinning or HTTP/3.
+AI agent or application
+Mode
+Minimum versions
+OpenClaw
+-
+-
+Ollama Desktop
+-
+-
+ChatGPT Classic
+-
+-
+ChatGPT Desktop
+Chat
+ChatGPT Desktop 26.810.52044 (minimum tested)
+Related content
+Local AI agent discovery with Microsoft Defender for Endpoint
+AI agent runtime protection with Microsoft Defender for Endpoint
+Discover local AI agents with Microsoft Defender for Endpoint

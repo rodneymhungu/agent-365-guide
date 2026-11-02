@@ -6,9 +6,9 @@ Agent source
 Integration path
 Microsoft platforms and agents, and supported third-party agents
 Use the platform's native Agent 365 integration. These agents can appear in the Agent 365 inventory without adding the Agent 365 SDK.
-Agents built with an SDK or framework, such as Microsoft 365 Agents SDK, OpenAI Agents SDK, Microsoft Agent Framework, LangChain, CrewAI, or LlamaIndex
-Add the Agent 365 SDK to your agent code for developer-integrated capabilities such as Work IQ tooling or notifications.
-Connected agent platforms, such as Vertex AI or AWS Bedrock
+Agents you build with an SDK or framework
+Add the Agent 365 SDK to your agent code for developer-integrated capabilities, such as governed Work IQ tools or notifications.
+Connected agent platforms
 Configure registry synchronization for each platform to import its agents into the Agent 365 inventory.
 All three paths connect agents to Agent 365 and its integrations with Microsoft Entra, Microsoft Defender, Microsoft Purview, and Microsoft Intune. Native integration and registry synchronization don't necessarily provide the same code-level capabilities as the Agent 365 SDK. Platform integrations evolve, so confirm the current platform guidance before changing an integration. See Choose your integration option.
 How Agent 365 capabilities fit together

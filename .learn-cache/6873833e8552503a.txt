@@ -1,0 +1,35 @@
+Choose an Agent 365 integration option
+Compare the three Agent 365 integration options and choose the right mechanism based on the capabilities your platform provides and what you need to configure in code.
+Compare Agent 365 integration mechanisms
+Use the following table to compare where each integration mechanism applies, how you implement it, and whether it requires the Agent 365 SDK.
+Mechanism
+Applies to
+How it's applied
+SDK required
+Built-in integration
+Microsoft platforms and agents, such as Agent Builder, Copilot Studio, Azure AI Foundry, Copilot Cowork, and Researcher. Also third-party agents already integrated with Agent 365.
+No SDK or custom-code integration. Administrative enablement might still be required.
+Registry sync (preview)
+Connected agent platforms, such as Google Vertex AI and Amazon Bedrock.
+Configured per platform. Imports agents for visibility and governance.
+Agent 365 SDK
+Agents you build with an agent SDK or framework, such as the Microsoft 365 Agents SDK, Microsoft Agent Framework, OpenAI Agents SDK, LangChain, CrewAI, or LlamaIndex.
+Developer integrated in your agent's code for identity, tooling, and notifications. Use Microsoft OpenTelemetry for observability.
+Tip
+Check built-in integration and registry sync first. If one of those paths already provides the Agent 365 capabilities you need, you don't need the SDK merely to register the agent. Add the SDK when your scenario needs code-level identity, tooling, or notification capabilities that the platform path doesn't provide.
+Some platforms support more than one mechanism. Copilot Studio and Azure AI Foundry can provide built-in Agent 365 integration for some scenarios. Owning or deploying code alone doesn't determine the choice; compare the capabilities and authentication model for the specific scenario. For Foundry-hosted agents, see the Azure AI Foundry Agent Service documentation, and the guidance for configuring Agent 365 data collection and granting Agent 365 observability permissions.
+The available integration path for Azure AI Foundry can depend on how the agent is built, hosted, and registered. Confirm the current Foundry integration and observability guidance for your scenario before you choose an approach. For code-based agents, start with the Microsoft Foundry SDK quickstart and compare it with the hosted agent guidance.
+When to use the Agent 365 SDK
+Use the Agent 365 SDK when:
+You build and deploy your agent yourself, rather than hosting it on an integrated Microsoft platform.
+Your agent needs code-level identity, tooling, or notification capabilities. For package details, see the Agent 365 SDK overview.
+Your agent needs code-level control over when and how those capabilities run.
+Use the Microsoft OpenTelemetry Distro for observability. If an existing integration uses the deprecated Agent 365 Observability SDK, follow the migration guidance in the archived documentation.
+Registry synchronization and built-in integration can change as platform support evolves. Recheck the platform's current integration guidance before adding code-level capabilities.
+The SDK isn't an alternative to your agent framework, so "build an agent" isn't one of these mechanisms. Build the agent with your framework first, then use one of the preceding mechanisms to bring it into Agent 365.
+Related content
+Agent 365 SDK overview
+Agent 365 Skills
+Agent identity
+Quickstart: Connect an existing agent to Agent 365
+Agent 365 SDK frequently asked questions
