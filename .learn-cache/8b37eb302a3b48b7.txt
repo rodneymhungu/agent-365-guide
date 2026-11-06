@@ -1,4 +1,4 @@
-AI agent posture risk in Microsoft Defender (preview)
+AI agent posture risk in Microsoft Defender
 Microsoft Defender assesses posture risk for AI agents in your organization, including agents registered with Microsoft Agent 365 and local agents discovered on endpoint devices. Each agent is evaluated against risk indicators and assigned an overall risk level based on the likelihood of compromise and the potential impact if compromised.
 How AI agent posture risk is assessed
 A risk indicator represents a security condition associated with an agent. For example, an indicator might show that an agent is published, can run without human approval, has privileged access, or has active security alerts.

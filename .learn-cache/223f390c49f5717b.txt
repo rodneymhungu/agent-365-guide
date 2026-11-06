@@ -59,6 +59,8 @@ https://1234567890123456.7.gcp.databricks.com
 Account admins can also find the workspace URL in the Databricks account
 console under Workspaces.
 Create a service principal
+The connection requires a Databricks-managed service principal.
+Don't use the application ID and secret from a Microsoft Entra app registration.
 Create a dedicated service principal for Agent 365 so that you can audit and
 revoke its access independently of other integrations.
 In the Databricks workspace, select your username in the top bar, and then
@@ -198,8 +200,8 @@ Symptom
 Likely cause
 Resolution
 Verify authentication fails
-The client ID or secret is incorrect or includes extra spaces, the secret expired or was deleted, or the workspace URL belongs to a different workspace
-Copy the values again, generate a new secret if needed, and enter the workspace URL with only the scheme and host.
+The client ID or secret is incorrect or includes extra spaces, the secret expired or was deleted, the workspace URL belongs to a different workspace, or the service principal is incorrectly configured
+Copy the values again, generate a new secret if needed, and enter the workspace URL with only the scheme and host. Make sure you're using Databricks-managed service principal.
 Verification succeeds, but no agents or only some agents synchronize
 The service principal can't access the Genie agents, or the agents were shared moments ago
 Share the Genie agents with the service principal or make it a workspace admin. Wait a minute or two, and then select Sync agents.

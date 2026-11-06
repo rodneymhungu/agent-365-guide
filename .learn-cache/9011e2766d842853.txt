@@ -1,0 +1,105 @@
+Onboard a single agent with the Agent 365 CLI
+Use the Agent 365 CLI to create the Microsoft Entra identity objects for an agent and register the agent with Agent 365. Start with one nonproduction agent so you can validate the identity, permissions, consent, and registration before you onboard agents in bulk.
+This article uses Expense Review as the base name for a standard agent that reviews expense reports on behalf of a signed-in employee. It uses on-behalf-of (OBO) authentication and doesn't need its own Microsoft Entra user account, mailbox, or Teams presence.
+The config-free workflow creates:
+An agent identity blueprint named Expense Review Blueprint.
+An agent identity named Expense Review Agent.
+Delegated permission grants for OBO authentication.
+An Agent 365 registration for the agent.
+An a365.generated.config.json file that records the generated identifiers and setup status.
+For an explanation of the identity objects, see Agent 365 identity.
+Prerequisites
+Before you begin, ensure you have:
+A Microsoft tenant with Agent 365 enabled. Use a nonproduction tenant or test environment for this walkthrough.
+An Azure subscription in the same tenant.
+The Contributor role on the Azure subscription.
+At least the Agent ID Developer role in Microsoft Entra ID to create the blueprint and agent identity.
+A Global Administrator available to grant OAuth permissions. If you hold this role, you can complete the workflow in one session. Otherwise, the CLI provides consent URLs to send to a Global Administrator.
+The Application Administrator or Global Administrator role if you change the scenario to use service-to-service (S2S) authentication.
+.NET 8.0 or later.
+The Azure CLI, signed in to the tenant and subscription that you want to use.
+The Agent 365 CLI.
+Agent 365 setup uses the Microsoft-managed Agent 365 CLI enterprise application when it's available in your tenant. Its application (client) ID is f54280f4-395e-4ea8-9e48-bf2d4952aa14. If the application isn't available, the CLI looks for a tenant-owned application named Agent 365 CLI. A Global Administrator can create and configure a tenant-owned application from the CLI prompt. For details about the fallback, see Custom client app registration for Agent 365 CLI.
+This scenario doesn't create an agent user. Agent users are only needed when an agent requires its own licensed Microsoft 365 resources, such as a mailbox, and are available only to tenants participating in the Frontier preview program.
+Install the Agent 365 CLI
+Install the CLI as a global .NET tool:
+dotnet tool install --global Microsoft.Agents.A365.DevTools.Cli
+If the CLI is already installed, update it:
+dotnet tool update --global Microsoft.Agents.A365.DevTools.Cli
+Verify the installation:
+a365 --version
+For installation troubleshooting and supported file locations, see Install and use the Agent 365 CLI.
+Select the tenant and subscription
+Sign in to Azure:
+az login
+List the subscriptions available to your account:
+az account list --output table
+Select the subscription in the tenant where you want to onboard the agent:
+az account set --subscription "<subscription-id-or-name>"
+Confirm the active tenant and subscription:
+az account show --query "{tenantId:tenantId, subscriptionId:id, subscriptionName:name}" --output table
+Record the tenant ID. The CLI detects it from the active Azure CLI account. You can also provide it explicitly by using --tenant-id.
+Validate the prerequisites
+Run the requirements check from any directory:
+a365 setup requirements
+The command checks authentication, Azure access, tenant enrollment, roles, and the client application. It continues after a failed check so you can review all detected issues together.
+Resolve every failed required check before you continue. If the Microsoft-managed enterprise application isn't available, follow the prompt to select or create a tenant-owned client application, and then rerun the command.
+Important
+Don't modify the Microsoft-managed Agent 365 CLI application. The CLI validates its service principal and the scopes in your access token, but it doesn't modify Microsoft's application registration.
+Preview the onboarding changes
+Create an empty working directory for the generated configuration, and then change to it:
+New-Item -ItemType Directory -Path .\expense-review-agent
+Set-Location .\expense-review-agent
+Preview the changes without creating tenant objects:
+a365 setup all `
+--agent-name "Expense Review" `
+--aiteammate false `
+--dry-run
+Review the tenant ID, derived object names, selected client application, permissions, and authentication mode. This scenario uses the default obo authentication mode because the agent acts for a signed-in employee.
+If the detected tenant isn't correct, specify it explicitly:
+a365 setup all `
+--agent-name "Expense Review" `
+--tenant-id "<tenant-id>" `
+--aiteammate false `
+--dry-run
+Onboard the agent
+Run the same command without --dry-run:
+a365 setup all `
+--agent-name "Expense Review" `
+--aiteammate false
+The CLI validates the requirements again, creates the blueprint and agent identity, configures delegated permissions, registers the agent, and writes a365.generated.config.json.
+If you sign in as a Global Administrator, complete any consent prompt that opens during setup. If you use the Agent ID Developer or Agent ID Administrator role instead, the CLI completes the steps allowed by your role and prints the consent actions for a Global Administrator. Send the generated consent URLs to the Global Administrator, and ask them to complete every grant.
+Config-free setup assumes that the agent is hosted externally. It doesn't create Azure hosting resources or update an agent project.
+Verify the onboarding result
+Review the setup summary. Each required step should show as completed. If a Global Administrator still needs to grant consent, complete that handoff before you consider onboarding finished.
+Inspect the generated configuration:
+Get-Content .\a365.generated.config.json | ConvertFrom-Json
+Confirm that the output contains:
+An agent blueprint ID.
+A completed setup status, with no outstanding consent actions.
+Confirm that the setup summary reports successful agent identity creation and agent registration.
+Then verify the registration in the Microsoft 365 admin center:
+Go to the Microsoft 365 admin center.
+Select Agents > All Agents.
+Find Expense Review Agent.
+Open the agent and confirm that its identity and registration details match the generated configuration.
+Troubleshoot onboarding
+Symptom
+Resolution
+The requirements check reports the wrong tenant or subscription.
+Run az account set --subscription "<subscription-id-or-name>", verify the result with az account show, and rerun the requirements check. Alternatively, pass --tenant-id to a365 setup all.
+The Microsoft-managed Agent 365 CLI application isn't found.
+Update the CLI and rerun a365 setup requirements. If the staged rollout hasn't reached your tenant, use a tenant-owned client application.
+Setup reports that a role is missing.
+Assign the Contributor and Agent ID Developer roles to the operator. Allow time for the assignments to propagate, sign in again, and rerun the requirements check.
+Setup completes but lists outstanding consent actions.
+Have a Global Administrator open every consent URL printed by the CLI and grant the requested permissions.
+The blueprint or identity exists, but the agent isn't in All Agents.
+Review the setup summary for an agent registration failure. After you resolve the error, rerun a365 setup all --agent-name "Expense Review" --agent-registration-only.
+Setup selected the wrong authentication pattern.
+Use the default OBO mode when the agent acts for a signed-in user. Use --authmode s2s for background work or --authmode both when both patterns are required. S2S grants require Application Administrator or Global Administrator.
+For more CLI-specific resolutions, see Agent 365 troubleshooting.
+Next steps
+Onboard multiple agents with PowerShell.
+Validate your Agent 365 integration.
+Review the Agent 365 CLI setup command.

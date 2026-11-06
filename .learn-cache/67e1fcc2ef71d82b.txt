@@ -118,8 +118,10 @@ Microsoft Entra ID P2
 Microsoft Entra ID Governance
 Microsoft Entra Suite
 Microsoft Agent 365
+Microsoft 365 E7
 Provisioning
 API-driven provisioning
+✅
 ✅
 ✅
 ✅
@@ -129,10 +131,13 @@ HR-driven provisioning
 ✅
 ✅
 ✅
+✅
 Account Discovery
 ✅
 ✅
+✅
 Automated user provisioning to SaaS apps
+✅
 ✅
 ✅
 ✅
@@ -143,7 +148,9 @@ Automated group provisioning to SaaS apps
 ✅
 ✅
 ✅
+✅
 Automated provisioning to on-premises apps
+✅
 ✅
 ✅
 ✅
@@ -153,10 +160,13 @@ Cross-tenant synchronization for users (same cloud)
 ✅
 ✅
 ✅
+✅
 Cross-tenant synchronization for groups (same cloud)
 ✅
 ✅
+✅
 Cross-cloud synchronization
+✅
 ✅
 ✅
 Lifecycle Workflows (LCW)
@@ -166,13 +176,17 @@ Microsoft Entra ID P2
 Microsoft Entra ID Governance
 Microsoft Entra Suite
 Microsoft Agent 365
+Microsoft 365 E7
 Lifecycle Workflows
+✅
 ✅
 ✅
 LCW + Custom Extensions (Logic Apps)
 ✅
 ✅
+✅
 LCW + Agent Sponsorship tasks
+✅
 ✅
 Access reviews (AR)
 Free
@@ -181,27 +195,35 @@ Microsoft Entra ID P2
 Microsoft Entra ID Governance
 Microsoft Entra Suite
 Microsoft Agent 365
+Microsoft 365 E7
 AR - Capabilities previously generally available in Microsoft Entra ID P2
+✅
 ✅
 ✅
 ✅
 AR - PIM For Groups (Preview)
 ✅
 ✅
+✅
 AR - Reviews scoped to inactive users without active users in the review
+✅
 ✅
 ✅
 AR - Reviews scoped to active and inactive users with review decision helpers for inactive users for the reviewer
 ✅
 ✅
 ✅
+✅
 AR - Machine learning assisted access certifications and reviews
 ✅
 ✅
-AR - Catalog Access Reviews (Preview)
+✅
+AR - Catalog Access Reviews
 ✅
 ✅
-AR - Custom data provided resource (Preview)
+✅
+AR - Custom data provided resource
+✅
 ✅
 ✅
 Entitlement management (EM)
@@ -211,7 +233,9 @@ Microsoft Entra ID P2
 Microsoft Entra ID Governance
 Microsoft Entra Suite
 Microsoft Agent 365
+Microsoft 365 E7
 EM - Capabilities previously generally available in Microsoft Entra ID P2
+✅
 ✅
 ✅
 ✅
@@ -219,9 +243,12 @@ EM - Users assigned to access packages
 ✅
 ✅
 ✅
+✅
 EM - Agents and service principals assigned to access packages
 ✅
+✅
 EM - Users request access for themselves
+✅
 ✅
 ✅
 ✅
@@ -229,15 +256,20 @@ EM - Admins directly assign a user assignments(including guests)
 ✅
 ✅
 ✅
+✅
 EM - Admins directly assign agents and service principals
 ✅
+✅
 EM - Admins directly assign any user - via email address for users not yet in your directory
+✅
 ✅
 ✅
 EM - Managers requesting on behalf of employees
 ✅
 ✅
+✅
 EM - Owners and sponsors request access on behalf of their agents or service principals
+✅
 ✅
 EM - Supported resources
 Free
@@ -246,14 +278,18 @@ Microsoft Entra ID P2
 Microsoft Entra ID Governance
 Microsoft Entra Suite
 Microsoft Agent 365
+Microsoft 365 E7
 EM - Groups and teams in access packages
+✅
 ✅
 ✅
 ✅
 EM - Eligible group ownerships and memberships in access packages (PIM for Groups)
 ✅
 ✅
+✅
 EM - Applications in access packages
+✅
 ✅
 ✅
 ✅
@@ -261,13 +297,17 @@ EM - SharePoint sites in access packages
 ✅
 ✅
 ✅
+✅
 EM - Microsoft Entra Roles (Preview)
+✅
 ✅
 ✅
 EM - SAP Identity Access Governance (IAG) business roles (Preview)
 ✅
 ✅
+✅
 EM - API permissions in access packages
+✅
 ✅
 EM - Approval options
 Free
@@ -276,7 +316,9 @@ Microsoft Entra ID P2
 Microsoft Entra ID Governance
 Microsoft Entra Suite
 Microsoft Agent 365
+Microsoft 365 E7
 EM - Multi-stage approvals with alternate approvers if no action is taken
+✅
 ✅
 ✅
 ✅
@@ -286,7 +328,9 @@ EM - Specific approvers
 ✅
 ✅
 ✅
+✅
 EM - Managers as approvers
+✅
 ✅
 ✅
 ✅
@@ -294,19 +338,25 @@ EM - Internal sponsors as approvers (from assignees' connected organizations)
 ✅
 ✅
 ✅
+✅
 EM - External sponsors as approvers (from assignees' connected organizations)
+✅
 ✅
 ✅
 ✅
 EM - Sponsors as approvers (from assignees' user profile)
 ✅
 ✅
+✅
 EM - Agent Sponsors as approvers
+✅
 ✅
 EM - Externally determine approval requirements using custom extensions
 ✅
 ✅
+✅
 EM - Collect additional requestor information for approval
+✅
 ✅
 ✅
 ✅
@@ -317,7 +367,9 @@ Microsoft Entra ID P2
 Microsoft Entra ID Governance
 Microsoft Entra Suite
 Microsoft Agent 365
+Microsoft 365 E7
 EM - Expiration of access package assignments
+✅
 ✅
 ✅
 ✅
@@ -326,7 +378,9 @@ EM - Manage the lifecycle of external users
 ✅
 ✅
 ✅
+✅
 EM - Mark guest as governed
+✅
 ✅
 ✅
 EM - Additional capabilities
@@ -336,26 +390,34 @@ Microsoft Entra ID P2
 Microsoft Entra ID Governance
 Microsoft Entra Suite
 Microsoft Agent 365
+Microsoft 365 E7
 EM - Separation of duties
+✅
 ✅
 ✅
 ✅
 EM - Custom Extensions (Logic Apps)
 ✅
 ✅
+✅
 EM - Auto Assignment Policies
+✅
 ✅
 ✅
 EM - Verified ID integration
 ✅
 ✅
+✅
 EM - Microsoft Entra ID Protection integration
+✅
 ✅
 ✅
 EM - Microsoft Purview Insider Risk Management integration
 ✅
 ✅
+✅
 EM - Conditional Access Scoping
+✅
 ✅
 ✅
 ✅
@@ -366,7 +428,9 @@ Microsoft Entra ID P2
 Microsoft Entra ID Governance
 Microsoft Entra Suite
 Microsoft Agent 365
+Microsoft 365 E7
 My Access portal
+✅
 ✅
 ✅
 ✅
@@ -376,13 +440,17 @@ EM - My Access Search
 ✅
 ✅
 ✅
+✅
 EM - Suggested access packages in My Access
+✅
 ✅
 ✅
 EM - Configure whether requestors can see approver details in My Access (Preview)
 ✅
 ✅
+✅
 EM - Delegate approvals in My Access (Preview)
+✅
 ✅
 ✅
 Privileged Identity Management (PIM)
@@ -392,7 +460,9 @@ Microsoft Entra ID P2
 Microsoft Entra ID Governance
 Microsoft Entra Suite
 Microsoft Agent 365
+Microsoft 365 E7
 Privileged Identity Management (PIM)
+✅
 ✅
 ✅
 ✅
@@ -400,11 +470,14 @@ PIM For Groups
 ✅
 ✅
 ✅
+✅
 PIM Conditional Access Controls
 ✅
 ✅
 ✅
+✅
 PIM - Custom extensions for role activation (Preview)
+✅
 ✅
 ✅
 Other
@@ -414,7 +487,9 @@ Microsoft Entra ID P2
 Microsoft Entra ID Governance
 Microsoft Entra Suite
 Microsoft Agent 365
+Microsoft 365 E7
 Identity governance dashboard
+✅
 ✅
 ✅
 ✅
@@ -422,7 +497,9 @@ Identity governance dashboard
 Insights and reporting - Inactive guest accounts
 ✅
 ✅
+✅
 Conditional Access - Terms of use attestation
+✅
 ✅
 ✅
 ✅

@@ -63,7 +63,7 @@ Microsoft Defender Experts Hunting customers can now set up Notification contact
 The IdentityAccountInfo table contains information about account information from various sources, including Microsoft Entra ID. It also includes information and link to the identity that owns the account.
 The EntraIdSignInEvents table contains information about Microsoft Entra interactive and non-interactive sign-ins.
 The EntraIdSpnSignInEvents table contains information about Microsoft Entra service principal and managed identity sign-ins.
-The GraphApiAuditEvents table provides information about Microsoft Entra ID API requests made to Microsoft Graph API for resources in the tenant.
+The GraphAPIAuditEvents table provides information about Microsoft Entra ID API requests made to Microsoft Graph API for resources in the tenant.
 January 2026
 (Preview) Custom detection rules in Microsoft Defender now support Near Real-Time (NRT) configuration on Microsoft Sentinel data.
 (Preview) In advanced hunting, if the query result exceeds the 64-MB size limit, the portal now returns the maximum number of records it can within this limit and displays a message indicating that the displayed results are partial due to size constraints. Learn more

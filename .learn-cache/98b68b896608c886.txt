@@ -1,0 +1,29 @@
+Data handling and data residency for Agent 365 observability for Azure agents
+Microsoft Agent 365 observability collects agent activity data to support analytics, security, compliance, and governance experiences across Microsoft.
+This article explains data handling, data residency, and administrator controls for agents that operate within the Azure compliance boundary. These agents send observability data to Agent 365.
+For general information, see Data handling, data residency, and compliance in Agent 365 observability.
+What data is collected and processed
+Agent 365 observability collects agent activity data, including prompts and responses. It also collects information that associates this activity with the appropriate agent, tool, user, and organization.
+These practices apply to supported agents that Microsoft creates, and to agents that developers build using Microsoft agent development platforms, such as Microsoft Foundry and Microsoft Copilot Studio.
+Where observability data is stored and processed
+Observability data sent to Agent 365 follows Agent 365 data residency practices. Its storage and processing location can differ from the Azure region where your agent is deployed.
+Depending on the category, observability data is handled as follows:
+Prompts and responses: Agent 365 stores prompts and responses in the tenant's default geography, which is the country or region selected when the Microsoft Entra tenant was created.
+Agent and tool identifiers: In limited scenarios, Agent 365 might replicate and store agent and tool identifiers used for service metrics and analytics in the EU Data Boundary (EUDB) for eligible EU tenants, and in the United States for all other tenants.
+For more information, see Data handling, data residency, and compliance in Agent 365 observability.
+Control observability data sharing
+Administrators can control whether observability trace data is sent to Agent 365. Depending on the product or agent development platform, this control can be a setting, a policy, or another product-specific mechanism.
+For platforms that provide a setting:
+Enabled: Allows observability trace data covered by the setting to be sent to Agent 365.
+Disabled: Opts out of sending observability trace data covered by the setting to Agent 365.
+The available controls and their scope depend on the source platform. Review the applicable platform documentation before you change a setting.
+Microsoft Foundry
+For agents developed using Microsoft Foundry, use the available setting that controls observability data sharing with Agent 365.
+For information about the integration, see Microsoft Agent 365 integration with Foundry.
+Microsoft Copilot Studio
+For agents developed using Microsoft Copilot Studio, use the applicable administrator control for sharing observability data with Agent 365. Review the platform's settings and documentation to understand which agents and environments the control applies to. For more information, see Move data across regions for Copilots, AI agents, and generative AI features.
+Related content
+Data handling, data residency, and compliance in Agent 365 observability
+Microsoft Agent 365 integration with Foundry
+Move data across regions for Copilots, AI agents, and generative AI features
+Data residency in Azure

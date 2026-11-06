@@ -23,7 +23,7 @@
   ==========================================================================
 */
 window.A365 = {
-  reviewed: "25 October 2026",
+  reviewed: "6 November 2026",
   gaDate: "1 May 2026",
   transitionDate: "1 July 2026",
   trial: "25 seats for 30 days",
@@ -36,6 +36,13 @@ window.A365 = {
     roadmap:  { label: "Early preview",    phrase: "in early preview" }
   },
   changes: [
+    { date: "6 November 2026", section: "s5-5", text: "Defender for Endpoint local agent discovery is generally available for Windows and macOS, per the product's October 2026 what's new; Windows Subsystem for Linux and the macOS Visual Studio Code extension entries stay in preview, and the support matrix now lists sixty-two tools on Windows and fifty-nine on macOS. What's new and AI agent support matrix pages cited." },
+    { date: "6 November 2026", section: "s7-4", text: "Intune's endpoint security template for Defender runtime protection settings is generally available and gains an AI agent runtime inspection setting; the Defender for Endpoint feature the template configures is still in preview. Intune what's new page cited." },
+    { date: "6 November 2026", section: "s7-4", text: "Microsoft Execution Containers are generally available on Windows, per the October 2026 Windows developer blog; the Intune, Entra and Agent 365 integration that would make them deployable from this stack is announced as upcoming, so the capability keeps its early preview label here." },
+    { date: "6 November 2026", section: "s6-1", text: "The Manage agents page separates an agent shared by its creator from one published by the organisation, and says Researcher and Analyst sit outside every agent setting; cited in 6.1 and 6.4. Manage agents page cited." },
+    { date: "6 November 2026", section: "s7-1", text: "Microsoft announced Dynamic Permissions, Dynamic Agent Risk and Dynamic Conditional Access, alongside Project Perception; no Learn page documents them yet, so the guide notes them as announced direction only. October and November security blog posts cited." },
+    { date: "6 November 2026", section: "s5-4", text: "Databricks Genie connections need a Databricks-managed service principal, not the application ID and secret of an Entra app registration. Connect Databricks Genie page cited." },
+    { date: "6 November 2026", section: "s5-1", text: "The overview's activity metrics start at licence activation for third-party agents only, and first-party agents report without the licence. Agent management overview page cited." },
     { date: "25 October 2026", section: "s4", kind: "guide", text: "Chapter 4\u2019s map has three bands: the four routes an agent takes into Agent 365, the control plane, and the products that enforce, with live status badges on the routes. The top bar carries one name and fits a phone in two rows." },
     { date: "25 October 2026", section: "s5-4", text: "Connected platform connections are read-only, every platform needs a key-based credential, an agent removed at the source is not guaranteed to leave the registry, and connection create, sync and delete actions are not guaranteed to reach the Purview audit log. Connected platforms and Third-party agent observability pages cited." },
     { date: "25 October 2026", section: "s6-3", text: "First-party agents, meaning system agents and pre-built Microsoft agents, cannot have their ownership reassigned; reassignment stays limited to shared Agent Builder and Copilot Studio agents. Agent actions page cited." },
@@ -105,18 +112,18 @@ window.A365 = {
     { key: "id-governance",      name: "Access packages and sponsor lifecycle workflows for agents", tier: "ga", note: "With licence", where: "Entra ID Governance" },
     { key: "purview",            name: "Purview audit, DLP, labels, IRM, Communication Compliance, eDiscovery, DLM, Compliance Manager for agents", tier: "ga", where: "Purview" },
     { key: "defender-core",      name: "Defender agent inventory and real-time protection for Agent 365 tool invocations", tier: "ga", where: "Defender XDR" },
-    { key: "defender-posture",   name: "Defender posture risk assessment", tier: "preview", where: "Defender XDR" },
+    { key: "defender-posture",   name: "Defender posture risk assessment", tier: "preview", note: "Learn's page dropped its preview label by 2 November 2026; the Defender XDR what's new page still says preview", where: "Defender XDR" },
     { key: "defender-nrt",       name: "Defender near-real-time detection", tier: "preview", where: "Defender XDR" },
     { key: "defender-rtp-mcs",   name: "Defender real-time protection for Copilot Studio agents", tier: "preview", where: "Defender XDR" },
     { key: "defender-rtp-foundry", name: "Defender real-time protection for Foundry agents", tier: "preview", where: "Defender XDR" },
-    { key: "mde-discovery",      name: "Defender for Endpoint local agent discovery", tier: "preview", note: "Learn's page dropped its preview label on 21 September 2026; the release notes and the portal still say preview", where: "Defender for Endpoint" },
-    { key: "mde-runtime",        name: "Defender for Endpoint runtime protection", tier: "preview", where: "Defender for Endpoint" },
+    { key: "mde-discovery",      name: "Defender for Endpoint local agent discovery", tier: "ga", note: "GA for Windows and macOS in the October 2026 what's new; WSL and the macOS VS Code extension entries stay preview", where: "Defender for Endpoint" },
+    { key: "mde-runtime",        name: "Defender for Endpoint runtime protection", tier: "preview", note: "Intune's what's new calls its runtime protection template generally available; the Defender for Endpoint what's new page still says preview", where: "Defender for Endpoint" },
     { key: "gsa-copilot-studio", name: "Global Secure Access for Copilot Studio agents, prompt injection protection", tier: "ga", note: "Device and prompt-injection paths need Entra Internet Access", where: "Global Secure Access" },
     { key: "gsa-shadow-ai",      name: "Global Secure Access Shadow AI discovery", tier: "ga", where: "Global Secure Access" },
     { key: "gsa-mcp-firewall",   name: "MCP firewall", tier: "preview", where: "Global Secure Access" },
     { key: "gsa-genai-insights", name: "Generative AI Insights", tier: "preview", where: "Global Secure Access" },
     { key: "gsa-agent-discovery", name: "AI agent discovery", tier: "preview", where: "Global Secure Access" },
     { key: "w365-agents",        name: "Windows 365 for Agents", tier: "ga", where: "Intune" },
-    { key: "mxc",                name: "Microsoft Execution Containers", tier: "roadmap", note: "Windows Insider builds; not in Learn docs", where: "Windows" }
+    { key: "mxc",                name: "Microsoft Execution Containers: Agent 365, Intune and Entra integration", tier: "roadmap", note: "The containers themselves are GA on Windows (October 2026 Windows developer blog, not yet on Learn); the integration is announced as upcoming", where: "Windows" }
   ]
 };

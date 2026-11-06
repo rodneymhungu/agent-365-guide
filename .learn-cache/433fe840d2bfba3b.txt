@@ -1,0 +1,299 @@
+Agent 365 bulk onboarding with PowerShell
+Use Agent 365 bulk onboarding to reduce repetitive setup when onboarding multiple agents. Define agent identities, sponsors, owners, and registrations in one reviewable CSV, validate their relationships before provisioning, and review the results in one consolidated report. The scripts validate the complete file, calculate the dependency order, and then create each object by using Microsoft Graph.
+Use this workflow after you understand how to onboard a single agent with the Agent 365 CLI. When you need to onboard many agents at once or repeat tenant onboarding, define the objects and their relationships in one CSV file instead of running the CLI onboarding workflow separately for each agent.
+This article provides the end-to-end bulk onboarding instructions, from automation application setup and CSV requirements through validation, execution, and troubleshooting.
+Important
+The bulk onboarding scripts are PowerShell automation in the Agent 365 DevTools repository. They're separate from the a365 command-line interface. The automation application described in this article is also separate from the interactive client application described in Custom client app registration for Agent 365 CLI.
+What the workflow creates
+Each CSV row represents one object. The supported relationships are:
+Blueprint
+|
++-- AgentIdentity
+|-- AgentUser
++-- AgentRegistration
+Object
+Purpose
+Agent identity blueprint
+Reusable identity and permission template for one or more agents.
+Agent identity
+Microsoft Entra identity used by an individual agent.
+Agent user
+Optional Microsoft Entra user account for an agent that needs licensed Microsoft 365 resources, such as a mailbox.
+Agent registration
+Inventory record that makes the agent discoverable in Agent 365 administrative experiences.
+An agent user and an agent registration are independent children of an agent identity. A failure in one doesn't prevent the other from being attempted.
+Important
+Creating an agent identity alone doesn't create an Agent 365 inventory record. Include an AgentRegistration row for each identity that needs to appear in Agent 365 administrative experiences. An AgentUser is optional and isn't a prerequisite for registration.
+For more information about these objects, see Agent 365 identity.
+Prerequisites
+Before you begin, ensure you have:
+A tenant where Microsoft Agent 365 is available.
+PowerShell 7 or later.
+Git to clone the DevTools repository.
+The Microsoft.Graph.Authentication PowerShell module version 2.x.
+A Privileged Role Administrator or higher for the one-time automation application permission consent.
+A sponsor for every new blueprint and agent identity.
+Owners, managers, and registration owners that already exist in Microsoft Entra ID.
+A verified tenant domain for every new agent user principal name (UPN).
+An appropriate license and two-letter usage location if the CSV assigns a license to an agent user.
+Agent users are available only to tenants participating in the Frontier preview program.
+Install the required Microsoft Graph module:
+Install-Module Microsoft.Graph.Authentication -Scope CurrentUser
+Get the scripts
+Clone the Agent 365 DevTools repository, and then change to the bulk registration directory:
+git clone https://github.com/microsoft/Agent365-devTools.git
+Set-Location .\Agent365-devTools\scripts\bulk-agent-registration
+Keep the scripts in this directory together. A365-BulkOnboarding.ps1 invokes A365-AutomationOrchestrator.ps1, which invokes the object-specific provisioning scripts.
+Configure authentication
+Bulk onboarding can run unattended by using a tenant-owned automation application or a system-assigned managed identity. It can also run interactively with delegated authentication.
+Complete application setup, permission consent, and authentication configuration before the first batch. For each subsequent batch, prepare the CSV, validate the plan, run onboarding, and review the results.
+App-only runs use application roles granted to the automation application's or managed identity's service principal—not the operator's administrator role.
+Permission grants for the runner identity are separate from the CSV's GrantAdminConsent setting, which requests consent for permissions declared by a blueprint or agent identity. Review any outstanding consent actions in the run report.
+Important
+Don't use the Microsoft-managed Agent 365 CLI application (f54280f4-395e-4ea8-9e48-bf2d4952aa14) for this workflow. That application is for interactive CLI authentication and must not be modified.
+Bulk onboarding supports these runner authentication methods:
+Method
+Parameters
+Recommended use
+Client secret
+-TenantId -ClientId -ClientSecret
+Testing or short-lived automation
+Certificate
+-TenantId, -ClientId, and exactly one of -CertificateThumbprint, -Certificate, or -CertificatePath
+Unattended production automation
+System-assigned managed identity
+-TenantId -UseManagedIdentity
+Automation hosted on an Azure resource
+Interactive delegated sign-in
+-TenantId -Interactive; also include -ClientId for a batch that contains AgentUser rows
+Operator-driven onboarding
+Federated identity credentials and user-assigned managed identity selection aren't supported as runner authentication methods.
+Create the automation application
+Sign in interactively as a Global Administrator or Privileged Role Administrator and create an automation application for all supported object types. Create the application without a client secret or certificate so you can add and manage its credentials separately in Microsoft Entra admin center:
+.\New-A365AutomationApp.ps1 `
+-TenantId <tenant-id> `
+-Interactive `
+-DisplayName 'A365 Provisioning Automation' `
+-Scenario All `
+-SkipGrant
+The script creates or reuses the application and service principal and declares the required Microsoft Graph application permissions and delegated scopes. The warning that no credential was added is expected; the application can't authenticate until you add a client secret or certificate. Because the command uses -SkipGrant, it doesn't grant admin consent.
+After the command finishes, ask an administrator to open the Portal URL printed by the script. In Microsoft Entra admin center, select Grant admin consent for the declared permissions. Don't begin bulk onboarding until admin consent is complete. You can run the script again to reconcile the application and missing permission declarations.
+Record the automation application's Application (client) ID. Don't use its service principal object ID when a command asks for -ClientId.
+Review the application permissions
+-Scenario All declares the union of these Microsoft Graph application permissions:
+Capability
+Application permissions
+Blueprint
+AgentIdentityBlueprint.CreateAgentIdentityBlueprint.Read.AllAgentIdentityBlueprint.ReadWrite.AllAgentIdentityBlueprint.AddRemoveCreds.AllAgentIdentityBlueprintPrincipal.CreateAgentIdentityBlueprintPrincipal.Read.AllAgentIdentityBlueprintPrincipal.ReadWrite.All
+Agent identity
+AgentIdentity.Create.AllAgentIdentity.Read.AllAgentIdentity.ReadWrite.AllCustomSecAttributeAssignment.ReadWrite.AllCustomSecAttributeDefinition.Read.All
+Registration
+AgentRegistration.ReadWrite.AllAgentInstance.ReadWrite.All
+Agent user
+AgentIdUser.ReadWrite.AllUser.ReadWrite.AllOrganization.Read.All
+Shared directory lookup and ownership
+Application.Read.AllApplication.ReadWrite.AllDirectory.Read.AllUser.Read.AllGroup.Read.All
+The AgentUser, AgentIdentity, Registration, and All scenarios also declare delegated scopes for their selected interactive operations. Registration scopes are declared by default and can be suppressed. An unattended run that uses Auth=Same relies on the application permissions in the preceding table.
+Configure authentication inputs
+Define one authentication hashtable and reuse it for validation and execution.
+Client secret
+In Microsoft Entra admin center, go to Identity > Applications > App registrations, and select the automation application. Select Certificates & secrets > Client secrets > New client secret, enter a description and expiration, and then select Add. Copy the secret Value immediately and store it securely; it isn't shown again after you leave the page. For more information, see Add credentials to your application.
+Read the client secret as a SecureString instead of placing it directly on the command line:
+$clientSecret = Read-Host -Prompt 'Automation application client secret' -AsSecureString
+$authParameters = @{
+TenantId = '<tenant-id>'
+ClientId = '<automation-app-client-id>'
+ClientSecret = $clientSecret
+}
+Client secrets are less secure than certificates and should be limited to testing or short-lived automation. For unattended production automation, use a certificate or system-assigned managed identity.
+Certificate
+For production automation, obtain a certificate from your organization's certificate authority. For test environments, see Create a self-signed public certificate to authenticate your application. In the automation application's Certificates & secrets page, select Certificates > Upload certificate, upload the public .cer, .pem, or .crt file, and then select Add. The runner needs access to the private key; the automation application stores only the public certificate. For more information about app-only certificate authentication, see Use app-only authentication with the Microsoft Graph PowerShell SDK.
+Use the thumbprint of the certificate that has the private key:
+$authParameters = @{
+TenantId = '<tenant-id>'
+ClientId = '<automation-app-client-id>'
+CertificateThumbprint = '<certificate-thumbprint>'
+}
+For a batch that can contain AgentUser rows, install the certificate in Cert:\CurrentUser\My. To use a certificate from Cert:\LocalMachine\My across all object types, pass it as a certificate object instead of using its thumbprint.
+Alternatively, provide the certificate as an X509Certificate2 object:
+$authParameters = @{
+TenantId = '<tenant-id>'
+ClientId = '<automation-app-client-id>'
+Certificate = Get-Item 'Cert:\CurrentUser\My\<certificate-thumbprint>'
+}
+Or load the private key from a password-protected PFX:
+$pfxPassword = Read-Host -Prompt 'PFX password' -AsSecureString
+$authParameters = @{
+TenantId = '<tenant-id>'
+ClientId = '<automation-app-client-id>'
+CertificatePath = 'C:\secure\a365-automation.pfx'
+CertificatePassword = $pfxPassword
+}
+Supply only one certificate source. -CertificatePassword is valid only with -CertificatePath.
+System-assigned managed identity
+Enable a system-assigned managed identity on the Azure resource that runs the scripts. Grant the required Microsoft Graph application permissions from the preceding table directly to the managed identity's service principal. For instructions, see Grant and revoke API permissions to managed identities.
+$authParameters = @{
+TenantId = '<tenant-id>'
+UseManagedIdentity = $true
+}
+Don't include ClientId with UseManagedIdentity. The scripts use the host's system-assigned identity and don't support selecting a user-assigned identity.
+Interactive delegated sign-in
+Use a caller-controlled application client ID so the same example also supports CSV files that contain AgentUser rows:
+$authParameters = @{
+TenantId = '<tenant-id>'
+ClientId = '<automation-app-client-id>'
+Interactive = $true
+}
+When you supply ClientId, interactive authorization depends on that application's consented delegated scopes and the signed-in user's directory roles. New-A365AutomationApp.ps1 -Scenario All declares the delegated scopes and enables public-client flows. Follow the administrator consent URL printed by the setup script before the first interactive run. If a batch doesn't contain AgentUser rows, you can omit ClientId; the scripts then use the Microsoft Graph PowerShell client and its consented scopes. AgentUser operations require a suitable role, such as Agent ID Administrator. For background information, see Use Microsoft Graph PowerShell authentication commands.
+The tenant-owned automation application can support both app-only certificate or secret authentication and interactive delegated sign-in. App-only authorization uses application roles. Interactive authorization uses delegated scopes and the signed-in user's directory roles. A managed identity instead uses the Azure resource's own service principal.
+Prepare the CSV file
+Start with sample-bulk-onboarding.csv. Keep every header in the sample, even when a column doesn't apply to a row. Leave nonapplicable values blank.
+The sample contains representative rows for every supported object type. Replace its example domains, identities, owners, sponsors, managers, and license values with values from your tenant.
+Define relationships
+The first four columns define the object graph:
+Column
+Description
+ObjectType
+Blueprint, AgentIdentity, AgentUser, or AgentRegistration.
+Key
+A case-insensitive name that uniquely identifies the row within the CSV. It doesn't become the Microsoft Entra object ID.
+ParentKey
+The Key of the parent row. Agent identities reference a blueprint. Agent users and registrations reference an agent identity. Leave it blank for a blueprint.
+ExistingId
+References an existing blueprint application ID or agent identity object ID. A row with this value is an unchanged anchor for child rows. It's supported only for Blueprint and AgentIdentity; ParentKey and every object-setting column must be blank on that row.
+To create agent identities under an existing blueprint, add a Blueprint anchor row whose ExistingId is the blueprint application ID. Give each new AgentIdentity row a ParentKey that matches the anchor row's Key.
+Set values for each object type
+Columns
+Applies to
+Requirements
+DisplayName
+All object types
+Required for new blueprints, agent identities, and registrations.
+Description
+Blueprint, AgentRegistration
+Optional description.
+Sponsor
+Blueprint, AgentIdentity
+Required for creation. Use a UPN, email address, display name, or object ID. Separate multiple values with semicolons.
+Owner
+Blueprint, AgentIdentity, AgentRegistration
+Use a UPN, email address, display name, or object ID. Separate multiple values with semicolons. Blueprint and identity owners can be users or service principals. Registration owners must be users and are required for app-only registration.
+RequireOwnerAssignment
+Blueprint, AgentIdentity
+Set to true to fail the row if an owner can't be assigned.
+RequiredPermissionJson, GrantAdminConsent
+Blueprint, AgentIdentity
+Declare API permissions and optionally grant consent.
+SkipInheritablePermissions, NewClientSecret, KeyVaultName, KeyVaultSecretName, ManagedIdentityPrincipalId
+Blueprint
+Configure blueprint permissions and credentials.
+Tag, CustomSecurityAttributeJson, SkipCustomSecurityAttributeValidation
+AgentIdentity
+Separate tags with semicolons. Custom security attributes require the appropriate Graph permissions and directory role.
+PrincipalName, MailNickname
+AgentUser
+PrincipalName is required and must use a verified tenant domain.
+ManagerUserId, ManagerUpn
+AgentUser
+Use one manager field, not both.
+AssignLicense, UsageLocation, LicenseSkuId, LicenseSkuPartNumber
+AgentUser
+When AssignLicense is true, provide a two-letter usage location and one license SKU field.
+OwnerId, Auth
+AgentRegistration
+OwnerId accepts a user object ID. Auth accepts Same or Interactive; use Same for unattended app-only onboarding.
+ParameterJson
+All object types
+Optional JSON object for the script's allowlisted advanced parameters. Complete parameter names are required. Authentication, tenant, action, parent, output, and logging parameters are rejected.
+Important
+A value in a column that doesn't apply to the row's ObjectType is an error. The validator doesn't silently ignore misplaced values.
+Validate the onboarding plan
+Before you create any tenant objects, run the complete CSV through -WhatIf:
+.\A365-BulkOnboarding.ps1 `
+-CsvPath .\sample-bulk-onboarding.csv `
+@authParameters `
+-WhatIf
+The script validates the entire CSV before it makes a Microsoft Graph request. It reports all detected structural errors together, including:
+Missing or unknown headers.
+Missing required values.
+Duplicate keys.
+Unsupported object types.
+Invalid GUID, UPN, Boolean, or JSON values.
+Invalid ParentKey or ExistingId combinations.
+A parent of the wrong object type.
+Dependency cycles.
+Values in columns that don't apply to the row's object type.
+If validation succeeds, the command prints the dependency plan. Under -WhatIf, the script doesn't send any onboarding row to Microsoft Graph.
+Successful validation confirms that the CSV passes the structural checks. It doesn't confirm that tenant objects can be resolved or that the application has the permissions needed to create them.
+For interactive authentication, a CSV that contains an AgentUser row requires the caller-controlled application ClientId shown in the preceding example. The signed-in user must also have the required delegated consent and directory role.
+Run bulk onboarding
+After the -WhatIf plan looks correct, run onboarding and save the logs and aggregate report:
+.\A365-BulkOnboarding.ps1 `
+-CsvPath .\sample-bulk-onboarding.csv `
+@authParameters `
+-LogPath .\logs `
+-OutputJsonPath .\bulk-onboarding-result.json
+The script processes parents before their children while preserving CSV order among unrelated rows. If one row fails:
+The script marks its descendants as SkippedDependency and doesn't send them to Microsoft Graph.
+Independent dependency trees continue.
+The command writes the console summary and aggregate report before it exits.
+The command returns a nonzero exit code if any row is Failed or SkippedDependency.
+Review the results
+The final row statuses are:
+Status
+Meaning
+Existing
+The row references an existing blueprint or agent identity and wasn't changed.
+Succeeded
+The object was created successfully.
+Failed
+The script attempted the row but didn't complete it successfully.
+SkippedDependency
+The script didn't attempt the row because its parent didn't produce a usable ID.
+The -OutputJsonPath parameter creates one A365BulkProvisioningRunReport for the entire run. Review the report for:
+The status and resolved ID for every row.
+Failed steps and error details.
+Outstanding administrator consent actions.
+Created blueprint, identity, user, and registration identifiers.
+Logs from the bulk script, orchestrator, and child scripts share one correlation ID when they use the same -LogPath.
+The report omits blueprint client secrets unless you explicitly use -IncludeBlueprintSecretsInOutput. The report never includes authentication inputs, access tokens, or certificate passwords.
+Warning
+Don't enable secret output or secret logging in routine automation. If a credential appears in a console transcript, log, report, ticket, chat, or screenshot, rotate it immediately.
+Verify onboarding
+After the run:
+Review each row's status and resulting object ID.
+Verify the expected registrations appear in Agent 365 administration.
+Check the assigned sponsors and owners.
+If you requested agent users or licenses, verify those assignments.
+Review and complete outstanding administrator consent actions.
+Recover from a partial run
+Warning
+Before retrying, inspect the report and tenant objects to determine what already exists. Don't assume that completed work was rolled back or that rerunning the entire CSV avoids duplicates.
+You can reference existing blueprints and agent identities through ExistingId anchor rows. This option isn't supported for agent-user or registration rows.
+Correct the failure and prepare a reviewed retry batch based on the observed tenant state, rather than blindly rerunning successful rows.
+Troubleshooting
+Use the following table to resolve common onboarding issues.
+Symptom
+Resolution
+The automation application setup returns an authorization error.
+Sign in as a Global Administrator or Privileged Role Administrator. Granting Microsoft Graph application permissions requires admin consent.
+A provisioning row returns HTTP 403.
+Confirm that you created the automation application with -Scenario All, granted its application roles, and acquired a new token after consent.
+An agent user row is rejected before execution.
+Use app-only authentication. Confirm the UPN uses a verified domain. If assigning a license, provide UsageLocation and either LicenseSkuId or LicenseSkuPartNumber.
+An owner, sponsor, or manager can't be resolved.
+Use an unambiguous UPN, email address, or object ID. Registration owners must resolve to users.
+A child row is SkippedDependency.
+Fix the failed or unresolved parent row. The child wasn't sent to Microsoft Graph.
+An identity exists in Microsoft Entra but isn't visible in Agent 365 administration.
+Add an AgentRegistration row for the identity. Creating an identity alone doesn't create the Agent 365 inventory record.
+The CSV validator reports a value in an unsupported column.
+Move the value to a column supported by that ObjectType, or leave the cell blank.
+Custom security attribute assignment returns HTTP 403.
+The automation application needs CustomSecAttributeAssignment.ReadWrite.All and CustomSecAttributeDefinition.Read.All. Interactive assignment also requires the signed-in user to hold the Attribute Assignment Administrator role.
+For general product and CLI issues, see the Agent 365 troubleshooting guide. To report a problem with these scripts, use Agent 365 DevTools issues.
+Next steps
+After onboarding your agents:
+Validate your Agent 365 integration.
+Publish an agent to the Microsoft 365 admin center.
+Learn more about Agent 365 identity.
