@@ -19,10 +19,13 @@ Manage agents page) folded in. Merged on 6 November, together with #77, which
 adds announcement-feed discovery to the drift watcher (new posts arrive as
 coverage candidates, feed failures are reported, never passed as "no
 changes"). The Agent 365 Action Center (3 November Gartner MQ post) has no Learn
-page yet and is deferred; see the pull request body. The native feed post in
-`distribution/2026-10-25-linkedin-post.md` (PR #73) is still not posted; it is
-the native-post test from item 2 below. The older list below is kept because
-most of it is still open.
+page yet and is deferred; see the pull request body. Rodney skipped the
+25 October native feed post (PR #73, closed unposted) and will post one
+article in the week of 9 November instead, drafted in
+`distribution/2026-11-09-linkedin.md` with the chapter 4 map as its cover:
+seven product changes from 11 October to 6 November, led by Defender for
+Endpoint discovery reaching GA. The older list below is kept because most of
+it is still open.
 
 1. **The 6 October article is live and logged** (18 October, focus 4 row in
    the log). Still only Rodney can edit the live copy: the registry sync
@@ -35,7 +38,13 @@ most of it is still open.
    test. Evidence so far: article week 1 brought 10 LinkedIn visitors, the
    week with no article brought 4, article week 2 brought 13 (986
    impressions, 39 article views; see the log row of 18 October), and a
-   native post has not been tried.
+   native post has not been tried. Rodney chose an article again for the
+   week of 9 November, so the native-post test is still not run. One
+   unexplained number: the 2 November digest counted 45 LinkedIn visitors
+   in the week to 2 November, 36 of them on 26 October, a week when neither
+   the 19 October article nor the 25 October post went out. Find out what
+   sent them (a repost, a share, someone else's post) before reading the
+   9 November article's referrer against the baseline.
    Recommendation: post the next update as a native post, compare the
    referrer count in the following digest, then decide. Do not change
    `article_draft` in `scripts/feedback_collect.py` until the comparison is
@@ -161,6 +170,7 @@ Newest first. One line per item shipped, with the pull request.
 
 | Date | Focus | Shipped | Evidence |
 |---|---|---|---|
+| 6 November 2026 | 4 | LinkedIn article for the week of 9 November drafted in `distribution/2026-11-09-linkedin.md`, replacing the unsent 19 October article and the 25 October native post (#73, closed unposted at Rodney's call). Seven product changes from 11 October to 6 November, curated by hand because the 2 November digest draft covered only its fortnight: Defender for Endpoint discovery GA leads (endpoint, after two identity-led drafts), then runtime protection's supported agents and Intune template, agent-risk Conditional Access needing P2 or E5, Connected platforms observability and its billed queries and audit gap, prompts and responses in Azure agent observability data, duplicate registry entries, and the three kinds of MCP server; the chapter 4 map as the "Also new" bullet and the cover, re-rendered so the discovery badge reads GA. Execution Containers offered as an optional bullet, since it is not on Learn. Not yet posted. Writing review: three low flags, none applied, pending Rodney. | this pull request |
 | 6 November 2026 | 3 | Reviewed and extended the 2 November drift pull request, each edit checked against its live source. Verified and kept: activity metrics scoped to third-party agents (first-party agents report without the licence), the Databricks-managed service principal for Genie, Prompt Shields block events for Copilot Studio recorded as behaviours (7.3 needed no edit). Moved on release-notes evidence: Defender for Endpoint local agent discovery to GA for Windows and macOS (October what's new; WSL and macOS VS Code extension entries stay preview; matrix now 62 Windows, 59 macOS tools). Kept at preview with dated notes: posture risk (XDR what's new still says preview) and runtime protection (Intune's template is GA with a new AI agent runtime inspection setting, the Defender feature is not). Added: the Manage agents page to 6.1 and 6.4 with the creator-shared against organisation-published distinction, Execution Containers GA on Windows with Agent 365 integration still upcoming (7.4), and a two-sentence direction note on Dynamic Permissions, Dynamic Agent Risk, Dynamic Conditional Access and Project Perception (7.1). Deferred: the Action Center, blog-only, no Learn page. Seven changelog entries; review date 6 November. Merged the same day with #77, which adds announcement-feed discovery to the watcher. Writing review: three flags, all applied (a duplication, a narrowed claim, a wrong attribution). | #74, #77 |
 | 25 October 2026 | Structure | Chapter 4's Figure 3 rebuilt as a three-band map: the four routes an agent takes into Agent 365 (built in, with the SDK, Connected platforms, on the device), the control plane, and the products that enforce, with status badges on the routes from the data file. The idea came from a community architecture overview by Russell Hockley; the content comes from Learn's Choose an Agent 365 integration option page, now cited in chapter 4. The old hover-pillar SVG and its script and styles are gone. Built as an HTML grid, not SVG, so the text wraps at 390px and the badges use the same spans as the rest of the page; README says so. The top bar carries one name on both pages (the "Agent control atlas" label is gone) and fits a phone in two balanced rows, one row from 621px up. Writing review: one flag applied, "data block" in reader copy. | this pull request |
 | 25 October 2026 | 3 | Merged the 19 October drift pull request after checking each edit against the Learn page it cites. Brought up to main first: #71 had changed chapter 2 and 5.4 after it branched, so its 5.4 observability edit was already in and was dropped. Kept: first-party agents cannot be reassigned (6.3). Decisions closed on Learn: 5.1 says one Copilot Studio agent can appear twice; 5.4 gains the read-only model, key-based credentials, deletion reconciliation and the Purview audit log gap for connection actions; 6.5 cites the new MCP server options page and the CLI evaluate step. Work IQ MCP keeps its name, the options page still uses it. Four changelog entries. | #69 |
