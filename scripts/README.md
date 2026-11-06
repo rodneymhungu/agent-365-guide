@@ -10,7 +10,7 @@ Everything here was verified against the live docs on 5 September 2026; the
 
 | Workflow | When | What it does | Output |
 |---|---|---|---|
-| `learn-drift.yml` | Mon 05:00 UTC | `learn_watch.py` fetches the 51 Learn pages `index.html` cites, plus the Agent 365 and Security-for-AI docs tables of contents and the Windows 365 for Agents what's-new page, and diffs them against `.learn-cache/`. Only if something changed: Copilot CLI proposes minimal edits to `index.html` and the `window.A365` status block. | A pull request, never a push to `main` |
+| `learn-drift.yml` | Mon 05:00 UTC | `learn_watch.py` fetches the 51 Learn pages `index.html` cites, plus the Agent 365 and Security-for-AI docs tables of contents and the Windows 365 for Agents what's-new page, and diffs them against `.learn-cache/`. It also reads two announcement feeds (`DISCOVERY_FEEDS`): the Agent 365 blog and the Microsoft Security blog, the latter filtered to posts mentioning agents or MCP; new posts land in the report as coverage candidates, separate from drift. Only if something changed or a candidate or feed failure appeared: Copilot CLI proposes minimal edits to `index.html` and the `window.A365` status block. | A pull request, never a push to `main` |
 | `feedback-digest.yml` | Mon 05:30 UTC | `feedback_collect.py` pulls GoatCounter visitors, per-page and per-section views and referrers, GitHub stars, issues and open `learn-drift` pull requests with their age, Brave Search mentions, and the week's focus from the rotation in `PLAN.md`. Copilot CLI writes a ≤350-word digest. Every second week the collector also writes a LinkedIn article draft from the last fortnight's `changes` entries, appended to the issue verbatim (no model touches it). | An issue on this repo, assigned to the owner; the previous digest issue is closed as superseded |
 
 Both outputs are assigned to `rodneymhungu` and mention him in the first
@@ -38,6 +38,30 @@ real GA entry arrives as evidence in the Monday pull request. Reason: on
 21 September 2026 a Learn page dropped "(Preview)" from its title, the drift
 run moved the capability to GA, and the product's release notes and portal
 still said preview.
+
+## Two outputs: drift and coverage candidates
+
+Added 6 November 2026, after Execution Containers went GA and the Action
+Center was announced on blogs days before any cited Learn page moved. The
+drift check only re-reads pages the guide already cites, so it cannot see a
+capability the guide has never covered. `learn_watch.py` therefore keeps two
+distinct outputs in `learn-diff.md`:
+
+1. **Documentation drift**: diffs of cited Learn pages, which may change
+   claims already in the guide.
+2. **New coverage candidates**: new posts on the announcement feeds, each with
+   its URL, published date and retrieval date. A post is a lead to verify, not
+   documentation: the workflow prompt tells the model to find the Learn page
+   that confirms it before any prose edit, and a post alone never moves a tier
+   (`guard_tiers.py` enforces that regardless).
+
+Posts are reported once: `.learn-cache/discovery-seen.json` records every link
+already seen and is committed with the cache. A feed that cannot be fetched is
+listed under "Discovery feed failures" and sets `changed=true`, so a failed
+check opens a pull request rather than passing as a quiet week. Public-mention
+and audience-question searches in the digest are a separate, credential-gated
+concern (`GOOGLE_CSE_KEY`/`GOOGLE_CSE_ID` or `BRAVE_API_KEY`); the feeds here
+need no credential.
 
 ## Distribution automation (article weeks)
 

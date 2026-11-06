@@ -26,11 +26,8 @@ UA = "agent-365-guide-watch/1.0 (+https://rodneymhungu.github.io/agent-365-guide
 # Pages the guide should track but does not (yet) link to.
 # There is no Agent 365 "What's new" page on Learn (checked 5 September 2026), so the
 # docs-set tables of contents stand in for it: a new or renamed page shows up as a
-# diff line here before any prose page changes. Microsoft's monthly "What's new in
-# Agent 365" posts live on the Tech Community blog instead; the blog page itself is
-# a JavaScript shell, so its RSS feed is watched; it sits in RELEASE_NOTES below so
-# that the feed's own build timestamp does not count as a change. Blog claims never
-# move a tier: they are announcements, cited as such, until a Learn page carries them.
+# diff line here before any prose page changes. Blog claims never move a tier: they
+# are announcements, cited as such, until a Learn page carries them.
 EXTRA_URLS = [
     "https://learn.microsoft.com/en-us/microsoft-agent-365/toc.json",
     "https://learn.microsoft.com/en-us/security/security-for-ai/toc.json",
@@ -53,10 +50,23 @@ RELEASE_NOTES = [
     "https://learn.microsoft.com/en-us/purview/whats-new",
     "https://learn.microsoft.com/en-us/intune/whats-new/",
     "https://learn.microsoft.com/en-us/microsoft-365/admin/whats-new-in-preview",
-    # Microsoft's monthly "What's new in Agent 365" posts, as RSS (confirmed working
-    # 11 October 2026). A new post arrives as title and summary lines about agents.
-    "https://techcommunity.microsoft.com/t5/s/gxcuf89792/rss/board?board.id=agent-365-blog",
 ]
+
+# Announcement feeds, watched per item rather than as page diffs, so a new post
+# becomes a "new coverage candidate" entry (title, link, date) instead of a raw
+# diff line. The 6 November 2026 drift review showed why the cited-pages check
+# alone is not enough: Execution Containers going GA and the Action Center both
+# arrived on blogs days before any Learn page moved. A post here never edits
+# prose and never moves a tier; it is a lead to verify against Learn.
+# Each feed is (name, url, relevant_only): when relevant_only is True, items are
+# kept only when title or summary mentions agents or MCP.
+DISCOVERY_FEEDS = [
+    # Microsoft's monthly "What's new in Agent 365" posts (RSS confirmed working
+    # 11 October 2026; watched as a diffed page until 6 November 2026).
+    ("Agent 365 blog", "https://techcommunity.microsoft.com/t5/s/gxcuf89792/rss/board?board.id=agent-365-blog", False),
+    ("Microsoft Security blog", "https://www.microsoft.com/en-us/security/blog/feed/", True),
+]
+SEEN_FILE_NAME = "discovery-seen.json"
 EXTRA_URLS += RELEASE_NOTES
 RELEVANT = re.compile(r"agent|mcp", re.I)
 BROWSER_UA = ("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "
@@ -158,6 +168,54 @@ def url_id(url: str) -> str:
     return hashlib.sha1(url.encode()).hexdigest()[:16]
 
 
+def rss_items(raw_xml: str):
+    """Yield (title, link, published) per <item> or <entry>. Regex, not a parser:
+    both watched feeds are flat RSS/Atom and the stdlib stays dependency-free."""
+    for m in re.finditer(r"<(item|entry)[\s>].*?</\1>", raw_xml, re.S | re.I):
+        block = m.group(0)
+
+        def field(name):
+            f = re.search(rf"<{name}[^>]*>(.*?)</{name}>", block, re.S | re.I)
+            return html.unescape(re.sub(r"<!\[CDATA\[(.*?)\]\]>", r"\1", f.group(1), flags=re.S)).strip() if f else ""
+
+        link = field("link")
+        if not link:  # Atom puts the URL in <link href="..."/>
+            f = re.search(r'<link[^>]*href="([^"]+)"', block, re.I)
+            link = html.unescape(f.group(1)) if f else ""
+        summary = field("description") or field("summary")
+        yield field("title"), link.split("?")[0].split("#")[0], field("pubDate") or field("published"), summary
+
+
+def discover(cache_dir: str):
+    """Fetch the announcement feeds and return (candidates, failures, seeded).
+    New items are remembered in discovery-seen.json so a post is reported once.
+    A feed that cannot be fetched is a FAILURE to report, never 'no changes'."""
+    seen_path = os.path.join(cache_dir, SEEN_FILE_NAME)
+    first_run = not os.path.exists(seen_path)
+    seen = {}
+    if not first_run:
+        with open(seen_path, encoding="utf-8") as f:
+            seen = json.load(f)
+    today = time.strftime("%Y-%m-%d")
+    candidates, failures = [], []
+    for name, feed_url, relevant_only in DISCOVERY_FEEDS:
+        raw = fetch(feed_url)
+        if raw is None:
+            failures.append((name, feed_url))
+            continue
+        for title, link, published, summary in rss_items(raw):
+            if not link or link in seen:
+                continue
+            if relevant_only and not (RELEVANT.search(title) or RELEVANT.search(summary)):
+                continue
+            seen[link] = today
+            if not first_run:
+                candidates.append((name, title, link, published))
+    with open(seen_path, "w", encoding="utf-8") as f:
+        json.dump(seen, f, indent=2, sort_keys=True)
+    return candidates, failures, first_run
+
+
 def sections_citing(pages: dict, url: str):
     """Guide section ids (e.g. s6-2) whose HTML contains this URL, with the page
     names in brackets when the section is published on more than one page."""
@@ -216,11 +274,35 @@ def main() -> int:
     with open(os.path.join(CACHE, "index.json"), "w", encoding="utf-8") as f:
         json.dump({url_id(u): u for u in urls}, f, indent=2)
 
-    any_change = bool(changed or gone)
+    candidates, feed_failures, feeds_seeded = discover(CACHE)
+
+    any_change = bool(changed or gone or candidates or feed_failures)
     with open(REPORT, "w", encoding="utf-8") as f:
         f.write("# Learn drift report\n\n")
         f.write(f"Checked {len(urls)} pages · {len(changed)} changed · {len(new)} newly cached · "
-                f"{len(gone)} unreachable · {unchanged} unchanged\n\n")
+                f"{len(gone)} unreachable · {unchanged} unchanged · "
+                f"{len(candidates)} new coverage candidates · {len(feed_failures)} feed failures\n\n")
+        if candidates:
+            f.write("## New coverage candidates (announcements, not drift)\n\n")
+            f.write("New posts on the watched announcement feeds since the last run. These are leads\n"
+                    "to verify, not documentation: no prose edit and no tier move from a post alone.\n"
+                    "For each one worth covering, record the Learn page that confirms it, the guide\n"
+                    "section it belongs to, and its availability; otherwise note why it is skipped.\n\n")
+            retrieved = time.strftime("%Y-%m-%d")
+            for feed_name, title, link, published in candidates:
+                f.write(f"- **{title}** ({feed_name}) — {link}\n"
+                        f"  - published: {published or 'not stated'} · retrieved: {retrieved}\n")
+            f.write("\n")
+        if feed_failures:
+            f.write("## Discovery feed failures\n\n")
+            f.write("These feeds could not be fetched. A failed check is a failure to report,\n"
+                    "not \"no changes\": new announcements may exist that this run did not see.\n\n")
+            for feed_name, feed_url in feed_failures:
+                f.write(f"- {feed_name}: {feed_url}\n")
+            f.write("\n")
+        if feeds_seeded:
+            f.write("## Discovery feeds seeded\n\nFirst run: current feed items recorded; "
+                    "new posts are reported from the next run.\n\n")
         if gone:
             f.write("## Unreachable (404 or repeated failure)\n\n")
             for u in gone:
@@ -237,7 +319,8 @@ def main() -> int:
             f.write("## First run\n\nCache seeded; nothing to compare yet.\n")
 
     print(f"changed={'true' if any_change else 'false'}")
-    print(f"pages={len(urls)} changed={len(changed)} new={len(new)} gone={len(gone)}", file=sys.stderr)
+    print(f"pages={len(urls)} changed={len(changed)} new={len(new)} gone={len(gone)} "
+          f"candidates={len(candidates)} feed_failures={len(feed_failures)}", file=sys.stderr)
     return 0
 
 

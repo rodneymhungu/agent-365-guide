@@ -77,6 +77,21 @@ jobs:
           contents: a new line there means Microsoft published a new page, which may describe
           a capability the guide does not cover yet.
 
+          learn-diff.md may also carry a "New coverage candidates" section: new posts on
+          Microsoft's announcement feeds (the Agent 365 blog, the Microsoft Security blog).
+          These are leads, not documentation, and they are a separate output from drift:
+          drift changes claims already in the guide; a candidate is something the guide may
+          need to start covering. Never edit prose or move a tier from a post alone. For each
+          candidate, check whether a Learn page already documents the capability (use the
+          microsoft-learn MCP server). If one does, treat it as a normal change against the
+          sections it affects. If none does, copy it into CHANGES.md under a "New coverage
+          candidates" heading with the post URL, its published date, the guide section it
+          would belong to, what the post says about availability, and a recommended action:
+          add now citing the Learn page, wait for Learn, or out of scope. Skip a candidate
+          that repeats one already covered by the guide or by an earlier CHANGES entry, and
+          say so. If learn-diff.md carries a "Discovery feed failures" section, copy it into
+          CHANGES.md under "Needs a human decision": a failed fetch is never "no changes".
+
           Your job, in order:
           1. For each changed page, decide whether the change affects a factual claim in the cited
              sections. Cosmetic Learn edits (wording, navigation, dates in the header) do not.
