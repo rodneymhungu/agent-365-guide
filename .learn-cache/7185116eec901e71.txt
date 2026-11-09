@@ -37,6 +37,8 @@ Discover and monitor agents ->
     Third-party agent observability (Frontier) -> admin/third-party-agent-observability
     Troubleshoot connected platforms -> admin/troubleshoot-connected-platforms
   Agent map -> /microsoft-365/admin/manage/agent-map
+  Business use cases for agents (Frontier) -> admin/business-use-case-for-agents
+    Understand business use case taxonomy (Frontier) -> admin/business-use-cases-for-agents-taxonomy
   Agent requests -> admin/agent-requests
   Local agents (preview) -> admin/agent-local
   Agent details -> admin/agent-details
@@ -168,6 +170,7 @@ Extend agents for Agent 365 ->
       Python -> /python/api/agent365-sdk-python/agent365-overview
       JavaScript -> /javascript/api/agent365-sdk-node/agent365-overview
       .NET -> /dotnet/api/agent365-sdk-dotnet/agent365-overview
+    Migrate to Agent 365 SDK 2.0 -> developer/sdk-2-0-migration
     Archived SDK documentation ->
       Deprecated Agent 365 Observability SDK -> developer/archive/observability-sdk
     Agent 365 CLI -> developer/agent-365-cli

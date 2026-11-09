@@ -29,6 +29,7 @@
   "714e53790aa8f06c": "https://learn.microsoft.com/en-us/entra/id-protection/concept-risky-agents",
   "51eb9c5761ff3fd6": "https://learn.microsoft.com/en-us/entra/identity/conditional-access/agent-id",
   "625d2b986d40ca06": "https://learn.microsoft.com/en-us/entra/identity/conditional-access/policy-autonomous-agents",
+  "11ff77d86debc7dd": "https://learn.microsoft.com/en-us/intune/intune-service/fundamentals/whats-new",
   "292f704b3c292224": "https://learn.microsoft.com/en-us/intune/whats-new/",
   "804988b014d2c45b": "https://learn.microsoft.com/en-us/microsoft-365/admin/manage/agent-365-overview",
   "626b288db085d3b8": "https://learn.microsoft.com/en-us/microsoft-365/admin/manage/agent-actions",
@@ -43,6 +44,7 @@
   "5c33a8ebe93f5329": "https://learn.microsoft.com/en-us/microsoft-365/admin/manage/agent-shadow-ai",
   "03f330beb3ccca68": "https://learn.microsoft.com/en-us/microsoft-365/admin/manage/create-agentic-user-instances",
   "9c55047d8acdaf1a": "https://learn.microsoft.com/en-us/microsoft-365/admin/manage/manage-agent-instances",
+  "0dd44edb4612fc0c": "https://learn.microsoft.com/en-us/microsoft-365/admin/manage/manage-copilot-agents-integrated-apps",
   "73b7d36d6bd24fd9": "https://learn.microsoft.com/en-us/microsoft-365/admin/manage/manage-tools-for-agent",
   "c32e1cece2d080e2": "https://learn.microsoft.com/en-us/microsoft-365/admin/whats-new-in-preview",
   "e223a3d0d642d220": "https://learn.microsoft.com/en-us/microsoft-agent-365/add-mcp-tools-developer-experiences",
@@ -81,6 +83,5 @@
   "ff1a90141e928fc6": "https://learn.microsoft.com/en-us/security/security-for-ai/toc.json",
   "f948359391ae7a1e": "https://learn.microsoft.com/en-us/windows-365/agents/introduction-windows-365-for-agents",
   "b6f37c682e3e6c11": "https://learn.microsoft.com/en-us/windows-365/agents/whats-new",
-  "42b12aa1db6ba823": "https://techcommunity.microsoft.com/t5/s/gxcuf89792/rss/board?board.id=agent-365-blog",
   "03007d25763eb919": "https://www.microsoft.com/licensing/faqs/122"
 }
