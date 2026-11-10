@@ -19,11 +19,16 @@
   fetches read those, because guide.js only fills them after the page loads),
   dateModified in each page's JSON-LD block and lastmod in sitemap.xml.
   The same script without --fix runs on every push and fails when a copy
-  disagrees with this file. Readers read the changelog in chapter 10.
+  disagrees with this file. Readers read the changelog on changes.html.
+
+  Each capability carries "sec", the id of the section that explains it
+  (s5-4 is section 5.4). The status board in chapter 10 links each row to
+  that section, and the same --fix run rewrites the static copy of the board
+  in index.html and of the changelog in changes.html.
   ==========================================================================
 */
 window.A365 = {
-  reviewed: "9 November 2026",
+  reviewed: "10 November 2026",
   gaDate: "1 May 2026",
   transitionDate: "1 July 2026",
   trial: "25 seats for 30 days",
@@ -36,6 +41,9 @@ window.A365 = {
     roadmap:  { label: "Early preview",    phrase: "in early preview" }
   },
   changes: [
+    { date: "10 November 2026", section: "s5-4", text: "Agent 365 SDK 2.0 is available for Python, JavaScript and .NET. Most of its breaking changes sit in the deprecated observability packages; in .NET the authToken parameter no longer authenticates MCP servers, so an agent that relied on it alone returns no tools and no error. Migrate to Agent 365 SDK 2.0 page cited." },
+    { date: "10 November 2026", section: "s5-5", text: "Defender for Endpoint lists a process-based agent as soon as its process runs, so an inventory entry is not proof that anyone used the tool. Local AI agent discovery page cited." },
+    { date: "10 November 2026", section: "s10", kind: "guide", text: "Chapter 10 is a status board: a meter counts the controls by status and filters the list, product chips and a find box narrow it, every row links to the section that explains it, and on a phone each control is a card. Sections changed in the last fortnight carry an Updated marker, the newest changes sit under the hero, and the changelog has its own page." },
     { date: "9 November 2026", section: "s5-4", text: "Connected platforms: Agent 365 calls source platforms from a fixed set of outbound IP addresses, which must be allowed where the platform restricts network access. Connected platforms page cited." },
     { date: "9 November 2026", section: "s5-5", text: "Defender for Endpoint discovery now depends on agent type: Visual Studio Code extensions are found from installed-extension data the client collects periodically, not only after a run. Local AI agent discovery page and AI agent support matrix cited." },
     { date: "6 November 2026", section: "s5-5", text: "Defender for Endpoint local agent discovery is generally available for Windows and macOS, per the product's October 2026 what's new; Windows Subsystem for Linux and the macOS Visual Studio Code extension entries stay in preview, and the support matrix now lists sixty-two tools on Windows and fifty-nine on macOS. What's new and AI agent support matrix pages cited." },
@@ -92,40 +100,40 @@ window.A365 = {
     { date: "4 September 2026", kind: "guide", text: "First published." }
   ],
   capabilities: [
-    { key: "control-plane",      name: "Agent 365 licence and admin centre control plane", tier: "ga", note: "GA since 1 May 2026", where: "Microsoft 365 admin centre" },
-    { key: "registry",           name: "Registry, overview, requests, actions, management rules, settings, policy templates", tier: "ga", where: "Microsoft 365 admin centre" },
-    { key: "registry-ai-mode",   name: "AI mode: natural-language search of the registry", tier: "roadmap", note: "Blog announcement of 30 September 2026; no Learn page yet", where: "Microsoft 365 admin centre" },
-    { key: "agent-map",          name: "Agent map", tier: "ga", where: "Microsoft 365 admin centre" },
-    { key: "single-agent-map",   name: "Single Agent Map", tier: "preview", where: "Microsoft 365 admin centre" },
-    { key: "graph-api",          name: "Graph API for registry and details", tier: "preview", where: "Graph" },
-    { key: "registry-sync",      name: "Connected platforms (Bedrock, Vertex, Agentforce, Genie, Oracle, Snowflake Cortex)", tier: "ga", where: "Microsoft 365 admin centre" },
-    { key: "registry-sync-anthropic", name: "Connected platforms: Anthropic Claude Managed Agents", tier: "preview", where: "Microsoft 365 admin centre" },
-    { key: "apim-discovery",     name: "Azure API Management integration: agents, tools, models and MCP servers discovered from the gateway", tier: "roadmap", note: "Blog announcement of 30 September 2026, rolling out from that date; no Learn page yet", where: "Azure API Management; Microsoft 365 admin centre" },
-    { key: "third-party-observability", name: "Third-party agent observability (Bedrock, Vertex AI, Anthropic, Agentforce, Genie)", tier: "frontier", where: "Microsoft 365 admin centre" },
-    { key: "byo-mcp",            name: "Bring your own MCP server", tier: "preview", where: "Admin centre and CLI" },
-    { key: "shadow-ai-page",     name: "Shadow AI page", tier: "frontier", where: "Microsoft 365 admin centre" },
-    { key: "local-agents-page",  name: "Local agents page", tier: "frontier", where: "Microsoft 365 admin centre" },
-    { key: "own-identity",       name: "Agents with their own identity, AI teammate templates", tier: "frontier", where: "Microsoft 365 admin centre" },
-    { key: "agent-id",           name: "Entra Agent ID, blueprints, identities, agent users", tier: "ga", note: "GA for all Entra customers", where: "Entra" },
-    { key: "conditional-access", name: "Conditional Access for agents", tier: "ga", note: "Agent risk and Agent execution environments conditions in preview", where: "Entra" },
-    { key: "ca-agent-risk",      name: "Conditional Access: Agent risk condition", tier: "preview", note: "Needs Entra ID P2 or Microsoft 365 E5 beside Agent 365", where: "Entra", hidden: true },
-    { key: "ca-exec-env",        name: "Conditional Access: Agent execution environments condition", tier: "preview", where: "Entra", hidden: true },
-    { key: "id-protection",      name: "Identity Protection for agents", tier: "ga", note: "All detections offline; licence enforcement coming", where: "Entra" },
-    { key: "id-governance",      name: "Access packages and sponsor lifecycle workflows for agents", tier: "ga", note: "With licence", where: "Entra ID Governance" },
-    { key: "purview",            name: "Purview audit, DLP, labels, IRM, Communication Compliance, eDiscovery, DLM, Compliance Manager for agents", tier: "ga", where: "Purview" },
-    { key: "defender-core",      name: "Defender agent inventory and real-time protection for Agent 365 tool invocations", tier: "ga", where: "Defender XDR" },
-    { key: "defender-posture",   name: "Defender posture risk assessment", tier: "preview", note: "Learn's page dropped its preview label by 2 November 2026; the Defender XDR what's new page still says preview", where: "Defender XDR" },
-    { key: "defender-nrt",       name: "Defender near-real-time detection", tier: "preview", where: "Defender XDR" },
-    { key: "defender-rtp-mcs",   name: "Defender real-time protection for Copilot Studio agents", tier: "preview", where: "Defender XDR" },
-    { key: "defender-rtp-foundry", name: "Defender real-time protection for Foundry agents", tier: "preview", where: "Defender XDR" },
-    { key: "mde-discovery",      name: "Defender for Endpoint local agent discovery", tier: "ga", note: "GA for Windows and macOS in the October 2026 what's new; WSL and the macOS VS Code extension entries stay preview", where: "Defender for Endpoint" },
-    { key: "mde-runtime",        name: "Defender for Endpoint runtime protection", tier: "preview", note: "Intune's what's new calls its runtime protection template generally available; the Defender for Endpoint what's new page still says preview", where: "Defender for Endpoint" },
-    { key: "gsa-copilot-studio", name: "Global Secure Access for Copilot Studio agents, prompt injection protection", tier: "ga", note: "Device and prompt-injection paths need Entra Internet Access", where: "Global Secure Access" },
-    { key: "gsa-shadow-ai",      name: "Global Secure Access Shadow AI discovery", tier: "ga", where: "Global Secure Access" },
-    { key: "gsa-mcp-firewall",   name: "MCP firewall", tier: "preview", where: "Global Secure Access" },
-    { key: "gsa-genai-insights", name: "Generative AI Insights", tier: "preview", where: "Global Secure Access" },
-    { key: "gsa-agent-discovery", name: "AI agent discovery", tier: "preview", where: "Global Secure Access" },
-    { key: "w365-agents",        name: "Windows 365 for Agents", tier: "ga", where: "Intune" },
-    { key: "mxc",                name: "Microsoft Execution Containers: Agent 365, Intune and Entra integration", tier: "roadmap", note: "The containers themselves are GA on Windows (October 2026 Windows developer blog, not yet on Learn); the integration is announced as upcoming", where: "Windows" }
+    { key: "control-plane",      name: "Agent 365 licence and admin centre control plane", tier: "ga", note: "GA since 1 May 2026", sec: "s2-1", where: "Microsoft 365 admin centre" },
+    { key: "registry",           name: "Registry, overview, requests, actions, management rules, settings, policy templates", tier: "ga", sec: "s5-1", where: "Microsoft 365 admin centre" },
+    { key: "registry-ai-mode",   name: "AI mode: natural-language search of the registry", tier: "roadmap", note: "Blog announcement of 30 September 2026; no Learn page yet", sec: "s5-3", where: "Microsoft 365 admin centre" },
+    { key: "agent-map",          name: "Agent map", tier: "ga", sec: "s5-2", where: "Microsoft 365 admin centre" },
+    { key: "single-agent-map",   name: "Single Agent Map", tier: "preview", sec: "s5-2", where: "Microsoft 365 admin centre" },
+    { key: "graph-api",          name: "Graph API for registry and details", tier: "preview", sec: "s5-1", where: "Graph" },
+    { key: "registry-sync",      name: "Connected platforms (Bedrock, Vertex, Agentforce, Genie, Oracle, Snowflake Cortex)", tier: "ga", sec: "s5-4", where: "Microsoft 365 admin centre" },
+    { key: "registry-sync-anthropic", name: "Connected platforms: Anthropic Claude Managed Agents", tier: "preview", sec: "s5-4", where: "Microsoft 365 admin centre" },
+    { key: "apim-discovery",     name: "Azure API Management integration: agents, tools, models and MCP servers discovered from the gateway", tier: "roadmap", note: "Blog announcement of 30 September 2026, rolling out from that date; no Learn page yet", sec: "s5-4", where: "Azure API Management; Microsoft 365 admin centre" },
+    { key: "third-party-observability", name: "Third-party agent observability (Bedrock, Vertex AI, Anthropic, Agentforce, Genie)", tier: "frontier", sec: "s5-4", where: "Microsoft 365 admin centre" },
+    { key: "byo-mcp",            name: "Bring your own MCP server", tier: "preview", sec: "s6-5", where: "Admin centre and CLI" },
+    { key: "shadow-ai-page",     name: "Shadow AI page", tier: "frontier", sec: "s5-5", where: "Microsoft 365 admin centre" },
+    { key: "local-agents-page",  name: "Local agents page", tier: "frontier", sec: "s5-5", where: "Microsoft 365 admin centre" },
+    { key: "own-identity",       name: "Agents with their own identity, AI teammate templates", tier: "frontier", sec: "s6-8", where: "Microsoft 365 admin centre" },
+    { key: "agent-id",           name: "Entra Agent ID, blueprints, identities, agent users", tier: "ga", note: "GA for all Entra customers", sec: "s7-1", where: "Entra" },
+    { key: "conditional-access", name: "Conditional Access for agents", tier: "ga", note: "Agent risk and Agent execution environments conditions in preview", sec: "s7-1", where: "Entra" },
+    { key: "ca-agent-risk",      name: "Conditional Access: Agent risk condition", tier: "preview", note: "Needs Entra ID P2 or Microsoft 365 E5 beside Agent 365", sec: "s7-1", where: "Entra", hidden: true },
+    { key: "ca-exec-env",        name: "Conditional Access: Agent execution environments condition", tier: "preview", sec: "s7-1", where: "Entra", hidden: true },
+    { key: "id-protection",      name: "Identity Protection for agents", tier: "ga", note: "All detections offline; licence enforcement coming", sec: "s7-1", where: "Entra" },
+    { key: "id-governance",      name: "Access packages and sponsor lifecycle workflows for agents", tier: "ga", note: "With licence", sec: "s6-6", where: "Entra ID Governance" },
+    { key: "purview",            name: "Purview audit, DLP, labels, IRM, Communication Compliance, eDiscovery, DLM, Compliance Manager for agents", tier: "ga", sec: "s6-7", where: "Purview" },
+    { key: "defender-core",      name: "Defender agent inventory and real-time protection for Agent 365 tool invocations", tier: "ga", sec: "s7-3", where: "Defender XDR" },
+    { key: "defender-posture",   name: "Defender posture risk assessment", tier: "preview", note: "Learn's page dropped its preview label by 2 November 2026; the Defender XDR what's new page still says preview", sec: "s7-3", where: "Defender XDR" },
+    { key: "defender-nrt",       name: "Defender near-real-time detection", tier: "preview", sec: "s7-3", where: "Defender XDR" },
+    { key: "defender-rtp-mcs",   name: "Defender real-time protection for Copilot Studio agents", tier: "preview", sec: "s7-3", where: "Defender XDR" },
+    { key: "defender-rtp-foundry", name: "Defender real-time protection for Foundry agents", tier: "preview", sec: "s7-3", where: "Defender XDR" },
+    { key: "mde-discovery",      name: "Defender for Endpoint local agent discovery", tier: "ga", note: "GA for Windows and macOS in the October 2026 what's new; WSL and the macOS VS Code extension entries stay preview", sec: "s5-5", where: "Defender for Endpoint" },
+    { key: "mde-runtime",        name: "Defender for Endpoint runtime protection", tier: "preview", note: "Intune's what's new calls its runtime protection template generally available; the Defender for Endpoint what's new page still says preview", sec: "s7-4", where: "Defender for Endpoint" },
+    { key: "gsa-copilot-studio", name: "Global Secure Access for Copilot Studio agents, prompt injection protection", tier: "ga", note: "Device and prompt-injection paths need Entra Internet Access", sec: "s7-5", where: "Global Secure Access" },
+    { key: "gsa-shadow-ai",      name: "Global Secure Access Shadow AI discovery", tier: "ga", sec: "s5-5", where: "Global Secure Access" },
+    { key: "gsa-mcp-firewall",   name: "MCP firewall", tier: "preview", sec: "s7-5", where: "Global Secure Access" },
+    { key: "gsa-genai-insights", name: "Generative AI Insights", tier: "preview", sec: "s5-5", where: "Global Secure Access" },
+    { key: "gsa-agent-discovery", name: "AI agent discovery", tier: "preview", sec: "s5-5", where: "Global Secure Access" },
+    { key: "w365-agents",        name: "Windows 365 for Agents", tier: "ga", sec: "s7-4", where: "Intune" },
+    { key: "mxc",                name: "Microsoft Execution Containers: Agent 365, Intune and Entra integration", tier: "roadmap", note: "The containers themselves are GA on Windows (October 2026 Windows developer blog, not yet on Learn); the integration is announced as upcoming", sec: "s7-4", where: "Windows" }
   ]
 };

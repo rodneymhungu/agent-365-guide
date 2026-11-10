@@ -32,6 +32,8 @@ Plain HTML, no build step, no framework. Four files at the root do the work:
 - `index.html` is the full guide.
 - `licensing.html` is chapter 2 published on its own page so that it can be found on its own. Its chapter block is a copy of the one in `index.html`; `scripts/check_pages.py` fails the build if the two differ.
 - `changes.html` is the changelog published on its own page, grouped by month and date, so each week's changes have an address to link to. Its list is a static copy of the `changes` array in `a365-data.js`; `scripts/check_pages.py --fix` regenerates it and the build fails when it drifts.
+- Chapter 10 of `index.html` is the status board, the section most readers land on. A meter counts the controls by status and filters the list on click, product chips and a find box narrow it, and each row links to the section that explains it through the capability's `sec` field in `a365-data.js`. On a phone each row is a card. Its rows are a static copy of the `capabilities` array, written by `scripts/check_pages.py --fix` like the changelog, so the board reads without JavaScript. A link can open it filtered: `index.html?status=preview&product=defender#s10` (status is `ga`, `preview`, `frontier` or `roadmap`).
+- A section a product change touched in the fortnight before the review date carries an Updated marker under its heading and a dot in the contents panel. `guide.js` works that out from the `changes` array; nothing is typed.
 - `a365-data.js` holds everything that goes stale: the review date, GA and transition dates, prices, the trial offer, the changelog, and the status of every capability. Status badges, the "in preview" phrases in the prose, and the deploy-today table all render from that object on every page. To update a status, change the tier there. Do not edit it in the prose.
 - `guide.css` and `guide.js` are the shared tokens, layout and behaviour.
 
@@ -57,7 +59,7 @@ Two GitHub Actions run every Monday. One re-fetches every Learn page the guide c
 
 [PLAN.md](PLAN.md) is the plan of record: the visitor target, the weekly rotation of work, the blockers, and a log of what shipped. Read it first if you are picking the work up.
 
-A changelog lives in the `changes` array of the same data block and renders at the end of chapter 10. `sitemap.xml`, `robots.txt`, the canonical link and the JSON-LD block in the head exist for search engines. The review date, prices and key dates also sit as static text inside the elements that `guide.js` fills, so crawlers and link previews see them without JavaScript. When the review date or a price changes, run `python3 scripts/check_pages.py --fix` to rewrite those copies, `dateModified` and `lastmod` from the data file; the Pages check fails when they disagree.
+A changelog lives in the `changes` array of the same data block. Readers get it on `changes.html`; the five newest product changes also show at the end of chapter 10 and the three newest under the hero. `sitemap.xml`, `robots.txt`, the canonical link and the JSON-LD block in the head exist for search engines. The review date, prices and key dates also sit as static text inside the elements that `guide.js` fills, so crawlers and link previews see them without JavaScript. When the review date or a price changes, run `python3 scripts/check_pages.py --fix` to rewrite those copies, `dateModified` and `lastmod` from the data file; the Pages check fails when they disagree.
 
 ## Licence and attribution
 

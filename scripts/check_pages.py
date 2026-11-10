@@ -23,6 +23,10 @@ comments, so the changelog is indexable on its own and visible without
 JavaScript. This regenerates that list from the data file and fails when the
 copy differs; --fix rewrites it.
 
+The status board in chapter 10 is the same idea: its rows sit in index.html
+between two HTML comments as a static copy of the capabilities array, and each
+capability's "sec" must be a real section id, because the board links there.
+
 Static values: guide.js fills every element carrying data-val from a365-data.js
 after the page loads, so a crawler, a LinkedIn preview or a plain text fetch
 would otherwise see an empty review date and empty prices. Each such element
@@ -100,6 +104,73 @@ def read_data() -> dict:
     for sub, val in re.findall(r'(\w+):\s*"([^"]*)"', m.group(1)):
         values[f"price.{sub}"] = val
     return values
+
+
+def read_capabilities():
+    """The capabilities array and the tier labels of window.A365."""
+    with open(os.path.join(ROOT, "a365-data.js"), encoding="utf-8") as f:
+        js = f.read()
+    labels = dict(re.findall(r'^\s*(\w+):\s*\{ label: "([^"]*)"', js, re.M))
+    caps = []
+    for line in js.split("capabilities: [", 1)[1].splitlines():
+        if not re.search(r'key: "', line):
+            continue
+        cap = dict(re.findall(r'(\w+): "((?:[^"\\]|\\.)*)"', line))
+        cap["hidden"] = bool(re.search(r"hidden:\s*true", line))
+        caps.append(cap)
+    if not caps or not labels:
+        raise SystemExit("a365-data.js: capabilities or tiers not parsed")
+    return caps, labels
+
+
+def render_board(caps: list, labels: dict) -> str:
+    """The status board in chapter 10 as static rows: guide.js renders the same
+    rows from the data file when the page loads, so this copy is what a crawler,
+    a link preview or a reader without JavaScript sees."""
+    out = ["<!-- avail:start -->"]
+    for c in caps:
+        if c["hidden"]:
+            continue
+        label = c["sec"][1:].replace("-", ".")
+        out.append(
+            f'    <tr data-tier="{c["key"]}" data-tier-value="{c["tier"]}">'
+            f'<td class="c-name">{c["name"]}</td>'
+            f'<td class="c-status"><span class="badge t-{c["tier"]}">{labels[c["tier"]]}</span></td>'
+            f'<td class="c-note muted">{c.get("note", "")}</td>'
+            f'<td class="c-where">{c["where"]}</td>'
+            f'<td class="c-read"><a href="#{c["sec"]}">{label}</a></td></tr>')
+    out.append("    <!-- avail:end -->")
+    return "\n".join(out)
+
+
+def check_board(fix: bool) -> int:
+    path = os.path.join(ROOT, "index.html")
+    with open(path, encoding="utf-8") as f:
+        html = f.read()
+    caps, labels = read_capabilities()
+    bad = 0
+    ids = set(re.findall(r'\bid="([^"]+)"', html))
+    for c in caps:
+        if c.get("sec") not in ids:
+            print(f"BAD VALUE: a365-data.js: capability {c['key']} has sec \"{c.get('sec')}\", which is not a section id in index.html")
+            bad += 1
+        if c["tier"] not in labels:
+            print(f"BAD VALUE: a365-data.js: capability {c['key']} has unknown tier {c['tier']}"); bad += 1
+    if bad:
+        return bad
+    m = re.search(r"<!-- avail:start -->.*?<!-- avail:end -->", html, re.S)
+    if not m:
+        print("BAD VALUE: index.html has no avail:start / avail:end markers in the status board"); return 1
+    want = render_board(caps, labels)
+    if re.sub(r"\s+", " ", m.group(0)) != re.sub(r"\s+", " ", want):
+        print("BAD VALUE: index.html: the static status board differs from a365-data.js"); bad += 1
+        if fix:
+            with open(path, "w", encoding="utf-8") as f:
+                f.write(html.replace(m.group(0), want))
+            print("fixed: index.html status board rewritten from a365-data.js")
+    if not bad:
+        print(f"ok: index.html status board carries all {sum(1 for c in caps if not c['hidden'])} visible capabilities")
+    return bad
 
 
 def read_changes() -> list:
@@ -251,6 +322,7 @@ def main() -> int:
             print(f"fixed: {page} rewritten from a365-data.js")
     bad += check_sitemap(data, fix)
     bad += check_changes(fix)
+    bad += check_board(fix)
     with open(os.path.join(ROOT, "index.html"), encoding="utf-8") as f:
         index = f.read()
     bad += check_chapters(index, "index.html")
