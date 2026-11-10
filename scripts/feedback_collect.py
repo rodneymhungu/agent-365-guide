@@ -140,7 +140,10 @@ def goatcounter():
             return rest == "" or rest.endswith(".html")
         rows = [r for r in hits.get("hits", []) if (r.get("path") or "").startswith(SITE_PATH) and is_page(r["path"])]
         pages = [r for r in rows if "#" not in r["path"]]
-        sections = [r for r in rows if "#" in r["path"]]
+        hashed = [r for r in rows if "#" in r["path"]]
+        # guide.js records a status board filter as #filter-preview or #filter-defender.
+        board = [r for r in hashed if r["path"].split("#", 1)[1].startswith("filter-")]
+        sections = [r for r in hashed if r not in board]
         visitors = sum(r.get("count", 0) for r in pages)
         lines.append(f"Last 7 days: **{visitors} visitors** on `{SITE_PATH}` against a target of {TARGET} "
                      f"({len(sections)} distinct sections opened by hash).")
@@ -164,6 +167,11 @@ def goatcounter():
             lines.append("|---|---|")
             for r in sorted(sections, key=lambda r: -r.get("count", 0))[:15]:
                 lines.append(f"| {r['path'].split('#', 1)[1]} | {r.get('count', 0)} |")
+        if board:
+            lines.append("")
+            lines.append("Status board filters used (chapter 10; one count per filter per visit):")
+            for r in sorted(board, key=lambda r: -r.get("count", 0)):
+                lines.append(f"- {r['path'].split('#filter-', 1)[1]}: {r.get('count', 0)}")
         ids = [r["path_id"] for r in rows if "path_id" in r]
         if ids:
             q = urllib.parse.urlencode({**rng, "limit": 10, "include_paths": ids}, doseq=True)

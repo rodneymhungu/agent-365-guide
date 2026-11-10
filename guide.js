@@ -89,7 +89,29 @@
     tools.querySelectorAll('[data-fam]').forEach(b => b.addEventListener('click', () => { filter.family = b.dataset.fam; applyBoard(); }));
     tools.querySelector('#board-q').addEventListener('input', e => { filter.q = e.target.value.trim().toLowerCase(); applyBoard(); });
   }
-  if (reset) reset.addEventListener('click', () => { filter.tier = filter.family = filter.q = ''; const q = document.getElementById('board-q'); if (q) q.value = ''; applyBoard(); });
+  const clearAll = () => { filter.tier = filter.family = filter.q = ''; const q = document.getElementById('board-q'); if (q) q.value = ''; applyBoard(); };
+  const clear = document.getElementById('board-clear'), copy = document.getElementById('board-copy');
+  if (reset) reset.addEventListener('click', clearAll);
+  if (clear) clear.addEventListener('click', clearAll);
+
+  /* The address bar follows the status and product filters, so the view can be shared. */
+  const viewQuery = () => { const p = new URLSearchParams(); if (filter.tier) p.set('status', filter.tier); if (filter.family) p.set('product', filter.family.toLowerCase()); const q = p.toString(); return q ? '?' + q : ''; };
+  const syncAddress = () => { try { const want = location.pathname + viewQuery() + location.hash; if (want !== location.pathname + location.search + location.hash) history.replaceState(null, '', want); } catch (e) {} };
+  if (copy) {
+    copy.hidden = false;
+    copy.addEventListener('click', () => {
+      const url = location.origin + location.pathname + viewQuery() + '#s10';
+      const done = () => { copy.textContent = 'Link copied'; setTimeout(() => { copy.textContent = 'Copy link to this view'; }, 1800); };
+      if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(url).then(done, () => window.prompt('Copy this link', url));
+      else window.prompt('Copy this link', url);
+    });
+  }
+
+  /* Which filters readers reach for goes to the weekly digest: one count per filter per visit,
+     as #filter-preview or #filter-defender. What is typed in the find box is never recorded. */
+  const counted = new Set();
+  const countFilter = (v) => { if (!v || counted.has(v) || !window.goatcounter || !window.goatcounter.count) return; counted.add(v);
+    window.goatcounter.count({ path: location.pathname + '#filter-' + v.toLowerCase().replace(/[^a-z]+/g, '-'), title: 'Status board filter: ' + v, event: false }); };
 
   applyBoard = () => {
     let shown = 0;
@@ -104,6 +126,8 @@
     if (count) count.textContent = shown === rows.length ? `${rows.length} controls` : `Showing ${shown} of ${rows.length} controls` + (gaOnly ? '. The GA only switch in the header is on.' : '');
     if (empty) empty.hidden = shown > 0;
     const wrap = document.querySelector('.board-tbl'); if (wrap) wrap.hidden = shown === 0;
+    if (clear) clear.hidden = !(filter.tier || filter.family || filter.q) || shown === 0;
+    syncAddress(); countFilter(filter.tier); countFilter(filter.family);
   };
 
   /* A link can open the board already filtered: index.html?status=preview&product=Defender#s10 */

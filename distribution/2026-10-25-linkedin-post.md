@@ -17,8 +17,8 @@ without one).
 3. When it is live, add the post URL to the Posted line below and tell Claude
    "posted, <url>", which also fills the focus 4 row in `PLAN.md`.
 
-Posted: about 26 October 2026, as a feed post with the map image, body as
-below. Post URL not recorded yet. The post's link to the guide was shortened
+Posted: about 26 October 2026, https://lnkd.in/p/eSvCrqWR, as a feed post
+with the map image, body as below. The post's link to the guide was shortened
 by LinkedIn to https://lnkd.in/erSHfpD5. LinkedIn showed "2w" on 10 November,
 and GoatCounter counted 36 visitors on 26 October, so that is the day. This
 file sat on a closed pull request (#73) marked as skipped until Rodney said

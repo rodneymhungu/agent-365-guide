@@ -41,6 +41,7 @@ window.A365 = {
     roadmap:  { label: "Early preview",    phrase: "in early preview" }
   },
   changes: [
+    { date: "10 November 2026", section: "s6-4", text: "Use case classification, a Frontier preview that is on by default, assigns every eligible agent session to a use case from a predefined taxonomy; a Global Administrator or AI Administrator can turn it off under Agents, Settings, and earlier results are then hidden, not deleted. Business use cases for agents page cited." },
     { date: "10 November 2026", section: "s5-4", text: "Agent 365 SDK 2.0 is available for Python, JavaScript and .NET. Most of its breaking changes sit in the deprecated observability packages; in .NET the authToken parameter no longer authenticates MCP servers, so an agent that relied on it alone returns no tools and no error. Migrate to Agent 365 SDK 2.0 page cited." },
     { date: "10 November 2026", section: "s5-5", text: "Defender for Endpoint lists a process-based agent as soon as its process runs, so an inventory entry is not proof that anyone used the tool. Local AI agent discovery page cited." },
     { date: "10 November 2026", section: "s10", kind: "guide", text: "Chapter 10 is a status board: a meter counts the controls by status and filters the list, product chips and a find box narrow it, every row links to the section that explains it, and on a phone each control is a card. Sections changed in the last fortnight carry an Updated marker, the newest changes sit under the hero, and the changelog has its own page." },
@@ -113,6 +114,7 @@ window.A365 = {
     { key: "byo-mcp",            name: "Bring your own MCP server", tier: "preview", sec: "s6-5", where: "Admin centre and CLI" },
     { key: "shadow-ai-page",     name: "Shadow AI page", tier: "frontier", sec: "s5-5", where: "Microsoft 365 admin centre" },
     { key: "local-agents-page",  name: "Local agents page", tier: "frontier", sec: "s5-5", where: "Microsoft 365 admin centre" },
+    { key: "use-case-classification", name: "Use case classification of agent sessions", tier: "frontier", note: "On by default; opt out under Agents, Settings", sec: "s6-4", where: "Microsoft 365 admin centre" },
     { key: "own-identity",       name: "Agents with their own identity, AI teammate templates", tier: "frontier", sec: "s6-8", where: "Microsoft 365 admin centre" },
     { key: "agent-id",           name: "Entra Agent ID, blueprints, identities, agent users", tier: "ga", note: "GA for all Entra customers", sec: "s7-1", where: "Entra" },
     { key: "conditional-access", name: "Conditional Access for agents", tier: "ga", note: "Agent risk and Agent execution environments conditions in preview", sec: "s7-1", where: "Entra" },
