@@ -23,7 +23,7 @@
   ==========================================================================
 */
 window.A365 = {
-  reviewed: "6 November 2026",
+  reviewed: "9 November 2026",
   gaDate: "1 May 2026",
   transitionDate: "1 July 2026",
   trial: "25 seats for 30 days",
@@ -36,6 +36,8 @@ window.A365 = {
     roadmap:  { label: "Early preview",    phrase: "in early preview" }
   },
   changes: [
+    { date: "9 November 2026", section: "s5-4", text: "Connected platforms: Agent 365 calls source platforms from a fixed set of outbound IP addresses, which must be allowed where the platform restricts network access. Connected platforms page cited." },
+    { date: "9 November 2026", section: "s5-5", text: "Defender for Endpoint discovery now depends on agent type: Visual Studio Code extensions are found from installed-extension data the client collects periodically, not only after a run. Local AI agent discovery page and AI agent support matrix cited." },
     { date: "6 November 2026", section: "s5-5", text: "Defender for Endpoint local agent discovery is generally available for Windows and macOS, per the product's October 2026 what's new; Windows Subsystem for Linux and the macOS Visual Studio Code extension entries stay in preview, and the support matrix now lists sixty-two tools on Windows and fifty-nine on macOS. What's new and AI agent support matrix pages cited." },
     { date: "6 November 2026", section: "s7-4", text: "Intune's endpoint security template for Defender runtime protection settings is generally available and gains an AI agent runtime inspection setting; the Defender for Endpoint feature the template configures is still in preview. Intune what's new page cited." },
     { date: "6 November 2026", section: "s7-4", text: "Microsoft Execution Containers are generally available on Windows, per the October 2026 Windows developer blog; the Intune, Entra and Agent 365 integration that would make them deployable from this stack is announced as upcoming, so the capability keeps its early preview label here." },
