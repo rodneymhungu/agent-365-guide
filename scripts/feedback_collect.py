@@ -14,9 +14,12 @@ Sources
   3. Web search   — public mentions of the guide URL or title (Google Programmable
                     Search, free, or Brave, metered)
   4. Plan         — the target and this week's rotation focus from PLAN.md
-  5. Article      — every second week, a LinkedIn article draft built from the
-                    last fortnight's changes entries in a365-data.js, written to
-                    linkedin-draft.md and appended to the digest issue verbatim
+  5. Feed post    — every week something has moved, a LinkedIn feed post draft
+                    built from the changes entries in a365-data.js dated after
+                    the last posted update, written to linkedin-post.md and
+                    appended to the digest issue verbatim. The article shape
+                    is still written to linkedin-draft.md every second week,
+                    for the dev.to cross-post only.
   6. Social       — same weeks, a 300-character version in social-post.txt for
                     scripts/social_post.py (Bluesky, Mastodon)
   7. Questions    — threads from the last week on Reddit, Microsoft Q&A and Tech
@@ -57,6 +60,13 @@ STALE_PR_DAYS = 2   # a learn-drift pull request older than this is called out
 ARTICLE_EVERY_WEEKS = 2   # a LinkedIn article draft lands in the digest every second week
 ARTICLE_LINK = SITE_URL + "#s10"
 DRAFT_OUT = "linkedin-draft.md"
+# The feed post (distribution/README.md, "Feed post format"): decided on 10 November 2026
+# after the 26 October post drew 3,605 impressions against the article's 986.
+POST_OUT = "linkedin-post.md"
+POST_LIMIT = 1300        # characters, the whole post
+POST_RESERVE = 170       # left free for the "Also new to the guide" paragraph that names the image
+POST_MAX_CHANGES = 4
+DISTRIBUTION_DIR = "distribution"
 
 today = dt.date.today()
 week_ago = today - dt.timedelta(days=7)
@@ -248,10 +258,11 @@ def rotation_week():
     return max(0, (today - ROTATION_START).days // 7)
 
 
-def plan():
+def plan(has_post=False):
     weeks = rotation_week()
     focus = ROTATION[weeks % len(ROTATION)]
-    draft = "This digest carries a LinkedIn article draft." if weeks % ARTICLE_EVERY_WEEKS == 0 else "No article draft this week; the next one comes with next week's digest."
+    draft = ("This digest carries a LinkedIn feed post draft." if has_post
+             else "No feed post draft this week: nothing has moved on Learn since the last posted update.")
     return (f"Target: {TARGET} high-value visitors a week (PLAN.md).\n"
             f"Week {weeks + 1} of the rotation. This week's focus: {focus}\n"
             f"Every week: check referrers, not just paths. {draft}")
@@ -374,6 +385,110 @@ def article_draft(weeks):
     return "\n".join(lines)
 
 
+# ---------- 5b. LinkedIn feed post draft ----------
+def last_posted():
+    """The date of the newest file in distribution/ marked '**Status: posted', read
+    from its file name (2026-10-25-linkedin-post.md). A post is built on the day
+    in its name, so it carries the changes dated up to and including that day."""
+    newest = None
+    try:
+        names = sorted(os.listdir(DISTRIBUTION_DIR))
+    except OSError:
+        return None
+    for name in names:
+        m = re.match(r"(\d{4})-(\d{2})-(\d{2})-.*\.md$", name)
+        if not m:
+            continue
+        try:
+            with open(os.path.join(DISTRIBUTION_DIR, name), encoding="utf-8") as f:
+                head = f.read(600)
+        except OSError:
+            continue
+        if re.search(r"\*\*Status: posted", head):
+            d = dt.date(int(m.group(1)), int(m.group(2)), int(m.group(3)))
+            newest = d if newest is None or d > newest else newest
+    return newest
+
+
+def feed_post():
+    """A LinkedIn feed post draft in the shape that was tested on 26 October 2026
+    (distribution/README.md): plain text, one opening line, up to four changes of
+    one short paragraph each, the two closing lines, under 1,300 characters with
+    room left for the paragraph that names the attached image. It carries the
+    changes dated after the last posted update, so a skipped week loses nothing
+    and no change is posted twice. Deterministic: no model touches it.
+    Returns the draft text, or None when nothing has moved since the last post."""
+    try:
+        with open("a365-data.js", encoding="utf-8") as f:
+            js = f.read()
+    except OSError:
+        return None
+    posted = last_posted()
+    since = posted if posted and (today - posted).days <= 42 else today - dt.timedelta(days=14)
+    learn, guide = [], []
+    pat = re.compile(r'\{\s*date:\s*"([^"]+)"(?:,\s*section:\s*"([^"]+)")?(?:,\s*kind:\s*"([^"]+)")?,\s*text:\s*"((?:[^"\\]|\\.)*)"')
+    for m in pat.finditer(js):
+        try:
+            d = dt.datetime.strptime(m.group(1), "%d %B %Y").date()
+        except ValueError:
+            continue
+        if d <= since:
+            continue
+        text = m.group(4).replace('\\"', '"').replace("\\'", "'")
+        (guide if m.group(3) == "guide" else learn).append((d, m.group(2), text))
+    if not learn:
+        return None
+    learn.sort(key=lambda i: i[0], reverse=True); guide.sort(key=lambda i: i[0], reverse=True)
+
+    def paragraph(text):
+        # A changelog entry ends by naming its source ("Connected platforms page cited.").
+        # The post says once that every claim links to Learn, so that sentence goes.
+        parts = re.split(r"(?<=[.])\s+(?=[A-Z])", text.strip())
+        if len(parts) > 1 and parts[-1].endswith("cited."):
+            parts = parts[:-1]
+        return " ".join(parts)
+
+    days = (today - since).days
+    when = "this week" if days <= 9 else "in the last fortnight" if days <= 16 else "since the last update"
+    words = {1: "One", 2: "Two", 3: "Three", 4: "Four"}
+    closing = ["Every claim links to Learn. Status badges follow Microsoft's release notes, checked every Monday.",
+               "See what changed and what you can deploy today: " + ARTICLE_LINK]
+
+    def build(paras):
+        n = len(paras)
+        opener = (f"Updated: the Agent 365 field guide for security and compliance engineers. "
+                  f"{words[n]} thing{'s' if n != 1 else ''} moved on Microsoft Learn {when}.")
+        return "\n\n".join([opener] + paras + closing)
+
+    chosen = []
+    for d, sec, text in learn:
+        if len(chosen) == POST_MAX_CHANGES:
+            break
+        if chosen and len(build([paragraph(t) for _, _, t in chosen] + [paragraph(text)])) > POST_LIMIT - POST_RESERVE:
+            continue
+        chosen.append((d, sec, text))
+    body = build([paragraph(t) for _, _, t in chosen])
+    left = [f"{s[1:].replace('-', '.') if s else 'guide'} ({d.day} {d.strftime('%B')})" for d, s, t in learn if (d, s, t) not in chosen]
+
+    lines = ["# LinkedIn feed post draft (copy, add an image, post)", "",
+             "Before posting:",
+             "1. Run ai-writing-review on this draft and decide each flag. The paragraphs are changelog entries: cut each to the product, the change and what it means for the reader.",
+             "2. Attach one image, a diagram or a view of the guide, and add a paragraph that names it above the \"Every claim\" line, beginning \"Also new to the guide:\". The post that set this format carried a new diagram; a post without an image is a different test."]
+    if guide:
+        first = re.split(r"(?<=[.])\s+(?=[A-Z])", guide[0][2])[0]
+        lines.append(f"   Newest change to the guide itself, as a starting point: {first}")
+    lines += ["3. When it is posted, save it as distribution/<date>-linkedin-post.md with \"**Status: posted**\" in its first lines and the URL on its Posted line, and log it under focus 4 in PLAN.md. The next draft starts from that date.", "",
+              f"Carries the changes dated after {since.day} {since.strftime('%B %Y')}"
+              + (", the last posted update." if posted and since == posted else ", a fortnight back; no posted update was found in distribution/.")
+              + f" Characters: {len(body)} of {POST_LIMIT}, with {POST_LIMIT - len(body)} left for the image paragraph."]
+    if len(body) > POST_LIMIT - POST_RESERVE:
+        lines.append("The newest change alone leaves too little room; shorten it before adding the image paragraph.")
+    if left:
+        lines.append("Not included, for the next post or the changes page: " + ", ".join(left) + ".")
+    lines += ["", "---", "", body]
+    return "\n".join(lines)
+
+
 SOCIAL_OUT = "social-post.txt"
 BLUESKY_LIMIT = 300
 
@@ -459,7 +574,11 @@ def questions():
 
 def main():
     md = f"# Feedback inputs for {TITLE}\n\nWindow: {week_ago} to {today}. Site: {SITE_URL}\n\n"
-    body = section("Plan", plan())
+    post = feed_post()
+    if post:
+        with open(POST_OUT, "w", encoding="utf-8") as f:
+            f.write(post + "\n")
+    body = section("Plan", plan(bool(post)))
     body += section("Visitors (GoatCounter)", goatcounter())
     body += section("Repository (GitHub)", github())
     body += section("Public mentions (web search, past week)", mentions())

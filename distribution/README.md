@@ -17,8 +17,10 @@ maintenance detail; readers are searching for what the product does.
 
 ## Release-note format (Rodney, 21 September 2026)
 
-Every field-guide release note follows this shape. The fortnightly digest
-draft is generated in it; edit, do not restructure.
+Every field-guide article follows this shape. Since 10 November 2026 the
+weekly update goes out as a feed post (see "Feed post format" below) and the
+digest generates that; this shape is kept for a quarterly article and for
+the dev.to cross-post. Edit, do not restructure.
 
 1. Title: "What changed this week in the [product] field guide".
 2. One sentence naming the guide and its audience: "Updated this week: the [product] field guide for [audience]."
@@ -41,7 +43,7 @@ first sentence names the product and capability (it is bolded), then the
 practical change. Entries about the guide itself carry `kind: "guide"` and
 land in the "Also new to the guide" bullet.
 
-## Feed post format (tested 26 October 2026)
+## Feed post format (tested 26 October 2026, the default since 10 November)
 
 A LinkedIn feed post, not an article. The first one in this shape,
 `2026-10-25-linkedin-post.md`, drew 3,605 impressions and 49 visitors against
@@ -62,4 +64,10 @@ the article's 986 and 13; the numbers are in that file.
 6. End with "See what changed and what you can deploy today:" and the full
    link to `#s10`.
 7. Under 1,300 characters. Do not repeat a change an earlier post carried.
+
+The Monday digest generates a draft in this shape from the `changes` entries
+dated after the last posted update. It finds that date from the newest file
+here whose first lines read `**Status: posted`, so mark a post as posted when
+it goes out. The draft has no image paragraph: choosing the image and naming
+it is the part a person does.
 
