@@ -7,9 +7,65 @@ the section "How an agent picks this up" at the bottom.
 
 Started 21 September 2026. Reviewed every Monday alongside the weekly digest.
 
+## Where Rodney left off, 10 November 2026
+
+Read this first when you come back. One pull request carries everything from
+10 November; merging it also closes the 9 November drift pull request (#79)
+and the article pull request (#78), because their commits are in it.
+
+- **Drift, 9 November.** Both edits checked on the live pages and kept: fixed
+  outbound IP addresses for Connected platforms (5.4), and Defender for
+  Endpoint finding Visual Studio Code extensions from installed-extension
+  data without a run (5.5). Added on review: an inventory entry is not proof
+  of use (5.5) and Agent 365 SDK 2.0 with its migration page (5.4). Review
+  date 10 November.
+- **Chapter 10 is a status board.** The digests of 26 October, 2 November and
+  9 November put 44, 94 and 73 per cent of visitors on chapter 10, which was
+  a flat table that clipped on a phone. It now has a status meter that
+  filters, product chips, a find box, a link from every row to the section
+  that explains it, and cards on a phone. The hero carries the same meter
+  and the three newest changes; sections changed in the last fortnight carry
+  an Updated marker. See the log.
+- **`changes.html` is live with this merge.** Built on 21 October and never
+  merged; now brought up to date.
+- **The drift workflow syncs its own static copies.** It runs
+  `check_pages.py --fix` before the check and commits `changes.html` and
+  `sitemap.xml`, so drift pull requests stop arriving with a stale sitemap
+  and the false "chapter 2 differs" line.
+- **The article for the week of 9 November is updated and ready** in
+  `distribution/2026-11-09-linkedin.md`: eight bullets, the discovery
+  sentence corrected against the 9 November Learn change, a second cover
+  showing the status board. Three Low writing-review flags wait on Rodney;
+  the default is keep.
+- **Use case classification is in 6.4** (10 November, added in the
+  pre-merge review). Agent Map classifies every eligible agent session into
+  a predefined business use case, on by default, with an opt-out under
+  Agents, Settings. The setting, who can change it and what happens to
+  earlier results are in the guide as a Frontier preview control. The value
+  and return-on-investment reporting built on it stays out, by the
+  11 October decision on the Consumption Dashboard; see Out of scope. Take
+  the paragraph out if you would sooner not cover it.
+- **The week of 26 October is explained, and the native-post test is run.**
+  Rodney posted the 25 October feed post with the chapter 4 map, from the
+  draft on the closed pull request #73, and said so on 10 November. It drew
+  3,605 impressions, 74 per cent out of network, 30 saves, 5 reposts, 19
+  followers and 40 clicks; the article of 6 October drew 986 impressions, 2
+  saves and no followers. Numbers side by side in
+  `distribution/2026-10-25-linkedin-post.md`.
+- **Format: Rodney is leaning post-first** (10 November). A feed post in the
+  same shape is drafted for today in `distribution/2026-11-10-linkedin-post.md`
+  with the status board as its image, beside the article draft; post one, not
+  both. The feed post format is written down in `distribution/README.md`.
+  Not done until Rodney confirms: changing `article_draft` in
+  `scripts/feedback_collect.py` so the digest generates the feed post shape.
+- **The 21 October native post draft was dropped** unmerged; the 25 October
+  one superseded it.
+
 ## Where Rodney left off, 6 November 2026
 
-Read this first when you come back. The 2 November drift pull request (#74)
+The older handoff, kept because most of its list is still open.
+
+The 2 November drift pull request (#74)
 was reviewed and extended on 6 November: every proposed edit checked against
 the live page, Defender for Endpoint local agent discovery moved to GA on its
 October what's new entry, the two status conflicts (`defender-posture`,
@@ -19,10 +75,13 @@ Manage agents page) folded in. Merged on 6 November, together with #77, which
 adds announcement-feed discovery to the drift watcher (new posts arrive as
 coverage candidates, feed failures are reported, never passed as "no
 changes"). The Agent 365 Action Center (3 November Gartner MQ post) has no Learn
-page yet and is deferred; see the pull request body. The native feed post in
-`distribution/2026-10-25-linkedin-post.md` (PR #73) is still not posted; it is
-the native-post test from item 2 below. The older list below is kept because
-most of it is still open.
+page yet and is deferred; see the pull request body. Rodney skipped the
+25 October native feed post (PR #73, closed unposted) and will post one
+article in the week of 9 November instead, drafted in
+`distribution/2026-11-09-linkedin.md` with the chapter 4 map as its cover:
+seven product changes from 11 October to 6 November, led by Defender for
+Endpoint discovery reaching GA. The older list below is kept because most of
+it is still open.
 
 1. **The 6 October article is live and logged** (18 October, focus 4 row in
    the log). Still only Rodney can edit the live copy: the registry sync
@@ -35,13 +94,17 @@ most of it is still open.
    test. Evidence so far: article week 1 brought 10 LinkedIn visitors, the
    week with no article brought 4, article week 2 brought 13 (986
    impressions, 39 article views; see the log row of 18 October), and a
-   native post has not been tried.
-   Recommendation: post the next update as a native post, compare the
-   referrer count in the following digest, then decide. Do not change
-   `article_draft` in `scripts/feedback_collect.py` until the comparison is
-   in; if the native post wins, that function changes to the shorter shape
-   and the release-note format in `distribution/README.md` gets a second
-   entry.
+   native post was tried on 26 October: 49 LinkedIn visitors, 3,605
+   impressions, 30 saves, 19 followers (see the log row of 10 November and
+   `distribution/2026-10-25-linkedin-post.md`). That is the 45 LinkedIn
+   visitors the 2 November digest could not explain.
+   Recommendation, 10 November: a feed post with an image every time there
+   is something to say, the article kept for a quarterly piece. One caveat:
+   the post differed from the article in format and in carrying a new
+   diagram, so every feed post needs a real visual. Rodney is leaning this
+   way and has not confirmed; when he does, `article_draft` in
+   `scripts/feedback_collect.py` changes to the feed post shape in
+   `distribution/README.md`.
 3. **Candidate for the next focus 2 week: a permissions table in 5.4.**
    One row per Connected platforms provider: credential type, the read
    permission set, whether delete is required, optional or absent, and the
@@ -118,6 +181,10 @@ week's focus.
 | 21 September 2026 | measuring | measuring | Catch-up week: focus 1, 2 and 3 all shipped, see log. Analytics restored 15:36; the first live digest is the second one dated 21 September. |
 | 28 September 2026 | 26 | direct 18, LinkedIn 4, static.microsoft.com 3 | From the 6 October digest, re-run by hand after the 5 October crash. Most opened: 4.1, 10, 9, 2.1. |
 | 5 October 2026 | 53 | direct 30, LinkedIn 13 (web 9, app 4), Teams 6 | From the 12 October digest. Busiest day 9 October with 11. Most opened: 4.1 and 7.2 (7 each), 2.1, 6.4, 5.3. The 6 October article was posted this week. |
+| 12 October 2026 | 25 | direct 15, Teams 4, LinkedIn 3, Bing 1 | From the 19 October digest. No post. Most opened: 7.2 (5), 2.2 (4). |
+| 19 October 2026 | 34 | direct 15, LinkedIn 9, Teams 2 | From the 26 October digest. No post. Most opened: 10 (15), 4.1 and 2.1 (7 each). |
+| 26 October 2026 | 66 | LinkedIn 49 (web 45, app 4), direct 8, Teams 3, Substack 1 | From the 2 November digest. The best week so far: 36 visitors on 26 October alone, 62 of the 66 on chapter 10. Source: the 25 October feed post with the chapter 4 map, posted about 26 October and logged on 10 November. |
+| 2 November 2026 | 15 | direct 10, LinkedIn 3 | From the 9 November digest. No post. Chapter 10 took 11 of the 15. |
 
 ## The weekly rotation
 
@@ -152,6 +219,7 @@ Decided by Rodney, with the date, so nobody re-opens these by accident.
 | Since | Topic | Decision |
 |---|---|---|
 | 21 September 2026 | Microsoft 365 Government Community Cloud (GCC, G7) availability | Out of scope. GCC is a United States programme and this guide's readers are not in it. The service description's "GCC Availability" column is not tracked and chapter 2 carries no GCC caveat. Reopen only if a reader asks for it explicitly, through an issue. Drift pull requests that mention GCC changes can be merged without adding prose. |
+| 10 November 2026 | Business use cases for agents (Frontier) | Partly. The Use case classification setting is in 6.4: it is on by default, classifies agent sessions, and an administrator can turn it off, which a compliance engineer needs to know. The adoption, duplication and return-on-investment reporting built on the classifications is out of scope, for the same reason as the Consumption Dashboard. Added by Claude in a pre-merge review; Rodney to confirm or remove. |
 | 11 October 2026 | Cost management and the Consumption Dashboard | Partly. Spending policies (credit caps and model allow-lists per group) are in scope as a chapter 6 section once a Learn page exists; see item 9 above. The Consumption Dashboard's credits-to-value reporting is out of scope: a finance report, not a control a security or compliance engineer deploys. Reopen only if a reader asks. |
 | 6 October 2026 | FedRAMP and other US federal authorisations | Out of scope, for the same reason as GCC: the guide is for commercial customers in Europe and worldwide, and no European buyer decides on FedRAMP. The 5 October drift run added a FedRAMP High sentence to 2.1; it was taken out before merging. The drift prompt now names GCC and FedRAMP as out of scope, so future runs note them in CHANGES.md without editing prose. Data residency and the EU Data Boundary stay in 5.6. |
 
@@ -161,6 +229,14 @@ Newest first. One line per item shipped, with the pull request.
 
 | Date | Focus | Shipped | Evidence |
 |---|---|---|---|
+| 10 November 2026 | Structure | Pre-merge review of the status board against how the guide is used: shared in Teams and LinkedIn, steered by the Monday digest. Four additions. A Clear filters control whenever a filter is on (before, a status filter could only be undone by pressing the same segment again). The address bar follows the status and product filters and a Copy link to this view control copies it, so a filtered view can be sent to a customer. Each status or product filter a reader uses is counted once per visit and listed in the digest under "Status board filters used"; what is typed in the find box is never recorded. The hero's latest changes are cut to two lines each. Thirty-four controls with the new 6.4 row. | this pull request |
+| 10 November 2026 | Structure | Chapter 10 rebuilt as a status board, on the evidence that it is the landing section (44, 94 and 73 per cent of visitors in the last three digests) and that its table clipped two columns on a phone. A meter counts the controls by status and filters on click; product chips and a find box narrow the list; each row carries a status stripe and a link to the section that explains it, from a new `sec` field on every capability; at 760px and below each row is a card. The same meter sits under the hero with the three newest product changes, the end of chapter 10 lists the five newest and three ways onward, and sections a product change touched in the fortnight before the review date carry an Updated marker and a dot in the contents panel. The board's rows are a static copy written by `check_pages.py --fix`, so crawlers and readers without JavaScript see the statuses; a link can open the board filtered (`?status=preview&product=defender#s10`). Identity unchanged: same type, palette, borders and offset shadows. Rendered at 390, 768 and 1440 in light and dark: no overflow, no script errors, filters, GA only switch and deep link exercised. | this pull request |
+| 10 November 2026 | 1 | `changes.html`, the changelog on its own page, built on 21 October and merged now: own title, description, canonical link and JSON-LD, in the sitemap, entries grouped by month and date with an anchor per date. Static copy of the `changes` array, regenerated and checked by `check_pages.py`. | this pull request |
+| 10 November 2026 | 3 | Reviewed the 9 November drift pull request against the live pages and merged it into this one. Kept: Connected platforms connect from a fixed set of outbound IP addresses, and a blocked connection can show an authentication error (5.4); Defender for Endpoint finds Visual Studio Code extensions from installed-extension data without a run (5.5). Added: an inventory entry is not proof of use (5.5); Agent 365 SDK 2.0 and the .NET `authToken` change, from the new migration page (5.4). Added in the pre-merge review: use case classification (Frontier), on by default with an opt-out, as a paragraph in 6.4 and a row on the board; its value reporting stays out of scope. Review date 10 November. Writing review on the new prose: two flags in my own sentences reworded before commit (a staged "One does not:" in 5.4, a repeated "Every" opening chapter 10). | #79 and this pull request |
+| 10 November 2026 | Plumbing | The drift workflow runs `check_pages.py --fix` before its check, commits `changes.html` and `sitemap.xml`, and reports what still fails in the check's own words. Before, every drift pull request arrived with a stale sitemap and a fixed "chapter 2 differs" line whatever had failed. The prompt tells the model to give a new capability a `sec` and to leave the static copies alone. | this pull request |
+| 10 November 2026 | 4 | The 25 October feed post logged as posted, about 26 October, with the chapter 4 map: 3,605 impressions (74% out of network), 2,181 members reached, 43 reactions, 7 comments, 5 reposts, 30 saves, 19 followers gained, 40 clicks to the guide; GoatCounter counted 49 LinkedIn visitors that week, 62 of 66 visitors on chapter 10. Against the 6 October article: 3.7 times the impressions, 3.8 times the visitors, 15 times the saves. The native-post test from 6 October is therefore run and the post won, with the caveat that it also carried a new diagram. Draft and cover restored from the closed pull request #73. A feed post in the same shape drafted for 10 November with the status board as its image; the feed post format added to `distribution/README.md`. | [post](https://lnkd.in/p/eSvCrqWR) |
+| 10 November 2026 | 4 | The article for the week of 9 November updated for the 9 November drift and the redesign: discovery sentence corrected, a bullet for the outbound IP addresses (eight bullets), the "Also new" bullet leads with the status board, a second cover rendered from the board. Writing review of the changed passages logged in the file: three Low flags, none applied. | this pull request |
+| 6 November 2026 | 4 | LinkedIn article for the week of 9 November drafted in `distribution/2026-11-09-linkedin.md`, replacing the unsent 19 October article and the 25 October native post (#73, closed unposted at Rodney's call). Seven product changes from 11 October to 6 November, curated by hand because the 2 November digest draft covered only its fortnight: Defender for Endpoint discovery GA leads (endpoint, after two identity-led drafts), then runtime protection's supported agents and Intune template, agent-risk Conditional Access needing P2 or E5, Connected platforms observability and its billed queries and audit gap, prompts and responses in Azure agent observability data, duplicate registry entries, and the three kinds of MCP server; the chapter 4 map as the "Also new" bullet and the cover, re-rendered so the discovery badge reads GA. Execution Containers offered as an optional bullet, since it is not on Learn. Not yet posted. Writing review: three low flags; Rodney applied flag 1 (the Researcher and Analyst sentence now names the Manage agents page) and kept 2 and 3. | this pull request |
 | 6 November 2026 | 3 | Reviewed and extended the 2 November drift pull request, each edit checked against its live source. Verified and kept: activity metrics scoped to third-party agents (first-party agents report without the licence), the Databricks-managed service principal for Genie, Prompt Shields block events for Copilot Studio recorded as behaviours (7.3 needed no edit). Moved on release-notes evidence: Defender for Endpoint local agent discovery to GA for Windows and macOS (October what's new; WSL and macOS VS Code extension entries stay preview; matrix now 62 Windows, 59 macOS tools). Kept at preview with dated notes: posture risk (XDR what's new still says preview) and runtime protection (Intune's template is GA with a new AI agent runtime inspection setting, the Defender feature is not). Added: the Manage agents page to 6.1 and 6.4 with the creator-shared against organisation-published distinction, Execution Containers GA on Windows with Agent 365 integration still upcoming (7.4), and a two-sentence direction note on Dynamic Permissions, Dynamic Agent Risk, Dynamic Conditional Access and Project Perception (7.1). Deferred: the Action Center, blog-only, no Learn page. Seven changelog entries; review date 6 November. Merged the same day with #77, which adds announcement-feed discovery to the watcher. Writing review: three flags, all applied (a duplication, a narrowed claim, a wrong attribution). | #74, #77 |
 | 25 October 2026 | Structure | Chapter 4's Figure 3 rebuilt as a three-band map: the four routes an agent takes into Agent 365 (built in, with the SDK, Connected platforms, on the device), the control plane, and the products that enforce, with status badges on the routes from the data file. The idea came from a community architecture overview by Russell Hockley; the content comes from Learn's Choose an Agent 365 integration option page, now cited in chapter 4. The old hover-pillar SVG and its script and styles are gone. Built as an HTML grid, not SVG, so the text wraps at 390px and the badges use the same spans as the rest of the page; README says so. The top bar carries one name on both pages (the "Agent control atlas" label is gone) and fits a phone in two balanced rows, one row from 621px up. Writing review: one flag applied, "data block" in reader copy. | this pull request |
 | 25 October 2026 | 3 | Merged the 19 October drift pull request after checking each edit against the Learn page it cites. Brought up to main first: #71 had changed chapter 2 and 5.4 after it branched, so its 5.4 observability edit was already in and was dropped. Kept: first-party agents cannot be reassigned (6.3). Decisions closed on Learn: 5.1 says one Copilot Studio agent can appear twice; 5.4 gains the read-only model, key-based credentials, deletion reconciliation and the Purview audit log gap for connection actions; 6.5 cites the new MCP server options page and the CLI evaluate step. Work IQ MCP keeps its name, the options page still uses it. Four changelog entries. | #69 |

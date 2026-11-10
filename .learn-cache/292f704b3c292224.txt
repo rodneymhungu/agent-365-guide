@@ -79,12 +79,6 @@ The Certificate Connector for Microsoft Intune now surfaces health and status si
 For more information, see Certificate Connector for Microsoft Intune.
 Applies to:
 Certificate Connector for Microsoft Intune
-Role-based access control
-Scoped permissions for role-based access control are generally available
-Microsoft Intune scoped permissions for role-based access control are now generally available. Permissions from role assignments with different scope tags are applied independently instead of being merged, giving admins the intended access within each scope. Use the Permissions Assessment Report before enabling scoped permissions to review how access will change.
-For more information, see Permission behavior across role assignments.
-Applies to:
-Microsoft Intune admin center
 Scripts
 Faster delivery of Windows scripts
 Microsoft Intune now uses push notifications for admin-initiated and service-side changes to Windows scripts. Managed devices can check in sooner after script changes, reducing delivery and refresh delays compared with waiting for the normal polling interval. This update improves script deployment responsiveness without requiring a new admin workflow.

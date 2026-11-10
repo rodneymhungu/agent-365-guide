@@ -40,3 +40,26 @@ Changelog entries in `a365-data.js` feed the bullets, so write them to fit:
 first sentence names the product and capability (it is bolded), then the
 practical change. Entries about the guide itself carry `kind: "guide"` and
 land in the "Also new to the guide" bullet.
+
+## Feed post format (tested 26 October 2026)
+
+A LinkedIn feed post, not an article. The first one in this shape,
+`2026-10-25-linkedin-post.md`, drew 3,605 impressions and 49 visitors against
+the article's 986 and 13; the numbers are in that file.
+
+1. No headline, no bold, no bullets, no section labels. A feed post is plain
+   text, and the image carries the link preview's job.
+2. Open with: "Updated: the [product] field guide for [audience]. [Number]
+   things moved on Microsoft Learn in the last fortnight."
+3. Three or four short paragraphs, one change each. The product and the
+   capability first, the practical consequence second. Status as its own
+   short sentence where it matters ("Preview.").
+4. One paragraph beginning "Also new to the guide:" that names the attached
+   image ("the map below"), and one image attached. The image is part of the
+   format: a diagram or a view of the guide, not a stock cover.
+5. "Every claim links to Learn. Status badges follow Microsoft's release
+   notes, checked every Monday."
+6. End with "See what changed and what you can deploy today:" and the full
+   link to `#s10`.
+7. Under 1,300 characters. Do not repeat a change an earlier post carried.
+

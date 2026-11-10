@@ -88,7 +88,9 @@ the Agent 365 SDK.
 Connection lifecycle
 Prepare: Work with your platform administrator to select the account,
 project, workspace, compartment, or region and prepare the required
-credentials and permissions.
+credentials and permissions. If the source platform restricts network
+access, allow the Agent 365 outbound IP addresses listed in Network
+requirements.
 Connect: Create and validate the connection in the Microsoft 365 admin
 center.
 Synchronize: Start synchronization so that Agent 365 discovers supported
@@ -138,6 +140,33 @@ Owns
 Rotate or revoke credentials
 Coordinates
 Owns
+Network requirements
+Agent 365 calls source platform APIs from a fixed set of outbound IP
+addresses. If your organization restricts network access to a source
+platform, allow traffic from these addresses before you create the
+connection. Examples of these restrictions include Google Cloud VPC Service
+Controls perimeters, Amazon Web Services (AWS) network restrictions, and
+Snowflake network policies.
+Outbound IP address
+72.154.8.217/32
+48.209.192.194/32
+57.155.165.63/32
+4.251.34.38/32
+72.153.6.64/32
+These addresses are part of the AzureCloud service tag. For the complete
+list of Azure public cloud IP address ranges, download Azure IP Ranges and
+Service Tags – Public Cloud.
+For more information about service tags, see Virtual network service
+tags.
+If your source platform blocks public network access entirely, Agent 365
+can't reach the platform. Allow public access that's restricted to the
+outbound IP addresses in the preceding table.
+When a network restriction blocks Agent 365, the connection can fail with
+the message Authentication failed. Please check your credentials and try
+again., even when the credentials are correct. For example, a Google Cloud
+VPC Service Controls perimeter returns a 403 SECURITY_POLICY_VIOLATED error.
+If you confirm that the credentials are correct and you still see this
+message, check whether the source platform allows these IP addresses.
 Create a platform connection
 Open the Microsoft 365 admin center.
 In the navigation pane, select Agents > All Agents.
@@ -148,7 +177,7 @@ Select the platform.
 Enter the provider-specific values described in the provider guide.
 Validate the credentials.
 Save the connection.
-After you save the connection, select Sync agents to start synchronization. Manual synchronization is required.
+After you save the connection, select Sync agents to start synchronization. You need to manually synchronize the agents.
 Agent observability data collection (preview)
 Important
 This feature is part of Frontier preview program. Frontier connects you directly with Microsoft’s latest AI innovations. Frontier previews are subject to the existing preview terms of your customer agreements. As these features are still in development, their availability and capabilities may change over time.
@@ -174,7 +203,7 @@ Confirm the total number of synchronized agents.
 Review the synchronization results.
 Investigate any synchronization errors.
 Turn Collect agent observability data on or off.
-Follow the relevant provider guide when you need to rotate credentials, change the source scope, revoke access, or remove the connection.
+When you need to rotate credentials, change the source scope, revoke access, or remove the connection, follow the relevant provider guide.
 Connected platforms and the Agent 365 SDK
 Registry sync (the connected platforms feature described in this article)
 gives you visibility and governance for agents that you don't build or host
