@@ -22,7 +22,7 @@
 <link rel="canonical" href="https://rodneymhungu.github.io/agent-365-guide/changes.html">
 <link rel="alternate" type="application/atom+xml" title="Changes to this guide" href="https://github.com/rodneymhungu/agent-365-guide/commits/main.atom">
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"TechArticle","headline":"What changed in the Agent 365 field guide, and when","description":"Every change to the Agent 365 field guide for security and compliance engineers, dated, with the section it touched and the Microsoft Learn page behind it. Updated every Monday.","url":"https://rodneymhungu.github.io/agent-365-guide/changes.html","image":"https://rodneymhungu.github.io/agent-365-guide/images/og.png","datePublished":"2026-10-21","dateModified":"2026-10-18","inLanguage":"en-GB","author":{"@type":"Person","name":"Rodney Mhungu"},"isPartOf":{"@type":"TechArticle","name":"Agent 365 for security and compliance engineers","url":"https://rodneymhungu.github.io/agent-365-guide/"},"about":["Microsoft Agent 365","Microsoft Entra","Microsoft Purview","Microsoft Defender","Microsoft Intune"]}
+{"@context":"https://schema.org","@type":"TechArticle","headline":"What changed in the Agent 365 field guide, and when","description":"Every change to the Agent 365 field guide for security and compliance engineers, dated, with the section it touched and the Microsoft Learn page behind it. Updated every Monday.","url":"https://rodneymhungu.github.io/agent-365-guide/changes.html","image":"https://rodneymhungu.github.io/agent-365-guide/images/og.png","datePublished":"2026-10-21","dateModified":"2026-11-09","inLanguage":"en-GB","author":{"@type":"Person","name":"Rodney Mhungu"},"isPartOf":{"@type":"TechArticle","name":"Agent 365 for security and compliance engineers","url":"https://rodneymhungu.github.io/agent-365-guide/"},"about":["Microsoft Agent 365","Microsoft Entra","Microsoft Purview","Microsoft Defender","Microsoft Intune"]}
 </script>
 
 <!-- Status, dates, prices and the changelog live in a365-data.js; read the comment there before editing.
@@ -68,8 +68,8 @@
   <h1>What changed in the Agent 365 field guide, and when</h1>
   <p class="lede">Agent 365 moves weekly, and so does the Learn documentation behind it. Every Monday each Learn page this guide cites is read again, and when one has moved the guide moves with it. This page is the record: one entry per change, newest first, with the section it touched and the Learn page it came from. Entries about the guide itself are marked Guide.</p>
   <div class="field-stats" aria-label="Page summary">
-    <span><b data-static="changes-count">40</b> changes logged</span>
-    <span><b data-val="reviewed">18 October 2026</b> last reviewed</span>
+    <span><b data-static="changes-count">54</b> changes logged</span>
+    <span><b data-val="reviewed">9 November 2026</b> last reviewed</span>
     <span><b>4 September 2026</b> first published</span>
     <span><b>Every Monday</b> Learn pages re-read</span>
   </div>
@@ -77,8 +77,40 @@
 </section>
 
 <!-- changes:start -->
+<section class="block" id="m2026-11">
+  <div class="shead"><span class="n">11</span><h2>November 2026</h2></div>
+  <section id="d2026-11-09">
+  <h3>9 November 2026</h3>
+  <ul class="changes">
+    <li><b><a href="index.html#s5-4">5.4</a></b> Connected platforms: Agent 365 calls source platforms from a fixed set of outbound IP addresses, which must be allowed where the platform restricts network access. Connected platforms page cited.</li>
+    <li><b><a href="index.html#s5-5">5.5</a></b> Defender for Endpoint discovery now depends on agent type: Visual Studio Code extensions are found from installed-extension data the client collects periodically, not only after a run. Local AI agent discovery page and AI agent support matrix cited.</li>
+  </ul>
+  </section>
+  <section id="d2026-11-06">
+  <h3>6 November 2026</h3>
+  <ul class="changes">
+    <li><b><a href="index.html#s5-5">5.5</a></b> Defender for Endpoint local agent discovery is generally available for Windows and macOS, per the product's October 2026 what's new; Windows Subsystem for Linux and the macOS Visual Studio Code extension entries stay in preview, and the support matrix now lists sixty-two tools on Windows and fifty-nine on macOS. What's new and AI agent support matrix pages cited.</li>
+    <li><b><a href="index.html#s7-4">7.4</a></b> Intune's endpoint security template for Defender runtime protection settings is generally available and gains an AI agent runtime inspection setting; the Defender for Endpoint feature the template configures is still in preview. Intune what's new page cited.</li>
+    <li><b><a href="index.html#s7-4">7.4</a></b> Microsoft Execution Containers are generally available on Windows, per the October 2026 Windows developer blog; the Intune, Entra and Agent 365 integration that would make them deployable from this stack is announced as upcoming, so the capability keeps its early preview label here.</li>
+    <li><b><a href="index.html#s6-1">6.1</a></b> The Manage agents page separates an agent shared by its creator from one published by the organisation, and says Researcher and Analyst sit outside every agent setting; cited in 6.1 and 6.4. Manage agents page cited.</li>
+    <li><b><a href="index.html#s7-1">7.1</a></b> Microsoft announced Dynamic Permissions, Dynamic Agent Risk and Dynamic Conditional Access, alongside Project Perception; no Learn page documents them yet, so the guide notes them as announced direction only. October and November security blog posts cited.</li>
+    <li><b><a href="index.html#s5-4">5.4</a></b> Databricks Genie connections need a Databricks-managed service principal, not the application ID and secret of an Entra app registration. Connect Databricks Genie page cited.</li>
+    <li><b><a href="index.html#s5-1">5.1</a></b> The overview's activity metrics start at licence activation for third-party agents only, and first-party agents report without the licence. Agent management overview page cited.</li>
+  </ul>
+  </section>
+</section>
 <section class="block" id="m2026-10">
   <div class="shead"><span class="n">10</span><h2>October 2026</h2></div>
+  <section id="d2026-10-25">
+  <h3>25 October 2026</h3>
+  <ul class="changes">
+    <li><b><a href="index.html#s4">4</a></b> Chapter 4\u2019s map has three bands: the four routes an agent takes into Agent 365, the control plane, and the products that enforce, with live status badges on the routes. The top bar carries one name and fits a phone in two rows.</li>
+    <li><b><a href="index.html#s5-4">5.4</a></b> Connected platform connections are read-only, every platform needs a key-based credential, an agent removed at the source is not guaranteed to leave the registry, and connection create, sync and delete actions are not guaranteed to reach the Purview audit log. Connected platforms and Third-party agent observability pages cited.</li>
+    <li><b><a href="index.html#s6-3">6.3</a></b> First-party agents, meaning system agents and pre-built Microsoft agents, cannot have their ownership reassigned; reassignment stays limited to shared Agent Builder and Copilot Studio agents. Agent actions page cited.</li>
+    <li><b><a href="index.html#s6-5">6.5</a></b> MCP servers come in three kinds on Learn's new options page: Work IQ MCP, Microsoft-hosted workload servers kept for backward compatibility, and custom servers registered through bring your own; the Agent 365 CLI can evaluate a server before registration. MCP server options and developer experiences pages cited.</li>
+    <li><b><a href="index.html#s5-1">5.1</a></b> One Copilot Studio agent can appear twice in the registry, as shared by creator and as published by your organisation; Learn calls the duplicate rows expected and removing one does not remove the other. Agent registry page cited.</li>
+  </ul>
+  </section>
   <section id="d2026-10-18">
   <h3>18 October 2026</h3>
   <ul class="changes">
@@ -203,7 +235,7 @@
   <div class="in">
     <div>
       <p><strong>About this page</strong></p>
-      <p>The changelog of <a href="index.html">Agent 365 for security and compliance engineers</a>, published on its own so each week's changes have an address. Assembled by Rodney Mhungu. Every factual claim in the guide is taken from Microsoft Learn and linked at the point of use. Built on my <a href="https://github.com/rodneymhungu/field-guide-principles" target="_blank" rel="noopener">field guide principles</a>. Reviewed <span data-val="reviewed">18 October 2026</span>.</p>
+      <p>The changelog of <a href="index.html">Agent 365 for security and compliance engineers</a>, published on its own so each week's changes have an address. Assembled by Rodney Mhungu. Every factual claim in the guide is taken from Microsoft Learn and linked at the point of use. Built on my <a href="https://github.com/rodneymhungu/field-guide-principles" target="_blank" rel="noopener">field guide principles</a>. Reviewed <span data-val="reviewed">9 November 2026</span>.</p>
       <p><strong>Found an error?</strong> <a href="https://github.com/rodneymhungu/agent-365-guide/issues/new?title=Correction%3A%20&amp;labels=correction" target="_blank" rel="noopener">Open an issue</a> with the section number and the Learn page that disagrees. It goes into the next review.</p>
     </div>
     <div>
