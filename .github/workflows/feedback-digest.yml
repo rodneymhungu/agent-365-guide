@@ -78,7 +78,8 @@ jobs:
             --no-ask-user -s
           test -f digest.md || cp feedback-input.md digest.md
 
-      # Article weeks only (the collector writes the files). Each poster skips itself
+      # Every second week only (the collector writes social-post.txt and the article-shaped
+      # linkedin-draft.md, which the dev.to cross-post reads). Each poster skips itself
       # when its credentials are missing and records what it did in distribution-log.md.
       - name: Post the short note to Bluesky and Mastodon
         env:
@@ -110,14 +111,14 @@ jobs:
               cat distribution-log.md
               echo
             fi
-            if [ -f linkedin-draft.md ]; then
+            if [ -f linkedin-post.md ]; then
               echo
-              echo "### LinkedIn article draft"
+              echo "### LinkedIn feed post draft"
               echo
-              echo "Every second week. Deterministic, built from the last fortnight's changes entries; no model has touched it."
+              echo "Every week something has moved. Deterministic, built from the changes entries dated after the last posted update; no model has touched it. Add an image before posting."
               echo
               echo '```'
-              tail -n +2 linkedin-draft.md
+              tail -n +2 linkedin-post.md
               echo '```'
               echo
             fi

@@ -52,12 +52,13 @@ and the article pull request (#78), because their commits are in it.
   followers and 40 clicks; the article of 6 October drew 986 impressions, 2
   saves and no followers. Numbers side by side in
   `distribution/2026-10-25-linkedin-post.md`.
-- **Format: Rodney is leaning post-first** (10 November). A feed post in the
-  same shape is drafted for today in `distribution/2026-11-10-linkedin-post.md`
-  with the status board as its image, beside the article draft; post one, not
-  both. The feed post format is written down in `distribution/README.md`.
-  Not done until Rodney confirms: changing `article_draft` in
-  `scripts/feedback_collect.py` so the digest generates the feed post shape.
+- **Format decided: post-first** (Rodney, 10 November). The weekly update is
+  a feed post with an image; the article is kept for a quarterly piece. The
+  digest now generates a feed post draft from the changes dated after the
+  last posted update, and says so when nothing has moved. A feed post for
+  today is drafted in `distribution/2026-11-10-linkedin-post.md` with the
+  status board as its image. Mark each post `**Status: posted` when it goes
+  out; the next draft starts from that file's date.
 - **The 21 October native post draft was dropped** unmerged; the 25 October
   one superseded it.
 
@@ -101,10 +102,10 @@ it is still open.
    Recommendation, 10 November: a feed post with an image every time there
    is something to say, the article kept for a quarterly piece. One caveat:
    the post differed from the article in format and in carrying a new
-   diagram, so every feed post needs a real visual. Rodney is leaning this
-   way and has not confirmed; when he does, `article_draft` in
-   `scripts/feedback_collect.py` changes to the feed post shape in
-   `distribution/README.md`.
+   diagram, so every feed post needs a real visual. Decided by Rodney on
+   10 November: post-first. `feed_post` in `scripts/feedback_collect.py`
+   generates the weekly draft; `article_draft` stays for the dev.to
+   cross-post.
 3. **Candidate for the next focus 2 week: a permissions table in 5.4.**
    One row per Connected platforms provider: credential type, the read
    permission set, whether delete is required, optional or absent, and the
@@ -196,7 +197,7 @@ than one. The digest names the current focus so nobody has to count.
 | 1 | Split a section into its own indexable page | A new `*.html` at the repository root with its own title, description, canonical link and JSON-LD, listed in `sitemap.xml`, linked from the section it came from, rendering status from `a365-data.js`. |
 | 2 | Build or extend a lookup table | A table a reader can scan in ten seconds: licence, preview against GA, control to scenario. Every row sourced at the point of use; status rendered from the data block, never typed. |
 | 3 | Write the changed-this-week note | Merge the open `learn-drift` pull request, then add one entry to `changes` in `a365-data.js` that says what moved and links the Learn page. If nothing drifted, say so in the digest and skip. |
-| 4 | Distribution | A short LinkedIn article every second week on the latest updates, with the guide link inside the article (decided 21 September 2026). The Monday digest carries a ready draft on article weeks (week 1, 3, 5 … of the rotation), built from the last fortnight's `changes` entries. Drafts live in `distribution/`, one file per post with its cover image. Plus, when there is one, a follow-up to a session audience or an account outreach. Record each in the log with the link and the referrer to expect. |
+| 4 | Distribution | A LinkedIn feed post with an image whenever something has moved, with the guide linked once (decided 10 November 2026, replacing the fortnightly article of 21 September; the article is kept for a quarterly piece). The Monday digest carries a ready draft, built from the `changes` entries dated after the last posted update. Drafts live in `distribution/`, one file per post with its cover image. Plus, when there is one, a follow-up to a session audience or an account outreach. Record each in the log with the link and the referrer to expect. |
 
 Every week, whatever the focus: check GoatCounter referrers, not just paths.
 A path tells you what people read. A referrer tells you who sent them and
@@ -229,6 +230,7 @@ Newest first. One line per item shipped, with the pull request.
 
 | Date | Focus | Shipped | Evidence |
 |---|---|---|---|
+| 10 November 2026 | Plumbing | Post-first, decided by Rodney on the 26 October result. The digest generates a LinkedIn feed post draft, not an article: plain text, up to four changes of one paragraph each, the two closing lines, under 1,300 characters with room left for the paragraph that names the image. It carries the changes dated after the last posted update, found from the newest `distribution/` file marked `**Status: posted`, so a skipped week loses nothing and no change is posted twice; with nothing new it writes no draft and the digest says so. The article shape is still written every second week for the dev.to cross-post. Rule 4 of the weekly rotation updated to match. | this pull request |
 | 10 November 2026 | Structure | Pre-merge review of the status board against how the guide is used: shared in Teams and LinkedIn, steered by the Monday digest. Four additions. A Clear filters control whenever a filter is on (before, a status filter could only be undone by pressing the same segment again). The address bar follows the status and product filters and a Copy link to this view control copies it, so a filtered view can be sent to a customer. Each status or product filter a reader uses is counted once per visit and listed in the digest under "Status board filters used"; what is typed in the find box is never recorded. The hero's latest changes are cut to two lines each. Thirty-four controls with the new 6.4 row. | this pull request |
 | 10 November 2026 | Structure | Chapter 10 rebuilt as a status board, on the evidence that it is the landing section (44, 94 and 73 per cent of visitors in the last three digests) and that its table clipped two columns on a phone. A meter counts the controls by status and filters on click; product chips and a find box narrow the list; each row carries a status stripe and a link to the section that explains it, from a new `sec` field on every capability; at 760px and below each row is a card. The same meter sits under the hero with the three newest product changes, the end of chapter 10 lists the five newest and three ways onward, and sections a product change touched in the fortnight before the review date carry an Updated marker and a dot in the contents panel. The board's rows are a static copy written by `check_pages.py --fix`, so crawlers and readers without JavaScript see the statuses; a link can open the board filtered (`?status=preview&product=defender#s10`). Identity unchanged: same type, palette, borders and offset shadows. Rendered at 390, 768 and 1440 in light and dark: no overflow, no script errors, filters, GA only switch and deep link exercised. | this pull request |
 | 10 November 2026 | 1 | `changes.html`, the changelog on its own page, built on 21 October and merged now: own title, description, canonical link and JSON-LD, in the sitemap, entries grouped by month and date with an anchor per date. Static copy of the `changes` array, regenerated and checked by `check_pages.py`. | this pull request |
