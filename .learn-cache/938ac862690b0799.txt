@@ -53,6 +53,7 @@ Enter the project ID, region, and complete service-account JSON key.
 Validate the credentials.
 Save the connection.
 Select Sync agents.
+To use one service account to synchronize agents from multiple Google Cloud projects, see Configure cross-project access for Google Vertex AI (Frontier).
 Verify the connection
 Confirm that the expected agents are imported. A connection can validate and
 import agents while returning no telemetry if the project, region, roles, APIs,

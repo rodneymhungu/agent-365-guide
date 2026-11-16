@@ -28,7 +28,7 @@
   ==========================================================================
 */
 window.A365 = {
-  reviewed: "10 November 2026",
+  reviewed: "16 November 2026",
   gaDate: "1 May 2026",
   transitionDate: "1 July 2026",
   trial: "25 seats for 30 days",
@@ -41,6 +41,10 @@ window.A365 = {
     roadmap:  { label: "Early preview",    phrase: "in early preview" }
   },
   changes: [
+    { date: "16 November 2026", section: "s7-3", text: "The Defender Get started page no longer says Copilot Studio real-time protection keeps blocking when the Microsoft 365 connector is missing, only that alerts and incidents do not appear in the portal. Enable security for AI agents page cited." },
+    { date: "16 November 2026", section: "s7-4", text: "Runtime protection in Defender for Endpoint no longer asks for the Beta Channel, and Learn now lists two preview known issues: Audit-mode alerts can be titled as blocks, and Claude Code can keep processing a tool response in Block mode. Set up AI agent runtime protection and runtime protection overview pages cited." },
+    { date: "16 November 2026", section: "s5-5", text: "The Defender for Endpoint support matrix lists sixty-six tools for discovery on Windows, up from sixty-two, with Droid CLI, Factory App, Kimi Work and Replit Agent added; macOS stays at fifty-nine. AI agent support matrix page cited." },
+    { date: "16 November 2026", section: "s5-4", text: "Amazon Bedrock and Google Vertex AI each gain a Frontier cross-account or cross-project setup in which one credential syncs several accounts or projects, so role assumption is no longer unsupported everywhere. Connect Amazon Bedrock and Connect Google Vertex AI pages cited." },
     { date: "10 November 2026", section: "s6-4", text: "Use case classification, a Frontier preview that is on by default, assigns every eligible agent session to a use case from a predefined taxonomy; a Global Administrator or AI Administrator can turn it off under Agents, Settings, and earlier results are then hidden, not deleted. Business use cases for agents page cited." },
     { date: "10 November 2026", section: "s5-4", text: "Agent 365 SDK 2.0 is available for Python, JavaScript and .NET. Most of its breaking changes sit in the deprecated observability packages; in .NET the authToken parameter no longer authenticates MCP servers, so an agent that relied on it alone returns no tools and no error. Migrate to Agent 365 SDK 2.0 page cited." },
     { date: "10 November 2026", section: "s5-5", text: "Defender for Endpoint lists a process-based agent as soon as its process runs, so an inventory entry is not proof that anyone used the tool. Local AI agent discovery page cited." },

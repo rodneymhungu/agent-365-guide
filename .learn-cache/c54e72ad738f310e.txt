@@ -1,0 +1,124 @@
+Migrate to Microsoft Agent 365 SDK 2.0
+Microsoft Agent 365 SDK 2.0 is available for Python, JavaScript, and .NET. This release includes breaking changes, but most of them affect only the deprecated observability packages, and each change has a direct migration path. Use this article to find the changes that apply to your agent and update your code.
+Summary of breaking changes
+Area
+Languages
+Change
+Action
+Notifications
+Python
+The AgentLifecycleEvent.USERDELETED value changed.
+Update code that compares against the raw string value.
+Tooling extensions
+.NET
+authToken no longer authenticates MCP servers.
+Pass UserAuthorization and authHandlerName, or set BEARER_TOKEN environment variables.
+Runtime
+Python
+get_observability_authentication_scope() returns the app-only /.default scope.
+Use the scope with an app-only token resolver.
+Observability export
+Python, JavaScript, .NET
+Export always uses the service-to-service (S2S) endpoint and requires an app-only token resolver.
+Replace delegated token code with an app-only resolver.
+Observability telemetry
+Python, JavaScript, .NET
+Message attributes, attribute names, and inference validation changed.
+Update code, queries, and dashboards that depend on the earlier format.
+The observability packages are deprecated. SDK 2.0 still publishes them, but don't use them for new integrations. Instead of updating an existing observability integration to SDK 2.0, consider migrating to the Microsoft OpenTelemetry Distro.
+Update your packages to Agent 365 SDK 2.0
+Update every Agent 365 SDK package in your project to version 2.0 at the same time. For the full list of packages, see Agent 365 SDK packages.
+Python
+JavaScript
+.NET
+pip install --upgrade microsoft-agents-a365-notifications microsoft-agents-a365-tooling microsoft-agents-a365-runtime
+Add any other Agent 365 packages that your agent uses, such as tooling extensions, to the same command.
+npm install @microsoft/agents-a365-notifications@^2 @microsoft/agents-a365-tooling@^2 @microsoft/agents-a365-runtime@^2
+Add any other Agent 365 packages that your agent uses, such as tooling extensions, to the same command.
+dotnet add package Microsoft.Agents.A365.Notifications --version 2.0.0
+dotnet add package Microsoft.Agents.A365.Tooling --version 2.0.0
+dotnet add package Microsoft.Agents.A365.Runtime --version 2.0.0
+Run the same command for any other Agent 365 packages that your agent uses, such as tooling extensions.
+Notifications
+Review the updated lifecycle event value and the new events available in SDK 2.0.
+Python: Deleted user lifecycle event value changed
+The AgentLifecycleEvent.USERDELETED value is now agenticuserdeleted. In earlier versions, the value was agenticuseridentitydeleted.
+If your code compares the lifecycle event against a raw string, compare the lowercase event type against the AgentLifecycleEvent member value instead:
+from microsoft_agents_a365.notifications import AgentLifecycleEvent, AgentNotification
+agent_notification = AgentNotification(app)
+@agent_notification.on_agent_lifecycle_notification("*")
+async def handle_lifecycle(context, state, notification):
+event_type = (notification.activity.value_type or "").lower()
+if event_type == AgentLifecycleEvent.USERDELETED.value:
+await context.send_activity("User identity deleted")
+New lifecycle events
+SDK 2.0 adds five lifecycle events and handlers to Python and JavaScript. The .NET SDK already includes them. For the full list, see Agent lifecycle events.
+Tooling extensions
+If you use the .NET tooling extensions, update how your agent authenticates MCP servers.
+.NET: The authToken parameter no longer authenticates MCP servers
+This change applies to the Semantic Kernel, Agent Framework, and Azure AI Foundry tooling extensions.
+When you don't supply UserAuthorization and authHandlerName, the extension uses authToken only to discover MCP servers through the tooling gateway. It then authenticates each MCP server only with a token from the BEARER_TOKEN_<SERVERNAME> or BEARER_TOKEN environment variable. The extension skips and logs any server that doesn't have a token, so an agent that relied on authToken alone can return no MCP tools without an error.
+This change also affects the following Azure AI Foundry methods, which always use this path:
+AddToolServersToAgent (synchronous)
+GetMcpToolDefinitionsAndResourcesAsync(agentInstanceId, authToken, turnContext)
+To migrate, use one of the following options:
+Agentic authentication (recommended): Pass UserAuthorization and authHandlerName so the extension acquires tokens through the agentic on-behalf-of (OBO) flow.
+// Semantic Kernel
+await toolService.AddToolServersToAgentAsync(kernel, userAuthorization, authHandlerName, turnContext);
+// Azure AI Foundry: use the async method instead of AddToolServersToAgent
+await toolService.AddToolServersToAgentAsync(agentClient, userAuthorization, authHandlerName, turnContext);
+Environment variables: Set BEARER_TOKEN_<SERVERNAME> for each MCP server, or set BEARER_TOKEN to use one token for all servers. This option is suitable for local development and testing.
+For more information, see Register tools with your orchestrator.
+Runtime
+If your Python agent uses the runtime package to get the observability authentication scope, review the following change.
+Python: Observability authentication scope is app-only
+get_observability_authentication_scope() now returns the observability resource /.default scope, api://9b975845-388f-4429-889e-eab1ef63949c/.default. In earlier versions, it returned the delegated Agent365.Observability.OtelWrite scope.
+Use this scope only to acquire an app-only token for the exporting agent instance. For details, see Observability export uses app-only authentication.
+Observability changes in SDK 2.0
+The following changes apply to the deprecated Agent 365 observability packages in all three languages.
+Observability export uses app-only authentication
+SDK 2.0 removes delegated authentication for observability export:
+The exporter always sends telemetry to the S2S route. The use_s2s_endpoint (Python), useS2SEndpoint (JavaScript), and UseS2SEndpoint (.NET) options are ignored, even when set to false.
+The exporter requires a token resolver that returns an app-only token for the exporting agent instance. The S2S route rejects delegated tokens.
+The hosting token cache acquires app-only tokens. The delegated registration methods no longer acquire tokens.
+In .NET, EnvironmentUtils.GetObservabilityAuthenticationScope() returns the app-only /.default scope instead of the delegated Agent365.Observability.OtelWrite scope.
+Language
+Remove
+Use instead
+Python
+AgenticTokenCache.register_observability(...), which is now a no-op that logs an error
+AgenticTokenCache.refresh_observability_token(agent_id, tenant_id, token_resolver)
+JavaScript
+RefreshObservabilityToken with a TurnContext and Authorization, and runWithExportToken for exporter tokens
+RefreshObservabilityToken(agentId, tenantId, tokenResolver) with withTokenResolver(...) or exporterOptions.tokenResolver
+.NET
+AgenticTokenCache.RegisterObservability(...) with AgenticTokenStruct, which is now obsolete and causes a compiler error
+ObservabilityTokenResolver with AgenticTokenCache.RefreshObservabilityToken(...), and TokenResolver or ContextualTokenResolver on the exporter options
+Workload authentication for MCP servers, Microsoft Graph, and OBO flows doesn't change.
+For resolver requirements and code examples in each language, see Token resolver.
+Observability telemetry format changes
+Update code that creates telemetry and any queries or dashboards that depend on the message format, validation rules, or attribute names described in this section.
+Message attributes are JSON arrays
+The gen_ai.input.messages and gen_ai.output.messages attributes now follow the OpenTelemetry generative AI semantic conventions. They serialize as a plain JSON array, such as [{"role": ..., "parts": [...]}], instead of the {"version": "0.1.0", "messages": [...]} wrapper.
+Python: The A365_MESSAGE_SCHEMA_VERSION constant and the version field on InputMessages and OutputMessages are removed. OutputMessage.finish_reason defaults to "stop".
+JavaScript: The A365_MESSAGE_SCHEMA_VERSION export and the version property on InputMessages and OutputMessages are removed. Use DEFAULT_FINISH_REASON instead. Output messages that you create from plain strings default finish_reason to "stop".
+.NET: The MessageConstants class and the InputMessages.Version and OutputMessages.Version properties are removed. OutputMessage.FinishReason is non-nullable and defaults to "stop".
+Update any code, queries, or dashboards that parse these attributes so they expect a JSON array.
+Inference details are validated
+Python: InferenceCallDetails requires a nonblank model or responseModel. If both are missing or blank, construction raises ValueError.
+JavaScript: InferenceDetails.providerName is required. model is optional, but you must supply a nonblank model or responseModel. InferenceScope.start() throws if these values are missing. It also throws if endpoint.port isn't an integer from 1 to 65535.
+Attribute and operation name changes
+Python: Inference operation names and span name prefixes use the canonical lowercase OpenTelemetry values chat, text_completion, and generate_content. For example, Chat gpt-4 becomes chat gpt-4. Update case-sensitive filters, dashboards, and alerts.
+JavaScript:
+Inference spans record server.port when the port is 443.
+OpenAI extension response spans report the served model in gen_ai.response.model instead of gen_ai.request.model.
+The LangChain extension no longer uses the served model as a fallback for gen_ai.request.model. It reports the served model only in gen_ai.response.model.
+.NET: The gen_ai.tool.arguments attribute is renamed to gen_ai.tool.call.arguments.
+.NET: IA365EtwLogger interface changes
+The IA365EtwLogger interface adds a LogApplyGuardrail(...) method and an optional Exception? error parameter on every existing Log* method. If you implement IA365EtwLogger, update your implementation and recompile.
+Related content
+Microsoft Agent 365 SDK overview
+Notify agents
+Add and manage tools
+Microsoft OpenTelemetry Distro
+Deprecated Agent 365 Observability SDK

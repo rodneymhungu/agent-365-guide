@@ -28,7 +28,9 @@ Discover and monitor agents ->
   Agent registry -> admin/agent-registry-overview
   Connected platforms -> admin/connected-platforms
     Connect Amazon Bedrock -> admin/connected-platforms-amazon-bedrock
+      Configure cross-account access for Amazon Bedrock (Frontier) -> admin/configure-amazon-bedrock-cross-account-access
     Connect Google Vertex AI -> admin/connected-platforms-google-vertex-ai
+      Configure cross-project access for Google Vertex AI (Frontier) -> admin/configure-google-vertex-cross-project-access
     Connect Salesforce Agentforce -> admin/connected-platforms-salesforce-agent-force
     Connect Databricks Genie -> admin/connected-platforms-databricks-genie
     Connect Anthropic Claude Managed Agents -> admin/connected-platforms-anthropic-claude
@@ -37,7 +39,7 @@ Discover and monitor agents ->
     Third-party agent observability (Frontier) -> admin/third-party-agent-observability
     Troubleshoot connected platforms -> admin/troubleshoot-connected-platforms
   Agent map -> /microsoft-365/admin/manage/agent-map
-  Business use cases for agents (Frontier) -> admin/business-use-case-for-agents
+  Understand use case classification in Microsoft Cowork and Agent 365 (Frontier) -> admin/business-use-case-for-agents
     Understand business use case taxonomy (Frontier) -> admin/business-use-cases-for-agents-taxonomy
   Agent requests -> admin/agent-requests
   Local agents (preview) -> admin/agent-local
