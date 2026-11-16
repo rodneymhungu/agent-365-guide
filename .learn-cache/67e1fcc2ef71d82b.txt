@@ -185,7 +185,7 @@ LCW + Custom Extensions (Logic Apps)
 ✅
 ✅
 ✅
-LCW + Agent Sponsorship tasks
+LCW + Agent ID sponsorship tasks
 ✅
 ✅
 Access reviews (AR)
@@ -244,7 +244,7 @@ EM - Users assigned to access packages
 ✅
 ✅
 ✅
-EM - Agents and service principals assigned to access packages
+EM - Agent IDs and service principals assigned to access packages
 ✅
 ✅
 EM - Users request access for themselves
@@ -257,7 +257,7 @@ EM - Admins directly assign a user assignments(including guests)
 ✅
 ✅
 ✅
-EM - Admins directly assign agents and service principals
+EM - Admins directly assign agent IDs and service principals
 ✅
 ✅
 EM - Admins directly assign any user - via email address for users not yet in your directory
@@ -268,7 +268,7 @@ EM - Managers requesting on behalf of employees
 ✅
 ✅
 ✅
-EM - Owners and sponsors request access on behalf of their agents or service principals
+EM - Owners and sponsors request access on behalf of their agent IDs or service principals
 ✅
 ✅
 EM - Supported resources
@@ -348,7 +348,7 @@ EM - Sponsors as approvers (from assignees' user profile)
 ✅
 ✅
 ✅
-EM - Agent Sponsors as approvers
+EM - Agent ID sponsors as approvers
 ✅
 ✅
 EM - Externally determine approval requirements using custom extensions
@@ -504,6 +504,17 @@ Conditional Access - Terms of use attestation
 ✅
 ✅
 ✅
+Agent ID default inactivity policy (preview)
+✅
+✅
+✅
+✅
+✅
+✅
+✅
+Agent ID lifecycle policies (preview)
+✅
+✅
 Entitlement Management
 Using this feature requires a Microsoft Entra ID Governance subscription for your organization's member users. Some capabilities within this feature can operate with a Microsoft Entra ID P2 subscription. Some capabilities within this feature require guest billing.
 Access reviews
@@ -514,7 +525,7 @@ Create, manage, and delete workflows up to the total limit of 50 workflows.
 Trigger on-demand and scheduled workflow execution.
 Manage and configure existing tasks to create workflows that are specific to your needs.
 Create up to 100 custom task extensions to be used in your workflows.
-Using this feature requires a Microsoft Entra ID Governance subscription for your organization's member users. Some capabilities within this feature require guest billing.
+Using this feature, for tasks other than agent ID sponsor reassignment, requires a Microsoft Entra ID Governance subscription for your organization's member users. Some capabilities within this feature require guest billing.
 Microsoft Entra Tenant Governance
 The following tables show which Tenant Governance features are available with each license.
 Microsoft Entra P1 is also included in Microsoft 365 E3 and Microsoft 365 Business Premium. Microsoft Entra P2 is also included in Microsoft 365 E5. Microsoft Entra ID Governance is also included in Microsoft Entra Suite and Microsoft 365 E7.
@@ -563,6 +574,26 @@ New tenant creation with governance relationship
 ✅
 ✅
 ✅
+Resource policy (preview)
+Most resource policy operations during preview require a Microsoft Entra ID Governance service plan, available with Microsoft Entra ID Governance or another offering that includes that service plan. Microsoft Entra P1 or P2 alone doesn't meet this requirement.
+Feature
+Free
+Microsoft Entra P1
+Microsoft Entra P2
+Microsoft Entra ID Governance
+Most resource policy operations, including creating or editing definitions and assignments, activating assignments, and restoring deleted policies
+✅
+Browse and view policy definitions, including Rego source
+✅
+✅
+✅
+✅
+Delete policy definitions or assignments, or deactivate an assignment
+✅
+✅
+✅
+✅
+The browsing, viewing, deletion, and deactivation exceptions don't remove role or API permission requirements.
 Microsoft Entra Connect
 Using this feature is free and included in your Azure subscription.
 Microsoft Entra Connect Health

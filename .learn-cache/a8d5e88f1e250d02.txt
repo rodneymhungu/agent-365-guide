@@ -21,18 +21,7 @@ Microsoft 365 activities: audit activities performed by users in your Microsoft 
 Microsoft Entra Users and groups is a prerequisite for all monitoring capabilities and is selected by default.
 Select Connect Microsoft 365 to complete the connector setup.
 When the connector is active, its status shows as Connected.
-For Copilot Studio agents, if the Microsoft 365 connector isn't connected, real-time protection continues to block suspicious activity during runtime, but alerts and incidents related to these actions don't appear in the Microsoft Defender portal.
-Connect Copilot Studio to enable real-time protection for Copilot Studio agents:
-In the Get started page, select the Copilot Studio step. The Copilot Studio real-time protection pane opens.
-Toggle Real-time protection to on.
-This integration allows Microsoft Defender to scan agent tool invocations in real time, detect security risks (suspicious behavior or cross-prompt injection attacks), and block malicious actions. If suspicious behavior is detected, the response is blocked and an alert is triggered in the Microsoft Defender alerts and incidents queues.
-Under Enable Power Platform Integration, copy the URL provided and share it with your Power Platform administrator.
-Work with your Power Platform administrator to complete the onboarding steps in Power Platform. For detailed instructions, see Enable external threat detection and protection for Copilot Studio custom agents.
-Make sure that the Power Platform administrator uses the same App ID as the App ID used in the Microsoft Entra ID application.
-Get the App ID from the Power Platform administrator, paste it into the App ID field in the Defender portal, then select Save.
-If you recently changed the App ID in Power Platform, it can take up to one minute for the update to propagate. If you encounter a validation error when saving the updated value, wait a short time and try again.
-When the Power Platform administrator completes the onboarding steps, the Copilot Studio step shows a Connected status in the Get started page.
-The Get started page also shows a list of Identified Power Platform Admins who have permission to complete the setup in Power Platform.
+For Copilot Studio agents, if the Microsoft 365 connector isn't connected, alerts and incidents related to these actions don't appear in the Microsoft Defender portal.
 Next steps
 After onboarding is complete, explore these capabilities:
 Discover AI agents and assess security posture using Microsoft Defender

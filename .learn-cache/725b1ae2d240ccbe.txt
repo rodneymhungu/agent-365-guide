@@ -91,6 +91,14 @@ Devin Desktop
 Cognition
 ✓
 ✓
+Droid CLI
+Factory
+✓
+-
+Factory App
+Factory
+✓
+-
 Foundry Local
 Microsoft
 ✓
@@ -136,6 +144,10 @@ Kilo Code
 ✓
 -
 Kimi Code CLI
+Moonshot AI
+✓
+-
+Kimi Work
 Moonshot AI
 ✓
 -
@@ -200,11 +212,15 @@ Alibaba Cloud
 ✓
 -
 Qwen Code Desktop
--
+Alibaba Cloud
 ✓
 -
 Qwen Studio
 Alibaba Cloud
+✓
+-
+Replit Agent
+Replit
 ✓
 -
 Trae IDE

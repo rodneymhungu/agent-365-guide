@@ -14,7 +14,6 @@ Your devices have one or more supported local AI agents installed for the runtim
 To deploy the settings with Microsoft Intune, your account has an Intune role with permission to create, update, and assign device configurations, such as Policy and Profile Manager.
 To deploy the settings from the Microsoft Defender portal, your account has permission to manage endpoint security policies. For more information, see Prerequisites for managing endpoint security policies.
 To review alerts, your account has a supported Microsoft Entra role, such as Security Reader, Security Operator, or Security Administrator, or a Microsoft Defender custom role with permission to read security data. For more information, see Required permissions to investigate alerts.
-During public preview, configure test devices to receive Microsoft Defender platform and engine updates from the Beta Channel. For configuration and verification instructions, see Create a custom gradual rollout process for Microsoft Defender updates.
 Recommended deployment approach
 Microsoft recommends the following phased rollout:
 Test: Enable runtime protection in audit mode on a small set of devices where supported agents are actively used.
@@ -39,6 +38,7 @@ To turn off either runtime protection method, set its mode to Disabled.
 For details about each mode, see What happens when you enable runtime protection. For more information about the runtime protection methods, see Network inspection and Agent-native event inspection.
 Verify the current settings:
 Get-MpPreference | Select-Object AiAgentProtection, AiAgentNetworkInspection
+For both settings, the numerical values are 0 (Disabled), 1 (Block), and 2 (Audit).
 Close the PowerShell window and any terminal windows used to run agents. Then open a new terminal window before starting the agent.
 Tip
 After you enable runtime protection on a test device, run the AI agent runtime protection demonstration to confirm that Defender detects a benign prompt injection test string.
@@ -90,6 +90,8 @@ On the Configuration management tab, select Effective settings.
 Find Ai Agent Protection, and confirm its effective value and configuration source. For more information, see Effective settings on the device entity page.
 Close any terminal windows used to run agents, and then open a new terminal window before starting the agent. Run the AI agent runtime protection demonstration to confirm that Defender detects a benign prompt injection test string.
 Review and investigate detections
+Important
+During preview, a prompt injection alert might incorrectly report a block when runtime protection is configured in Audit mode. In Block mode, Claude Code might continue processing a tool response despite a reported post-tool-response block. See Known issues (Preview) for details.
 After you enable runtime protection, review alerts to validate detection accuracy and tune your configuration before broadening enforcement. This step is critical during the audit phase because it helps you understand what agents are encountering and whether detections represent real threats.
 When runtime protection detects prompt injection, Defender raises a Suspicious AI prompt injection alert and takes action based on the configured mode. The alert appears on the device timeline, and related alerts are correlated into incidents for security operations center (SOC) investigation. In block mode, the alert severity is Critical, High, Medium, or Low based on assessed risk. In audit mode, the alert is Informational, so your team can review what would have been blocked without triaging it as an active threat.
 For more information about mode behavior, see What happens when you enable runtime protection.
