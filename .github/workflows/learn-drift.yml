@@ -109,7 +109,11 @@ jobs:
              keys: ga, preview, frontier, roadmap. Update the note field if a date or licence
              dependency changed. Then set reviewed to today's date in the form "5 September 2026"
              and add one entry to the changes array (newest first) with the section id and a
-             one-line description that names the Learn page.
+             one-line description that names the Learn page. A new entry in the capabilities
+             array needs a sec field: the id of the section that explains it (s5-4 for 5.4),
+             which the status board in chapter 10 links to. Do not edit the static copies
+             of the review date, the status board rows or changes.html by hand: a later step
+             rewrites them from a365-data.js.
           4. If you cannot verify a change against the Learn page itself (use the microsoft-learn
              MCP server to fetch it), do not guess: leave the prose alone and describe the
              uncertainty in CHANGES.md instead.
@@ -139,15 +143,20 @@ jobs:
         if: steps.watch.outputs.changed == 'true'
         run: python3 scripts/guard_tiers.py --restore --base HEAD
 
-      # A chapter published on its own page must still match the guide. Report, do not block:
+      # The pages carry static copies of what lives in a365-data.js: the review date, the
+      # status board rows, the changelog on changes.html and the sitemap dates. Rewrite them
+      # from the data file, then check. What still fails is something only a person can
+      # settle, such as chapter 2 differing between the two pages. Report it, do not block:
       # the PR is the review gate and the pages-check workflow marks it red.
-      - name: Check split pages still match the guide
+      - name: Sync static copies, then check the pages
         if: steps.watch.outputs.changed == 'true'
         run: |
-          python3 scripts/check_pages.py || {
+          python3 scripts/check_pages.py --fix > /dev/null || true
+          python3 scripts/check_pages.py > /tmp/check.txt || {
             echo >> CHANGES.md
             echo "## Needs a human decision" >> CHANGES.md
-            echo "- scripts/check_pages.py: chapter 2 differs between index.html and licensing.html. Make the two identical before merging." >> CHANGES.md
+            echo "scripts/check_pages.py still fails after --fix. Settle these before merging:" >> CHANGES.md
+            grep -v '^ok' /tmp/check.txt | sed 's/^/- /' >> CHANGES.md
           }
 
       - name: Build PR body
@@ -180,6 +189,8 @@ jobs:
           add-paths: |
             index.html
             licensing.html
+            changes.html
+            sitemap.xml
             a365-data.js
             .learn-cache/**
           labels: learn-drift

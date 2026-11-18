@@ -50,13 +50,13 @@ The onboarding flow
 The integration follows four stages:
 Stage
 Description
-1. Register
+1. Register
 Create the agent identity blueprint and the agent identity in Microsoft Entra.
-2. Extend
+2. Extend
 Add the capabilities your agent needs. Use the Agent 365 SDK for Work IQ tooling or notifications, and use Microsoft OpenTelemetry for observability.
-3. Validate
+3. Validate
 Run the agent as before and confirm its identity, telemetry, tool access, and message handling.
-4. Operate
+4. Operate
 Use Agent 365 controls to govern and audit the connected agent.
 You can complete these steps manually or use Agent 365 Skills from a supported coding assistant. Skills guide the setup, make the required changes, and validate the result.
 How a request flows
@@ -67,9 +67,9 @@ Tooling gives the agent governed access to the Microsoft 365 data it needs.
 Observability records the invocation, tool calls, and model inference.
 Your agent then responds in the comment thread.
 Agent 365 SDK packages
-Find the Agent 365 SDK packages in the package managers for the supported languages.
+Find the Agent 365 SDK packages in the package managers for the supported languages. If you're upgrading from an earlier version, see Migrate to Microsoft Agent 365 SDK 2.0.
 Important
-The observability packages in the following tables are deprecated. Don't use them for new integrations. Use the Microsoft OpenTelemetry Distro, or review the deprecated Agent 365 Observability SDK documentation before migrating an existing integration.
+The following tables list the observability packages that are deprecated. Don't use them for new integrations. Use the Microsoft OpenTelemetry Distro, or review the deprecated Agent 365 Observability SDK documentation before migrating an existing integration.
 Python
 JavaScript
 .NET
@@ -80,6 +80,8 @@ microsoft-agents-a365-notifications
 Notification and messaging extensions for AI agent applications. Provides utilities for handling agent notifications, lifecycle events, and routing across different channels and subchannels in Microsoft 365 applications.
 microsoft-agents-a365-observability-core
 Deprecated: Legacy telemetry, tracing, and monitoring components for AI agents built on OpenTelemetry. Provides structured spans for agent invocation, tool execution, and LLM inference with context propagation and pluggable exporters. Use the Microsoft OpenTelemetry Distro instead.
+microsoft-agents-a365-observability-hosting
+Deprecated: Legacy hosting components for Agent 365 observability in Python applications. Use the Microsoft OpenTelemetry Distro instead.
 microsoft-agents-a365-observability-extensions-agent-framework
 Deprecated: Legacy observability extensions for Microsoft Agent Framework. Provides OpenTelemetry tracing integration specifically for Agent Framework-based applications. Use the Microsoft OpenTelemetry Distro instead.
 microsoft-agents-a365-observability-extensions-openai
@@ -94,6 +96,8 @@ microsoft-agents-a365-tooling
 Core tooling functionality for MCP (Model Context Protocol) tool server management in applications built with the Microsoft Agent 365 SDK. Provides the foundation for discovering, registering, and managing tool servers across different AI frameworks.
 microsoft-agents-a365-tooling-extensions-agentframework
 Agent Framework specific tools and services for AI agent development. Provides MCP (Model Context Protocol) tool registration service for dynamically adding MCP servers to Agent Framework agents.
+microsoft-agents-a365-tooling-extensions-googleadk
+Google Agent Development Kit (ADK) integration for the Microsoft Agent 365 Tooling SDK. Provides MCP (Model Context Protocol) tool registration for Google ADK agents.
 microsoft-agents-a365-tooling-extensions-openai
 OpenAI Agents SDK specific tools and services for AI agent development. Provides MCP (Model Context Protocol) tool registration service for dynamically adding MCP servers to OpenAI Agents SDK-based agents.
 microsoft-agents-a365-tooling-extensions-semantickernel
@@ -107,6 +111,12 @@ Description
 Agent notification services and models for handling user notifications in applications built with the Microsoft Agent 365 SDK. Provides type-safe notification handling for email, Word comments, and other collaboration scenarios.
 @microsoft/agents-a365-observability
 Deprecated: Legacy observability and tracing for Microsoft Agents Agent 365 applications. Provides comprehensive monitoring capabilities for agent invocations, tool executions, and AI model inference calls with seamless Azure Monitor integration. Use the Microsoft OpenTelemetry Distro instead.
+@microsoft/agents-a365-observability-hosting
+Deprecated: Legacy hosting components for Agent 365 observability in Node.js applications. Use the Microsoft OpenTelemetry Distro instead.
+@microsoft/agents-a365-observability-extensions-langchain
+Deprecated: Legacy observability extensions for LangChain.js. Provides automatic OpenTelemetry tracing for LangChain Runnable invocations. Use the Microsoft OpenTelemetry Distro instead.
+@microsoft/agents-a365-observability-extensions-openai
+Deprecated: Legacy observability extensions for the OpenAI Agents SDK. Provides automatic OpenTelemetry tracing for agent execution, function calls, and model interactions. Use the Microsoft OpenTelemetry Distro instead.
 @microsoft/agents-a365-runtime
 Core runtime utilities and services for applications built with the Microsoft Agent 365 SDK. Provides authentication, authorization, and Power Platform API discovery capabilities for building enterprise-ready AI agents.
 @microsoft/agents-a365-tooling
@@ -150,3 +160,4 @@ Agent identity
 Quickstart: Connect an existing agent to Agent 365
 Agent 365 SDK frequently asked questions
 Agent 365 SDK validation checklist
+Migrate to Microsoft Agent 365 SDK 2.0

@@ -33,10 +33,10 @@
   /* --- Render values from the data block --- */
   part('data values', () => {
   document.querySelectorAll('[data-val]').forEach(el => { const v = get(el.dataset.val); if (v != null) el.textContent = v; });
-  const visibleCaps = D.capabilities.filter(c => !c.hidden);
+  const shown = D.capabilities.filter(c => !c.hidden);
   const summaries = {
-    capabilities: visibleCaps.length,
-    previews: visibleCaps.filter(c => c.tier !== 'ga').length
+    capabilities: shown.length,
+    previews: shown.filter(c => c.tier !== 'ga').length
   };
   document.querySelectorAll('[data-summary]').forEach(el => { const v = summaries[el.dataset.summary]; if (v != null) el.textContent = v; });
   document.querySelectorAll('[data-badge]').forEach(el => {
@@ -52,24 +52,125 @@
   });
   });
 
-  /* --- Availability table from the data block --- */
-  part('availability table', () => {
-  const tb = document.querySelector('#avail tbody');
-  if (tb) D.capabilities.filter(c => !c.hidden).forEach(c => {
+  /* Dates in the data file read "9 November 2026". */
+  const MONTHS = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+  const parseDay = (s) => { const m = /^(\d{1,2}) (\w+) (\d{4})$/.exec(s || ''); const mo = m ? MONTHS.indexOf(m[2]) : -1; return mo < 0 ? null : new Date(Date.UTC(+m[3], mo, +m[1])); };
+  const isoDay = (d) => d.toISOString().slice(0, 10);
+  const shortDay = (s) => { const m = /^(\d{1,2}) (\w+)/.exec(s); return m ? m[1] + ' ' + m[2].slice(0, 3) : s; };
+  const secLabel = (id) => id.slice(1).replace('-', '.');
+
+  /* --- Status board: chapter 10's table, its filters and the status meter ---
+     The rows in index.html are a static copy for crawlers; these are rendered
+     from the data file, so a status is right even when that copy is stale. */
+  const TIER_ORDER = ['ga', 'preview', 'frontier', 'roadmap'];
+  const visibleCaps = D.capabilities.filter(c => !c.hidden);
+  const family = (where) => /Global Secure Access/.test(where) ? 'Global Secure Access' : /Entra/.test(where) ? 'Entra' : /Defender/.test(where) ? 'Defender' : /Purview/.test(where) ? 'Purview' : /Intune|Windows/.test(where) ? 'Intune and Windows' : 'Admin centre';
+  const FAMILIES = ['Admin centre', 'Entra', 'Global Secure Access', 'Purview', 'Defender', 'Intune and Windows'];
+  const filter = { tier: '', family: '', q: '' };
+  let applyBoard = () => {};
+
+  part('status board', () => {
+  const tb = document.querySelector('#avail tbody'); if (!tb) return;
+  const hasSection = (id) => id && document.getElementById(id);
+  tb.innerHTML = '';
+  const rows = visibleCaps.map(c => {
     const tr = document.createElement('tr'); tr.dataset.tier = c.key; tr.dataset.tierValue = c.tier;
-    tr.innerHTML = `<td>${c.name}</td><td><span class="badge t-${c.tier}" style="margin:0">${D.tiers[c.tier].label}</span></td><td class="muted">${c.note || ''}</td><td>${c.where}</td>`;
+    const read = hasSection(c.sec) ? `<a href="#${c.sec}">${secLabel(c.sec)}</a>` : '';
+    tr.innerHTML = `<td class="c-name">${c.name}</td><td class="c-status"><span class="badge t-${c.tier}">${D.tiers[c.tier].label}</span></td><td class="c-note muted">${c.note || ''}</td><td class="c-where">${c.where}</td><td class="c-read">${read}</td>`;
     tb.appendChild(tr);
-  });
+    return { tr, c, fam: family(c.where), text: (c.name + ' ' + (c.note || '') + ' ' + c.where + ' ' + D.tiers[c.tier].label).toLowerCase() };
   });
 
-  /* --- Changelog from the data block --- */
-  part('changelog', () => {
-  const ch = document.querySelector('#changelog .changes');
-  if (ch) (D.changes || []).forEach(c => {
-    const li = document.createElement('li');
-    const sec = c.section ? ` <a href="#${c.section}">${c.section.slice(1).replace('-', '.')}</a>` : '';
-    li.innerHTML = `<b>${c.date}</b>${sec} ${c.text}`;
-    ch.appendChild(li);
+  const tools = document.getElementById('board-tools'), count = document.getElementById('board-count');
+  const empty = document.getElementById('board-empty'), reset = document.getElementById('board-reset');
+  const famCount = (f) => rows.filter(r => r.fam === f).length;
+  if (tools) {
+    tools.innerHTML = `<div class="chips" role="group" aria-label="Filter by product"><button type="button" data-fam="" aria-pressed="true">All products</button>${FAMILIES.filter(famCount).map(f => `<button type="button" data-fam="${f}" aria-pressed="false">${f} <i>${famCount(f)}</i></button>`).join('')}</div><label class="find"><span>Find</span><input type="search" id="board-q" placeholder="MCP, Conditional Access, Bedrock" autocomplete="off" spellcheck="false"></label>`;
+    tools.querySelectorAll('[data-fam]').forEach(b => b.addEventListener('click', () => { filter.family = b.dataset.fam; applyBoard(); }));
+    tools.querySelector('#board-q').addEventListener('input', e => { filter.q = e.target.value.trim().toLowerCase(); applyBoard(); });
+  }
+  const clearAll = () => { filter.tier = filter.family = filter.q = ''; const q = document.getElementById('board-q'); if (q) q.value = ''; applyBoard(); };
+  const clear = document.getElementById('board-clear'), copy = document.getElementById('board-copy');
+  if (reset) reset.addEventListener('click', clearAll);
+  if (clear) clear.addEventListener('click', clearAll);
+
+  /* The address bar follows the status and product filters, so the view can be shared. */
+  const viewQuery = () => { const p = new URLSearchParams(); if (filter.tier) p.set('status', filter.tier); if (filter.family) p.set('product', filter.family.toLowerCase()); const q = p.toString(); return q ? '?' + q : ''; };
+  const syncAddress = () => { try { const want = location.pathname + viewQuery() + location.hash; if (want !== location.pathname + location.search + location.hash) history.replaceState(null, '', want); } catch (e) {} };
+  if (copy) {
+    copy.hidden = false;
+    copy.addEventListener('click', () => {
+      const url = location.origin + location.pathname + viewQuery() + '#s10';
+      const done = () => { copy.textContent = 'Link copied'; setTimeout(() => { copy.textContent = 'Copy link to this view'; }, 1800); };
+      if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(url).then(done, () => window.prompt('Copy this link', url));
+      else window.prompt('Copy this link', url);
+    });
+  }
+
+  /* Which filters readers reach for goes to the weekly digest: one count per filter per visit,
+     as #filter-preview or #filter-defender. What is typed in the find box is never recorded. */
+  const counted = new Set();
+  const countFilter = (v) => { if (!v || counted.has(v) || !window.goatcounter || !window.goatcounter.count) return; counted.add(v);
+    window.goatcounter.count({ path: location.pathname + '#filter-' + v.toLowerCase().replace(/[^a-z]+/g, '-'), title: 'Status board filter: ' + v, event: false }); };
+
+  applyBoard = () => {
+    let shown = 0;
+    rows.forEach(r => {
+      const out = (filter.tier && r.c.tier !== filter.tier) || (filter.family && r.fam !== filter.family) || (filter.q && !r.text.includes(filter.q));
+      r.tr.classList.toggle('f-out', !!out);
+      if (!out && !r.tr.classList.contains('is-hidden')) shown++;
+    });
+    if (tools) tools.querySelectorAll('[data-fam]').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.fam === filter.family)));
+    document.querySelectorAll('.meter [data-tier-filter]').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.tierFilter === filter.tier)));
+    const gaOnly = !!(document.getElementById('ga-only') || {}).checked;
+    if (count) count.textContent = shown === rows.length ? `${rows.length} controls` : `Showing ${shown} of ${rows.length} controls` + (gaOnly ? '. The GA only switch in the header is on.' : '');
+    if (empty) empty.hidden = shown > 0;
+    const wrap = document.querySelector('.board-tbl'); if (wrap) wrap.hidden = shown === 0;
+    if (clear) clear.hidden = !(filter.tier || filter.family || filter.q) || shown === 0;
+    syncAddress(); countFilter(filter.tier); countFilter(filter.family);
+  };
+
+  /* A link can open the board already filtered: index.html?status=preview&product=Defender#s10 */
+  try {
+    const qs = new URLSearchParams(location.search), st = (qs.get('status') || '').toLowerCase(), pr = (qs.get('product') || '').toLowerCase();
+    if (TIER_ORDER.includes(st)) filter.tier = st;
+    const f = FAMILIES.find(x => x.toLowerCase() === pr); if (f) filter.family = f;
+  } catch (e) {}
+  applyBoard();
+  });
+
+  /* --- Status meter: one bar, a segment per status, sized by how many controls hold it --- */
+  part('status meter', () => {
+  const n = Object.fromEntries(TIER_ORDER.map(t => [t, visibleCaps.filter(c => c.tier === t).length]));
+  const total = visibleCaps.length; if (!total) return;
+  const board = document.getElementById('board');
+  document.querySelectorAll('.meter[data-meter]').forEach(el => {
+    const hero = el.dataset.meter === 'hero';
+    const seg = TIER_ORDER.filter(t => n[t]).map(t => `<button type="button" class="seg s-${t}" style="flex-grow:${n[t]}" data-tier-filter="${t}" aria-pressed="false" title="${D.tiers[t].label}: ${n[t]} of ${total}"><b>${n[t]}</b><span>${D.tiers[t].label}</span></button>`).join('');
+    el.innerHTML = `<p class="k">${hero ? 'Status today' : 'Filter by status'}</p><div class="meter-bar" role="group" aria-label="Controls by status. Select one to filter the list.">${seg}</div>` + (hero && board ? `<p class="meter-more"><a href="#s10">All ${total} controls, with what each one needs</a></p>` : '');
+    el.querySelectorAll('[data-tier-filter]').forEach(b => b.addEventListener('click', () => {
+      filter.tier = filter.tier === b.dataset.tierFilter ? '' : b.dataset.tierFilter;
+      if (hero) { filter.tier = b.dataset.tierFilter; filter.family = ''; }
+      applyBoard();
+      if (hero && board) { location.hash = '#s10'; }
+    }));
+  });
+  applyBoard();
+  });
+
+  /* --- Latest changes: the newest entries about the product, not about the guide --- */
+  const productChanges = (D.changes || []).filter(c => c.kind !== 'guide' && c.section);
+  part('latest changes', () => {
+  const here = /(^|\/)(index\.html)?$/.test(location.pathname);
+  document.querySelectorAll('.latest[data-latest]').forEach(box => {
+    const ol = box.querySelector('.latest-list'); if (!ol) return;
+    productChanges.slice(0, +box.dataset.latest || 3).forEach(c => {
+      const d = parseDay(c.date), li = document.createElement('li');
+      const first = (c.text.match(/^.*?\.(?= [A-Z]|$)/) || [c.text])[0].replace(/\.$/, '');
+      const secHref = (here || document.getElementById(c.section) ? '' : 'index.html') + '#' + c.section;
+      li.innerHTML = `<a class="when" href="changes.html${d ? '#d' + isoDay(d) : ''}">${shortDay(c.date)}</a><a class="sec" href="${secHref}">${secLabel(c.section)}</a><span>${first}.</span>`;
+      ol.appendChild(li);
+    });
   });
   });
 
@@ -126,6 +227,24 @@
   refreshSpy();
   });
 
+  /* --- Updated markers: sections the last fortnight of product changes touched --- */
+  part('updated markers', () => {
+  const reviewed = parseDay(D.reviewed); if (!reviewed) return;
+  const here = !!document.getElementById('board') || /licensing\.html$/.test(location.pathname);
+  if (!here) return;
+  const newest = new Map();
+  productChanges.forEach(c => { const d = parseDay(c.date); if (d && (reviewed - d) / 864e5 <= 14 && !newest.has(c.section)) newest.set(c.section, c.date); });
+  newest.forEach((date, id) => {
+    const sec = document.getElementById(id); if (!sec) return;
+    const h = sec.querySelector('h2, h3'); if (!h) return;
+    const p = document.createElement('p'); p.className = 'upd';
+    p.innerHTML = `<a href="changes.html#d${isoDay(parseDay(date))}">Updated ${date.replace(/ \d{4}$/, '')}</a>`;
+    (h.closest('.shead') || h).after(p);
+    const li = list && list.querySelector(`li[data-for="${id}"]`);
+    if (li) { li.classList.add('has-upd'); const a = li.querySelector('a'); if (a) a.insertAdjacentHTML('beforeend', '<span class="vh"> (updated)</span>'); }
+  });
+  });
+
   /* --- GA-only filter --- */
   part('GA-only filter', () => {
   const ga = document.getElementById('ga-only'), count = document.getElementById('count');
@@ -134,6 +253,7 @@
     const gaOnly = !!(ga && ga.checked);
     tiered.forEach(el => el.classList.toggle('is-hidden', gaOnly && el.dataset.tierValue && el.dataset.tierValue !== 'ga'));
     if (count) count.textContent = gaOnly ? 'GA only' : '';
+    applyBoard();
     onScroll();
   }
   if (ga) ga.addEventListener('change', apply);
