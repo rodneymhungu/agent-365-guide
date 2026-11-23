@@ -11,7 +11,7 @@ For AI agents built on other platforms, enable observability using the Microsoft
 Threat detection is supported only for published Microsoft Foundry agents. Unpublished agents, including agents used only in a playground environment, aren’t supported.
 For more information, see Publish agents to Microsoft Copilot and Microsoft Teams in the Foundry portal
 To detect threats to local AI agents that run on endpoints, set up AI agent runtime protection in Microsoft Defender for Endpoint. Microsoft Defender for Endpoint must run in active mode. Local agents are onboarded separately from cloud agents.
-(Optional) To include the prompt snippets that triggered a detection as evidence in alerts, enable prompt evidence collection. This setting is enabled by default.
+(Optional) Configure prompt evidence collection for AI agent alerts. For local Windows agents, the device-level setting enables or disables collection when AI agent runtime protection is configured. See the overview for feature defaults and privacy guidance.
 Detect AI agent threats in near-real-time
 Microsoft Defender continuously monitors AI agent activity and detects suspicious and malicious behavior for all Agent 365-managed agents. Defender analyzes agent telemetry, tool usage, and execution patterns to identify threats such as jailbreak attempts, indirect prompt injection (XPIA) attempts, malicious content propagation, secret and credential leakage, evasion techniques, large language model (LLM) reconnaissance, and suspicious user or IP access.
 Microsoft Defender surfaces detections as near‑real‑time alerts in the Defender portal and enables security teams to investigate them using familiar security operations workflows, including alert triage, incident correlation, and Advanced Hunting.

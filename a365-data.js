@@ -28,7 +28,7 @@
   ==========================================================================
 */
 window.A365 = {
-  reviewed: "18 November 2026",
+  reviewed: "23 November 2026",
   gaDate: "1 May 2026",
   transitionDate: "1 July 2026",
   trial: "25 seats for 30 days",
@@ -41,6 +41,12 @@ window.A365 = {
     roadmap:  { label: "Early preview",    phrase: "in early preview" }
   },
   changes: [
+    { date: "23 November 2026", section: "s7-3", text: "Copilot Studio onboarding for Defender real-time protection is retiring on 23 December 2026, blocking settings do not migrate and must be re-created, and automatic tenant-level onboarding begins public preview on 22 November. Alerts for Copilot Studio agents still need the Microsoft 365 connector. Get started page and real-time protection page cited." },
+    { date: "23 November 2026", section: "s7-4", text: "The Intune and Defender portal runtime protection profile now carries network inspection and prompt evidence collection, so the PowerShell script is gone from the guide. A new device setting sends prompts and tool calls unredacted; preview known issues on Audit-mode alert titles and Claude Code noted. Runtime protection configuration page cited." },
+    { date: "23 November 2026", section: "s5-5", text: "The support matrix grew to sixty-six Windows tools (Droid CLI, Factory App, Kimi Work, Replit Agent); Global Secure Access agent discovery now builds its inventory from acquired traffic and marks agents managed when Agent 365 governs them. AI agent support matrix and Global Secure Access agent discovery pages cited." },
+    { date: "23 November 2026", section: "s5-1", text: "Multi-tenant agent management now has a Learn page, a public preview, with no extra licence to view and manage and an Agent 365 licence to view risk and activity. Manage agents across multiple tenants page cited." },
+    { date: "23 November 2026", section: "s2-1", text: "The service description now splits capabilities into core and premium columns: rules-based lifecycle automation moves to premium, tenant-wide tool controls and Microsoft agent insights to core, and Business Analytics and Cost Management are listed. Microsoft Agent 365 service description cited." },
+    { date: "23 November 2026", section: "s6-8", text: "Learn scoped the on-behalf-of flow and the no-interactive-flow rule to confidential-client agents, and a managed identity now authenticates through a federated identity credential. Agent on-behalf-of flow page cited." },
     { date: "18 November 2026", section: "s7-4", text: "The Beta Channel step is gone from runtime protection's prerequisites: the setup page asks only for current platform and engine updates, and the July 2026 Defender what's new says vendor-supported event interfaces work with standard update channels. Setup page and what's new cited." },
     { date: "18 November 2026", section: "s6-5", text: "Learn renamed the tools registry page: manage-tools-for-agent now redirects to agent-tools-overview under the Agent 365 documentation, and the guide's links follow. Tools page overview cited." },
     { date: "18 November 2026", section: "s7-4", text: "Microsoft's Ignite post calls runtime protection generally available on Windows; the Learn overview page, refreshed the same 17 November, still carries the preview title and the Defender what's new has no GA entry, so the capability keeps its preview label. Ignite post and both Learn pages cited." },
@@ -113,7 +119,7 @@ window.A365 = {
     { key: "control-plane",      name: "Agent 365 licence and admin centre control plane", tier: "ga", note: "GA since 1 May 2026", sec: "s2-1", where: "Microsoft 365 admin centre" },
     { key: "registry",           name: "Registry, overview, requests, actions, management rules, settings, policy templates", tier: "ga", sec: "s5-1", where: "Microsoft 365 admin centre" },
     { key: "registry-ai-mode",   name: "AI mode: natural-language search of the registry", tier: "roadmap", note: "Blog announcement of 30 September 2026; no Learn page yet", sec: "s5-3", where: "Microsoft 365 admin centre" },
-    { key: "multi-tenant",       name: "Multi-tenant agent management", tier: "roadmap", note: "Ignite announcement of 17 November 2026; no Learn page yet", sec: "s5-1", where: "Microsoft 365 admin centre" },
+    { key: "multi-tenant",       name: "Multi-tenant agent management", tier: "roadmap", note: "Learn page now documents it as a public preview; viewing risk and activity needs an Agent 365 licence", sec: "s5-1", where: "Microsoft 365 admin centre" },
     { key: "action-center",      name: "Action centre for inactive and ownerless agents", tier: "roadmap", note: "Ignite announcement of 17 November 2026, preview due December; no Learn page yet", sec: "s5-3", where: "Microsoft 365 admin centre" },
     { key: "agent-map",          name: "Agent map", tier: "ga", sec: "s5-2", where: "Microsoft 365 admin centre" },
     { key: "single-agent-map",   name: "Single Agent Map", tier: "preview", sec: "s5-2", where: "Microsoft 365 admin centre" },
@@ -123,8 +129,8 @@ window.A365 = {
     { key: "connected-agent-id", name: "Entra Agent ID for connected platform agents, with secretless authentication", tier: "roadmap", note: "Ignite announcement of 17 November 2026; the Connected platforms page still says the opposite", sec: "s5-4", where: "Entra; Microsoft 365 admin centre" },
     { key: "apim-discovery",     name: "Azure API Management integration: agents, tools, models and MCP servers discovered from the gateway", tier: "roadmap", note: "Blog announcement of 30 September 2026, rolling out from that date; no Learn page yet", sec: "s5-4", where: "Azure API Management; Microsoft 365 admin centre" },
     { key: "third-party-observability", name: "Third-party agent observability (Bedrock, Vertex AI, Anthropic, Agentforce, Genie)", tier: "frontier", sec: "s5-4", where: "Microsoft 365 admin centre" },
-    { key: "business-analytics", name: "Agent 365 Business Analytics: spend, usage and value for business leaders", tier: "roadmap", note: "Ignite announcement of 17 November 2026, rolling out in Frontier; no Learn page yet", sec: "s2-1", where: "Microsoft 365 admin centre" },
-    { key: "cost-management",    name: "Agent 365 Cost Management: spend tracking, limits, alerts and model controls", tier: "roadmap", note: "Ignite announcement of 17 November 2026; no Learn page yet", sec: "s2-1", where: "Microsoft 365 admin centre" },
+    { key: "business-analytics", name: "Agent 365 Business Analytics: spend, usage and value for business leaders", tier: "roadmap", note: "Service description lists it as a Frontier public preview; the Copilot-licence condition from the Ignite post is not on Learn", sec: "s2-1", where: "Microsoft 365 admin centre" },
+    { key: "cost-management",    name: "Agent 365 Cost Management: spend tracking, limits, alerts and model controls", tier: "roadmap", note: "Listed in the service description and usage-based billing pages with no preview label; the Ignite post calls it a preview, so the tier is unconfirmed", sec: "s2-1", where: "Microsoft 365 admin centre" },
     { key: "byo-mcp",            name: "Bring your own MCP server", tier: "preview", sec: "s6-5", where: "Admin centre and CLI" },
     { key: "shadow-ai-page",     name: "Shadow AI page", tier: "frontier", sec: "s5-5", where: "Microsoft 365 admin centre" },
     { key: "local-agents-page",  name: "Local agents page", tier: "frontier", sec: "s5-5", where: "Microsoft 365 admin centre" },
@@ -147,7 +153,7 @@ window.A365 = {
     { key: "defender-rtp-mcs",   name: "Defender real-time protection for Copilot Studio agents", tier: "preview", sec: "s7-3", where: "Defender XDR" },
     { key: "defender-rtp-foundry", name: "Defender real-time protection for Foundry agents", tier: "preview", sec: "s7-3", where: "Defender XDR" },
     { key: "mde-discovery",      name: "Defender for Endpoint local agent discovery", tier: "ga", note: "GA for Windows and macOS in the October 2026 what's new; WSL and the macOS VS Code extension entries stay preview", sec: "s5-5", where: "Defender for Endpoint" },
-    { key: "mde-runtime",        name: "Defender for Endpoint runtime protection", tier: "preview", note: "Microsoft's Ignite post of 17 November 2026 calls it GA on Windows; the Learn overview page refreshed the same day still carries the preview title, and the Defender what's new has no GA entry", sec: "s7-4", where: "Defender for Endpoint" },
+    { key: "mde-runtime",        name: "Defender for Endpoint runtime protection", tier: "preview", note: "Microsoft's Ignite post of 17 November 2026 calls it GA on Windows; the Learn overview and configuration pages still carry the preview title, and the Defender what's new has no GA entry", sec: "s7-4", where: "Defender for Endpoint" },
     { key: "gsa-copilot-studio", name: "Global Secure Access for Copilot Studio agents, prompt injection protection", tier: "ga", note: "Device and prompt-injection paths need Entra Internet Access", sec: "s7-5", where: "Global Secure Access" },
     { key: "gsa-shadow-ai",      name: "Global Secure Access Shadow AI discovery", tier: "ga", sec: "s5-5", where: "Global Secure Access" },
     { key: "gsa-mcp-firewall",   name: "MCP firewall", tier: "preview", sec: "s7-5", where: "Global Secure Access" },

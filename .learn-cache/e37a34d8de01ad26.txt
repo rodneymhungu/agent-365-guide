@@ -10,7 +10,7 @@ License Requirements
 Using Microsoft Entra ID Governance for agent identities requires one of the following license plans:
 Microsoft 365 E7, which includes Agent 365 and Microsoft Entra Suite, to provide governance of user and agent identities.
 Microsoft Agent 365 license paired with at least Microsoft Entra P1 or Microsoft 365 E3.
-For more information, see Microsoft Agent 365 plans and pricing. For the full list of agent-specific capabilities, refer to the Microsoft Agent 365 column in the Microsoft Entra ID Governance licensing table.
+For more information, see Microsoft Agent 365 and Microsoft 365 E7 plans and pricing. For a list of generally available agent-specific identity governance capabilities, refer to the Microsoft Entra ID Governance licensing table.
 Create a sponsor workflow using the Microsoft Entra Admin Center
 To create a workflow that notifies the manager or cosponsors of an existing agent identity sponsor's move, follow these steps:
 Sign in to the Microsoft Entra admin center as at least a Lifecycle Workflows Administrator.

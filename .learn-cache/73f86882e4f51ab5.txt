@@ -1,0 +1,265 @@
+Understand use case classification in Microsoft Cowork and Agent 365 (Frontier)
+Important
+This feature is part of Frontier preview program. Frontier connects you directly with Microsoft’s latest AI innovations. Frontier previews are subject to the existing preview terms of your customer agreements. As these features are still in development, their availability and capabilities may change over time.
+Use case classification is currently available for Frontier tenants with at least 50 Copilot licenses. Frontier tenants with fewer than 50 Copilot licenses will receive access in a future release.
+Use case classification identifies the type of work people perform in Microsoft Cowork and agents perform in supported agent sessions, and classifies it against a built-in taxonomy of use cases. Use cases help you identify adoption patterns, assess where AI delivers value, and find opportunities to optimize investments.
+Use case classification applies to two kinds of activity:
+Agent sessions – Sessions with agents, including custom and third-party agents, that you review in the Microsoft 365 admin center for an individual agent or in Agent Map. This category includes agents built with Copilot Studio and Azure AI Foundry as well as declarative agents and third-party connected platform agents.
+Work activity in Microsoft Cowork – A user's activity in Microsoft Cowork. The resulting use case data is shared with Agent 365 Business Analytics to deliver aggregated insights for the organization's AI usage.
+Use case classification isn't available yet for Code, Autopilot, and Researcher.
+Both kinds of activity use the same taxonomy and classification methodology. They differ in the signals they use, the people who can see the results, and how you turn classification on or off. This article describes both.
+What is a use case?
+Use cases are classifications that describe the type of work represented by an agent session or by a user's work activity. In addition to technical metrics such as sessions, users, and deployment status, use cases help you answer questions such as:
+What work are agents and users performing?
+Which business functions use agents most frequently?
+Are multiple agents used for similar tasks?
+Which categories of work generate the most AI activity or consume the most AI credits?
+Where are there opportunities for consolidation or optimization?
+Examples of use cases include:
+Functional requirements definition
+Load and stress testing
+Data loss prevention
+Campaign brief development
+Go-to-market planning
+Project scheduling
+Executive summary writing
+Use cases are organized into a four-level taxonomy so that you can move from broad business areas to specific types of work.
+Domain > Category > Sub-category > Use case
+Level
+Description
+Domain
+A broad business area, such as a business function or an industry.
+Category
+A major area of work within a domain.
+Sub-category
+A specific type of work within a category.
+Use case
+The specific task that represents the work performed.
+For example:
+Domain: Software and application engineering.
+Category: Quality engineering and testing.
+Sub-category: Performance and security testing.
+Use case: Load and stress testing.
+Domain: Information technology and infrastructure.
+Category: Cybersecurity and identity.
+Sub-category: Data protection and encryption.
+Use case: Data loss prevention.
+Domain: Marketing and brand.
+Category: Content and campaign marketing.
+Sub-category: Campaign planning and execution.
+Use case: Campaign brief development.
+The predefined taxonomy provides a consistent framework for grouping use cases across supported environments.
+How use case data is used
+Aggregated insights help leaders and admins understand the types of work people perform in Microsoft Cowork and agents perform across their organization, together with the associated AI usage and costs. These insights help identify which use cases consume the most AI credits, which agents contribute to which use cases, and where similar work occurs across Cowork activity and agent sessions.
+How classifications are assigned
+A classification engine analyzes eligible activity and assigns it to the predefined use case that most closely represents the work performed. The classification system:
+Uses a predefined taxonomy containing thousands of use cases.
+Assigns a use case label to each agent session or work activity.
+Rolls individual classifications into use cases, sub-categories, categories, and domains.
+Aggregates results across agents, users, and time periods.
+Uses the same classification methodology in each customer tenant.
+Use case classifications use the predefined taxonomy instead of creating tenant-specific categories from customer content. For example, if an agent or a user creates documentation for a confidential internal project, the activity might be classified as Functional requirements definition and wouldn't use the actual project name.
+Available domains, categories, sub-categories, and use cases might change as the taxonomy evolves.
+Agent sessions
+For agents built with Copilot Studio and Azure AI Foundry, as well as declarative agents and third-party agents registered through Agent 365 Connected platforms, use cases are assigned to each agent session based on the work performed in that session. The resulting use case classifications are displayed in the Agent Map, Registry, and Activity tab on an agent in the Microsoft 365 admin center. They aren't currently shared back to end users or agent makers.
+Work activity in Microsoft Cowork
+The classification engine analyzes usage data and context from a user's work activity in Microsoft Cowork and assigns it to the predefined use case that most closely represents the work performed by the user.
+The signals used for use case classification, and the use cases available in the taxonomy, might change over time.
+How use cases are used to calculate AI value
+Use case classification is the foundation for the AI value metrics, starting with AI value for Cowork, which appears on the Use cases tab in Cost management > Consumption. For each classified use case, admins can view both cost and value per use case based on the AI value calculation. Learn more about AI value calculations.
+Licensing and eligibility
+Activity
+Eligibility
+Default state
+Agent sessions
+Available only to Microsoft Frontier public tenants.
+On by default. Turn it off in Agents > Settings > Use case classification.
+Work activity in Microsoft Cowork
+Available only to Microsoft Frontier public tenants. Within those tenants, available only to users with a Microsoft 365 Copilot premium license.
+On by default for all eligible users, unless a policy turns it off or a user opts out. Turn it off in Viva Feature access management.
+View use cases for agent sessions
+Review use cases for an individual agent or explore activity across your organization in Agent Map.
+Users with the following roles can view use case data:
+Global Administrator.
+Global Reader.
+AI Administrator.
+AI Reader.
+View use cases for an individual agent
+To review the use cases associated with a specific agent and compare their session volumes:
+In the Microsoft 365 admin center, go to Agents.
+Open an agent.
+Select the Activity tab.
+Review the Use cases section.
+The Use cases section shows:
+The use cases associated with the agent.
+The number of sessions classified into each use case.
+The distribution of activity across different business functions.
+For example:
+Use case
+Sessions
+Load and stress testing
+4,522
+Pull request workflow design
+550
+Functional requirements definition
+210
+Where export is available, export the displayed use case data for further analysis. Use Excel, Power BI, or another reporting tool to compare use cases, track changes over time, and combine use case activity with other organizational reporting data.
+Explore use cases in Agent Map
+Use Agent Map to compare use case activity across your organization. Drill down from domains, categories, and sub-categories to individual use cases and agents.
+To explore use cases:
+Open Agent Map.
+Select Group by > Use cases.
+Browse domains, categories, or individual use cases.
+Drill into an area of interest.
+Agent Map organizes information into the following hierarchy:
+Domain
+Category
+Use case
+Agent
+Drill into each level to understand:
+Which business domains generate the most activity.
+Which categories and sub-categories account for that activity.
+Which use cases are most common.
+Which agents contribute to those use cases.
+For example, you might discover that:
+Software and application engineering is the largest domain.
+Quality engineering and testing is the largest category.
+Performance and security testing is the largest sub-category.
+Load and stress testing is the largest use case.
+A specific agent is responsible for most sessions in that use case.
+This structure lets you move from organization-level trends to individual agents.
+Filter activity by date
+Agent Map supports the following date ranges:
+Last 7 days
+Last 30 days
+Month to date
+Use these filters to understand how agent usage changes over time and identify emerging trends.
+Explore use cases for Microsoft Cowork activity
+Use the Microsoft 365 admin center to review Cowork use case classifications.
+View use cases for Cowork
+Users with the following roles can view Cowork use case data:
+Global Administrator.
+Global Reader.
+AI Administrator.
+AI Reader.
+Billing Administrator
+Eligible admins can view Cowork use case classifications in two locations in the Microsoft 365 admin center:
+Cost management: Go to Consumption, and then select the Use cases tab. The number in the use case pivot represents the number of use cases identified over the selected time frame. Drill into each of the four layers of the hierarchy in this table, or export to CSV for further analysis.
+Cowork page: Select the Usage tab of the Cowork page to view the same use case data for the time frame selected at the top of the page.
+Organization leaders see use case data for work activity only as aggregated insights.
+Manage use case classification
+Use case classification is on by default. Use case classification provides separate controls for agent sessions and for work activity in Microsoft Cowork. Use them to align with your organization's requirements, including any local data protection obligations or Works Council guidelines.
+Admin controls
+To turn off use case classification for agent sessions, in the Microsoft 365 admin center, go to Agents > Settings > Use case classification.
+Control
+Applies to
+Who can change it
+What can be changed
+Turn classification on or off for agent sessions
+Declarative agents, third-party connected platform agents, and agents built with Copilot Studio or Azure AI Foundry
+Global Administrator or AI Administrator
+Enable or disable classification for the whole tenant
+Classification policies for Microsoft Cowork
+Microsoft Cowork
+Global Administrator or AI Administrator
+Create a policy to turn off classification completely or turn it off by default while allowing users to opt in, for the entire organization, specific groups, or individual users
+For both categories, use case classification is enabled by default for the entire tenant. When turned off, no new use case classifications are generated (with a delay of up to one day in stopping classification). After disablement, existing classification results are retained but hidden, not deleted. If re-enabled, classification resumes from that point forward. No historical gap is backfilled.
+Set up a policy for Cowork use case classification
+Admins can use Feature access management (FAM) to control use case classification for the entire organization, specific groups, or individual users. Use case classification is on by default for all eligible users unless a policy turns it off. For more information, see Feature access management.
+You can use admin controls to:
+Turn off use case classification completely for your organization or for specific users or groups.
+Turn off use case classification by default for your organization or for specific users or groups while still allowing users to opt in from their profile.
+Sign in to the Microsoft 365 admin center as a Global Administrator or AI Administrator.
+Search for Feature access management in the search bar. Alternatively, in the left navigation pane, select Settings > Viva > Viva settings > Feature access management.
+Select the Use case classification tab, then select Add a policy.
+Choose the Use case classification app and the Use case classification feature. Select the policy scope (specific groups or individual users), choose the access setting, then select Save.
+Tip
+To apply a policy to the entire organization, create a security group containing all users and select that group as the policy scope.
+End user controls
+End users can choose to opt out of Cowork use case classification. They can go to the Data and privacy tab in the Microsoft profile editor and turn off work activity classification. For more information, see Manage use case classification in your profile. A similar control isn't available yet for agent sessions.
+Understand classification accuracy
+Use the insights to identify organizational trends, not to audit individual interactions.
+Classifications provide directionally accurate organizational insights instead of an audit record of every interaction. Review aggregate patterns across many sessions and activities rather than relying on a single classification:
+Most sessions and activities are classified correctly.
+Some sessions or activities might be assigned to a closely related use case.
+Aggregate trends are more reliable than individual reviews.
+A single misclassified session doesn't necessarily indicate an issue with the overall dataset.
+For example, a session that fixes a bug might be classified as creating a pull request. Although the labels differ, both activities belong to a related software engineering workflow. Evaluate this variation in the context of broader usage patterns rather than as an isolated result.
+Best practices for interpreting use case data
+Follow these best practices when you analyze use case data.
+Focus on trends
+Look for patterns that persist across:
+Hundreds or thousands of agent sessions or Cowork work activities.
+Groups of agents.
+Departments and business units.
+Time periods.
+Avoid drawing conclusions from isolated classifications.
+Use other signals
+Evaluate use cases with other signals, such as:
+Cowork and agent adoption.
+Cowork usage and agent session volume.
+Cost.
+Agent ownership.
+Organizational context.
+Expect agents in multiple use cases
+Many agents support more than one type of work. For example, an HR agent might answer onboarding questions and also assist with policy questions. The agent can therefore contribute activity to multiple use cases. This behavior reflects how people use agents in real-world scenarios.
+Common scenarios
+Apply use case data to the following scenarios.
+Understand organizational AI activity
+Identify the business functions and types of work where people use Microsoft Cowork and agents are most active.
+Detect duplication
+Determine whether multiple agents perform similar work, and identify possible opportunities for consolidation.
+Support return on investment and value analysis
+Combine use cases with business value models to understand:
+Where agent and AI investments are concentrated.
+Which categories generate the greatest value.
+Which types of work consume the most agent activity and AI credits.
+Combine use case activity with cost and value data to support return on investment analysis and FinOps reporting.
+Build custom reports
+Combine exported use case data with other reporting systems to create dashboards and analyses for your organization.
+Privacy and security considerations
+Use case classification provides organizational insights while protecting user privacy:
+Classifications use a predefined taxonomy, and only work-related use cases are classified.
+Sensitive project names aren't surfaced as use cases.
+The feature focuses on activity patterns rather than individual employees.
+Use cases are classified consistently across tenants.
+Microsoft doesn't see the underlying content used to classify use cases or the use cases that AI identifies for a user.
+A user's individual use case classifications aren't visible to other people. Organization leaders see use case data for work activity only as aggregated insights.
+Use case classification isn't designed for behavioral monitoring, performance management, or employment decisions.
+This approach helps you understand patterns in AI and agent activity without exposing confidential project terminology or personal information.
+Frequently asked questions
+Find answers about evaluation, limitations, responsible use, and controls.
+What metrics are used to measure performance?
+Microsoft evaluates the accuracy and quality of use case classification by using approaches such as LLM-as-a-judge, with human review when needed. These measurements guide ongoing improvements to the system over time.
+To support personalized experiences and aggregated insights, Copilot creates and stores metadata for each use case classification.
+What are the limitations of use case classification?
+Review the following limitations:
+Use case classifications depend on the signals available to Microsoft, such as agent activity and work activity in Cowork. These signals might not fully reflect all the work an individual or agent performs.
+Use case classifications are mapped to a predefined, standardized taxonomy. This taxonomy might not capture every variation in work, which can affect the granularity of the classifications provided to users and admins.
+AI models can't be guaranteed to classify use cases accurately and can misinterpret an agent's or user's activity. Although the system aims to be accurate in aggregate, individual classifications can be significantly inaccurate.
+Users, business leaders, and admins should treat classifications and aggregated insights as one source of information among others and apply their own judgment when acting on the data.
+Users can turn off Cowork use case classification if they don't want their work activity used for this purpose. Individual opt-out isn't available for agent sessions.
+What operational factors and settings support responsible use of use case classification?
+Use the following guidance and controls:
+Admins are responsible for understanding their organization's local legal and business requirements, including applicable data protection obligations and Works Council guidelines. Use the available controls to configure classification consistently with those requirements and business practices.
+Users can turn off Cowork use case classification at any time on the Data and privacy tab in the Microsoft profile editor. When classification is turned off for a user, AI won't identify their use case classifications for personalization. For more information, see Manage use case classification in your profile.
+Admins can use the controls described in this article to set privacy controls for specific users or groups, including restricting use case classification.
+Aggregated insights derived from Cowork use case classification are AI-generated and are labeled as such, so that leaders and admins understand the data is produced by AI.
+Cowork work activity classification doesn't require users to confirm or dismiss individual classifications. It operates in the background, and users retain control through the opt-out and administrator controls described in this article.
+Microsoft doesn't see the underlying content used to classify use cases or the use cases that AI identifies for a user. A user's individual classifications aren't visible to other people; organization leaders see use case data only as aggregated insights. Use case classification isn't designed for behavioral monitoring, performance management, or employment decisions. It classifies only work-related use cases from a standardized taxonomy.
+Why doesn't the feature provide 100% accuracy?
+Classifications can occasionally assign a session or activity to a closely related use case. Use the results to understand aggregate patterns, and evaluate individual classifications in context.
+Can a single agent belong to multiple use cases?
+Yes. An agent might perform different types of work across different sessions and can therefore appear in multiple use cases, sub-categories, and categories.
+Can I export use case data?
+Yes. Where export is available, you can export use case data for further reporting and analysis.
+Should I trust the data if I find an incorrect classification?
+Treat an incorrect individual classification as one data point, not as proof that the aggregate trend is unreliable. Review results across multiple sessions and use cases, and compare them with other signals before making governance or investment decisions.
+Does turning off classification in Agents settings also turn it off for Cowork?
+No. The Agents > Settings > Use case classification setting applies to agent sessions in the Microsoft 365 admin center. To control classification of work activity in Cowork, use Feature access management. Users can also opt out from the Data and privacy tab in their Microsoft profile editor.
+What is the primary purpose of use cases?
+Use the insights from use case classification to identify adoption patterns, compare agent and AI activity across business functions, find potential duplication, and inform governance and investment decisions. Interpret the results as aggregate trends, and evaluate them with adoption, session volume, cost, ownership, and organizational context.
+Known issues
+Some customers might see agents with incomplete IDs. Microsoft is working on a fix for this issue.
+The AI Reader role is rolling out gradually and might not yet be available in all tenants.
+Cowork use case data might not yet be available in Agent Map or on an agent's Activity tab.

@@ -28,6 +28,21 @@ Audit: Defender allows the action to continue and records the detection. A secur
 Disabled: Runtime protection is off. Defender doesn't inspect agent activity, and agents run without prompt injection detection or blocking.
 Microsoft recommends starting in audit mode to observe detections and validate accuracy before switching to block mode for active enforcement. The runtime protection setting is protected by tamper protection, which prevents unauthorized changes, and works alongside your existing Defender controls.
 For local PowerShell and organization-wide Microsoft Intune configuration options, see Set up AI agent runtime protection with Microsoft Defender for Endpoint.
+Prompt evidence collection
+Prompt evidence collection is a device setting for AI agent runtime protection.
+When prompt evidence collection is enabled, Defender sends prompt data and tool calls, including their arguments, to the cloud to help detect threats and investigate suspicious agent activity. This content is sent in its original form, without redaction. Captured content can also appear in security alerts. Disabling collection stops this content from being sent to the cloud, which limits detections that rely on analyzing it.
+An upcoming Microsoft Defender Antivirus platform release will enable prompt evidence collection by default. Devices that haven't received the update that changes this default still have collection disabled by default. Explicitly configured settings take precedence over this default. This change doesn't enable runtime protection or change its audit or block mode.
+Important
+Review your organization's privacy and data-handling requirements before you enable collection. Evidence included in security alerts is retained according to the Microsoft Defender XDR data retention policy.
+Disabling device-level collection doesn't disable runtime protection.
+Configure device collection through PowerShell or the policy template. For prerequisites, commands, and deployment steps, see Configure prompt evidence collection.
+Known issues (Preview)
+Important
+During preview, prompt injection alerts in the Microsoft Defender portal might incorrectly report Suspicious AI prompt injection blocked when AI agent runtime protection is configured in Audit mode. This is an alert-reporting issue. In Audit mode, runtime protection allows the action to continue and records the detection; the alert title doesn't mean that runtime protection blocked the action.
+Verify the runtime protection mode on the affected device as described in Set up AI agent runtime protection. Don't rely on the alert title alone to determine whether an action was blocked. Continue investigating the detection to assess whether the activity is malicious.
+Important
+During preview, Claude Code might continue processing a tool response even when AI agent runtime protection is configured in Block mode and Defender reports a post-tool-response block. This is a blocking limitation, not just an alert-reporting issue. On affected devices, the block alert doesn't mean that runtime protection prevented the agent from processing the detected content.
+Don't rely on the alert title alone to determine whether a tool response was blocked. Continue investigating the detection to assess whether the activity is malicious. Post-tool-response inspection occurs after the tool runs and can't undo actions the tool has already completed.
 Investigation
 When runtime protection detects prompt injection, Defender raises a Suspicious AI prompt injection alert and correlates related activity into incidents for investigation.
 For the full investigation workflow, including user and SOC experiences, see Review and investigate detections.

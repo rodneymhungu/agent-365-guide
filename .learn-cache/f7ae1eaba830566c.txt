@@ -1,20 +1,23 @@
 Protect AI agents in real time using Microsoft Defender
 Deployed AI agents operate autonomously, invoking tools, accessing data, and taking actions in response to natural‑language input. Microsoft Defender provides real-time protection to prevent AI agents from performing unsafe actions during runtime, and lets you control that protection using policies and rules.
 To detect, investigate, and hunt for AI agent threats after they occur, see Detect and investigate threats to AI agents using Microsoft Defender.
+Real-time protection policies currently support Microsoft Foundry agents, Microsoft Copilot Studio agents, and Agent 365 Tooling Servers (WorkIQ and Custom MCP) only. Support for additional agent types is not yet available.
+Important
+Action required by December 23, 2026 to keep real-time protection for Copilot Studio agents enabled
+If you set up Microsoft Defender real-time protection for Copilot Studio through the existing onboarding experience, your blocking settings won’t migrate when that experience retires on December 23, 2026. To keep blocking enabled, first disable the existing onboarding under Settings > Security for AI > Get started > Copilot Studio, then re-create and enable your blocking rules before December 23. See Configure real-time protection rules on this page.
+Automatic tenant-level onboarding begins rolling out in public preview on November 22, 2026, for supported Copilot Studio agents in tenants with Security for AI agents enabled. After retirement, agents without an enabled blocking rule operate in audit mode, which generates security alerts without blocking actions.
 Prerequisites
 Enable security for AI agents, including the Microsoft 365 app connector. See Enable security for AI agents using Microsoft Defender.
-To protect Copilot Studio agents in real time, make sure Copilot Studio is connected. See Enable security for AI agents using Microsoft Defender.
 Local agents are onboarded separately from cloud agents. To protect local AI agents that run on endpoints, set up AI agent runtime protection in Microsoft Defender for Endpoint. Microsoft Defender for Endpoint must run in active mode.
 How real-time protection works
 Real-time protection inspects AI agent activity throughout the agentic loop and blocks risky actions before they execute. Coverage depends on the agent type:
-Agent 365 tool invocations: Defender integrates with Work IQ MCP to evaluate tool invocations before they run, including invocations of customer MCP tools onboarded to Agent 365. Agents that rely on unsupported tools or don't integrate with Work IQ MCP aren't covered.
-Copilot Studio agents (Preview): Protection evaluates tool invocations, which doesn't depend on Work IQ MCP. To enable it, make sure that Copilot Studio is connected. For more information, see Enable security for AI agents using Microsoft Defender.
-Foundry agents (Preview): Protection evaluates user requests, agent responses, tool invocations, and tool responses.
-Local AI agents: Covered through endpoint runtime protection in Microsoft Defender for Endpoint.
-For cloud agents, there are two types of real-time protection rules:
+Agent 365 Tooling Servers (GA): Defender integrates with Work IQ MCP to evaluate tool invocations and responses, including invocations of customer MCP tools onboarded to Agent 365.
+Foundry agents (Preview): Protection evaluates user requests, agent responses, tool invocations and responses.
+Copilot Studio agents (Preview): Protection currently evaluates tool invocations only.
+There are two types of real-time protection rules:
 Default rule: Audits all agents, recording matching activity as a behavior without stopping the action. This gives you visibility before you enforce blocking.
 Custom rules: Block matching actions before they execute and record the behavior. Create custom rules for high-confidence threats and scope them to specific agents.
-When Microsoft Defender audits or blocks an action, it records the event as a behavior in the BehaviorInfo table, including what happened, why the action was considered risky, and which agent, user, and tool were involved. Security teams can query these behaviors to build custom detections, hunting queries, and downstream automation. Near-real-time detections continue to surface as alerts only in audit mode. When a blocking rule covers an agent, near-real-time alerts aren't generated for that agent.
+When Microsoft Defender audits or blocks an action, it records the event as a behavior in the BehaviorInfo table, including what happened, why the action was considered risky, and which agent, user, and tool were involved. Security teams can query these behaviors to build custom detections, hunting queries, and downstream automation.
 Block events from Microsoft Prompt Shields for Foundry, Copilot Studio and Microsoft Copilot Agent Builder are also recorded as behaviors.
 Supported threat scenarios for real-time protection
 Real-time protection inspects agent interactions for threats. When you enable a blocking rule for a threat scenario, interactions that match that scenario are blocked at the intervention point where the threat is detected.
@@ -48,6 +51,7 @@ Manage existing rules
 On the Real-time protection page, select a rule to open its details pane, where you can review the rule configuration and select Edit rule to change it. Use Enable, Disable, and Delete in the toolbar to manage rules.
 Control prompt evidence in alerts
 By default, Microsoft Defender includes prompt snippets exchanged between the user and the agent as evidence in each alert.
+For local Windows agents, the device-level setting enables or disables the collection of prompt evidence when AI agent runtime protection is configured. See Configure prompt evidence collection.
 To configure this setting, go to Settings > Security for AI > Prompt evidence collection, then toggle Enabled on or off.
 When enabled, the snippets include only the portions of user prompts or agent responses identified as suspicious and relevant to security classification. Sensitive data and secrets are redacted; however, customer conversations might still be sensitive in nature. The evidence is available in the Defender portal as part of each alert.
 Next steps

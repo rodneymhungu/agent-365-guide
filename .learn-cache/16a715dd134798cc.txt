@@ -69,6 +69,7 @@ selected Regions.
 Validate the credentials.
 Save the connection.
 Select Sync agents.
+To use one IAM user's credentials to synchronize agents from multiple AWS accounts, see Configure cross-account access for Amazon Bedrock (Frontier).
 Verify the connection
 Open the connection and check the synchronization status and the number of agents. Open an imported agent to verify its metadata.
 For observability, open the agent and select Activity after you configure the source platform and activity is available.

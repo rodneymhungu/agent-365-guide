@@ -1,5 +1,6 @@
 Manage agent registry in Microsoft 365 admin center
 The agent registry in Microsoft 365 admin center provides a centralized view of all agents available for your organization. This list helps you monitor, manage, and govern agents for your organization.
+In this article, Registry refers to the agent inventory under Agents > All agents > Registry in the Microsoft 365 admin center. Use this inventory to manage agent records and their lifecycle. To manage plugins, skills, and MCP servers, use Agents > Tools.
 View agent registry
 Sign in to the Microsoft 365 admin center.
 In the left navigation pane, select Agents > All Agents > Registry.
@@ -48,7 +49,7 @@ Data source - The data source filter allows you to select Embedded knowledge and
 Tip
 If you don't see the agents that you expect to see in the agent registry list, check to make sure you don't have an existing filter set.
 Certain columns allow you to sort the agent registry list. To sort the list, select the column title.
-Applying filters to the list of agents will not change the Total agents count.
+Applying filters to the list of agents doesn't change the Total agents count.
 Agent registry actions
 The agent Registry provides agent actions that relate specifically to your tenant's list of agents, as shown in the following table:
 Action
@@ -66,11 +67,11 @@ Customize how the columns that are displayed in the agent list. For more informa
 Search
 Use the search option to quickly find an agent in your agent Registry.
 Tip
-In addition to the above actions, you can change the view of the list from Normal list to Compact list by selecting the list icon next to the Search box.
+In addition to the preceding actions, you can change the view of the list from Normal list to Compact list by selecting the list icon next to the Search box.
 Agents without owners
 Shared agents can become ownerless when you delete the user who created them from the organization.
 To help administrators manage these scenarios, the Microsoft 365 admin center enables you to identify and manage ownerless shared agents. The dashboard displays the total count of such agents, a one-click filter to quickly isolate them, and real-time updates that reflect user deletions. When administrators use these features, they can efficiently review and address ownership gaps by blocking or deleting affected agents.
-When you select the Agents without owners card, the agent list will be filtered to show the agents based on Publisher type and Owner. You can review the list of agents without owners and take appropriate actions for each agent, such as blocking or deleting the agent.
+When you select the Agents without owners card, the agent list is filtered to show the agents based on Publisher type and Owner. You can review the list of agents without owners and take appropriate actions for each agent, such as blocking or deleting the agent.
 Key features
 Ownerless agent count - Administrators can view the total number of agents without a valid owner directly from the dashboard. For example, the dashboard shows 20 ownerless agents, which indicates that users who left the organization created these agents.
 One-click filter - Selecting the dashboard pane instantly filters the agent list to display only shared agents missing an owner. This feature allows for quick triage and action.
@@ -101,7 +102,7 @@ Global Administrator, Global Reader, Security Reader, Security Administrator, or
 Microsoft Purview — IRM alerts
 IRM Analyst or IRM Investigator. Global Administrator alone is insufficient; a Global Administrator can assign themselves the additional IRM role.
 Agents at risk tile
-The Agents at risk tile on the All agents page displays the total number of agents in the tenant that have one or more risk signals. Selecting the tile opens a prefiltered view showing only agents with detected risk signals, so you can prioritize investigation and remediation.
+The Agents at risk tile on the All agents page shows the total number of agents in the tenant that have one or more risk signals. When you select the tile, you open a prefiltered view that shows only agents with detected risk signals, so you can prioritize investigation and remediation.
 Agents at risk card on the Overview page
 The Agents at risk card on the Microsoft 365 admin center Overview page lists the three agents with the highest aggregated risk counts across Microsoft security platforms and connected third-party platforms.
 Select View agents to open All agents > Registry, where the list is filtered and sorted by risk level so that you can prioritize investigation and remediation.
@@ -144,22 +145,22 @@ Access to the Microsoft 365 admin center
 (Optional) Power Platform admin center access (if you use Pay-as-you-go for agents)
 Pinned agents
 Microsoft-pinned agents
-These agents are agents that Microsoft pins by default for all users.
+Microsoft pins these agents by default for all users.
 Ensures essential or high-value agents, like core Copilot features, are always visible.
 End users can't unpin these agents. They're fixed in the pinned list.
 Administrator-pinned agents
-Pinned by your organization's administrator through the Microsoft 365 admin center.
+Your organization's administrator pins these agents through the Microsoft 365 admin center.
 Can be pinned for:
 All users.
 Specific groups.
 Specific users.
 End users usually can't unpin these agents. They're fixed in the pinned list.
 User-pinned agents
-Pinned by individual users in their own Microsoft Copilot Chat experience.
+Individual users pin these agents in their own Microsoft Copilot Chat experience.
 Users can:
 Pin agents they frequently use.
 Unpin them anytime.
-This list is fully under the user's control, except for Microsoft-pinned or administrator-pinned agents, which remain locked.
+Users fully control this list, except for Microsoft-pinned or administrator-pinned agents, which remain locked.
 Features
 Administrator-pinned agents appear by default for end-users, making them easier to discover and helping highlight new or important agents.
 Administrators can view the Microsoft-pinned agents in Microsoft 365 admin center.
@@ -169,25 +170,25 @@ Pin Sales Coach agent only for the sales department.
 Pin HR Q&A agent for all users.
 The end-user can't unpin the Administrator-pinned and Microsoft-pinned agents.
 Pin agents
-You can select to pin agents using the following steps:
-In the All agents page, select the ellipse on the right to display a dropdown menu.
-Select the Manage pinned agents.
-In the Pinned agents pane, agents Pinned by your org and agents Pinned by Microsoft lists are displayed.
+Use the following steps to pin agents:
+In All agents, select the ellipse on the right to display a dropdown menu.
+Select Manage pinned agents.
+In the Pinned agents pane, you see agents Pinned by your org and agents Pinned by Microsoft.
 Select Pin agent to pin a new agent.
-In the Select an agent to pin pane, find the agent you want to pin from the list of agents. You can search the list to find a specific agent by name. You can only pin agents that are deployed to some or all users.
+In Select an agent to pin, find the agent you want to pin from the list of agents. Search the list to find a specific agent by name. You can only pin agents that are deployed to some or all users.
 When you find the desired agent, select it and then select Next.
-In the Choose who will have this agent pinned pane, choose the scope for the agent that you want to pin.
+In Choose who will have this agent pinned, choose the scope for the agent that you want to pin.
 All users the agent is deployed to - Pin the agent for all users that the agent is deployed to in the tenant.
 If you don't see this option, the selected agent probably isn't deployed.
 Specific users or groups the agent is deployed to - Pin for one or more groups or individual accounts.
 If you select Specific users or groups the agent is deployed to, select the specific users or groups to pin the agent.
 Select Save.
 After you save the configuration, the system records which agent is pinned for the selected audience.
-Agents that can be pinned
+Agents that you can pin
 You can only pin deployed agents. If the agent isn't deployed, you see a banner with a message to first deploy the agent.
 If the agent is blocked, unblock the agent before you pin it.
 Rank the list of pinned agents
-The administrator has three slots reserved for the pinned agents for each user.
+The administrator reserves three slots for the pinned agents for each user.
 The administrator can use the Move up and Move down buttons to reorder the list of pinned agents by priority to control what is shown to the user.
 Unpin an agent
 From the list of pinned agents, find the agent that you want to unpin and select Unpin. When you remove the pin, the agent is no longer available under the Pinned by your org section.
@@ -196,7 +197,7 @@ Select the agent and choose Edit users to modify the scope of users for which an
 Alternate entry point for pinning
 You can also pin an agent from the agent details pane. Select the pin for the user icon. The icon is only enabled if the agent is deployed.
 Customize view
-The agent list provided on the All agents page can be customized. You can choose which columns to display.
+You can customize the agent list on the All agents page. Choose which columns to display.
 Microsoft Graph API for Agent Registry and Agent Details (preview)
 You can also access Agent Registry data programmatically through Microsoft Graph APIs, which gives you scalable and programmatic control over agent management. By using the new Microsoft Graph API endpoints, now in preview, administrators can integrate the following tasks into existing workflows across agents in Microsoft 365:
 Automate bulk agent management.
@@ -233,8 +234,8 @@ Description
 Platform
 Instructions
 Tip
-There are over 30 different items for each agent that can be included in the exported list.
-With this information, you can efficiently manage and review the shared agents within your organization, ensuring compliance and optimizing resource allocation.
+There are more than 30 different items for each agent that you can include in the exported list.
+By using this information, you can efficiently manage and review the shared agents within your organization, ensuring compliance and optimizing resource allocation.
 Export the list of active users for the last 30 days to an Excel file. This feature is essential for detailed analysis and reporting.
 The exported file includes comprehensive information about each active user, such as:
 User Principal Name
@@ -243,7 +244,7 @@ Total Sessions
 Last Activity Date
 Additional information
 Important
-Non-Microsoft tools including third-party MCP servers available in [catalog/registry/offering name] ("Third-Party Tools") are Non-Microsoft Products under your agreement governing use of the corresponding Microsoft Product. When you connect to a Third-Party Tool, you do so at your own risk. You are responsible for any terms and charges associated with use of Third-Party Tools. Microsoft has no responsibility to you or others in relation to your use of Third-Party Tools. We recommend that you carefully review and track the Third-Party Tools you add to your MCP client.
-Some of your information and data (such as authentication keys and prompt content) may be passed to the Third-Party Tool, or your MCP client might receive data from the Third-Party Tool. We recommend reviewing all data shared with Third-Party Tools and being cognizant of third-party practices for retention and location of data. It is your responsibility to manage whether your data will flow outside of your organization’s compliance and geographic boundaries and any related implications.
+Non-Microsoft tools, including third-party MCP servers available in [catalog/registry/offering name] ("Third-Party Tools"), are non-Microsoft products under your agreement governing use of the corresponding Microsoft product. When you connect to a Third-Party Tool, you do so at your own risk. You're responsible for any terms and charges associated with use of Third-Party Tools. Microsoft has no responsibility to you or others in relation to your use of Third-Party Tools. Review and track the Third-Party Tools you add to your MCP client.
+Some of your information and data (such as authentication keys and prompt content) might be passed to the Third-Party Tool, or your MCP client might receive data from the Third-Party Tool. Review all data shared with Third-Party Tools and be aware of third-party practices for retention and location of data. It's your responsibility to manage whether your data flows outside of your organization’s compliance and geographic boundaries and any related implications.
 MCP implementations are susceptible to risks, such as attacks, cascading failures, and loss of human oversight. You can mitigate these risks by vetting MCP servers for security and reliability, following Microsoft’s recommended practices and industry best practices, and implementing approval mechanisms and monitoring cascading behaviors.
-For your convenience only, Microsoft offers endpoints to facilitate transmittals of data to and from MCP servers through a monitored gateway. We recommend reviewing all technical documentation covering your configuration of any monitoring tools enabled by Microsoft. These endpoints do not imply and should no be interpreted as an endorsement, attribution or ownership of any third-party tools. The corresponding licensor, and not Microsoft, makes the third-party MCP servers available to you. Microsoft has no responsibility to you or others in relation to your use of third-party MCP servers.
+For your convenience, Microsoft offers endpoints to facilitate transmittals of data to and from MCP servers through a monitored gateway. Review all technical documentation covering your configuration of any monitoring tools enabled by Microsoft. These endpoints don't imply and shouldn't be interpreted as an endorsement, attribution, or ownership of any third-party tools. The corresponding licensor, and not Microsoft, makes the third-party MCP servers available to you. Microsoft has no responsibility to you or others in relation to your use of third-party MCP servers.

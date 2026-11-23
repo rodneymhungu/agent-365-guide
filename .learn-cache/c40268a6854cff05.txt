@@ -9,6 +9,38 @@ What's new in Microsoft Defender for Cloud
 What's new in Microsoft Sentinel
 What's new in Microsoft Purview
 You can also get product updates and important notifications through the message center.
+November 2026
+Expanded identity activity visibility in advanced hunting: Advanced hunting now includes additional Active Directory activity in identity event tables. Use IdentityDirectoryEvents for DRSR and GPO update events, IdentityQueryEvents for LDAP search and LDAP ping events, and IdentityLogonEvents for Kerberos and LDAP bind extended events. For more information, see Advanced hunting schema tables.
+(Preview) Alert grouping for custom detection rules: Starting November 17, 2026, configure a time frame and matching criteria to combine related alerts from the same rule into a single incident. For configuration options and limits, see Alert grouping.
+(Preview) Protect AI assets from trusted-identity attacks: Microsoft Defender XDR now includes new security-for-AI coverage to help protect AI assets from identity compromise patterns that can be used to weaponize trusted agents. This preview focuses on detections and disruption for device code phishing scenarios targeting GitHub Copilot CLI in Microsoft Defender. For best coverage, connect the GitHub connector at the Enterprise level. For connector setup guidance, see Protect your GitHub Enterprise environment. For details, see Protect AI agents from trusted-identity attacks (Preview).
+(Preview) New navigation: The reorganized Microsoft Defender portal navigation brings security operations together in one integrated experience. Microsoft Sentinel pages move from a separate Sentinel section into the areas where they're used. Moved and newly added items are marked New.
+The navigation you see depends on your experience. If your organization still uses the Microsoft Sentinel navigation, continue using the existing paths. If you use Integrated Security Operations Center (ISOC) in Microsoft Defender, use the new paths in the following table, which lists the main navigation changes.
+Old location
+New location
+Investigation & response > Partner catalog
+Content management > Partner catalog
+Microsoft Sentinel > Threat management > Workbooks
+Dashboards & reports > Workbooks
+Microsoft Sentinel > Threat management > Hunting
+Investigation & response > Hunts
+Microsoft Sentinel > Threat management > Notebooks
+Investigation & response > Notebooks
+Microsoft Sentinel > Threat management > MITRE ATT&CK
+Threat intelligence > MITRE ATT&CK
+Microsoft Sentinel > Content management > Content hub
+Content management > Content hub
+Microsoft Sentinel > Content management > Repositories
+Content management > Repositories
+Microsoft Sentinel > Content management > Community
+Content management > Community
+Microsoft Sentinel > Configuration > Analytics
+Investigation & response > Detection > Analytics
+Microsoft Sentinel > Configuration > Summary rules
+Investigation & response > Summary rules
+Microsoft Sentinel > Configuration > Automation
+Automations (top level)
+For an overview of the portal, see Microsoft Defender XDR in the Microsoft Defender portal.
+(Preview) Entity mapping enhancements for custom detection rules: Starting November 17, 2026, map up to four identifiers to each entity and add the same entity type more than once. Additional identifiers are supported for existing entity types in Impacted Assets and Related Evidence. For configuration steps and the new identifiers, see Expanded entity mapping.
 September 2026
 (Preview) Integrated Security Operations Center (ISOC) in Microsoft Defender brings XDR, SIEM, threat intelligence, automation, and AI capabilities together in the Microsoft Defender portal. Starting September 23, 2026, it's available to eligible Microsoft 365 E5 and E7 customers without an active Microsoft Sentinel workspace. For more information, see ISOC in Microsoft Defender.
 (GA) Identity Security dashboard and Coverage & Maturity: The Identity Security dashboard provides a centralized view of identity-related security risks and posture across the organization. Coverage & Maturity helps security teams understand how well their identity environment is protected across on-premises, cloud, SaaS, identity providers, and partner technologies, identify coverage and deployment gaps, and prioritize the actions required to improve identity security posture. For more information, see Coverage & Maturity.
