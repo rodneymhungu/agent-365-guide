@@ -8,6 +8,14 @@ Type
 Feature
 Preview/GA
 Description
+Feature
+Preview features page
+Preview
+Turn certain Defender for Endpoint public preview features on or off per feature. For more information, see Manage individual preview features in Microsoft Defender for Endpoint.
+Feature
+Embedded offboarding with the Defender deployment tool for Windows
+Preview
+As with embedded onboarding, a key is required to run the tool, you can set an expiry date for the package, and you can download the package as an .exe or .zip file. Track the offboarding packages you create on the Deployment packages page. For more information, see Offboard devices by using the Defender deployment tool.
 Release - macOS
 Build 101.26092.0012
 GA

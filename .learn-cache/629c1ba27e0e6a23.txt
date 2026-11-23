@@ -45,6 +45,12 @@ Learn more about threat protection:
 AI agent inventory in Microsoft Defender XDR
 AI agent detection and protection in Microsoft Defender XDR
 Next steps
-Learn more about Microsoft Agent 365:
+Continue with product implementation:
 Microsoft Agent 365 documentation
 Microsoft Agent 365 blog post: The control plane for AI agents
+Connect Agent 365 deployment to organizational security adoption:
+Secure your agentic insider with SAF.
+Defend with agents using SAF.
+Secure AI with Zero Trust.
+Govern agent identities and privileges.
+Operationalize agent monitoring with SecOps implementation patterns.

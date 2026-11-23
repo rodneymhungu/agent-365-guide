@@ -6,63 +6,136 @@ For detailed plan information on subscriptions that enable users for Microsoft A
 Feature availability
 As of October 1, 2026 Microsoft Agent 365 meets all FedRAMP High controls reviewed by Microsoft's independent third-party assessor. Final authorization by Microsoft's accrediting agency is pending.
 The following table describes core Agent 365 capabilities:
-Features
-Management Console
-Included with Microsoft 365 Enterprise, Business, Education, and Front Line Worker plans
-Requires Microsoft 365 E7 / G7 or Agent 365
+Feature Description
+Product Surface
+Core capability included with Microsoft cloud subscription
+Premium capability
 GCC Availability
-Inventory of agents across the organization in the Agent Registry
-Microsoft 365 Admin Center
-Basic governance actions on agents (publish, deploy, block, delete, approve; assign agents to specific user/groups; reassign agent owner, pin, etc.)
-Microsoft 365 Admin Center
-Automate agent lifecycle actions using conditions-based rules
-Microsoft 365 Admin Center
-Synchronize agents and agent metadata from external platforms that aren’t managed by Agent 365 into the registry
-Microsoft 365 Admin Center
-Policy templates applying customized policies and controls to agents
-Microsoft 365 Admin Center
-Observability and monitoring of agent activity (Visualization and telemetry)
-Microsoft 365 Admin Center
-Control which tools (including Microsoft MCP servers) agents can access tenant-wide
-Microsoft 365 Admin Center
-Graph API provides access to agent registry, basic metadata, and governance actions
-N/A
+Entra Agent ID provides secure identity and access of AI agents
+Entra
+Visibility into rich agent metadata, permissions and access, security and compliance (Agent Registry)
+Microsoft 365 admin center
+Synchronize 3P agents and agent metadata from external platforms not managed by Microsoft into the Agent 365 registry (Connected Platforms)
+Microsoft 365 admin center
+SDK for building agents that integrate with Agent 365
+Microsoft 365 admin center
+View Microsoft, third-party and custom plugins, skills and MCP servers in one registry (Tools Registry)
+Microsoft 365 admin center
+Graph API provides access to agent registry, basic metadata and governance actions
+Microsoft 365 admin center
+View, deploy, block and govern agents across tenants (Multi-tenant management)
+Microsoft 365 admin center
+Basic usage insights for Microsoft Services (1P) agents (active users) in MAC agent usage report
+Microsoft 365 admin center
+Advanced usage insights for 1P agents across Agent Registry, Overview page and Agent Card (activity, sessions, exception rates, runtime)
+Microsoft 365 admin center
+Basic usage insights for Non-Microsoft Services (3P) agents (active users) in MAC agent usage report
+Microsoft 365 admin center
+Advanced usage insights for 3P agents across Agent Registry, Overview page and Agent Card
+Microsoft 365 admin center
+Visual representation of agent connections, usage, behavior and relationships across the tenant (Agent Map)
+Microsoft 365 admin center
 Access packages for agents to define scope of agent permissions
 Entra
-Built‑in Entra lifecycle policies automate sponsor‑driven workflows to maintain accountability
+Built-in Entra ID Governance access packages and lifecycle workflows automate sponsor-driven workflows
 Entra
-Conditional access and identity protection for agents (for agents with delegated access - extend user policies to agents)
-Entra
-Monitor and block malicious and noncompliant network traffic for agents, operating on user devices, and for Copilot Studio agents​
-Entra
-Audit logs of agent activities and eDiscovery (content search) of agent interaction to export and hold for legal, regulatory, and investigative needs
+Admin agent governance actions (publish, deploy, block, delete, approve, assign, reassign owner, pin, etc.)
+Microsoft 365 admin center
+Automate agent lifecycle actions using conditions-based rules
+Microsoft 365 admin center
+Control which tools (Plugins, Skills, Connectors, Microsoft MCP servers) Copilot and Microsoft platform agents can access tenant-wide
+Microsoft 365 admin center
+Policy templates to apply consistent security and compliance controls to agents
+Microsoft 365 admin center
+Audit logs of agent activities and eDiscovery (content search) of agent interactions for legal, regulatory and investigative needs
 Purview
-Data Lifecycle Management for agent-generated data and interactions in line with regulations and org policies
+Data Lifecycle Management for agent-generated data and interactions
 Purview
-Detect and review noncompliant agent interactions; extend compliance manager to agents to assess, manage, and demonstrate AI compliance
+Detect and review non-compliant agent interactions; extend Compliance Manager to agents
 Purview
 Data Security Posture Management with AI Observability provides deep interaction visibility for agents
 Purview
-Extend Insider Risk Management to agents – detect anomalous and risky agent activities
+Extend Insider Risk Management to agents: detect anomalous and risky agent activities
 Purview
 Agents inherit and honor data sensitivity labels
 Purview
-Data loss prevention – block agents from accessing and sharing sensitive content
+Data loss prevention: block agents from accessing and sharing sensitive content
 Purview
-Sync shadow AI endpoint agents
-Defender
-Identify and remediate agent misconfigurations and exposure risks, relationship mapping for local agents (agent to devices, MCPs, etc.)
-Defender
-Detect suspicious agent activity, receive alerts, and allow blocking for tool invocations for agents
-Defender
-Collect Agent 365 unified agent observability logs and allow investigation and hunting for threats for agents
-Defender
-Device compliance for agent conditional access
+Conditional access and identity protection for agents (delegated access: extend user policies to agents)
+Entra
+Monitor and block malicious and non-compliant network traffic for agents on user devices and Copilot Studio agents (SASE)
+Entra
+Policy to require device compliance for agents' Entra Conditional Access protection
 Intune
-Policy-controlled environment for agents runtime
+Automatic Intune enrollment for Windows 365 for Agent endpoints for continuous policy enforcement
 Intune
-Block unsanctioned local endpoint agents
+Block the most common ways OpenClaw runs on Windows managed devices with Intune policies
 Intune
+Yes¹
+Yes¹
+Sync shadow AI endpoint agents discovered by Microsoft Defender
+Defender
+Yes¹
+Yes¹
+Identify and remediate agent misconfigurations and exposure risks; relationship mapping for local agents
+Defender
+Detect suspicious agent activity, receive alerts and allow blocking for tool invocations
+Defender
+Collect A365 unified agent observability logs; investigation and threat hunting for agents
+Defender
+Configure spending policies at tenant, group, user, agent and environment level, with custom usage alerts (1P)
+Agent 365 Cost Management
+Centralized dashboards to monitor 1P spend by user, group, feature and model family
+Agent 365 Cost Management
+Track 1P use cases, outcomes and success rate, starting with Cowork use case categories and assisted hours
+Agent 365 Cost Management
+Measure spend and impact for agents built on Microsoft (1P) platforms
+Agent 365 Cost Management
+Set which model families each group can use, including what Auto picks in Cowork
+Agent 365 Cost Management
+Charge departmental usage to Azure subscriptions/resource groups; export usage via data connectors for chargeback
+Agent 365 Cost Management
+Delegate spending policy management to other users
+Agent 365 Cost Management
+Route credit requests to custom URLs (e.g., ServiceNow); manage policies and balances via Microsoft Graph APIs
+Agent 365 Cost Management
+Project spend and plan cost-saving measures in action center
+Agent 365 Cost Management
+Configure alerts for non-Microsoft (3P) agents and services
+Agent 365 Cost Management
+Detailed dashboards to monitor 3P AI spend and discover optimization opportunities
+Agent 365 Cost Management
+Track 3P AI use cases, outcomes and success rate
+Agent 365 Cost Management
+Measure spend and impact for agents built on non-Microsoft (3P) services
+Agent 365 Cost Management
+Filter reporting data with organizational attributes (manager hierarchy, organization, job function)
+Agent 365 Business Analytics (Frontier public preview)
+Gather employee feedback on AI usage via Pulse
+Agent 365 Business Analytics (Frontier public preview)
+Team-level AI spend dashboard for leaders to monitor 1P spend, forecasts and savings
+Agent 365 Business Analytics (Frontier public preview)
+Analyze Cowork task categories and assisted hours/value
+Agent 365 Business Analytics (Frontier public preview)
+Export Microsoft service data via CSV or data connectors to Fabric, Power BI, data warehouses and MCP
+Agent 365 Business Analytics (Frontier public preview)
+Build custom or use pre-built reports for Microsoft services
+Agent 365 Business Analytics (Frontier public preview)
+Detailed dashboards to monitor 3P AI spend, forecasts and optimization opportunities
+Agent 365 Business Analytics (Frontier public preview)
+Track 3P AI use cases, outcomes and success rate
+Agent 365 Business Analytics (Frontier public preview)
+Export non-Microsoft data via CSV or data connectors to Fabric, Power BI, data warehouses and MCP
+Agent 365 Business Analytics (Frontier public preview)
+Build custom or use pre-built reports for non-Microsoft services
+Agent 365 Business Analytics (Frontier public preview)
+View Microsoft service costs, task and credit history, trends and usage details
+End user experience
+See live credit usage while building and testing agents (Copilot Studio)
+End user experience
+Track credits used, credits remaining and task history (Copilot Code)
+End user experience
+¹ Requires Microsoft 365 E5 or E7
 Learn more
 For more information about Microsoft Agent 365, check out the following resources:
 Microsoft Agent 365 overview

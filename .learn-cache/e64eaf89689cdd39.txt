@@ -34,6 +34,13 @@ When you create the first agent identity in an environment, Copilot Studio adds 
 Blueprint ID: 25664c89-cea5-4ab6-b924-a54fd8a19ae0
 All agent identities are children of the Copilot Studio global blueprint.
 Learn more in How are agent identities created?
+Keep the blueprint application turned on
+You must keep the Microsoft Copilot Studio agent identity blueprint enterprise application turned on for the full duration of an environment copy or restore, and whenever Copilot Studio provisions agent identities. If you turn off the application, these operations fail with AADSTS7000112: Application is disabled.
+To turn the application back on and retry the operation:
+Sign in to the Microsoft Entra admin center as a Cloud Application Administrator, Application Administrator, or owner of the service principal.
+Go to Entra ID > Enterprise apps > All applications, and then search for and select Microsoft Copilot Studio agent identity blueprint. To verify the application, confirm that its application ID is 25664c89-cea5-4ab6-b924-a54fd8a19ae0.
+Select Properties, set Enabled for users to sign-in? to Yes, and then select Save.
+Retry the environment copy, environment restore, or agent identity provisioning operation.
 Deleting agent identities
 When you delete an agent in Copilot Studio, Copilot Studio also deletes the associated Microsoft Entra Agent ID.
 Opt out of automatic agent identity creation

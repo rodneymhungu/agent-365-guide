@@ -14,6 +14,7 @@ Get started ->
   Agent management roles and permissions -> admin/agent-roles-perms
   Connect existing agents -> connect-existing-agents
   Discover partner agents -> third-party-agents
+  Administer with the Agent 365 Admin plugin -> admin/administer-ai-estate
   Copilot Studio integration ->
     Overview -> builder/overview
     Agent identity integration -> builder/identity
@@ -26,9 +27,12 @@ Get started ->
   Preview features in Frontier -> frontier
 Discover and monitor agents ->
   Agent registry -> admin/agent-registry-overview
+  Understand the Total Agent Count in Microsoft Agent 365 -> admin/total-agent-count
   Connected platforms -> admin/connected-platforms
     Connect Amazon Bedrock -> admin/connected-platforms-amazon-bedrock
+      Configure cross-account access for Amazon Bedrock (Frontier) -> admin/configure-amazon-bedrock-cross-account-access
     Connect Google Vertex AI -> admin/connected-platforms-google-vertex-ai
+      Configure cross-project access for Google Vertex AI (Frontier) -> admin/configure-google-vertex-cross-project-access
     Connect Salesforce Agentforce -> admin/connected-platforms-salesforce-agent-force
     Connect Databricks Genie -> admin/connected-platforms-databricks-genie
     Connect Anthropic Claude Managed Agents -> admin/connected-platforms-anthropic-claude
@@ -37,12 +41,13 @@ Discover and monitor agents ->
     Third-party agent observability (Frontier) -> admin/third-party-agent-observability
     Troubleshoot connected platforms -> admin/troubleshoot-connected-platforms
   Agent map -> /microsoft-365/admin/manage/agent-map
-  Business use cases for agents (Frontier) -> admin/business-use-case-for-agents
-    Understand business use case taxonomy (Frontier) -> admin/business-use-cases-for-agents-taxonomy
+  Use case classification in Microsoft Cowork and Agent 365 (Frontier) ->
+    Understand use case classification in Microsoft Cowork and Agent 365 (Frontier) -> admin/business-use-case-for-agents
   Agent requests -> admin/agent-requests
   Local agents (preview) -> admin/agent-local
   Agent details -> admin/agent-details
   Agents on multiple tenants (preview) -> admin/agent-multi-tenant
+  Agent activity sync (preview) -> admin/sync-agent-activity-azure-monitor
   Graph API for agent registry and agent details -> admin/graph-api
   Monitor agent activity ->
     Agent activity in Teams -> observe
@@ -86,6 +91,9 @@ Manage security and risks ->
   Detect and investigate threats to AI agents -> /defender-xdr/security-for-ai/ai-agent-detection-protection
   Data privacy as part of Agent 365 -> /defender-xdr/security-for-ai/privacy-defender-agent-365
   Transition agent security to Agent 365 -> /defender-xdr/security-for-ai/transition-agent-security-to-agent-365
+Measure business value ->
+  Understand usage-based billing and cost management -> /copilot/plan/usage-based-billing-overview-copilot-credits
+  Manage spending policies -> /copilot/implement/usage-based-billing-manage-copilot-credits
 Data protection and compliance ->
   Data handling, data residency, and compliance -> admin/data-residency-protection-compliance
     Data handling and data residency for Agent 365 observability for Azure agents -> admin/data-residency-protection-compliance-azure-agents
